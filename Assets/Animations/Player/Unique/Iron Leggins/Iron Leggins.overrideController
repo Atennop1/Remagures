@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Iron Leggins
+  m_Controller: {fileID: 9100000, guid: 42c7f9c6bfd625644ba153b994d52c2c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 83c3f27362d86fe45b499c45e16e9604, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 59626b0f4c0c9b44aa49bb494f6f437c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8fbabc96215480a439e514d501d04434, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e7b205b8f8c26f2478ee22013f0678fd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd8aa3025b92dac408233e5dda86e93f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7c453e5cb39846f48ab6a2f366b45488, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e827876f4e971bc43b0737d042de928e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d89f1dda9e055264a88c88cf9950291d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 215bd0d7a4ae40b4a8f7301df3e99c45, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52a6f57791497e34896c2f619ae7a571, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1a8fbf003fb7f90479016cae92d213b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9c088b6896efbb34b8e02fccca2a8dc8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0d15faa179257eb4ebe2cc813ffc3f78, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 695e65c194ba9d34c989e109ea889448, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 15961ccf64e1f284da7c948834b4b11e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a425fb0f6608d044780b711fa6714247, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 04f4cbbd8df85894286a02790c907560, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 57023225dc21fa6428e8598505d19c7b, type: 2}

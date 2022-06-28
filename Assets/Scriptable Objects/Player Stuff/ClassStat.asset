@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43aaaa7e754e1a44c871a7f2689b026d, type: 3}
+  m_Name: ClassStat
+  m_EditorClassIdentifier: 
+  <ArmorCoefficient>k__BackingField: 1.5
+  <ShieldRuneCoefficient>k__BackingField: 1
+  <SwordDamageCoefficient>k__BackingField: 1.5
+  <BowDamageCoefficient>k__BackingField: 1
+  <BowReloadTime>k__BackingField: 0.5
+  <MagicDamageCoefficient>k__BackingField: 1
+  <MagicCostCoefficient>k__BackingField: 1
+  <FireRunActive>k__BackingField: 0
+  <ManaRuneActive>k__BackingField: 0
+  <ShieldRuneActive>k__BackingField: 0

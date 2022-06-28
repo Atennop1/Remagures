@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80743dddfaef0b44eb83a130695e007e, type: 3}
+  m_Name: DudeDialogTree
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: dc6a0122-e0c7-4bbe-900b-1e334aa16a78
+    PortName: 
+    TargetNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+  - BaseNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
+    PortName: 
+    TargetNodeGUID: 2195910c-8092-4770-bd03-cbb51cea6128
+  - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+    PortName: 
+    TargetNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
+  - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+    PortName: 
+    TargetNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+  - BaseNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+    PortName: 
+    TargetNodeGUID: 2195910c-8092-4770-bd03-cbb51cea6128
+  NodeData:
+  - GUID: f90007ee-dc76-4450-8758-a61415d007b5
+    nodeName: Waiting
+    dialog: {fileID: 4900000, guid: d5e16274df8c6a3469402b9a58344139, type: 3}
+    position: {x: 531, y: 139}
+    linkList:
+    - BaseNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
+      PortName: 
+      TargetNodeGUID: 2195910c-8092-4770-bd03-cbb51cea6128
+  - GUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+    nodeName: OpenTheChestPlease
+    dialog: {fileID: 4900000, guid: 0f105ddd70fbde34f82a4b8907c1c5f1, type: 3}
+    position: {x: 249, y: 200}
+    linkList:
+    - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+      PortName: 
+      TargetNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
+    - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+      PortName: 
+      TargetNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+  - GUID: 2195910c-8092-4770-bd03-cbb51cea6128
+    nodeName: Thank
+    dialog: {fileID: 4900000, guid: bc8df072dbb6cb041b0947af2a16a13a, type: 3}
+    position: {x: 812, y: 200}
+    linkList: []
+  - GUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+    nodeName: Offended
+    dialog: {fileID: 4900000, guid: 73c4579b15ade76498e4c6db8ec507b7, type: 3}
+    position: {x: 531, y: 277}
+    linkList:
+    - BaseNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+      PortName: 
+      TargetNodeGUID: 2195910c-8092-4770-bd03-cbb51cea6128

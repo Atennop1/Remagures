@@ -1,0 +1,1 @@
+Спасибо за открытие сундука, герой! #speaker: Чувак #image: Dude # layout: Left

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849067be6f4ae414087e37249087cf54, type: 3}
+  m_Name: DudeDatabase
+  m_EditorClassIdentifier: 
+  <BaseNodeGUID>k__BackingField: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+  <Container>k__BackingField: {fileID: 11400000, guid: 5c70934040b677347956099cffca4f38, type: 2}
+  Links:
+  - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+    PortName: 
+    TargetNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
+  - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+    PortName: 
+    TargetNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
+  CurrentNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
+  CurrentDialog: {fileID: 4900000, guid: 0f105ddd70fbde34f82a4b8907c1c5f1, type: 3}

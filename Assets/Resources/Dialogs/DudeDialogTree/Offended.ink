@@ -1,0 +1,1 @@
+Я обиделся на тебя! #speaker: Чувак #image: Dude # layout: Left

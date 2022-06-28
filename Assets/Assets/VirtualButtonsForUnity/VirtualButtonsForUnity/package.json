@@ -1,0 +1,27 @@
+{
+  "name": "com.cyberghostgames.virtualbuttons",
+  "displayName": "VirtualButtonsForUnity",
+  "version": "1.0.0",
+  "unity": "2021.1",
+  "description": "Prefabs to help create touch buttons with the new input system.",
+  "author": {
+    "name": "Jo\u00e3o Henrique",
+    "email": "joao_henriquee@outlook.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhmaverick/VirtualButtonsForUnity.git"
+  },
+  "dependencies": {
+    "com.unity.inputsystem": "1.0.0"
+  },
+  "type": "tool",
+  "category": "Tools/Input System",
+  "keywords": [
+    "Input System",
+    "Virtual Buttons",
+    "DPad",
+    "Joystick"
+  ]
+}

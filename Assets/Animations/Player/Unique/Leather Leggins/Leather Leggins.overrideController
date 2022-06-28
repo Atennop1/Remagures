@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Leather Leggins
+  m_Controller: {fileID: 9100000, guid: 42c7f9c6bfd625644ba153b994d52c2c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 83c3f27362d86fe45b499c45e16e9604, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4362a66137ce34e47bbd6df33402d96a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8fbabc96215480a439e514d501d04434, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bdc0862983cb8c34485c0f7202f68e05, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd8aa3025b92dac408233e5dda86e93f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6b8ec2f3eaae4db46b0e0c6976ceffa1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e827876f4e971bc43b0737d042de928e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 60ccf4ef687756d44951ba57a335eba8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1a8fbf003fb7f90479016cae92d213b8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e9db4a27072301844a70c950f3113247, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 215bd0d7a4ae40b4a8f7301df3e99c45, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9b54bd5c2e78dfb43b2d5d1cb8793c97, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0d15faa179257eb4ebe2cc813ffc3f78, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4fc136dc14f757f4d855f07b89f90885, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 15961ccf64e1f284da7c948834b4b11e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d5af919d4f9cc1f40848340c4a8a96b4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 04f4cbbd8df85894286a02790c907560, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d98369d160d2e664da3b5a3ea65500bc, type: 2}
