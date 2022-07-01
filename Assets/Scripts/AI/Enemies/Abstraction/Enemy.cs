@@ -13,7 +13,7 @@ public enum EnemyState
 [RequireComponent(typeof(EnemyAnimations))]
 public abstract class Enemy : MonoBehaviour
 {
-    public EnemyState CurrentState {get; private set;}
+    public EnemyState CurrentState { get; private set; }
     
     [field: SerializeField, Header("Enemy Stuff")] public Signal RoomSignal { get; private set; }
     [field: SerializeField] public float Speed { get; private set; }
@@ -31,21 +31,6 @@ public abstract class Enemy : MonoBehaviour
     public void OnEnable()
     {
         CurrentState = EnemyState.None;
-    }
-
-    public void Knock(Rigidbody2D myRigidbody, float knockTime)
-    {
-        StartCoroutine(KnockCoroutine(myRigidbody, knockTime));
-    }
-
-    private IEnumerator KnockCoroutine(Rigidbody2D myRigidbody, float knockTime)
-    {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            CurrentState = EnemyState.None;
-        }
     }
 
     public void PeaceInWorld()

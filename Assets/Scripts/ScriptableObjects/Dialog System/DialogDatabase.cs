@@ -7,7 +7,8 @@ public class DialogDatabase : ScriptableObject
     [field: SerializeField] public string BaseNodeGUID { get; private set; }
     [field: SerializeField] public DialogContainer Container { get; private set; }
 
-    [HideInInspector] public List<DialogNodeLinkData> Links;
     [HideInInspector] public string CurrentNodeGUID;
-    [HideInInspector] public TextAsset CurrentDialog;
+
+    public List<DialogNodeLinkData> Links => Container.NodeLinks.FindAll(x => x.BaseNodeGUID == CurrentNodeGUID);
+    public TextAsset CurrentDialog => Container.NodeData.Find(x => x.GUID == CurrentNodeGUID).dialog;
 }

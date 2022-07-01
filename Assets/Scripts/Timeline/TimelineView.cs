@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class TimelineManager : MonoBehaviour
+public class TimelineView : MonoBehaviour
 {
     public static bool IsPlaying { get; private set; }
     [SerializeField] private PlayableDirector _director;

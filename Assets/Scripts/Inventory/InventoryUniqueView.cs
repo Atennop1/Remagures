@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class InventoryManagerUnique : MonoBehaviour
+public class InventoryUniqueView : MonoBehaviour
 {
-    [field: SerializeField] public InventoryManager Manager { get; private set; }
+    [field: SerializeField] public InventoryView Manager { get; private set; }
 
     [field: SerializeField, Space] public PlayerInventory PlayerInventory { get; private set; }
     [field: SerializeField] public PlayerInventory MagicInventory { get; private set; }

@@ -12,9 +12,9 @@ public class UpgradeSlot : MonoBehaviour
     [SerializeField] private FloatValue _sharps;
 
     [HideInInspector] public BaseInventoryItem _thisItem;
-    [HideInInspector] public UpgradeManager _manager;
+    [HideInInspector] public UpgradeView _manager;
 
-    public void Setup(BaseInventoryItem item, UpgradeManager manager)
+    public void Setup(BaseInventoryItem item, UpgradeView manager)
     {
         if (item)
         {

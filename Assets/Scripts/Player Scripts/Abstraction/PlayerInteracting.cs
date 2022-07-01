@@ -10,7 +10,7 @@ public enum InteractingState
 public class PlayerInteracting : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
-    [SerializeField] private DialogManager _dialogManager;
+    [SerializeField] private DialogView _dialogManager;
 
     [SerializeField] private Signal _detectInteractSignal;
 
@@ -21,12 +21,14 @@ public class PlayerInteracting : MonoBehaviour
     public InteractingState CurrentState { get; private set; }
     public Interactable CurrentInteractable { get; private set; }
 
+    private const string RECEIVING_ANIMATOR_NAME = "receiving";
+
     public void RaiseItem()
     {
         if (_player.CurrentState != PlayerState.Interact && _player.CurrentItem.Value != null)
         {
-            _player.PlayerAnimations.ChangeAnim("receiving", true);
-            _player.CurrentState = PlayerState.Interact;
+            _player.PlayerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, true);
+            _player.ChangeState(PlayerState.Interact);
             _receivedItemSprite.sprite = _player.CurrentItem.Value.ItemData.ItemSprite;
         }
     }
@@ -51,11 +53,11 @@ public class PlayerInteracting : MonoBehaviour
             CurrentState = InteractingState.None;
             _detectInteractSignal.Raise();
 
-            _player.CurrentState = PlayerState.Idle;
+            _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;
             _player.CurrentItem.Value = null;
             
-            _player.PlayerAnimations.ChangeAnim("receiving", false);
+            _player.PlayerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, false);
             _dialogWindow.SetActive(false);
         }
     }

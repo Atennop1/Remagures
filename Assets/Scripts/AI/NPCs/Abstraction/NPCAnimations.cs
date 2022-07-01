@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class NPCAnimations : MonoBehaviour
 {
-    public Animator animator { get; private set; }
+    public Animator Animator { get; private set; }
 
     public void Awake()
     {
-        animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
 
     public void UpdateAnim(Vector2 vector)
     {
-        animator.SetFloat("moveX", vector.x);
-        animator.SetFloat("moveY", vector.y);
+        Animator.SetFloat("moveX", vector.x);
+        Animator.SetFloat("moveY", vector.y);
     }
 }

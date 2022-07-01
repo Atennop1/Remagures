@@ -13,9 +13,8 @@ public class GenericDamage : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(_otherTag) && other.isTrigger)
+        if (other.TryGetComponent<GenericHealth>(out GenericHealth temp) && temp.LayerMask == (temp.LayerMask | (1 << gameObject.layer)) && other.isTrigger)
         {
-            GenericHealth temp = other.gameObject.GetComponent<GenericHealth>();
             if (temp != null && (temp as PlayerHealth) != null)
             {   
                 (temp as PlayerHealth).Damage(_damage, other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>());

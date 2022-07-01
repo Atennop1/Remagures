@@ -10,7 +10,7 @@ public class Loot
 [CreateAssetMenu(fileName = "New LootTable", menuName = "Other/LootTable")]
 public class LootTable : ScriptableObject
 {
-    public Loot[] LootObjects;
+    [SerializeField] private Loot[] LootObjects;
 
     public GameObject Loot()
     {

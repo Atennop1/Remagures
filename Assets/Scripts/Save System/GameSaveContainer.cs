@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class GameSaveManager : MonoBehaviour
+public class GameSaveContainer : MonoBehaviour
 {
     [SerializeField] private BoolValue _isNewGame;
     [SerializeField] private List<Object> savablesObjects;

@@ -21,11 +21,11 @@ public class WeeklyNotificationComponent : NotificationComponent
         _canNotify = true;
     }
     
-    protected override void OnApplicationPause(bool focusStatus)
+    protected override void OnApplicationPause(bool pauseStatus)
     {
-        if (focusStatus)
+        if (pauseStatus)
         {
-            _isFocus = false;
+            base.OnApplicationFocus(pauseStatus);
             _delay = 3600 * 24 * 7;
             SendNotification(0);
         }

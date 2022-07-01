@@ -22,7 +22,13 @@ public class PlayerAnimations : MonoBehaviour
             LegginsAnimator.SetBool(key, value);
     }
 
-    public void ChangeAnim(string key, float value) 
+    public void SetAnimFloat(Vector2 setVector)
+    {
+        ChangeAnim("moveX", setVector.x);
+        ChangeAnim("moveY", setVector.y);
+    }
+
+    private void ChangeAnim(string key, float value) 
     {
         if (PlayerAnimator.runtimeAnimatorController && PlayerAnimator.gameObject.activeInHierarchy)
             PlayerAnimator.SetFloat(key, value);
@@ -35,11 +41,5 @@ public class PlayerAnimations : MonoBehaviour
 
         if (LegginsAnimator.runtimeAnimatorController && LegginsAnimator.gameObject.activeInHierarchy)
             LegginsAnimator.SetFloat(key, value);
-    }
-
-    public void SetAnimFloat(Vector2 setVector)
-    {
-        ChangeAnim("moveX", setVector.x);
-        ChangeAnim("moveY", setVector.y);
     }
 }

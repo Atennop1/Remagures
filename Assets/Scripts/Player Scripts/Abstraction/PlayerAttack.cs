@@ -4,8 +4,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
-    public bool CanAttack => AttackCoroutine == null;
-    public Coroutine AttackCoroutine;
+    public bool CanAttack => _attackCoroutine == null;
+    private Coroutine _attackCoroutine;
+
+    private const string ATTACK_ANIMATOR_NAME = "attacking";
 
     public void AttackMethod()
     {
@@ -15,24 +17,24 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
             
-        if (AttackCoroutine == null && _player.CurrentState != PlayerState.Attack && _player.UniqueManager.WeaponSlot.ThisItem.ItemData.ItemName != "")
-            AttackCoroutine = StartCoroutine(Attack());
+        if (_attackCoroutine == null && _player.CurrentState != PlayerState.Attack && _player.UniqueManager.WeaponSlot.ThisItem.ItemData.ItemName != "")
+            _attackCoroutine = StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
     {
-        _player.CurrentState = PlayerState.Attack;
+        _player.ChangeState(PlayerState.Attack);
 
-        _player.PlayerAnimations.ChangeAnim("attacking", true);
+        _player.PlayerAnimations.ChangeAnim(ATTACK_ANIMATOR_NAME, true);
         yield return null;
 
-        _player.PlayerAnimations.ChangeAnim("attacking", false);
+        _player.PlayerAnimations.ChangeAnim(ATTACK_ANIMATOR_NAME, false);
         yield return new WaitForSeconds(0.33f);
 
         if (_player.CurrentState != PlayerState.Interact)
-            _player.CurrentState = PlayerState.Idle;
+            _player.ChangeState(PlayerState.Idle);
 
-        AttackCoroutine = null;
+        _attackCoroutine = null;
     }
     
     public void MagicAttackMethod()
@@ -41,8 +43,15 @@ public class PlayerAttack : MonoBehaviour
             (_player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.ThisEvent.Invoke();
     }
 
-    public void MagicAttackCreateCoroutine(IEnumerator method)
+    public void StartMagicAttackCoroutine(IEnumerator method)
     {
-        AttackCoroutine = StartCoroutine(method);
+        if (_attackCoroutine != null)
+            StopCoroutine(_attackCoroutine);
+        _attackCoroutine = StartCoroutine(method);
+    }
+
+    public void SetAttackCoroutineToNull()
+    {
+        _attackCoroutine = null;
     }
 }

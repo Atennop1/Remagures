@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DungeonEnemyRoom : DungeonRoom
 {
-    public Door[] _doors;
+    [SerializeField] private Door[] _doors;
     
     public void CheckEnemies()
     {
-        foreach (Enemy enemy in _enemies)
+        foreach (Enemy enemy in Enemies)
         {
             if (enemy.gameObject.activeInHierarchy)
                 return;
@@ -29,12 +29,12 @@ public class DungeonEnemyRoom : DungeonRoom
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (other.TryGetComponent<PlayerController>(out PlayerController player) && !other.isTrigger)
         {
-            for (int i = 0; i < _enemies.Length; i++)
-                ChangeActivation(_enemies[i], true);
-            for (int i = 0; i < _pots.Length; i++)
-                ChangeActivation(_pots[i], true);
+            for (int i = 0; i < Enemies.Length; i++)
+                ChangeActivation(Enemies[i], true);
+            for (int i = 0; i < Pots.Length; i++)
+                ChangeActivation(Pots[i], true);
             CloseDoors();
         }
     }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManagerMagic : InventoryManager
+public class InventoryMagicView : InventoryView
 {
     [Header("Magic Stuff")]
-    [SerializeField] private MagicManager _magicManager;
+    [SerializeField] private MagicCounter _magicManager;
     [SerializeField] private InventorySlot _magicSlot;
 
     public void Equip()

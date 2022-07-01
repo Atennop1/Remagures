@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 
-public class DialogManager : MonoBehaviour
+public class DialogView : MonoBehaviour
 {
-    [Header("Stuff")]
-    [SerializeField] private PlayerInteracting _playerInteracting;
     [SerializeField] private Signal _endTalkSignal;
 
     [Header("Dialog Window")]
@@ -132,6 +130,7 @@ public class DialogManager : MonoBehaviour
             string[] split = tag.Split(':');
             if (split.Length != 2)
                 Debug.LogError("Wrong tag syntax!");
+                
             string tagKey = split[0].Trim();
             string tagValue = split[1].Trim();
 
@@ -185,16 +184,14 @@ public class DialogManager : MonoBehaviour
                 Refresh(false);
             else
             {
-                IsDialogEnded = true;
-                _playerInteracting.DialogOnTaped();
-                    
+                IsDialogEnded = true;        
                 _endTalkSignal.Raise();
                 _dialogWindow.GetComponent<Button>().onClick.RemoveListener(NextReplica);
             }
         }
     }
 
-    public static void NextGraph(DialogValue value, int idOfLink)
+    public void NextGraph(DialogValue value, int idOfLink)
     {
         DialogContainer container = value.NPCDatabase.Container;
         List<DialogNodeLinkData> linkDatas = new List<DialogNodeLinkData>();
@@ -203,14 +200,6 @@ public class DialogManager : MonoBehaviour
             if (link.BaseNodeGUID == value.NPCDatabase.CurrentNodeGUID)
                 linkDatas.Add(link);
         
-        DialogNodeLinkData linkData = linkDatas[idOfLink];
-        ProceedToNarrative(value, container, linkData);
-    }
-
-    private static void ProceedToNarrative(DialogValue value, DialogContainer data, DialogNodeLinkData linkData)
-    {
-        value.NPCDatabase.CurrentNodeGUID = linkData.TargetNodeGUID;
-        value.NPCDatabase.CurrentDialog = value.NPCDatabase.Container.NodeData.Find(x => x.GUID == value.NPCDatabase.CurrentNodeGUID).dialog;
-        value.NPCDatabase.Links = data.NodeData.Find(x => x.GUID == linkData.BaseNodeGUID).linkList;
+        value.NPCDatabase.CurrentNodeGUID = linkDatas[idOfLink].TargetNodeGUID;
     }
 }

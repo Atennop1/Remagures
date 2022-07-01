@@ -31,7 +31,7 @@ public class EnemyWithTarget : Enemy
 
                 StopMoveCoroutine();
                 _movingCoroutine = StartCoroutine(MoveCoroutine(transform.position + (Vector3)moveVector, Speed));
-                EnemyAnimations.SetAnimFloat(temp, EnemyAnimations.Anim);
+                EnemyAnimations.SetAnimFloat(temp, EnemyAnimations.Animator);
             }
         }
     }

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b2d1633a2460d4dbdbf5f4a7af1621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerUpSignal: {fileID: 11400000, guid: 39c477488ccfa134daee617e0e6ddbc1, type: 2}
+  <PowerUpSignal>k__BackingField: {fileID: 11400000, guid: 39c477488ccfa134daee617e0e6ddbc1, type: 2}
   _numberOfCoins: {fileID: 11400000, guid: 62f7ee8ca2b514347992a5c8d632681e, type: 2}
 --- !u!61 &4145971971839688100
 BoxCollider2D:

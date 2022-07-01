@@ -23,14 +23,12 @@ public class SaveDialogs : SaveLoad, ISaver
             if (!File.Exists(Application.persistentDataPath + Path + "/CurrentDialog" + (i + 1) + "NodeGUID.json"))
             {
                 _databases[i].CurrentNodeGUID = _databases[i].BaseNodeGUID;
-                _databases[i].CurrentDialog = _databases[i].Container.NodeData.Find(x => x.GUID == _databases[i].CurrentNodeGUID).dialog;
             }
             else
             {
                 StringValue stringValue = ScriptableObject.CreateInstance<StringValue>();
                 LoadObjectFromJson(Path + "/CurrentDialog" + (i + 1) + "NodeGUID.json", stringValue);
                 _databases[i].CurrentNodeGUID = stringValue.Value;
-                _databases[i].CurrentDialog = _databases[i].Container.NodeData.Find(x => x.GUID == _databases[i].CurrentNodeGUID).dialog;
             }
         }
     }
@@ -40,7 +38,6 @@ public class SaveDialogs : SaveLoad, ISaver
         for (int i = 0; i < _databases.Count; i++)
         {
             _databases[i].CurrentNodeGUID = _databases[i].BaseNodeGUID;
-            _databases[i].CurrentDialog = _databases[i].Container.NodeData.Find(x => x.GUID == _databases[i].CurrentNodeGUID).dialog;
         }
     }
 }

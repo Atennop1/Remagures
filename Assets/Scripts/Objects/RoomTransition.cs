@@ -8,7 +8,7 @@ public class RoomTransition : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && _lastCollider == null)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && _lastCollider == null)
         {
             _lastCollider = collision;
             StartCoroutine(LastColReset());

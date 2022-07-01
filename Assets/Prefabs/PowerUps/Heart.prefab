@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c488342a410f64a9b4a793d5e5f8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerUpSignal: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
+  <PowerUpSignal>k__BackingField: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
   _playerHealth: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
   _heartContainers: {fileID: 11400000, guid: 8a956c585996dd041bd7e45bca1f3533, type: 2}

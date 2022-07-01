@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CanvasManager : MonoBehaviour
+public class ScreenChanger : MonoBehaviour
 {
     [SerializeField] private GameObject _meatCanvas;
     [SerializeField] private GameOverScript _gameOver;
-    private GameSaveManager _saveManager;
+    private GameSaveContainer _saveManager;
 
     public void OnEnable()
     {
-        _saveManager = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>();
+        _saveManager = GameObject.Find("GameSaveManager").GetComponent<GameSaveContainer>();
     }
 
     public void ChangeScreen(GameObject gameObject)

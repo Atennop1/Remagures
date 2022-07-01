@@ -5,13 +5,16 @@ public class PlayerHealth : GenericHealth
 {
     [Space]
     [SerializeField] private Signal _healthSignal;
-    [SerializeField] private FloatValue _currentHealth;
     [SerializeField] private FloatValue _heartContainers;
 
     [Space]
     [SerializeField] private GameOverScript _gameOver;
     [SerializeField] private GameObject _deathEffect;
     [SerializeField] private Signal _deathSignal;
+
+    [Space]
+    [SerializeField] private GameObject _canvas;
+    [SerializeField] private GameObject _music;
     private bool _isStuned;
     
     public void Damage(float amountToDamage, PlayerController player)
@@ -22,22 +25,22 @@ public class PlayerHealth : GenericHealth
             if (currentDamage <= 0)
                 currentDamage = 1;
                 
-            _currentHealth.Value -= currentDamage;
+            player.CurrentHealth.Value -= currentDamage;
             _healthSignal.Raise();
             StartCoroutine(Stun());
             
-            if (_currentHealth.Value <= 0)
+            if (player.CurrentHealth.Value <= 0)
             {
-                player.CurrentState = PlayerState.Dead;
+                player.ChangeState(PlayerState.Dead);
                 Instantiate(_deathEffect, transform.position, Quaternion.identity);
 
                 _gameOver.SetGameOver();
-                _currentHealth.Value = _heartContainers.Value * 4;
+                player.CurrentHealth.Value = _heartContainers.Value * 4;
                 _gameOver.Init();
                 _deathSignal.Raise();
 
-                GameObject.Find("Canvas").SetActive(false);
-                GameObject.Find("Music").SetActive(false);
+                _canvas.SetActive(false);
+                _music.SetActive(false);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }
         }

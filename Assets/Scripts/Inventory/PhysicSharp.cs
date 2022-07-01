@@ -6,7 +6,7 @@ public class PhysicSharp : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (other.TryGetComponent<PlayerController>(out PlayerController player) && !other.isTrigger)
         {
             _sharps.Value++;
             Destroy(gameObject);

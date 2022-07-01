@@ -3,21 +3,21 @@ using UnityEngine.Events;
 
 public class SignalListener : MonoBehaviour
 {
-    [SerializeField] private Signal signal;
-    [SerializeField] private UnityEvent signalEvent;
+    [SerializeField] private Signal _signal;
+    [SerializeField] private UnityEvent _signalEvent;
     
     public void OnSignalRaised()
     {
-        signalEvent.Invoke();
+        _signalEvent.Invoke();
     }
 
     private void OnEnable()
     {
-        signal.RegisterListener(this);
+        _signal.RegisterListener(this);
     }
 
     private void OnDisable()
     {
-        signal.DeRegisterListener(this);
+        _signal.DeRegisterListener(this);
     }
 }

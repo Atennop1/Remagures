@@ -19,7 +19,6 @@ namespace Remagures.AI.TurretLog
                 context.turretEnemy.InstantiateProjectile(tempVector);
 
                 context.turretEnemy.EnemyAnimations.ChangeAnim(tempVector, context.animator);
-                context.turretEnemy.CanFire = false;
                     
                 context.animator.SetBool("wakeUp", true);
                 context.animator.SetBool("isStaying", true);

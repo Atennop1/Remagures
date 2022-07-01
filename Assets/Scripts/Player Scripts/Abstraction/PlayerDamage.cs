@@ -7,7 +7,7 @@ public class PlayerDamage : GenericDamage
     [SerializeField] private bool _isPlayerMagic;
     [SerializeField] private bool _isArrow;
 
-    [field: SerializeField] public PlayerController Player { get; private set; }
+    [field: SerializeField, Space] public PlayerController Player { get; private set; }
 
     public void Init(PlayerController player)
     {
@@ -16,18 +16,14 @@ public class PlayerDamage : GenericDamage
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.TryGetComponent<Destroyable>(out Destroyable destroyable))
+            destroyable.Smash();
+            
         if (other.isTrigger)
         {
-            if (_isPlayerAttack)
-                _damage = Mathf.RoundToInt((Player.UniqueManager.WeaponSlot.ThisItem as WeaponInventoryItem).WeaponItemData.Damage * Player.ClassStat.SwordDamageCoefficient);
-
-            if (_isPlayerMagic)
-                _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.MagicDamageCoefficient);
-
-            if (_isArrow)
-                _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.BowDamageCoefficient);
-            
+            SetDamage();
             EnemyHealth temp = other.gameObject.GetComponent<EnemyHealth>();
+            
             if (temp != null)
             {
                 temp.TakeDamage(_damage);
@@ -41,6 +37,27 @@ public class PlayerDamage : GenericDamage
                     Flash(false, other, enemyFlash.DamageColor, Player.ClassStat.FireRunActive ? enemyFlash.FireColor : enemyFlash.RegularColor);
                 }
             }
+        }
+    }
+
+    private void SetDamage()
+    {
+        if (_isPlayerAttack)
+        {
+            _damage = Mathf.RoundToInt((Player.UniqueManager.WeaponSlot.ThisItem as WeaponInventoryItem).WeaponItemData.Damage * Player.ClassStat.SwordDamageCoefficient);
+            return;
+        }
+
+        if (_isPlayerMagic)
+        {
+            _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.MagicDamageCoefficient);
+            return;
+        }
+
+        if (_isArrow)
+        {
+            _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.BowDamageCoefficient);
+            return;
         }
     }
 }

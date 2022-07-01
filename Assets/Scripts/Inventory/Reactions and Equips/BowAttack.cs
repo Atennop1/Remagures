@@ -11,29 +11,29 @@ public class BowAttack : MonoBehaviour
     {
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         if (_player.PlayerAttack.CanAttack && _player.CurrentState != PlayerState.Attack && _player.PlayerInteract.CurrentState != InteractingState.Interact)
-            _player.PlayerAttack.MagicAttackCreateCoroutine(MagicAttack());
+            _player.PlayerAttack.StartMagicAttackCoroutine(MagicAttack());
     }
 
     private IEnumerator MagicAttack()
     {
-        if (_player.PlayerAnimations.PlayerAnimator.GetBool("attacking") != true && !TimelineManager.IsPlaying && CheckArrowValid())
+        if (_player.PlayerAnimations.PlayerAnimator.GetBool("attacking") != true && !TimelineView.IsPlaying && CheckArrowValid())
         {
-            _player.CurrentState = PlayerState.Attack;
+            _player.ChangeState(PlayerState.Attack);
             
             yield return null;
             MakeArrow();
             yield return new WaitForSeconds(_player.ClassStat.BowReloadTime);
 
             if (_player.CurrentState != PlayerState.Interact)
-                _player.CurrentState = PlayerState.Idle;
+                _player.ChangeState(PlayerState.Idle);
 
-            _player.PlayerAttack.AttackCoroutine = null;
+            _player.PlayerAttack.SetAttackCoroutineToNull();
         }
     }
 
     private void MakeArrow()
     {
-        if (_currentMagic.Value >= _player.MagicManager.MagicCost)
+        if (_currentMagic.Value >= _player.MagicCount.MagicCost)
         {
             _player.DecreaseMagicSignal.Raise();
             Vector2 temp = new Vector2(_player.PlayerAnimations.PlayerAnimator.GetFloat("moveX"), _player.PlayerAnimations.PlayerAnimator.GetFloat("moveY"));

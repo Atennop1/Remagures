@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField] protected Signal _powerUpSignal;
+    [field: SerializeField] public Signal PowerUpSignal { get; private set; }
 }

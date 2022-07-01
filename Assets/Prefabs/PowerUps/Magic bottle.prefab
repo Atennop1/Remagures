@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c4a1a0a506f064d9b55701ecd025bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerUpSignal: {fileID: 11400000, guid: 51627bb314ce7354b8c64db33276b7fe, type: 2}
+  <PowerUpSignal>k__BackingField: {fileID: 11400000, guid: 51627bb314ce7354b8c64db33276b7fe, type: 2}

@@ -29,7 +29,7 @@ public class RandomMovableBoundedNPC : MovableNPC
         {
             if (CurrentState == NPCState.Walk)
             {
-                Animations.animator.SetBool("isStaying", false);
+                Animations.Animator.SetBool("isStaying", false);
                 _moveTimeSeconds -= Time.deltaTime;
                 if (_moveTimeSeconds <= 0)
                 {
@@ -41,7 +41,7 @@ public class RandomMovableBoundedNPC : MovableNPC
             }
             else
             {
-                Animations.animator.SetBool("isStaying", true);
+                Animations.Animator.SetBool("isStaying", true);
                 _waitTimeSeconds -= Time.deltaTime;
                 if (_waitTimeSeconds <= 0)
                 {
@@ -109,7 +109,7 @@ public class RandomMovableBoundedNPC : MovableNPC
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !collision.isTrigger && CurrentState != NPCState.Talk)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger && CurrentState != NPCState.Talk)
         {
             base.OnTriggerEnter2D(collision);
             ChangeDirection();

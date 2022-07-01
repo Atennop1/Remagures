@@ -52,20 +52,20 @@ public abstract class NPC : Interactable
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !collision.isTrigger && CurrentState != NPCState.Talk)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger && CurrentState != NPCState.Talk)
         {
             base.OnTriggerEnter2D(collision);
-            Animations.animator.SetBool("isStaying", true);
+            Animations.Animator.SetBool("isStaying", true);
             ChangeState(NPCState.Wait);
         }
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !collision.isTrigger)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             base.OnTriggerExit2D(collision);
-            Animations.animator.SetBool("isStaying", false);
+            Animations.Animator.SetBool("isStaying", false);
             ChangeState(NPCState.Walk);
         }
     }

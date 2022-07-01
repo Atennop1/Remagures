@@ -3,11 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class EnemyAnimations : MonoBehaviour
 {
-    public Animator Anim { get; private set; }
+    public Animator Animator { get; private set; }
 
     public void Awake()
     {
-        Anim = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
     
     public void SetAnimFloat(Vector2 setVector, Animator anim)

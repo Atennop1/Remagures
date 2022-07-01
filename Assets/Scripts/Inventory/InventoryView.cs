@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryView : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField] protected GameObject _inventorySlot;
@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Text _noItemsText;
     [field: SerializeField] public GameObject UseButton { get; private set; }
     [SerializeField] private Text _nameText;
-    [SerializeField] protected Text _descriptionText;
+    [field: SerializeField] protected Text DescriptionText { get; private set; }
     [SerializeField] private Text _sharpsCountText;
 
     [field: SerializeField, Header("Values")] protected PlayerInventory PlayerInventory { get; private set; }
@@ -61,13 +61,13 @@ public class InventoryManager : MonoBehaviour
     {
         _currentItem = newItem;
         _nameText.text = _currentItem.ItemData.ItemName;
-        _descriptionText.text = _currentItem.ItemData.ItemDescription;
+        DescriptionText.text = _currentItem.ItemData.ItemDescription;
         SetButton();
     }
 
     public virtual void SetButton()
     {
-        RectTransform buttonRect = _descriptionText.gameObject.GetComponent<RectTransform>();
+        RectTransform buttonRect = DescriptionText.gameObject.GetComponent<RectTransform>();
         UseButton.SetActive(_currentItem as UsableInventoryItem != null);
 
         if (_currentItem as UsableInventoryItem != null)
@@ -112,21 +112,6 @@ public class InventoryManager : MonoBehaviour
     {
         Time.timeScale = 1;
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-        
-        player.PlayerAnimations.PlayerAnimator.SetFloat("moveX", 0);
-        player.PlayerAnimations.PlayerAnimator.SetFloat("moveY", -1);
-
-        SetPlayerAnim(player.PlayerAnimations.HelmetAnimator, player.PlayerAnimations.PlayerAnimator);
-        SetPlayerAnim(player.PlayerAnimations.ChestplateAnimator, player.PlayerAnimations.PlayerAnimator);
-        SetPlayerAnim(player.PlayerAnimations.LegginsAnimator, player.PlayerAnimations.PlayerAnimator);
-    }
-
-    private void SetPlayerAnim(Animator anim, Animator playerAnim)
-    {
-        if (anim.runtimeAnimatorController)
-        {
-            anim.SetFloat("moveX", playerAnim.GetFloat("moveX"));
-            anim.SetFloat("moveY", playerAnim.GetFloat("moveY"));
-        }
+        player.Awake();
     }
 }

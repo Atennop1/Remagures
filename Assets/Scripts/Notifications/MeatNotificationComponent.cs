@@ -4,7 +4,7 @@ public class MeatNotificationComponent : NotificationComponent
 {
     [Header("Meat Stuff")]
     [SerializeField] private FloatValue _rawCount;
-    [SerializeField] private TimeManager _timeManager;
+    [SerializeField] private TimeCounter _timeManager;
 
     public static MeatNotificationComponent Instance { get; private set; }
 
@@ -18,6 +18,7 @@ public class MeatNotificationComponent : NotificationComponent
 
         base.Awake();
     }
+    
     public override void Init()
     {
         _canNotify = true;

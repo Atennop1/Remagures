@@ -6,6 +6,8 @@ public class GenericHealth : MonoBehaviour
 {
     [SerializeField] private int _fireMinTime;
     [SerializeField] private int _fireMaxTime;
+
+    [field: SerializeField, Space] public LayerMask LayerMask { get; private set; }
     private Coroutine _magicDamageCoroutine;
 
     public virtual void Damage(float amountToDamage) { }

@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _thisRigidbody;
     private Vector2 _moveVector;
 
+    private const string MOVE_ANIMATOR_NAME = "moving";
+
     private void Start() 
     {
         _thisRigidbody = GetComponent<Rigidbody2D>();
@@ -54,14 +56,14 @@ public class PlayerMovement : MonoBehaviour
         if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _player.PlayerAttack.CanAttack && (_player.CurrentState == PlayerState.Walk || _player.CurrentState == PlayerState.Idle) && _player.PlayerInteract.CurrentState != InteractingState.Interact)
         {
             SetDirection();
-            _player.CurrentState = PlayerState.Walk;
-            _player.PlayerAnimations.ChangeAnim("moving", true);
+            _player.ChangeState(PlayerState.Walk);
+            _player.PlayerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, true);
         }
         else if (_player.CurrentState != PlayerState.Stagger)
         {
-            _player.CurrentState = PlayerState.Idle;
+            _player.ChangeState(PlayerState.Idle);
             _thisRigidbody.velocity = Vector2.zero;
-            _player.PlayerAnimations.ChangeAnim("moving", false);
+            _player.PlayerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, false);
         }
     }
 }

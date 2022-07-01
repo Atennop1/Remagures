@@ -4,13 +4,13 @@ public class PatrollingLog : EnemyWithTarget
 {
     [field: SerializeField, Header("Patrolling Stuff")] public Transform[] Path { get; private set; }
 
-    [HideInInspector] public Transform CurrentGoal;
-    [HideInInspector] public int CurrentPoint = 0;
+    [HideInInspector] public Transform CurrentGoal { get; private set; }
+    [HideInInspector] public int CurrentPoint { get; private set; } = 0;
 
     public override void Start()
     {
         base.Start();
-        EnemyAnimations.Anim.SetBool("wakeUp", true);
+        EnemyAnimations.Animator.SetBool("wakeUp", true);
     }
 
     public void ChangeGoal()

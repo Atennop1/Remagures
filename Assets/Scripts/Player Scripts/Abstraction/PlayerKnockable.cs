@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerKnockable : MonoBehaviour
+public class PlayerKnockable : MonoBehaviour, IKnockable
 {
     [SerializeField] private PlayerController _player;
-    public Signal _cameraKick;
+    [SerializeField] private Signal _cameraKick;
+    [field: SerializeField] public LayerMask LayerMask { get; private set;}
 
     public void Knock(Rigidbody2D myRigidbody, float knockTime)
     {
-        StartCoroutine(KnockCoroutine(myRigidbody, knockTime));
+        if (_player.CurrentState != PlayerState.Stagger)
+        {
+            _player.ChangeState(PlayerState.Stagger);
+            StartCoroutine(KnockCoroutine(myRigidbody, knockTime));
+        }
     }
 
     public IEnumerator KnockCoroutine(Rigidbody2D myRigidbody, float knockTime)
@@ -18,7 +23,7 @@ public class PlayerKnockable : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            _player.CurrentState = PlayerState.Idle;
+            _player.ChangeState(PlayerState.Idle);
         }
     }
 }

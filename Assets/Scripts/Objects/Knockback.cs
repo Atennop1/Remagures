@@ -11,30 +11,18 @@ public class Knockback : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Breakable") && gameObject.CompareTag("PlayerAttack"))
-            collision.GetComponent<Destroyable>().Smash();
-            
-        if (collision.gameObject.CompareTag(_otherTag))
+        if (collision.TryGetComponent<IKnockable>(out IKnockable knockable))
         {
             Rigidbody2D hit = collision.GetComponentInParent<Rigidbody2D>();
-            if (hit != null)
+            if (hit != null && knockable.LayerMask == (knockable.LayerMask | (1 << gameObject.layer)) && _lastCollider == null)
             {
                 Vector3 difference = hit.transform.position - transform.position;
                 difference = difference.normalized * _strength;
                 hit.DOMove(hit.transform.position + difference, _knockTime);
-                
-                if (collision.gameObject.CompareTag("Enemy") && _lastCollider == null && collision.TryGetComponent<Enemy>(out Enemy enemy) && enemy.CurrentState != EnemyState.Stagger)
-                {
-                    _lastCollider = collision;
-                    enemy.ChangeState(EnemyState.Stagger);
-                    StartCoroutine(LastColReset());
-                    enemy.Knock(hit, _knockTime);
-                }
-                if (collision.gameObject.CompareTag("Player") && gameObject.activeInHierarchy && collision.TryGetComponent<PlayerController>(out PlayerController player) && player.CurrentState != PlayerState.Stagger)
-                {
-                    player.CurrentState = PlayerState.Stagger;
-                    player.GetComponent<PlayerKnockable>().Knock(hit, _knockTime);
-                }
+
+                knockable.Knock(hit, _knockTime);
+                _lastCollider = collision;
+                StartCoroutine(LastColReset());
             }
         }
     }

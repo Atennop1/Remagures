@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeManager : MonoBehaviour
+public class UpgradeView : MonoBehaviour
 {
     [Header("Values")]
     [SerializeField] private FloatValue _sharps;
@@ -24,6 +24,7 @@ public class UpgradeManager : MonoBehaviour
         foreach (BaseInventoryItem item in Inventory.MyInventory)
         {
             UpgradableInventoryItem currentItem = item as UpgradableInventoryItem;
+
             if (currentItem != null && 
             currentItem.UpgradableItemData.ItemsForLevels != null && 
             currentItem.UpgradableItemData.ThisItemLevel != 0 && 
@@ -45,20 +46,9 @@ public class UpgradeManager : MonoBehaviour
 
     public void Close()
     {
-        gameObject.transform.parent.parent.parent.parent.gameObject.SetActive(false);
         Time.timeScale = 1;
+        gameObject.transform.parent.parent.parent.parent.gameObject.SetActive(false);
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-        SetPlayerAnim(player.PlayerAnimations.HelmetAnimator, player.PlayerAnimations.PlayerAnimator);
-        SetPlayerAnim(player.PlayerAnimations.ChestplateAnimator, player.PlayerAnimations.PlayerAnimator);
-        SetPlayerAnim(player.PlayerAnimations.LegginsAnimator, player.PlayerAnimations.PlayerAnimator);
-    }
-    
-    private void SetPlayerAnim(Animator anim, Animator playerAnim)
-    {
-        if (anim.runtimeAnimatorController)
-        {
-            anim.SetFloat("moveX", playerAnim.GetFloat("moveX"));
-            anim.SetFloat("moveY", playerAnim.GetFloat("moveY"));
-        }
+        player.Awake();
     }
 }

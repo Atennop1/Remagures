@@ -16,9 +16,7 @@ namespace Remagures.AI.Ogre
             if (Vector3.Distance(context.meleeEnemy.Target.position, context.transform.position) <= context.meleeEnemy.AttackRadius && context.meleeEnemy.CurrentState != EnemyState.Peace && context.enemyWithTarget.CurrentState != EnemyState.Stagger)
             {
                 context.meleeEnemy.StopMoveCoroutine();
-                if (context.meleeEnemy.AttackCoroutine != null)
-                    context.meleeEnemy.StopCoroutine(context.meleeEnemy.AttackCoroutine);
-                context.meleeEnemy.AttackCoroutine = context.meleeEnemy.StartCoroutine(context.meleeEnemy.Attack());
+                context.meleeEnemy.StartAttackCoroutine();
                 
                 return State.Failure;
             }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RuneManager : MonoBehaviour
+public class RuneView : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private Text _nameText;
@@ -12,9 +12,10 @@ public class RuneManager : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject _equipButton;
     [SerializeField] private GameObject _noneText;
-    [SerializeField] private InventorySlot _runeSlot;
-    [SerializeField] private MagicManager _magicManager;
+    [SerializeField] private InventorySlot _currentRuneSlot;
+    [SerializeField] private MagicCounter _magicManager;
     [field: SerializeField] public PlayerInventory Inventory { get; private set; }
+    
     private RuneInventoryItem _currentRune;
 
     public void Start()
@@ -44,7 +45,7 @@ public class RuneManager : MonoBehaviour
     public void Equip()
     {
         _currentRune.RuneItemData.SetIsCurrent(Inventory.MyInventory);
-        _runeSlot.Setup(_currentRune, null);
+        _currentRuneSlot.Setup(_currentRune, null);
 
         _currentRune.RuneItemData.ClassStat.ClearRunes();
         _currentRune.RuneItemData.ClassStat.SetupRunes(_currentRune, _magicManager);

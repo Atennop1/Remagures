@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2052565251606611884}
   - component: {fileID: 5491445966991846412}
   - component: {fileID: 1465793056633788194}
-  - component: {fileID: 139463198}
+  - component: {fileID: 7188733777195183712}
   m_Layer: 0
   m_Name: GameSaveManager
   m_TagString: Untagged
@@ -167,7 +167,7 @@ MonoBehaviour:
   <Path>k__BackingField: /GameSave/Dialogs
   _databases:
   - {fileID: 11400000, guid: 7ba8dc7a8f541b242b95270dc245b875, type: 2}
---- !u!114 &139463198
+--- !u!114 &7188733777195183712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

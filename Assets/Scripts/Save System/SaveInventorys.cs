@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SaveInventorys : SaveLoad, ISaver
 {
-    [SerializeField] private GameSaveManager _manager;
+    [SerializeField] private GameSaveContainer _manager;
     [SerializeField] private List<ScriptableObject> _inventorys;
     [SerializeField] private List<ScriptableObject> _items;
 

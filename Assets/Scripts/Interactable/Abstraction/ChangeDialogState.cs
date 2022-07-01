@@ -11,16 +11,10 @@ public class ChangeDialogState : MonoBehaviour
     public void ChangeDatabaseState()
     {
         for (int i = 0; i < _databases.Count; i++)
-        {
             if (_oldNewNodes[i].ContainsKey(_databases[i].CurrentNodeGUID))
-            {
-                _databases[i].CurrentNodeGUID = _oldNewNodes[i][_databases[i].CurrentNodeGUID];
-                _databases[i].CurrentDialog = _databases[i].Container.NodeData.Find(x => x.GUID == _databases[i].CurrentNodeGUID).dialog;
-            }  
-        }
+                _databases[i].CurrentNodeGUID = _oldNewNodes[i][_databases[i].CurrentNodeGUID]; 
     }
 }
 
 [System.Serializable]
 public class StringStringDictionary : SerializableDictionary<string, string> { }
-

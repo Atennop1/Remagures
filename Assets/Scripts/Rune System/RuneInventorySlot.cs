@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class RuneInventorySlot : InventorySlot
 {
-    [SerializeField] private RuneManager _runeManager;
+    [SerializeField] private RuneView _runeManager;
 
     public void OnEnable()
     {

@@ -68,25 +68,22 @@ public class ClassStat : ScriptableObject
         ShieldRuneCoefficient = 1;
     }
     
-    public void SetupRunes(RuneInventoryItem item, MagicManager manager)
+    public void SetupRunes(RuneInventoryItem item, MagicCounter count)
     {
         FireRunActive = item.RuneItemData.RuneType == RuneType.Fire;
         ManaRuneActive = item.RuneItemData.RuneType == RuneType.Mana;
         ShieldRuneActive = item.RuneItemData.RuneType == RuneType.Shield;
 
-        InitRunes(manager);
+        InitRunes(count);
     }
 
-    private void InitRunes(MagicManager manager)
+    private void InitRunes(MagicCounter count)
     {
         if (ShieldRuneActive)
             ShieldRuneCoefficient = 1.3f;
         else
             ShieldRuneCoefficient = 1f;
 
-        if (ManaRuneActive)
-            manager.ManaRuneCoroutine = manager.StartCoroutine(manager.MagicRuneCoroutine());
-        else if (manager.ManaRuneCoroutine != null)
-            manager.StopCoroutine(manager.ManaRuneCoroutine);    
+        count.SetupManaRune(ManaRuneActive); 
     }
 }

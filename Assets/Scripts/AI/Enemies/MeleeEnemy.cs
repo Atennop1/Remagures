@@ -3,16 +3,24 @@ using UnityEngine;
 
 public class MeleeEnemy : EnemyWithTarget
 {
-    public Coroutine AttackCoroutine;
+    public bool CanAttack => _attackCoroutine == null;
+    private Coroutine _attackCoroutine;
 
-    public IEnumerator Attack()
+    public void StartAttackCoroutine()
     {
-        EnemyAnimations.Anim.SetBool("isStaying", false);
-        EnemyAnimations.Anim.SetBool("attacking", true);
+        if (_attackCoroutine != null)
+            StopCoroutine(_attackCoroutine);
+        _attackCoroutine = StartCoroutine(Attack());
+    }
+
+    private IEnumerator Attack()
+    {
+        EnemyAnimations.Animator.SetBool("isStaying", false);
+        EnemyAnimations.Animator.SetBool("attacking", true);
 
         yield return new WaitForSeconds(0.35f);
 
-        EnemyAnimations.Anim.SetBool("attacking", false);
-        EnemyAnimations.Anim.SetBool("isStaying", true);
+        EnemyAnimations.Animator.SetBool("attacking", false);
+        EnemyAnimations.Animator.SetBool("isStaying", true);
     }
 }

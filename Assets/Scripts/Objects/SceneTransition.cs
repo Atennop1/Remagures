@@ -24,7 +24,7 @@ public class SceneTransition : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !collision.isTrigger)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             StartCoroutine(FadeCoroutine());
             _playerPositionStorage.Value = _playerPosition;

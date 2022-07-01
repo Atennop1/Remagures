@@ -1,7 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-[HideInInspector]
 public enum PlayerState
 {
     Idle,
@@ -14,7 +13,7 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector] public PlayerState CurrentState;
+    public PlayerState CurrentState { get; private set; }
     public int TotalArmor { get; private set; }
 
     [field: SerializeField, Header("Usable Components")] public PlayerAnimations PlayerAnimations { get; private set; }
@@ -27,25 +26,29 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public ItemValue CurrentItem { get; private set; }
     [field: SerializeField] public ClassStat ClassStat { get; private set; }
     [field: SerializeField] public Signal DecreaseMagicSignal { get; private set; }
+    [field: SerializeField] public FloatValue CurrentHealth { get; private set; }
 
-    [field: SerializeField, Header("Objects")] public InventoryManagerUnique UniqueManager { get; private set; }
-    [field: SerializeField] public MagicManager MagicManager { get; private set; }
+    [field: SerializeField, Header("Objects")] public InventoryUniqueView UniqueManager { get; private set; }
+    [field: SerializeField] public MagicCounter MagicCount { get; private set; }
     [SerializeField] private StringValue _currentScene;
 
-    private void Start()
+    public void Awake()
+    {
+        PlayerAnimations.SetAnimFloat(new Vector2(0, -1));
+        UniqueManager.SetUnique(this);
+    }
+
+    public void Start()
     {
         _currentScene.Value = SceneManager.GetActiveScene().name;
         transform.position = _playerPosition.Value;
 
         CurrentState = PlayerState.Walk;
-        PlayerAnimations.ChangeAnim("moveX", 0);
-        PlayerAnimations.ChangeAnim("moveY", -1);
 
-        UniqueManager.SetUnique(this);
         ChangeArmor();
 
         if (UniqueManager.MagicSlot != null && (UniqueManager.MagicSlot.ThisItem as MagicInventoryItem) != null && (UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile)
-            MagicManager.SetupProjectile((UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
+            MagicCount.SetupProjectile((UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
     }
 
     public void ChangeArmor()
@@ -60,5 +63,14 @@ public class PlayerController : MonoBehaviour
         }
 
         TotalArmor = Mathf.RoundToInt(temp);
+    }
+
+    public void ChangeState(PlayerState newState)
+    {
+        if (newState == PlayerState.Dead && CurrentHealth.Value > 0)
+            throw new System.InvalidOperationException();
+
+        if (newState != CurrentState)
+            CurrentState = newState;
     }
 }

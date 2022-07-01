@@ -5,6 +5,7 @@ public class Pathfinding2D : MonoBehaviour
 {
     private List<Node2D> _path = new List<Node2D>();
     public IReadOnlyList<IReadOnlyNode2D> Path => _path;
+
     [field: SerializeField] public Grid2D Grid { get; private set; }
 
     private Node2D _seekerNode;
@@ -75,14 +76,11 @@ public class Pathfinding2D : MonoBehaviour
         Node2D currentNode = endNode;
         while (currentNode != startNode)
         {
-            if (!Grid.pathForGizmos.Contains(currentNode))
-                Grid.pathForGizmos.Add(currentNode);
-            
             _path.Add(currentNode);
             currentNode = currentNode.Parent;
         }
         _path.Reverse();
-        Grid.pathForGizmos.Remove(startNode);
+        _path.Remove(startNode);
     }
 
     private int GetDistance(Node2D nodeA, Node2D nodeB)
@@ -93,5 +91,12 @@ public class Pathfinding2D : MonoBehaviour
         if (dstX > dstY)
             return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;             
+        foreach (Node2D node in Path)
+            Gizmos.DrawCube(node.WorldPosition, Vector3.one * 0.3f);
     }
 }

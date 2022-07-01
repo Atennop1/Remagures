@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CoinTextManager : MonoBehaviour
+public class CoinsTextDisplay : MonoBehaviour
 {
     [SerializeField] private FloatValue _numberOfCoins;
     [SerializeField] private TextMeshProUGUI _coinDisplay;

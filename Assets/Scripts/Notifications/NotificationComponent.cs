@@ -4,13 +4,14 @@ using Unity.Notifications.Android;
 public class NotificationComponent : MonoBehaviour
 {
     protected float _delay;
-    protected bool _isFocus;
     protected bool _canNotify;
 
     [Header("Notification Settings")]
     [SerializeField] private string _title;
     [SerializeField] private string _description;
     [SerializeField] private string _smallIcon;
+    
+    protected bool IsFocus { get; private set; }
 
     public virtual void Init() { }
 
@@ -29,7 +30,7 @@ public class NotificationComponent : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if (_isFocus)
+        if (IsFocus)
             AndroidNotificationCenter.CancelAllDisplayedNotifications();
     }
     
@@ -50,11 +51,11 @@ public class NotificationComponent : MonoBehaviour
 
     protected virtual void OnApplicationFocus(bool focusStatus) 
     {
-        _isFocus = true;
+        IsFocus = true;
     }
 
     protected virtual void OnApplicationPause(bool pauseStatus) 
     {
-        _isFocus = false;
+        IsFocus = false;
     }
 }

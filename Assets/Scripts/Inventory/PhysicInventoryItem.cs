@@ -7,14 +7,15 @@ public class PhysicInventoryItem : MonoBehaviour
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !collision.isTrigger)
+        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             AddItemInInventory();
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
             player.ChangeArmor();
             player.UniqueManager.SetUnique(player);
             player.PlayerMovement.SetDirection();
             player.PlayerAnimations.ChangeAnim("moving", false);
+            
             Destroy(gameObject);
         }
     }

@@ -1,26 +1,24 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MagicManager : MonoBehaviour
+public class MagicCounter : MonoBehaviour
 {
-    [Header("Objects")]
-    [SerializeField] private InventoryManagerUnique _uniqueManager;
-    [SerializeField] private Slider _magicSlider;
-
     [Header("Values")]
     [SerializeField] private ClassStat _classStat;
     [SerializeField] private FloatValue _maxMagic;
     [SerializeField] private FloatValue _currentMagic;
+
+    [Space]
+    [SerializeField] private MagicView _view;
     
-    public Coroutine ManaRuneCoroutine;
     public float MagicCost { get; private set; }
+    private Coroutine _manaRuneCoroutine;
 
     public void Start()
     {
-        _magicSlider.maxValue = _maxMagic.Value;
-        ManaRuneCoroutine = StartCoroutine(MagicRuneCoroutine());
-        UpdateValue();
+        _manaRuneCoroutine = StartCoroutine(MagicRuneCoroutine());
+        _view.UpdateValue(_currentMagic.Value);
     }
 
     public void SetupProjectile(Projectile currentProjectile)
@@ -34,31 +32,24 @@ public class MagicManager : MonoBehaviour
             MagicCost = 1;
     }
 
-    private void UpdateValue()
-    {
-        _magicSlider.value = _currentMagic.Value;
-    }
-    
     public void AddMagic()
     {
-        _magicSlider.value++;
         _currentMagic.Value++;
+
         if (_currentMagic.Value > _maxMagic.Value)
-        {
-            _magicSlider.value = _maxMagic.Value;
             _currentMagic.Value = _maxMagic.Value;
-        }
+
+        _view.UpdateValue(_currentMagic.Value);
     }
 
     public void DecreseMagic()
     {
-        _magicSlider.value -= MagicCost;
         ReduceMagic(MagicCost);
-        if (_magicSlider.value < 0)
-        {
-            _magicSlider.value = 0;
+
+        if (_currentMagic.Value < 0)
             _currentMagic.Value = 0;
-        }
+
+        _view.UpdateValue(_currentMagic.Value);
     }
 
     public void ReduceMagic(float magicCost)
@@ -66,7 +57,16 @@ public class MagicManager : MonoBehaviour
         _currentMagic.Value -= magicCost;
     }
 
-    public IEnumerator MagicRuneCoroutine()
+    public void SetupManaRune(bool active)
+    {
+        if (active)
+            _manaRuneCoroutine = StartCoroutine(MagicRuneCoroutine());
+            
+        else if (_manaRuneCoroutine != null)
+            StopCoroutine(_manaRuneCoroutine);   
+    }
+
+    private IEnumerator MagicRuneCoroutine()
     {
         while (true)
         {
@@ -76,7 +76,7 @@ public class MagicManager : MonoBehaviour
             if (_currentMagic.Value > _maxMagic.Value)
                 _currentMagic.Value = _maxMagic.Value;
 
-            UpdateValue();
+            _view.UpdateValue(_currentMagic.Value);
         }
     }
 }

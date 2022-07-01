@@ -225,8 +225,6 @@ MonoBehaviour:
   <Path>k__BackingField:
   - {fileID: 0}
   - {fileID: 0}
-  CurrentGoal: {fileID: 0}
-  CurrentPoint: 0
 --- !u!114 &8047584121982438158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 637511158790658983}

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SavePoint : MonoBehaviour
 {
     [SerializeField] private VectorValue _playerPosition;
-    [SerializeField] private GameSaveManager _saveManager;
+    [SerializeField] private GameSaveContainer _saveManager;
     
     public void OnTriggerEnter2D()
     {

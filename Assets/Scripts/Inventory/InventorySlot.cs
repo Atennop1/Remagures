@@ -8,9 +8,9 @@ public class InventorySlot : MonoBehaviour
     [field: SerializeField] protected Text ItemCount { get; private set; }
 
     public BaseInventoryItem ThisItem { get; private set; }
-    private InventoryManager _thisManager;
+    private InventoryView _thisManager;
 
-    public void Setup(BaseInventoryItem newItem, InventoryManager newManager)
+    public void Setup(BaseInventoryItem newItem, InventoryView newManager)
     {
         ThisItem = newItem;
         _thisManager = newManager;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class TimeManager : MonoBehaviour
+public class TimeCounter : MonoBehaviour
 {
     private DateTime _currentDate;
     private DateTime _oldDate;

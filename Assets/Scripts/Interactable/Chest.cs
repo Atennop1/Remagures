@@ -15,27 +15,23 @@ public class Chest : InteractableWithTextDisplay
     [Header("Objects")]
     [SerializeField] private ChangeDialogState _changeDialogState;
     [SerializeField] private Collider2D _triggerCollider;
-
-    private bool _isOpened;
-    private Animator _anim;
+    [SerializeField] private Animator _animator;
 
     private void Start()
     {
-        _anim = GetComponent<Animator>();
-        _isOpened = _storedOpened.Value;
-        if (_isOpened)
+        if (_storedOpened.Value)
         {
-            _anim.SetBool("opened", true);
+            _animator.SetBool("opened", true);
             _triggerCollider.enabled = false;
         }
     }
     
     public override void Interact()
     {
-        if (!_isOpened && PlayerInRange)
+        if (!_storedOpened.Value && PlayerInRange)
         {
             _triggerCollider.enabled = false;
-            _anim.SetBool("opened", true);
+            _animator.SetBool("opened", true);
             _currentItem.Value = _contentsItem;
             bool isKey = (_currentItem.Value as KeyInventoryItem) != null;
 
@@ -56,8 +52,7 @@ public class Chest : InteractableWithTextDisplay
                 _changeDialogState.ChangeDatabaseState();
 
             _raiseItem.Raise();
-            _isOpened = true;
-            _storedOpened.Value = _isOpened;
+            _storedOpened.Value = true;
         }
     }
 }

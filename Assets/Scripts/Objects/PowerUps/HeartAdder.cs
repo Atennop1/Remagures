@@ -8,13 +8,13 @@ public class HeartAdder : PowerUp
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !collision.isTrigger)
+        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             if (_heartContainers.Value < _maxHearts.Value)
                 _heartContainers.Value++;
                 
             _playerHealth.Value = _heartContainers.Value * 4;
-            _powerUpSignal.Raise();
+            PowerUpSignal.Raise();
             Destroy(gameObject);
         }
     }

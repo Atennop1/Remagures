@@ -619,7 +619,7 @@ MonoBehaviour:
   _noItemsText: {fileID: 5483878803747104370}
   <UseButton>k__BackingField: {fileID: 4326452445004122552}
   _nameText: {fileID: 5172242383555185818}
-  _descriptionText: {fileID: 8433204633349585790}
+  <DescriptionText>k__BackingField: {fileID: 8433204633349585790}
   _sharpsCountText: {fileID: 8717196405078264810}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
@@ -747,7 +747,7 @@ MonoBehaviour:
   _equipButton: {fileID: 5370003474805244689}
   _noneText: {fileID: 4369694379969235829}
   _runeSlot: {fileID: 3938238870223750717}
-  _magicManager: {fileID: 6174478949472261201}
+  _magicManager: {fileID: 0}
   <Inventory>k__BackingField: {fileID: 11400000, guid: 9f3f4e2a678b6854f977e5217dd06ac7, type: 2}
 --- !u!1 &49650306702894834
 GameObject:
@@ -5165,7 +5165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
+  m_HorizontalFit: 1
   m_VerticalFit: 0
 --- !u!1 &2292053222614834339
 GameObject:
@@ -5502,7 +5502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7624413fa5d80478b20ce4ec78367f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
   <PlayerAnimations>k__BackingField: {fileID: 1948626514282996038}
   <PlayerMovement>k__BackingField: {fileID: 8031412024146854157}
   <PlayerAttack>k__BackingField: {fileID: 791429147485281519}
@@ -5511,8 +5510,9 @@ MonoBehaviour:
   <CurrentItem>k__BackingField: {fileID: 11400000, guid: f3cf3cfdbc7c8d341bc5d6f242020b8b, type: 2}
   <ClassStat>k__BackingField: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
   <DecreaseMagicSignal>k__BackingField: {fileID: 11400000, guid: 6844ca2f4735c474283727379afa0409, type: 2}
+  <CurrentHealth>k__BackingField: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
   <UniqueManager>k__BackingField: {fileID: 1472275362632214845}
-  <MagicManager>k__BackingField: {fileID: 6174478949472261201}
+  <MagicCount>k__BackingField: {fileID: 8983856755139828698}
   _currentScene: {fileID: 11400000, guid: 62edfd6b564566b4baae5376ac1ffca5, type: 2}
 --- !u!114 &1948626514282996038
 MonoBehaviour:
@@ -5559,6 +5559,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450765}
   _cameraKick: {fileID: 11400000, guid: 976aaf079b4c2fc45b99a578611c088f, type: 2}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!114 &167602696398208565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5633,8 +5636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 185200194974739605}
@@ -7484,8 +7487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 14092b56bbf89a5459fbf093ef2b2e05, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 14092b56bbf89a5459fbf093ef2b2e05, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1019764548317057140}
@@ -10054,6 +10057,7 @@ GameObject:
   - component: {fileID: 6174478949472261205}
   - component: {fileID: 6174478949472261204}
   - component: {fileID: 6174478949472261201}
+  - component: {fileID: 8983856755139828698}
   - component: {fileID: 6174478949472261206}
   - component: {fileID: 6174478949472261207}
   m_Layer: 5
@@ -10148,11 +10152,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f171ca45241ff409c4ac10665084b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueManager: {fileID: 1472275362632214845}
-  _magicSlider: {fileID: 6174478949472261204}
+  <MagicSlider>k__BackingField: {fileID: 6174478949472261204}
+  _maxMagic: {fileID: 11400000, guid: b0f36f178da31f548bf0543b55dcf784, type: 2}
+--- !u!114 &8983856755139828698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174478949472261546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc75595c7b5c6b46a78e680e3dc6534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _classStat: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
   _maxMagic: {fileID: 11400000, guid: b0f36f178da31f548bf0543b55dcf784, type: 2}
   _currentMagic: {fileID: 11400000, guid: c39bdcba5a455684295f7557658e7da8, type: 2}
+  _view: {fileID: 6174478949472261201}
 --- !u!114 &6174478949472261206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10165,12 +10182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 51627bb314ce7354b8c64db33276b7fe, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 51627bb314ce7354b8c64db33276b7fe, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6174478949472261201}
-        m_TargetAssemblyTypeName: MagicManager, Assembly-CSharp
+      - m_Target: {fileID: 8983856755139828698}
+        m_TargetAssemblyTypeName: MagicCounter, Assembly-CSharp
         m_MethodName: AddMagic
         m_Mode: 1
         m_Arguments:
@@ -10193,12 +10210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 6844ca2f4735c474283727379afa0409, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 6844ca2f4735c474283727379afa0409, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6174478949472261201}
-        m_TargetAssemblyTypeName: MagicManager, Assembly-CSharp
+      - m_Target: {fileID: 8983856755139828698}
+        m_TargetAssemblyTypeName: MagicCounter, Assembly-CSharp
         m_MethodName: DecreseMagic
         m_Mode: 1
         m_Arguments:
@@ -11065,8 +11082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 39c477488ccfa134daee617e0e6ddbc1, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 39c477488ccfa134daee617e0e6ddbc1, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6174478950696909315}
@@ -11229,8 +11246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 976aaf079b4c2fc45b99a578611c088f, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 976aaf079b4c2fc45b99a578611c088f, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6174478950769513347}
@@ -11736,7 +11753,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6199738300810763090}
-  - component: {fileID: 6199738300810763089}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -11766,34 +11782,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1170, y: -540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6199738300810763089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199738300810763091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
-  signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6199738301806426833}
-        m_TargetAssemblyTypeName: HeartManager, Assembly-CSharp
-        m_MethodName: UpdateHearts
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6199738301048988167
 GameObject:
   m_ObjectHideFlags: 0
@@ -12109,6 +12097,7 @@ GameObject:
   - component: {fileID: 6199738301806426834}
   - component: {fileID: 6199738301806426832}
   - component: {fileID: 6199738301806426833}
+  - component: {fileID: 6477080676743999276}
   m_Layer: 5
   m_Name: Health Hearts
   m_TagString: Untagged
@@ -12192,6 +12181,34 @@ MonoBehaviour:
   _halfHeart: {fileID: -3276687688264177478, guid: 6926dd85177dd0a419c8e1e559e1b8fd, type: 3}
   _oneQuarterHeart: {fileID: 5069650035751226587, guid: 6926dd85177dd0a419c8e1e559e1b8fd, type: 3}
   _emptyHeart: {fileID: -9053378900703536071, guid: 6926dd85177dd0a419c8e1e559e1b8fd, type: 3}
+--- !u!114 &6477080676743999276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199738301806426835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _signal: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
+  _signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6199738301806426833}
+        m_TargetAssemblyTypeName: HeartManager, Assembly-CSharp
+        m_MethodName: UpdateHearts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6199738301921640234
 GameObject:
   m_ObjectHideFlags: 0
@@ -12318,7 +12335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b93e8848c282b4a91c0845de4a34ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInteracting: {fileID: 1019764548317057140}
   _endTalkSignal: {fileID: 11400000, guid: 98054ca32b21d2245b166f1c6cd3727b, type: 2}
   _dialogBubble: {fileID: 3312962925530411568}
   _dialogWindow: {fileID: 596811820118977274}
@@ -12341,8 +12357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 7c4cf57a27db39444bbd7e8c20d79969, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: 7c4cf57a27db39444bbd7e8c20d79969, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7142924831224772916}
@@ -14612,12 +14628,12 @@ MonoBehaviour:
   _noItemsText: {fileID: 51681244737353618}
   <UseButton>k__BackingField: {fileID: 924653297252977289}
   _nameText: {fileID: 8397489655167090036}
-  _descriptionText: {fileID: 6612834945543675739}
+  <DescriptionText>k__BackingField: {fileID: 6612834945543675739}
   _sharpsCountText: {fileID: 0}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
-  _magicManager: {fileID: 6174478949472261201}
+  _magicManager: {fileID: 0}
   _magicSlot: {fileID: 6094975099399905223}
 --- !u!1 &7836789587633340457
 GameObject:
@@ -14712,6 +14728,7 @@ GameObject:
   - component: {fileID: 6393285505481658026}
   - component: {fileID: 4368053664473452080}
   - component: {fileID: 1605319463990091816}
+  - component: {fileID: 5503627046157484503}
   m_Layer: 5
   m_Name: MeatCanvas
   m_TagString: Untagged
@@ -14818,12 +14835,26 @@ MonoBehaviour:
   _cookedMeatObject: {fileID: 83351070891996825}
   _readySlider: {fileID: 3790355850772021752}
   _timeText: {fileID: 4776406067349094122}
-  _timeManager: {fileID: 7090843244380510028}
-  _rawCount: {fileID: 11400000, guid: 898ccc83271754b4e899865953347c9e, type: 2}
-  _cookedCount: {fileID: 11400000, guid: 99ab1c03c0a1d7f4f8315cc8123768cd, type: 2}
+  _timer: {fileID: 5503627046157484503}
+  <RawCount>k__BackingField: {fileID: 11400000, guid: 898ccc83271754b4e899865953347c9e, type: 2}
+  <CookedCount>k__BackingField: {fileID: 11400000, guid: 99ab1c03c0a1d7f4f8315cc8123768cd, type: 2}
   _inventory: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
   _cookedMeatItem: {fileID: 11400000, guid: ea1e4525a149ab346804a2c9ca68bbda, type: 2}
   _rawMeatItem: {fileID: 11400000, guid: 2ef01346172899943b5a9a07059fc57d, type: 2}
+--- !u!114 &5503627046157484503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885202991709611076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8fe1d62116d874abdbfdf53a66773b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeManager: {fileID: 7090843244380510028}
+  _view: {fileID: 1605319463990091816}
 --- !u!1 &8000752194644511301
 GameObject:
   m_ObjectHideFlags: 0
@@ -16411,12 +16442,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireMinTime: 1
   _fireMaxTime: 2
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 320
   _healthSignal: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
-  _currentHealth: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
   _heartContainers: {fileID: 11400000, guid: 8a956c585996dd041bd7e45bca1f3533, type: 2}
   _gameOver: {fileID: 677618526519544743}
   _deathEffect: {fileID: 8327079094225007804, guid: 2c56ca51b04c330499741b9183c21bdf, type: 3}
   _deathSignal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
+  _canvas: {fileID: 0}
+  _music: {fileID: 0}
 --- !u!1 &8935318116895694395
 GameObject:
   m_ObjectHideFlags: 0

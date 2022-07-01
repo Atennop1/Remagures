@@ -11,7 +11,6 @@ public class Grid2D : MonoBehaviour
     [field: SerializeField] public Tilemap Obstaclemap { get; private set; }
 
     public Node2D[,] Grid { get; private set; }
-    public List<Node2D> pathForGizmos = new List<Node2D>();
 
     private Vector3 _worldBottomLeft;
     private float _nodeDiameter;
@@ -24,7 +23,7 @@ public class Grid2D : MonoBehaviour
         _gridSizeY = Mathf.RoundToInt(GridWorldSize.y / _nodeDiameter);
         CreateGrid();
     }
-
+    
     private void CreateGrid()
     {
         Grid = new Node2D[_gridSizeX, _gridSizeY];
@@ -86,13 +85,9 @@ public class Grid2D : MonoBehaviour
                     else
                         Gizmos.color = Color.white;
 
-                    if (pathForGizmos != null && pathForGizmos.Contains(n))
-                        Gizmos.color = Color.black;
-                        
                     Gizmos.DrawCube(n.WorldPosition, Vector3.one * (NodeRadius - 0.2f));
                 }
             }
         }
-        
     }
 }

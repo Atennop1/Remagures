@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeartManager : MonoBehaviour
+public class HeartsView : MonoBehaviour
 {
     [Header("Values")]
     [SerializeField] private FloatValue _heartContainers;
