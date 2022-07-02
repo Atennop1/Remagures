@@ -53,7 +53,6 @@ public class RandomMovableBoundedNPC : MovableNPC
         }
         else
         {
-            ChangeDirection();
             Vector3 temp = Vector3.MoveTowards(transform.position, Player.position, Speed * Time.deltaTime);
             _directionVector = temp - transform.position;
             Animations.UpdateAnim(_directionVector);
@@ -66,19 +65,15 @@ public class RandomMovableBoundedNPC : MovableNPC
         if (_bounds.bounds.Contains(temp) && Physics2D.Raycast(transform.position, _directionVector, 2f))
             MyRigidbody.MovePosition(temp);
         else
-            ChangeDirection();
+            ChooseDifferentDirection();
     }
 
     protected void ChooseDifferentDirection()
     {
         Vector3 temp = _directionVector;
-        ChangeDirection();
-        int loops = 0;
-        while (temp == _directionVector && loops < 100)
-        {
-            loops++;
+        
+        while (temp == _directionVector)
             ChangeDirection();
-        }
     }
 
     protected void ChangeDirection()
@@ -107,15 +102,12 @@ public class RandomMovableBoundedNPC : MovableNPC
         ChooseDifferentDirection();
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    public override void TriggerEnter()
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger && CurrentState != NPCState.Talk)
-        {
-            base.OnTriggerEnter2D(collision);
-            ChangeDirection();
-            Vector3 temp = Vector3.MoveTowards(transform.position, Player.position, Speed * Time.deltaTime);
-            _directionVector = temp - transform.position;
-            Animations.UpdateAnim(_directionVector);
-        }
+        base.TriggerEnter();
+        ChooseDifferentDirection();
+        Vector3 temp = Vector3.MoveTowards(transform.position, Player.position, Speed * Time.deltaTime);
+        _directionVector = temp - transform.position;
+        Animations.UpdateAnim(_directionVector);
     }
 }

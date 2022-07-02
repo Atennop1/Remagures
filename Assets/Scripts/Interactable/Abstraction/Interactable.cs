@@ -16,16 +16,19 @@ public abstract class Interactable : MonoBehaviour
         }
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             PlayerInRange = true;
             DetectInteracting();
         }
+
+        if (CanTriggerEnter(collision))
+            TriggerEnter();
     }
 
-    protected virtual void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
@@ -39,7 +42,16 @@ public abstract class Interactable : MonoBehaviour
 
             Context.Raise();
         }
+
+        if (CanTriggerExit(collision))
+            TriggerExit();
     }
+
+    public virtual void TriggerEnter() { }
+    public virtual void TriggerExit() { }
+
+    public virtual bool CanTriggerEnter(Collider2D collision) { return true; }
+    public virtual bool CanTriggerExit(Collider2D collision) { return true; }
 
     public abstract void Interact();
 }
