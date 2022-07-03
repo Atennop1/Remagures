@@ -30,7 +30,7 @@ public class EnemyWithTarget : Enemy
                 Vector2 moveVector = temp.normalized;
 
                 StopMoveCoroutine();
-                _movingCoroutine = StartCoroutine(MoveCoroutine(transform.position + (Vector3)moveVector, Speed));
+                _movingCoroutine = StartCoroutine(MoveCoroutine(moveVector, Speed));
                 EnemyAnimations.SetAnimFloat(temp, EnemyAnimations.Animator);
             }
         }
@@ -43,25 +43,20 @@ public class EnemyWithTarget : Enemy
         CanFindPath = true;
     }
 
-    private IEnumerator MoveCoroutine(Vector3 end, float moveTime)
+    private IEnumerator MoveCoroutine(Vector3 direction, float speed)
     {
-        float timer = 0f;
-        Vector3 startingPos = transform.position;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = startPosition + direction;
         CanFindPath = false;
-        
-        while (timer < moveTime)
+
+        while ((transform.position.x < targetPosition.x - 0.1f || transform.position.x > targetPosition.x + 0.1f) ||
+               (transform.position.y < targetPosition.y - 0.1f || transform.position.y > targetPosition.y + 0.1f))
         {
+            Vector3 temp = transform.position + speed * Time.deltaTime * direction;
+            MyRigidbody.MovePosition(temp);
             yield return new WaitForFixedUpdate();
-            if (CurrentState != EnemyState.Stagger)
-            {
-                timer += Time.deltaTime;
-                transform.position = Vector3.Lerp(startingPos, end, timer / moveTime);
-            }
-            else break;
         }
         
         CanFindPath = true;
-        if (CurrentState != EnemyState.Stagger)
-            transform.position = end;
     }
 }
