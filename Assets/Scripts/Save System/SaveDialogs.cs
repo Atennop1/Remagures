@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SaveDialogs : SaveLoad, ISaver
+public class SaveDialogs : Saver, ISaver
 {
     [SerializeField] private List<DialogDatabase> _databases;
 

@@ -10,10 +10,13 @@ public class Chest : InteractableWithTextDisplay
     [Space]
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private BoolValue _storedOpened;
-    [SerializeField] private Signal _raiseItem;
+    [SerializeField] private Signal _raiseItemSignal;
 
     [Header("Objects")]
     [SerializeField] private ChangeDialogState _changeDialogState;
+    [SerializeField] private GoalCompleter _goalCompleter;
+
+    [Space]
     [SerializeField] private Collider2D _triggerCollider;
     [SerializeField] private Animator _animator;
 
@@ -37,22 +40,15 @@ public class Chest : InteractableWithTextDisplay
 
             if (isKey)
                 _numberOfKeys.Value++;
-            else 
-            {
-                if (_currentItem && _contentsItem)
-                {
-                    _inventory.Add(_contentsItem, false);
-                    if (_contentsItem.ItemData.Stackable)
-                        _contentsItem.ItemData.NumberHeld++;
-                }
-            }
+            else if (_currentItem && _contentsItem)
+                _inventory.Add(_contentsItem, true);
 
             TextDisplay(_contentsItem.ItemData.ItemDescription);
-            if (_changeDialogState != null)
-                _changeDialogState.ChangeDatabaseState();
 
-            _raiseItem.Raise();
             _storedOpened.Value = true;
+            _raiseItemSignal.Invoke();
+            _changeDialogState?.ChangeDatabaseState();
+            _goalCompleter?.Complete();
         }
     }
 }

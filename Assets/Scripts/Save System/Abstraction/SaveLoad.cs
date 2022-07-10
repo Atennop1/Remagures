@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public abstract class SaveLoad : MonoBehaviour
+public abstract class Saver : MonoBehaviour
 {
     [field: SerializeField] public string Path { get; private set; }
     

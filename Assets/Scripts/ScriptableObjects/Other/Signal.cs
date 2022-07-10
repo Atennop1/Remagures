@@ -7,7 +7,7 @@ public class Signal : ScriptableObject
     private List<SignalListener> _listeners = new List<SignalListener>();
     public IReadOnlyList<SignalListener> Listeners => _listeners;
 
-    public void Raise()
+    public void Invoke()
     {
         for (int i = _listeners.Count - 1; i >= 0; i--)
             _listeners[i].OnSignalRaised();

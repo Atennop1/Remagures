@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InventoryUniqueView : MonoBehaviour
 {
-    [field: SerializeField] public InventoryView Manager { get; private set; }
+    [field: SerializeField] public InventoryView View { get; private set; }
 
     [field: SerializeField, Space] public PlayerInventory PlayerInventory { get; private set; }
     [field: SerializeField] public PlayerInventory MagicInventory { get; private set; }
@@ -33,12 +33,12 @@ public class InventoryUniqueView : MonoBehaviour
         float maxLegginsArmor = 0;
         int maxWeaponDamage = 0;
 
-        _helmetSlot.Setup(NoneItem, Manager);
-        _chestplateSlot.Setup(NoneItem, Manager);
-        _legginsSlot.Setup(NoneItem, Manager);
-        WeaponSlot.Setup(NoneItem, Manager);
-        MagicSlot.Setup(NoneItem, Manager);
-        _runeSlot.Setup(NoneItem, Manager);
+        _helmetSlot.Setup(NoneItem, View);
+        _chestplateSlot.Setup(NoneItem, View);
+        _legginsSlot.Setup(NoneItem, View);
+        WeaponSlot.Setup(NoneItem, View);
+        MagicSlot.Setup(NoneItem, View);
+        _runeSlot.Setup(NoneItem, View);
 
         if (player != null)
         {
@@ -58,7 +58,7 @@ public class InventoryUniqueView : MonoBehaviour
                     if (armorItem.ArmorItemData.Armor > maxHelmetArmor)
                     {
                         maxHelmetArmor = armorItem.ArmorItemData.Armor;
-                        _helmetSlot.Setup(PlayerInventory.MyInventory[i], Manager);
+                        _helmetSlot.Setup(PlayerInventory.MyInventory[i], View);
                         if (player)
                         {
                             player.PlayerAnimations.HelmetAnimator.gameObject.SetActive(true);
@@ -70,7 +70,7 @@ public class InventoryUniqueView : MonoBehaviour
                     if (armorItem.ArmorItemData.Armor > maxChestplateArmor)
                     {
                         maxChestplateArmor = armorItem.ArmorItemData.Armor;
-                        _chestplateSlot.Setup(PlayerInventory.MyInventory[i], Manager);
+                        _chestplateSlot.Setup(PlayerInventory.MyInventory[i], View);
                         if (player)
                         {
                             player.PlayerAnimations.ChestplateAnimator.gameObject.SetActive(true);
@@ -82,7 +82,7 @@ public class InventoryUniqueView : MonoBehaviour
                     if (armorItem.ArmorItemData.Armor > maxLegginsArmor)
                     {
                         maxLegginsArmor = armorItem.ArmorItemData.Armor;
-                        _legginsSlot.Setup(PlayerInventory.MyInventory[i], Manager);
+                        _legginsSlot.Setup(PlayerInventory.MyInventory[i], View);
                         if (player)
                         {
                             player.PlayerAnimations.LegginsAnimator.gameObject.SetActive(true);
@@ -94,7 +94,7 @@ public class InventoryUniqueView : MonoBehaviour
                     if (weaponItem.WeaponItemData.Damage > maxWeaponDamage)
                     {
                         maxWeaponDamage = weaponItem.WeaponItemData.Damage;
-                        WeaponSlot.Setup(PlayerInventory.MyInventory[i], Manager);
+                        WeaponSlot.Setup(PlayerInventory.MyInventory[i], View);
                     }
                     break;
             }
@@ -104,13 +104,13 @@ public class InventoryUniqueView : MonoBehaviour
         {
             MagicInventoryItem magicItem = MagicInventory.MyInventory[i] as MagicInventoryItem;
             if (magicItem != null && magicItem.MagicItemData.IsCurrent)
-                MagicSlot.Setup(magicItem, Manager);
+                MagicSlot.Setup(magicItem, View);
         }
         for (int i = 0; i < RuneInventory.MyInventory.Count; i++)
         {
             RuneInventoryItem runeItem = RuneInventory.MyInventory[i] as RuneInventoryItem;
             if (runeItem != null && runeItem.RuneItemData.IsCurrent)
-                _runeSlot.Setup(runeItem, Manager);
+                _runeSlot.Setup(runeItem, View);
         }  
     }
 }

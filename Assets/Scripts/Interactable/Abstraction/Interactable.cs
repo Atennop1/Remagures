@@ -12,7 +12,7 @@ public abstract class Interactable : MonoBehaviour
         {
             PlayerInteract.SetCurrentInteractable(this);
             PlayerInteract.SetCurrentState(this);
-            Context.Raise();
+            Context.Invoke();
         }
     }
 
@@ -40,7 +40,7 @@ public abstract class Interactable : MonoBehaviour
                 PlayerInteract.SetCurrentState(this);
             }
 
-            Context.Raise();
+            Context.Invoke();
         }
 
         if (CanTriggerExit(collision))

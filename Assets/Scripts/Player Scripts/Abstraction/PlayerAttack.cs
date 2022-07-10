@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
             
-        if (_attackCoroutine == null && _player.CurrentState != PlayerState.Attack && _player.UniqueManager.WeaponSlot.ThisItem.ItemData.ItemName != "")
+        if (_attackCoroutine == null && _player.CurrentState != PlayerState.Attack && _player.UniqueView.WeaponSlot.ThisItem.ItemData.ItemName != "")
             _attackCoroutine = StartCoroutine(Attack());
     }
 
@@ -39,8 +39,8 @@ public class PlayerAttack : MonoBehaviour
     
     public void MagicAttackMethod()
     {
-        if ((_player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem) != null && (_player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.ThisEvent != null)
-            (_player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.ThisEvent.Invoke();
+        if ((_player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem) != null && (_player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.ThisEvent != null)
+            (_player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.ThisEvent.Invoke();
     }
 
     public void StartMagicAttackCoroutine(IEnumerator method)

@@ -54,7 +54,7 @@ public class GameSaveContainer : MonoBehaviour
     private void CheckAllDirs()
     {
         foreach (ISaver savable in Savables)
-            CheckDir((savable as SaveLoad).Path);
+            CheckDir((savable as Saver).Path);
     }
 
     public void CheckDir(string path)

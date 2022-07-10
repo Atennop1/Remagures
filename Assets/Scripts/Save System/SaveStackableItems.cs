@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveStackableItems : SaveLoad, ISaver
+public class SaveStackableItems : Saver, ISaver
 {
     [SerializeField] private List<ScriptableObject> _stackableItems;
     public IReadOnlyList<ScriptableObject> StackableItems => _stackableItems;

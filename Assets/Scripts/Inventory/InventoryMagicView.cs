@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryMagicView : InventoryView
 {
     [Header("Magic Stuff")]
-    [SerializeField] private MagicCounter _magicManager;
+    [SerializeField] private MagicCounter _magicCounter;
     [SerializeField] private InventorySlot _magicSlot;
 
     public void Equip()
@@ -16,7 +16,7 @@ public class InventoryMagicView : InventoryView
         if (magicItem != null)
             magicItem.MagicItemData.SetIsCurrent(PlayerInventory.MyInventory);
 
-        _magicManager.SetupProjectile((_currentItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
+        _magicCounter.SetupProjectile((_currentItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
     }
 
     public override void SetButton() { }

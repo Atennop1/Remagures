@@ -13,7 +13,7 @@ public class RuneView : MonoBehaviour
     [SerializeField] private GameObject _equipButton;
     [SerializeField] private GameObject _noneText;
     [SerializeField] private InventorySlot _currentRuneSlot;
-    [SerializeField] private MagicCounter _magicManager;
+    [SerializeField] private MagicCounter _magicCounter;
     [field: SerializeField] public PlayerInventory Inventory { get; private set; }
     
     private RuneInventoryItem _currentRune;
@@ -48,7 +48,7 @@ public class RuneView : MonoBehaviour
         _currentRuneSlot.Setup(_currentRune, null);
 
         _currentRune.RuneItemData.ClassStat.ClearRunes();
-        _currentRune.RuneItemData.ClassStat.SetupRunes(_currentRune, _magicManager);
+        _currentRune.RuneItemData.ClassStat.SetupRunes(_currentRune, _magicCounter);
 
         Close();
     }

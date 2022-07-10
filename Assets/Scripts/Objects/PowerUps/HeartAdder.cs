@@ -14,7 +14,7 @@ public class HeartAdder : PowerUp
                 _heartContainers.Value++;
                 
             _playerHealth.Value = _heartContainers.Value * 4;
-            PowerUpSignal.Raise();
+            PowerUpSignal.Invoke();
             Destroy(gameObject);
         }
     }

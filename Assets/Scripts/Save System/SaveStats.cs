@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveStats : SaveLoad, ISaver
+public class SaveStats : Saver, ISaver
 {
     [SerializeField] private List<ScriptableObject> _stats;
     [SerializeField] private List<ScriptableObject> _defaultStats;

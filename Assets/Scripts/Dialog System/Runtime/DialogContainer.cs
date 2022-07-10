@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class DialogContainer : ScriptableObject
 {
-    public List<DialogNodeLinkData> NodeLinks = new List<DialogNodeLinkData>();
-    public List<DialogNodeData> NodeData = new List<DialogNodeData>();
+    [NonReorderable] public List<DialogNodeLinkData> NodeLinks = new List<DialogNodeLinkData>();
+    [NonReorderable] public List<DialogNodeData> NodeData = new List<DialogNodeData>();
 }

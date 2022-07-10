@@ -5,11 +5,11 @@ public class ScreenChanger : MonoBehaviour
 {
     [SerializeField] private GameObject _meatCanvas;
     [SerializeField] private GameOverScript _gameOver;
-    private GameSaveContainer _saveManager;
+    private GameSaveContainer _saveContainer;
 
     public void OnEnable()
     {
-        _saveManager = GameObject.Find("GameSaveManager").GetComponent<GameSaveContainer>();
+        _saveContainer = GameObject.Find("GameSaveManager").GetComponent<GameSaveContainer>();
     }
 
     public void ChangeScreen(GameObject gameObject)
@@ -29,13 +29,13 @@ public class ScreenChanger : MonoBehaviour
         _gameOver.SetGameOver();
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
-        _saveManager.SaveGame();
+        _saveContainer.SaveGame();
     }
 
     public void Restart()
     {
         _gameOver.SetGameOver();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        _saveManager.SaveGame();
+        _saveContainer.SaveGame();
     }
 }

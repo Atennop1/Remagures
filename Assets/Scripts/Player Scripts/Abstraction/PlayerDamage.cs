@@ -44,19 +44,19 @@ public class PlayerDamage : GenericDamage
     {
         if (_isPlayerAttack)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueManager.WeaponSlot.ThisItem as WeaponInventoryItem).WeaponItemData.Damage * Player.ClassStat.SwordDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueView.WeaponSlot.ThisItem as WeaponInventoryItem).WeaponItemData.Damage * Player.ClassStat.SwordDamageCoefficient);
             return;
         }
 
         if (_isPlayerMagic)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.MagicDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.MagicDamageCoefficient);
             return;
         }
 
         if (_isArrow)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.BowDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.BowDamageCoefficient);
             return;
         }
     }

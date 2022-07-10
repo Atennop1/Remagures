@@ -4,7 +4,7 @@ using UnityEngine;
 public class BaseInventoryItem : ScriptableObject
 {
     [field: SerializeField] public BaseItemData ItemData { get; private set; } = new BaseItemData();
-    
+
     public void DecreaseAmount()
     {
         ItemData.NumberHeld--;

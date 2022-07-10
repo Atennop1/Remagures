@@ -26,7 +26,7 @@ public class PlayerHealth : GenericHealth
                 currentDamage = 1;
                 
             player.CurrentHealth.Value -= currentDamage;
-            _healthSignal.Raise();
+            _healthSignal.Invoke();
             StartCoroutine(Stun());
             
             if (player.CurrentHealth.Value <= 0)
@@ -37,7 +37,7 @@ public class PlayerHealth : GenericHealth
                 _gameOver.SetGameOver();
                 player.CurrentHealth.Value = _heartContainers.Value * 4;
                 _gameOver.Init();
-                _deathSignal.Raise();
+                _deathSignal.Invoke();
 
                 _canvas.SetActive(false);
                 _music.SetActive(false);

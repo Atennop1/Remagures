@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668dbcdb2bdac6b478e8e032fe355fdd, type: 3}
   m_Name: MaxMagic
   m_EditorClassIdentifier: 
-  Value: 200
+  Value: 10

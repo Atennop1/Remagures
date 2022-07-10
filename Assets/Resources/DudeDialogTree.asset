@@ -31,7 +31,7 @@ MonoBehaviour:
   NodeData:
   - GUID: f90007ee-dc76-4450-8758-a61415d007b5
     nodeName: Waiting
-    dialog: {fileID: 4900000, guid: d5e16274df8c6a3469402b9a58344139, type: 3}
+    dialog: {fileID: 11400000, guid: 607c9a71d7ab49f4fb61bedf92e5004b, type: 2}
     position: {x: 531, y: 139}
     linkList:
     - BaseNodeGUID: f90007ee-dc76-4450-8758-a61415d007b5
@@ -39,7 +39,7 @@ MonoBehaviour:
       TargetNodeGUID: 2195910c-8092-4770-bd03-cbb51cea6128
   - GUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
     nodeName: OpenTheChestPlease
-    dialog: {fileID: 4900000, guid: 0f105ddd70fbde34f82a4b8907c1c5f1, type: 3}
+    dialog: {fileID: 11400000, guid: 15ab6013fa6ea024f9154b3cc03f1a8f, type: 2}
     position: {x: 249, y: 200}
     linkList:
     - BaseNodeGUID: b60d654e-1ea0-4288-b09d-1e1de04e03b9
@@ -50,13 +50,13 @@ MonoBehaviour:
       TargetNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
   - GUID: 2195910c-8092-4770-bd03-cbb51cea6128
     nodeName: Thank
-    dialog: {fileID: 4900000, guid: bc8df072dbb6cb041b0947af2a16a13a, type: 3}
+    dialog: {fileID: 11400000, guid: f79785fc690396142bdae94072888ff5, type: 2}
     position: {x: 812, y: 200}
     linkList: []
   - GUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
     nodeName: Offended
-    dialog: {fileID: 4900000, guid: 73c4579b15ade76498e4c6db8ec507b7, type: 3}
-    position: {x: 531, y: 277}
+    dialog: {fileID: 11400000, guid: 2f445b45d967cf3469e077b2551fcde3, type: 2}
+    position: {x: 531, y: 285}
     linkList:
     - BaseNodeGUID: f27fbd6f-2f30-4e1c-938e-241f4bc2b051
       PortName: 

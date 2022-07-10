@@ -49,7 +49,7 @@ public class GraphSaveUtility
         {
             var nodeData = new DialogNodeData()
             {
-                dialog = Resources.Load("Dialogs/" + fileName + "/" + node.nodeName) as TextAsset,
+                dialog = Resources.Load("Dialogs/" + fileName + "/" + node.nodeName) as Dialog,
                 GUID = node.GUID,
                 nodeName = node.nodeName,
                 position = node.GetPosition().position

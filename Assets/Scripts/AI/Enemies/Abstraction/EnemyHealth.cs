@@ -34,7 +34,7 @@ public class EnemyHealth : GenericHealth
                 MakeLoot();
 
                 if (_enemy.RoomSignal != null)
-                    _enemy.RoomSignal.Raise();
+                    _enemy.RoomSignal.Invoke();
 
                 gameObject.SetActive(false);
             }

@@ -36,8 +36,8 @@ public abstract class NPC : Interactable
         {
             ChangeState(NPCState.Talk);
             _dialogValue.NPCDatabase = _thisDatabase;
-            _dialogSignal.Raise();
-            Context.Raise();
+            _dialogSignal.Invoke();
+            Context.Invoke();
         }
     }
 
@@ -46,7 +46,7 @@ public abstract class NPC : Interactable
         if (CurrentState == NPCState.Talk)
         {
             ChangeState(NPCState.Wait);
-            Context.Raise();
+            Context.Invoke();
         }
     }
 

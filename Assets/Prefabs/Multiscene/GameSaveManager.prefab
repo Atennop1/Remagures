@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2052565251606611884}
   - component: {fileID: 5491445966991846412}
   - component: {fileID: 1465793056633788194}
-  - component: {fileID: 7188733777195183712}
+  - component: {fileID: 6344274074126238731}
   m_Layer: 0
   m_Name: GameSaveManager
   m_TagString: Untagged
@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 2052565251606611884}
   - {fileID: 5491445966991846412}
   - {fileID: 1465793056633788194}
+  - {fileID: 6344274074126238731}
 --- !u!114 &476050564040104467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Path>k__BackingField: /GameSave/Inventory
-  _manager: {fileID: 6618251198943685710}
+  _container: {fileID: 6618251198943685710}
   _inventorys:
   - {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
   - {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
@@ -167,7 +168,7 @@ MonoBehaviour:
   <Path>k__BackingField: /GameSave/Dialogs
   _databases:
   - {fileID: 11400000, guid: 7ba8dc7a8f541b242b95270dc245b875, type: 2}
---- !u!114 &7188733777195183712
+--- !u!114 &6344274074126238731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,6 +177,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6618251198943685705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0945bbe150c4e64f89279093e4dfdfb, type: 3}
+  m_Script: {fileID: 11500000, guid: c832b598b2b21324da6f998ccbcbffdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Path>k__BackingField: /GameSave/Quests
+  _saveContainer: {fileID: 6618251198943685710}
+  _questsContainer: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
+  _quests:
+  - {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}

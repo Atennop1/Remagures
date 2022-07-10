@@ -12,13 +12,13 @@ public class UpgradeSlot : MonoBehaviour
     [SerializeField] private FloatValue _sharps;
 
     [HideInInspector] public BaseInventoryItem _thisItem;
-    [HideInInspector] public UpgradeView _manager;
+    [HideInInspector] public UpgradeView _view;
 
-    public void Setup(BaseInventoryItem item, UpgradeView manager)
+    public void Setup(BaseInventoryItem item, UpgradeView view)
     {
         if (item)
         {
-            this._manager = manager;
+            _view = view;
             _thisItem = item;
             _itemImage.sprite = item.ItemData.ItemSprite;
             _itemName.text = item.ItemData.ItemName;
@@ -30,15 +30,18 @@ public class UpgradeSlot : MonoBehaviour
     public void Buy()
     {
         UpgradableInventoryItem currentItem = _thisItem as UpgradableInventoryItem;
-        _manager.Inventory.Remove(currentItem.UpgradableItemData.ItemsForLevels[currentItem.UpgradableItemData.ThisItemLevel-2]);
-        _manager.Inventory.Add(currentItem, false);
+        _view.Inventory.Remove(currentItem.UpgradableItemData.ItemsForLevels[currentItem.UpgradableItemData.ThisItemLevel-2]);
+        _view.Inventory.Add(currentItem, false);
+
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
+
         player.ChangeArmor();
-        player.UniqueManager.SetUnique(player);
+        player.UniqueView.SetUnique(player);
         player.PlayerMovement.SetDirection();
         player.PlayerAnimations.ChangeAnim("moving", false);
+
         _sharps.Value -= currentItem.UpgradableItemData.CostForThisItem;
-        _manager.SharpsCountText.text = _sharps.Value.ToString(); 
-        _manager.OnEnable();
+        _view.SharpsCountText.text = _sharps.Value.ToString(); 
+        _view.OnEnable();
     }
 }

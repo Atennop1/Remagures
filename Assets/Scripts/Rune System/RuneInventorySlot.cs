@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class RuneInventorySlot : InventorySlot
 {
-    [SerializeField] private RuneView _runeManager;
+    [SerializeField] private RuneView _runeView;
 
     public void OnEnable()
     {
-        if (!_runeManager.Inventory.Contains(ThisItem))
+        if (!_runeView.Inventory.Contains(ThisItem))
         {
             ItemImage.sprite = NoneSprite;
             GetComponent<Button>().enabled = false;
@@ -21,6 +21,6 @@ public class RuneInventorySlot : InventorySlot
     
     public void Select()
     {
-        _runeManager.Select(ThisItem as RuneInventoryItem);
+        _runeView.Select(ThisItem as RuneInventoryItem);
     }
 }

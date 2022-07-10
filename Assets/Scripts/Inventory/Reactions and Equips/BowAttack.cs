@@ -35,7 +35,7 @@ public class BowAttack : MonoBehaviour
     {
         if (_currentMagic.Value >= _player.MagicCount.MagicCost)
         {
-            _player.DecreaseMagicSignal.Raise();
+            _player.DecreaseMagicSignal.Invoke();
             Vector2 temp = new Vector2(_player.PlayerAnimations.PlayerAnimator.GetFloat("moveX"), _player.PlayerAnimations.PlayerAnimator.GetFloat("moveY"));
             Arrow arrow = Instantiate(_projectile, _player.gameObject.transform.position, Quaternion.identity).GetComponent<Arrow>();
 

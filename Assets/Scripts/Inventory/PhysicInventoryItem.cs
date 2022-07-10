@@ -12,7 +12,7 @@ public class PhysicInventoryItem : MonoBehaviour
             AddItemInInventory();
 
             player.ChangeArmor();
-            player.UniqueManager.SetUnique(player);
+            player.UniqueView.SetUnique(player);
             player.PlayerMovement.SetDirection();
             player.PlayerAnimations.ChangeAnim("moving", false);
             

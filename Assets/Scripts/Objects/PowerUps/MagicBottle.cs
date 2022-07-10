@@ -6,7 +6,7 @@ public class MagicBottle : PowerUp
     {
         if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
-            PowerUpSignal.Raise();
+            PowerUpSignal.Invoke();
             Destroy(gameObject);
         }
     }

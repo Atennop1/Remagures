@@ -1,1 +1,0 @@
-Я жду открытия сундука! #speaker: Чувак #image: Dude # layout: Left

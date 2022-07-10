@@ -7,6 +7,6 @@ public class MagicReaction : MonoBehaviour
     public void Use(int amountToIncrease)
     {
         for (int i = 0; i < amountToIncrease; i++)
-            _magicSignal.Raise();
+            _magicSignal.Invoke();
     }
 }

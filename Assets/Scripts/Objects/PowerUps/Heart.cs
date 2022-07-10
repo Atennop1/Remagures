@@ -13,7 +13,7 @@ public class Heart : PowerUp
             if (_playerHealth.Value > _heartContainers.Value * 4)
                 _playerHealth.Value = _heartContainers.Value * 4;
 
-            PowerUpSignal.Raise();
+            PowerUpSignal.Invoke();
             Destroy(gameObject);
         }
     }

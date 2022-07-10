@@ -8,12 +8,12 @@ public class InventorySlot : MonoBehaviour
     [field: SerializeField] protected Text ItemCount { get; private set; }
 
     public BaseInventoryItem ThisItem { get; private set; }
-    private InventoryView _thisManager;
+    private InventoryView _thisView;
 
-    public void Setup(BaseInventoryItem newItem, InventoryView newManager)
+    public void Setup(BaseInventoryItem newItem, InventoryView newView)
     {
         ThisItem = newItem;
-        _thisManager = newManager;
+        _thisView = newView;
         if (ThisItem)
         {
             if (ThisItem.ItemData.ItemDescription != "" && ThisItem.ItemData.ItemName != "")
@@ -29,12 +29,12 @@ public class InventorySlot : MonoBehaviour
 
     public void Choice()
     {
-        _thisManager.SetText(ThisItem);
+        _thisView.SetText(ThisItem);
     }
     
     public void ChoiceMagicItem()
     {
-        _thisManager.SetText(ThisItem);
-        _thisManager.UseButton.SetActive(true);
+        _thisView.SetText(ThisItem);
+        _thisView.UseButton.SetActive(true);
     }
 }

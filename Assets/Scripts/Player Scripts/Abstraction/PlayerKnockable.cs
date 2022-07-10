@@ -18,7 +18,7 @@ public class PlayerKnockable : MonoBehaviour, IKnockable
 
     public IEnumerator KnockCoroutine(Rigidbody2D myRigidbody, float knockTime)
     {
-        _cameraKick.Raise();
+        _cameraKick.Invoke();
         if (myRigidbody != null)
         {
             yield return new WaitForSeconds(knockTime);

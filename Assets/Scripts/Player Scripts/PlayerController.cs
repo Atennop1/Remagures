@@ -28,14 +28,14 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public Signal DecreaseMagicSignal { get; private set; }
     [field: SerializeField] public FloatValue CurrentHealth { get; private set; }
 
-    [field: SerializeField, Header("Objects")] public InventoryUniqueView UniqueManager { get; private set; }
+    [field: SerializeField, Header("Objects")] public InventoryUniqueView UniqueView { get; private set; }
     [field: SerializeField] public MagicCounter MagicCount { get; private set; }
     [SerializeField] private StringValue _currentScene;
 
     public void Awake()
     {
         PlayerAnimations.SetAnimFloat(new Vector2(0, -1));
-        UniqueManager.SetUnique(this);
+        UniqueView.SetUnique(this);
     }
 
     public void Start()
@@ -47,15 +47,15 @@ public class PlayerController : MonoBehaviour
 
         ChangeArmor();
 
-        if (UniqueManager.MagicSlot != null && (UniqueManager.MagicSlot.ThisItem as MagicInventoryItem) != null && (UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile)
-            MagicCount.SetupProjectile((UniqueManager.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
+        if (UniqueView.MagicSlot != null && (UniqueView.MagicSlot.ThisItem as MagicInventoryItem) != null && (UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile)
+            MagicCount.SetupProjectile((UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
     }
 
     public void ChangeArmor()
     {
         float temp = 0;
         
-        foreach (BaseInventoryItem item in UniqueManager.PlayerInventory.MyInventory)
+        foreach (BaseInventoryItem item in UniqueView.PlayerInventory.MyInventory)
         {
             ArmorInventoryItem armorItem = item as ArmorInventoryItem;
             if (armorItem != null && (armorItem.UniqueItemData.UniqueClass == UniqueClass.Helmet || armorItem.UniqueItemData.UniqueClass == UniqueClass.Chestplate || armorItem.UniqueItemData.UniqueClass == UniqueClass.Leggins))

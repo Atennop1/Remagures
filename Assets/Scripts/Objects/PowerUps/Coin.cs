@@ -9,7 +9,7 @@ public class Coin : PowerUp
         if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
         {
             _numberOfCoins.Value++;
-            PowerUpSignal.Raise();
+            PowerUpSignal.Invoke();
             Destroy(gameObject);
         }
     }

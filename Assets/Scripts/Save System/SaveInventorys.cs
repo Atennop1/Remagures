@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveInventorys : SaveLoad, ISaver
+public class SaveInventorys : Saver, ISaver
 {
-    [SerializeField] private GameSaveContainer _manager;
+    [SerializeField] private GameSaveContainer _container;
     [SerializeField] private List<ScriptableObject> _inventorys;
     [SerializeField] private List<ScriptableObject> _items;
 
@@ -11,7 +11,7 @@ public class SaveInventorys : SaveLoad, ISaver
     {
         for (int j = 0; j < _inventorys.Count; j++)
         {
-            _manager.CheckDir(Path + "/Inventory" + (j + 1));
+            _container.CheckDir(Path + "/Inventory" + (j + 1));
             FloatValue value = ScriptableObject.CreateInstance<FloatValue>();
             PlayerInventory currentInventory = (_inventorys[j] as PlayerInventory);
 
@@ -20,14 +20,14 @@ public class SaveInventorys : SaveLoad, ISaver
 
             for (int k = 0; k < currentInventory.MyInventory.Count; k++)
             {
-                _manager.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
+                _container.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
                 FloatValue stackable = ScriptableObject.CreateInstance<FloatValue>();
                 stackable.Value = currentInventory.MyInventory[k].ItemData.Stackable ? 1 : 0;
                 SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Stackable.json", stackable);
 
                 FloatValue id = ScriptableObject.CreateInstance<FloatValue>();
                 if (currentInventory.MyInventory[k].ItemData.Stackable)
-                    id.Value = (_manager.Savables[1] as SaveStackableItems).IndexOf(currentInventory.MyInventory[k]);
+                    id.Value = (_container.Savables[1] as SaveStackableItems).IndexOf(currentInventory.MyInventory[k]);
                 else
                     id.Value = _items.IndexOf(currentInventory.MyInventory[k]);
                 SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", id);
@@ -55,7 +55,7 @@ public class SaveInventorys : SaveLoad, ISaver
             PlayerInventory currentInventory = (_inventorys[j] as PlayerInventory);
             currentInventory.Clear();
 
-            _manager.CheckDir(Path + "/Inventory" + (j + 1));
+            _container.CheckDir(Path + "/Inventory" + (j + 1));
             LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Count.json", value);
 
             for (int k = 0; k < (int)value.Value; k++)
@@ -63,12 +63,12 @@ public class SaveInventorys : SaveLoad, ISaver
                 FloatValue id = ScriptableObject.CreateInstance<FloatValue>();
                 FloatValue stackable = ScriptableObject.CreateInstance<FloatValue>();
 
-                _manager.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
+                _container.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
                 LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Stackable.json", stackable);
                 LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", id);
 
                 if (stackable.Value == 1)
-                    currentInventory.Add(((_manager.Savables[1] as SaveStackableItems).StackableItems[(int)id.Value] as BaseInventoryItem), false);
+                    currentInventory.Add(((_container.Savables[1] as SaveStackableItems).StackableItems[(int)id.Value] as BaseInventoryItem), false);
                 else
                     currentInventory.Add((_items[(int)id.Value] as BaseInventoryItem), false);
 

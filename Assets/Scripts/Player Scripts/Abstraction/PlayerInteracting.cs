@@ -10,7 +10,7 @@ public enum InteractingState
 public class PlayerInteracting : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
-    [SerializeField] private DialogView _dialogManager;
+    [SerializeField] private DialogView _dialogView;
 
     [SerializeField] private Signal _detectInteractSignal;
 
@@ -38,20 +38,20 @@ public class PlayerInteracting : MonoBehaviour
         CurrentState = InteractingState.Interact;
         CurrentInteractable?.Interact();
         CanShowContextClue = false;
-        CurrentInteractable.Context.Raise();
+        CurrentInteractable.Context.Invoke();
     }
 
     public void DialogOnTaped()
     {
         if (((CurrentInteractable is InteractableWithTextDisplay && 
-        (CurrentInteractable as InteractableWithTextDisplay).CanCloseText) || CurrentInteractable is NPC) && 
-        _dialogManager.IsDialogEnded && 
-        _dialogManager.CanContinue)
+        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || CurrentInteractable is NPC) && 
+        _dialogView.IsDialogEnded && 
+        _dialogView.CanContinue)
         {
             CurrentInteractable = null;
             CanShowContextClue = true;
             CurrentState = InteractingState.None;
-            _detectInteractSignal.Raise();
+            _detectInteractSignal.Invoke();
 
             _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;

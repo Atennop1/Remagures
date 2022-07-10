@@ -8,6 +8,6 @@ public class HealthReaction : MonoBehaviour
     public void Use(int amountToIncrease)
     {
         _playerHealth.Value += amountToIncrease;
-        _healthSignal.Raise();
+        _healthSignal.Invoke();
     }
 }
