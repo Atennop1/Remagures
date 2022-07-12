@@ -51,5 +51,6 @@ public class QuestsView : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
