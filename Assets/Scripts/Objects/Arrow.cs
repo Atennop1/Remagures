@@ -10,13 +10,13 @@ public class Arrow : Projectile
     
     public override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        if (!collision.gameObject.TryGetComponent<Player>(out Player player))
             Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<PlayerController>(out PlayerController player))
+        if (other.TryGetComponent<Player>(out Player player))
             Destroy(gameObject);
     }
 }

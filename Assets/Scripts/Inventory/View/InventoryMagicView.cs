@@ -10,13 +10,13 @@ public class InventoryMagicView : InventoryView
 
     public void Equip()
     {
-        _magicSlot.Setup(_currentItem, this);
+        _magicSlot.Setup(_currentCell, this);
         
-        MagicInventoryItem magicItem = _currentItem as MagicInventoryItem;
-        if (magicItem != null)
-            magicItem.MagicItemData.SetIsCurrent(PlayerInventory.MyInventory);
+        IChoiceableItem choiceableItem = _currentCell.Item as IChoiceableItem;
+        if (choiceableItem != null)
+            choiceableItem.SetIsCurrent(PlayerInventory.MyInventory);
 
-        _magicCounter.SetupProjectile((_currentItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
+        _magicCounter.SetupProjectile((_currentCell.Item as IMagicItem)?.Projectile.GetComponent<Projectile>());
     }
 
     public override void SetButton() { }

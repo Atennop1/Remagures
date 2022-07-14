@@ -6,6 +6,7 @@ public class UpgradeView : MonoBehaviour
     [Header("Values")]
     [SerializeField] private FloatValue _sharps;
     [field: SerializeField] public PlayerInventory Inventory { get; private set; }
+    [SerializeField] private Player _player;
 
     [field: SerializeField, Header("Objects")] public Text SharpsCountText { get; private set; }
     [SerializeField] private GameObject _noItems;
@@ -21,18 +22,18 @@ public class UpgradeView : MonoBehaviour
     public void CreateSlots()
     {
         _noItems.SetActive(true);
-        foreach (BaseInventoryItem item in Inventory.MyInventory)
+        foreach (IReadOnlyCell cell in Inventory.MyInventory)
         {
-            UpgradableInventoryItem currentItem = item as UpgradableInventoryItem;
+            IUpgradableItem currentItem = cell.Item as IUpgradableItem;
 
             if (currentItem != null && 
-            currentItem.UpgradableItemData.ItemsForLevels != null && 
-            currentItem.UpgradableItemData.ThisItemLevel != 0 && 
-            currentItem.UpgradableItemData.ThisItemLevel < currentItem.UpgradableItemData.ItemsForLevels.Count && 
-            _sharps.Value >= (currentItem.UpgradableItemData.ItemsForLevels[currentItem.UpgradableItemData.ThisItemLevel] as UpgradableInventoryItem).UpgradableItemData.CostForThisItem)
+            currentItem.ItemsForLevels != null && 
+            currentItem.ThisItemLevel != 0 && 
+            currentItem.ThisItemLevel < currentItem.ItemsForLevels.Count && 
+            _sharps.Value >= (currentItem.ItemsForLevels[currentItem.ThisItemLevel] as IUpgradableItem).CostForThisItem)
             {
                 GameObject temp = Instantiate(_slotPrefab, transform.position, Quaternion.identity, transform);
-                temp.GetComponent<UpgradeSlot>().Setup(currentItem.UpgradableItemData.ItemsForLevels[currentItem.UpgradableItemData.ThisItemLevel], this);
+                temp.GetComponent<UpgradeSlot>().Setup(new Cell(currentItem.ItemsForLevels[currentItem.ThisItemLevel], 1), this, _player);
                 _noItems.SetActive(false);
             }
         }
@@ -48,7 +49,6 @@ public class UpgradeView : MonoBehaviour
     {
         Time.timeScale = 1;
         gameObject.transform.parent.parent.parent.parent.gameObject.SetActive(false);
-        PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-        player.Awake();
+        _player.Awake();
     }
 }

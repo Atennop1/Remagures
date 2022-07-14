@@ -7,9 +7,9 @@ public class PlayerDamage : GenericDamage
     [SerializeField] private bool _isPlayerMagic;
     [SerializeField] private bool _isArrow;
 
-    [field: SerializeField, Space] public PlayerController Player { get; private set; }
+    [field: SerializeField, Space] public Player Player { get; private set; }
 
-    public void Init(PlayerController player)
+    public void Init(Player player)
     {
         Player = player;
     }
@@ -44,19 +44,19 @@ public class PlayerDamage : GenericDamage
     {
         if (_isPlayerAttack)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueView.WeaponSlot.ThisItem as WeaponInventoryItem).WeaponItemData.Damage * Player.ClassStat.SwordDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueSetup.WeaponSlot.ThisCell.Item as IWeaponItem).Damage * Player.ClassStat.SwordDamageCoefficient);
             return;
         }
 
         if (_isPlayerMagic)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.MagicDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueSetup.MagicSlot.ThisCell.Item as IWeaponItem).Damage * Player.ClassStat.MagicDamageCoefficient);
             return;
         }
 
         if (_isArrow)
         {
-            _damage = Mathf.RoundToInt((Player.UniqueView.MagicSlot.ThisItem as MagicInventoryItem).WeaponItemData.Damage * Player.ClassStat.BowDamageCoefficient);
+            _damage = Mathf.RoundToInt((Player.UniqueSetup.MagicSlot.ThisCell.Item as IWeaponItem).Damage * Player.ClassStat.BowDamageCoefficient);
             return;
         }
     }

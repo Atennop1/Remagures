@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerKnockable : MonoBehaviour, IKnockable
 {
-    [SerializeField] private PlayerController _player;
+    [SerializeField] private Player _player;
     [SerializeField] private Signal _cameraKick;
     [field: SerializeField] public LayerMask LayerMask { get; private set;}
 

@@ -12,7 +12,12 @@ public class MeatTimer : MonoBehaviour
     private void OnEnable()
     {
         Timer = 300;
-        Timer -= _timeCounter.CheckDate("MeatTime");
+
+        if (_view.RawCount.Value <= 0)
+            _timeCounter.SaveDate("MeatTime");
+        else
+            Timer -= _timeCounter.CheckDate("MeatTime");
+            
         _view.UpdateMeat();
     }
 
@@ -33,13 +38,8 @@ public class MeatTimer : MonoBehaviour
             _view.UpdateMeat();
         }
 
-        Timer = 300;
-
         if (_view.RawCount.Value > 0)
-        {
-            Timer -= _timeCounter.CheckDate("MeatTime");
             Timer -= Time.deltaTime;
-        }
         else
             _timeCounter.SaveDate("MeatTime");
 

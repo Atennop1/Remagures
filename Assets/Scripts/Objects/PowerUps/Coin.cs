@@ -6,7 +6,7 @@ public class Coin : PowerUp
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             _numberOfCoins.Value++;
             PowerUpSignal.Invoke();

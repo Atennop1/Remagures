@@ -8,7 +8,7 @@ public class HeartAdder : PowerUp
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             if (_heartContainers.Value < _maxHearts.Value)
                 _heartContainers.Value++;

@@ -17,7 +17,7 @@ public class GenericDamage : MonoBehaviour
         {
             if (temp != null && (temp as PlayerHealth) != null)
             {   
-                (temp as PlayerHealth).Damage(_damage, other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>());
+                (temp as PlayerHealth).Damage(_damage, other.gameObject.transform.parent.gameObject.GetComponent<Player>());
                 _enemyFlash = other.gameObject.transform.parent.GetComponent<GenericFlash>();
 
                 if (_enemyFlash != null && !_isStuned)

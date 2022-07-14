@@ -21,26 +21,17 @@ public class SaveInventorys : Saver, ISaver
             for (int k = 0; k < currentInventory.MyInventory.Count; k++)
             {
                 _container.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
-                FloatValue stackable = ScriptableObject.CreateInstance<FloatValue>();
-                stackable.Value = currentInventory.MyInventory[k].ItemData.Stackable ? 1 : 0;
-                SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Stackable.json", stackable);
 
-                FloatValue id = ScriptableObject.CreateInstance<FloatValue>();
-                if (currentInventory.MyInventory[k].ItemData.Stackable)
-                    id.Value = (_container.Savables[1] as SaveStackableItems).IndexOf(currentInventory.MyInventory[k]);
-                else
-                    id.Value = _items.IndexOf(currentInventory.MyInventory[k]);
-                SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", id);
+                value.Value = currentInventory.MyInventory[k].ItemCount;
+                SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Count.json", value);
 
-                if ((currentInventory.MyInventory[k] as MagicInventoryItem) != null || (currentInventory.MyInventory[k] as RuneInventoryItem) != null)
+                value.Value = _items.IndexOf(currentInventory.MyInventory[k].Item as ScriptableObject);
+                SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", value);
+
+                if (currentInventory.MyInventory[k].Item is IChoiceableItem )
                 {
                     BoolValue isCurrent = ScriptableObject.CreateInstance<BoolValue>();
-
-                    if ((currentInventory.MyInventory[k] as MagicInventoryItem) != null)
-                        isCurrent.Value = (currentInventory.MyInventory[k] as MagicInventoryItem).MagicItemData.IsCurrent;
-                    else
-                        isCurrent.Value = (currentInventory.MyInventory[k] as RuneInventoryItem).RuneItemData.IsCurrent;
-
+                    isCurrent.Value = (currentInventory.MyInventory[k].Item as IChoiceableItem).IsCurrent;
                     SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/IsCurrent.json", isCurrent);
                 }
             }
@@ -61,36 +52,23 @@ public class SaveInventorys : Saver, ISaver
             for (int k = 0; k < (int)value.Value; k++)
             {
                 FloatValue id = ScriptableObject.CreateInstance<FloatValue>();
-                FloatValue stackable = ScriptableObject.CreateInstance<FloatValue>();
+                FloatValue count = ScriptableObject.CreateInstance<FloatValue>();
 
                 _container.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
-                LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Stackable.json", stackable);
+
+                LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Count.json", count);
                 LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", id);
 
-                if (stackable.Value == 1)
-                    currentInventory.Add(((_container.Savables[1] as SaveStackableItems).StackableItems[(int)id.Value] as BaseInventoryItem), false);
-                else
-                    currentInventory.Add((_items[(int)id.Value] as BaseInventoryItem), false);
+                currentInventory.Add(new Cell((_items[(int)id.Value] as BaseInventoryItem), (int)count.Value));
 
-                if ((currentInventory.MyInventory[k] as MagicInventoryItem) != null || (currentInventory.MyInventory[k] as RuneInventoryItem) != null)
+                if (currentInventory.MyInventory[k].Item is IChoiceableItem)
                 {
                     BoolValue isCurrent = ScriptableObject.CreateInstance<BoolValue>();
                     LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/IsCurrent.json", isCurrent);
-
-                    if ((currentInventory.MyInventory[k] as MagicInventoryItem) != null)
-                    {
-                        if (isCurrent.Value == true)
-                            (currentInventory.MyInventory[k] as MagicInventoryItem).MagicItemData.SetIsCurrent(currentInventory.MyInventory);
-                        else
-                            (currentInventory.MyInventory[k] as MagicInventoryItem).MagicItemData.DisableIsCurrent();
-                    }
+                    if (isCurrent.Value == true)
+                        (currentInventory.MyInventory[k].Item as IChoiceableItem).SetIsCurrent(currentInventory.MyInventory);
                     else
-                    {
-                        if (isCurrent.Value == true)
-                            (currentInventory.MyInventory[k] as RuneInventoryItem).RuneItemData.SetIsCurrent(currentInventory.MyInventory);
-                        else
-                            (currentInventory.MyInventory[k] as RuneInventoryItem).RuneItemData.DisableIsCurrent();
-                    }
+                        (currentInventory.MyInventory[k].Item as IChoiceableItem).DisableIsCurrent();
                 }
             }
         }
@@ -100,18 +78,15 @@ public class SaveInventorys : Saver, ISaver
     {
         foreach (ScriptableObject inventory in _inventorys)
             (inventory as PlayerInventory).Clear();
-        (_inventorys[2] as PlayerInventory).Add(_items[6] as BaseInventoryItem, false);
+        (_inventorys[2] as PlayerInventory).Add(new Cell(_items[6] as BaseInventoryItem, 1));
 
         for (int i = 0; i < _items.Count; i++)
         {
-            if (_items[i] as MagicInventoryItem != null)
-                (_items[i] as MagicInventoryItem).MagicItemData.DisableIsCurrent();
+            if (_items[i] is IChoiceableItem)
+                (_items[i] as IChoiceableItem).DisableIsCurrent();
 
-            if (_items[i] as RuneInventoryItem != null)
-            {
-                (_items[i] as RuneInventoryItem).RuneItemData.ClassStat.ClearRunes();
-                (_items[i] as RuneInventoryItem).RuneItemData.DisableIsCurrent();
-            }
+            if (_items[i] is IRuneItem)
+                (_items[i] as IRuneItem).ClassStat.ClearRunes();
         }
     }
 }

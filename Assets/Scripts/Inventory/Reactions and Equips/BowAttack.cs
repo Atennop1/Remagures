@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class BowAttack : MonoBehaviour
 {
-    [SerializeField] private PlayerController _player;
     [SerializeField] private FloatValue _currentMagic;
     [SerializeField] private GameObject _projectile;
+    private Player _player;
     
     public void MagicAttackMethod()
     {
-        _player = GameObject.Find("Player").GetComponent<PlayerController>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
         if (_player.PlayerAttack.CanAttack && _player.CurrentState != PlayerState.Attack && _player.PlayerInteract.CurrentState != InteractingState.Interact)
             _player.PlayerAttack.StartMagicAttackCoroutine(MagicAttack());
     }
 
     private IEnumerator MagicAttack()
     {
-        if (_player.PlayerAnimations.PlayerAnimator.GetBool("attacking") != true && !TimelineView.IsPlaying && CheckArrowValid())
+        if (_player.PlayerAnimations.PlayerAnimator.GetBool("attacking") != true && CheckArrowValid())
         {
             _player.ChangeState(PlayerState.Attack);
             
@@ -49,9 +49,8 @@ public class BowAttack : MonoBehaviour
     {
         if (_projectile.TryGetComponent<Arrow>(out Arrow arrow))
         {
-            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, new Vector2(_player.PlayerAnimations.PlayerAnimator.GetFloat("moveX"), _player.PlayerAnimations.PlayerAnimator.GetFloat("moveY")), 1);
-            if (hit.collider == null)
-                return true;
+            RaycastHit2D hit = Physics2D.Raycast(_player.transform.position, new Vector2(_player.PlayerAnimations.PlayerAnimator.GetFloat("moveX"), _player.PlayerAnimations.PlayerAnimator.GetFloat("moveY")), 1, 3);
+            return hit.collider == null;
         }
 
         return false;

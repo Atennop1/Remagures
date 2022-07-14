@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public enum InteractingState
 {
@@ -9,7 +10,7 @@ public enum InteractingState
 
 public class PlayerInteracting : MonoBehaviour
 {
-    [SerializeField] private PlayerController _player;
+    [SerializeField] private Player _player;
     [SerializeField] private DialogView _dialogView;
 
     [SerializeField] private Signal _detectInteractSignal;
@@ -29,7 +30,7 @@ public class PlayerInteracting : MonoBehaviour
         {
             _player.PlayerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, true);
             _player.ChangeState(PlayerState.Interact);
-            _receivedItemSprite.sprite = _player.CurrentItem.Value.ItemData.ItemSprite;
+            _receivedItemSprite.sprite = _player.CurrentItem.Value.ItemSprite;
         }
     }
 
@@ -44,12 +45,13 @@ public class PlayerInteracting : MonoBehaviour
     public void DialogOnTaped()
     {
         if (((CurrentInteractable is InteractableWithTextDisplay && 
-        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || CurrentInteractable is NPC) && 
+        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || CurrentInteractable is NPC || TimelineView.Instance.IsPlaying) && 
         _dialogView.IsDialogEnded && 
         _dialogView.CanContinue)
         {
             CurrentInteractable = null;
             CanShowContextClue = true;
+            TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
 

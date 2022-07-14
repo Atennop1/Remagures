@@ -17,14 +17,14 @@ public class SceneTransition : MonoBehaviour
     {
         if (_fadeOutPanel != null)
         {
-            GameObject panel = Instantiate(_fadeOutPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject panel = Instantiate(_fadeOutPanel, Vector3.zero, Quaternion.identity);
             Destroy(panel, 1);
         }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             StartCoroutine(FadeCoroutine());
             _playerPositionStorage.Value = _playerPosition;

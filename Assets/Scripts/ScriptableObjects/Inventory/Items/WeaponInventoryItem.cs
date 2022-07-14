@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/WeaponItem")]
-public class WeaponInventoryItem : DisplayableInventoryItem
+public class WeaponInventoryItem : BaseInventoryItem, IWeaponItem, IDisplayableItem, IUniqueItem
 {
-    [field: SerializeField] public WeaponItemData WeaponItemData { get; private set; } = new WeaponItemData();
+    [field: SerializeField, Header("Weapon Stuff")] public UniqueClass UniqueClass { get; private set; }
+    [field: SerializeField] public AnimatorOverrideController OverrideController { get; private set; }
+    [field: SerializeField] public int Damage { get; private set; }
 }

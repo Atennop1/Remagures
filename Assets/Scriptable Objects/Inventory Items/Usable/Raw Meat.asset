@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc07d4563fb885f44b0430224f4f94c7, type: 3}
   m_Name: Raw Meat
   m_EditorClassIdentifier: 
-  <ItemData>k__BackingField:
-    NumberHeld: 0
-    <ItemSprite>k__BackingField: {fileID: 21300000, guid: d54a1c78564502a4aa79c0442e8a3323, type: 3}
-    <ItemName>k__BackingField: "\u0421\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E"
-    <ItemDescription>k__BackingField: "\u0421\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E
-      \u0443\u043C\u0435\u0440\u0448\u0435\u0433\u043E \u0437\u0432\u0435\u0440\u044F"
-    <Stackable>k__BackingField: 1
+  <ItemName>k__BackingField: "\u0421\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E"
+  <ItemDescription>k__BackingField: "\u0421\u044B\u0440\u043E\u0435 \u043C\u044F\u0441\u043E
+    \u0437\u0432\u0435\u0440\u044F. \u041D\u0435\u043F\u0440\u0438\u0433\u043E\u0434\u043D\u043E
+    \u0434\u043B\u044F \u0443\u043F\u043E\u0442\u0440\u0435\u0431\u043B\u0435\u043D\u0438\u044F"
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: d54a1c78564502a4aa79c0442e8a3323, type: 3}
+  <Stackable>k__BackingField: 1

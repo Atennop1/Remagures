@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/UsableItem")]
-public class UsableInventoryItem : BaseInventoryItem
+public class UsableInventoryItem : BaseInventoryItem, IUsableItem
 {
-    [field: SerializeField] public UsableItemData UsableItemData { get; private set; } = new UsableItemData();
+    [field: SerializeField, Header("Usable Info")] public UnityEvent ThisEvent { get; private set; }
 
     public void Use()
     {
-        UsableItemData.ThisEvent.Invoke();
-        DecreaseAmount();
+        ThisEvent.Invoke();
     }
 }

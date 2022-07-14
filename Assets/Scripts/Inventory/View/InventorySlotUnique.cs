@@ -1,14 +1,5 @@
 using UnityEngine;
 
-public enum UniqueClass
-{
-    Helmet,
-    Chestplate,
-    Leggins,
-    Weapon,
-    Magic,
-    Rune
-}
 public class InventorySlotUnique : InventorySlot
 {
     [Space]

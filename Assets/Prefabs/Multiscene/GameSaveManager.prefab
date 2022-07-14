@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6618251198943685711}
   - component: {fileID: 6618251198943685710}
   - component: {fileID: 476050564040104467}
-  - component: {fileID: 2052565251606611884}
   - component: {fileID: 5491445966991846412}
   - component: {fileID: 1465793056633788194}
   - component: {fileID: 6344274074126238731}
@@ -52,7 +51,6 @@ MonoBehaviour:
   _isNewGame: {fileID: 11400000, guid: 2714958b6f918f149aa4c5f60d65885b, type: 2}
   savablesObjects:
   - {fileID: 476050564040104467}
-  - {fileID: 2052565251606611884}
   - {fileID: 5491445966991846412}
   - {fileID: 1465793056633788194}
   - {fileID: 6344274074126238731}
@@ -103,24 +101,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 511a21a637fbfd8429cca2c236510d2d, type: 2}
   - {fileID: 11400000, guid: ac80e96c76a800441b6d4a6efbfb5125, type: 2}
   - {fileID: 11400000, guid: ac80e96c76a800441b6d4a6efbfb5125, type: 2}
---- !u!114 &2052565251606611884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6618251198943685705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828b5ada59fbf974897607e97e211f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Path>k__BackingField: /GameSave/ItemsStorage
-  _stackableItems:
-  - {fileID: 11400000, guid: ea1e4525a149ab346804a2c9ca68bbda, type: 2}
-  - {fileID: 11400000, guid: 2ef01346172899943b5a9a07059fc57d, type: 2}
-  - {fileID: 11400000, guid: 63f02cd927772cd43a3d5b8838e272e1, type: 2}
-  - {fileID: 11400000, guid: ce195d24e53dc7d4689d9a8393dc115f, type: 2}
 --- !u!114 &5491445966991846412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +133,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f6dfc8a3187be843b5d6f142c2730eb, type: 2}
   - {fileID: 11400000, guid: 9a2a4a7634b539f4d9cbd0b41d71aac8, type: 2}
   - {fileID: 11400000, guid: b2313af55f2136e42b430f669d900fe9, type: 2}
+  - {fileID: 11400000, guid: ea1e4525a149ab346804a2c9ca68bbda, type: 2}
+  - {fileID: 11400000, guid: ce195d24e53dc7d4689d9a8393dc115f, type: 2}
+  - {fileID: 11400000, guid: 63f02cd927772cd43a3d5b8838e272e1, type: 2}
+  - {fileID: 11400000, guid: 2ef01346172899943b5a9a07059fc57d, type: 2}
 --- !u!114 &1465793056633788194
 MonoBehaviour:
   m_ObjectHideFlags: 0

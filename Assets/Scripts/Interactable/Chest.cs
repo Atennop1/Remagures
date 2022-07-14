@@ -41,9 +41,9 @@ public class Chest : InteractableWithTextDisplay
             if (isKey)
                 _numberOfKeys.Value++;
             else if (_currentItem && _contentsItem)
-                _inventory.Add(_contentsItem, true);
+                _inventory.Add(new Cell(_contentsItem, 1));
 
-            TextDisplay(_contentsItem.ItemData.ItemDescription);
+            TextDisplay(_contentsItem.ItemDescription);
 
             _storedOpened.Value = true;
             _raiseItemSignal.Invoke();

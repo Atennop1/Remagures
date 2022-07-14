@@ -7,7 +7,7 @@ public class Heart : PowerUp
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             _playerHealth.Value += 4;
             if (_playerHealth.Value > _heartContainers.Value * 4)

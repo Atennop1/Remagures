@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ContextClue : MonoBehaviour
 {
-    [SerializeField] private PlayerController _player;
+    [SerializeField] private Player _player;
     [SerializeField] private GameObject _contextClue;
     private bool _contextActive;
 

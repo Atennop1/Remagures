@@ -31,6 +31,7 @@ public class GameOverScript : MonoBehaviour
         {
             if (_colorCoroutine == null)
                 _colorCoroutine = StartCoroutine(Timer());
+
             foreach (SpriteRenderer renderer in _renderers) 
             {
                 if (renderer.gameObject.name != "Player Death(Clone)")
@@ -38,6 +39,7 @@ public class GameOverScript : MonoBehaviour
                 else
                     renderer.color = Color.Lerp(Color.white, _colorOfPlayer, _currentTime);
             }
+            
             foreach (Tilemap tilemap in _tilemaps) 
                 tilemap.color = Color.Lerp(Color.white, _colorOfOther, _currentTime);
         }

@@ -64,12 +64,12 @@ public abstract class NPC : Interactable
 
     public override bool CanTriggerEnter(Collider2D collision)
     {
-        return collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger && CurrentState != NPCState.Talk;
+        return collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger && CurrentState != NPCState.Talk;
     }
 
     public override bool CanTriggerExit(Collider2D collision)
     {
-        return collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger;
+        return collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger;
     }
     
     protected void ChangeState(NPCState newState)

@@ -68,11 +68,11 @@ public class ClassStat : ScriptableObject
         ShieldRuneCoefficient = 1;
     }
     
-    public void SetupRunes(RuneInventoryItem item, MagicCounter count)
+    public void SetupRunes(IRuneItem item, MagicCounter count)
     {
-        FireRunActive = item.RuneItemData.RuneType == RuneType.Fire;
-        ManaRuneActive = item.RuneItemData.RuneType == RuneType.Mana;
-        ShieldRuneActive = item.RuneItemData.RuneType == RuneType.Shield;
+        FireRunActive = item.RuneType == RuneType.Fire;
+        ManaRuneActive = item.RuneType == RuneType.Mana;
+        ShieldRuneActive = item.RuneType == RuneType.Shield;
 
         InitRunes(count);
     }

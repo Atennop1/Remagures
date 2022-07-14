@@ -3,12 +3,19 @@ using UnityEngine.Playables;
 
 public class TimelineView : MonoBehaviour
 {
-    public static bool IsPlaying { get; private set; }
-    [SerializeField] private PlayableDirector _director;
+    [field: SerializeField] public PlayableDirector Director { get; private set; }
+    
+    public bool IsPlaying { get; private set; }
+    public static TimelineView Instance { get; private set; }
 
-    private void Update()
+    public void Awake()
     {
-        if (_director.state == PlayState.Playing)
+        Instance = this;
+    }
+
+    private void FixedUpdate()
+    {
+        if (Director.state == PlayState.Playing)
             IsPlaying = true;
         else
             IsPlaying = false;

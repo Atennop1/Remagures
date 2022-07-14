@@ -11,7 +11,7 @@ public enum PlayerState
     Dead
 }
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public PlayerState CurrentState { get; private set; }
     public int TotalArmor { get; private set; }
@@ -28,18 +28,20 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public Signal DecreaseMagicSignal { get; private set; }
     [field: SerializeField] public FloatValue CurrentHealth { get; private set; }
 
-    [field: SerializeField, Header("Objects")] public InventoryUniqueView UniqueView { get; private set; }
+    [field: SerializeField, Header("Objects")] public InventoryUniqueSetup UniqueSetup { get; private set; }
     [field: SerializeField] public MagicCounter MagicCount { get; private set; }
     [SerializeField] private StringValue _currentScene;
 
     public void Awake()
     {
+        UniqueSetup.SetUnique(this);
         PlayerAnimations.SetAnimFloat(new Vector2(0, -1));
-        UniqueView.SetUnique(this);
+        PlayerAnimations.ChangeAnim("moving", false);
     }
 
     public void Start()
     {
+        UniqueSetup.SetUnique(this);
         _currentScene.Value = SceneManager.GetActiveScene().name;
         transform.position = _playerPosition.Value;
 
@@ -47,19 +49,19 @@ public class PlayerController : MonoBehaviour
 
         ChangeArmor();
 
-        if (UniqueView.MagicSlot != null && (UniqueView.MagicSlot.ThisItem as MagicInventoryItem) != null && (UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile)
-            MagicCount.SetupProjectile((UniqueView.MagicSlot.ThisItem as MagicInventoryItem).MagicItemData.Projectile.GetComponent<Projectile>());
+        if (UniqueSetup.MagicSlot != null && (UniqueSetup.MagicSlot.ThisCell.Item as IMagicItem) != null && (UniqueSetup.MagicSlot.ThisCell.Item as IMagicItem).Projectile)
+            MagicCount.SetupProjectile((UniqueSetup.MagicSlot.ThisCell.Item as IMagicItem).Projectile.GetComponent<Projectile>());
     }
 
     public void ChangeArmor()
     {
         float temp = 0;
         
-        foreach (BaseInventoryItem item in UniqueView.PlayerInventory.MyInventory)
+        foreach (IReadOnlyCell cell in UniqueSetup.PlayerInventory.MyInventory)
         {
-            ArmorInventoryItem armorItem = item as ArmorInventoryItem;
-            if (armorItem != null && (armorItem.UniqueItemData.UniqueClass == UniqueClass.Helmet || armorItem.UniqueItemData.UniqueClass == UniqueClass.Chestplate || armorItem.UniqueItemData.UniqueClass == UniqueClass.Leggins))
-                temp += armorItem.ArmorItemData.Armor;
+            IArmorItem armorItem = cell.Item as IArmorItem;
+            if ( armorItem != null)
+                temp += armorItem.Armor;
         }
 
         TotalArmor = Mathf.RoundToInt(temp);

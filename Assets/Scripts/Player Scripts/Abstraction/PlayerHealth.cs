@@ -17,7 +17,7 @@ public class PlayerHealth : GenericHealth
     [SerializeField] private GameObject _music;
     private bool _isStuned;
     
-    public void Damage(float amountToDamage, PlayerController player)
+    public void Damage(float amountToDamage, Player player)
     {
         if (player.CurrentState != PlayerState.Dead && !_isStuned)
         {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MeatView : MonoBehaviour
 {
@@ -44,18 +45,19 @@ public class MeatView : MonoBehaviour
 
     public void Loot()
     {
-        _cookedMeatItem.ItemData.NumberHeld += (int)CookedCount.Value;
+        _inventory.Add(new Cell(_cookedMeatItem, (int)CookedCount.Value));
         CookedCount.Value = 0;
-        _inventory.Add(_cookedMeatItem, false);
         UpdateMeat();
     }
 
     public void Put()
     {
-        RawCount.Value += _rawMeatItem.ItemData.NumberHeld;
-        _rawMeatItem.ItemData.NumberHeld = 0;
-        _inventory.Remove(_rawMeatItem);
+        if (_inventory.GetCell(_rawMeatItem) != null)
+            RawCount.Value += _inventory.GetCell(_rawMeatItem).ItemCount;
+        _inventory.Remove(new Cell(_rawMeatItem, 1));
+
         UpdateMeat();
+
         Unity.Notifications.Android.AndroidNotificationCenter.CancelNotification(1);
         MeatNotificationComponent.Instance.Init();
     }

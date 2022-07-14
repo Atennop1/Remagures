@@ -1,14 +1,10 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/BaseItem")]
-public class BaseInventoryItem : ScriptableObject
+public class BaseInventoryItem : ScriptableObject, IBaseItemComponent
 {
-    [field: SerializeField] public BaseItemData ItemData { get; private set; } = new BaseItemData();
-
-    public void DecreaseAmount()
-    {
-        ItemData.NumberHeld--;
-        if (ItemData.NumberHeld < 0)
-            ItemData.NumberHeld = 0;
-    }
+    [field: SerializeField, Header("Item Info")] public string ItemName { get; private set; }
+    [field: SerializeField] public string ItemDescription { get; private set; }
+    [field: SerializeField] public Sprite ItemSprite { get; private set; }
+    [field: SerializeField] public bool Stackable { get; private set; }
 }

@@ -16,7 +16,7 @@ public class RuneView : MonoBehaviour
     [SerializeField] private MagicCounter _magicCounter;
     [field: SerializeField] public PlayerInventory Inventory { get; private set; }
     
-    private RuneInventoryItem _currentRune;
+    private IRuneItem _currentRune;
 
     public void Start()
     {
@@ -31,11 +31,11 @@ public class RuneView : MonoBehaviour
         _noneText.SetActive(Inventory.MyInventory.Count < 1);
     }
 
-    public void Select(RuneInventoryItem item)
+    public void Select(IRuneItem item)
     {
-        _nameText.text = item.ItemData.ItemName;
-        _descriptionText.text = item.ItemData.ItemDescription;
-        _currentRuneImage.sprite = item.ItemData.ItemSprite;
+        _nameText.text = item.ItemName;
+        _descriptionText.text = item.ItemDescription;
+        _currentRuneImage.sprite = item.ItemSprite;
 
         _equipButton.SetActive(true);
 
@@ -44,11 +44,11 @@ public class RuneView : MonoBehaviour
 
     public void Equip()
     {
-        _currentRune.RuneItemData.SetIsCurrent(Inventory.MyInventory);
-        _currentRuneSlot.Setup(_currentRune, null);
+        (_currentRune as IChoiceableItem)?.SetIsCurrent(Inventory.MyInventory);
+        _currentRuneSlot.Setup(new Cell((BaseInventoryItem)_currentRune, 1), null);
 
-        _currentRune.RuneItemData.ClassStat.ClearRunes();
-        _currentRune.RuneItemData.ClassStat.SetupRunes(_currentRune, _magicCounter);
+        _currentRune.ClassStat.ClearRunes();
+        _currentRune.ClassStat.SetupRunes(_currentRune, _magicCounter);
 
         Close();
     }

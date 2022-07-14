@@ -29,7 +29,7 @@ public class DungeonEnemyRoom : DungeonRoom
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<PlayerController>(out PlayerController player) && !other.isTrigger)
+        if (other.TryGetComponent<Player>(out Player player) && !other.isTrigger)
         {
             for (int i = 0; i < Enemies.Length; i++)
                 ChangeActivation(Enemies[i], true);

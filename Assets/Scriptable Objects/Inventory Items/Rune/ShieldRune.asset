@@ -12,19 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102d2ad42d3c16544bc3fbc1309cc385, type: 3}
   m_Name: ShieldRune
   m_EditorClassIdentifier: 
-  <ItemData>k__BackingField:
-    NumberHeld: 1
-    <ItemSprite>k__BackingField: {fileID: 21300000, guid: 17b082d3ef4335647bbf1409e800819d, type: 3}
-    <ItemName>k__BackingField: "\u0427\u0435\u0440\u0435\u043F\u0430\u0448\u044C\u044F
-      \u0440\u0443\u043D\u0430"
-    <ItemDescription>k__BackingField: "\u042D\u0442\u0430 \u0440\u0443\u043D\u0430
-      \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0432\u0430\u0448
-      \u043F\u043E\u043A\u0430\u0437\u0430\u0442\u0435\u043B\u044C \u0431\u0440\u043E\u043D\u0438
-      \u043D\u0430 30%"
-    <Stackable>k__BackingField: 0
-  <UniqueItemData>k__BackingField:
-    <UniqueClass>k__BackingField: 5
-  <RuneItemData>k__BackingField:
-    <IsCurrent>k__BackingField: 0
-    <ClassStat>k__BackingField: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
-    <RuneType>k__BackingField: 2
+  <ItemName>k__BackingField: "\u0427\u0435\u0440\u0435\u043F\u0430\u0448\u044C\u044F
+    \u0440\u0443\u043D\u0430"
+  <ItemDescription>k__BackingField: "\u042D\u0442\u0430 \u0440\u0443\u043D\u0430
+    \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0432\u0430\u0448\u0443
+    \u0437\u0430\u0449\u0438\u0442\u0443 \u043D\u0430 30%"
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 17b082d3ef4335647bbf1409e800819d, type: 3}
+  <Stackable>k__BackingField: 0
+  <RuneType>k__BackingField: 0
+  <ClassStat>k__BackingField: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
+  <IsCurrent>k__BackingField: 0

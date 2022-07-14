@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meatCanvas: {fileID: 7885202991709611076}
   _gameOver: {fileID: 677618526519544743}
+  _saveContainer: {fileID: 0}
 --- !u!114 &677618526519544743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +622,7 @@ MonoBehaviour:
   _nameText: {fileID: 5172242383555185818}
   <DescriptionText>k__BackingField: {fileID: 8433204633349585790}
   _sharpsCountText: {fileID: 8717196405078264810}
+  _player: {fileID: 2420318332630450765}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
@@ -746,8 +748,8 @@ MonoBehaviour:
   _noneRune: {fileID: 21300000, guid: 1d1e7d6ae0bf72447bf9c919c122f11b, type: 3}
   _equipButton: {fileID: 5370003474805244689}
   _noneText: {fileID: 4369694379969235829}
-  _currentRuneSlot: {fileID: 0}
-  _magicCounter: {fileID: 0}
+  _currentRuneSlot: {fileID: 3938238870223750717}
+  _magicCounter: {fileID: 8983856755139828698}
   <Inventory>k__BackingField: {fileID: 11400000, guid: 9f3f4e2a678b6854f977e5217dd06ac7, type: 2}
 --- !u!1 &49650306702894834
 GameObject:
@@ -1538,6 +1540,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 4433800247420514040}
   <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1d1e7d6ae0bf72447bf9c919c122f11b, type: 3}
   <ItemCount>k__BackingField: {fileID: 962953761441536234}
+  <ThisItem>k__BackingField: {fileID: 0}
   _magicMenu: {fileID: 7704206729966437869}
   _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &7159763137992042855
@@ -1690,6 +1693,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 3976034133784256585}
   <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1d1e7d6ae0bf72447bf9c919c122f11b, type: 3}
   <ItemCount>k__BackingField: {fileID: 0}
+  <ThisItem>k__BackingField: {fileID: 11400000, guid: 9a2a4a7634b539f4d9cbd0b41d71aac8, type: 2}
   _runeView: {fileID: 5498395730604174054}
 --- !u!114 &7695622353781580310
 MonoBehaviour:
@@ -2369,8 +2373,8 @@ GameObject:
   - component: {fileID: 4011290034168657189}
   - component: {fileID: 5324790149696710533}
   - component: {fileID: 25154899594024396}
-  - component: {fileID: 1422284483580968459}
   - component: {fileID: 6361911269356205449}
+  - component: {fileID: 1111851255232623316}
   m_Layer: 5
   m_Name: Chestplate
   m_TagString: Untagged
@@ -2438,23 +2442,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &1422284483580968459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691621847259591977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c9e3e703950b74fa8cc9861607980c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemImage>k__BackingField: {fileID: 8937900983012491069}
-  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1a26623af553c5c4081426b7454f2a0c, type: 3}
-  <ItemCount>k__BackingField: {fileID: 391465804070461459}
-  _magicMenu: {fileID: 7704206729966437869}
-  _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &6361911269356205449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,7 +2486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1422284483580968459}
+      - m_Target: {fileID: 1111851255232623316}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: Choice
         m_Mode: 1
@@ -2511,6 +2498,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1111851255232623316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691621847259591977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2b9687a03a8ae44aa1f5bfaba1ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemImage>k__BackingField: {fileID: 8937900983012491069}
+  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1a26623af553c5c4081426b7454f2a0c, type: 3}
+  <ItemCount>k__BackingField: {fileID: 391465804070461459}
+  <ThisItem>k__BackingField: {fileID: 0}
 --- !u!1 &763711535186596665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2932,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 3850001214714368284}
   <NoneSprite>k__BackingField: {fileID: 21300000, guid: edb20253985ff3b429a39831c1edaac7, type: 3}
   <ItemCount>k__BackingField: {fileID: 2639032186919078999}
+  <ThisItem>k__BackingField: {fileID: 0}
   _magicMenu: {fileID: 7704206729966437869}
   _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &4222050283171914112
@@ -3697,15 +3701,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54127744aa42b9d49941212be77b750d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <View>k__BackingField: {fileID: 0}
+  <View>k__BackingField: {fileID: 3407098272694180117}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
   <MagicInventory>k__BackingField: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
   <RuneInventory>k__BackingField: {fileID: 11400000, guid: 9f3f4e2a678b6854f977e5217dd06ac7, type: 2}
-  _helmetSlot: {fileID: 3712358968134911585}
-  _chestplateSlot: {fileID: 1422284483580968459}
-  _legginsSlot: {fileID: 6207224541688972366}
+  _helmetSlot: {fileID: 5644707380526411396}
+  _chestplateSlot: {fileID: 1111851255232623316}
+  _legginsSlot: {fileID: 6053374221199617119}
   _runeSlot: {fileID: 3938238870223750717}
-  <WeaponSlot>k__BackingField: {fileID: 3241556074641765729}
+  <WeaponSlot>k__BackingField: {fileID: 6114987230359433549}
   <MagicSlot>k__BackingField: {fileID: 6094975099399905223}
   <NoneItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   <EquipButton>k__BackingField: {fileID: 924653297252977289}
@@ -5766,7 +5770,7 @@ MonoBehaviour:
   <ClassStat>k__BackingField: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
   <DecreaseMagicSignal>k__BackingField: {fileID: 11400000, guid: 6844ca2f4735c474283727379afa0409, type: 2}
   <CurrentHealth>k__BackingField: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
-  <UniqueView>k__BackingField: {fileID: 1472275362632214845}
+  <UniqueSetup>k__BackingField: {fileID: 1472275362632214845}
   <MagicCount>k__BackingField: {fileID: 8983856755139828698}
   _currentScene: {fileID: 11400000, guid: 62edfd6b564566b4baae5376ac1ffca5, type: 2}
 --- !u!114 &1948626514282996038
@@ -6763,6 +6767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
   <Inventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
+  _player: {fileID: 2420318332630450765}
   <SharpsCountText>k__BackingField: {fileID: 1455346589320880805}
   _noItems: {fileID: 6282176440152259256}
   _slotPrefab: {fileID: 4865469501174488110, guid: c3aaf56004372bc4a81a92cb668df55b, type: 3}
@@ -8752,8 +8757,8 @@ GameObject:
   - component: {fileID: 7678461621316038364}
   - component: {fileID: 7885616636877564810}
   - component: {fileID: 4242611800138081466}
-  - component: {fileID: 6207224541688972366}
   - component: {fileID: 8206505132270088638}
+  - component: {fileID: 6053374221199617119}
   m_Layer: 5
   m_Name: Leggins
   m_TagString: Untagged
@@ -8821,23 +8826,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &6207224541688972366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4343769303256962780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c9e3e703950b74fa8cc9861607980c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemImage>k__BackingField: {fileID: 306341217285635078}
-  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 337cd5ea06e99ee4fb60a0534f39c260, type: 3}
-  <ItemCount>k__BackingField: {fileID: 5473392283981272030}
-  _magicMenu: {fileID: 7704206729966437869}
-  _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &8206505132270088638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8882,7 +8870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6207224541688972366}
+      - m_Target: {fileID: 6053374221199617119}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: Choice
         m_Mode: 1
@@ -8894,6 +8882,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6053374221199617119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343769303256962780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2b9687a03a8ae44aa1f5bfaba1ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemImage>k__BackingField: {fileID: 306341217285635078}
+  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 337cd5ea06e99ee4fb60a0534f39c260, type: 3}
+  <ItemCount>k__BackingField: {fileID: 5473392283981272030}
+  <ThisItem>k__BackingField: {fileID: 0}
 --- !u!1 &4369694379969235829
 GameObject:
   m_ObjectHideFlags: 0
@@ -14407,6 +14411,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 4722373973659557555}
   <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1d1e7d6ae0bf72447bf9c919c122f11b, type: 3}
   <ItemCount>k__BackingField: {fileID: 0}
+  <ThisItem>k__BackingField: {fileID: 11400000, guid: 3f6dfc8a3187be843b5d6f142c2730eb, type: 2}
   _runeView: {fileID: 5498395730604174054}
 --- !u!114 &5005720176597057303
 MonoBehaviour:
@@ -16370,6 +16375,7 @@ MonoBehaviour:
   _nameText: {fileID: 8397489655167090036}
   <DescriptionText>k__BackingField: {fileID: 6612834945543675739}
   _sharpsCountText: {fileID: 0}
+  _player: {fileID: 2420318332630450765}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
@@ -17050,8 +17056,8 @@ GameObject:
   - component: {fileID: 8235848391513281510}
   - component: {fileID: 8541002757206169615}
   - component: {fileID: 5071388693434047020}
-  - component: {fileID: 3241556074641765729}
   - component: {fileID: 7130529760028255867}
+  - component: {fileID: 6114987230359433549}
   m_Layer: 5
   m_Name: Sword
   m_TagString: Untagged
@@ -17119,23 +17125,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &3241556074641765729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296097721439900826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c9e3e703950b74fa8cc9861607980c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemImage>k__BackingField: {fileID: 8363390028293592598}
-  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 3f5c2f5c35332774397a21137df7a0d1, type: 3}
-  <ItemCount>k__BackingField: {fileID: 8183271478585247232}
-  _magicMenu: {fileID: 7704206729966437869}
-  _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &7130529760028255867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17180,7 +17169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3241556074641765729}
+      - m_Target: {fileID: 6114987230359433549}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: Choice
         m_Mode: 1
@@ -17192,6 +17181,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6114987230359433549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296097721439900826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2b9687a03a8ae44aa1f5bfaba1ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemImage>k__BackingField: {fileID: 8363390028293592598}
+  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 3f5c2f5c35332774397a21137df7a0d1, type: 3}
+  <ItemCount>k__BackingField: {fileID: 8183271478585247232}
+  <ThisItem>k__BackingField: {fileID: 0}
 --- !u!1 &8331491965224251669
 GameObject:
   m_ObjectHideFlags: 0
@@ -17279,8 +17284,8 @@ GameObject:
   - component: {fileID: 6735166645616924332}
   - component: {fileID: 8881643736290372914}
   - component: {fileID: 5674441112262098541}
-  - component: {fileID: 3712358968134911585}
   - component: {fileID: 6805741023089058406}
+  - component: {fileID: 5644707380526411396}
   m_Layer: 5
   m_Name: Helmet
   m_TagString: Untagged
@@ -17348,23 +17353,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &3712358968134911585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351904181890186540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c9e3e703950b74fa8cc9861607980c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ItemImage>k__BackingField: {fileID: 9140343144515403239}
-  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 5198983d2f8627f40bf18bba3735c2af, type: 3}
-  <ItemCount>k__BackingField: {fileID: 3029482093957945679}
-  _magicMenu: {fileID: 7704206729966437869}
-  _runeMenu: {fileID: 49456722380534680}
 --- !u!114 &6805741023089058406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17409,7 +17397,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3712358968134911585}
+      - m_Target: {fileID: 5644707380526411396}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: Choice
         m_Mode: 1
@@ -17421,6 +17409,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5644707380526411396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351904181890186540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2b9687a03a8ae44aa1f5bfaba1ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemImage>k__BackingField: {fileID: 9140343144515403239}
+  <NoneSprite>k__BackingField: {fileID: 21300000, guid: 5198983d2f8627f40bf18bba3735c2af, type: 3}
+  <ItemCount>k__BackingField: {fileID: 3029482093957945679}
+  <ThisItem>k__BackingField: {fileID: 0}
 --- !u!1 &8442403298053367418
 GameObject:
   m_ObjectHideFlags: 0
@@ -18221,6 +18225,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 4753261242531971877}
   <NoneSprite>k__BackingField: {fileID: 21300000, guid: 1d1e7d6ae0bf72447bf9c919c122f11b, type: 3}
   <ItemCount>k__BackingField: {fileID: 0}
+  <ThisItem>k__BackingField: {fileID: 11400000, guid: b2313af55f2136e42b430f669d900fe9, type: 2}
   _runeView: {fileID: 5498395730604174054}
 --- !u!114 &8066163716419212410
 MonoBehaviour:

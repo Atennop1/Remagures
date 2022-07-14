@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 using System;
 
 [Serializable]
-public class AnimatorMixerBehaviour : PlayableBehaviour
+public class RuntimeAnimatingBehaviour : PlayableBehaviour
 {
     [SerializeField] private float _moveX;
     [SerializeField] private float _moveY;

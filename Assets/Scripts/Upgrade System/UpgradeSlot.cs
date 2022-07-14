@@ -11,37 +11,37 @@ public class UpgradeSlot : MonoBehaviour
     [Space]
     [SerializeField] private FloatValue _sharps;
 
-    [HideInInspector] public BaseInventoryItem _thisItem;
-    [HideInInspector] public UpgradeView _view;
+    public IReadOnlyCell ThisCell { get; private set; }
+    public UpgradeView View { get; private set; }
+    private Player _player;
 
-    public void Setup(BaseInventoryItem item, UpgradeView view)
+
+    public void Setup(IReadOnlyCell cell, UpgradeView view, Player player)
     {
-        if (item)
+        if (cell.Item != null)
         {
-            _view = view;
-            _thisItem = item;
-            _itemImage.sprite = item.ItemData.ItemSprite;
-            _itemName.text = item.ItemData.ItemName;
-            UpgradableInventoryItem currentItem = _thisItem as UpgradableInventoryItem;
-            _costText.text = currentItem.UpgradableItemData.CostForThisItem.ToString();
+            View = view;
+            ThisCell = cell;
+            _player = player;
+
+            _itemImage.sprite = cell.Item.ItemSprite;
+            _itemName.text = cell.Item.ItemName;
+
+            IUpgradableItem currentItem = ThisCell.Item as IUpgradableItem;
+            _costText.text = currentItem.CostForThisItem.ToString();
         }
     }
 
     public void Buy()
     {
-        UpgradableInventoryItem currentItem = _thisItem as UpgradableInventoryItem;
-        _view.Inventory.Remove(currentItem.UpgradableItemData.ItemsForLevels[currentItem.UpgradableItemData.ThisItemLevel-2]);
-        _view.Inventory.Add(currentItem, false);
+        IUpgradableItem currentItem = ThisCell.Item as IUpgradableItem;
+        View.Inventory.Remove(new Cell(currentItem.ItemsForLevels[currentItem.ThisItemLevel-2], 1));
+        View.Inventory.Add(new Cell(currentItem as BaseInventoryItem, 1));
 
-        PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
+        _player.Awake();
 
-        player.ChangeArmor();
-        player.UniqueView.SetUnique(player);
-        player.PlayerMovement.SetDirection();
-        player.PlayerAnimations.ChangeAnim("moving", false);
-
-        _sharps.Value -= currentItem.UpgradableItemData.CostForThisItem;
-        _view.SharpsCountText.text = _sharps.Value.ToString(); 
-        _view.OnEnable();
+        _sharps.Value -= currentItem.CostForThisItem;
+        View.SharpsCountText.text = _sharps.Value.ToString(); 
+        View.OnEnable();
     }
 }

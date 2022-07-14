@@ -1,30 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/PlayerInventory")]
 public class PlayerInventory : ScriptableObject
 { 
-    [SerializeField] private List<BaseInventoryItem> _inventory = new List<BaseInventoryItem>();
-    public IReadOnlyList<BaseInventoryItem> MyInventory => _inventory;
+    [SerializeField] [NonReorderable] private List<Cell> _inventory = new List<Cell>();
+    public IReadOnlyList<IReadOnlyCell> MyInventory => _inventory;
 
-    public void Add(BaseInventoryItem item, bool increase)
+    public void Add(Cell newCell)
     {
-        if (item.ItemData.Stackable && increase)
-            item.ItemData.NumberHeld++;
+        Cell cell = GetCellInternal(newCell.Item);
 
-        if (!_inventory.Contains(item))
-            _inventory.Add(item);
+        if (cell == null)
+            _inventory.Add(newCell);
+        else
+            cell.Merge(newCell);
     }
 
-    public void Remove(BaseInventoryItem item)
+    public void Decrease(Cell newCell)
     {
-        if (_inventory.Contains(item))
-            _inventory.Remove(item);
+        GetCellInternal(newCell.Item)?.DecreaseAmount(newCell.ItemCount);
     }
 
-    public bool Contains(BaseInventoryItem item)
+    public void Remove(Cell cell)
     {
-        return _inventory.Contains(item);
+        if (_inventory.Contains(GetCell(cell.Item)))
+            _inventory.Remove(GetCellInternal(cell.Item));
+    }
+
+    public bool Contains(IReadOnlyCell cell)
+    {
+        if (GetCell(cell.Item) != null)
+            return _inventory.Contains(GetCell(cell.Item));
+        return false;
+    }
+
+    public IReadOnlyCell GetCell(BaseInventoryItem item)
+    {
+        return _inventory.FirstOrDefault(x => x.Item == item);
+    }
+
+    private Cell GetCellInternal(BaseInventoryItem item)
+    {
+        return _inventory.FirstOrDefault(x => x.Item == item);
     }
 
     public void Clear()

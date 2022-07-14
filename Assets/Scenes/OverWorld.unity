@@ -26487,6 +26487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7188733777195183712, guid: 49e2d270dd714004f83c656921a72fd6, type: 3}
+    - {fileID: 2052565251606611884, guid: 49e2d270dd714004f83c656921a72fd6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 49e2d270dd714004f83c656921a72fd6, type: 3}
 --- !u!4 &1173377177 stripped
 Transform:
@@ -26963,8 +26964,8 @@ MonoBehaviour:
   <PlayerInteract>k__BackingField: {fileID: 720910867}
   _continueText: {fileID: 566490020}
   _nameText: {fileID: 1519207986}
-  _photoImage: {fileID: 0}
-  _linkSprite: {fileID: 0}
+  _photoImage: {fileID: 853928964}
+  _linkSprite: {fileID: 21300000, guid: 74e8c70be2e641a42b1c020b724dd32e, type: 3}
   _writter: {fileID: 2088649609}
   _layoutAnimator: {fileID: 344621406}
   _dialogButton: {fileID: 344621407}
@@ -61939,6 +61940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 152308093, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: _saveContainer
+      value: 
+      objectReference: {fileID: 47246326}
     - target: {fileID: 19523648732154337, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -91

@@ -13,16 +13,17 @@ public class InventoryView : MonoBehaviour
     [SerializeField] private Text _nameText;
     [field: SerializeField] protected Text DescriptionText { get; private set; }
     [SerializeField] private Text _sharpsCountText;
+    [SerializeField] private Player _player;
 
     [field: SerializeField, Header("Values")] protected PlayerInventory PlayerInventory { get; private set; }
     [field: SerializeField] protected BaseInventoryItem VoidItem { get; private set; }
     [SerializeField] private FloatValue _sharps;
 
-    protected BaseInventoryItem _currentItem { get; private set; }
+    protected IReadOnlyCell _currentCell { get; private set; }
 
     public void Start()
     {
-        SetText(VoidItem);
+        SetText(new Cell(VoidItem));
         gameObject.SetActive(false);
     }
 
@@ -30,7 +31,7 @@ public class InventoryView : MonoBehaviour
     {
         ClearInventory();
         MakeInventorySlots();
-        SetText(VoidItem);
+        SetText(new Cell(VoidItem));
         
         if(_sharpsCountText)
             _sharpsCountText.text = _sharps.Value.ToString(); 
@@ -43,34 +44,29 @@ public class InventoryView : MonoBehaviour
 
         for (int i = 0; i < PlayerInventory.MyInventory.Count; i++)
         {
-            if (PlayerInventory.MyInventory[i])
+            if (PlayerInventory.MyInventory[i].Item != null && PlayerInventory.MyInventory[i].ItemCount > 0)
             {
-                if (PlayerInventory.MyInventory[i].ItemData.NumberHeld > 0)
-                {
-                    GameObject temp = Instantiate(_inventorySlot, _inventoryPanel.transform.position, Quaternion.identity, _inventoryPanel.transform);
-                    temp.transform.localScale = Vector3.one;
-                    InventorySlot newSlot = temp.GetComponent<InventorySlot>();
-                    if (newSlot)
-                        newSlot.Setup(PlayerInventory.MyInventory[i], this);
-                }
+                GameObject slotObject = Instantiate(_inventorySlot, _inventoryPanel.transform.position, Quaternion.identity, _inventoryPanel.transform);
+                if (slotObject.TryGetComponent<InventorySlot>(out InventorySlot newSlot))
+                    newSlot.Setup(PlayerInventory.MyInventory[i], this);
             }
         }
     }
 
-    public void SetText(BaseInventoryItem newItem)
+    public void SetText(IReadOnlyCell cell)
     {
-        _currentItem = newItem;
-        _nameText.text = _currentItem.ItemData.ItemName;
-        DescriptionText.text = _currentItem.ItemData.ItemDescription;
+        _currentCell = cell;
+        _nameText.text = _currentCell.Item.ItemName;
+        DescriptionText.text = _currentCell.Item.ItemDescription;
         SetButton();
     }
 
     public virtual void SetButton()
     {
         RectTransform buttonRect = DescriptionText.gameObject.GetComponent<RectTransform>();
-        UseButton.SetActive(_currentItem as UsableInventoryItem != null);
+        UseButton.SetActive(_currentCell.Item as IUsableItem != null);
 
-        if (_currentItem as UsableInventoryItem != null)
+        if (_currentCell.Item as IUsableItem != null)
         {
             buttonRect.anchoredPosition = new Vector3(-81.58096f, buttonRect.anchoredPosition.y, 0);
             buttonRect.sizeDelta = new Vector2(1941.4f, buttonRect.sizeDelta.y);
@@ -90,12 +86,13 @@ public class InventoryView : MonoBehaviour
 
     public void UseItem()
     {
-        (_currentItem as UsableInventoryItem).Use();
+        (_currentCell.Item as IUsableItem).Use();
+        PlayerInventory.Decrease(new Cell(_currentCell.Item, 1));
 
-        if (_currentItem.ItemData.NumberHeld <= 0)
+        if (_currentCell.ItemCount <= 0)
         {
-            PlayerInventory.Remove(_currentItem);
-            SetText(VoidItem);
+            PlayerInventory.Remove(new Cell(_currentCell.Item, _currentCell.ItemCount));
+            SetText(new Cell(VoidItem));
         }
         
         ClearInventory();
@@ -111,7 +108,6 @@ public class InventoryView : MonoBehaviour
     public virtual void SetupPlayer()
     {
         Time.timeScale = 1;
-        PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-        player.Awake();
+        _player.Awake();
     }
 }

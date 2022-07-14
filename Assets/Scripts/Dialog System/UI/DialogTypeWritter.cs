@@ -11,6 +11,11 @@ public class DialogTypeWritter : MonoBehaviour
     public string CurrentText { get; private set; }
     private Coroutine _typingCoroutine;
 
+    public void StartTyping(string text)
+    {
+        StartCoroutine(Type(text));
+    }
+
     public IEnumerator Type(string text)
     {
         CurrentText = text;

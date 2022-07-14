@@ -5,12 +5,7 @@ public class ScreenChanger : MonoBehaviour
 {
     [SerializeField] private GameObject _meatCanvas;
     [SerializeField] private GameOverScript _gameOver;
-    private GameSaveContainer _saveContainer;
-
-    public void OnEnable()
-    {
-        _saveContainer = GameObject.Find("GameSaveManager").GetComponent<GameSaveContainer>();
-    }
+    [SerializeField] private GameSaveContainer _saveContainer;
 
     public void ChangeScreen(GameObject gameObject)
     {

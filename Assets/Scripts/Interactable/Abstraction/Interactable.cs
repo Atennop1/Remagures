@@ -18,7 +18,7 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             PlayerInRange = true;
             DetectInteracting();
@@ -30,7 +30,7 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             PlayerInRange = false;
             

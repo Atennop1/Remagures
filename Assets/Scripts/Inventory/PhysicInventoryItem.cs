@@ -7,12 +7,12 @@ public class PhysicInventoryItem : MonoBehaviour
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player) && !collision.isTrigger)
+        if (collision.gameObject.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             AddItemInInventory();
 
             player.ChangeArmor();
-            player.UniqueView.SetUnique(player);
+            player.UniqueSetup.SetUnique(player);
             player.PlayerMovement.SetDirection();
             player.PlayerAnimations.ChangeAnim("moving", false);
             
@@ -23,6 +23,6 @@ public class PhysicInventoryItem : MonoBehaviour
     private void AddItemInInventory()
     {
         if (_playerInventory && _thisItem)
-            _playerInventory.Add(_thisItem, true);
+            _playerInventory.Add(new Cell(_thisItem, 1));
     }
 }
