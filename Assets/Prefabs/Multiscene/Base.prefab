@@ -13648,7 +13648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _endTalkSignal: {fileID: 11400000, guid: 98054ca32b21d2245b166f1c6cd3727b, type: 2}
   <DialogBubble>k__BackingField: {fileID: 3312962925530411568}
-  _dialogWindow: {fileID: 596811820118977274}
+  DialogWindow: {fileID: 596811820118977274}
   _nameText: {fileID: 852229175076180123}
   _speakerImage: {fileID: 7612909089339389844}
   _layoutAnimator: {fileID: 3751831315198638528}
@@ -13669,7 +13669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b02f2aaaf773d45a6764b851ae942a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 7142924831224772916}
+  <View>k__BackingField: {fileID: 7142924831224772916}
   _dialogText: {fileID: 2440758958266151821}
 --- !u!114 &2355933051696075660
 MonoBehaviour:

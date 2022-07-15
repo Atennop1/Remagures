@@ -8,7 +8,7 @@ public class DialogView : MonoBehaviour
     [SerializeField] private Signal _endTalkSignal;
 
     [field: SerializeField, Header("Dialog Window")] public GameObject DialogBubble { get; private set; }
-    [SerializeField] private GameObject _dialogWindow;
+    [field: SerializeField] public GameObject DialogWindow;
 
     [Header("NPC Info Stuff")]
     [SerializeField] private Text _nameText;
@@ -33,7 +33,7 @@ public class DialogView : MonoBehaviour
 
     public void Start()
     {
-        _dialogWindowButton = _dialogWindow.GetComponent<Button>();
+        _dialogWindowButton = DialogWindow.GetComponent<Button>();
     }
 
     public void Activate()
@@ -47,7 +47,7 @@ public class DialogView : MonoBehaviour
         ThisDialog = DialogValue.ThisDialog;
 
         _dialogWindowButton.onClick.AddListener(NextReplica);
-        _dialogWindow.SetActive(true);
+        DialogWindow.SetActive(true);
         Refresh(false);
     }
 
@@ -112,7 +112,7 @@ public class DialogView : MonoBehaviour
 
     private void SkipTyping()
     {
-        _writter.NextReplica();
+        _writter.Tap();
         _choicesHandler.SetupChoices();
         CanContinue = true;
     }

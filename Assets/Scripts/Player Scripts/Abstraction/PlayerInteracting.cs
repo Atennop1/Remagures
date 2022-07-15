@@ -45,13 +45,15 @@ public class PlayerInteracting : MonoBehaviour
     public void DialogOnTaped()
     {
         if (((CurrentInteractable is InteractableWithTextDisplay && 
-        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || CurrentInteractable is NPC || TimelineView.Instance.IsPlaying) && 
+        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || 
+        (TimelineView.Instance.IsPlaying && TimelineView.Instance.CanContinue) ||
+        CurrentInteractable is NPC) &&
         _dialogView.IsDialogEnded && 
         _dialogView.CanContinue)
         {
             CurrentInteractable = null;
             CanShowContextClue = true;
-            TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
+            TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
 

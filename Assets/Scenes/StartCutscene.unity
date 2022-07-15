@@ -1958,8 +1958,6 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 434468533137529755, guid: 3ae4d37e95047214696d536014ce66e0, type: 2}
-    value: {fileID: 792268474}
   - key: {fileID: 6991217324620437242, guid: 3ae4d37e95047214696d536014ce66e0, type: 2}
     value: {fileID: 442759075}
   - key: {fileID: 6783082213267333106, guid: 3ae4d37e95047214696d536014ce66e0, type: 2}
@@ -2021,6 +2019,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596811820118977274, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1109733398811195219, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_Name
       value: Base
@@ -5507,11 +5509,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &792268474 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 596811820118977274, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
-  m_PrefabInstance: {fileID: 520454631}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &862529875 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1279738699798984184, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}

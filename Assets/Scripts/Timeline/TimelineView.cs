@@ -6,6 +6,8 @@ public class TimelineView : MonoBehaviour
     [field: SerializeField] public PlayableDirector Director { get; private set; }
     
     public bool IsPlaying { get; private set; }
+    public bool CanContinue { get; private set; }
+    
     public static TimelineView Instance { get; private set; }
 
     public void Awake()
@@ -19,5 +21,13 @@ public class TimelineView : MonoBehaviour
             IsPlaying = true;
         else
             IsPlaying = false;
+    }
+
+    public void SetCanContinue(bool value)
+    {
+        if (value && IsPlaying)
+                CanContinue = value;
+        if (!value || !IsPlaying)
+            CanContinue = value;
     }
 }

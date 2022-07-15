@@ -5,20 +5,15 @@ using UnityEngine.UI;
 
 public class DialogTypeWritter : MonoBehaviour
 {
-    [SerializeField] private DialogView _view;
+    [field: SerializeField] public DialogView View { get; private set; }
     [SerializeField] private Text _dialogText;
 
-    public string CurrentText { get; private set; }
+    private string _currentText;
     private Coroutine _typingCoroutine;
-
-    public void StartTyping(string text)
-    {
-        StartCoroutine(Type(text));
-    }
 
     public IEnumerator Type(string text)
     {
-        CurrentText = text;
+        _currentText = text;
 
         if (_typingCoroutine != null)
             StopCoroutine(_typingCoroutine);
@@ -29,7 +24,7 @@ public class DialogTypeWritter : MonoBehaviour
 
     private IEnumerator DisplayTextCoroutine(string text)
     {
-        _view.ContinueText.text = "Нажмите, чтобы пролистать";
+        View.ContinueText.text = "Нажмите, чтобы пролистать";
         _dialogText.text = "";
 
         foreach(char letter in text)
@@ -41,12 +36,12 @@ public class DialogTypeWritter : MonoBehaviour
         _typingCoroutine = null;
     }
 
-    public void NextReplica()
+    public void Tap()
     {
         if (_typingCoroutine != null)
             StopCoroutine(_typingCoroutine);
 
-        _dialogText.text = CurrentText;
+        _dialogText.text = _currentText;
         _typingCoroutine = null;
     }
 }

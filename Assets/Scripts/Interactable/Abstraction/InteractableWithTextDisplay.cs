@@ -34,7 +34,7 @@ public abstract class InteractableWithTextDisplay : Interactable
     {
         if (!CanContinue)
         {
-            _writter.NextReplica();
+            _writter.Tap();
             CanContinue = true;
             _continueText.text = "Нажмите, чтобы продолжить";
         }
