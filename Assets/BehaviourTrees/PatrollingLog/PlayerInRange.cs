@@ -17,7 +17,7 @@ namespace Remagures.AI.PatrollingLog
             {
                 if (Vector3.Distance(context.transform.position, context.patrollingLog.Path[context.patrollingLog.CurrentPoint].position) > 0.1f)
                 {
-                    context.patrollingLog.Move(context.patrollingLog.Path[context.patrollingLog.CurrentPoint].position);
+                    context.patrollingLog.Move(context.patrollingLog.Path[context.patrollingLog.CurrentPoint]);
                     context.animator.SetBool("isStaying", false);
                 }
                 else

@@ -1988,6 +1988,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5954956325347106105, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954956325347106105, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174478950769513341, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.6995388
@@ -2039,6 +2047,10 @@ PrefabInstance:
     - target: {fileID: 6174478951159283088, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750888871456322234, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
@@ -7269,6 +7281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197583492}
   - component: {fileID: 1197583491}
+  - component: {fileID: 1197583493}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -7307,6 +7320,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1197583493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197583490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff5f9b40a8c7dc4c9d0ccbc2b62f274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ActiveDebug>k__BackingField: 0
+  <GridWorldSize>k__BackingField: {x: 22, y: 14, z: 0}
+  <Offset>k__BackingField: {x: 0, y: 2, z: 0}
+  <NodeRadius>k__BackingField: 0.5
+  <ObstacleMaps>k__BackingField:
+  - {fileID: 977848626}
+  - {fileID: 286358861}
 --- !u!1001 &1428665753
 PrefabInstance:
   m_ObjectHideFlags: 0

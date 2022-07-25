@@ -23,11 +23,11 @@ public class PatrollingLog : EnemyWithTarget
         CurrentGoal = Path[CurrentPoint];
     }
     
-    public override void Move(Vector3 moveTo)
+    public override void Move(Transform targetVector)
     {
-        base.Move(moveTo);
+        base.Move(targetVector);
 
-        if (moveTo == Path[CurrentPoint].position && Pathfinding.Path.Count == 0)
+        if (targetVector == Path[CurrentPoint] && Pathfinding.Path.Count == 1)
             ChangeGoal();
     }
 }

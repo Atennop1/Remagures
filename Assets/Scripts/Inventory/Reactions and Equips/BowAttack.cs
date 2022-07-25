@@ -4,13 +4,14 @@ using UnityEngine;
 public class BowAttack : MonoBehaviour
 {
     [SerializeField] private FloatValue _currentMagic;
+    [SerializeField] private Signal _decreaseMagicSignal;
     [SerializeField] private GameObject _projectile;
     private Player _player;
     
     public void MagicAttackMethod()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        if (_player.PlayerAttack.CanAttack && _player.CurrentState != PlayerState.Attack && _player.PlayerInteract.CurrentState != InteractingState.Interact)
+        if (_player.PlayerAttack.CanAttack && _player.CurrentState != PlayerState.Attack && _player.PlayerInteracting.CurrentState != InteractingState.Interact)
             _player.PlayerAttack.StartMagicAttackCoroutine(MagicAttack());
     }
 
@@ -33,9 +34,9 @@ public class BowAttack : MonoBehaviour
 
     private void MakeArrow()
     {
-        if (_currentMagic.Value >= _player.MagicCount.MagicCost)
+        if (_currentMagic.Value >= _player.MagicCounter.MagicCost)
         {
-            _player.DecreaseMagicSignal.Invoke();
+            _decreaseMagicSignal.Invoke();
             Vector2 temp = new Vector2(_player.PlayerAnimations.PlayerAnimator.GetFloat("moveX"), _player.PlayerAnimations.PlayerAnimator.GetFloat("moveY"));
             Arrow arrow = Instantiate(_projectile, _player.gameObject.transform.position, Quaternion.identity).GetComponent<Arrow>();
 

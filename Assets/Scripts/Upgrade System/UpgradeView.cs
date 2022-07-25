@@ -49,6 +49,6 @@ public class UpgradeView : MonoBehaviour
     {
         Time.timeScale = 1;
         gameObject.transform.parent.parent.parent.parent.gameObject.SetActive(false);
-        _player.Awake();
+        _player.UniqueSetup.SetUnique(_player);
     }
 }

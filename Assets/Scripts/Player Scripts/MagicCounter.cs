@@ -44,17 +44,12 @@ public class MagicCounter : MonoBehaviour
 
     public void DecreseMagic()
     {
-        ReduceMagic(MagicCost);
+        _currentMagic.Value -= MagicCost;
 
         if (_currentMagic.Value < 0)
             _currentMagic.Value = 0;
 
         _view.UpdateValue(_currentMagic.Value);
-    }
-
-    public void ReduceMagic(float magicCost)
-    {
-        _currentMagic.Value -= magicCost;
     }
 
     public void SetupManaRune(bool active)

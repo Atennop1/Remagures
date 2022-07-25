@@ -4,9 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Collider2D))]
 public class GenericDamage : MonoBehaviour
 {
-    [Header("Values")]
     [SerializeField] protected float _damage;
-    [SerializeField] private string _otherTag;
 
     private GenericFlash _enemyFlash;
     private bool _isStuned;

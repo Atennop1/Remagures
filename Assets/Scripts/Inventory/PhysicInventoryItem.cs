@@ -2,27 +2,33 @@ using UnityEngine;
 
 public class PhysicInventoryItem : MonoBehaviour
 {
-    [SerializeField] private PlayerInventory _playerInventory;
-    [SerializeField] private BaseInventoryItem _thisItem;
+    [field: SerializeField] protected PlayerInventory PlayerInventory { get; private set; }
+    [field: SerializeField] protected BaseInventoryItem ThisItem { get; private set; }
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
-            AddItemInInventory();
-
             player.ChangeArmor();
             player.UniqueSetup.SetUnique(player);
             player.PlayerMovement.SetDirection();
             player.PlayerAnimations.ChangeAnim("moving", false);
-            
-            Destroy(gameObject);
+
+            AddItemInInventory();
         }
+    }
+
+    protected virtual bool CanAddItem()
+    {
+        return PlayerInventory && ThisItem;
     }
 
     private void AddItemInInventory()
     {
-        if (_playerInventory && _thisItem)
-            _playerInventory.Add(new Cell(_thisItem, 1));
+        if (CanAddItem())
+        {
+            PlayerInventory.Add(new Cell(ThisItem, 1));
+            Destroy(gameObject);
+        }
     }
 }

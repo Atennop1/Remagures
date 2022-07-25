@@ -4,5 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class VectorValue : ScriptableObject
 {
-    public Vector2 Value;
+    [SerializeField] private float _xValue;
+    [SerializeField] private float _yValue;
+
+    public Vector2 Value => new Vector2(_xValue, _yValue);
+
+    public void SetValue(Vector2 value)
+    {
+        _xValue = value.x;
+        _yValue = value.y;
+    }
 }

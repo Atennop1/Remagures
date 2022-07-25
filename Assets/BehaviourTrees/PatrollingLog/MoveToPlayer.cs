@@ -15,7 +15,7 @@ namespace Remagures.AI.PatrollingLog
         {
             if (Vector3.Distance(context.patrollingLog.Target.position, context.transform.position) > context.patrollingLog.AttackRadius && context.patrollingLog.CurrentState != EnemyState.Peace && context.enemyWithTarget.CurrentState != EnemyState.Stagger)
             {
-                context.patrollingLog.Move(context.patrollingLog.Target.position);
+                context.patrollingLog.Move(context.patrollingLog.Target);
                 context.animator.SetBool("isStaying", false);
                 return State.Failure;
             }

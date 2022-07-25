@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bc03f8904066a43a5d77fe248dd705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _currentMagic: {fileID: 11400000, guid: c39bdcba5a455684295f7557658e7da8, type: 2}
+  _decreaseMagicSignal: {fileID: 11400000, guid: 6844ca2f4735c474283727379afa0409, type: 2}
   _projectile: {fileID: 1375534699777263283, guid: 7fae0100c5fbd7d40a52f53e20091f5d, type: 3}

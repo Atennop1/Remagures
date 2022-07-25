@@ -2021,7 +2021,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 596811820118977274, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1109733398811195219, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_Name

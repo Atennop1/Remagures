@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     
     public void Start()
     {
+        Application.targetFrameRate = 60;
         if (_isNewGame.Value)
         {
             _newGameMenu.SetActive(true);

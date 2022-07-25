@@ -108,6 +108,6 @@ public class InventoryView : MonoBehaviour
     public virtual void SetupPlayer()
     {
         Time.timeScale = 1;
-        _player.Awake();
+        _player.UniqueSetup.SetUnique(_player);
     }
 }

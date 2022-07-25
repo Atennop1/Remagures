@@ -27,7 +27,7 @@ public class SceneTransition : MonoBehaviour
         if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             StartCoroutine(FadeCoroutine());
-            _playerPositionStorage.Value = _playerPosition;
+            _playerPositionStorage.SetValue(_playerPosition);
         }
     }
     

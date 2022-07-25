@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 629105781371900214}
   - component: {fileID: 8336765939597832521}
   - component: {fileID: 5057979239018984992}
-  m_Layer: 0
+  - component: {fileID: 2800000895503308571}
+  m_Layer: 6
   m_Name: Patrol Log enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,9 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: Player
   _strength: 2
-  _knockTime: 0.4
+  _knockTime: 0.15
 --- !u!114 &637511158790658983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoomSignal>k__BackingField: {fileID: 0}
-  <Speed>k__BackingField: 0.5
+  <Speed>k__BackingField: 2
   <ChaseRadius>k__BackingField: 2
   <AttackRadius>k__BackingField: 1.1
   <Target>k__BackingField: {fileID: 0}
@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
-  _otherTag: Player
 --- !u!114 &5578047304630380570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireMinTime: 1
   _fireMaxTime: 2
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 136
   _maxHealth: {fileID: 11400000, guid: eeddf3d2c7598014299b69a33a6db09d, type: 2}
   _lootTable: {fileID: 11400000, guid: a97e9b9d92219ed4a92b25bc24032ea6, type: 2}
   _deathEffect: {fileID: 8327079094225007804, guid: 2c56ca51b04c330499741b9183c21bdf, type: 3}
@@ -299,7 +301,7 @@ MonoBehaviour:
   <RegularColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <DamageColor>k__BackingField: {r: 1, g: 0.08018869, b: 0.08018869, a: 1}
   <FireColor>k__BackingField: {r: 1, g: 0.3878788, b: 0, a: 1}
-  _flashDuration: 0.4
+  _flashDuration: 0.075
   _numberOfFlashes: 3
   <SpriteRenderer>k__BackingField: {fileID: 6412523521960965334}
 --- !u!114 &629105781371900214
@@ -340,3 +342,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5888c8bc20454044fbd28c588f17f9f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2800000895503308571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941ec4a6878cb11498a2c338f7740d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 637511158790658983}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 136

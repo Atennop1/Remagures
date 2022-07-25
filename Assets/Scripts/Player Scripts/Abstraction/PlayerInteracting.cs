@@ -13,8 +13,11 @@ public class PlayerInteracting : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private DialogView _dialogView;
 
+    [Space]
     [SerializeField] private Signal _detectInteractSignal;
+    [SerializeField] private ItemValue _currentItem;
 
+    [Space]
     [SerializeField] private SpriteRenderer _receivedItemSprite;
     [SerializeField] private GameObject _dialogWindow;
 
@@ -26,11 +29,11 @@ public class PlayerInteracting : MonoBehaviour
 
     public void RaiseItem()
     {
-        if (_player.CurrentState != PlayerState.Interact && _player.CurrentItem.Value != null)
+        if (_player.CurrentState != PlayerState.Interact && _currentItem.Value != null)
         {
             _player.PlayerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, true);
             _player.ChangeState(PlayerState.Interact);
-            _receivedItemSprite.sprite = _player.CurrentItem.Value.ItemSprite;
+            _receivedItemSprite.sprite = _currentItem.Value.ItemSprite;
         }
     }
 
@@ -44,22 +47,21 @@ public class PlayerInteracting : MonoBehaviour
 
     public void DialogOnTaped()
     {
-        if (((CurrentInteractable is InteractableWithTextDisplay && 
-        (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || 
-        (TimelineView.Instance.IsPlaying && TimelineView.Instance.CanContinue) ||
+        if (((CurrentInteractable is InteractableWithTextDisplay && (CurrentInteractable as InteractableWithTextDisplay).CanContinue) || 
+        (TimelineView.Instance != null && TimelineView.Instance.IsPlaying && TimelineView.Instance.CanContinue) ||
         CurrentInteractable is NPC) &&
         _dialogView.IsDialogEnded && 
         _dialogView.CanContinue)
         {
             CurrentInteractable = null;
             CanShowContextClue = true;
-            TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            TimelineView.Instance?.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
 
             _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;
-            _player.CurrentItem.Value = null;
+            _currentItem.Value = null;
             
             _player.PlayerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, false);
             _dialogWindow.SetActive(false);

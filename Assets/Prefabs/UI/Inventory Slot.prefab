@@ -95,6 +95,7 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 4446202864927662826}
   <NoneSprite>k__BackingField: {fileID: 0}
   <ItemCount>k__BackingField: {fileID: 2496951747276599758}
+  <ThisItem>k__BackingField: {fileID: 0}
 --- !u!114 &2843937694476566515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.5, y: -56.6}
-  m_SizeDelta: {x: 302.9437, y: 100.679}
+  m_AnchoredPosition: {x: 19.1855, y: -56.6}
+  m_SizeDelta: {x: 405.6718, y: 100.679}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2611392341154971123
 CanvasRenderer:
@@ -306,4 +307,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 1000

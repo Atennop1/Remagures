@@ -11,9 +11,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackMethod()
     {
-        if (_player.PlayerInteract.CurrentState == InteractingState.Ready)
+        if (_player.PlayerInteracting.CurrentState == InteractingState.Ready)
         {
-            _player.PlayerInteract.Interact();
+            _player.PlayerInteracting.Interact();
             return;
         }
             

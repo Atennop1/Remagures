@@ -4,11 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class Grid2D : MonoBehaviour
 {
-    [field: SerializeField] public bool Debug { get; private set; }
+    [field: SerializeField] public bool ActiveDebug { get; private set; }
     [field: SerializeField] public Vector3 GridWorldSize { get; private set; }
     [field: SerializeField] public Vector3 Offset { get; private set; }
     [field: SerializeField] public float NodeRadius { get; private set; }
-    [field: SerializeField] public Tilemap Obstaclemap { get; private set; }
+    [field: SerializeField] public Tilemap[] ObstacleMaps { get; private set; }
 
     public Node2D[,] Grid { get; private set; }
 
@@ -36,10 +36,15 @@ public class Grid2D : MonoBehaviour
                 Vector3 worldPoint = _worldBottomLeft + Vector3.right * (x * _nodeDiameter + NodeRadius) + Vector3.up * (y * _nodeDiameter + NodeRadius);
                 Grid[x, y] = new Node2D(false, worldPoint, x, y);
 
-                if (Obstaclemap.HasTile(Obstaclemap.WorldToCell(Grid[x, y].WorldPosition)))
-                    Grid[x, y].SetObstacle(true);
-                else
+                foreach (Tilemap map in ObstacleMaps)
+                {
+                    if (map.HasTile(map.WorldToCell(Grid[x, y].WorldPosition)))
+                    {
+                        Grid[x, y].SetObstacle(true);
+                        break;
+                    }
                     Grid[x, y].SetObstacle(false);
+                }
             }
         }
     }
@@ -72,21 +77,12 @@ public class Grid2D : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (Debug == true)
+        if (ActiveDebug == true && Grid != null)
         {
-            Gizmos.DrawWireCube(transform.position + Offset, new Vector3(GridWorldSize.x, GridWorldSize.y, 1));
-
-            if (Grid != null)
+            foreach (Node2D node in Grid)
             {
-                foreach (Node2D n in Grid)
-                {
-                    if (n.Obstacle)
-                        Gizmos.color = Color.red;
-                    else
-                        Gizmos.color = Color.white;
-
-                    Gizmos.DrawCube(n.WorldPosition, Vector3.one * (NodeRadius - 0.2f));
-                }
+                Gizmos.color = node.Obstacle ? Color.red : Color.white;
+                Gizmos.DrawCube(node.WorldPosition, Vector3.one * (NodeRadius - 0.2f));
             }
         }
     }

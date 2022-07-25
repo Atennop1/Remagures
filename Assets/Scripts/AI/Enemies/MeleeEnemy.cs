@@ -17,10 +17,12 @@ public class MeleeEnemy : EnemyWithTarget
     {
         EnemyAnimations.Animator.SetBool("isStaying", false);
         EnemyAnimations.Animator.SetBool("attacking", true);
+        ChangeState(EnemyState.Attack);
 
         yield return new WaitForSeconds(0.35f);
 
         EnemyAnimations.Animator.SetBool("attacking", false);
         EnemyAnimations.Animator.SetBool("isStaying", true);
+        ChangeState(EnemyState.None);
     }
 }

@@ -13,9 +13,7 @@ public class MeatTimer : MonoBehaviour
     {
         Timer = 300;
 
-        if (_view.RawCount.Value <= 0)
-            _timeCounter.SaveDate("MeatTime");
-        else
+        if (_view.RawCount.Value > 0)
             Timer -= _timeCounter.CheckDate("MeatTime");
             
         _view.UpdateMeat();
@@ -27,7 +25,7 @@ public class MeatTimer : MonoBehaviour
         {
             if (Timer <= 0 && Timer > -300)
             {
-                Timer = 300;
+                Timer = 300 + Timer;
                 _timeCounter.SaveDate("MeatTime");
             }
             else if (Timer < -300)
@@ -35,7 +33,6 @@ public class MeatTimer : MonoBehaviour
                 
             _view.RawCount.Value--;
             _view.CookedCount.Value++;
-            _view.UpdateMeat();
         }
 
         if (_view.RawCount.Value > 0)
@@ -44,5 +41,6 @@ public class MeatTimer : MonoBehaviour
             _timeCounter.SaveDate("MeatTime");
 
         _view.UpdateTimer();
+        _view.UpdateMeat();
     }
 }

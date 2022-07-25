@@ -8,7 +8,7 @@ public class ContextClue : MonoBehaviour
 
     public void ChangeContext()
     {
-        _contextActive = _player.PlayerInteract.CurrentInteractable != null && _player.PlayerInteract.CanShowContextClue;
+        _contextActive = _player.PlayerInteracting.CurrentInteractable != null && _player.PlayerInteracting.CanShowContextClue;
         _contextClue.SetActive(_contextActive);
     }
 }

@@ -82,27 +82,24 @@ public class InventoryUniqueSetup : MonoBehaviour
             SetupChoiceable(_runeSlot, RuneInventory.MyInventory[i]);
     }
 
-    public void SetupChoiceable(InventorySlot slot, IReadOnlyCell cell)
+    private void SetupChoiceable(InventorySlot slot, IReadOnlyCell cell)
     {
         IChoiceableItem choiceableItem = cell.Item as IChoiceableItem;
             if (choiceableItem != null && choiceableItem.IsCurrent)
                 slot.Setup(new Cell(choiceableItem as BaseInventoryItem, 1), View);
     }
 
-    public void SetArmorPath(IReadOnlyCell cell, InventorySlot slot, ref float currentMaxValue, Animator animator = null)
+    private void SetArmorPath(IReadOnlyCell cell, InventorySlot slot, ref float currentMaxValue, Animator animator = null)
     {
         IArmorItem armorItem = cell.Item as IArmorItem;
 
         if (armorItem?.Armor > currentMaxValue)
-            currentMaxValue = armorItem.Armor;
-
-        if (animator != null)
         {
+            currentMaxValue = armorItem.Armor;
             IDisplayableItem displayableItem = cell.Item as IDisplayableItem;
             animator.gameObject.SetActive(true);
             animator.runtimeAnimatorController = displayableItem?.OverrideController;
+            slot.Setup(cell, View);
         }
-
-        slot.Setup(cell, View);
     }
 }

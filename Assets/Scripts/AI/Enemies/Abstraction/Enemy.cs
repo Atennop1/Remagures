@@ -4,6 +4,7 @@ using UnityEngine;
 public enum EnemyState
 {
     None,
+    Attack,
     Stagger,
     Peace
 }

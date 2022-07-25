@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5368136149034390555}
   - component: {fileID: 5368136149034390552}
-  - component: {fileID: 5368136149034390553}
   - component: {fileID: 5368136149034390554}
+  - component: {fileID: 3783237808739485287}
   m_Layer: 0
   m_Name: Leather Leggins
   m_TagString: Untagged
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &5368136149034390553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368136149034390756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ee32524182fbb4b9a277e9f3a5ddd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInventory: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
-  _thisItem: {fileID: 11400000, guid: b43d0f0cb0ab6fd478b9bdffcf3ba999, type: 2}
 --- !u!61 &5368136149034390554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +112,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50988704, y: 0.2442226}
   m_EdgeRadius: 0
+--- !u!114 &3783237808739485287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368136149034390756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7354eb64f67af374dbf8f6c10cd513bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerInventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
+  <ThisItem>k__BackingField: {fileID: 11400000, guid: b43d0f0cb0ab6fd478b9bdffcf3ba999, type: 2}

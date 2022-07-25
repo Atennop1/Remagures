@@ -73,12 +73,15 @@ public class Pathfinding2D : MonoBehaviour
 
     private void RetracePath(Node2D startNode, Node2D endNode)
     {
+        _path.Clear();
         Node2D currentNode = endNode;
+
         while (currentNode != startNode)
         {
             _path.Add(currentNode);
             currentNode = currentNode.Parent;
         }
+
         _path.Reverse();
         _path.Remove(startNode);
     }
@@ -98,5 +101,11 @@ public class Pathfinding2D : MonoBehaviour
         Gizmos.color = Color.black;             
         foreach (Node2D node in Path)
             Gizmos.DrawCube(node.WorldPosition, Vector3.one * 0.3f);
+
+        if (_targetNode != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawCube(_targetNode.WorldPosition, Vector3.one * 0.3f);
+        }
     }
 }

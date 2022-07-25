@@ -7,7 +7,7 @@ public class SavePoint : MonoBehaviour
     
     public void OnTriggerEnter2D()
     {
-        _playerPosition.Value = transform.position + Vector3.up / 2;
+        _playerPosition.SetValue(transform.position + Vector3.up / 2);
         _saveContainer.SaveGame();
     }
 }

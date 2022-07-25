@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_player.PlayerInteract.CurrentState == InteractingState.Interact)
+        if (_player.PlayerInteracting.CurrentState == InteractingState.Interact)
         {
             _playerInput.enabled = false;
             _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _player.PlayerAttack.CanAttack && (_player.CurrentState == PlayerState.Walk || _player.CurrentState == PlayerState.Idle) && _player.PlayerInteract.CurrentState != InteractingState.Interact)
+        if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _player.PlayerAttack.CanAttack && (_player.CurrentState == PlayerState.Walk || _player.CurrentState == PlayerState.Idle) && _player.PlayerInteracting.CurrentState != InteractingState.Interact)
         {
             SetDirection();
             _player.ChangeState(PlayerState.Walk);

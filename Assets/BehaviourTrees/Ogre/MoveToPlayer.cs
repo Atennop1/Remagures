@@ -13,9 +13,9 @@ namespace Remagures.AI.Ogre
 
         protected override State OnUpdate() 
         {
-            if (Vector3.Distance(context.meleeEnemy.Target.position, context.transform.position) >= context.meleeEnemy.AttackRadius && context.meleeEnemy.CurrentState != EnemyState.Peace && context.enemyWithTarget.CurrentState != EnemyState.Stagger)
+            if (Vector3.Distance(context.meleeEnemy.Target.position, context.transform.position) >= context.meleeEnemy.AttackRadius && context.meleeEnemy.CurrentState == EnemyState.None)
             {
-                context.meleeEnemy.Move(context.meleeEnemy.Target.position);
+                context.meleeEnemy.Move(context.meleeEnemy.Target);
                 context.animator.SetBool("isStaying", false);
                 return State.Failure;
             }

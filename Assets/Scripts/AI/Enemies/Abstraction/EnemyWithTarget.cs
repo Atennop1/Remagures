@@ -16,14 +16,16 @@ public class EnemyWithTarget : Enemy
     public virtual void Start()
     {
         Pathfinding = GetComponent<Pathfinding2D>();
+        StartCoroutine(CanFindPathCoroutine());
         CanFindPath = true;
     }
 
-    public virtual void Move(Vector3 moveTo)
+    public virtual void Move(Transform targetTransform)
     {
         if (CanFindPath && CurrentState != EnemyState.Stagger) 
         {
-            Pathfinding.FindPath(transform.position, moveTo);
+            Pathfinding.FindPath(transform.position, targetTransform.position + 
+            (targetTransform.gameObject.TryGetComponent<Player>(out Player player) ? new Vector3(0, 0.6f, 0) : Vector3.zero));
             if (Pathfinding.Path != null && Pathfinding.Path.Count > 0)
             {
                 Vector2 temp = Pathfinding.Path[0].WorldPosition + new Vector3(0, 0.5f, 0) - transform.position;
@@ -52,11 +54,26 @@ public class EnemyWithTarget : Enemy
         while ((transform.position.x < targetPosition.x - 0.1f || transform.position.x > targetPosition.x + 0.1f) ||
                (transform.position.y < targetPosition.y - 0.1f || transform.position.y > targetPosition.y + 0.1f))
         {
-            Vector3 temp = transform.position + speed * Time.deltaTime * direction;
+            Vector3 temp = transform.position + speed * Time.deltaTime * (targetPosition - transform.position).normalized;
             MyRigidbody.MovePosition(temp);
             yield return new WaitForFixedUpdate();
+
+            if (CurrentState == EnemyState.Attack)
+            {
+                CanFindPath = true;
+                yield break;
+            }
         }
         
         CanFindPath = true;
+    }
+
+    private IEnumerator CanFindPathCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            CanFindPath = true;
+        }
     }
 }

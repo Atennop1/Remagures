@@ -38,7 +38,7 @@ public class UpgradeSlot : MonoBehaviour
         View.Inventory.Remove(new Cell(currentItem.ItemsForLevels[currentItem.ThisItemLevel-2], 1));
         View.Inventory.Add(new Cell(currentItem as BaseInventoryItem, 1));
 
-        _player.Awake();
+        _player.UniqueSetup.SetUnique(_player);
 
         _sharps.Value -= currentItem.CostForThisItem;
         View.SharpsCountText.text = _sharps.Value.ToString(); 

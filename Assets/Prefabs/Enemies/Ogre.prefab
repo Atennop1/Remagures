@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 7777604111354389977}
   - component: {fileID: 1963926431802909317}
   - component: {fileID: 2569734511619073517}
-  - component: {fileID: 5613938133775412495}
-  m_Layer: 0
+  - component: {fileID: 5955572910482683659}
+  m_Layer: 8
   m_Name: Right hit box
-  m_TagString: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7777604111354389977
 Transform:
   m_ObjectHideFlags: 0
@@ -75,10 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: 
-  _strength: 0
-  _knockTime: 0
---- !u!114 &5613938133775412495
+  _strength: 2
+  _knockTime: 0.15
+--- !u!114 &5955572910482683659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,15 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4606637794801938309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9d5658ce92b4e4da57286fd55c8093, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dcdc79b9e512d642aebcc7674ec6344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _otherTag: 
-  _isPlayerAttack: 0
-  _isPlayerMagic: 0
-  _isArrow: 0
-  <Player>k__BackingField: {fileID: 0}
+  _damage: 4
 --- !u!1 &5206144871289648944
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,14 +101,14 @@ GameObject:
   - component: {fileID: 437838909548391582}
   - component: {fileID: 1691320622986062733}
   - component: {fileID: 6649720665651447741}
-  - component: {fileID: 7109564233805929691}
-  m_Layer: 0
+  - component: {fileID: 5142734734997405241}
+  m_Layer: 8
   m_Name: Left hit box
-  m_TagString: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &437838909548391582
 Transform:
   m_ObjectHideFlags: 0
@@ -171,10 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: 
-  _strength: 0
-  _knockTime: 0
---- !u!114 &7109564233805929691
+  _strength: 2
+  _knockTime: 0.15
+--- !u!114 &5142734734997405241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,15 +176,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5206144871289648944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9d5658ce92b4e4da57286fd55c8093, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dcdc79b9e512d642aebcc7674ec6344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _otherTag: 
-  _isPlayerAttack: 0
-  _isPlayerMagic: 0
-  _isArrow: 0
-  <Player>k__BackingField: {fileID: 0}
+  _damage: 4
 --- !u!1 &5941419763813819445
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,9 +203,10 @@ GameObject:
   - component: {fileID: 4790146375393141916}
   - component: {fileID: 7354477435913834917}
   - component: {fileID: 5941419763179884824}
-  m_Layer: 0
+  - component: {fileID: 2118726956}
+  m_Layer: 6
   m_Name: Ogre
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
-  signalEvent:
+  _signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
+  _signalEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5941419763813819447}
@@ -427,9 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <RoomSignal>k__BackingField: {fileID: 0}
-  <Speed>k__BackingField: 0.5
+  <Speed>k__BackingField: 2
   <ChaseRadius>k__BackingField: 6
-  <AttackRadius>k__BackingField: 1.1
+  <AttackRadius>k__BackingField: 1.3
   <Target>k__BackingField: {fileID: 0}
 --- !u!114 &5941419763813819453
 MonoBehaviour:
@@ -443,9 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: Player
   _strength: 2
-  _knockTime: 0.4
+  _knockTime: 0.15
 --- !u!114 &4489423086310422831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +448,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireMinTime: 1
   _fireMaxTime: 2
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 136
   _maxHealth: {fileID: 11400000, guid: 8a63e14d6d330e547bdbac8406565945, type: 2}
   _lootTable: {fileID: 11400000, guid: 29dfacbe36b218f439c0eb147f8c080a, type: 2}
   _deathEffect: {fileID: 8327079094225007804, guid: 2c56ca51b04c330499741b9183c21bdf, type: 3}
@@ -476,7 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
-  _otherTag: Player
 --- !u!114 &6664856122858439379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,9 +520,25 @@ MonoBehaviour:
   <RegularColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <DamageColor>k__BackingField: {r: 1, g: 0.08018869, b: 0.08018869, a: 1}
   <FireColor>k__BackingField: {r: 1, g: 0.3878788, b: 0, a: 1}
-  _flashDuration: 0.4
+  _flashDuration: 0.075
   _numberOfFlashes: 3
   <SpriteRenderer>k__BackingField: {fileID: 5941419763813819452}
+--- !u!114 &2118726956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941419763813819445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941ec4a6878cb11498a2c338f7740d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 5941419763813819447}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 136
 --- !u!1 &7701355139313045365
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,14 +550,14 @@ GameObject:
   - component: {fileID: 4189467312650784621}
   - component: {fileID: 1696582654944957644}
   - component: {fileID: 3873621203241631300}
-  - component: {fileID: 5270111101767036099}
-  m_Layer: 0
+  - component: {fileID: 2673872841421938816}
+  m_Layer: 8
   m_Name: Down hit box
-  m_TagString: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4189467312650784621
 Transform:
   m_ObjectHideFlags: 0
@@ -608,10 +614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: 
-  _strength: 0
-  _knockTime: 0
---- !u!114 &5270111101767036099
+  _strength: 2
+  _knockTime: 0.15
+--- !u!114 &2673872841421938816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -620,15 +625,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7701355139313045365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9d5658ce92b4e4da57286fd55c8093, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dcdc79b9e512d642aebcc7674ec6344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _otherTag: 
-  _isPlayerAttack: 0
-  _isPlayerMagic: 0
-  _isArrow: 0
-  <Player>k__BackingField: {fileID: 0}
+  _damage: 4
 --- !u!1 &8163513002122489499
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,14 +640,14 @@ GameObject:
   - component: {fileID: 5340204151316312248}
   - component: {fileID: 7987083419420165818}
   - component: {fileID: 6845207938009954445}
-  - component: {fileID: 8562330126908137428}
-  m_Layer: 0
+  - component: {fileID: 6002223563975997568}
+  m_Layer: 8
   m_Name: Up hit box
-  m_TagString: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5340204151316312248
 Transform:
   m_ObjectHideFlags: 0
@@ -704,10 +704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: 
-  _strength: 0
-  _knockTime: 0
---- !u!114 &8562330126908137428
+  _strength: 2
+  _knockTime: 0.15
+--- !u!114 &6002223563975997568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -716,12 +715,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8163513002122489499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9d5658ce92b4e4da57286fd55c8093, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dcdc79b9e512d642aebcc7674ec6344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _otherTag: 
-  _isPlayerAttack: 0
-  _isPlayerMagic: 0
-  _isArrow: 0
-  <Player>k__BackingField: {fileID: 0}
+  _damage: 4

@@ -59,11 +59,12 @@ public class MeatView : MonoBehaviour
         UpdateMeat();
 
         Unity.Notifications.Android.AndroidNotificationCenter.CancelNotification(1);
-        MeatNotificationComponent.Instance.Init();
+        MeatNotificationComponent.Instance?.Init();
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ee32524182fbb4b9a277e9f3a5ddd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInventory: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
-  _thisItem: {fileID: 11400000, guid: 63f02cd927772cd43a3d5b8838e272e1, type: 2}
+  <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
+  <ThisItem>k__BackingField: {fileID: 11400000, guid: 63f02cd927772cd43a3d5b8838e272e1, type: 2}
 --- !u!61 &7945019617559833535
 BoxCollider2D:
   m_ObjectHideFlags: 0
