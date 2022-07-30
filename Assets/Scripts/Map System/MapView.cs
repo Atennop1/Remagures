@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapView : MonoBehaviour
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private QuestGoalsView _goalsView;
 
     [Space]
     [SerializeField] private Transform _mapContainer;
@@ -30,15 +31,16 @@ public class MapView : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void OpenMap(Map map)
+    public Map OpenMap(Map map)
     {
         ClearMap();
 
         _currentMap = Instantiate(map, transform.position, Quaternion.identity, _mapContainer);
-        (_currentMap as LocationMap)?.Init(_player, this);
-        (_currentMap as Map)?.Init(this);
+        (_currentMap as LocationMap)?.Init(this, _goalsView, _player);
+        (_currentMap as Map)?.Init(this, _goalsView);
 
         _changeScaleButton.interactable = _currentMap.ParentMap != null;
+        return _currentMap;
     }
 
     public void CantOpenMap()
@@ -51,5 +53,10 @@ public class MapView : MonoBehaviour
     {
         foreach (Transform child in _mapContainer)
             Destroy(child.gameObject);
+    }
+
+    private void Start()
+    {
+        Close();
     }
 }

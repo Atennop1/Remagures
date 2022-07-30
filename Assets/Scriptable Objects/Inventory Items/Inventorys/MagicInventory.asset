@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3854077ce51b7ea4094356fbdd8cf241, type: 3}
   m_Name: MagicInventory
   m_EditorClassIdentifier: 
-  _inventory: []
+  _inventory:
+  - <ItemCount>k__BackingField: 1
+    <Item>k__BackingField: {fileID: 11400000, guid: a0e34a1a66df50c46a2121431ca5617c, type: 2}

@@ -5,10 +5,10 @@ using UnityEngine;
 public class MapChanger : MonoBehaviour
 {
     [field: SerializeField] public Map MapToOpen { get; private set; }
+    [SerializeField] private Map _thisMap;
 
     [Space]
-    [SerializeField] private Transform _playerMarkerPosition;
-    [SerializeField] private Transform _playerMarker;
+    [SerializeField] private Transform _playerMarkerTransform;
 
     [Space]
     [SerializeField] private Vector3 _playerMarkerScale;
@@ -28,13 +28,14 @@ public class MapChanger : MonoBehaviour
             _view.CantOpenMap();
     }
 
-    public void DisplayPlayerMarker()
+    public void DisplayMarkers()
     {
-        if (MapToOpen.ContainsPlayerInMapTree())
-        {
-            _playerMarker.gameObject.SetActive(true);
-            _playerMarker.position = _playerMarkerPosition.position;
-            _playerMarker.localScale = _playerMarkerScale;
-        }
+        foreach (IMarker marker in _thisMap.Markers)
+            marker.TryDisplay(_playerMarkerTransform, _playerMarkerScale, MapToOpen);
+    }
+
+    public bool ContainsInMapTree<T>() where T: IMarker
+    {
+        return MapToOpen.GetMarker<T>().ContainsInMapTree(MapToOpen);
     }
 }

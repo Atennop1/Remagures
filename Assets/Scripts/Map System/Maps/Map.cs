@@ -1,57 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System;
 
 public class Map : MonoBehaviour
 {
     [field: SerializeField] public List<SceneReference> MapScenes { get; private set; }
+    [SerializeField] private List<GameObject> _markerObjects;
+
     [field: SerializeField, Space] public Map ParentMap { get; private set; }
-    [field: SerializeField] protected RectTransform PlayerMarker { get; private set; }
+    [field: SerializeField] protected RectTransform MapImageTransform { get; private set; }
 
-    private List<MapChanger> _changers;
+    public IReadOnlyList<IMarker> Markers => _markers;
+    private List<IMarker> _markers;
 
-    public void Awake()
+    public List<MapChanger> Changers { get; private set; }
+
+    public T GetMarker<T>() where T: IMarker
     {
-        SetupChangers();
+        SetupMarkers();
+        foreach (IMarker marker in _markers)
+            if (marker is T)
+                return (T)marker;
+
+        throw new ArgumentException("Map doesn't contains marker with type " + typeof(T));
     }
 
-    public void SetupChangers()
+    public List<T> GetMarkers<T>() where T: IMarker
     {
-        _changers = new List<MapChanger>();
-        foreach (Transform child in PlayerMarker.parent)
-            if (child.gameObject.TryGetComponent<MapChanger>(out MapChanger changer))
-                _changers.Add(changer);
+        SetupMarkers();
+        List<T> markersList = new List<T>();
+        foreach (IMarker marker in _markers)
+            if (marker is T)
+                markersList.Add((T)marker);
+
+        return markersList;
     }
 
-    public void Init(MapView view)
+    public void Init(MapView view, QuestGoalsView goalsView)
     {
-        foreach (MapChanger changer in _changers)
+        foreach (IMarker marker in _markers)
+        {
+            marker.Init(view);
+            (marker as QuestMarker)?.GoalsInit(goalsView);
+        }
+
+        foreach (MapChanger changer in Changers)
             changer.Init(view);
-            
-        StartCoroutine(InitCoroutine());
-    }
 
-    public bool ContainsPlayerInMapTree()
-    {
-        SetupChangers();
-        if (ContainsPlayerOnMap())
-            return true;
-        
-        foreach (MapChanger changer in _changers)
-            if (changer.MapToOpen.ContainsPlayerInMapTree())
-                return true;
-
-        return false;
-    }
-
-    public bool ContainsPlayerOnMap()
-    {
-        foreach (SceneReference scene in MapScenes)
-            if (scene.ScenePath == SceneManager.GetActiveScene().path)
-                return true;
-
-        return false;
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(InitCoroutine());
     }
 
     public bool IsVisited()
@@ -66,23 +64,42 @@ public class Map : MonoBehaviour
         return false;
     }
 
+    public void SetupChangers()
+    {
+        Changers = new List<MapChanger>();
+        foreach (Transform child in MapImageTransform)
+            if (child.gameObject.TryGetComponent<MapChanger>(out MapChanger changer))
+                Changers.Add(changer);
+    }
+
+    public void SetupMarkers()
+    {
+        _markers = new List<IMarker>();
+        foreach (GameObject obj in _markerObjects)
+            if (obj.TryGetComponent<IMarker>(out IMarker marker))
+                _markers.Add(marker);
+    }
 
     public virtual void DisplayPlayerMarker() { }
 
     private void OnEnable()
     {
-        PlayerMarker.gameObject.SetActive(false);
-        
-        if (ContainsPlayerOnMap())       
-            DisplayPlayerMarker();
+        foreach (MapChanger changer in Changers)
+            changer.DisplayMarkers();
 
-        foreach (MapChanger changer in _changers)
-            changer.DisplayPlayerMarker();
+        if (GetMarker<PlayerMarker>().ContainsInMap(this))       
+            DisplayPlayerMarker();
     }
 
     private IEnumerator InitCoroutine()
     {
         yield return new WaitForEndOfFrame();
         OnEnable();
+    }
+
+    private void Awake()
+    {
+        SetupMarkers();
+        SetupChangers();
     }
 }

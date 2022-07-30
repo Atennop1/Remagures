@@ -6,7 +6,7 @@ public abstract class Saver : MonoBehaviour
 {
     [field: SerializeField] public string Path { get; private set; }
     
-    public void SaveObjectToJson(string path, ScriptableObject toSave)
+    public void SaveObjectToJson(string path, Object toSave)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + path);
@@ -15,7 +15,7 @@ public abstract class Saver : MonoBehaviour
         file.Close();
     }
     
-    public void LoadObjectFromJson(string path, ScriptableObject toLoad)
+    public void LoadObjectFromJson(string path, Object toLoad)
     {
         BinaryFormatter bf = new BinaryFormatter();
         if (File.Exists(Application.persistentDataPath + path))

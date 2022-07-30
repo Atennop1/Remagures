@@ -26,12 +26,12 @@ public class CameraMove : MonoBehaviour
 
     public void ScreenKick()
     {
-        _anim.SetBool("Kick", true);
         StartCoroutine(ScreenKickCoroutine());
     }
 
     public IEnumerator ScreenKickCoroutine()
     {
+        _anim.SetBool("Kick", true);
         yield return null;
         _anim.SetBool("Kick", false);
     }

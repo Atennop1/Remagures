@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Player _player;
+
+    [Space]
     [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private MapExplorer _explorer;
+
+    [Space]
     [SerializeField] private float _speed;
 
     private Rigidbody2D _thisRigidbody;
@@ -24,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(Vector2 input)
-    {   
+    {  
         float joyStickCoefficent = input.y / input.x;
         if (joyStickCoefficent >= 1 || joyStickCoefficent <= -1)
         {
@@ -38,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         }
         _thisRigidbody.velocity = _moveVector * _speed * Time.deltaTime;
         _player.PlayerAnimations.SetAnimFloat(_moveVector);
+        _explorer?.Explore();
     }
 
     private void FixedUpdate()

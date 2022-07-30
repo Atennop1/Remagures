@@ -5873,6 +5873,7 @@ GameObject:
   - component: {fileID: 167602696398208565}
   - component: {fileID: 1019764548317057140}
   - component: {fileID: 791429147485281519}
+  - component: {fileID: 1208769433104765335}
   - component: {fileID: 185200194974739605}
   - component: {fileID: 528757722386605099}
   - component: {fileID: 2420318332630450766}
@@ -5957,6 +5958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450765}
   _playerInput: {fileID: 3925213156728570895}
+  _explorer: {fileID: 1208769433104765335}
   _speed: 190
 --- !u!114 &3266285230955312270
 MonoBehaviour:
@@ -6024,6 +6026,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450765}
+--- !u!114 &1208769433104765335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420318332630450760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8036072125288d24b8485c075583ca43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 4737656151434784661}
+  _goalsView: {fileID: 363932344586224825}
+  _setup: {fileID: 5630234820236622236}
 --- !u!114 &185200194974739605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11054,7 +11071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8531187377237886789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11072,7 +11089,7 @@ RectTransform:
   - {fileID: 7401935859581799442}
   - {fileID: 8469186733052581162}
   - {fileID: 3130540549497216643}
-  m_Father: {fileID: 6174478951381654335}
+  m_Father: {fileID: 3056406387404811180}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11154,6 +11171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450764}
+  _goalsView: {fileID: 363932344586224825}
   _mapContainer: {fileID: 5846037849110574642}
   _changeScaleButton: {fileID: 6936041258834930167}
   _animator: {fileID: 6407195827668169727}
@@ -13568,7 +13586,6 @@ Transform:
   - {fileID: 288162601}
   - {fileID: 645320544953785148}
   - {fileID: 7285181517056730564}
-  - {fileID: 8531187377237886789}
   - {fileID: 3056406387404811180}
   m_Father: {fileID: 4809277111731087504}
   m_RootOrder: 2
@@ -16071,8 +16088,9 @@ Transform:
   - {fileID: 1865822418266776047}
   - {fileID: 2792252309921423137}
   - {fileID: 3271679397806963643}
+  - {fileID: 8531187377237886789}
   m_Father: {fileID: 6174478951381654335}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6783010434209353370
 GameObject:

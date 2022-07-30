@@ -15,7 +15,7 @@ MonoBehaviour:
   <Quest>k__BackingField: {fileID: 11400000}
   <Description>k__BackingField: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438
     \u0441 \u0447\u0443\u0432\u0430\u043A\u043E\u043C"
-  <CurrentAmount>k__BackingField: 1
+  <CurrentAmount>k__BackingField: 0
   <RequiredAmount>k__BackingField: 1
   <CanBeSkipped>k__BackingField: 0
 --- !u!114 &11400000
@@ -39,7 +39,7 @@ MonoBehaviour:
   Goals:
   - {fileID: 5314236756782426285}
   - {fileID: -8336834349173289999}
-  <Completed>k__BackingField: 1
+  <Completed>k__BackingField: 0
 --- !u!114 &5314236756782426285
 MonoBehaviour:
   m_ObjectHideFlags: 0

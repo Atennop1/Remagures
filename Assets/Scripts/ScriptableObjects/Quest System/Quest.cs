@@ -23,6 +23,14 @@ public class Quest : ScriptableObject
         }
     }
 
+    public QuestGoal GetActiveGoal()
+    {
+        if (!Completed)
+            return Goals[Goals.FindLastIndex(x => x.Completed) + 1];
+        
+        throw new System.ArgumentException("Can't find active goal in completed quest!");
+    }
+
     private void CheckGoals()
     {
         Completed = Goals.All(g => g.Completed);

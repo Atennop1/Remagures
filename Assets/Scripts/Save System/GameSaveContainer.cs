@@ -5,7 +5,7 @@ using System.IO;
 public class GameSaveContainer : MonoBehaviour
 {
     [SerializeField] private BoolValue _isNewGame;
-    [SerializeField] private List<Object> savablesObjects;
+    [SerializeField] private List<MonoBehaviour> savablesObjects;
 
     private List<ISaver> _savables = new List<ISaver>();
     public IReadOnlyList<ISaver> Savables => _savables;

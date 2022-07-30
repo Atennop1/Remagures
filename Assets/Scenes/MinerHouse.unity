@@ -1944,6 +1944,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2420318332630450764, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420318332630450764, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4809277111731087504, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7332,7 +7340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff5f9b40a8c7dc4c9d0ccbc2b62f274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ActiveDebug>k__BackingField: 0
+  <ActiveDebug>k__BackingField: 1
   <GridWorldSize>k__BackingField: {x: 22, y: 14, z: 0}
   <Offset>k__BackingField: {x: 0, y: 2, z: 0}
   <NodeRadius>k__BackingField: 0.5
