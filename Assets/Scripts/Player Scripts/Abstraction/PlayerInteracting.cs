@@ -55,9 +55,9 @@ public class PlayerInteracting : MonoBehaviour
         {
             CurrentInteractable = null;
             CanShowContextClue = true;
-            TimelineView.Instance?.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
+            TimelineView.Instance?.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
 
             _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;
@@ -72,6 +72,8 @@ public class PlayerInteracting : MonoBehaviour
     {
         if (interactable.PlayerInRange && CurrentInteractable == null)
             CurrentInteractable = interactable;
+        
+        SetCurrentState(interactable);
     }
 
     public void SetCurrentState(Interactable interactable)
@@ -85,9 +87,12 @@ public class PlayerInteracting : MonoBehaviour
         }
     }
 
-    public void ResetCurrentState(Interactable interactable)
+    public void ResetCurrentInteractable(Interactable interactable)
     {
-        if (!interactable.PlayerInRange && CurrentState == InteractingState.Ready)
+        if (!interactable.PlayerInRange && CurrentState == InteractingState.Ready && CurrentInteractable == interactable)
             CurrentInteractable = null;
+
+        SetCurrentState(interactable);
+        _detectInteractSignal.Invoke();
     }
 }

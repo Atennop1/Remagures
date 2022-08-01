@@ -6053,7 +6053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9320ab4567b1a144da02adbdbcdcfeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2420318332630450765}
+  _playerInteracting: {fileID: 1019764548317057140}
   _contextClue: {fileID: 8085239281582378996}
 --- !u!114 &528757722386605099
 MonoBehaviour:

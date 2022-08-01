@@ -27,8 +27,7 @@ public class Door : Interactable
         _collider.enabled = false;
         _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         
-        if (PlayerInteract == this)
-            PlayerInteract.ResetCurrentState(this);
+        PlayerInteract.ResetCurrentInteractable(this);
     }
     
     public void CloseDoor()

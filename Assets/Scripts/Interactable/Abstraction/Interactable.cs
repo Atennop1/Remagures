@@ -11,7 +11,6 @@ public abstract class Interactable : MonoBehaviour
         if (PlayerInRange)
         {
             PlayerInteract.SetCurrentInteractable(this);
-            PlayerInteract.SetCurrentState(this);
             Context.Invoke();
         }
     }
@@ -33,13 +32,7 @@ public abstract class Interactable : MonoBehaviour
         if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
         {
             PlayerInRange = false;
-            
-            if (PlayerInteract.CurrentInteractable == this && PlayerInteract.CurrentState != InteractingState.Interact)
-            {
-                PlayerInteract.ResetCurrentState(this);
-                PlayerInteract.SetCurrentState(this);
-            }
-
+            PlayerInteract.ResetCurrentInteractable(this);
             Context.Invoke();
         }
 
