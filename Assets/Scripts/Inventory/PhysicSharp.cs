@@ -1,13 +1,16 @@
+using Remagures.SO.PlayerStuff;
 using UnityEngine;
 
-public class PhysicSharp : MonoBehaviour
+namespace Remagures.Inventory
 {
-    [SerializeField] private FloatValue _sharps;
-    
-    private void OnTriggerEnter2D(Collider2D other) 
+    public class PhysicSharp : MonoBehaviour
     {
-        if (other.TryGetComponent<Player>(out Player player) && !other.isTrigger)
+        [SerializeField] private FloatValue _sharps;
+    
+        private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!other.TryGetComponent(out Player.Player _) || other.isTrigger) return;
+        
             _sharps.Value++;
             Destroy(gameObject);
         }

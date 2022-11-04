@@ -1,16 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using Remagures.Inventory.Abstraction;
 
-public class PhysicUpgradableItem : PhysicInventoryItem
+namespace Remagures.Inventory
 {
-    protected override bool CanAddItem()
+    public class PhysicUpgradableItem : PhysicItem
     {
-        for (int i = 0; i < PlayerInventory.MyInventory.Count; i++)
-            for (int j = 0; j < (PlayerInventory.MyInventory[i].Item as IUpgradableItem)?.ItemsForLevels.Count; j++)
-                if ((PlayerInventory.MyInventory[i].Item as IUpgradableItem)?.ItemsForLevels[j] == ThisItem)
+        protected override bool CanAddItem()
+        {
+            foreach (var cell in PlayerInventory.MyInventory)
+            {
+                var items = (cell.Item as IUpgradableItem)?.ItemsForLevels;
+                if (items == null) continue;
+            
+                if (items.Any(item => item == ThisItem || items.IndexOf(item) < items.IndexOf((ThisItem))))
                     return false;
-        
-        return true;
+            }
+
+            return true;
+        }
     }
 }

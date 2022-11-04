@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 
-public interface IChoiceableItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public bool IsCurrent { get; }
-    public void SetIsCurrent(IEnumerable<IReadOnlyCell> inventory);
-    public void DisableIsCurrent();
+    public interface IChoiceableItem : IBaseItemComponent
+    {
+        public bool IsCurrent { get; }
+        public void SelectIn(IEnumerable<IReadOnlyCell> inventory);
+        public void DisableIsCurrent();
+    }
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meatCanvas: {fileID: 7885202991709611076}
   _gameOver: {fileID: 677618526519544743}
-  _saveContainer: {fileID: 0}
+  _gameSaver: {fileID: 0}
 --- !u!114 &677618526519544743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
 --- !u!1 &1149680282
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
 --- !u!114 &3407098272694180117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +756,7 @@ MonoBehaviour:
   <DescriptionText>k__BackingField: {fileID: 8433204633349585790}
   _sharpsCountText: {fileID: 8717196405078264810}
   _player: {fileID: 2420318332630450765}
+  _uniqueSetup: {fileID: 1472275362632214845}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
@@ -1294,6 +1295,67 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &199213753173242483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979515053986122117}
+  - component: {fileID: 2289018720982533009}
+  - component: {fileID: 5775795902121676284}
+  m_Layer: 0
+  m_Name: ENTRY POINT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1979515053986122117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199213753173242483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4809277111731087504}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2289018720982533009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199213753173242483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ec75b84498432eba1f18dd5485839a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 913249486364994787}
+  _player: {fileID: 2420318332630450765}
+  _uniqueSetup: {fileID: 1472275362632214845}
+  _magicCounter: {fileID: 8983856755139828698}
+--- !u!114 &5775795902121676284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199213753173242483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a71e3e3bf64642a3c5160abf3ca6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &213254805410678495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,10 +3660,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _uniqueSetup: {fileID: 0}
+  _characterInfo: {fileID: 0}
   _isPlayerAttack: 1
   _isPlayerMagic: 0
   _isArrow: 0
-  <Player>k__BackingField: {fileID: 2420318332630450765}
 --- !u!1 &985140874751128573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,18 +3895,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54127744aa42b9d49941212be77b750d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <View>k__BackingField: {fileID: 3407098272694180117}
-  <PlayerInventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
-  <MagicInventory>k__BackingField: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
-  <RuneInventory>k__BackingField: {fileID: 11400000, guid: 9f3f4e2a678b6854f977e5217dd06ac7, type: 2}
+  _view: {fileID: 3407098272694180117}
+  <UniqueInventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
+  _magicInventory: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
+  _runeInventory: {fileID: 11400000, guid: 9f3f4e2a678b6854f977e5217dd06ac7, type: 2}
   _helmetSlot: {fileID: 5644707380526411396}
   _chestplateSlot: {fileID: 1111851255232623316}
   _legginsSlot: {fileID: 6053374221199617119}
   _runeSlot: {fileID: 3938238870223750717}
   <WeaponSlot>k__BackingField: {fileID: 6114987230359433549}
   <MagicSlot>k__BackingField: {fileID: 6094975099399905223}
-  <NoneItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
-  <EquipButton>k__BackingField: {fileID: 924653297252977289}
+  _noneItem: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
+  _equipButton: {fileID: 924653297252977289}
 --- !u!1 &1041620353084988716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,6 +4035,7 @@ Transform:
   - {fileID: 6174478951381654335}
   - {fileID: 152308094}
   - {fileID: 498828476974515575}
+  - {fileID: 1979515053986122117}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5759,10 +5823,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _uniqueSetup: {fileID: 0}
+  _characterInfo: {fileID: 0}
   _isPlayerAttack: 1
   _isPlayerMagic: 0
   _isArrow: 0
-  <Player>k__BackingField: {fileID: 2420318332630450765}
 --- !u!1 &2420318332119535443
 GameObject:
   m_ObjectHideFlags: 0
@@ -5853,10 +5918,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _uniqueSetup: {fileID: 0}
+  _characterInfo: {fileID: 0}
   _isPlayerAttack: 1
   _isPlayerMagic: 0
   _isArrow: 0
-  <Player>k__BackingField: {fileID: 2420318332630450765}
 --- !u!1 &2420318332630450760
 GameObject:
   m_ObjectHideFlags: 0
@@ -5922,11 +5988,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7624413fa5d80478b20ce4ec78367f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _playerComponents
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Remagures.Player.Components.IPlayerComponent,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <Data>k__BackingField
+      Entry: 7
+      Data: Remagures.Player.Components.PublicData, Assembly-CSharp
+    - Name: MagicCounter
+      Entry: 6
+      Data: 
+    - Name: UniqueSetup
+      Entry: 6
+      Data: 
+    - Name: CharacterInfo
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _health: {fileID: 913249486364994787}
   _playerPosition: {fileID: 11400000, guid: 35acea345411ad640a92a09f100d935f, type: 2}
-  <ClassStat>k__BackingField: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
-  <CurrentHealth>k__BackingField: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
-  <UniqueSetup>k__BackingField: {fileID: 1472275362632214845}
-  <MagicCounter>k__BackingField: {fileID: 8983856755139828698}
   _currentScene: {fileID: 11400000, guid: 62edfd6b564566b4baae5376ac1ffca5, type: 2}
 --- !u!114 &1948626514282996038
 MonoBehaviour:
@@ -5974,7 +6074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450765}
   _cameraKick: {fileID: 11400000, guid: 976aaf079b4c2fc45b99a578611c088f, type: 2}
-  <LayerMask>k__BackingField:
+  <InteractionMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 320
 --- !u!114 &167602696398208565
@@ -6026,6 +6126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2420318332630450765}
+  _uniqueSetup: {fileID: 1472275362632214845}
 --- !u!114 &1208769433104765335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6053,7 +6154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9320ab4567b1a144da02adbdbcdcfeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInteracting: {fileID: 1019764548317057140}
+  _playerInteractingHandler: {fileID: 1019764548317057140}
   _contextClue: {fileID: 8085239281582378996}
 --- !u!114 &528757722386605099
 MonoBehaviour:
@@ -6322,10 +6423,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _uniqueSetup: {fileID: 0}
+  _characterInfo: {fileID: 0}
   _isPlayerAttack: 1
   _isPlayerMagic: 0
   _isArrow: 0
-  <Player>k__BackingField: {fileID: 2420318332630450765}
 --- !u!1 &2437541053185678013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6935,6 +7037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157c031dae73cb8428bfeb8e666160fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uniqueSetup: {fileID: 0}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
   <Inventory>k__BackingField: {fileID: 11400000, guid: fc5bd615ac98a84458b59cce20ad4c84, type: 2}
   _player: {fileID: 2420318332630450765}
@@ -7420,7 +7523,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
 --- !u!114 &1745872418694618407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12011,7 +12114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc75595c7b5c6b46a78e680e3dc6534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _classStat: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
+  _characterInfo: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
   _maxMagic: {fileID: 11400000, guid: b0f36f178da31f548bf0543b55dcf784, type: 2}
   _currentMagic: {fileID: 11400000, guid: c39bdcba5a455684295f7557658e7da8, type: 2}
   _view: {fileID: 6174478949472261201}
@@ -12061,7 +12164,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8983856755139828698}
         m_TargetAssemblyTypeName: MagicCounter, Assembly-CSharp
-        m_MethodName: DecreseMagic
+        m_MethodName: DecreaseMagic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14195,8 +14298,8 @@ MonoBehaviour:
   <DialogValue>k__BackingField: {fileID: 11400000, guid: 43c8bf36b54a1cb4d81e33092226b11c, type: 2}
   <ContinueText>k__BackingField: {fileID: 1201222623633727410}
   _choicesHandler: {fileID: 2355933051696075660}
-  _playerInteracting: {fileID: 1019764548317057140}
-  _writter: {fileID: 1113427276785806003}
+  _playerInteractingHandler: {fileID: 1019764548317057140}
+  _writer: {fileID: 1113427276785806003}
 --- !u!114 &1113427276785806003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17183,6 +17286,7 @@ MonoBehaviour:
   <DescriptionText>k__BackingField: {fileID: 6612834945543675739}
   _sharpsCountText: {fileID: 0}
   _player: {fileID: 2420318332630450765}
+  _uniqueSetup: {fileID: 1472275362632214845}
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
   <VoidItem>k__BackingField: {fileID: 11400000, guid: 55c77b8950cde2947bfdc113702cfddd, type: 2}
   _sharps: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
@@ -19234,7 +19338,7 @@ GameObject:
   - component: {fileID: 1695636644748810327}
   - component: {fileID: 869550435154032985}
   - component: {fileID: 913249486364994787}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Player Health
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -19294,11 +19398,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d1601aebe81c14db8a622244503176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMinTime: 1
-  _fireMaxTime: 2
-  <LayerMask>k__BackingField:
+  <InteractionMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 320
+  _currentHealth: {fileID: 11400000, guid: ac73fc8624eff694d9a1cc43ffa8cd57, type: 2}
+  _characterInfo: {fileID: 11400000, guid: 1acf9df5c9b28b54fbe977bde3d3423b, type: 2}
+  _player: {fileID: 2420318332630450765}
   _healthSignal: {fileID: 11400000, guid: b1d6a997a4836a24788f34d9af51ea5f, type: 2}
   _heartContainers: {fileID: 11400000, guid: 8a956c585996dd041bd7e45bca1f3533, type: 2}
   _gameOver: {fileID: 677618526519544743}

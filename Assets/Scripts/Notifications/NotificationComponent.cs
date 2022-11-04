@@ -1,61 +1,55 @@
-using UnityEngine;
 using Unity.Notifications.Android;
+using UnityEngine;
 
-public class NotificationComponent : MonoBehaviour
+namespace Remagures.Notifications
 {
-    protected float _delay;
-    protected bool _canNotify;
-
-    [Header("Notification Settings")]
-    [SerializeField] private string _title;
-    [SerializeField] private string _description;
-    [SerializeField] private string _smallIcon;
-    
-    protected bool IsFocus { get; private set; }
-
-    public virtual void Init() { }
-
-    protected virtual void Awake() 
+    public class NotificationComponent : MonoBehaviour
     {
-        AndroidNotificationChannel channel = new AndroidNotificationChannel()
+        protected float _delay;
+        protected bool _canNotify;
+
+        [Header("Notification Settings")]
+        [SerializeField] private string _title;
+        [SerializeField] private string _description;
+        [SerializeField] private string _smallIcon;
+
+        private bool _isFocus;
+
+        protected virtual void Awake() 
         {
-            Name = "Notificatios",
-            Description = "Channel for in-game notifications",
-            Id = "news",
-            Importance = Importance.Default
-        };
-
-        AndroidNotificationCenter.RegisterNotificationChannel(channel);
-    }
-
-    private void FixedUpdate() 
-    {
-        if (IsFocus)
-            AndroidNotificationCenter.CancelAllDisplayedNotifications();
-    }
-    
-    public void SendNotification(int id)
-    {
-        if (_canNotify)
-        {
-            AndroidNotification notification = new AndroidNotification()
+            var channel = new AndroidNotificationChannel()
             {
-                Title = this._title,
-                Text = this._description,
-                SmallIcon = this._smallIcon,
+                Name = "Notifications",
+                Description = "Channel for in-game notifications",
+                Id = "news",
+                Importance = Importance.Default
+            };
+
+            AndroidNotificationCenter.RegisterNotificationChannel(channel);
+        }
+    
+        public void SendNotification(int id)
+        {
+            if (!_canNotify) return;
+        
+            var notification = new AndroidNotification()
+            {
+                Title = _title,
+                Text = _description,
+                SmallIcon = _smallIcon,
                 FireTime = System.DateTime.Now.AddSeconds(_delay),
             };
             AndroidNotificationCenter.SendNotificationWithExplicitID(notification, "news", id);
         }
-    }
 
-    protected virtual void OnApplicationFocus(bool focusStatus) 
-    {
-        IsFocus = true;
-    }
+        private void FixedUpdate()
+        {
+            if (_isFocus)
+                AndroidNotificationCenter.CancelAllDisplayedNotifications();
+        }
 
-    protected virtual void OnApplicationPause(bool pauseStatus) 
-    {
-        IsFocus = false;
+        protected virtual void OnApplicationFocus(bool focusStatus) => _isFocus = true;
+
+        protected virtual void OnApplicationPause(bool pauseStatus) => _isFocus = false;
     }
 }

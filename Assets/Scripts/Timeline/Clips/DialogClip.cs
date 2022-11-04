@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using Remagures.Timeline.Behaviours;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[System.Serializable]
-public class DialogClip : AssetClip<DialogBehaviour>
+namespace Remagures.Timeline.Clips
 {
-    public new ClipCaps clipCaps => ClipCaps.All;
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+    [System.Serializable]
+    public class DialogClip : AssetClip<DialogBehaviour>
     {
-        return ScriptPlayable<DialogBehaviour>.Create(graph, _template);
+        public new ClipCaps clipCaps => ClipCaps.All;
+        public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+        {
+            return ScriptPlayable<DialogBehaviour>.Create(graph, _template);
+        }
     }
 }

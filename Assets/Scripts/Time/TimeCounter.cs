@@ -1,23 +1,27 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-public class TimeCounter : MonoBehaviour
+namespace Remagures.Time
 {
-    private DateTime _currentDate;
-    private DateTime _oldDate;
+    public class TimeCounter : MonoBehaviour
+    {
+        private DateTime _currentDate;
+        private DateTime _oldDate;
 
-    public float CheckDate(string key)
-    {
-        _currentDate = System.DateTime.Now;
-        string tempString = PlayerPrefs.GetString(key, "1");
-        long tempLong = Convert.ToInt64(tempString);
-        _oldDate = DateTime.FromBinary(tempLong);
-        TimeSpan difference = _currentDate.Subtract(_oldDate);
-        return (float)difference.TotalSeconds;
-    }
+        public float CheckDate(string key)
+        {
+            _currentDate = DateTime.Now;
+            var tempString = PlayerPrefs.GetString(key, "1");
+            var tempLong = Convert.ToInt64(tempString);
+        
+            _oldDate = DateTime.FromBinary(tempLong);
+            var difference = _currentDate.Subtract(_oldDate);
+            return (float)difference.TotalSeconds;
+        }
     
-    public void SaveDate(string key)
-    {
-        PlayerPrefs.SetString(key, System.DateTime.Now.ToBinary().ToString());
+        public void SaveDate(string key)
+        {
+            PlayerPrefs.SetString(key, DateTime.Now.ToBinary().ToString());
+        }
     }
 }

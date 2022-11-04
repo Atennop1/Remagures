@@ -1,8 +1,10 @@
+using Remagures.AI.NPCs.Components;
 using UnityEngine;
 
-public abstract class MovableNPC : NPC
+namespace Remagures.AI.NPCs
 {
-    [field: SerializeField] public float Speed { get; private set; }
-    
-    protected abstract void Move();
+    public abstract class MovableNPC : NPC
+    {
+        [field: SerializeField] public float Speed { get; private set; }
+    }
 }

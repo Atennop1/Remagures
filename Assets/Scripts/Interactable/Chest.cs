@@ -1,53 +1,74 @@
+using Remagures.DialogSystem.Runtime;
+using Remagures.Interactable.Abstraction;
+using Remagures.Inventory;
+using Remagures.Quest_System;
+using Remagures.SO.Inventory;
+using Remagures.SO.Inventory.Items;
+using Remagures.SO.Other;
+using Remagures.SO.PlayerStuff;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Chest : InteractableWithTextDisplay
+namespace Remagures.Interactable
 {
-    [Header("Values")]
-    [SerializeField] private ItemValue _currentItem;
-    [SerializeField] private FloatValue _numberOfKeys;
-    [SerializeField] private BaseInventoryItem _contentsItem;
-
-    [Space]
-    [SerializeField] private PlayerInventory _inventory;
-    [SerializeField] private BoolValue _storedOpened;
-    [SerializeField] private Signal _raiseItemSignal;
-
-    [Header("Objects")]
-    [SerializeField] private ChangeDialogState _changeDialogState;
-    [SerializeField] private GoalCompleter _goalCompleter;
-
-    [Space]
-    [SerializeField] private Collider2D _triggerCollider;
-    [SerializeField] private Animator _animator;
-
-    private void Start()
+    public class Chest : InteractableWithTextDisplay
     {
-        if (_storedOpened.Value)
+        [Header("Values")]
+        [SerializeField] private ItemValue _currentItem;
+        [SerializeField] private FloatValue _numberOfKeys;
+        [SerializeField] private BaseInventoryItem _contentsItem;
+
+        [Space]
+        [SerializeField] private PlayerInventory _inventory;
+        [SerializeField] private BoolValue _storedOpened;
+        [SerializeField] private Signal _raiseItemSignal;
+
+        [FormerlySerializedAs("_changeDialogState")]
+        [Header("Objects")]
+        [SerializeField] private DialogStateChanger _dialogStateChanger;
+        [SerializeField] private GoalCompleter _goalCompleter;
+
+        [Space]
+        [SerializeField] private Collider2D _triggerCollider;
+        [SerializeField] private Animator _animator;
+    
+        private readonly int OPENED_ANIMATOR_NAME = Animator.StringToHash("opened");
+
+        private void Start()
         {
-            _animator.SetBool("opened", true);
+            if (!_storedOpened.Value) return;
+        
+            _animator.SetBool(OPENED_ANIMATOR_NAME, true);
             _triggerCollider.enabled = false;
         }
-    }
     
-    public override void Interact()
-    {
-        if (!_storedOpened.Value && PlayerInRange)
+        public override void Interact()
         {
+            if (_storedOpened.Value || !PlayerInRange) return;
+        
             _triggerCollider.enabled = false;
-            _animator.SetBool("opened", true);
+            _animator.SetBool(OPENED_ANIMATOR_NAME, true);
             _currentItem.Value = _contentsItem;
-            bool isKey = (_currentItem.Value as KeyInventoryItem) != null;
 
-            if (isKey)
+            if (_currentItem.Value is KeyInventoryItem)
+            {
                 _numberOfKeys.Value++;
-            else if (_currentItem && _contentsItem)
-                _inventory.Add(new Cell(_contentsItem, 1));
+            }
+            else if (_contentsItem != null)
+            {
+                var newCell = new Cell(_contentsItem);
+                var inventoryCell = _inventory.GetCell(newCell.Item);
+                
+                if (inventoryCell.CanAddItemAmount() && inventoryCell.CanMergeWithItem(newCell.Item))
+                    _inventory.Add(newCell);
+            }
 
             TextDisplay(_contentsItem.ItemDescription);
 
             _storedOpened.Value = true;
             _raiseItemSignal.Invoke();
-            _changeDialogState?.ChangeDatabaseState();
+            
+            _dialogStateChanger?.ChangeDatabaseState();
             _goalCompleter?.Complete();
         }
     }

@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3a089d9fe83dc4da09848538f5900d, type: 3}
   m_Name: PlayerQuests
   m_EditorClassIdentifier: 
-  _quests:
-  - {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
+  _quests: []

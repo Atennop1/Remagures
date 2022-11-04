@@ -1,40 +1,43 @@
+using System.Linq;
+using Remagures.Interactable;
 using UnityEngine;
 
-public class DungeonEnemyRoom : DungeonRoom
+namespace Remagures.Rooms
 {
-    [SerializeField] private Door[] _doors;
-    
-    public void CheckEnemies()
+    public class DungeonEnemyRoom : DungeonRoom
     {
-        foreach (Enemy enemy in Enemies)
+        [SerializeField] private Door[] _doors;
+    
+        public void CheckEnemies()
         {
-            if (enemy.gameObject.activeInHierarchy)
+            if (Enemies.Any(enemy => enemy.gameObject.activeInHierarchy))
                 return;
+
+            OpenDoors();
         }
-        
-        OpenDoors();
-    }
 
-    public void CloseDoors()
-    {
-        foreach(Door door in _doors)
-            door.CloseDoor();
-    }
-    
-    public void OpenDoors()
-    {
-        foreach (Door door in _doors)
-            door.Interact();
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent<Player>(out Player player) && !other.isTrigger)
+        private void CloseDoors()
         {
-            for (int i = 0; i < Enemies.Length; i++)
-                ChangeActivation(Enemies[i], true);
-            for (int i = 0; i < Pots.Length; i++)
-                ChangeActivation(Pots[i], true);
+            foreach(var door in _doors)
+                door.CloseDoor();
+        }
+
+        private void OpenDoors()
+        {
+            foreach (var door in _doors)
+                door.Interact();
+        }
+
+        protected override void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.TryGetComponent(out Player.Player _) || other.isTrigger) return;
+        
+            foreach (var enemy in Enemies)
+                ChangeActivation(enemy, true);
+
+            foreach (var pot in Pots)
+                ChangeActivation(pot, true);
+
             CloseDoors();
         }
     }

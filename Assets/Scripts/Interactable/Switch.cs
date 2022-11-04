@@ -1,32 +1,37 @@
+using Remagures.SO.PlayerStuff;
 using UnityEngine;
 
-public class Switch : MonoBehaviour
+namespace Remagures.Interactable
 {
-    [SerializeField] private BoolValue _isPressed;
-
-    [Space]
-    [SerializeField] private Sprite _activeSprite;
-    [SerializeField] private Door _door;
-
-    private bool _isActive;
-    private SpriteRenderer _spriteRenderer;
-
-    private void Start()
+    public class Switch : MonoBehaviour
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        [SerializeField] private BoolValue _isPressed;
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Player>(out Player player))
-            ActivateSwitch();
-    }
+        [Space]
+        [SerializeField] private Sprite _activeSprite;
+        [SerializeField] private Door _door;
 
-    private void ActivateSwitch()
-    {
-        _isActive = true;
-        _isPressed.Value = _isActive;
-        _spriteRenderer.sprite = _activeSprite;
-        _door.Interact();
+        private bool _isActive;
+        private SpriteRenderer _spriteRenderer;
+
+        private void Start()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out Player.Player _))
+                ActivateSwitch();
+        }
+
+        private void ActivateSwitch()
+        {
+            _isActive = true;
+            _isPressed.Value = _isActive;
+        
+            _spriteRenderer.sprite = _activeSprite;
+            _door.Interact();
+        }
     }
 }

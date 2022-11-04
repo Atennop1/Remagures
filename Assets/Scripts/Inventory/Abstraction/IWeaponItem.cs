@@ -1,4 +1,7 @@
-public interface IWeaponItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public int Damage { get; }
+    public interface IWeaponItem : IBaseItemComponent
+    {
+        public int Damage { get; }
+    }
 }

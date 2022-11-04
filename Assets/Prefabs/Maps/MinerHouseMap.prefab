@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5239269247761360725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   <ParentMap>k__BackingField: {fileID: 4752875421233322826, guid: 3cf85203396418f428339ffb5faa9fd2, type: 3}
   <MapImageTransform>k__BackingField: {fileID: 8838003819707635044}
   <ExplorationTexture>k__BackingField: {fileID: 2800000, guid: 21f833c42f094c842a692d2617aafa2d, type: 3}
-  <PlayerMarker>k__BackingField: {fileID: 5239269247761360725}
+  _playerMarker: {fileID: 7732746684935795987}
   _worldSize: {x: 22, y: 14}
   _worldOffset: {x: 0, y: -1.4}
   _playerMarkerScale: {x: 0.3, y: 0.3, z: 1}

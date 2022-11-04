@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4787900574483537249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4718165554197407290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -726,7 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59640901a5318584db185135ded77600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Goal>k__BackingField: {fileID: -8336834349173289999, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
+  _questContainer: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
+  _goal: {fileID: -8336834349173289999, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
   _marker: {fileID: 306928484072833296}
 --- !u!1 &2713700177294320755
 GameObject:
@@ -1127,7 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59640901a5318584db185135ded77600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Goal>k__BackingField: {fileID: 5314236756782426285, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
+  _questContainer: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
+  _goal: {fileID: 5314236756782426285, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
   _marker: {fileID: 6605534331369512379}
 --- !u!1 &6926728788921613017
 GameObject:
@@ -1219,7 +1221,7 @@ MonoBehaviour:
   <ParentMap>k__BackingField: {fileID: -6752975730739325987, guid: d32cf62de07c73e4f903543039e4d9e0, type: 3}
   <MapImageTransform>k__BackingField: {fileID: 3151188736467440480}
   <ExplorationTexture>k__BackingField: {fileID: 2800000, guid: d2d567b7202edbe4ba3ab3539cbc2a4e, type: 3}
-  <PlayerMarker>k__BackingField: {fileID: 1234974522201259910}
+  _playerMarker: {fileID: 6044418005908745713}
   _worldSize: {x: 68, y: 66}
   _worldOffset: {x: 11, y: -7.7}
   _playerMarkerScale: {x: 0.17, y: 0.17, z: 1}

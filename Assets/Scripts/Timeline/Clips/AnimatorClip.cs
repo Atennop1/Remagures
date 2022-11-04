@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using Remagures.Timeline.Behaviours;
 using UnityEngine;
 using UnityEngine.Playables;
 
-[System.Serializable]
-public class AnimatorClip : AssetClip<RuntimeAnimatingBehaviour>
+namespace Remagures.Timeline.Clips
 {
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+    [System.Serializable]
+    public class AnimatorClip : AssetClip<RuntimeAnimatingBehaviour>
     {
-        return ScriptPlayable<RuntimeAnimatingBehaviour>.Create(graph, _template);
+        public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+        {
+            return ScriptPlayable<RuntimeAnimatingBehaviour>.Create(graph, _template);
+        }
     }
 }

@@ -1,4 +1,7 @@
-public interface IArmorItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public float Armor { get; }
+    public interface IArmorItem : IBaseItemComponent
+    {
+        public float Armor { get; }
+    }
 }

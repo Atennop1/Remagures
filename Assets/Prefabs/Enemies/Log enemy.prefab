@@ -14,15 +14,18 @@ GameObject:
   - component: {fileID: 2532027526250742700}
   - component: {fileID: 2532027526250742701}
   - component: {fileID: 2532027526250742737}
-  - component: {fileID: 3151935031655380514}
+  - component: {fileID: 1679335815921796641}
+  - component: {fileID: 556055438078823288}
+  - component: {fileID: 5387864562122328728}
+  - component: {fileID: 6683197363421668823}
+  - component: {fileID: 3224791638062715757}
   - component: {fileID: 2532027526250742702}
-  - component: {fileID: 4232180799373785044}
   - component: {fileID: 1705355946}
   - component: {fileID: 9145954905671586742}
   - component: {fileID: 6081733596323558757}
   - component: {fileID: 5930675264974579668}
-  - component: {fileID: 5212220952037197312}
   - component: {fileID: 1431503497}
+  - component: {fileID: 3790541248520882476}
   m_Layer: 0
   m_Name: Log enemy
   m_TagString: Enemy
@@ -129,7 +132,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -190,7 +193,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6267532, y: 0.8627498}
   m_EdgeRadius: 0
---- !u!114 &3151935031655380514
+--- !u!114 &1679335815921796641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,14 +202,88 @@ MonoBehaviour:
   m_GameObject: {fileID: 2532027526250742697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c63b1bbb73b5744a5c672a515177c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bb2527175cb4bc8a2ddd14198900444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <RoomSignal>k__BackingField: {fileID: 0}
-  <Speed>k__BackingField: 0.5
-  <ChaseRadius>k__BackingField: 10
-  <AttackRadius>k__BackingField: 1.1
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 556055438078823288}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemyWithTarget
+      Entry: 10
+      Data: 0
+--- !u!114 &556055438078823288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532027526250742697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a8a96f1e8f4597b0223011d051c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 3224791638062715757}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemy
+      Entry: 10
+      Data: 0
+  <TargetData>k__BackingField: {fileID: 5387864562122328728}
+--- !u!114 &5387864562122328728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532027526250742697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7de5961fff74d029b5c2d39c775e1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackRadius>k__BackingField: 1.2
+  <ChaseRadius>k__BackingField: 6
   <Target>k__BackingField: {fileID: 0}
+--- !u!114 &6683197363421668823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532027526250742697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6309490ce342069d4f620871f1a9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+--- !u!114 &3224791638062715757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532027526250742697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ae31080948d0b499597cc8afcd76cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2532027526250742702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,37 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: Player
   _strength: 2
   _knockTime: 0.4
---- !u!114 &4232180799373785044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2532027526250742697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
-  _signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3151935031655380514}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: PeaceInWorld
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1705355946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
-  _otherTag: Player
 --- !u!114 &9145954905671586742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,8 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1687b60d085313f47be032cec3edc386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMinTime: 1
-  _fireMaxTime: 2
+  <InteractionMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
   _maxHealth: {fileID: 11400000, guid: eeddf3d2c7598014299b69a33a6db09d, type: 2}
   _lootTable: {fileID: 11400000, guid: a97e9b9d92219ed4a92b25bc24032ea6, type: 2}
   _deathEffect: {fileID: 8327079094225007804, guid: 2c56ca51b04c330499741b9183c21bdf, type: 3}
@@ -306,19 +354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Grid>k__BackingField: {fileID: 0}
---- !u!114 &5212220952037197312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2532027526250742697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 6b982ab0803cc2945b941a339c1991b5, type: 2}
 --- !u!114 &1431503497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,3 +372,30 @@ MonoBehaviour:
   _flashDuration: 0.4
   _numberOfFlashes: 3
   <SpriteRenderer>k__BackingField: {fileID: 0}
+--- !u!114 &3790541248520882476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532027526250742697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941ec4a6878cb11498a2c338f7740d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemy
+      Entry: 6
+      Data: 
+  <InteractionMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0

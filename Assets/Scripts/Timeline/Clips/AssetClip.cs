@@ -1,12 +1,15 @@
 using UnityEngine;
-using UnityEngine.Timeline;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
-[System.Serializable]
-public abstract class AssetClip<T> : PlayableAsset, ITimelineClipAsset where T: PlayableBehaviour, new()
+namespace Remagures.Timeline.Clips
 {
-    [SerializeField] protected T _template = new T();
-    public ClipCaps clipCaps => ClipCaps.None;
+    [System.Serializable]
+    public abstract class AssetClip<T> : PlayableAsset, ITimelineClipAsset where T: PlayableBehaviour, new()
+    {
+        [SerializeField] protected T _template = new T();
+        public ClipCaps clipCaps => ClipCaps.None;
 
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner) { return new Playable(); }
+        public override Playable CreatePlayable(PlayableGraph graph, GameObject owner) { return new Playable(); }
+    }
 }

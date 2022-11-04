@@ -1,39 +1,46 @@
+using System;
+using Remagures.SO.PlayerStuff;
 using UnityEngine;
 
-public enum DoorType
+namespace Remagures.Interactable
 {
-    Key,
-    Enemy,
-    Default
-}
-
-public class Door : Interactable
-{
-    [SerializeField] private DoorType _thisDoorType;
-    [SerializeField] private FloatValue _numberOfKeys;
-
-    [Space]
-    [SerializeField] private SpriteRenderer _doorSprite;
-    [SerializeField] private BoxCollider2D _collider;
-
-    public override void Interact()
+    public class Door : Remagures.Interactable.Abstraction.Interactable
     {
-        if (_thisDoorType == DoorType.Key && _numberOfKeys.Value > 0)
-            _numberOfKeys.Value--;
-        else if (_thisDoorType == DoorType.Key)
-            return;
+        [SerializeField] private DoorType _thisDoorType;
+        [SerializeField] private FloatValue _numberOfKeys;
 
-        _doorSprite.enabled = false;
-        _collider.enabled = false;
-        _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        [Space]
+        [SerializeField] private SpriteRenderer _doorSprite;
+        [SerializeField] private BoxCollider2D _collider;
+
+        public override void Interact()
+        {
+            switch (_thisDoorType)
+            {
+                case DoorType.Key when _numberOfKeys.Value > 0:
+                    _numberOfKeys.Value--;
+                    break;
+                case DoorType.Key:
+                    return;
+            
+                case DoorType.Enemy:
+                case DoorType.Default:
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _doorSprite.enabled = false;
+            _collider.enabled = false;
+            _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         
-        PlayerInteract.ResetCurrentInteractable(this);
-    }
+            PlayerInteract.ResetCurrentInteractable(this);
+        }
     
-    public void CloseDoor()
-    {
-        _doorSprite.enabled = true;
-        _collider.enabled = true;
-        _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        public void CloseDoor()
+        {
+            _doorSprite.enabled = true;
+            _collider.enabled = true;
+            _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 }

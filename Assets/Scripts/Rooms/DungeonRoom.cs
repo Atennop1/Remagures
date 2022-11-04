@@ -1,1 +1,4 @@
-public class DungeonRoom : Room { }
+namespace Remagures.Rooms
+{
+    public class DungeonRoom : Room { }
+}

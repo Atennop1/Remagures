@@ -1,8 +1,11 @@
-using UnityEngine;
+using Remagures.Components.Projectiles;
 using UnityEngine.Events;
 
-public interface IMagicItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public GameObject Projectile { get; }
-    public UnityEvent ThisEvent { get; }
+    public interface IMagicItem : IBaseItemComponent
+    {
+        public Projectile Projectile { get; }
+        public UnityEvent UsingEvent { get; }
+    }
 }

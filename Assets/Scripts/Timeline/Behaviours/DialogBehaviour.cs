@@ -1,50 +1,55 @@
-using UnityEngine;
 using System.Collections;
+using Remagures.DialogSystem.UI;
+using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class DialogBehaviour : PlayableBehaviour
+namespace Remagures.Timeline.Behaviours
 {
-    [SerializeField] [TextArea] private string _text;
-    [SerializeField] private bool _disableAferReplica;
-
-    private bool _beenStoped;
-    private DialogTypeWritter _writter;
-
-    public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+    [System.Serializable]
+    public class DialogBehaviour : PlayableBehaviour
     {
-        if (!_beenStoped)
+        [SerializeField] [TextArea] private string _text;
+        [FormerlySerializedAs("_disableAferReplica")] [SerializeField] private bool _disableAfterReplica;
+
+        private bool _beenStopped;
+        private DialogTypeWriter _writer;
+
+        public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
+            if (_beenStopped) return;
+        
             TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
-            _writter = playerData as DialogTypeWritter;
-            _writter.StartCoroutine(DisplayTextCoroutine());
-            _beenStoped = true;
-        }
-    }   
-
-    public IEnumerator DisplayTextCoroutine()
-    {
-        _writter.View.DialogWindow.GetComponent<Button>().onClick.AddListener(Tap);
-        _writter.View.DialogWindow.SetActive(true);
-        _writter.View.ContinueText.text = "Нажмите, чтобы пролистать";
-
-        TimelineView.Instance.SetCanContinue(false);
-        yield return _writter.StartCoroutine(_writter.Type(_text));
-
-        if (_disableAferReplica)
-            Tap();
-    }
-
-    public void Tap()
-    {
-        _writter.Tap();
-        TimelineView.Instance.SetCanContinue(_disableAferReplica);
-
-        if (!_disableAferReplica)
-            TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            _writer = playerData as DialogTypeWriter;
             
-        _writter.View.DialogWindow.GetComponent<Button>().onClick.RemoveListener(Tap);
-        _writter.View.ContinueText.text = "Нажмите, чтобы продолжить";
+            if (_writer != null) _writer.StartCoroutine(DisplayTextCoroutine());
+            _beenStopped = true;
+        }   
+
+        public IEnumerator DisplayTextCoroutine()
+        {
+            _writer.View.DialogWindow.GetComponent<Button>().onClick.AddListener(Tap);
+            _writer.View.DialogWindow.SetActive(true);
+            _writer.View.ContinueText.text = "Нажмите, чтобы пролистать";
+
+            TimelineView.Instance.SetCanContinue(false);
+            yield return _writer.StartCoroutine(_writer.Type(_text));
+
+            if (_disableAfterReplica)
+                Tap();
+        }
+
+        public void Tap()
+        {
+            _writer.Tap();
+            TimelineView.Instance.SetCanContinue(_disableAfterReplica);
+
+            if (!_disableAfterReplica)
+                TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            
+            _writer.View.DialogWindow.GetComponent<Button>().onClick.RemoveListener(Tap);
+            _writer.View.ContinueText.text = "Нажмите, чтобы продолжить";
+        }
     }
 }

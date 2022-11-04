@@ -1,7 +1,10 @@
 using UnityEngine.Events;
 
-public interface IUsableItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public UnityEvent ThisEvent { get; }
-    public void Use();
+    public interface IUsableItem : IBaseItemComponent
+    {
+        public UnityEvent UsingEvent { get; }
+        public void Use();
+    }
 }

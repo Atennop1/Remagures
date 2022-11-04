@@ -1,52 +1,60 @@
 using System.Collections;
+using Remagures.DialogSystem.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public abstract class InteractableWithTextDisplay : Interactable
+namespace Remagures.Interactable.Abstraction
 {
-    [Header("Text Display Stuff")]
-    [SerializeField] private Text _continueText;
-    [SerializeField] private Text _nameText;
-
-    [Space]
-    [SerializeField] private Image _photoImage;
-    [SerializeField] private Sprite _linkSprite;
-
-    [Space]
-    [SerializeField] private DialogTypeWritter _writter;
-    [SerializeField] private Animator _layoutAnimator;
-    [SerializeField] private Button _dialogButton;
-
-    public bool CanContinue { get; private set; } = true;
-
-    public void TextDisplay(string text)
+    public abstract class InteractableWithTextDisplay : Interactable
     {
-        _dialogButton.gameObject.SetActive(true);
+        [Header("Text Display Stuff")]
+        [SerializeField] private Text _continueText;
+        [SerializeField] private Text _nameText;
 
-        _nameText.text = "Линк";
-        _layoutAnimator.Play("Right");
-        _photoImage.sprite = _linkSprite;
-        _dialogButton.onClick.AddListener(Tap);
-        StartCoroutine(DisplayTextCoroutine(text));
-    }
+        [Space]
+        [SerializeField] private Image _photoImage;
+        [SerializeField] private Sprite _linkSprite;
+    
+        [Space]
+        [FormerlySerializedAs("writer")][SerializeField] private DialogTypeWriter _writer;
+        [SerializeField] private Animator _layoutAnimator;
+        [SerializeField] private Button _dialogButton;
 
-    public void Tap()
-    {
-        if (!CanContinue)
+        public bool CanContinue { get; private set; } = true;
+
+        protected void TextDisplay(string text)
         {
-            _writter.Tap();
-            CanContinue = true;
-            _continueText.text = "Нажмите, чтобы продолжить";
-        }
-        else
-            _dialogButton.onClick.RemoveListener(Tap);
-    } 
+            _dialogButton.gameObject.SetActive(true);
 
-    public IEnumerator DisplayTextCoroutine(string text)
-    {
-        CanContinue = false;
-       yield return StartCoroutine(_writter.Type(text));
-        _continueText.text = "Нажмите, чтобы продолжить";
-        CanContinue = true;
+            _nameText.text = "Линк";
+            _layoutAnimator.Play("Right");
+            _photoImage.sprite = _linkSprite;
+        
+            _dialogButton.onClick.AddListener(Tap);
+            StartCoroutine(DisplayTextCoroutine(text));
+        }
+
+        private void Tap()
+        {
+            if (!CanContinue)
+            {
+                _writer.Tap();
+                CanContinue = true;
+                _continueText.text = "Нажмите, чтобы продолжить";
+                return;
+            }
+        
+            _dialogButton.onClick.RemoveListener(Tap);
+        }
+
+        private IEnumerator DisplayTextCoroutine(string text)
+        {
+            CanContinue = false;
+            yield return StartCoroutine(_writer.Type(text));
+       
+            _continueText.text = "Нажмите, чтобы продолжить";
+            CanContinue = true;
+        }
     }
 }

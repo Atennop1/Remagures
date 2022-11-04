@@ -1,35 +1,40 @@
 using Unity.Notifications.Android;
 
-public class WeeklyNotificationComponent : NotificationComponent
+namespace Remagures.Notifications
 {
-    public static WeeklyNotificationComponent Instance { get; private set; }
-
-    protected override void Awake() 
+    public class WeeklyNotificationComponent : NotificationComponent
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        private static WeeklyNotificationComponent Instance { get; set; }
 
-        base.Awake();
-    }
-
-    private void Start() 
-    {
-        AndroidNotificationCenter.CancelNotification(0);
-        _canNotify = true;
-    }
-    
-    protected override void OnApplicationPause(bool pauseStatus)
-    {
-        if (pauseStatus)
+        protected override void Awake() 
         {
-            base.OnApplicationFocus(pauseStatus);
-            _delay = 3600 * 24 * 7;
-            SendNotification(0);
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+            DontDestroyOnLoad(gameObject);
+
+            base.Awake();
         }
-        else
-            Start();
+
+        private void Start() 
+        {
+            AndroidNotificationCenter.CancelNotification(0);
+            _canNotify = true;
+        }
+    
+        protected override void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+            {
+                base.OnApplicationFocus(true);
+                _delay = 3600 * 24 * 7;
+                SendNotification(0);
+            }
+            else
+            {
+                Start();
+            }
+        }
     }
 }

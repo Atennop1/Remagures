@@ -1,14 +1,10 @@
-using System.Collections.Generic;
+using Remagures.SO.PlayerStuff;
 
-public enum RuneType
+namespace Remagures.Inventory.Abstraction
 {
-    Fire,
-    Mana,
-    Shield
-}
-
-public interface IRuneItem : IBaseItemComponent
-{
-    public ClassStat ClassStat { get; }
-    public RuneType RuneType { get; }
+    public interface IRuneItem : IBaseItemComponent
+    {
+        public CharacterInfo CharacterInfo { get; }
+        public RuneType RuneType { get; }
+    }
 }

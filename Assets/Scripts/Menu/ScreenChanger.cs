@@ -1,36 +1,42 @@
+using Remagures.Components.Other;
+using Remagures.SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class ScreenChanger : MonoBehaviour
+namespace Remagures.Menu
 {
-    [SerializeField] private GameObject _meatCanvas;
-    [SerializeField] private GameOverScript _gameOver;
-    [SerializeField] private GameSaveContainer _saveContainer;
-
-    public void ChangeScreen(GameObject gameObject)
+    public class ScreenChanger : MonoBehaviour
     {
-        bool active = !gameObject.activeInHierarchy;
-        gameObject.SetActive(active);
-        Time.timeScale = !active ? 1 : 0;
-    }
+        [SerializeField] private GameObject _meatCanvas;
+        [SerializeField] private GameOverHandler _gameOver;
+        [FormerlySerializedAs("_saveContainer")] [SerializeField] private GameSaver _gameSaver;
 
-    public void ShowMeatScreen()
-    {
-        _meatCanvas.SetActive(true);
-    }
+        public void ChangeScreen(GameObject screen)
+        {
+            var active = !screen.activeInHierarchy;
+            screen.SetActive(active);
+            UnityEngine.Time.timeScale = !active ? 1 : 0;
+        }
 
-    public void ToMenu()
-    {
-        _gameOver.SetGameOver();
-        SceneManager.LoadScene("Menu");
-        Time.timeScale = 1;
-        _saveContainer.SaveGame();
-    }
+        public void ShowMeatScreen()
+        {
+            _meatCanvas.SetActive(true);
+        }
 
-    public void Restart()
-    {
-        _gameOver.SetGameOver();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        _saveContainer.SaveGame();
+        public void ToMenu()
+        {
+            _gameOver.SetGameOver();
+            SceneManager.LoadScene("Menu");
+            UnityEngine.Time.timeScale = 1;
+            _gameSaver.SaveGame();
+        }
+
+        public void Restart()
+        {
+            _gameOver.SetGameOver();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            _gameSaver.SaveGame();
+        }
     }
 }

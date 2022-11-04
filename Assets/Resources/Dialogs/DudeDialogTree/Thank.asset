@@ -23,12 +23,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2735519782580507485, guid: c7ed41914db2aaf4b92540ef1145f580, type: 3}
-          m_TargetAssemblyTypeName: QuestsDatabase, Assembly-CSharp
+          m_TargetAssemblyTypeName: Remagures.Quest_System.QuestsDatabase, Assembly-CSharp
           m_MethodName: TryCompleteGoal
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: -8336834349173289999, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
-            m_ObjectArgumentAssemblyTypeName: QuestGoal, Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: Remagures.SO.Quest_System.QuestGoal,
+              Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IDisplayableItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public AnimatorOverrideController OverrideController { get; }
+    public interface IDisplayableItem : IBaseItemComponent
+    {
+        public AnimatorOverrideController OverrideController { get; }
+    }
 }

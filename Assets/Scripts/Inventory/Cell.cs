@@ -1,48 +1,56 @@
-using UnityEngine;
 using System;
+using Remagures.SO.Inventory.Items;
+using UnityEngine;
 
-[Serializable]
-public class Cell : IReadOnlyCell
+namespace Remagures.Inventory
 {
-    [field: SerializeField] public int ItemCount { get; private set; }
-    [field: SerializeField] public BaseInventoryItem Item { get; private set; }
-
-
-    public Cell(BaseInventoryItem item, int count = 1)
+    [Serializable]
+    public class Cell : IReadOnlyCell
     {
-        ItemCount = count;
-        Item = item;
-    }
+        [field: SerializeField] public int ItemCount { get; private set; }
+        [field: SerializeField] public BaseInventoryItem Item { get; private set; }
 
-    public void Merge(Cell anotherCell)
-    {
-        if (anotherCell.Item == Item && Item.Stackable)
+        public Cell(BaseInventoryItem item, int count = 1)
         {
+            ItemCount = count;
+            Item = item;
+        }
+
+        public void Merge(Cell anotherCell)
+        {
+            if (!CanMergeWithItem(anotherCell.Item))
+                throw new ArgumentException("Can't merge 2 cells with different items!");
+            
+            if (!CanAddItemAmount())
+                throw new ArgumentException("Can't merge non-stackable cell!");
+            
             ItemCount += anotherCell.ItemCount;
         }
-        else if (anotherCell.Item == Item)
+        
+        public bool CanMergeWithItem(BaseInventoryItem item) => item == Item;
+        public bool CanAddItemAmount() => Item.Stackable || ItemCount == 0;
+ 
+        public void DecreaseAmount(int amount)
         {
-            if (ItemCount == 1)
-                throw new ArgumentException("Can't merge non-stakable cell!");
-            else
-                ItemCount = 1;
+            if (amount <= 0)
+                throw new ArgumentException("Can't reduce item quantity by negative or zero value");
+            
+            if (!ItemCountGreaterOrEqualValue(amount))
+                throw new ArgumentException("The number of items is less than the requested value");
+                
+            ItemCount -= amount;
         }
-        else if (anotherCell.Item != Item)
-        {
-            throw new ArgumentException("Can't merge 2 cells with different items!");
-        }
+
+        public bool ItemCountGreaterOrEqualValue(int value) => ItemCount >= value;
     }
 
-    public void DecreaseAmount(int amount)
+    public interface IReadOnlyCell
     {
-        ItemCount -= amount;
-        if (ItemCount < 0)
-            ItemCount = 0;
+        public int ItemCount { get; }
+        public BaseInventoryItem Item { get; }
+        
+        public bool CanMergeWithItem(BaseInventoryItem item) => item == Item;
+        public bool CanAddItemAmount() => Item.Stackable || ItemCount == 0;
+        public bool ItemCountGreaterOrEqualValue(int value) => ItemCount >= value;
     }
-}
-
-public interface IReadOnlyCell
-{
-    public int ItemCount { get; }
-    public BaseInventoryItem Item { get; }
 }

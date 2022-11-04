@@ -14,16 +14,19 @@ GameObject:
   - component: {fileID: 6412523521960965329}
   - component: {fileID: 6412523521960965328}
   - component: {fileID: 6412523521960965292}
-  - component: {fileID: 6412523521960965331}
   - component: {fileID: 637511158790658983}
-  - component: {fileID: 8047584121982438158}
+  - component: {fileID: 5481255846750578011}
+  - component: {fileID: 4770877329219247515}
+  - component: {fileID: 490390732969958081}
+  - component: {fileID: 6732372860467563414}
+  - component: {fileID: 2494577378468421862}
   - component: {fileID: 1575531264}
   - component: {fileID: 5578047304630380570}
   - component: {fileID: 5775084968518709113}
   - component: {fileID: 629105781371900214}
-  - component: {fileID: 8336765939597832521}
   - component: {fileID: 5057979239018984992}
   - component: {fileID: 2800000895503308571}
+  - component: {fileID: 6412523521960965331}
   m_Layer: 6
   m_Name: Patrol Log enemy
   m_TagString: Untagged
@@ -130,7 +133,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -191,20 +194,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6267532, y: 0.8627498}
   m_EdgeRadius: 0
---- !u!114 &6412523521960965331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6412523521960965332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _strength: 2
-  _knockTime: 0.15
 --- !u!114 &637511158790658983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,15 +206,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771864a7e976bb444adec06a6a13ae5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <RoomSignal>k__BackingField: {fileID: 0}
-  <Speed>k__BackingField: 2
-  <ChaseRadius>k__BackingField: 2
-  <AttackRadius>k__BackingField: 1.1
-  <Target>k__BackingField: {fileID: 0}
-  <Path>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &8047584121982438158
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemyWithTarget
+      Entry: 6
+      Data: 
+  _patrolEnemyMovement: {fileID: 490390732969958081}
+--- !u!114 &5481255846750578011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,25 +228,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 6412523521960965332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
+  m_Script: {fileID: 11500000, guid: 87a8a96f1e8f4597b0223011d051c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _signal: {fileID: 11400000, guid: ff5d28e8334818a45948daaa325e732d, type: 2}
-  _signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 637511158790658983}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: PeaceInWorld
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemy
+      Entry: 6
+      Data: 
+  <TargetData>k__BackingField: {fileID: 4770877329219247515}
+--- !u!114 &4770877329219247515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7de5961fff74d029b5c2d39c775e1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackRadius>k__BackingField: 1.2
+  <ChaseRadius>k__BackingField: 6
+  <Target>k__BackingField: {fileID: 0}
+--- !u!114 &490390732969958081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cfb50cb0db4e11832f7dc13cf63b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6732372860467563414}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemyMovement
+      Entry: 10
+      Data: 0
+  _pathfinding: {fileID: 629105781371900214}
+  _path: []
+--- !u!114 &6732372860467563414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6309490ce342069d4f620871f1a9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
+--- !u!114 &2494577378468421862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ae31080948d0b499597cc8afcd76cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1575531264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,11 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1687b60d085313f47be032cec3edc386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireMinTime: 1
-  _fireMaxTime: 2
-  <LayerMask>k__BackingField:
+  <InteractionMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 0
   _maxHealth: {fileID: 11400000, guid: eeddf3d2c7598014299b69a33a6db09d, type: 2}
   _lootTable: {fileID: 11400000, guid: a97e9b9d92219ed4a92b25bc24032ea6, type: 2}
   _deathEffect: {fileID: 8327079094225007804, guid: 2c56ca51b04c330499741b9183c21bdf, type: 3}
@@ -317,19 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Grid>k__BackingField: {fileID: 0}
---- !u!114 &8336765939597832521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6412523521960965332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 0830953efd9981a4fb1473d180eded55, type: 2}
 --- !u!114 &5057979239018984992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +397,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941ec4a6878cb11498a2c338f7740d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 637511158790658983}
-  <LayerMask>k__BackingField:
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemy
+      Entry: 6
+      Data: 
+  <InteractionMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 0
+--- !u!114 &6412523521960965331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412523521960965332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _strength: 2
+  _knockTime: 0.15

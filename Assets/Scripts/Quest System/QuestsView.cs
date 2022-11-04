@@ -1,56 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
+using Remagures.SO.QuestSystem;
 using UnityEngine;
 
-public class QuestsView : MonoBehaviour
+namespace Remagures.Quest_System
 {
-    [SerializeField] private QuestContainer _playerQuests;
-    [SerializeField] private QuestSlot _slotPrefab;
-    [SerializeField] private GameObject _noQuestsText;
-
-    [Space]
-    [SerializeField] private GameObject _questsPanel;
-    [SerializeField] private QuestGoalsView _goalsView;
-
-    public void Start()
+    public class QuestsView : MonoBehaviour
     {
-        Initialize();
-        Close();
-    }
+        [SerializeField] private QuestContainer _playerQuests;
+        [SerializeField] private QuestSlot _slotPrefab;
+        [SerializeField] private GameObject _noQuestsText;
 
-    public void OnEnable()
-    {
-        Initialize();
-    }
+        [Space]
+        [SerializeField] private GameObject _questsPanel;
+        [SerializeField] private QuestGoalsView _goalsView;
 
-    public void Initialize()
-    {
-        ClearInventory();
-
-        if (_playerQuests.Quests.Count == 0)
+        public void Start()
         {
-            _noQuestsText.SetActive(true);
-            return;
+            Init();
+            Close();
         }
 
-        for (int i = 0; i < _playerQuests.Quests.Count; i++)
+        public void OnEnable()
         {
-            QuestSlot slot = Instantiate(_slotPrefab, _questsPanel.transform.position, Quaternion.identity, _questsPanel.transform);
-            slot.Initialize(_playerQuests.Quests[i], _goalsView);
+            Init();
         }
 
-    }
+        private void Init()
+        {
+            ClearInventory();
 
-    private void ClearInventory()
-    {
-        _noQuestsText.SetActive(false);
-        for (int i = 0; i < _questsPanel.transform.childCount; i++)
-            Destroy(_questsPanel.transform.GetChild(i).gameObject);
-    }
+            if (_playerQuests.Quests.Count == 0)
+            {
+                _noQuestsText.SetActive(true);
+                return;
+            }
 
-    public void Close()
-    {
-        gameObject.SetActive(false);
-        Time.timeScale = 1;
+            foreach (var quest in _playerQuests.Quests)
+            {
+                var slot = Instantiate(_slotPrefab, _questsPanel.transform.position, Quaternion.identity, _questsPanel.transform);
+                slot.Initialize(quest, _goalsView);
+            }
+
+        }
+
+        private void ClearInventory()
+        {
+            _noQuestsText.SetActive(false);
+            for (var i = 0; i < _questsPanel.transform.childCount; i++)
+                Destroy(_questsPanel.transform.GetChild(i).gameObject);
+        }
+
+        public void Close()
+        {
+            gameObject.SetActive(false);
+            UnityEngine.Time.timeScale = 1;
+        }
     }
 }

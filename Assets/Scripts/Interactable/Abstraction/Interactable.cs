@@ -1,50 +1,54 @@
+using Remagures.Player.Components;
+using Remagures.SO.Other;
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour
+namespace Remagures.Interactable.Abstraction
 {
-    [field: SerializeField, Header("Interactable Stuff")] public Signal Context { get; private set; }
-    [field: SerializeField] protected PlayerInteracting PlayerInteract { get; private set; }
-    public bool PlayerInRange { get; private set; }
-
-    public void DetectInteracting()
+    public abstract class Interactable : MonoBehaviour
     {
-        if (PlayerInRange)
+        [field: SerializeField, Header("Interactable Stuff")] public Signal Context { get; private set; }
+        [field: SerializeField] protected PlayerInteractingHandler PlayerInteract { get; private set; }
+        public bool PlayerInRange { get; private set; }
+
+        public void DetectInteracting()
         {
+            if (!PlayerInRange) return;
+        
             PlayerInteract.SetCurrentInteractable(this);
             Context.Invoke();
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            PlayerInRange = true;
-            DetectInteracting();
+            if (collision.TryGetComponent(out Player.Player _) && !collision.isTrigger)
+            {
+                PlayerInRange = true;
+                DetectInteracting();
+            }
+
+            if (CanTriggerEnter(collision))
+                TriggerEnter();
         }
 
-        if (CanTriggerEnter(collision))
-            TriggerEnter();
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Player>(out Player player) && !collision.isTrigger)
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            PlayerInRange = false;
-            PlayerInteract.ResetCurrentInteractable(this);
-            Context.Invoke();
+            if (collision.TryGetComponent(out Player.Player _) && !collision.isTrigger)
+            {
+                PlayerInRange = false;
+                PlayerInteract.ResetCurrentInteractable(this);
+                Context.Invoke();
+            }
+
+            if (CanTriggerExit(collision))
+                TriggerExit();
         }
 
-        if (CanTriggerExit(collision))
-            TriggerExit();
+        protected virtual void TriggerEnter() { }
+        protected virtual void TriggerExit() { }
+
+        protected virtual bool CanTriggerEnter(Collider2D collision) { return true; }
+        protected virtual bool CanTriggerExit(Collider2D collision) { return true; }
+
+        public abstract void Interact();
     }
-
-    public virtual void TriggerEnter() { }
-    public virtual void TriggerExit() { }
-
-    public virtual bool CanTriggerEnter(Collider2D collision) { return true; }
-    public virtual bool CanTriggerExit(Collider2D collision) { return true; }
-
-    public abstract void Interact();
 }

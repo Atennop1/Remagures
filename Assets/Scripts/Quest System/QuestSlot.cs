@@ -1,30 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using Remagures.SO.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestSlot : MonoBehaviour
+namespace Remagures.Quest_System
 {
-    [SerializeField] private Text _nameText;
-    [SerializeField] private Text _descriptionText;
-    [SerializeField] private Image _questImage;
-
-    private Quest _thisQuest;
-    private QuestGoalsView _goalsPanel;
-
-    public void Initialize(Quest quest, QuestGoalsView goalsPanel)
+    public class QuestSlot : MonoBehaviour
     {
-        _nameText.text = quest.Information.Name;
-        _descriptionText.text = quest.Information.Description;
-        _questImage.sprite = quest.Information.QuestSprite;
+        [SerializeField] private Text _nameText;
+        [SerializeField] private Text _descriptionText;
+        [SerializeField] private Image _questImage;
 
-        _thisQuest = quest;
-        _goalsPanel = goalsPanel;
-    }
+        private Quest _thisQuest;
+        private QuestGoalsView _goalsPanel;
 
-    public void ShowGoals()
-    {
-        _goalsPanel.gameObject.SetActive(true);
-        _goalsPanel.Initialize(_thisQuest);
+        public void Initialize(Quest quest, QuestGoalsView goalsPanel)
+        {
+            _nameText.text = quest.Information.Name;
+            _descriptionText.text = quest.Information.Description;
+            _questImage.sprite = quest.Information.QuestSprite;
+
+            _thisQuest = quest;
+            _goalsPanel = goalsPanel;
+        }
+
+        public void ShowGoals()
+        {
+            _goalsPanel.gameObject.SetActive(true);
+            _goalsPanel.Initialize(_thisQuest);
+        }
     }
 }

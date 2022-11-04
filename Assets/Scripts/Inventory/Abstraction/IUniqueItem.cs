@@ -1,12 +1,7 @@
-public enum UniqueClass
+namespace Remagures.Inventory.Abstraction
 {
-    Helmet,
-    Chestplate,
-    Leggins,
-    Weapon
-}
-
-public interface IUniqueItem : IBaseItemComponent
-{
-    public UniqueClass UniqueClass { get; }
+    public interface IUniqueItem : IBaseItemComponent
+    {
+        public UniqueType UniqueType { get; }
+    }
 }

@@ -1,18 +1,23 @@
 using UnityEngine;
 
-public class Destroyable : MonoBehaviour
+namespace Remagures.Interactable
 {
-    [SerializeField] private GameObject _sharp;
-    private Animator _animator;
-
-    private void Start()
+    public class Destroyable : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
-    }
+        [SerializeField] private GameObject _sharp;
+        private Animator _animator;
+    
+        private readonly int SMASH_ANIMATOR_NAME = Animator.StringToHash("smash");
 
-    public void Smash()
-    {
-        _animator.SetBool("smash", true);
-        Instantiate(_sharp, transform.position, Quaternion.identity);
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        public void Smash()
+        {
+            _animator.SetBool(SMASH_ANIMATOR_NAME, true);
+            Instantiate(_sharp, transform.position, Quaternion.identity);
+        }
     }
 }

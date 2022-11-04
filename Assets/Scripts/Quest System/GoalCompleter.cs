@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using Remagures.SO.QuestSystem;
 using UnityEngine;
 
-public class GoalCompleter : MonoBehaviour
+namespace Remagures.Quest_System
 {
-    [SerializeField] private QuestsDatabase _database;
-    [SerializeField] private QuestGoal _goal;
-
-    public void Complete()
+    public class GoalCompleter : MonoBehaviour
     {
-        _database.TryCompleteGoal(_goal);
+        [SerializeField] private QuestsDatabase _database;
+        [SerializeField] private QuestGoal _goal;
+
+        public void Complete()
+        {
+            _database.TryCompleteGoal(_goal);
+        }
     }
 }

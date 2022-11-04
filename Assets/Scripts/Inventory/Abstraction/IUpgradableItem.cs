@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using Remagures.SO.Inventory.Items;
 
-public interface IUpgradableItem : IBaseItemComponent
+namespace Remagures.Inventory.Abstraction
 {
-    public int ThisItemLevel { get; }
-    public int CostForThisItem { get; }
-    public List<BaseInventoryItem> ItemsForLevels { get; }
+    public interface IUpgradableItem : IBaseItemComponent
+    {
+        public int ThisItemLevel { get; }
+        public int CostForThisItem { get; }
+        public List<BaseInventoryItem> ItemsForLevels { get; }
+    }
 }

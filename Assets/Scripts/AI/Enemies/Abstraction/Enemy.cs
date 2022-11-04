@@ -1,47 +1,30 @@
-using System.Collections;
+using Remagures.AI.Enemies.BaseStates;
+using Remagures.AI.Enemies.Components;
+using Remagures.Components.Base;
 using UnityEngine;
+using SM = Remagures.AI.StateMachine;
 
-public enum EnemyState
+namespace Remagures.AI.Enemies.Abstraction
 {
-    None,
-    Attack,
-    Stagger,
-    Peace
-}
-
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(EnemyHealth))]
-[RequireComponent(typeof(EnemyAnimations))]
-public abstract class Enemy : MonoBehaviour
-{
-    public EnemyState CurrentState { get; private set; }
-    
-    [field: SerializeField, Header("Enemy Stuff")] public Signal RoomSignal { get; private set; }
-    [field: SerializeField] public float Speed { get; private set; }
-
-    public EnemyAnimations EnemyAnimations { get; private set; }
-    public Rigidbody2D MyRigidbody { get; private set; }
-
-    public void Awake()
+    [RequireComponent(typeof(EnemyAnimations))]
+    [RequireComponent(typeof(IEnemyMovement))]
+    public sealed class Enemy : MonoBehaviour, IEnemy
     {
-        EnemyAnimations = GetComponent<EnemyAnimations>();
-        CurrentState = EnemyState.None;
-        MyRigidbody = GetComponent<Rigidbody2D>();
-    }
+        public IEnemyMovement Movement { get; private set;  }
+        public Health Health { get; private set;  }
+        
+        public EnemyAnimations Animations { get; private set; }
+        public SM.StateMachine StateMachine { get; private set; }
 
-    public void OnEnable()
-    {
-        CurrentState = EnemyState.None;
-    }
-
-    public void PeaceInWorld()
-    {
-        CurrentState = EnemyState.Peace;
-    }
-
-    public void ChangeState(EnemyState newState)
-    {
-        if (CurrentState != newState)
-            CurrentState = newState;
+        private void Awake()
+        {
+            Animations = GetComponent<EnemyAnimations>();
+            Health = GetComponent<Health>();
+            
+            Movement = GetComponent<IEnemyMovement>();
+            StateMachine = new SM.StateMachine();
+            
+            StateMachine.AddAnyTransition(new DeadState(this), () => Health.Value < 0);
+        }
     }
 }
