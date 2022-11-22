@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,11 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157b9297d45f79d459e1a62ce382d4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
-  thisDoorType: 0
-  numberOfKeys: {fileID: 0}
-  doorSprite: {fileID: 3731697059734102047}
-  collider: {fileID: 3731697060165248931}
+  <Context>k__BackingField: {fileID: 0}
+  <PlayerInteract>k__BackingField: {fileID: 0}
+  _thisDoorType: 0
+  _numberOfKeys: {fileID: 0}
+  _doorSprite: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!61 &3731697060165248931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -345,6 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4637efd207e4a7d449f8964a7f668501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPressed: {fileID: 0}
-  activeSprite: {fileID: -2639854583086408205, guid: 6926dd85177dd0a419c8e1e559e1b8fd, type: 3}
-  door: {fileID: 3731697060165248930}
+  _isPressed: {fileID: 0}
+  _activeSprite: {fileID: 0}
+  _door: {fileID: 0}

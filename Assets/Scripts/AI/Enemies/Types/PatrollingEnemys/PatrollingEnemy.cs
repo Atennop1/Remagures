@@ -44,7 +44,7 @@ namespace Remagures.AI.Enemies.Types.PatrollingEnemys
                 StateMachine.AddTransition(knockedState, moveToPlayerState, () => !knockable.IsKnocked);
                 StateMachine.AddAnyTransition(knockedState, () => knockable.IsKnocked);
             }
-
+            
             StateMachine.SetState(playerNotInRangeState);
         }
 

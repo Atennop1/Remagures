@@ -1,6 +1,7 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using Remagures.MapSystem.Maps;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using UnityEngine;
 
 namespace Remagures.MapSystem
@@ -13,16 +14,17 @@ namespace Remagures.MapSystem
 
         private Texture2D _mapTexture;
         private LocationMap _currentMap;
+        
         private bool _canExplore;
 
         public void Explore()
         {
             if (!_canExplore) return;
+            
             var position = _currentMap.CalculatePositionOnTexture();
-        
             _mapTexture.DrawCircle(new Color(0, 0, 0, 0.5f), (int)position.x, (int)position.y, 50);
             _mapTexture.DrawCircle(new Color(0, 0, 0, 0), (int)position.x, (int)position.y, 47);
-        
+                
             StartCoroutine(ExploreCooldownCoroutine());
             _canExplore = false;
         }
@@ -58,19 +60,22 @@ namespace Remagures.MapSystem
 
     public static class Tex2DExtension
     {
-        public static void DrawCircle(this Texture2D texture, Color color, int x, int y, int radius = 3)
+        public static UniTask DrawCircle(this Texture2D texture, Color color, int x, int y, int radius = 3)
         {
             float rSquared = radius * radius;
-            var pixels = texture.GetPixels();
+            var pixels = texture.GetPixels32();
+
+            var textureWidth = texture.width;
+            var textureHeight = texture.height;
+            var colorA = color.a;
 
             for (var u = x - radius; u < x + radius + 1; u++)
-            for (var v = y - radius; v < y + radius + 1; v++)
-                if (u > 0 && v > 0 && u < texture.width && v < texture.height && 
-                    (x - u) * (x - u) + (y - v) * (y - v) < rSquared && 
-                    texture.GetPixel(u, v).a > color.a)
-                    pixels[v * texture.width + u] = color;
-        
-            texture.SetPixels(pixels);
+                for (var v = y - radius; v < y + radius + 1; v++)
+                    if (u > 0 && v > 0 && u < textureWidth && v < textureHeight && (x - u) * (x - u) + (y - v) * (y - v) < rSquared && pixels[v * textureWidth + u].a > colorA)
+                        pixels[v * textureWidth + u] = color;
+
+            texture.SetPixels32(pixels);
+            return UniTask.CompletedTask;
         }
     }
 }

@@ -1,4 +1,6 @@
-using System.Collections;
+using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,40 +12,42 @@ namespace Remagures.DialogSystem.UI
         [SerializeField] private Text _dialogText;
 
         private string _currentText;
-        private Coroutine _typingCoroutine;
+        private UniTask _typingTask;
+        
+        private CancellationToken _cancellationToken;
+        private CancellationTokenSource _cancellationTokenSource;
 
-        public IEnumerator Type(string text)
+        public async UniTask Type(string text)
         {
             _currentText = text;
 
-            if (_typingCoroutine != null)
-                StopCoroutine(_typingCoroutine);
-            _typingCoroutine = StartCoroutine(DisplayTextCoroutine(text));
-
-            yield return _typingCoroutine;
+            if (_typingTask.Status == UniTaskStatus.Pending)
+                _cancellationTokenSource.Cancel();
+            
+            _typingTask = DisplayTextCoroutine(text);
+            await _typingTask;
         }
 
-        private IEnumerator DisplayTextCoroutine(string text)
+        private async UniTask DisplayTextCoroutine(string text)
         {
-            View.ContinueText.text = "Нажмите, чтобы пролистать";
             _dialogText.text = "";
+            View.ContinueText.text = "Нажмите, чтобы пролистать";
 
-            foreach(var letter in text)
+            foreach (var letter in text.TakeWhile(_ => !_cancellationToken.IsCancellationRequested))
             {
                 _dialogText.text += letter;
-                yield return new WaitForSeconds(0.04f);
+                await UniTask.Delay(40, cancellationToken: _cancellationToken);
             }
-
-            _typingCoroutine = null;
         }
 
         public void Tap()
         {
-            if (_typingCoroutine != null)
-                StopCoroutine(_typingCoroutine);
+            if (_typingTask.Status == UniTaskStatus.Pending)
+                _cancellationTokenSource.Cancel();
 
             _dialogText.text = _currentText;
-            _typingCoroutine = null;
+            _cancellationToken = _cancellationTokenSource.Token;
+            _cancellationTokenSource = new CancellationTokenSource();
         }
     }
 }

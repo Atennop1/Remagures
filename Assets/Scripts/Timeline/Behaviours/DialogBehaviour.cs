@@ -18,7 +18,8 @@ namespace Remagures.Timeline.Behaviours
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            if (_beenStopped) return;
+            if (_beenStopped) 
+                return;
         
             TimelineView.Instance.Director.playableGraph.GetRootPlayable(0).SetSpeed(0);
             _writer = playerData as DialogTypeWriter;
@@ -31,10 +32,9 @@ namespace Remagures.Timeline.Behaviours
         {
             _writer.View.DialogWindow.GetComponent<Button>().onClick.AddListener(Tap);
             _writer.View.DialogWindow.SetActive(true);
-            _writer.View.ContinueText.text = "Нажмите, чтобы пролистать";
 
             TimelineView.Instance.SetCanContinue(false);
-            yield return _writer.StartCoroutine(_writer.Type(_text));
+            yield return new WaitForSeconds(999999999);
 
             if (_disableAfterReplica)
                 Tap();

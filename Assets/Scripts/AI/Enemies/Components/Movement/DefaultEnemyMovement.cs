@@ -47,10 +47,6 @@ namespace Remagures.AI.Enemies.Components.Movement
         private IEnumerator MoveCoroutine(Vector3 targetPosition, float speed)
         {
             CanMove = false;
-
-            if (gameObject.name == "Log enemy far")
-                Debug.Log(targetPosition);
-
             while (Vector3.Distance(transform.position, targetPosition) > 0.05f)
             {
                 var temp = transform.position + speed * UnityEngine.Time.deltaTime * (targetPosition - transform.position).normalized;

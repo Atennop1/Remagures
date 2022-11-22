@@ -13,8 +13,6 @@ namespace Remagures.Notifications
         [SerializeField] private string _description;
         [SerializeField] private string _smallIcon;
 
-        private bool _isFocus;
-
         protected virtual void Awake() 
         {
             var channel = new AndroidNotificationChannel()
@@ -42,14 +40,6 @@ namespace Remagures.Notifications
             AndroidNotificationCenter.SendNotificationWithExplicitID(notification, "news", id);
         }
 
-        private void FixedUpdate()
-        {
-            if (_isFocus)
-                AndroidNotificationCenter.CancelAllDisplayedNotifications();
-        }
-
-        protected virtual void OnApplicationFocus(bool focusStatus) => _isFocus = true;
-
-        protected virtual void OnApplicationPause(bool pauseStatus) => _isFocus = false;
+        protected virtual void OnApplicationFocus(bool focusStatus) => AndroidNotificationCenter.CancelAllDisplayedNotifications();
     }
 }

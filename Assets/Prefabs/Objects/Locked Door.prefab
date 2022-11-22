@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157b9297d45f79d459e1a62ce382d4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
-  thisDoorType: 0
-  numberOfKeys: {fileID: 0}
-  doorSprite: {fileID: 1521177786894182004}
-  collider: {fileID: 1521177786329080264}
+  <Context>k__BackingField: {fileID: 0}
+  <PlayerInteract>k__BackingField: {fileID: 0}
+  _thisDoorType: 0
+  _numberOfKeys: {fileID: 0}
+  _doorSprite: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!61 &1521177786329080264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

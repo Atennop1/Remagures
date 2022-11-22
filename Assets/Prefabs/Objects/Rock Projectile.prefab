@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,6 @@ MonoBehaviour:
   <Speed>k__BackingField: 2
   <LifeTime>k__BackingField: 10
   <MagicCost>k__BackingField: 0
-  <Length>k__BackingField: 0.7
 --- !u!114 &6119455488392520416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: Player
   _strength: 2
   _knockTime: 0.15
 --- !u!114 &2746503040173665592
@@ -170,4 +168,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _otherTag: Player

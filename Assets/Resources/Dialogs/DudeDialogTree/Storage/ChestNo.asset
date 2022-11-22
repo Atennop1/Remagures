@@ -17,9 +17,27 @@ MonoBehaviour:
     <SpeakerSprite>k__BackingField: {fileID: 21300000, guid: 74e8c70be2e641a42b1c020b724dd32e, type: 3}
     <SpeakerName>k__BackingField: "\u041B\u0438\u043D\u043A"
     <LayoutType>k__BackingField: 1
+    <OnLineEnded>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
   - <Line>k__BackingField: "\u042D\u0445, \u043A\u0430\u043A\u043E\u0439 \u0438\u0437
       \u0442\u0435\u0431\u044F \u0433\u0435\u0440\u043E\u0439 \u0442\u043E\u0433\u0434\u0430?"
     <SpeakerSprite>k__BackingField: {fileID: 21300000, guid: 5a018aa48c065e849a655d22c736377b, type: 3}
     <SpeakerName>k__BackingField: "\u0427\u0443\u0432\u0430\u043A"
     <LayoutType>k__BackingField: 0
+    <OnLineEnded>k__BackingField:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5574828395240767842, guid: e713ec1300683e344856b974f93eb788, type: 3}
+          m_TargetAssemblyTypeName: Remagures.Quest_System.QuestsDatabase, Assembly-CSharp
+          m_MethodName: AddQuestUI
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
+            m_ObjectArgumentAssemblyTypeName: Remagures.SO.QuestSystem.Quest, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   _choices: []

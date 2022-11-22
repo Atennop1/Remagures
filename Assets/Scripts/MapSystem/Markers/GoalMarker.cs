@@ -1,5 +1,5 @@
 using System.Linq;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using Remagures.SO.QuestSystem;
 using UnityEngine;
 using UnityEngine.Serialization;

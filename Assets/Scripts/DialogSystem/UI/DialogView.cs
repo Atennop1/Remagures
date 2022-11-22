@@ -1,4 +1,3 @@
-using System.Collections;
 using Remagures.DialogSystem.Core;
 using Remagures.Player.Components;
 using Remagures.SO.Other;
@@ -61,7 +60,7 @@ namespace Remagures.DialogSystem.UI
             foreach (Transform child in DialogBubble.transform)
                 Destroy(child.gameObject);
 
-            StartCoroutine(DisplayTextCoroutine(ThisDialog.Lines[CurrentLine].Line));
+            DisplayTextCoroutine(ThisDialog.Lines[CurrentLine].Line);
             SetWindow(ThisDialog.Lines[CurrentLine]);
 
             if (isPlayerReplica)
@@ -120,11 +119,11 @@ namespace Remagures.DialogSystem.UI
             CanContinue = true;
         }
 
-        private IEnumerator DisplayTextCoroutine(string text)
+        private async void DisplayTextCoroutine(string text)
         {
             CanContinue = false;
 
-            yield return StartCoroutine(_writer.Type(text));
+            await _writer.Type(text);
             _choicesHandler.SetupChoices();
 
             CanContinue = true;

@@ -41,7 +41,7 @@ namespace Remagures.Inventory.Reactions
             
             yield return null;
             MakeArrow();
-            yield return new WaitForSeconds(_player.Data.CharacterInfo.BowReloadTime);
+            yield return new WaitForSeconds(_player.PlayerData.CharacterInfo.BowReloadTime);
 
             if (_player.CurrentState != PlayerState.Interact)
                 _player.ChangeState(PlayerState.Idle);
@@ -51,13 +51,13 @@ namespace Remagures.Inventory.Reactions
 
         private void MakeArrow()
         {
-            if (!(_currentMagic.Value >= _player.Data.MagicCounter.MagicCost)) return;
+            if (!(_currentMagic.Value >= _player.PlayerData.MagicCounter.MagicCost)) return;
         
             _decreaseMagicSignal.Invoke();
             var throwVector = new Vector2(_playerAnimator.GetFloat(MOVE_X_ANIMATOR_NAME), _playerAnimator.GetFloat(MOVE_Y_ANIMATOR_NAME));
             
             var arrow = Instantiate(_projectile, _player.gameObject.transform.position, Quaternion.identity).GetComponent<Arrow>();
-            arrow.GetComponent<PlayerAttack>().Init(_player.Data.UniqueSetup);
+            arrow.GetComponent<PlayerAttack>().Init(_player.PlayerData.UniqueSetup);
 
             var arrowDirection = ChooseArrowDirection();
             arrow.Setup(throwVector, arrowDirection);

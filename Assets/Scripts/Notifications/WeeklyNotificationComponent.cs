@@ -23,7 +23,7 @@ namespace Remagures.Notifications
             _canNotify = true;
         }
     
-        protected override void OnApplicationPause(bool pauseStatus)
+        private void OnApplicationPause(bool pauseStatus)
         {
             if (pauseStatus)
             {

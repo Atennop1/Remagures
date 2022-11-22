@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +151,6 @@ MonoBehaviour:
   <Speed>k__BackingField: 9
   <LifeTime>k__BackingField: 10
   <MagicCost>k__BackingField: 1
-  <Length>k__BackingField: 758.33
 --- !u!114 &-8266358109318345494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,11 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _otherTag: Enemy
+  _uniqueSetup: {fileID: 0}
+  _characterInfo: {fileID: 0}
   _isPlayerAttack: 0
   _isPlayerMagic: 0
   _isArrow: 1
-  <Player>k__BackingField: {fileID: 0}
 --- !u!114 &1523803635993577051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +181,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75f95cc38fdcee4d90d8be3c890fe0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _otherTag: Enemy
   _strength: 2
   _knockTime: 0.15

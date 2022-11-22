@@ -5,6 +5,7 @@ using Remagures.Components.Base;
 using Remagures.Player.Components;
 using Remagures.SO.PlayerStuff;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,12 +18,13 @@ namespace Remagures.Player
         
         [Space]
         [SerializeField] private Health _health;
-        [field: SerializeField] public PublicData Data { get; private set; }
+        [OdinSerialize] private PublicPlayerData _playerData;
         
         [Space]
-        [SerializeField] private List<IPlayerComponent> _playerComponents = new();
+        [OdinSerialize] private List<IPlayerComponent> _playerComponents = new();
 
         public PlayerState CurrentState { get; private set; }
+        public PublicPlayerData PlayerData => _playerData;
 
         public T GetPlayerComponent<T>() where T: IPlayerComponent
         {

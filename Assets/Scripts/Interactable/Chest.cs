@@ -1,7 +1,7 @@
 using Remagures.DialogSystem.Runtime;
 using Remagures.Interactable.Abstraction;
 using Remagures.Inventory;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using Remagures.SO.Inventory;
 using Remagures.SO.Inventory.Items;
 using Remagures.SO.Other;
@@ -59,7 +59,7 @@ namespace Remagures.Interactable
                 var newCell = new Cell(_contentsItem);
                 var inventoryCell = _inventory.GetCell(newCell.Item);
                 
-                if (inventoryCell.CanAddItemAmount() && inventoryCell.CanMergeWithItem(newCell.Item))
+                if (inventoryCell == null || (inventoryCell.CanAddItemAmount() && inventoryCell.CanMergeWithItem(newCell.Item)))
                     _inventory.Add(newCell);
             }
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Remagures.MapSystem.Markers;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using UnityEngine;
 
 namespace Remagures.MapSystem.Maps

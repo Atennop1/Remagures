@@ -1,4 +1,3 @@
-using System.Collections;
 using Remagures.DialogSystem.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -32,7 +31,7 @@ namespace Remagures.Interactable.Abstraction
             _photoImage.sprite = _linkSprite;
         
             _dialogButton.onClick.AddListener(Tap);
-            StartCoroutine(DisplayTextCoroutine(text));
+            DisplayTextCoroutine(text);
         }
 
         private void Tap()
@@ -48,10 +47,10 @@ namespace Remagures.Interactable.Abstraction
             _dialogButton.onClick.RemoveListener(Tap);
         }
 
-        private IEnumerator DisplayTextCoroutine(string text)
+        private async void DisplayTextCoroutine(string text)
         {
             CanContinue = false;
-            yield return StartCoroutine(_writer.Type(text));
+            await _writer.Type(text);
        
             _continueText.text = "Нажмите, чтобы продолжить";
             CanContinue = true;

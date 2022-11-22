@@ -1,4 +1,3 @@
-using System;
 using Remagures.AI.NPCs.Components;
 using Remagures.DialogSystem.UI;
 using Remagures.Interactable.Abstraction;
@@ -68,7 +67,7 @@ namespace Remagures.Player.Components
             CanShowContextClue = true;
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
-            TimelineView.Instance?.Director.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            TimelineView.Instance?.Director?.playableGraph.GetRootPlayable(0).SetSpeed(1);
 
             _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;

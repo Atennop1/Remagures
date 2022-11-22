@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerInventory>k__BackingField: {fileID: 11400000, guid: 6f218e879fc229a47a2cd91cb69a430a, type: 2}
   <ThisItem>k__BackingField: {fileID: 11400000, guid: 2ef01346172899943b5a9a07059fc57d, type: 2}
+  _uniqueSetup: {fileID: 0}
+  _uniqueEntryPoint: {fileID: 0}
 --- !u!61 &7494321553137320386
 BoxCollider2D:
   m_ObjectHideFlags: 0

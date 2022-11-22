@@ -1,5 +1,5 @@
 using Remagures.MapSystem.Maps;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;
 

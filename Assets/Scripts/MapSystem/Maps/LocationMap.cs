@@ -1,5 +1,5 @@
 using Remagures.MapSystem.Markers;
-using Remagures.Quest_System;
+using Remagures.QuestSystem;
 using UnityEngine;
 
 namespace Remagures.MapSystem.Maps

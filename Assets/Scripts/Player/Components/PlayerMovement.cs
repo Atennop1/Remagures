@@ -16,28 +16,19 @@ namespace Remagures.Player.Components
 
         [Space]
         [SerializeField] private float _speed;
-
         private Rigidbody2D _thisRigidbody;
+        
         public Vector2 PlayerViewDirection { get; private set; }
+        public bool IsMoving { get; private set; }
 
         private const string MOVE_ANIMATOR_NAME = "moving";
         private PlayerAnimations _playerAnimations;
         private PlayerInteractingHandler _playerInteractingHandler;
         private PlayerAttacker _playerAttacker;
 
-        private void Start() 
+        public void Move(Vector2 input)
         {
-            _thisRigidbody = GetComponent<Rigidbody2D>();
-        }
-    
-        public void SetDirection()
-        {
-            var input = _playerInput.actions["Move"].ReadValue<Vector2>();
-            Move(input);
-        }
-
-        private void Move(Vector2 input)
-        {  
+            IsMoving = true;
             var joyStickCoefficient = input.y / input.x;
         
             if (joyStickCoefficient is >= 1 or <= -1) PlayerViewDirection = input.y > 0 ? Vector2.up : Vector2.down;
@@ -46,6 +37,18 @@ namespace Remagures.Player.Components
             _thisRigidbody.velocity = PlayerViewDirection * (_speed * UnityEngine.Time.deltaTime);
             _playerAnimations.SetAnimFloat(PlayerViewDirection);
             _explorer.Explore();
+            IsMoving = false;
+        }
+        
+        private void Start() 
+        {
+            _thisRigidbody = GetComponent<Rigidbody2D>();
+        }
+    
+        private void SetDirection()
+        {
+            var input = _playerInput.actions["Move"].ReadValue<Vector2>();
+            Move(input);
         }
 
         private void FixedUpdate()
