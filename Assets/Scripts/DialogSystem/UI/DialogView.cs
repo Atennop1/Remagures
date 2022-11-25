@@ -85,15 +85,17 @@ namespace Remagures.DialogSystem.UI
 
         private void NextReplica()
         {
-            if (!CanContinue)
-                SkipTyping();
-            else
+            if (CanContinue)
             {
                 if (ThisDialog.Lines.Count - 1 != CurrentLine)
                     NextLine();
                 else if (ThisDialog.Choices.Count == 0)
                     EndDialog();
+                
+                return;
             }
+            
+            SkipTyping();
         }
 
         private void NextLine()

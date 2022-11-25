@@ -22,10 +22,14 @@ namespace Remagures.Cutscenes
         public void Update()
         {
             if (!_currentAction.IsStarted)
-                _currentAction.Start();
+                 _currentAction.Start();
 
             if (_currentAction.IsFinished)
-                _currentActionIndex++;
+            {
+                _currentAction.Finish();
+                if (_currentActionIndex != _actions.Count - 1)
+                    _currentActionIndex++;
+            }
 
             if (IsFinished)
                 IsStarted = false;

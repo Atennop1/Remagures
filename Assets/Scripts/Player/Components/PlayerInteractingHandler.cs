@@ -1,11 +1,10 @@
 using Remagures.AI.NPCs.Components;
 using Remagures.DialogSystem.UI;
+using Remagures.Interactable;
 using Remagures.Interactable.Abstraction;
 using Remagures.SO.Other;
 using Remagures.SO.PlayerStuff;
-using Remagures.Timeline;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Remagures.Player.Components
 {
@@ -28,6 +27,7 @@ namespace Remagures.Player.Components
         [Space]
         [SerializeField] private SpriteRenderer _receivedItemSprite;
         [SerializeField] private GameObject _dialogWindow;
+        [SerializeField] private UIActivityChanger _uiActivityChanger;
 
         public bool CanShowContextClue { get; private set; } = true;
         public InteractingState CurrentState { get; private set; }
@@ -56,9 +56,7 @@ namespace Remagures.Player.Components
 
         public void DialogOnTaped()
         {
-            if ((CurrentInteractable is not InteractableWithTextDisplay { CanContinue: true } &&
-                (TimelineView.Instance == null || !TimelineView.Instance.IsPlaying ||
-                !TimelineView.Instance.CanContinue) &&
+            if ((CurrentInteractable is not InteractableWithTextDisplay { CanContinue: true } && 
                 CurrentInteractable is not NPC) ||
                 !_dialogView.IsDialogEnded ||
                 !_dialogView.CanContinue) return;
@@ -67,7 +65,6 @@ namespace Remagures.Player.Components
             CanShowContextClue = true;
             CurrentState = InteractingState.None;
             _detectInteractSignal.Invoke();
-            TimelineView.Instance?.Director?.playableGraph.GetRootPlayable(0).SetSpeed(1);
 
             _player.ChangeState(PlayerState.Idle);
             _receivedItemSprite.sprite = null;
@@ -75,6 +72,7 @@ namespace Remagures.Player.Components
             
             _playerAnimations.ChangeAnim(RECEIVING_ANIMATOR_NAME, false);
             _dialogWindow.SetActive(false);
+            _uiActivityChanger.TurnOn();
         }
 
         public void SetCurrentInteractable(Remagures.Interactable.Abstraction.Interactable interactable)

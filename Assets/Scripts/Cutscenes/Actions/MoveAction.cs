@@ -20,7 +20,9 @@ namespace Remagures.Cutscenes.Actions
         public void Start()
         {
             IsStarted = true;
-            _playerMovement.Move(_moveTo);
+            _playerMovement.MoveTo(_moveTo);
         }
+        
+        public void Finish() { }
     }
 }

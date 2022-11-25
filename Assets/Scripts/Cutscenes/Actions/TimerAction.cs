@@ -20,5 +20,7 @@ namespace Remagures.Cutscenes.Actions
             await UniTask.Delay((int)(_delay * 1000));
             IsFinished = true;
         }
+        
+        public void Finish() { }
     }
 }

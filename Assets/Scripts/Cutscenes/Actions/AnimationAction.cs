@@ -21,5 +21,7 @@ namespace Remagures.Cutscenes.Actions
             IsStarted = true;
             _animator.Play(_animationKey);
         }
+        
+        public void Finish() { }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Remagures.Cutscenes
+﻿using Cysharp.Threading.Tasks;
+
+namespace Remagures.Cutscenes
 {
     public interface ICutscene
     {

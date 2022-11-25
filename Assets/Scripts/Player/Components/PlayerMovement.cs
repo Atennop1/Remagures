@@ -1,6 +1,5 @@
-using System;
+using Cysharp.Threading.Tasks;
 using Remagures.MapSystem;
-using Remagures.Timeline;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,29 +25,48 @@ namespace Remagures.Player.Components
         private PlayerInteractingHandler _playerInteractingHandler;
         private PlayerAttacker _playerAttacker;
 
-        public void Move(Vector2 input)
+        public async void MoveTo(Vector3 to)
+        {
+            IsMoving = true;
+            SetupMove((to - transform.position).normalized);
+
+            while (transform.position != to)
+            {
+                if (Vector3.Distance(transform.position, to) < 0.1f)
+                {
+                    transform.position = to;
+                    break;
+                }
+                
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            IsMoving = false;
+        }
+        
+        private async void MoveInDirection(Vector2 input)
         {
             IsMoving = true;
             var joyStickCoefficient = input.y / input.x;
         
             if (joyStickCoefficient is >= 1 or <= -1) PlayerViewDirection = input.y > 0 ? Vector2.up : Vector2.down;
             else PlayerViewDirection = input.x > 0 ? Vector2.right : Vector2.left;
-        
-            _thisRigidbody.velocity = PlayerViewDirection * (_speed * UnityEngine.Time.deltaTime);
-            _playerAnimations.SetAnimFloat(PlayerViewDirection);
-            _explorer.Explore();
+
+            SetupMove(PlayerViewDirection);
+            while (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero)
+                await UniTask.WaitForFixedUpdate();
+
             IsMoving = false;
         }
-        
-        private void Start() 
+
+        private void SetupMove(Vector3 direction)
         {
-            _thisRigidbody = GetComponent<Rigidbody2D>();
-        }
-    
-        private void SetDirection()
-        {
-            var input = _playerInput.actions["Move"].ReadValue<Vector2>();
-            Move(input);
+            _player.ChangeState(PlayerState.Walk);
+            _playerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, true);
+            
+            _thisRigidbody.velocity = direction * (_speed * UnityEngine.Time.deltaTime);
+            _playerAnimations.SetAnimFloat(direction);
+            _explorer.Explore();
         }
 
         private void FixedUpdate()
@@ -64,24 +82,25 @@ namespace Remagures.Player.Components
                 _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
 
-            if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _playerAttacker.CanAttack && _player.CurrentState is PlayerState.Walk or PlayerState.Idle && 
-                _playerInteractingHandler.CurrentState != InteractingState.Interact &&
-                !(TimelineView.Instance != null && TimelineView.Instance.IsPlaying))
+            if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _playerAttacker.CanAttack &&
+                _player.CurrentState is PlayerState.Walk or PlayerState.Idle &&
+                _playerInteractingHandler.CurrentState != InteractingState.Interact)
             {
-                SetDirection();
-                _player.ChangeState(PlayerState.Walk);
-                _playerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, true);
+                MoveInDirection(_playerInput.actions["Move"].ReadValue<Vector2>());
+                return;
             }
-            else if (_player.CurrentState != PlayerState.Stagger)
-            {
-                _player.ChangeState(PlayerState.Idle);
-                _thisRigidbody.velocity = Vector2.zero;
-                _playerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, false);
-            }
+            
+            if (IsMoving) 
+                return;
+
+            _player.ChangeState(PlayerState.Idle);
+            _thisRigidbody.velocity = Vector2.zero;
+            _playerAnimations.ChangeAnim(MOVE_ANIMATOR_NAME, false);
         }
 
         private void Awake()
         {
+            _thisRigidbody = GetComponent<Rigidbody2D>();
             _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
             _playerAttacker = _player.GetPlayerComponent<PlayerAttacker>();
             _playerInteractingHandler = _player.GetPlayerComponent<PlayerInteractingHandler>();

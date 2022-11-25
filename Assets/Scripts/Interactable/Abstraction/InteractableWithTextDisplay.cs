@@ -19,6 +19,7 @@ namespace Remagures.Interactable.Abstraction
         [FormerlySerializedAs("writer")][SerializeField] private DialogTypeWriter _writer;
         [SerializeField] private Animator _layoutAnimator;
         [SerializeField] private Button _dialogButton;
+        [SerializeField] private UIActivityChanger _uiActivityChanger;
 
         public bool CanContinue { get; private set; } = true;
 
@@ -32,6 +33,7 @@ namespace Remagures.Interactable.Abstraction
         
             _dialogButton.onClick.AddListener(Tap);
             DisplayTextCoroutine(text);
+            _uiActivityChanger.TurnOff();
         }
 
         private void Tap()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Remagures.Cutscenes.Actions
 {
@@ -22,5 +23,7 @@ namespace Remagures.Cutscenes.Actions
             _transform.position = _positionToTeleport;
             IsFinished = true;
         }
+        
+        public void Finish() { }
     }
 }

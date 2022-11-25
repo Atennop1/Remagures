@@ -10,7 +10,7 @@ namespace Remagures.Cutscenes.Actions
 
         private readonly DialogTypeWriter _writer;
         private readonly string _text;
-        
+
         public DialogAction(DialogTypeWriter writer, string text)
         {
             _writer = writer;
@@ -21,12 +21,28 @@ namespace Remagures.Cutscenes.Actions
         {
             IsStarted = true;
             _writer.View.DialogWindow.SetActive(true);
-            
-            _writer.View.DialogWindow.GetComponent<Button>().onClick.AddListener(Tap);
+
+            var writerButton = _writer.View.DialogWindow.GetComponent<Button>();
+            writerButton.onClick.AddListener(Tap);
+
             await _writer.Type(_text);
             _writer.View.ContinueText.text = "Нажмите, чтобы продолжить";
         }
+        
+        public void Finish()
+        {
+            _writer.View.DialogWindow.GetComponent<Button>().onClick.RemoveListener(Tap);
+        }
 
-        private void Tap() => IsFinished = true;
+        private void Tap()
+        {
+            if (_writer.IsTyping)
+            {
+                _writer.Tap();
+                return;
+            }
+
+            IsFinished = true;
+        }
     }
 }

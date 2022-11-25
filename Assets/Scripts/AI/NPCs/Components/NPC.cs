@@ -1,4 +1,5 @@
 using Remagures.DialogSystem.Core;
+using Remagures.Interactable;
 using Remagures.SO.Other;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,6 +16,7 @@ namespace Remagures.AI.NPCs.Components
         [SerializeField] private DialogValue _dialogValue;
         [FormerlySerializedAs("_thisDatabase")] [SerializeField] private DialogDatabase _dialogDatabase;
         [field: SerializeField] protected Transform Player { get; private set; }
+        [SerializeField] private UIActivityChanger _uiActivityChanger;
 
         protected Rigidbody2D Rigidbody { get; private set; }
         protected NPCAnimations Animations { get; private set; }
@@ -30,17 +32,20 @@ namespace Remagures.AI.NPCs.Components
 
         public override void Interact()
         {
-            if (CurrentState == NPCState.Talk || !PlayerInRange) return;
+            if (CurrentState == NPCState.Talk || !PlayerInRange) 
+                return;
         
             ChangeState(NPCState.Talk);
             _dialogValue.NPCDatabase = _dialogDatabase;
             _dialogSignal.Invoke();
             Context.Invoke();
+            _uiActivityChanger.TurnOff();
         }
 
         public void EndTalk()
         {
-            if (CurrentState != NPCState.Talk) return;
+            if (CurrentState != NPCState.Talk) 
+                return;
         
             ChangeState(NPCState.Wait);
             Context.Invoke();

@@ -44,7 +44,8 @@ namespace Remagures.Interactable
     
         public override void Interact()
         {
-            if (_storedOpened.Value || !PlayerInRange) return;
+            if (_storedOpened.Value || !PlayerInRange) 
+                return;
         
             _triggerCollider.enabled = false;
             _animator.SetBool(OPENED_ANIMATOR_NAME, true);
