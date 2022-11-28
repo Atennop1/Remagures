@@ -38,6 +38,8 @@ namespace Remagures.MapSystem.Maps
 
         public void Init(MapView view, QuestGoalsView goalsView)
         {
+            Setup();
+            
             foreach (var marker in _markers)
             {
                 marker.Init(view);
@@ -71,11 +73,19 @@ namespace Remagures.MapSystem.Maps
                 if (obj.TryGetComponent(out IMarker marker))
                     _markers.Add(marker);
         }
-
+        
         protected virtual void DisplayPlayerMarker() { }
-
+        
+        private void Setup()
+        {
+            SetupMarkers();
+            SetupChangers();
+        }
+        
         private void OnEnable()
         {
+            Setup();
+            
             foreach (var changer in Changers)
                 changer.DisplayMarkers();
 
@@ -87,12 +97,6 @@ namespace Remagures.MapSystem.Maps
         {
             yield return new WaitForEndOfFrame();
             OnEnable();
-        }
-
-        private void Awake()
-        {
-            SetupMarkers();
-            SetupChangers();
         }
     }
 }

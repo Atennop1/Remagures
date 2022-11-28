@@ -124,10 +124,12 @@ namespace Remagures.DialogSystem.UI
         private async void DisplayTextCoroutine(string text)
         {
             CanContinue = false;
-
             await _writer.Type(text);
-            _choicesHandler.SetupChoices();
 
+            if (CanContinue)
+                return;
+            
+            _choicesHandler.SetupChoices();
             CanContinue = true;
         }
     }

@@ -34,7 +34,7 @@ namespace Remagures.MapSystem
             _canExplore = true;
             _currentMap = _setup.CurrentLocationMap;
             _mapTexture = _currentMap.ExplorationTexture;
-        
+            
             _currentMap.Init(_view, _goalsView, transform);
             StartCoroutine(TextureApplyCoroutine());
         }

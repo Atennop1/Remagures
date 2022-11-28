@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks.Triggers;
 using Remagures.MapSystem.Maps;
 using Remagures.QuestSystem;
 using UnityEngine;
@@ -21,10 +22,8 @@ namespace Remagures.MapSystem
 
         public void OpenParentMap()
         {
-            if (_currentMap.ParentMap.IsVisited())
-                OpenMap(_currentMap.ParentMap);
-            else
-                CantOpenMap();
+            if (_currentMap.ParentMap.IsVisited()) OpenMap(_currentMap.ParentMap);
+            else CantOpenMap();
         }
 
         public void Close()
@@ -36,11 +35,11 @@ namespace Remagures.MapSystem
         public void OpenMap(Map map)
         {
             ClearMap();
-
             _currentMap = Instantiate(map, transform.position, Quaternion.identity, _mapContainer);
+
             _currentMap.Init(this, _goalsView);
             (_currentMap as LocationMap)?.Init(this, _goalsView, _player);
-
+            
             _changeScaleButton.interactable = _currentMap.ParentMap != null;
         }
 
