@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Remagures.MapSystem;
+using Remagures.SO.PlayerStuff;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ namespace Remagures.Player.Components
 
         [Space]
         [SerializeField] private float _speed;
+        [SerializeField] private VectorValue _playerViewDirection;
         private Rigidbody2D _thisRigidbody;
         
         public Vector2 PlayerViewDirection { get; private set; }
@@ -40,7 +42,7 @@ namespace Remagures.Player.Components
                 
                 await UniTask.WaitForFixedUpdate();
             }
-
+            
             IsMoving = false;
         }
         
@@ -53,7 +55,7 @@ namespace Remagures.Player.Components
             else PlayerViewDirection = input.x > 0 ? Vector2.right : Vector2.left;
 
             SetupMove(PlayerViewDirection);
-            while (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero)
+            while (_playerInput?.actions["Move"].ReadValue<Vector2>() != Vector2.zero)
                 await UniTask.WaitForFixedUpdate();
 
             IsMoving = false;
@@ -104,6 +106,9 @@ namespace Remagures.Player.Components
             _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
             _playerAttacker = _player.GetPlayerComponent<PlayerAttacker>();
             _playerInteractingHandler = _player.GetPlayerComponent<PlayerInteractingHandler>();
+
+            PlayerViewDirection = _playerViewDirection.Value;
+            _playerAnimations.SetAnimFloat(PlayerViewDirection);
         }
     }
 }

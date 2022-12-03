@@ -6132,8 +6132,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _playerPosition: {fileID: 11400000, guid: 35acea345411ad640a92a09f100d935f, type: 2}
   _currentScene: {fileID: 11400000, guid: 62edfd6b564566b4baae5376ac1ffca5, type: 2}
+  _playerPosition: {fileID: 11400000, guid: 35acea345411ad640a92a09f100d935f, type: 2}
   _health: {fileID: 913249486364994787}
 --- !u!114 &1948626514282996038
 MonoBehaviour:
@@ -6167,6 +6167,7 @@ MonoBehaviour:
   _playerInput: {fileID: 3925213156728570895}
   _explorer: {fileID: 1208769433104765335}
   _speed: 190
+  _playerViewDirection: {fileID: 11400000, guid: dd303466b432a22458897d3829cfa275, type: 2}
 --- !u!114 &3266285230955312270
 MonoBehaviour:
   m_ObjectHideFlags: 0

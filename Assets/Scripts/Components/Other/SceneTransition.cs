@@ -1,4 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
+using Remagures.Components.Base;
+using Remagures.Cutscenes;
+using Remagures.Cutscenes.Actions;
+using Remagures.Interactable;
+using Remagures.Player.Components;
+using Remagures.Root.SystemUpdates;
 using Remagures.SO.PlayerStuff;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,41 +14,60 @@ namespace Remagures.Components.Other
 {
     public class SceneTransition : MonoBehaviour
     {
-        [Header("Stats")]
         [SerializeField] private string _sceneToLoad;
-        [SerializeField] private Vector2 _playerPosition;
         [SerializeField] private VectorValue _playerPositionStorage;
-
-        [Header("Objects")]
-        [SerializeField] private GameObject _fadeOutPanel;
-        [SerializeField] private GameObject _fadeInPanel;
-
-        public void Awake()
-        {
-            if (_fadeOutPanel == null) return;
+        [SerializeField] private VectorValue _playerViewDirectionStorage;
         
-            var panel = Instantiate(_fadeOutPanel, Vector3.zero, Quaternion.identity);
-            Destroy(panel, 1);
+        [Space]
+        [SerializeField] private UIActivityChanger _uiActivityChanger;
+        [SerializeField] private GameObject _fadeInPanel;
+        [SerializeField] private SmoothColorSwitcher _colorSwitcher;
+        
+        [Space]
+        [SerializeField] private Vector2 _playerPosition;
+        [SerializeField] private Vector2 _playerViewDirection;
+        private ISystemUpdate _systemUpdate;
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.TryGetComponent(out Player.Player player) || collision.isTrigger) 
+                return;
+
+            StartTransitionCutscene(player);
+            StartCoroutine(FadeCoroutine());
+            
+            _playerPositionStorage.SetValue(_playerPosition);
+            _playerViewDirectionStorage.SetValue(_playerViewDirection);
         }
 
-        public void OnTriggerEnter2D(Collider2D collision)
+        private void StartTransitionCutscene(Player.Player player)
         {
-            if (!collision.TryGetComponent(out Player.Player _) || collision.isTrigger) return;
-        
-            StartCoroutine(FadeCoroutine());
-            _playerPositionStorage.SetValue(_playerPosition);
+            var playerMovement = player.GetPlayerComponent<PlayerMovement>();
+            _systemUpdate = new SystemUpdate();
+            
+            var transitingCutscene = new Cutscene(new List<ICutsceneAction>
+            {
+                new StartAction(_uiActivityChanger),
+                new MoveAction(playerMovement, player.transform.position + (Vector3)playerMovement.PlayerViewDirection * 2)
+            });
+            
+            _colorSwitcher?.SwitchTo(Color.black, 0.5f);
+            _systemUpdate.Add(transitingCutscene);
+            transitingCutscene.Start();
         }
 
         private IEnumerator FadeCoroutine()
         {
-            if (_fadeOutPanel != null)
+            if (_fadeInPanel != null)
                 Instantiate(_fadeInPanel, Vector3.zero, Quaternion.identity);
 
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(1.5f);
             var asyncOperation = SceneManager.LoadSceneAsync(_sceneToLoad);
 
             while (!asyncOperation.isDone)
                 yield return null;
         }
+        
+        private void FixedUpdate() => _systemUpdate?.UpdateAll();
     }
 }

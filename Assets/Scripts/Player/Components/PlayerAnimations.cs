@@ -47,7 +47,6 @@ namespace Remagures.Player.Components
 
         private void Awake()
         {
-            SetAnimFloat(new Vector2(0, -1));
             ChangeAnim("moving", false);
         }
     }

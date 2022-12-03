@@ -13,9 +13,9 @@ namespace Remagures.Player
 {
     public class Player : SerializedMonoBehaviour
     {
-        [SerializeField] private VectorValue _playerPosition;
         [SerializeField] private StringValue _currentScene;
-        
+        [SerializeField] private VectorValue _playerPosition;
+
         [Space]
         [SerializeField] private Health _health;
         [OdinSerialize] private PublicPlayerData _playerData;
