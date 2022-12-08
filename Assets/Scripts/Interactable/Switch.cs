@@ -1,25 +1,24 @@
-using Remagures.SO.PlayerStuff;
+using Remagures.SaveSystem.SwampAttack.Runtime.Tools.SaveSystem;
 using UnityEngine;
 
 namespace Remagures.Interactable
 {
     public class Switch : MonoBehaviour
     {
-        [SerializeField] private BoolValue _isPressed;
-
-        [Space]
+        [SerializeField] private string _name;
         [SerializeField] private Sprite _activeSprite;
         [SerializeField] private Door _door;
-
-        private bool _isActive;
+        
         private SpriteRenderer _spriteRenderer;
+        private bool _isActive;
+        private BinaryStorage _storage;
 
         private void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        public void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player _))
                 ActivateSwitch();
@@ -27,11 +26,14 @@ namespace Remagures.Interactable
 
         private void ActivateSwitch()
         {
-            _isActive = true;
-            _isPressed.Value = _isActive;
-        
+            _isActive = !_storage.Exist(_name) || _storage.Load<bool>(_name);
             _spriteRenderer.sprite = _activeSprite;
             _door.Interact();
+        }
+
+        private void OnDisable()
+        {
+            _storage.Save(_isActive, _name);
         }
     }
 }

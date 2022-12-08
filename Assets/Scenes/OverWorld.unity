@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3894804f4f6f8248a8bd5bd0b68575c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Context>k__BackingField: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
+  <ContextClue>k__BackingField: {fileID: 6278529689569363816}
   <PlayerInteract>k__BackingField: {fileID: 6599683925943155593}
   _continueText: {fileID: 4979783239529018447}
   _nameText: {fileID: 6801453649872042854}
@@ -1073,8 +1073,8 @@ MonoBehaviour:
   _currentItem: {fileID: 11400000, guid: f3cf3cfdbc7c8d341bc5d6f242020b8b, type: 2}
   _numberOfKeys: {fileID: 11400000, guid: 6612f060efe83e94a8efabe4702493d8, type: 2}
   _contentsItem: {fileID: 11400000, guid: a0e34a1a66df50c46a2121431ca5617c, type: 2}
+  _name: Overworld bow chest
   _inventory: {fileID: 11400000, guid: 3242fe0ca21f7a0499a841677d2c0c2e, type: 2}
-  _storedOpened: {fileID: 11400000, guid: 8bbc457e1ff0a1b4baf74e8b5c1f7f50, type: 2}
   _raiseItemSignal: {fileID: 11400000, guid: 14092b56bbf89a5459fbf093ef2b2e05, type: 2}
   _dialogStateChanger: {fileID: 5351456301972702621}
   _goalCompleter: {fileID: 5351456301972702624}
@@ -32493,6 +32493,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476050564040104467, guid: 49e2d270dd714004f83c656921a72fd6, type: 3}
+      propertyPath: _stats.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
     - target: {fileID: 6618251198943685705, guid: 49e2d270dd714004f83c656921a72fd6, type: 3}
       propertyPath: m_Name
       value: GameSaver
@@ -33234,7 +33238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3894804f4f6f8248a8bd5bd0b68575c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Context>k__BackingField: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
+  <ContextClue>k__BackingField: {fileID: 6278529689569363816}
   <PlayerInteract>k__BackingField: {fileID: 6599683925943155593}
   _continueText: {fileID: 4979783239529018447}
   _nameText: {fileID: 6801453649872042854}
@@ -33247,8 +33251,8 @@ MonoBehaviour:
   _currentItem: {fileID: 11400000, guid: f3cf3cfdbc7c8d341bc5d6f242020b8b, type: 2}
   _numberOfKeys: {fileID: 11400000, guid: 6612f060efe83e94a8efabe4702493d8, type: 2}
   _contentsItem: {fileID: 11400000, guid: 992595301c3ea2248ae07cfd667fc4f1, type: 2}
+  _name: Overworld key chest
   _inventory: {fileID: 0}
-  _storedOpened: {fileID: 11400000, guid: 81a4ea72c12b27a4e8d6672be4e6cb3e, type: 2}
   _raiseItemSignal: {fileID: 11400000, guid: 14092b56bbf89a5459fbf093ef2b2e05, type: 2}
   _dialogStateChanger: {fileID: 0}
   _goalCompleter: {fileID: 0}
@@ -75229,7 +75233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b77ad00794fb14582a17195437929f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Context>k__BackingField: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
+  <ContextClue>k__BackingField: {fileID: 6278529689569363816}
   <PlayerInteract>k__BackingField: {fileID: 6599683925943155593}
   _dialogSignal: {fileID: 11400000, guid: 7c4cf57a27db39444bbd7e8c20d79969, type: 2}
   _dialogValue: {fileID: 11400000, guid: 43c8bf36b54a1cb4d81e33092226b11c, type: 2}
@@ -80623,34 +80627,6 @@ RectTransform:
   m_AnchoredPosition: {x: 33.5, y: -56.6}
   m_SizeDelta: {x: 302.9437, y: 100.679}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5973639787202138070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369541160297179573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42e762d34fd788479fa01c05cdd1d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _signal: {fileID: 11400000, guid: 6a3d0f9fe9fc7884f8e948b8a51e4d2b, type: 2}
-  _signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6278529689569363816}
-        m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-        m_MethodName: ChangeContext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5975358638901345956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86527,7 +86503,6 @@ GameObject:
   - component: {fileID: 5005274353584355946}
   - component: {fileID: 6278529689569363816}
   - component: {fileID: 8711099643359518580}
-  - component: {fileID: 5973639787202138070}
   - component: {fileID: 8369541160297179571}
   - component: {fileID: 8369541160297179575}
   - component: {fileID: 8369541160297179572}

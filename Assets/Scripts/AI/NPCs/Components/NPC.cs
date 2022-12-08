@@ -38,7 +38,7 @@ namespace Remagures.AI.NPCs.Components
             ChangeState(NPCState.Talk);
             _dialogValue.NPCDatabase = _dialogDatabase;
             _dialogSignal.Invoke();
-            Context.Invoke();
+            ContextClue.ChangeContext();
             _uiActivityChanger.TurnOff();
         }
 
@@ -48,7 +48,7 @@ namespace Remagures.AI.NPCs.Components
                 return;
         
             ChangeState(NPCState.Wait);
-            Context.Invoke();
+            ContextClue.ChangeContext();
         }
 
         protected override void TriggerEnter()

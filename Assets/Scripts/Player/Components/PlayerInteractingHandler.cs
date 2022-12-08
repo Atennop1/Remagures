@@ -51,7 +51,7 @@ namespace Remagures.Player.Components
             CurrentInteractable.Interact();
         
             CanShowContextClue = false;
-            CurrentInteractable.Context.Invoke();
+            CurrentInteractable.ContextClue.ChangeContext();
         }
 
         public void DialogOnTaped()

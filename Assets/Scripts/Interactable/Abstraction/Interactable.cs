@@ -1,12 +1,12 @@
+using Remagures.Components.Other;
 using Remagures.Player.Components;
-using Remagures.SO.Other;
 using UnityEngine;
 
 namespace Remagures.Interactable.Abstraction
 {
     public abstract class Interactable : MonoBehaviour
     {
-        [field: SerializeField, Header("Interactable Stuff")] public Signal Context { get; private set; }
+        [field: SerializeField, Header("Interactable Stuff")] public ContextClue ContextClue { get; private set; }
         [field: SerializeField] protected PlayerInteractingHandler PlayerInteract { get; private set; }
         public bool PlayerInRange { get; private set; }
 
@@ -15,7 +15,7 @@ namespace Remagures.Interactable.Abstraction
             if (!PlayerInRange) return;
         
             PlayerInteract.SetCurrentInteractable(this);
-            Context.Invoke();
+            ContextClue.ChangeContext();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +36,7 @@ namespace Remagures.Interactable.Abstraction
             {
                 PlayerInRange = false;
                 PlayerInteract.ResetCurrentInteractable(this);
-                Context.Invoke();
+                ContextClue.ChangeContext();
             }
 
             if (CanTriggerExit(collision))

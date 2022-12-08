@@ -70,8 +70,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Path>k__BackingField: /GameSave/Statistics
   _stats:
-  - {fileID: 11400000, guid: 8bbc457e1ff0a1b4baf74e8b5c1f7f50, type: 2}
-  - {fileID: 11400000, guid: 81a4ea72c12b27a4e8d6672be4e6cb3e, type: 2}
   - {fileID: 11400000, guid: 35acea345411ad640a92a09f100d935f, type: 2}
   - {fileID: 11400000, guid: 2714958b6f918f149aa4c5f60d65885b, type: 2}
   - {fileID: 11400000, guid: 62edfd6b564566b4baae5376ac1ffca5, type: 2}
@@ -87,8 +85,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 898ccc83271754b4e899865953347c9e, type: 2}
   - {fileID: 11400000, guid: 9cb5d90e29fbdd144a056b746717be46, type: 2}
   _defaultStats:
-  - {fileID: 11400000, guid: a9d823ce3c3777045b15a1e2c1138482, type: 2}
-  - {fileID: 11400000, guid: a9d823ce3c3777045b15a1e2c1138482, type: 2}
   - {fileID: 11400000, guid: 7cc1c3b33d79d68498eed22c93a0077d, type: 2}
   - {fileID: 11400000, guid: 2714958b6f918f149aa4c5f60d65885b, type: 2}
   - {fileID: 11400000, guid: 37cc594c90fc1fe43b7827a5f386bece, type: 2}
