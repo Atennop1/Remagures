@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1204265101408735786}
   - component: {fileID: 787586691098350415}
   - component: {fileID: 6939661038391476476}
-  - component: {fileID: 5749590495925240229}
   - component: {fileID: 570438714994998579}
-  - component: {fileID: 916209315700423604}
   - component: {fileID: 5574828395240767842}
+  - component: {fileID: 5749590495925240229}
+  - component: {fileID: 916209315700423604}
   m_Layer: 5
   m_Name: Quests Database
   m_TagString: Untagged
@@ -100,21 +100,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 5.23, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &5749590495925240229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407750964005154806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c10354637e424d548a6752d098058aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showingText: {fileID: 787586691098350415}
-  _textAnimator: {fileID: 570438714994998579}
-  _currentString: {fileID: 11400000, guid: ea6bb91bad0c6374eaba2bc33966bad1, type: 2}
 --- !u!95 &570438714994998579
 Animator:
   serializedVersion: 4
@@ -135,6 +120,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5574828395240767842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407750964005154806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc32d523b666a1d499e937df451a987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
+  _labelSignal: {fileID: 11400000, guid: 78ad088439e552e43bee1f99809bcb65, type: 2}
+  _labelQueuedTextStorage: {fileID: 11400000, guid: ea6bb91bad0c6374eaba2bc33966bad1, type: 2}
+--- !u!114 &5749590495925240229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407750964005154806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10354637e424d548a6752d098058aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showingText: {fileID: 787586691098350415}
+  _textAnimator: {fileID: 570438714994998579}
+  _currentString: {fileID: 11400000, guid: ea6bb91bad0c6374eaba2bc33966bad1, type: 2}
 --- !u!114 &916209315700423604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,19 +178,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5574828395240767842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407750964005154806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc32d523b666a1d499e937df451a987f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
-  _label: {fileID: 5749590495925240229}
-  _labelSignal: {fileID: 11400000, guid: 78ad088439e552e43bee1f99809bcb65, type: 2}
-  _stringValue: {fileID: 11400000, guid: ea6bb91bad0c6374eaba2bc33966bad1, type: 2}

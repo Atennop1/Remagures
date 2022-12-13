@@ -53,8 +53,6 @@ namespace Remagures.QuestSystem
             }
 
             EditorGUILayout.Space(10);
-
-            Editor editor = null;
             var toDelete = -1;
 
             for (var i = 0; i < m_QuestGoalListProperty.arraySize; i++)
@@ -63,18 +61,14 @@ namespace Remagures.QuestSystem
                 EditorGUILayout.BeginVertical();
 
                 var item = m_QuestGoalListProperty.GetArrayElementAtIndex(i);
-                CreateCachedEditor(item.objectReferenceValue, null, ref editor);
-
-                editor.OnInspectorGUI();
+                GUILayout.Label((item.objectReferenceValue as QuestGoal)?.Description);
                 EditorGUILayout.EndVertical();
 
                 if (GUILayout.Button("-", GUILayout.Width(32)))
-                {
                     toDelete = i;
-                }
 
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.Space(20);
+                EditorGUILayout.Space(5);
             }
 
             if (toDelete != -1)
