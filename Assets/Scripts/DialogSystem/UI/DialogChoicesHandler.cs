@@ -37,7 +37,8 @@ namespace Remagures.DialogSystem.UI
 
         private void Answer(DialogChoiceView choice)
         {
-            if (choice == null) return;
+            if (choice == null) 
+                return;
         
             _view.Answer(choice);
             _view.Refresh(true);
