@@ -10,20 +10,12 @@ namespace Remagures.QuestSystem
     {
         [SerializeField] private Text _showingText;
         [SerializeField] private Animator _textAnimator;
-
-        [SerializeField] private StringValue _currentString;
-
         public IReadOnlyCollection<string> LabelsQueue => _labelsQueue;
         private readonly Queue<string> _labelsQueue = new();
 
         private Coroutine _labelsCoroutine;
         private readonly int SHOW_ANIMATOR_NAME = Animator.StringToHash("Show");
-
-        public void AddToQueueSignal()
-        {
-            AddToQueue(_currentString.Value);
-        }
-    
+        
         public void AddToQueue(string text)
         {
             _labelsQueue.Enqueue(text);

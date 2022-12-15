@@ -10,7 +10,7 @@ namespace Remagures.Dialogs.Model
         private readonly Dialog[] _dialogs;
         private readonly StorageWithNames<T, Dialog> _storage;
 
-        public DialogsList(params Dialog[] dialogs)
+        public DialogsList(Dialog[] dialogs)
         {
             _storage = new StorageWithNames<T, Dialog>();
             _dialogs = dialogs ?? throw new ArgumentException("DialogList can't be null");

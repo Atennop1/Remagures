@@ -7,13 +7,10 @@ using UnityEngine.Serialization;
 
 namespace Remagures.QuestSystem
 {
-    public class QuestsDatabase : MonoBehaviour
+    public class QuestContainerOperations : MonoBehaviour
     {
         [SerializeField] private QuestContainer _container;
-        [SerializeField] private Signal _labelSignal;
-        [FormerlySerializedAs("_stringValue")] [SerializeField] private StringValue _labelQueuedTextStorage;
-
-        public void AddQuestUI(Quest quest) => TryAddQuest(quest);
+        [SerializeField] private QuestTextLabel _label;
         
         public void TryCompleteGoal(QuestGoal completingGoal)
         {
@@ -29,17 +26,15 @@ namespace Remagures.QuestSystem
             if (TryDeleteQuest(completingGoal.Quest)) 
                 return;
             
-            _labelQueuedTextStorage.Value = "Квест обновлен: " + completingGoal.Quest.Information.Name;
-            _labelSignal.Invoke();
+            _label.AddToQueue("Квест обновлен: " + completingGoal.Quest.Information.Name);
         }
         
-        private void TryAddQuest(Quest quest)
+        public void TryAddQuest(Quest quest)
         {
             if (!_container.TryAddQuest(quest)) 
                 return;
         
-            _labelQueuedTextStorage.Value = "Новый квест: " + quest.Information.Name;
-            _labelSignal.Invoke();
+            _label.AddToQueue("Новый квест: " + quest.Information.Name);
         }
 
         private bool TryDeleteQuest(Quest quest)
@@ -47,9 +42,7 @@ namespace Remagures.QuestSystem
             if (!_container.TryRemoveQuest(quest)) 
                 return false;
             
-            _labelQueuedTextStorage.Value = "Квест выполнен: " + quest.Information.Name;
-            _labelSignal.Invoke();
-
+            _label.AddToQueue("Квест выполнен: " + quest.Information.Name);
             return true;
         }
     }

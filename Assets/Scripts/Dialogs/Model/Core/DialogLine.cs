@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.Dialogs.Model.Data
+namespace Remagures.Dialogs.Model.Core
 {
     public class DialogLine
     {
@@ -9,7 +9,14 @@ namespace Remagures.Dialogs.Model.Data
         public DialogSpeakerInfo SpeakerInfo { get; }
         
         public IReadOnlyList<DialogChoice> Choices { get; }
-        public Action OnLineEnded { get; }
+
+        public Action OnLineEndedAction
+        {
+            get => _onLineEndedAction;
+            set => _onLineEndedAction = value ?? throw new ArgumentException("Action can't be null");
+        }
+        
+        private Action _onLineEndedAction;
         
         public DialogLine(string line, DialogSpeakerInfo speakerInfo, IReadOnlyList<DialogChoice> choices)
         {
@@ -17,7 +24,7 @@ namespace Remagures.Dialogs.Model.Data
             SpeakerInfo = speakerInfo;
             
             Choices = choices ?? throw new ArgumentException("ChoicesList can't be null");
-            OnLineEnded = () => { };
+            OnLineEndedAction = () => { };
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Remagures.Dialogs.Model.Data;
+﻿using Remagures.Dialogs.Model.Core;
 
 namespace Remagures.Dialogs.Model
 {

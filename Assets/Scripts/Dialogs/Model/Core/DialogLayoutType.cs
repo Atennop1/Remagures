@@ -1,4 +1,4 @@
-﻿namespace Remagures.Dialogs.Model.Data
+﻿namespace Remagures.Dialogs.Model.Core
 {
     public enum DialogLayoutType
     {

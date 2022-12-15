@@ -1,6 +1,6 @@
 using Remagures.Dialogs;
 using Remagures.Dialogs.Model;
-using Remagures.Dialogs.Model.Data;
+using Remagures.Dialogs.Model.Core;
 using UnityEngine;
 using UnityEngine.Events;
 

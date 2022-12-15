@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.Dialogs.Model.Data;
+using Remagures.Dialogs.Model.Core;
 
 namespace Remagures.Dialogs.Model
 {
@@ -12,7 +12,7 @@ namespace Remagures.Dialogs.Model
         private DialogLine[] _lines { get; }
         private int _currentLineIndex;
 
-        public Dialog(string name, params DialogLine[] lines)
+        public Dialog(string name, DialogLine[] lines)
         {
             Name = name ?? throw new ArgumentException("Name can't be null");
             _lines = lines ?? throw new ArgumentException("Lines can't be null");

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Remagures.Dialogs.Model.Data
+namespace Remagures.Dialogs.Model.Core
 {
     public struct DialogSpeakerInfo
     {
