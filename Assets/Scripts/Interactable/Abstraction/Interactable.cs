@@ -1,10 +1,11 @@
 using Remagures.Components.Other;
 using Remagures.Player.Components;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Interactable.Abstraction
 {
-    public abstract class Interactable : MonoBehaviour
+    public abstract class Interactable : SerializedMonoBehaviour
     {
         [field: SerializeField, Header("Interactable Stuff")] public ContextClue ContextClue { get; private set; }
         [field: SerializeField] protected PlayerInteractingHandler PlayerInteract { get; private set; }

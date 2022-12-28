@@ -1,4 +1,4 @@
-using Remagures.DialogSystem.UI;
+using Remagures.DialogSystem.View;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;

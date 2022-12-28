@@ -1,5 +1,4 @@
-using System;
-using Remagures.DialogSystem.Runtime;
+using Remagures.DialogSystem.Model;
 using Remagures.Interactable.Abstraction;
 using Remagures.Inventory;
 using Remagures.QuestSystem;
@@ -9,7 +8,6 @@ using Remagures.SO.Inventory.Items;
 using Remagures.SO.Other;
 using Remagures.SO.PlayerStuff;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Remagures.Interactable
 {
@@ -23,9 +21,7 @@ namespace Remagures.Interactable
         [Space] [SerializeField] private PlayerInventory _inventory;
         [SerializeField] private Signal _raiseItemSignal;
 
-        [FormerlySerializedAs("_changeDialogState")] [Header("Objects")] [SerializeField]
-        private DialogStateChanger _dialogStateChanger;
-
+        [Header("Objects")] [SerializeField] private DialogSwitcher _dialogSwitcher;
         [SerializeField] private GoalCompleter _goalCompleter;
 
         [Space] [SerializeField] private Collider2D _triggerCollider;
@@ -63,7 +59,7 @@ namespace Remagures.Interactable
             _isOpened = true;
             _raiseItemSignal.Invoke();
 
-            _dialogStateChanger?.ChangeDatabaseState();
+            _dialogSwitcher?.Switch();
             _goalCompleter?.Complete();
         }
 

@@ -1,5 +1,5 @@
 using Remagures.AI.NPCs.Components;
-using Remagures.DialogSystem.UI;
+using Remagures.DialogSystem.View;
 using Remagures.Interactable;
 using Remagures.Interactable.Abstraction;
 using Remagures.SO.Other;

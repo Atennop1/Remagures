@@ -1,4 +1,4 @@
-﻿using Remagures.DialogSystem.UI;
+﻿using Remagures.DialogSystem.View;
 using UnityEngine.UI;
 
 namespace Remagures.Cutscenes.Actions

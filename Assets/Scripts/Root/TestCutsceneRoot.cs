@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Remagures.Cutscenes;
 using Remagures.Cutscenes.Actions;
-using Remagures.DialogSystem.UI;
+using Remagures.DialogSystem.View;
 using Remagures.Interactable;
 using Remagures.Player.Components;
 using Remagures.Root.SystemUpdates;

@@ -1,8 +1,7 @@
-using Remagures.DialogSystem.Core;
+using Remagures.DialogSystem.View;
 using Remagures.Interactable;
-using Remagures.SO.Other;
+using Remagures.Root;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Remagures.AI.NPCs.Components
 {
@@ -11,10 +10,8 @@ namespace Remagures.AI.NPCs.Components
     [RequireComponent(typeof(Animator))]
     public abstract class NPC : Interactable.Abstraction.Interactable
     {
-        [Header("NPC Stuff")]
-        [SerializeField] private Signal _dialogSignal;
-        [SerializeField] private DialogValue _dialogValue;
-        [FormerlySerializedAs("_thisDatabase")] [SerializeField] private DialogDatabase _dialogDatabase;
+        [Header("NPC Stuff")] [SerializeField] private DialogView _dialogView;
+        [SerializeField] private DialogsListRoot _dialogsListRoot;
         [field: SerializeField] protected Transform Player { get; private set; }
         [SerializeField] private UIActivityChanger _uiActivityChanger;
 
@@ -36,8 +33,8 @@ namespace Remagures.AI.NPCs.Components
                 return;
         
             ChangeState(NPCState.Talk);
-            _dialogValue.NPCDatabase = _dialogDatabase;
-            _dialogSignal.Invoke();
+            _dialogView?.Activate(_dialogsListRoot?.BuiltDialogList.CurrentDialog);
+            
             ContextClue.ChangeContext();
             _uiActivityChanger.TurnOff();
         }
