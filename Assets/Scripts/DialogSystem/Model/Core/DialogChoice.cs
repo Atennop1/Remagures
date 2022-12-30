@@ -2,6 +2,7 @@
 
 namespace Remagures.DialogSystem.Model.Core
 {
+    [Serializable]
     public class DialogChoice
     {
         public string ChoiceText { get; }

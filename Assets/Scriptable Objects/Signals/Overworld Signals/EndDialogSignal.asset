@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 226aff8e3bee13542a1226a7b5245d58, type: 3}
-  m_Name: DialogActivate
+  m_Name: EndDialogSignal
   m_EditorClassIdentifier: 
-  listeners: []
+  _listeners: []

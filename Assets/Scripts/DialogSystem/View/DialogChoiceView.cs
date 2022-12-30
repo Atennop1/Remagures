@@ -9,7 +9,7 @@ namespace Remagures.DialogSystem.View
         [SerializeField] private Text _choiceText;
         public DialogChoice Choice { get; private set; }
 
-        public void Setup(DialogChoice choice, int index)
+        public void Setup(DialogChoice choice)
         {
             _choiceText.text = choice.ChoiceText;
             Choice = choice;

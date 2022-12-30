@@ -3,6 +3,7 @@ using Remagures.DialogSystem.Model.Core;
 
 namespace Remagures.DialogSystem.Model
 {
+    [Serializable]
     public class Dialog : IDialog
     {
         public string Name { get; }

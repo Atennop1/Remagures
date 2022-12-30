@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Remagures.DialogSystem.Model.Core
 {
+    [Serializable]
     public class DialogLine
     {
         public string Line { get; }

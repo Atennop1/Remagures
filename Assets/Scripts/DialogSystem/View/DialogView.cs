@@ -32,7 +32,7 @@ namespace Remagures.DialogSystem.View
         public bool CanContinue { get; private set; } = true;
         public bool IsDialogEnded { get; private set; } = true;
 
-        public void Start()
+        private void Awake()
         {
             _dialogWindowButton = DialogWindow.GetComponent<Button>();
         }
@@ -49,24 +49,8 @@ namespace Remagures.DialogSystem.View
             DialogWindow.SetActive(true);
             Refresh();
         }
-
-        public void Refresh()
-        {
-            foreach (Transform child in DialogBubble.transform)
-                Destroy(child.gameObject);
-
-            DisplayTextCoroutine(_currentDialog.CurrentLine.Line);
-            SetupWindow(_currentDialog.CurrentLine.SpeakerInfo);
-        }
         
-        private void SetupWindow(DialogSpeakerInfo speakerInfo)
-        {
-            _nameText.text = speakerInfo.SpeakerName;
-            _speakerImage.sprite = speakerInfo.SpeakerSprite;
-            _layoutAnimator.Play(speakerInfo.LayoutType.ToString());
-        }
-
-        private void NextReplica()
+        public void NextReplica()
         {
             if (CanContinue)
             {
@@ -76,6 +60,22 @@ namespace Remagures.DialogSystem.View
             }
             
             SkipTyping();
+        }
+
+        private void Refresh()
+        {
+            foreach (Transform child in DialogBubble.transform)
+                Destroy(child.gameObject);
+
+            DisplayText(_currentDialog.CurrentLine.Line);
+            SetupWindow(_currentDialog.CurrentLine.SpeakerInfo);
+        }
+        
+        private void SetupWindow(DialogSpeakerInfo speakerInfo)
+        {
+            _nameText.text = speakerInfo.SpeakerName;
+            _speakerImage.sprite = speakerInfo.SpeakerSprite;
+            _layoutAnimator.Play(speakerInfo.LayoutType.ToString());
         }
 
         private void NextLine()
@@ -104,7 +104,7 @@ namespace Remagures.DialogSystem.View
             CanContinue = true;
         }
 
-        private async void DisplayTextCoroutine(string text)
+        private async void DisplayText(string text)
         {
             CanContinue = false;
             await _writer.Type(text);

@@ -5,6 +5,6 @@ namespace Remagures.AI.NPCs
 {
     public abstract class MovableNPC : NPC
     {
-        [field: SerializeField] public float Speed { get; private set; }
+        [field: SerializeField, Space] public float Speed { get; private set; }
     }
 }

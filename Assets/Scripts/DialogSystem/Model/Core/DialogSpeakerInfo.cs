@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Remagures.DialogSystem.Model.Core
 {
+    [Serializable]
     public struct DialogSpeakerInfo
     {
         public string SpeakerName { get; }

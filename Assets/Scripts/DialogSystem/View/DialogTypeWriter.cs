@@ -24,7 +24,7 @@ namespace Remagures.DialogSystem.View
             _currentText = text;
             _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
-            
+
             _typingTask = DisplayTextCoroutine(text);
             await _typingTask;
         }

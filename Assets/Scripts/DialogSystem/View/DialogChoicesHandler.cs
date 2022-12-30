@@ -29,10 +29,10 @@ namespace Remagures.DialogSystem.View
             for (var i = 0; i < dialog.CurrentLine.Choices.Count; i++)
             {
                 var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _view.DialogBubble.transform);
-                var choice = choiceObject.GetComponent<DialogChoiceView>();
+                var choiceView = choiceObject.GetComponent<DialogChoiceView>();
 
-                choice.Setup(dialog.CurrentLine.Choices[i], i);
-                choice.GetComponent<Button>().onClick.AddListener(delegate { Answer(choice); });
+                choiceView.Setup(dialog.CurrentLine.Choices[i]);
+                choiceView.GetComponent<Button>().onClick.AddListener(delegate { Answer(choiceView); });
             }
         }
 
@@ -42,7 +42,7 @@ namespace Remagures.DialogSystem.View
                 return;
             
             choiceView.Choice.OnChoiceAction?.Invoke();
-            _view.Refresh();
+            _view.DialogBubble.transform.parent.gameObject.SetActive(false);
         }
     }
 }

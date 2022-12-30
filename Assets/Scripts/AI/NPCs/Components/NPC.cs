@@ -12,8 +12,8 @@ namespace Remagures.AI.NPCs.Components
     {
         [Header("NPC Stuff")] [SerializeField] private DialogView _dialogView;
         [SerializeField] private DialogsListRoot _dialogsListRoot;
-        [field: SerializeField] protected Transform Player { get; private set; }
         [SerializeField] private UIActivityChanger _uiActivityChanger;
+        [field: SerializeField] protected Transform Player { get; private set; }
 
         protected Rigidbody2D Rigidbody { get; private set; }
         protected NPCAnimations Animations { get; private set; }
