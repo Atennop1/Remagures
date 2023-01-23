@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 
 namespace Remagures.Cutscenes.Actions
 {
@@ -11,6 +12,9 @@ namespace Remagures.Cutscenes.Actions
         
         public TimerAction(float delay)
         {
+            if (delay <= 0)
+                throw new ArgumentException("Delay can't be less or equals zero");
+            
             _delay = delay;
         }
         

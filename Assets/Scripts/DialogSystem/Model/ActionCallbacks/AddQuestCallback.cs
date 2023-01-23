@@ -11,6 +11,7 @@ namespace Remagures.DialogSystem.Model.ActionCallbacks
         [SerializeField] private Quest _quest;
         [FormerlySerializedAs("_questsDatabase")] [SerializeField] private QuestContainerOperations questContainerOperations;
 
-        public void Callback() => questContainerOperations.TryAddQuest(_quest);
+        public void Callback() 
+            => questContainerOperations.TryAddQuest(_quest);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Remagures.DialogSystem.View;
+﻿using System;
+using Remagures.DialogSystem.View;
 using UnityEngine.UI;
 
 namespace Remagures.Cutscenes.Actions
@@ -16,12 +17,13 @@ namespace Remagures.Cutscenes.Actions
 
         public DialogAction(DialogTypeWriter writer, Button dialogWindowButton, Text continueText, string text)
         {
-            _dialogWindowButton = dialogWindowButton;
-            _continueText = continueText;
-            _writer = writer;
-            _text = text;
+            _dialogWindowButton = dialogWindowButton ? dialogWindowButton : throw new ArgumentNullException(nameof(dialogWindowButton));
+            _writer = writer ? writer : throw new ArgumentNullException(nameof(writer));
+
+            _continueText = continueText ? continueText : throw new ArgumentNullException(nameof(continueText));
+            _text = text ?? throw new ArgumentNullException(nameof(text));
         }
-        
+
         public async void Start()
         {
             IsStarted = true;

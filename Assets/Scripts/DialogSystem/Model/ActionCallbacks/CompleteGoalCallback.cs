@@ -10,6 +10,7 @@ namespace Remagures.DialogSystem.Model.ActionCallbacks
         [SerializeField] private QuestGoal _goal;
         [FormerlySerializedAs("_questsDatabase")] [SerializeField] private QuestContainerOperations questContainerOperations;
 
-        public void Callback() => questContainerOperations.TryCompleteGoal(_goal);
+        public void Callback() 
+            => questContainerOperations.TryCompleteGoal(_goal);
     }
 }

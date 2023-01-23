@@ -1,4 +1,5 @@
-﻿using Remagures.DialogSystem.View;
+﻿using System;
+using Remagures.DialogSystem.View;
 
 namespace Remagures.Cutscenes.Actions
 {
@@ -10,7 +11,7 @@ namespace Remagures.Cutscenes.Actions
         private readonly DialogView _dialogView;
 
         public EndDialogAction(DialogView dialogView) 
-            => _dialogView = dialogView;
+            => _dialogView = dialogView ? dialogView : throw new ArgumentNullException(nameof(dialogView));
 
         public void Start()
         {

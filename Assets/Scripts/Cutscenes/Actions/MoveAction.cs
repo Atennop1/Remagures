@@ -1,4 +1,5 @@
-﻿using Remagures.Player.Components;
+﻿using System;
+using Remagures.Player.Components;
 using UnityEngine;
 
 namespace Remagures.Cutscenes.Actions
@@ -10,11 +11,11 @@ namespace Remagures.Cutscenes.Actions
         
         private readonly Vector2 _moveTo;
         private readonly PlayerMovement _playerMovement;
-        
+
         public MoveAction(PlayerMovement playerMovement, Vector2 moveTo)
         {
             _moveTo = moveTo;
-            _playerMovement = playerMovement;
+            _playerMovement = playerMovement ? playerMovement : throw new ArgumentNullException(nameof(playerMovement));
         }
 
         public void Start()

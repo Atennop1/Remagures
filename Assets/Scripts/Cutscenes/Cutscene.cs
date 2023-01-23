@@ -15,7 +15,9 @@ namespace Remagures.Cutscenes
         private readonly List<ICutsceneAction> _actions;
         private int _currentActionIndex;
         
-        public void Start() => IsStarted = true;
+        public void Start() 
+            => IsStarted = true;
+        
         public Cutscene(List<ICutsceneAction> actions) => 
             _actions = actions ?? throw new ArgumentException("Actions can't be null");
 

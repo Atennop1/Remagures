@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Remagures.Cutscenes.Actions
 {
@@ -12,8 +13,8 @@ namespace Remagures.Cutscenes.Actions
         
         public AnimationAction(Animator animator, string animationKey)
         {
-            _animationKey = animationKey;
-            _animator = animator;
+            _animationKey = animationKey ?? throw new ArgumentNullException(nameof(animationKey));
+            _animator = animator ? animator : throw new ArgumentNullException(nameof(animator));
         }
 
         public void Start()

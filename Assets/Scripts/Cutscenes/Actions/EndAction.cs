@@ -22,6 +22,7 @@ namespace Remagures.Cutscenes.Actions
             IsFinished = true;
         }
 
-        public void Finish() => _uiActivityChanger.TurnOn();
+        public void Finish() 
+            => _uiActivityChanger.TurnOn();
     }
 }

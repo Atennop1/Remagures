@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Remagures.Cutscenes.Actions
@@ -13,7 +14,7 @@ namespace Remagures.Cutscenes.Actions
         
         public TeleportAction(Transform transform, Vector2 positionToTeleport)
         {
-            _transform = transform;
+            _transform = transform ? transform : throw new ArgumentNullException(nameof(transform));
             _positionToTeleport = positionToTeleport;
         }
         
