@@ -8,7 +8,7 @@ namespace Remagures.DialogSystem.View
 {
     public class DialogTypeWriter : MonoBehaviour
     {
-        [field: SerializeField] public DialogView View { get; private set; }
+        [SerializeField] private Text _continueText;
         [SerializeField] private Text _dialogText;
 
         public bool IsTyping { get; private set; }
@@ -33,9 +33,9 @@ namespace Remagures.DialogSystem.View
         {
             IsTyping = true;
             _dialogText.text = "";
-            View.ContinueText.text = "Нажмите, чтобы пролистать";
+            _continueText.text = "Нажмите, чтобы пролистать";
 
-            foreach (var letter in text.TakeWhile(letter => !_cancellationToken.IsCancellationRequested))
+            foreach (var letter in text.TakeWhile(_ => !_cancellationToken.IsCancellationRequested))
             {
                 _dialogText.text += letter;
                 await UniTask.Delay(40);
@@ -53,6 +53,7 @@ namespace Remagures.DialogSystem.View
             IsTyping = false;
         }
 
-        private void Awake() => _cancellationTokenSource = new CancellationTokenSource();
+        private void Awake() 
+            => _cancellationTokenSource = new CancellationTokenSource();
     }
 }

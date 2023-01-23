@@ -10,6 +10,7 @@ namespace Remagures.DialogSystem.Model
         [SerializeField] private string _newDialogName;
         [OdinSerialize] private DialogsListRoot _dialogsListRoot;
 
-        public void Switch() => _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
+        public void Switch() 
+            => _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
     }
 }

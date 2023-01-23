@@ -6,12 +6,19 @@ using Remagures.Interactable;
 using Remagures.Player.Components;
 using Remagures.Root.SystemUpdates;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Remagures.Root
 {
     public class TestCutsceneRoot : CompositeRoot
     {
+        [Header("Dialogs Stuff")] 
+        [SerializeField] private DialogView _dialogView;
         [SerializeField] private DialogTypeWriter _writer;
+        [SerializeField] private Button _dialogWindowButton;
+        [SerializeField] private Text _continueText;
+        
+        [Space]
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private UIActivityChanger _uiActivityChanger;
         private ISystemUpdate _systemUpdate;
@@ -32,11 +39,11 @@ namespace Remagures.Root
                 new MoveAction(_playerMovement, new Vector2(0, 0)),
                 
                 new TimerAction(0.5f),
-                new DialogAction(_writer, "Где я?"),
-                new DialogAction(_writer, "Что это за место?"),
-                new DialogAction(_writer, "Что происходит вообще?"),
+                new DialogAction(_writer, _dialogWindowButton, _continueText, "Где я?"),
+                new DialogAction(_writer, _dialogWindowButton, _continueText, "Что это за место?"),
+                new DialogAction(_writer, _dialogWindowButton, _continueText, "Что происходит вообще?"),
                 
-                new EndDialogAction(_writer),
+                new EndDialogAction(_dialogView),
                 new EndAction(_uiActivityChanger)
             };
             

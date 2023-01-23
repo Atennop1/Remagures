@@ -6,21 +6,25 @@ namespace Remagures.DialogSystem.View
 {
     public class DialogChoicesHandler : MonoBehaviour
     {
-        [SerializeField] private DialogView _view;
         [SerializeField] private GameObject _choicePrefab;
+        [SerializeField] private Text _continueText;
+        
+        [Space]
+        [SerializeField] private DialogBubble _dialogBubble;
+        [SerializeField] private GameObject _dialogBubbleBackground;
 
         public void SetupChoices(Dialog dialog)
         {
             if (dialog.IsCurrentLineLast && dialog.CurrentLine.Choices.Count > 0)
             {
-                _view.ContinueText.text = "";
-                _view.DialogBubble.transform.parent.gameObject.SetActive(true);
+                _continueText.text = "";
+                _dialogBubbleBackground.SetActive(true);
                 CreateChoices(dialog);
             }
             else
             {
-                _view.DialogBubble.transform.parent.gameObject.SetActive(false);
-                _view.ContinueText.text = "Нажмите, чтобы продолжить";
+                _continueText.text = "Нажмите, чтобы продолжить";
+                _dialogBubbleBackground.SetActive(false);
             }
         }
 
@@ -28,7 +32,7 @@ namespace Remagures.DialogSystem.View
         {
             foreach (var dialogChoice in dialog.CurrentLine.Choices)
             {
-                var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _view.DialogBubble.transform);
+                var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _dialogBubble.gameObject.transform);
                 var choiceView = choiceObject.GetComponent<DialogChoiceView>();
 
                 choiceView.Setup(dialogChoice);
@@ -42,7 +46,7 @@ namespace Remagures.DialogSystem.View
                 return;
             
             choiceView.Choice.OnChoiceAction?.Invoke();
-            _view.DialogBubble.transform.parent.gameObject.SetActive(false);
+            _dialogBubbleBackground.SetActive(false);
         }
     }
 }

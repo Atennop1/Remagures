@@ -7,10 +7,10 @@ namespace Remagures.Cutscenes.Actions
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }
         
-        private readonly DialogTypeWriter _writer;
+        private readonly DialogView _dialogView;
 
-        public EndDialogAction(DialogTypeWriter writer) 
-            => _writer = writer;
+        public EndDialogAction(DialogView dialogView) 
+            => _dialogView = dialogView;
 
         public void Start()
         {
@@ -19,8 +19,6 @@ namespace Remagures.Cutscenes.Actions
         }
 
         public void Finish()
-        {
-            _writer.View.DialogWindow.SetActive(false);
-        }
+            => _dialogView.gameObject.SetActive(false);
     }
 }

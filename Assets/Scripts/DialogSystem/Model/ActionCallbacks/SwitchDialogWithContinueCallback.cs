@@ -3,7 +3,6 @@ using Remagures.Root;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Remagures.DialogSystem.Model.ActionCallbacks
 {

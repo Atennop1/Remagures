@@ -9,10 +9,15 @@ namespace Remagures.Cutscenes.Actions
         public bool IsFinished { get; private set;  }
 
         private readonly DialogTypeWriter _writer;
+        private readonly Button _dialogWindowButton;
+
+        private readonly Text _continueText;
         private readonly string _text;
 
-        public DialogAction(DialogTypeWriter writer, string text)
+        public DialogAction(DialogTypeWriter writer, Button dialogWindowButton, Text continueText, string text)
         {
+            _dialogWindowButton = dialogWindowButton;
+            _continueText = continueText;
             _writer = writer;
             _text = text;
         }
@@ -20,19 +25,15 @@ namespace Remagures.Cutscenes.Actions
         public async void Start()
         {
             IsStarted = true;
-            _writer.View.DialogWindow.SetActive(true);
-
-            var writerButton = _writer.View.DialogWindow.GetComponent<Button>();
-            writerButton.onClick.AddListener(Tap);
+            _dialogWindowButton.gameObject.SetActive(true);
+            _dialogWindowButton.onClick.AddListener(Tap);
 
             await _writer.Type(_text);
-            _writer.View.ContinueText.text = "Нажмите, чтобы продолжить";
+            _continueText.text = "Нажмите, чтобы продолжить";
         }
         
         public void Finish()
-        {
-            _writer.View.DialogWindow.GetComponent<Button>().onClick.RemoveListener(Tap);
-        }
+            => _dialogWindowButton.onClick.RemoveListener(Tap);
 
         private void Tap()
         {

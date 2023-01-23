@@ -21,7 +21,9 @@ namespace Remagures.DialogSystem.View
         private void FixedUpdate() 
         {
             _thisRect.sizeDelta = _bubbleRect.sizeDelta + new Vector2(0, 34f + (_bubbleRect.childCount - 2) * 10);
-            _thisRect.position = _camera.WorldToScreenPoint(_player.transform.position + new Vector3(0, 0.5f, 0)) + new Vector3(0, 75 + _thisRect.sizeDelta.y / 2 * 1.55f, 0);
+            _thisRect.position = _camera.WorldToScreenPoint(_player.transform.position + new Vector3(0, 75.5f + _thisRect.sizeDelta.y * 0.775f, 0));
+
+            //idk what is going on here... this is very old code...
         }
     }
 }

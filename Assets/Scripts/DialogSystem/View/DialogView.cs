@@ -3,7 +3,6 @@ using Remagures.DialogSystem.Model.Core;
 using Remagures.Player.Components;
 using Remagures.SO.Other;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Remagures.DialogSystem.View
@@ -12,19 +11,21 @@ namespace Remagures.DialogSystem.View
     {
         [SerializeField] private Signal _endTalkSignal;
 
-        [field: SerializeField, Header("Dialog Window")] public GameObject DialogBubble { get; private set; }
-        [field: SerializeField] public GameObject DialogWindow;
+        [Header("Dialog Window")]
+        [SerializeField] private GameObject _dialogBubble;
+        [SerializeField] private GameObject _dialogWindow;
+        [SerializeField] private GameObject _dialogBubbleBackground;
 
         [Header("NPC Info Stuff")]
         [SerializeField] private Text _nameText;
         [SerializeField] private Image _speakerImage;
         [SerializeField] private Animator _layoutAnimator;
-        [field: SerializeField] public Text ContinueText { get; private set; }
+        [SerializeField] private Text _continueText;
 
         [Space]
         [SerializeField] private DialogChoicesHandler _choicesHandler;
-        [FormerlySerializedAs("_playerInteracting")] [SerializeField] private PlayerInteractingHandler _playerInteractingHandler;
-        [FormerlySerializedAs("_writter")] [SerializeField] private DialogTypeWriter _writer;
+        [SerializeField] private PlayerInteractingHandler _playerInteractingHandler;
+        [SerializeField] private DialogTypeWriter _writer;
         
         private Button _dialogWindowButton;
         private Dialog _currentDialog;
@@ -33,13 +34,11 @@ namespace Remagures.DialogSystem.View
         public bool IsDialogEnded { get; private set; } = true;
 
         private void Awake()
-        {
-            _dialogWindowButton = DialogWindow.GetComponent<Button>();
-        }
+            => _dialogWindowButton = _dialogWindow.GetComponent<Button>();
 
         public void Activate(Dialog dialog)
         {
-            ContinueText.text = "";
+            _continueText.text = "";
             IsDialogEnded = false;
             CanContinue = false;
 
@@ -47,7 +46,7 @@ namespace Remagures.DialogSystem.View
             _dialogWindowButton.onClick.AddListener(NextReplica);
             
             _currentDialog = dialog;
-            DialogWindow.SetActive(true);
+            _dialogWindow.SetActive(true);
             Refresh();
         }
         
@@ -66,7 +65,7 @@ namespace Remagures.DialogSystem.View
 
         private void Refresh()
         {
-            foreach (Transform child in DialogBubble.transform)
+            foreach (Transform child in _dialogBubble.transform)
                 Destroy(child.gameObject);
 
             DisplayText(_currentDialog.CurrentLine.Line);
@@ -86,7 +85,7 @@ namespace Remagures.DialogSystem.View
             _currentDialog.SwitchToNextLine();
             
             Refresh();
-            DialogBubble.transform.parent.gameObject.SetActive(false);
+            _dialogBubbleBackground.SetActive(false);
         }
 
         private void EndDialog()
