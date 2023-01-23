@@ -42,20 +42,22 @@ namespace Remagures.DialogSystem.View
             ContinueText.text = "";
             IsDialogEnded = false;
             CanContinue = false;
-            
-            _currentDialog = dialog;
+
+            _dialogWindowButton.onClick.RemoveListener(NextReplica);
             _dialogWindowButton.onClick.AddListener(NextReplica);
             
+            _currentDialog = dialog;
             DialogWindow.SetActive(true);
             Refresh();
         }
         
-        public void NextReplica()
+        private void NextReplica()
         {
             if (CanContinue)
             {
                 if (!_currentDialog.IsCurrentLineLast) NextLine();
                 else if (_currentDialog.CurrentLine.Choices.Count == 0) EndDialog();
+                
                 return;
             }
             

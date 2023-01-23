@@ -26,13 +26,13 @@ namespace Remagures.DialogSystem.View
 
         private void CreateChoices(IDialog dialog)
         {
-            for (var i = 0; i < dialog.CurrentLine.Choices.Count; i++)
+            foreach (var dialogChoice in dialog.CurrentLine.Choices)
             {
                 var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _view.DialogBubble.transform);
                 var choiceView = choiceObject.GetComponent<DialogChoiceView>();
 
-                choiceView.Setup(dialog.CurrentLine.Choices[i]);
-                choiceView.GetComponent<Button>().onClick.AddListener(delegate { Answer(choiceView); });
+                choiceView.Setup(dialogChoice);
+                choiceView.GetComponent<Button>().onClick.AddListener(() => Answer(choiceView));
             }
         }
 

@@ -6,9 +6,11 @@ namespace Remagures.Cutscenes.Actions
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }
+        
         private readonly DialogTypeWriter _writer;
 
-        public EndDialogAction(DialogTypeWriter writer) => _writer = writer;
+        public EndDialogAction(DialogTypeWriter writer) 
+            => _writer = writer;
 
         public void Start()
         {
