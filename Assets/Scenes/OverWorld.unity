@@ -31643,8 +31643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ddcf4549cf7da4186f34c768493014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 838528996}
   _choicePrefab: {fileID: 7427221785356208025, guid: 3e7a6d016e18c9a40baa5c57a70f5e8e, type: 3}
+  _continueText: {fileID: 4979783239529018447}
+  _dialogBubbleBackground: {fileID: 7630439950541722727}
+  _dialogBubble: {fileID: 8667782068526946765}
 --- !u!114 &838528995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31657,7 +31659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b02f2aaaf773d45a6764b851ae942a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <View>k__BackingField: {fileID: 838528996}
+  _continueText: {fileID: 4979783239529018447}
   _dialogText: {fileID: 8390055142162274416}
 --- !u!114 &838528996
 MonoBehaviour:
@@ -31672,12 +31674,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endTalkSignal: {fileID: 11400000, guid: cb79310910574cf4b94aec5bef42eae0, type: 2}
-  <DialogBubble>k__BackingField: {fileID: 8667782068526946765}
-  DialogWindow: {fileID: 6771279500609700103}
+  _dialogBubble: {fileID: 8667782068526946765}
+  _dialogWindow: {fileID: 6771279500609700103}
+  _dialogBubbleBackground: {fileID: 5335284379162196361}
   _nameText: {fileID: 6801453649872042854}
   _speakerImage: {fileID: 4329748830525414505}
   _layoutAnimator: {fileID: 7034914365229896253}
-  <ContinueText>k__BackingField: {fileID: 4979783239529018447}
+  _continueText: {fileID: 4979783239529018447}
   _choicesHandler: {fileID: 838528994}
   _playerInteractingHandler: {fileID: 6599683925943155593}
   _writer: {fileID: 838528995}
@@ -34796,7 +34799,6 @@ MonoBehaviour:
       Data: 0
   _newDialogName: PlayerAgreement
   _dialogView: {fileID: 838528996}
-  _dialogWindowButton: {fileID: 6}
 --- !u!1001 &1323582669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35867,8 +35869,6 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   _newDialogName: Offended
-  _dialogView: {fileID: 838528996}
-  _dialogWindowButton: {fileID: 6}
 --- !u!1 &1543529577
 GameObject:
   m_ObjectHideFlags: 0
@@ -36030,7 +36030,6 @@ MonoBehaviour:
       Data: 0
   _newDialogName: PlayerRefusal
   _dialogView: {fileID: 838528996}
-  _dialogWindowButton: {fileID: 6}
 --- !u!1 &1580782773
 GameObject:
   m_ObjectHideFlags: 0
@@ -69331,8 +69330,6 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   _newDialogName: Waiting
-  _dialogView: {fileID: 838528996}
-  _dialogWindowButton: {fileID: 6}
 --- !u!1 &2028918330
 GameObject:
   m_ObjectHideFlags: 0
@@ -80856,8 +80853,8 @@ GameObject:
   - component: {fileID: 4003834522265686885}
   - component: {fileID: 3622463413055086249}
   - component: {fileID: 7829904975697641997}
-  - component: {fileID: 7630439950541722727}
   - component: {fileID: 7393617897440205352}
+  - component: {fileID: 7630439950541722727}
   - component: {fileID: 7696143214604013129}
   - component: {fileID: 2181951122420439106}
   m_Layer: 5
@@ -84761,7 +84758,7 @@ GameObject:
   - component: {fileID: 6}
   - component: {fileID: 7034914365229896253}
   m_Layer: 5
-  m_Name: Dialog
+  m_Name: DialogWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

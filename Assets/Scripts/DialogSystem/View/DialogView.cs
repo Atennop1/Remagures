@@ -75,7 +75,7 @@ namespace Remagures.DialogSystem.View
         private void SetupWindow(DialogSpeakerInfo speakerInfo)
         {
             _nameText.text = speakerInfo.SpeakerName;
-            _speakerImage.sprite = speakerInfo.SpeakerSprite;
+            _speakerImage.sprite = speakerInfo.SpeakerSprite.Get();
             _layoutAnimator.Play(speakerInfo.LayoutType.ToString());
         }
 

@@ -33,6 +33,7 @@ namespace Remagures.Root
                 BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].BuiltDialog);
         }
 
-        //private void OnDisable() => BuiltDialogList.SaveCurrentDialog();
+        //private void OnDisable() 
+        //    => BuiltDialogList.SaveCurrentDialog();
     }
 }

@@ -10,21 +10,21 @@ namespace Remagures.DialogSystem.View
         [SerializeField] private Text _continueText;
         
         [Space]
-        [SerializeField] private DialogBubble _dialogBubble;
-        [SerializeField] private GameObject _dialogBubbleBackground;
+        [SerializeField] private DialogBubbleBackground _dialogBubbleBackground;
+        [SerializeField] private GameObject _dialogBubble;
 
         public void SetupChoices(Dialog dialog)
         {
             if (dialog.IsCurrentLineLast && dialog.CurrentLine.Choices.Count > 0)
             {
                 _continueText.text = "";
-                _dialogBubbleBackground.SetActive(true);
+                _dialogBubbleBackground.gameObject.SetActive(true);
                 CreateChoices(dialog);
             }
             else
             {
                 _continueText.text = "Нажмите, чтобы продолжить";
-                _dialogBubbleBackground.SetActive(false);
+                _dialogBubbleBackground.gameObject.SetActive(false);
             }
         }
 
@@ -32,7 +32,7 @@ namespace Remagures.DialogSystem.View
         {
             foreach (var dialogChoice in dialog.CurrentLine.Choices)
             {
-                var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _dialogBubble.gameObject.transform);
+                var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _dialogBubble.transform);
                 var choiceView = choiceObject.GetComponent<DialogChoiceView>();
 
                 choiceView.Setup(dialogChoice);
@@ -46,7 +46,7 @@ namespace Remagures.DialogSystem.View
                 return;
             
             choiceView.Choice.OnChoiceAction?.Invoke();
-            _dialogBubbleBackground.SetActive(false);
+            _dialogBubbleBackground.gameObject.SetActive(false);
         }
     }
 }
