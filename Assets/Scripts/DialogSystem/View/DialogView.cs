@@ -81,7 +81,7 @@ namespace Remagures.DialogSystem.View
 
         private void NextLine()
         {
-            _currentDialog.CurrentLine.OnLineEndedAction?.Invoke();
+            _currentDialog.CurrentLine.End();
             _currentDialog.SwitchToNextLine();
             
             Refresh();
@@ -90,7 +90,7 @@ namespace Remagures.DialogSystem.View
 
         private void EndDialog()
         {
-            _currentDialog.CurrentLine.OnLineEndedAction?.Invoke();
+            _currentDialog.CurrentLine.End();
             IsDialogEnded = true;      
             
             _endTalkSignal.Invoke();

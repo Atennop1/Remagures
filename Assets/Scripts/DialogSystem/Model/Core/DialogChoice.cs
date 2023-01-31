@@ -6,19 +6,12 @@ namespace Remagures.DialogSystem.Model.Core
     public class DialogChoice
     {
         public string ChoiceText { get; }
+        public bool IsUsed { get; private set; }
 
-        public Action OnChoiceAction
-        {
-            get => _onChoiceAction;
-            set => _onChoiceAction = value ?? throw new ArgumentException("Action can't be null");
-        }
-        
-        private Action _onChoiceAction;
-        
+        public void Use()
+            => IsUsed = true;
+
         public DialogChoice(string choiceText)
-        {
-            ChoiceText = choiceText ?? throw new ArgumentException("ChoiceText can't be null");
-            OnChoiceAction = () => { };
-        }
+            => ChoiceText = choiceText ?? throw new ArgumentException("ChoiceText can't be null");
     }
 }

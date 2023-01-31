@@ -9,7 +9,7 @@ namespace Remagures.DialogSystem.Model.Builders
     public class ChoiceBuilder : SerializedMonoBehaviour
     {
         [SerializeField] private string _choiceText;
-        [SerializeField] private List<IDialogActionCallback> _callbacks;
+        [SerializeField] private List<IChoiceCallback> _callbacks;
 
         public DialogChoice BuiltChoice { get; private set; }
         
@@ -18,7 +18,7 @@ namespace Remagures.DialogSystem.Model.Builders
             var result = new DialogChoice(_choiceText);
 
             foreach (var callback in _callbacks)
-                result.OnChoiceAction += callback.Callback;
+                callback.Init(result);
 
             BuiltChoice = result;
             return result;

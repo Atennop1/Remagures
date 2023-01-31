@@ -45,7 +45,7 @@ namespace Remagures.DialogSystem.View
             if (choiceView == null) 
                 return;
             
-            choiceView.Choice.OnChoiceAction?.Invoke();
+            choiceView.Choice.Use();
             _dialogBubbleBackground.gameObject.SetActive(false);
         }
     }

@@ -14,7 +14,7 @@ namespace Remagures.DialogSystem.Model.Builders
         
         [Space]
         [SerializeField] private List<ChoiceBuilder> _choiceBuilders;
-        [SerializeField] private List<IDialogActionCallback> _onLineEndedCallbacks;
+        [SerializeField] private List<ILineEndCallback> _onLineEndedCallbacks;
         
         public DialogLine BuiltLine { get; private set; }
 
@@ -24,7 +24,7 @@ namespace Remagures.DialogSystem.Model.Builders
             var result = new DialogLine(_lineText, _speakerInfoBuilder.BuiltInfo, builtChoices);
 
             foreach (var callback in _onLineEndedCallbacks)
-                result.OnLineEndedAction += callback.Callback;
+                callback.Init(result);
 
             BuiltLine = result;
             return result;

@@ -19,7 +19,7 @@ namespace Remagures.DialogSystem.Model
             _dialogs = dialogs ?? throw new ArgumentException("DialogList can't be null");
 
             if (_storage.Exist($"Dialog-{_characterName}"))
-                CurrentDialog = _storage.Load<Dialog>($"Dialog-{_characterName}");
+                CurrentDialog = dialogs.ToList().Find(dialog => dialog == _storage.Load<Dialog>($"Dialog-{_characterName}"));
         }
 
         public void SwitchToDialog(string dialogName)
