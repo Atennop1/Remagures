@@ -4,16 +4,16 @@ using System.Collections.Generic;
 namespace Remagures.DialogSystem.Model.Core
 {
     [Serializable]
-    public class DialogLine
+    public class DialogLine : IUsableComponent
     {
         public string Text { get; }
         public DialogSpeakerInfo SpeakerInfo { get; }
         
         public IReadOnlyList<DialogChoice> Choices { get; }
-        public bool IsEnded { get; private set; }
+        public bool IsUsed { get; private set; }
         
         public void End()
-            => IsEnded = true;
+            => IsUsed = true;
         
         public DialogLine(string line, DialogSpeakerInfo speakerInfo, IReadOnlyList<DialogChoice> choices)
         {

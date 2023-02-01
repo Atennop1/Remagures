@@ -9,7 +9,7 @@ namespace Remagures.DialogSystem.Model.Builders
     public class ChoiceBuilder : SerializedMonoBehaviour
     {
         [SerializeField] private string _choiceText;
-        [SerializeField] private List<IChoiceCallback> _callbacks;
+        [SerializeField] private List<IDialogActionCallback> _callbacks;
 
         public DialogChoice BuiltChoice { get; private set; }
         

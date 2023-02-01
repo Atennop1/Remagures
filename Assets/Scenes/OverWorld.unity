@@ -29914,7 +29914,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 442755109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ad3706ddf24be1ba4318491bd59070, type: 3}
+  m_Script: {fileID: 11500000, guid: 7abc5ecc757c4071b95611d9221487af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _quest: {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
@@ -30560,7 +30560,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -31271,7 +31271,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -32116,7 +32116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 964929286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ad3706ddf24be1ba4318491bd59070, type: 3}
+  m_Script: {fileID: 11500000, guid: 7abc5ecc757c4071b95611d9221487af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _quest: {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
@@ -32162,7 +32162,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _callbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IChoiceCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -32851,7 +32851,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -33202,7 +33202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121827410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3edf7a71b349f7a893764ea46b958a, type: 3}
+  m_Script: {fileID: 11500000, guid: 20a5a3af74aa481fa8ab47ff8967645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _goal: {fileID: -8336834349173289999, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
@@ -33578,7 +33578,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34153,7 +34153,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34711,7 +34711,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _callbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IChoiceCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34815,7 +34815,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299181310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a42c90f837344afa880d3a829375e3b5, type: 3}
+  m_Script: {fileID: 11500000, guid: af738a3c2ac7403bbf7cdeec6717db63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _newDialogName: PlayerAgreement
@@ -35877,7 +35877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6c7832d3f844938a805023b7bbf47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _newDialogName: PlayerAgreement
+  _newDialogName: Offended
   _dialogsListRoot: {fileID: 1131318869}
 --- !u!1 &1543529577
 GameObject:
@@ -35934,7 +35934,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -36022,7 +36022,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571361912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a42c90f837344afa880d3a829375e3b5, type: 3}
+  m_Script: {fileID: 11500000, guid: af738a3c2ac7403bbf7cdeec6717db63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _newDialogName: PlayerRefusal
@@ -38096,7 +38096,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -69432,7 +69432,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -80960,7 +80960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf92c5f62d60004183025bb36ab6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _database: {fileID: 0}
+  _database: {fileID: 182771336}
   _goal: {fileID: 5314236756782426285, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
 --- !u!114 &5351456301972702625
 MonoBehaviour:

@@ -3,7 +3,7 @@
 namespace Remagures.DialogSystem.Model.Core
 {
     [Serializable]
-    public class DialogChoice
+    public class DialogChoice : IUsableComponent
     {
         public string ChoiceText { get; }
         public bool IsUsed { get; private set; }

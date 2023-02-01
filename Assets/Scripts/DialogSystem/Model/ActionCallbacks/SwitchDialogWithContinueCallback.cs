@@ -4,20 +4,20 @@ using Remagures.DialogSystem.View;
 using Remagures.Root;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.ActionCallbacks.Choice
+namespace Remagures.DialogSystem.Model.ActionCallbacks
 {
-    public class SwitchDialogWithContinueLineEndCallback : MonoBehaviour, ILineEndCallback
+    public class SwitchDialogWithContinueCallback : MonoBehaviour, IDialogActionCallback
     {
         [SerializeField] private string _newDialogName;
         [SerializeField] private DialogsListRoot _dialogsListRoot;
         [SerializeField] private DialogView _dialogView;
 
-        private DialogLine _dialogLine;
+        private IUsableComponent _usableComponent;
         private bool _isWorked;
 
         private void Update()
         {
-            if (!_dialogLine.IsEnded || _isWorked)
+            if (!_usableComponent.IsUsed || _isWorked)
                 return;
 
             _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
@@ -25,7 +25,7 @@ namespace Remagures.DialogSystem.Model.ActionCallbacks.Choice
             _isWorked = true;
         }
 
-        public void Init(DialogLine line)
-            => _dialogLine = line ?? throw new ArgumentNullException(nameof(line));
+        public void Init(IUsableComponent usableComponent)
+            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
     }
 }

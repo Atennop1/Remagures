@@ -25,6 +25,7 @@ namespace Remagures.Tools
                 return _builtSprite;
 
             var texture = new Texture2D(_textureWidth, _textureHeight);
+            texture.filterMode = FilterMode.Point;
             texture.LoadImage(_textureBytes);
             
             _builtSprite = Sprite.Create(texture, new Rect(0f, 0f, _textureWidth, _textureHeight), Vector2.one);

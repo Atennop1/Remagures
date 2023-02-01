@@ -2,8 +2,8 @@
 
 namespace Remagures.DialogSystem.Model.ActionCallbacks
 {
-    public interface IChoiceCallback
+    public interface IDialogActionCallback
     {
-        void Init(DialogChoice choice);
+        void Init(IUsableComponent usableComponent);
     }
 }

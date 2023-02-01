@@ -14,7 +14,7 @@ namespace Remagures.DialogSystem.Model.Builders
         
         [Space]
         [SerializeField] private List<ChoiceBuilder> _choiceBuilders;
-        [SerializeField] private List<ILineEndCallback> _onLineEndedCallbacks;
+        [SerializeField] private List<IDialogActionCallback> _onLineEndedCallbacks;
         
         public DialogLine BuiltLine { get; private set; }
 

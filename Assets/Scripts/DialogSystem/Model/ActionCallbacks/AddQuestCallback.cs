@@ -6,25 +6,24 @@ using UnityEngine;
 
 namespace Remagures.DialogSystem.Model.ActionCallbacks
 {
-    public class AddQuestLineEndCallback : MonoBehaviour, ILineEndCallback
+    public class AddQuestCallback : MonoBehaviour, IDialogActionCallback
     {
         [SerializeField] private Quest _quest;
         [SerializeField] private QuestContainerOperations questContainerOperations;
-        
-        private DialogLine _dialogLine;
+
+        private IUsableComponent _usableComponent;
         private bool _isWorked;
-        
+
         private void Update()
         {
-            if (!_dialogLine.IsEnded || _isWorked)
+            if (!_usableComponent.IsUsed || _isWorked)
                 return;
             
             questContainerOperations.TryAddQuest(_quest);
             _isWorked = true;
         }
-        
-        public void Init(DialogLine line)
-            => _dialogLine = line ?? throw new ArgumentNullException(nameof(line));
 
+        public void Init(IUsableComponent usableComponent)
+            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
     }
 }
