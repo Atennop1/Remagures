@@ -68,7 +68,7 @@ namespace Remagures.DialogSystem.View
             foreach (Transform child in _dialogBubble.transform)
                 Destroy(child.gameObject);
 
-            DisplayText(_currentDialog.CurrentLine.Line);
+            DisplayText(_currentDialog.CurrentLine.Text);
             SetupWindow(_currentDialog.CurrentLine.SpeakerInfo);
         }
         

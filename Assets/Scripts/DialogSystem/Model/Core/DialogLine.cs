@@ -6,7 +6,7 @@ namespace Remagures.DialogSystem.Model.Core
     [Serializable]
     public class DialogLine
     {
-        public string Line { get; }
+        public string Text { get; }
         public DialogSpeakerInfo SpeakerInfo { get; }
         
         public IReadOnlyList<DialogChoice> Choices { get; }
@@ -17,7 +17,7 @@ namespace Remagures.DialogSystem.Model.Core
         
         public DialogLine(string line, DialogSpeakerInfo speakerInfo, IReadOnlyList<DialogChoice> choices)
         {
-            Line = line ?? throw new ArgumentException("TextLine can't be null");
+            Text = line ?? throw new ArgumentException("TextLine can't be null");
             Choices = choices ?? throw new ArgumentException("ChoicesList can't be null");
             SpeakerInfo = speakerInfo;
         }

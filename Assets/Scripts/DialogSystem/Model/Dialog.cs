@@ -11,38 +11,47 @@ namespace Remagures.DialogSystem.Model
     {
         public string Name { get; }
         public DialogLine CurrentLine => _lines[_currentLineIndex];
-        public bool CanSwitchToNextLine => _currentLineIndex < _lines.Length - 1;
-        public bool IsCurrentLineLast => _currentLineIndex == _lines.Length - 1;
+        public bool CanSwitchToNextLine => _currentLineIndex < _lines.Count - 1;
+        public bool IsCurrentLineLast => _currentLineIndex == _lines.Count - 1;
         public IReadOnlyList<DialogLine> Lines => _lines.ToList();
-        
-        private DialogLine[] _lines { get; }
+
+        private List<DialogLine> _lines;
         private int _currentLineIndex;
 
-        public Dialog(string name, DialogLine[] lines)
+        public Dialog(string name, IEnumerable<DialogLine> lines)
         {
             Name = name ?? throw new ArgumentException("Name can't be null");
-            _lines = lines ?? throw new ArgumentException("Lines can't be null");
+            _lines = lines.ToList();
         }
 
         public void SwitchToNextLine()
         {
             if (!CanSwitchToNextLine)
                 throw new InvalidOperationException("You already at last dialog line");
-            
+
             _currentLineIndex++;
+            
         }
         
         public static bool operator ==(Dialog thisDialog, Dialog anotherDialog)
         {
-            if (thisDialog == null || anotherDialog == null)
-                return false;
+            if (thisDialog is null && anotherDialog is null)
+                return true;
 
-            if (thisDialog.Lines.Count != anotherDialog.Lines.Count)
+            if (thisDialog is null || anotherDialog is null)
                 return false;
             
+            if (thisDialog.Lines.Count != anotherDialog.Lines.Count)
+                return false;
+
             for (var i = 0; i < thisDialog.Lines.Count; i++)
-                if (thisDialog.Lines[i] != anotherDialog.Lines[i])
+            {
+                var firstLine = thisDialog.Lines[i];
+                var secondLine = anotherDialog.Lines[i];
+                
+                if (firstLine.Text != secondLine.Text || firstLine.SpeakerInfo.SpeakerName != secondLine.SpeakerInfo.SpeakerName)
                     return false;
+            }
 
             return thisDialog.Name == anotherDialog.Name;
         }

@@ -10,13 +10,11 @@ namespace Remagures.Root
     {
         [SerializeField] private int _idOfStartDialog;
         [SerializeField] private string _characterName;
-        
-        [Space]
-        [SerializeField] private List<SpeakerInfoBuilder> _speakerInfoBuilders;
+
+        [Space] [SerializeField] private List<SpeakerInfoBuilder> _speakerInfoBuilders;
         [SerializeField] private List<ChoiceBuilder> _choiceBuilders;
-        
-        [Space]
-        [SerializeField] private List<DialogLineBuilder> _dialogLineBuilders;
+
+        [Space] [SerializeField] private List<DialogLineBuilder> _dialogLineBuilders;
         [SerializeField] private List<DialogBuilder> _dialogBuilders;
 
         public DialogsList BuiltDialogList { get; private set; }
@@ -29,11 +27,12 @@ namespace Remagures.Root
             _dialogBuilders.ForEach(builder => builder.Build());
 
             BuiltDialogList = new DialogsList(_dialogBuilders.Select(builder => builder.BuiltDialog).ToArray(), _characterName);
+            
             if (BuiltDialogList.CurrentDialog == null)
                 BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].BuiltDialog);
         }
 
-        private void OnDisable() 
+        private void OnDisable()
             => BuiltDialogList.SaveCurrentDialog();
     }
 }

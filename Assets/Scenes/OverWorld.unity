@@ -1280,6 +1280,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &182771334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182771335}
+  - component: {fileID: 182771336}
+  m_Layer: 0
+  m_Name: QuestContainerOperations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &182771335
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182771334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 838528990}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &182771336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182771334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc32d523b666a1d499e937df451a987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
+  _label: {fileID: 7587685352300498948}
 --- !u!1 &188894491
 GameObject:
   m_ObjectHideFlags: 0
@@ -29866,17 +29917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad3706ddf24be1ba4318491bd59070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   _quest: {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
-  questContainerOperations: {fileID: 7772013750513438915}
+  questContainerOperations: {fileID: 182771336}
 --- !u!4 &443995415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145971971839688152, guid: ac55214c1199daa4481c52d7fe260124, type: 3}
@@ -30518,7 +30560,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -31229,7 +31271,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -31562,6 +31604,7 @@ RectTransform:
   - {fileID: 5694356095965712763}
   - {fileID: 4003834522265686885}
   - {fileID: 4399228458443634542}
+  - {fileID: 182771335}
   m_Father: {fileID: 829501634}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32076,17 +32119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad3706ddf24be1ba4318491bd59070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   _quest: {fileID: 11400000, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
-  questContainerOperations: {fileID: 7772013750513438915}
+  questContainerOperations: {fileID: 182771336}
 --- !u!1 &969882580
 GameObject:
   m_ObjectHideFlags: 0
@@ -32128,7 +32162,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _callbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IChoiceCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -32817,7 +32851,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -33168,11 +33202,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121827410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d2aa503a1a24279a0e60edbc53df2b4, type: 3}
+  m_Script: {fileID: 11500000, guid: eb3edf7a71b349f7a893764ea46b958a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _goal: {fileID: -8336834349173289999, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
-  questContainerOperations: {fileID: 7772013750513438915}
+  questContainerOperations: {fileID: 182771336}
 --- !u!1 &1126186583
 GameObject:
   m_ObjectHideFlags: 0
@@ -33544,7 +33578,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34119,7 +34153,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34677,7 +34711,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _callbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IChoiceCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -34781,23 +34815,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299181310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8a66bc2a0e4bb5a47f572b050d4285, type: 3}
+  m_Script: {fileID: 11500000, guid: a42c90f837344afa880d3a829375e3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1131318869}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _dialogsListRoot
-      Entry: 10
-      Data: 0
   _newDialogName: PlayerAgreement
+  _dialogsListRoot: {fileID: 1131318869}
   _dialogView: {fileID: 838528996}
 --- !u!1001 &1323582669
 PrefabInstance:
@@ -35820,7 +35842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533384678}
-  - component: {fileID: 1533384679}
+  - component: {fileID: 1533384680}
   m_Layer: 0
   m_Name: SwitchDialogCallback
   m_TagString: Untagged
@@ -35843,7 +35865,7 @@ Transform:
   m_Father: {fileID: 2034803145}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1533384679
+--- !u!114 &1533384680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35852,23 +35874,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533384677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0ba77e8ae843d2b2886ce391a7d3fa, type: 3}
+  m_Script: {fileID: 11500000, guid: ac6c7832d3f844938a805023b7bbf47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1131318869}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _dialogsListRoot
-      Entry: 10
-      Data: 0
-  _newDialogName: Offended
+  _newDialogName: PlayerAgreement
+  _dialogsListRoot: {fileID: 1131318869}
 --- !u!1 &1543529577
 GameObject:
   m_ObjectHideFlags: 0
@@ -35924,7 +35934,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -36012,23 +36022,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571361912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8a66bc2a0e4bb5a47f572b050d4285, type: 3}
+  m_Script: {fileID: 11500000, guid: a42c90f837344afa880d3a829375e3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1131318869}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _dialogsListRoot
-      Entry: 10
-      Data: 0
   _newDialogName: PlayerRefusal
+  _dialogsListRoot: {fileID: 1131318869}
   _dialogView: {fileID: 838528996}
 --- !u!1 &1580782773
 GameObject:
@@ -38098,7 +38096,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -69313,23 +69311,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2007996431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0ba77e8ae843d2b2886ce391a7d3fa, type: 3}
+  m_Script: {fileID: 11500000, guid: ac6c7832d3f844938a805023b7bbf47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1131318869}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _dialogsListRoot
-      Entry: 10
-      Data: 0
   _newDialogName: Waiting
+  _dialogsListRoot: {fileID: 1131318869}
 --- !u!1 &2028918330
 GameObject:
   m_ObjectHideFlags: 0
@@ -69438,7 +69424,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 964929288}
-    - {fileID: 1533384679}
+    - {fileID: 1533384680}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -69446,7 +69432,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _onLineEndedCallbacks
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.IDialogActionCallback,
+      Data: 0|System.Collections.Generic.List`1[[Remagures.DialogSystem.Model.ActionCallbacks.ILineEndCallback,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -74010,7 +73996,6 @@ GameObject:
   - component: {fileID: 5100565471798301021}
   - component: {fileID: 2408549810651032722}
   - component: {fileID: 7587685352300498948}
-  - component: {fileID: 7772013750513438915}
   m_Layer: 5
   m_Name: QuestText
   m_TagString: Untagged
@@ -80975,7 +80960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf92c5f62d60004183025bb36ab6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _database: {fileID: 7772013750513438915}
+  _database: {fileID: 0}
   _goal: {fileID: 5314236756782426285, guid: 2612d78cdac51714ebb56cc77e1c3e31, type: 2}
 --- !u!114 &5351456301972702625
 MonoBehaviour:
@@ -86877,20 +86862,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9024860685409739624}
   m_CullTransparentMesh: 1
---- !u!114 &7772013750513438915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994254133467676247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc32d523b666a1d499e937df451a987f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 11400000, guid: 264fc5037872e7a45ac4f8d3c188a927, type: 2}
-  _label: {fileID: 7587685352300498948}
 --- !u!224 &7775421529313969688
 RectTransform:
   m_ObjectHideFlags: 0
