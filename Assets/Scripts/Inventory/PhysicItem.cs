@@ -1,7 +1,5 @@
-using Remagures.Inventory.View;
-using Remagures.Player.Components;
-using Remagures.SO.Inventory;
-using Remagures.SO.Inventory.Items;
+using Remagures.Player;
+using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Inventory

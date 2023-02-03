@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.SO.PlayerStuff
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New VectorValue", menuName = "Player Stuff/VectorValue")]
     [System.Serializable]

@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks.Triggers;
-using Remagures.MapSystem.Maps;
 using Remagures.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;

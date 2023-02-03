@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Remagures.SO.Other
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Signal", menuName = "Other/Signal")]
     public class Signal : ScriptableObject

@@ -1,5 +1,5 @@
-using Remagures.Components.Other;
-using Remagures.SaveSystem;
+using Remagures.Components;
+using Remagures.Tools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;

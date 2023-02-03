@@ -1,9 +1,9 @@
 using System.Collections;
-using Remagures.Components.Base;
-using Remagures.SO.Other;
+using Remagures.Components;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerKnockable : MonoBehaviour, IKnockable, IPlayerComponent
     {

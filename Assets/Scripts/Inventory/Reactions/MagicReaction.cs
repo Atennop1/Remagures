@@ -1,7 +1,7 @@
-using Remagures.SO.Other;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory.Reactions
+namespace Remagures.Inventory
 {
     public class MagicReaction : MonoBehaviour
     {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Remagures.DialogSystem.Model.Core;
 
-namespace Remagures.DialogSystem.Model
+namespace Remagures.DialogSystem
 {
     public interface IDialog
     {

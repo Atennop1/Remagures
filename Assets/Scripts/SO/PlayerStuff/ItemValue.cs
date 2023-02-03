@@ -1,7 +1,6 @@
-using Remagures.SO.Inventory.Items;
 using UnityEngine;
 
-namespace Remagures.SO.PlayerStuff
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New ItemValue", menuName = "Player Stuff/ItemValue")]
     [System.Serializable]

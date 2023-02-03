@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.DialogSystem.Model.Core;
+
 #pragma warning disable CS0660, CS0661
 
-namespace Remagures.DialogSystem.Model
+namespace Remagures.DialogSystem
 {
     [Serializable]
     public class Dialog : IDialog

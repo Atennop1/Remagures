@@ -1,9 +1,6 @@
 using System.Globalization;
 using Remagures.Inventory;
-using Remagures.Inventory.Abstraction;
-using Remagures.Inventory.View;
-using Remagures.SO.Inventory.Items;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 

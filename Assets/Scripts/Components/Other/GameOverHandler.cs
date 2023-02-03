@@ -1,9 +1,9 @@
 using System.Collections;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class GameOverHandler : MonoBehaviour
     {

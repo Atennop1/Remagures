@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Remagures.Components.Base;
 using Remagures.Cutscenes;
-using Remagures.Cutscenes.Actions;
 using Remagures.Interactable;
-using Remagures.Player.Components;
-using Remagures.Root.SystemUpdates;
-using Remagures.SO.PlayerStuff;
+using Remagures.Player;
+using Remagures.Root;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class SceneTransition : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-using Remagures.Inventory.Abstraction;
+using Remagures.Inventory;
 using UnityEngine;
 
-namespace Remagures.SO.Inventory.Items
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/BaseItem")]
     public class BaseInventoryItem : ScriptableObject, IBaseItemComponent

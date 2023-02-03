@@ -1,9 +1,8 @@
 using System.Collections;
-using Remagures.Inventory.Abstraction;
-using Remagures.Inventory.View;
+using Remagures.Inventory;
 using UnityEngine;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerAttacker : MonoBehaviour, IPlayerComponent
     {

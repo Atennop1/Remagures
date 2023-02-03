@@ -1,7 +1,7 @@
-using Remagures.SO.Other;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Components.PowerUps
+namespace Remagures.Components
 {
     public class PowerUp : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Remagures.DialogSystem.Model.Core
+﻿namespace Remagures.DialogSystem
 {
     public interface IUsableComponent
     {

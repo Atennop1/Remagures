@@ -1,8 +1,7 @@
-using Remagures.MapSystem.Markers;
 using Remagures.QuestSystem;
 using UnityEngine;
 
-namespace Remagures.MapSystem.Maps
+namespace Remagures.MapSystem
 {
     public class LocationMap : Map
     {

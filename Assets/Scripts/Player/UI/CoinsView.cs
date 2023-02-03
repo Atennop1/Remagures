@@ -1,9 +1,9 @@
 using System.Globalization;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using TMPro;
 using UnityEngine;
 
-namespace Remagures.Player.UI
+namespace Remagures.Player
 {
     public class CoinsView : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Inventory.Abstraction
+namespace Remagures.Inventory
 {
     public interface IDisplayableItem : IBaseItemComponent
     {

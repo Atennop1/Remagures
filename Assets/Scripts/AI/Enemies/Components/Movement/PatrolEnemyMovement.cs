@@ -1,10 +1,8 @@
-﻿using Remagures.AI.Enemies.Abstraction;
-using Remagures.AI.Pathfinding;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.AI.Enemies.Components.Movement
+namespace Remagures.AI.Enemies
 {
     public class PatrolEnemyMovement : SerializedMonoBehaviour, IEnemyMovement
     {

@@ -1,4 +1,4 @@
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public interface ICutsceneAction
     {

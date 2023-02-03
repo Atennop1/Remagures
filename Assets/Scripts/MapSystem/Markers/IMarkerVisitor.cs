@@ -1,4 +1,4 @@
-namespace Remagures.MapSystem.Markers
+namespace Remagures.MapSystem
 {
     public interface IMarkerVisitor
     {

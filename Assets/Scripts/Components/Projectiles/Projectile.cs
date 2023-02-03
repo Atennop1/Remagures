@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Components.Projectiles
+namespace Remagures.Components
 {
     public class Projectile : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Remagures.SO.QuestSystem
+namespace Remagures.SO
 {
     [CreateAssetMenu(menuName = "Quest System/QuestContainer")]
     public class QuestContainer : ScriptableObject

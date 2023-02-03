@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI.Pathfinding
+namespace Remagures.AI
 {
     public class Node2D : IReadOnlyNode2D
     {

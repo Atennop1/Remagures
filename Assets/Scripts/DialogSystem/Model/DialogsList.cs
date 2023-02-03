@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Remagures.SaveSystem.SwampAttack.Runtime.Tools.SaveSystem;
+using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 
-namespace Remagures.DialogSystem.Model
+namespace Remagures.DialogSystem
 {
     public class DialogsList : IDialogsList
     {

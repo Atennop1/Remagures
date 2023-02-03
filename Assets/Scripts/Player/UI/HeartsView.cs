@@ -1,8 +1,8 @@
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Player.UI
+namespace Remagures.Player
 {
     public class HeartsView : MonoBehaviour
     {

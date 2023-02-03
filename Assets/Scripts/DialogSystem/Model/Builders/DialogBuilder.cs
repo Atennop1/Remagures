@@ -3,7 +3,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.Builders
+namespace Remagures.DialogSystem
 {
     public class DialogBuilder : SerializedMonoBehaviour
     {

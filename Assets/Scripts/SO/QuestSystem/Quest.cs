@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Remagures.SO.QuestSystem
+namespace Remagures.SO
 {
     [Serializable]
     public class Quest : ScriptableObject

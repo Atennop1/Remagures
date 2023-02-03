@@ -1,10 +1,8 @@
-using Remagures.AI.Enemies.Abstraction;
-using Remagures.Components.Base;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.Components;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Components
+namespace Remagures.AI.Enemies
 {
     public class EnemyHealth : Health
     {

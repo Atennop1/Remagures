@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Remagures.DialogSystem.Model;
-using Remagures.DialogSystem.Model.Builders;
+using Remagures.DialogSystem;
 using UnityEngine;
 
 namespace Remagures.Root

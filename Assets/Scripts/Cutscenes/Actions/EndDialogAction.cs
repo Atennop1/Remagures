@@ -1,7 +1,7 @@
 ﻿using System;
-using Remagures.DialogSystem.View;
+using Remagures.DialogSystem;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class EndDialogAction : ICutsceneAction
     {

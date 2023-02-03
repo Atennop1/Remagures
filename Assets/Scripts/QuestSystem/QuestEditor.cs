@@ -1,4 +1,4 @@
-using Remagures.SO.QuestSystem;
+using Remagures.SO;
 using UnityEditor;
 using UnityEngine;
 

@@ -1,9 +1,8 @@
-using Remagures.Inventory.Abstraction;
-using Remagures.SO.Inventory.Items;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Inventory.View
+namespace Remagures.Inventory
 {
     public class Slot : MonoBehaviour
     {

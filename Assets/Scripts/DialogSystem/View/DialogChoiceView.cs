@@ -1,8 +1,7 @@
-using Remagures.DialogSystem.Model.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.DialogSystem.View
+namespace Remagures.DialogSystem
 {
     public class DialogChoiceView : MonoBehaviour
     {

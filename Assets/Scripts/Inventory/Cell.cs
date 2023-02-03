@@ -1,5 +1,5 @@
 using System;
-using Remagures.SO.Inventory.Items;
+using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Inventory

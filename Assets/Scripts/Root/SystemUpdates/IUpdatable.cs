@@ -1,4 +1,4 @@
-﻿namespace Remagures.Root.SystemUpdates
+﻿namespace Remagures.Root
 {
     public interface IUpdatable
     {

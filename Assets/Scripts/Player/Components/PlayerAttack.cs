@@ -1,12 +1,10 @@
-using Remagures.Components.Base;
-using Remagures.Components.HealthEffects;
+using Remagures.Components;
 using Remagures.Interactable;
-using Remagures.Inventory.Abstraction;
-using Remagures.Inventory.View;
+using Remagures.Inventory;
 using UnityEngine;
-using CharacterInfo = Remagures.SO.PlayerStuff.CharacterInfo;
+using CharacterInfo = Remagures.SO.CharacterInfo;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerAttack : Attack
     {

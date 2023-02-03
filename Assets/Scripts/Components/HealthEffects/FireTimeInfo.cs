@@ -1,4 +1,4 @@
-namespace Remagures.Components.HealthEffects
+namespace Remagures.Components
 {
     public readonly struct FireInfo
     {

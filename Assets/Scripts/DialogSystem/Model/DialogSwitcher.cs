@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model
+namespace Remagures.DialogSystem
 {
     public class DialogSwitcher : SerializedMonoBehaviour
     {

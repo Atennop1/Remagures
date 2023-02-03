@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Remagures.AI.Pathfinding
+namespace Remagures.AI
 {
     public class Pathfinding2D : MonoBehaviour
     {

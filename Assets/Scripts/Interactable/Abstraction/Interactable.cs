@@ -1,9 +1,9 @@
-using Remagures.Components.Other;
-using Remagures.Player.Components;
+using Remagures.Components;
+using Remagures.Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Interactable.Abstraction
+namespace Remagures.Interactable
 {
     public abstract class Interactable : SerializedMonoBehaviour
     {

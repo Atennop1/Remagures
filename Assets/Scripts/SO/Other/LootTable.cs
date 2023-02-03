@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.SO.Other
+namespace Remagures.SO
 {
     [System.Serializable]
     public class Loot

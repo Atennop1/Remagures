@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.Cutscenes.Actions;
-using Remagures.Root.SystemUpdates;
+using Remagures.Root;
 
 namespace Remagures.Cutscenes
 {

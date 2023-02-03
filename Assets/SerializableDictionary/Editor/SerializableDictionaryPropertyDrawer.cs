@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Reflection;
 using System;
+using Remagures.SerializableDictionary;
 
 [CustomPropertyDrawer(typeof(SerializableDictionaryBase), true)]
 #if NET_4_6 || NET_STANDARD_2_0

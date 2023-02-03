@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class FPSDisplay : MonoBehaviour
     {

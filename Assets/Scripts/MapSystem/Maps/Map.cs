@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.MapSystem.Markers;
+using Remagures.Assets;
 using Remagures.QuestSystem;
 using UnityEngine;
 
-namespace Remagures.MapSystem.Maps
+namespace Remagures.MapSystem
 {
     public class Map : MonoBehaviour
     {

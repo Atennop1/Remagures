@@ -1,8 +1,8 @@
 ﻿using System;
-using Remagures.Player.Components;
+using Remagures.Player;
 using UnityEngine;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class MoveAction : ICutsceneAction
     {

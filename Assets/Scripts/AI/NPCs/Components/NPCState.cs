@@ -1,4 +1,4 @@
-﻿namespace Remagures.AI.NPCs.Components
+﻿namespace Remagures.AI
 {
     public enum NPCState
     {

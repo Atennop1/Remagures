@@ -1,8 +1,8 @@
-using Remagures.Inventory.Abstraction;
-using Remagures.Player.Magic;
+using Remagures.Inventory;
+using Remagures.Player;
 using UnityEngine;
 
-namespace Remagures.SO.PlayerStuff
+namespace Remagures.SO
 {
     [System.Serializable]
     [CreateAssetMenu(fileName = "New ClassStat", menuName = "Player Stuff/ClassStat")]

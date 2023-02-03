@@ -1,7 +1,6 @@
-﻿using Remagures.AI.Enemies.Abstraction;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Remagures.AI.Enemies.Components.Movement
+namespace Remagures.AI.Enemies
 {
     public class NullEnemyMovement : MonoBehaviour, IEnemyMovement
     {

@@ -1,8 +1,8 @@
-using Remagures.Inventory.Abstraction;
+using Remagures.Inventory;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Remagures.SO.Inventory.Items
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/UsableItem")]
     public class UsableInventoryItem : BaseInventoryItem, IUsableItem

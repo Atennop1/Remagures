@@ -1,7 +1,6 @@
-using Remagures.AI.NPCs.Components;
 using UnityEngine;
 
-namespace Remagures.AI.NPCs
+namespace Remagures.AI
 {
     public class RandomMovableBoundedNPC : MovableNPC
     {

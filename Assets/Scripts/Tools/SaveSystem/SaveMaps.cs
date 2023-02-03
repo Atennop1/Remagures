@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using Remagures.SaveSystem.Abstraction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class SaveMaps : Saver, ISaver
     {

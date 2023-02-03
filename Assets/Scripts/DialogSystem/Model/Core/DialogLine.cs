@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.DialogSystem.Model.Core
+namespace Remagures.DialogSystem
 {
     [Serializable]
     public class DialogLine : IUsableComponent

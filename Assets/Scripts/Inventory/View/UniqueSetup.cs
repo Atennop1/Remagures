@@ -1,11 +1,9 @@
-using Remagures.Inventory.Abstraction;
-using Remagures.Player.Components;
-using Remagures.SO.Inventory;
-using Remagures.SO.Inventory.Items;
+using Remagures.Player;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.Inventory.View
+namespace Remagures.Inventory
 {
     public class UniqueSetup : MonoBehaviour
     {

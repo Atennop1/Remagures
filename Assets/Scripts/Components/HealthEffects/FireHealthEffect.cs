@@ -1,9 +1,8 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Remagures.Components.Base;
 using UnityEngine;
 
-namespace Remagures.Components.HealthEffects
+namespace Remagures.Components
 {
     public class FireHealthEffect : IHealthEffect
     {

@@ -1,10 +1,8 @@
-using Remagures.AI.Enemies.BaseStates;
-using Remagures.AI.Enemies.Components;
-using Remagures.Components.Base;
+using Remagures.Components;
 using UnityEngine;
 using SM = Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.Abstraction
+namespace Remagures.AI.Enemies
 {
     [RequireComponent(typeof(EnemyAnimations))]
     [RequireComponent(typeof(IEnemyMovement))]
@@ -14,7 +12,7 @@ namespace Remagures.AI.Enemies.Abstraction
         public Health Health { get; private set;  }
         
         public EnemyAnimations Animations { get; private set; }
-        public SM.StateMachine StateMachine { get; private set; }
+        public SM StateMachine { get; private set; }
 
         private void Awake()
         {
@@ -22,7 +20,7 @@ namespace Remagures.AI.Enemies.Abstraction
             Health = GetComponent<Health>();
             
             Movement = GetComponent<IEnemyMovement>();
-            StateMachine = new SM.StateMachine();
+            StateMachine = new SM();
             
             StateMachine.AddAnyTransition(new DeadState(this), () => Health.Value < 0);
         }

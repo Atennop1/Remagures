@@ -1,12 +1,9 @@
 using System.Collections;
-using Remagures.AI.Enemies.Abstraction;
-using Remagures.AI.Enemies.BaseStates;
-using Remagures.Components.Base;
+using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using SM = Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.Components
+namespace Remagures.AI.Enemies
 {
     public class EnemyKnockable : SerializedMonoBehaviour, IKnockable
     {
@@ -14,7 +11,7 @@ namespace Remagures.AI.Enemies.Components
         [field: SerializeField] public LayerMask InteractionMask { get; private set; }
         
         public bool IsKnocked { get; private set; }
-        private SM.IState _knockedState;
+        private IState _knockedState;
 
         public void Knock(Rigidbody2D myRigidbody, float knockTime)
         {

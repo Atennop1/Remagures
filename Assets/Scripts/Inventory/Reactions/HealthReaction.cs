@@ -1,8 +1,7 @@
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory.Reactions
+namespace Remagures.Inventory
 {
     public class HealthReaction : MonoBehaviour
     {

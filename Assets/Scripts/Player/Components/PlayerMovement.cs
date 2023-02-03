@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Remagures.MapSystem;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerMovement : MonoBehaviour, IPlayerComponent
     {

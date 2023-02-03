@@ -1,6 +1,4 @@
 using Remagures.Inventory;
-using Remagures.Inventory.Abstraction;
-using Remagures.Inventory.View;
 using UnityEngine;
 using UnityEngine.UI;
 

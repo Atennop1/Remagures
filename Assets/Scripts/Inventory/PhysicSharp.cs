@@ -1,4 +1,4 @@
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Inventory

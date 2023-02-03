@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using Remagures.Inventory;
-using Remagures.Inventory.Abstraction;
 using UnityEngine;
-using CharacterInfo = Remagures.SO.PlayerStuff.CharacterInfo;
 
-namespace Remagures.SO.Inventory.Items
+namespace Remagures.SO
 {
     [CreateAssetMenu(menuName="Inventory/Items/RuneItem", fileName="New Rune")]
     public class RuneInventoryItem : BaseInventoryItem, IRuneItem, IChoiceableItem

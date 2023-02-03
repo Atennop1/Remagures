@@ -1,10 +1,8 @@
-using Remagures.AI.Enemies.Abstraction;
 using UnityEngine;
-using SM = Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.BaseStates.Log 
+namespace Remagures.AI.Enemies 
 {
-    public class MoveToPlayer : SM.IState
+    public class MoveToPlayer : IState
     {
         private readonly IEnemyWithTarget _enemyWithTarget;
         private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");

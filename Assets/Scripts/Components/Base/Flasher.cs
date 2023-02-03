@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Remagures.Components.Base
+namespace Remagures.Components
 {
     public class Flasher : MonoBehaviour
     {

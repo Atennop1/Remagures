@@ -1,7 +1,7 @@
 ﻿using System;
 using Remagures.Interactable;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class StartAction : ICutsceneAction
     {

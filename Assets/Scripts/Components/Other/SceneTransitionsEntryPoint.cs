@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class SceneTransitionsEntryPoint : MonoBehaviour
     {

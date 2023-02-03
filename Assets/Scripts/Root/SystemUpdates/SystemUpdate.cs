@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.Root.SystemUpdates
+namespace Remagures.Root
 {
     public sealed class SystemUpdate : ISystemUpdate
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using Remagures.DialogSystem.Model.Core;
 using Remagures.Root;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.ActionCallbacks
+namespace Remagures.DialogSystem
 {
     public class SwitchDialogWithoutContinueCallback : MonoBehaviour, IDialogActionCallback
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Remagures.DialogSystem.Model.Core
+namespace Remagures.DialogSystem
 {
     [Serializable]
     public class DialogChoice : IUsableComponent

@@ -2,7 +2,7 @@
 using Remagures.Tools;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.Core
+namespace Remagures.DialogSystem
 {
     [Serializable]
     public struct DialogSpeakerInfo

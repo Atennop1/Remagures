@@ -1,10 +1,9 @@
 ﻿using System;
-using Remagures.DialogSystem.Model.Core;
 using Remagures.QuestSystem;
-using Remagures.SO.QuestSystem;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.ActionCallbacks
+namespace Remagures.DialogSystem
 {
     public class CompleteGoalCallback : MonoBehaviour, IDialogActionCallback
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Inventory.View
+namespace Remagures.Inventory
 {
     public class UniqueSlot : Slot
     {

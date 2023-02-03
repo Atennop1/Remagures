@@ -1,6 +1,6 @@
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 
-namespace Remagures.Inventory.Abstraction
+namespace Remagures.Inventory
 {
     public interface IRuneItem : IBaseItemComponent
     {

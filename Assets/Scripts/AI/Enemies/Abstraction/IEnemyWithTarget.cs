@@ -1,4 +1,4 @@
-namespace Remagures.AI.Enemies.Abstraction
+namespace Remagures.AI.Enemies
 {
     public interface IEnemyWithTarget : IEnemy
     {

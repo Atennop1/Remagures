@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Remagures.Components.Projectiles;
+using Remagures.Components;
 using Remagures.Inventory;
-using Remagures.Inventory.Abstraction;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Remagures.SO.Inventory.Items
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/MagicItem")]
     public class MagicInventoryItem : BaseInventoryItem, IWeaponItem, IMagicItem, IChoiceableItem

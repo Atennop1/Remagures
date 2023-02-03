@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Remagures.SO.Inventory.Items;
+using Remagures.SO;
 
-namespace Remagures.Inventory.Abstraction
+namespace Remagures.Inventory
 {
     public interface IUpgradableItem : IBaseItemComponent
     {

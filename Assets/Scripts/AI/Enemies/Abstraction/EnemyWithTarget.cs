@@ -1,9 +1,8 @@
-﻿using Remagures.AI.Enemies.Components;
-using Remagures.Components.Base;
+﻿using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Abstraction
+namespace Remagures.AI.Enemies
 {
     public class EnemyWithTarget : SerializedMonoBehaviour, IEnemyWithTarget
     {
@@ -13,6 +12,6 @@ namespace Remagures.AI.Enemies.Abstraction
         public IEnemyMovement Movement => _enemy.Movement;
         public Health Health => _enemy.Health;
         public EnemyAnimations Animations => _enemy.Animations;
-        public StateMachine.StateMachine StateMachine => _enemy.StateMachine;
+        public StateMachine StateMachine => _enemy.StateMachine;
     }
 }

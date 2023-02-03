@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Remagures.Components.Base
+namespace Remagures.Components
 {
     public class SmoothColorSwitcher : MonoBehaviour
     {

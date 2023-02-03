@@ -1,5 +1,4 @@
-using Remagures.AI.Enemies.Abstraction;
-using Remagures.AI.Enemies.Components;
+using Remagures.AI.Enemies;
 using Remagures.Interactable;
 using UnityEngine;
 

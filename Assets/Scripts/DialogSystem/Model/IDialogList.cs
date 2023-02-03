@@ -1,4 +1,4 @@
-﻿namespace Remagures.DialogSystem.Model
+﻿namespace Remagures.DialogSystem
 {
     public interface IDialogsList
     {

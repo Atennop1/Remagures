@@ -1,7 +1,5 @@
 using System.Linq;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
-using Remagures.SO.QuestSystem;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
 

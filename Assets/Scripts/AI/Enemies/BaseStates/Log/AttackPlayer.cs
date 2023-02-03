@@ -1,10 +1,8 @@
-using Remagures.AI.Enemies.Abstraction;
 using UnityEngine;
-using SM = Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.BaseStates.Log 
+namespace Remagures.AI.Enemies 
 {
-    public sealed class AttackPlayer : SM.IState
+    public sealed class AttackPlayer : IState
     {
         private readonly IEnemyWithTarget _enemyWithTarget;
         private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");

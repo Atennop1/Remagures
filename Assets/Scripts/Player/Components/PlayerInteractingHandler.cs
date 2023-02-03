@@ -1,12 +1,10 @@
-using Remagures.AI.NPCs.Components;
-using Remagures.DialogSystem.View;
+using Remagures.AI;
+using Remagures.DialogSystem;
 using Remagures.Interactable;
-using Remagures.Interactable.Abstraction;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public enum InteractingState
     {
@@ -31,7 +29,7 @@ namespace Remagures.Player.Components
 
         public bool CanShowContextClue { get; private set; } = true;
         public InteractingState CurrentState { get; private set; }
-        public Remagures.Interactable.Abstraction.Interactable CurrentInteractable { get; private set; }
+        public Interactable.Interactable CurrentInteractable { get; private set; }
 
         private const string RECEIVING_ANIMATOR_NAME = "receiving";
         private PlayerAnimations _playerAnimations;
@@ -75,7 +73,7 @@ namespace Remagures.Player.Components
             _uiActivityChanger.TurnOn();
         }
 
-        public void SetCurrentInteractable(Remagures.Interactable.Abstraction.Interactable interactable)
+        public void SetCurrentInteractable(Interactable.Interactable interactable)
         {
             if (interactable.PlayerInRange && CurrentInteractable == null)
                 CurrentInteractable = interactable;
@@ -83,7 +81,7 @@ namespace Remagures.Player.Components
             SetCurrentState(interactable);
         }
 
-        public void ResetCurrentInteractable(Remagures.Interactable.Abstraction.Interactable interactable)
+        public void ResetCurrentInteractable(Interactable.Interactable interactable)
         {
             if (!interactable.PlayerInRange && CurrentState == InteractingState.Ready && CurrentInteractable == interactable)
                 CurrentInteractable = null;
@@ -92,7 +90,7 @@ namespace Remagures.Player.Components
             _detectInteractSignal.Invoke();
         }
         
-        private void SetCurrentState(Remagures.Interactable.Abstraction.Interactable interactable)
+        private void SetCurrentState(Interactable.Interactable interactable)
         {
             if (CurrentState == InteractingState.Interact ||
                 (CurrentInteractable != null && CurrentInteractable != interactable)) return;

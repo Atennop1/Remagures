@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Remagures.DialogSystem.Model.ActionCallbacks;
-using Remagures.DialogSystem.Model.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.Builders
+namespace Remagures.DialogSystem
 {
     public class DialogLineBuilder : SerializedMonoBehaviour
     {

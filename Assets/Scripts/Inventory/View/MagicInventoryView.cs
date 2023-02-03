@@ -1,8 +1,7 @@
-using Remagures.Inventory.Abstraction;
-using Remagures.Player.Magic;
+using Remagures.Player;
 using UnityEngine;
 
-namespace Remagures.Inventory.View
+namespace Remagures.Inventory
 {
     public class MagicInventoryView : InventoryView
     {

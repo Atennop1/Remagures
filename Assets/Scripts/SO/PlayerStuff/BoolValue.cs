@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.SO.PlayerStuff
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New BoolValue", menuName = "Player Stuff/BoolValue")]
     [System.Serializable]

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Components
+namespace Remagures.AI.Enemies
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyAnimations : MonoBehaviour

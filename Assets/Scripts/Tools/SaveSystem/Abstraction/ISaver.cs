@@ -1,4 +1,4 @@
-namespace Remagures.SaveSystem.Abstraction
+namespace Remagures.Tools
 {
     public interface ISaver
     {

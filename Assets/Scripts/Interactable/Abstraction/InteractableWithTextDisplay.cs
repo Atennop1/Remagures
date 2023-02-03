@@ -1,9 +1,9 @@
-using Remagures.DialogSystem.View;
+using Remagures.DialogSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Remagures.Interactable.Abstraction
+namespace Remagures.Interactable
 {
     public abstract class InteractableWithTextDisplay : Interactable
     {

@@ -1,8 +1,6 @@
-﻿using Remagures.AI.Enemies.Abstraction;
-using Remagures.AI.StateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Remagures.AI.Enemies.BaseStates
+namespace Remagures.AI.Enemies
 {
     public class KnockedState : IState
     {

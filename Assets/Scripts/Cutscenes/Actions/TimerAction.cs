@@ -1,7 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class TimerAction : ICutsceneAction
     {

@@ -1,11 +1,9 @@
-using Remagures.DialogSystem.Model;
-using Remagures.DialogSystem.Model.Core;
-using Remagures.Player.Components;
-using Remagures.SO.Other;
+using Remagures.Player;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.DialogSystem.View
+namespace Remagures.DialogSystem
 {
     public class DialogView : MonoBehaviour
     {

@@ -1,6 +1,4 @@
-﻿using Remagures.DialogSystem.Model.Core;
-
-namespace Remagures.DialogSystem.Model.ActionCallbacks
+﻿namespace Remagures.DialogSystem
 {
     public interface IDialogActionCallback
     {

@@ -1,10 +1,10 @@
 using System;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Interactable
 {
-    public class Door : Remagures.Interactable.Abstraction.Interactable
+    public class Door : Interactable
     {
         [SerializeField] private DoorType _thisDoorType;
         [SerializeField] private FloatValue _numberOfKeys;

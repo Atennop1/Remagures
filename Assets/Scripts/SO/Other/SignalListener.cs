@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Remagures.SO.Other
+namespace Remagures.SO
 {
     public class SignalListener : MonoBehaviour
     {

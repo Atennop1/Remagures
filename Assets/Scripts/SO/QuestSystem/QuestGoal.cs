@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Remagures.SO.QuestSystem
+namespace Remagures.SO
 {
     public sealed class QuestGoal : ScriptableObject
     {

@@ -1,5 +1,4 @@
 using System.Linq;
-using Remagures.Inventory.Abstraction;
 
 namespace Remagures.Inventory
 {

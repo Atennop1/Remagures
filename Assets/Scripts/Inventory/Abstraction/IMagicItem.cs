@@ -1,7 +1,7 @@
-using Remagures.Components.Projectiles;
+using Remagures.Components;
 using UnityEngine.Events;
 
-namespace Remagures.Inventory.Abstraction
+namespace Remagures.Inventory
 {
     public interface IMagicItem : IBaseItemComponent
     {

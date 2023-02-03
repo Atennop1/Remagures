@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.DialogSystem.View
+namespace Remagures.DialogSystem
 {
     public class DialogTypeWriter : MonoBehaviour
     {

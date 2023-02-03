@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     namespace SwampAttack.Runtime.Tools.SaveSystem
     {

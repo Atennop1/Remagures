@@ -1,11 +1,11 @@
 using System.Linq;
 using Remagures.QuestSystem;
-using Remagures.SO.QuestSystem;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Remagures.MapSystem.Markers
+namespace Remagures.MapSystem
 {
     public class GoalMarker : MonoBehaviour
     {

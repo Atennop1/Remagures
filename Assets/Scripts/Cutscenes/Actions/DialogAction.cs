@@ -1,8 +1,8 @@
 ﻿using System;
-using Remagures.DialogSystem.View;
+using Remagures.DialogSystem;
 using UnityEngine.UI;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class DialogAction : ICutsceneAction
     {

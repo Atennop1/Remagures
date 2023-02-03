@@ -1,8 +1,5 @@
 ﻿using System.Linq;
-using Remagures.Inventory.Abstraction;
-using Remagures.Inventory.View;
-using Remagures.Player.Components;
-using Remagures.Player.Magic;
+using Remagures.Player;
 using UnityEngine;
 
 namespace Remagures.Inventory

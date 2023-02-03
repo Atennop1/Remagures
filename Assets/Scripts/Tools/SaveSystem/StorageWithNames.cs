@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Remagures.SaveSystem.SwampAttack.Runtime.Tools.SaveSystem;
+using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class StorageWithNames<TUser, TObject>
     {

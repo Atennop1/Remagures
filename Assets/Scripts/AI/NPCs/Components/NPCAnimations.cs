@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI.NPCs.Components
+namespace Remagures.AI
 {
     public class NPCAnimations : MonoBehaviour
     {

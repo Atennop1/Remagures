@@ -1,7 +1,6 @@
-using Remagures.MapSystem.Maps;
 using UnityEngine;
 
-namespace Remagures.MapSystem.Markers
+namespace Remagures.MapSystem
 {
     public interface IMarker
     {

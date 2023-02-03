@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using Remagures.SaveSystem.Abstraction;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class GameSaver : MonoBehaviour
     {

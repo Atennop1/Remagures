@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerAnimations : MonoBehaviour, IPlayerComponent
     {

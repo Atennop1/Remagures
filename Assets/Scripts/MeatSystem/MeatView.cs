@@ -1,8 +1,6 @@
 using Remagures.Inventory;
 using Remagures.Notifications;
-using Remagures.SO.Inventory;
-using Remagures.SO.Inventory.Items;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 

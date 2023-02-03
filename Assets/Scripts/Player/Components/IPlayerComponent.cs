@@ -1,4 +1,4 @@
-﻿namespace Remagures.Player.Components
+﻿namespace Remagures.Player
 {
     public interface IPlayerComponent { }
 }

@@ -1,8 +1,8 @@
-using Remagures.Player.Components;
+using Remagures.Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class ContextClue : MonoBehaviour
     {

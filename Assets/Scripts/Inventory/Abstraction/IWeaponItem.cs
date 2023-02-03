@@ -1,4 +1,4 @@
-namespace Remagures.Inventory.Abstraction
+namespace Remagures.Inventory
 {
     public interface IWeaponItem : IBaseItemComponent
     {

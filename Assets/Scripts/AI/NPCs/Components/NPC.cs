@@ -1,14 +1,14 @@
-using Remagures.DialogSystem.View;
+using Remagures.DialogSystem;
 using Remagures.Interactable;
 using Remagures.Root;
 using UnityEngine;
 
-namespace Remagures.AI.NPCs.Components
+namespace Remagures.AI
 {
     [RequireComponent(typeof(NPCAnimations))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
-    public abstract class NPC : Interactable.Abstraction.Interactable
+    public abstract class NPC : Interactable.Interactable
     {
         [Header("NPC Stuff")] [SerializeField] private DialogView _dialogView;
         [SerializeField] private DialogsListRoot _dialogsListRoot;

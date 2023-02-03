@@ -1,4 +1,4 @@
-﻿namespace Remagures.AI.StateMachine
+﻿namespace Remagures.AI
 {
     public interface IState
     {

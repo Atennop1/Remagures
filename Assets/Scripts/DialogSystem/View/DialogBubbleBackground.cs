@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.DialogSystem.View
+namespace Remagures.DialogSystem
 {
     public class DialogBubbleBackground : MonoBehaviour
     {

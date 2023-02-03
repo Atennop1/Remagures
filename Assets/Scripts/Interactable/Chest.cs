@@ -1,12 +1,8 @@
-using Remagures.DialogSystem.Model;
-using Remagures.Interactable.Abstraction;
+using Remagures.DialogSystem;
 using Remagures.Inventory;
 using Remagures.QuestSystem;
-using Remagures.SaveSystem.SwampAttack.Runtime.Tools.SaveSystem;
-using Remagures.SO.Inventory;
-using Remagures.SO.Inventory.Items;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
+using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 using UnityEngine;
 
 namespace Remagures.Interactable

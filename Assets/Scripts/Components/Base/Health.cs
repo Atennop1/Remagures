@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.Components.HealthEffects;
 using UnityEngine;
 
-namespace Remagures.Components.Base
+namespace Remagures.Components
 {
     public class Health : MonoBehaviour
     {

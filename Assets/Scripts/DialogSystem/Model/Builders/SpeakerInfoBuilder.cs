@@ -1,8 +1,7 @@
-﻿using Remagures.DialogSystem.Model.Core;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.DialogSystem.Model.Builders
+namespace Remagures.DialogSystem
 {
     public class SpeakerInfoBuilder : SerializedMonoBehaviour
     {

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.MapSystem.Maps;
 using Remagures.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.MapSystem.Markers
+namespace Remagures.MapSystem
 {
     public class QuestMarker : MonoBehaviour, IMarker
     {

@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.SaveSystem.Abstraction;
-using Remagures.SO.PlayerStuff;
-using Remagures.SO.QuestSystem;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class SaveQuests : Saver, ISaver
     {

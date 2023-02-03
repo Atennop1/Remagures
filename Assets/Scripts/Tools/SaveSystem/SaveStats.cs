@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Remagures.SaveSystem.Abstraction;
 using UnityEngine;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class SaveStats : Saver, ISaver
     {

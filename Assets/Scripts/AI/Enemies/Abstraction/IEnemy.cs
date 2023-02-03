@@ -1,8 +1,7 @@
-﻿using Remagures.AI.Enemies.Components;
-using Remagures.Components.Base;
+﻿using Remagures.Components;
 using SM = Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.Abstraction
+namespace Remagures.AI.Enemies
 {
     public interface IEnemy
     {
@@ -10,6 +9,6 @@ namespace Remagures.AI.Enemies.Abstraction
         Health Health { get; }
         
         EnemyAnimations Animations { get; }
-        SM.StateMachine StateMachine { get; }
+        SM StateMachine { get; }
     }
 }

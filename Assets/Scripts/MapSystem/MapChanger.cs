@@ -1,5 +1,3 @@
-using Remagures.MapSystem.Maps;
-using Remagures.MapSystem.Markers;
 using UnityEngine;
 
 namespace Remagures.MapSystem

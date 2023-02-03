@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Remagures.Inventory.Abstraction;
+using Remagures.Inventory;
 using UnityEngine;
 
-namespace Remagures.SO.Inventory.Items
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/ArmorItem")]
     public class ArmorInventoryItem : BaseInventoryItem, IArmorItem, IUniqueItem, IDisplayableItem, IUpgradableItem

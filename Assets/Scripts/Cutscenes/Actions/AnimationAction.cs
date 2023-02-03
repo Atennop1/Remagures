@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Remagures.Cutscenes.Actions
+namespace Remagures.Cutscenes
 {
     public class AnimationAction : ICutsceneAction
     {

@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 using Remagures.Inventory;
-using Remagures.Inventory.Abstraction;
-using Remagures.SaveSystem.Abstraction;
-using Remagures.SO.Inventory;
-using Remagures.SO.Inventory.Items;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.SaveSystem
+namespace Remagures.Tools
 {
     public class SaveInventorys : Saver, ISaver
     {

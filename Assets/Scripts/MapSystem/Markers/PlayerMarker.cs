@@ -1,9 +1,8 @@
 using System.Linq;
-using Remagures.MapSystem.Maps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.MapSystem.Markers
+namespace Remagures.MapSystem
 {
     public class PlayerMarker : MonoBehaviour, IMarker
     {

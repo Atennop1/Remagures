@@ -1,8 +1,7 @@
-﻿using Remagures.Inventory.View;
-using Remagures.Player.Magic;
-using Remagures.SO.PlayerStuff;
+﻿using Remagures.Inventory;
+using Remagures.SO;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public struct PublicPlayerData
     {

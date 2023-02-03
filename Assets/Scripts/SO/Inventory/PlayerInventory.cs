@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Remagures.Inventory;
-using Remagures.SO.Inventory.Items;
 using UnityEngine;
 
-namespace Remagures.SO.Inventory
+namespace Remagures.SO
 {
     [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/PlayerInventory")]
     public class PlayerInventory : ScriptableObject

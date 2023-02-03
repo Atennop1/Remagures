@@ -2,7 +2,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-namespace Remagures.SaveSystem.Abstraction
+namespace Remagures.Tools
 {
     public abstract class Saver : MonoBehaviour
     {

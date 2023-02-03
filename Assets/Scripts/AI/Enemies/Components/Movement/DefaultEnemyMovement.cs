@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using Remagures.AI.Enemies.Abstraction;
-using Remagures.AI.Pathfinding;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.AI.Enemies.Components.Movement
+namespace Remagures.AI.Enemies
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class DefaultEnemyMovement : MonoBehaviour, IEnemyMovement

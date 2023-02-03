@@ -1,12 +1,10 @@
 using System.Collections;
-using Remagures.Components.Projectiles;
+using Remagures.Components;
 using Remagures.Player;
-using Remagures.Player.Components;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory.Reactions
+namespace Remagures.Inventory
 {
     public class BowAttack : MonoBehaviour
     {

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.Components.Base;
-using Remagures.Player.Components;
-using Remagures.SO.PlayerStuff;
+using Remagures.Components;
+using Remagures.SO;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;

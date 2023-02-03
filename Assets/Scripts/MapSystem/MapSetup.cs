@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.MapSystem.Maps;
-using Remagures.MapSystem.Markers;
 using UnityEngine;
 
 namespace Remagures.MapSystem

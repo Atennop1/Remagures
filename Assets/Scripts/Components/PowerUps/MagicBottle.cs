@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Components.PowerUps
+namespace Remagures.Components
 {
     public class MagicBottle : PowerUp
     {

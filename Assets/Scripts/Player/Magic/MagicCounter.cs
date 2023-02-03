@@ -1,11 +1,11 @@
 using System.Collections;
-using Remagures.Components.Projectiles;
-using Remagures.SO.PlayerStuff;
+using Remagures.Components;
+using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
-using CharacterInfo = Remagures.SO.PlayerStuff.CharacterInfo;
+using CharacterInfo = Remagures.SO.CharacterInfo;
 
-namespace Remagures.Player.Magic
+namespace Remagures.Player
 {
     public class MagicCounter : MonoBehaviour
     {

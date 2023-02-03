@@ -1,9 +1,9 @@
-using Remagures.SaveSystem;
-using Remagures.SO.PlayerStuff;
+using Remagures.SO;
+using Remagures.Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.Components.Other
+namespace Remagures.Components
 {
     public class SavePoint : MonoBehaviour
     {

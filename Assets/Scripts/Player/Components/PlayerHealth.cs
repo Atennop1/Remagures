@@ -1,13 +1,11 @@
 using System;
 using System.Collections;
-using Remagures.Components.Base;
-using Remagures.Components.Other;
-using Remagures.SO.Other;
-using Remagures.SO.PlayerStuff;
+using Remagures.Components;
+using Remagures.SO;
 using UnityEngine;
-using CharacterInfo = Remagures.SO.PlayerStuff.CharacterInfo;
+using CharacterInfo = Remagures.SO.CharacterInfo;
 
-namespace Remagures.Player.Components
+namespace Remagures.Player
 {
     public class PlayerHealth : Health, IPlayerComponent
     {
