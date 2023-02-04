@@ -25,10 +25,10 @@ namespace Remagures.Root
             _dialogLineBuilders.ForEach(builder => builder.Build());
             _dialogBuilders.ForEach(builder => builder.Build());
 
-            BuiltDialogList = new DialogsList(_dialogBuilders.Select(builder => builder.BuiltDialog).ToArray(), _characterName);
+            BuiltDialogList = new DialogsList(_dialogBuilders.Select(builder => builder.Build()).ToArray(), _characterName);
             
             if (BuiltDialogList.CurrentDialog == null)
-                BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].BuiltDialog);
+                BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].Build());
         }
 
         private void OnDisable()

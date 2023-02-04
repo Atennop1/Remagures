@@ -9,17 +9,20 @@ namespace Remagures.DialogSystem
         [SerializeField] private string _choiceText;
         [SerializeField] private List<IDialogActionCallback> _callbacks;
 
-        public DialogChoice BuiltChoice { get; private set; }
+        private DialogChoice _builtChoice;
         
         public DialogChoice Build()
         {
+            if (_builtChoice != null)
+                return _builtChoice;
+            
             var result = new DialogChoice(_choiceText);
 
             foreach (var callback in _callbacks)
                 callback.Init(result);
 
-            BuiltChoice = result;
-            return result;
+            _builtChoice = result;
+            return _builtChoice;
         }
     }
 }

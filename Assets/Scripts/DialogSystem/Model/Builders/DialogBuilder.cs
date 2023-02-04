@@ -10,15 +10,18 @@ namespace Remagures.DialogSystem
         [SerializeField] private string _name;
         [SerializeField] private List<DialogLineBuilder> _lineBuilders;
 
-        public Dialog BuiltDialog { get; private set; }
+        private Dialog _builtDialog;
 
         public Dialog Build()
         {
+            if (_builtDialog != null)
+                return _builtDialog;
+
             var builtLines = _lineBuilders.Select(builder => builder.BuiltLine).ToList();
             var result = new Dialog(_name, builtLines.ToArray());
 
-            BuiltDialog = result;
-            return result;
+            _builtDialog = result;
+            return _builtDialog;
         }
     }
 }
