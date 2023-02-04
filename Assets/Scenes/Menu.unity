@@ -4918,21 +4918,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 511a21a637fbfd8429cca2c236510d2d, type: 2}
   - {fileID: 11400000, guid: ac80e96c76a800441b6d4a6efbfb5125, type: 2}
   - {fileID: 11400000, guid: ac80e96c76a800441b6d4a6efbfb5125, type: 2}
---- !u!114 &1465793055464113714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6618251200038911321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d82f180d0041142b2fc102a87eee13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Path>k__BackingField: /GameSave/Dialogs
-  _databases:
-  - {fileID: 11400000, guid: 7ba8dc7a8f541b242b95270dc245b875, type: 2}
 --- !u!114 &5491445968002137372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5138,7 +5123,6 @@ GameObject:
   - component: {fileID: 6618251200038911326}
   - component: {fileID: 476050565092363011}
   - component: {fileID: 5491445968002137372}
-  - component: {fileID: 1465793055464113714}
   - component: {fileID: 6344274075263407387}
   - component: {fileID: 9004672535588239626}
   m_Layer: 0
@@ -5164,7 +5148,6 @@ MonoBehaviour:
   savablesObjects:
   - {fileID: 476050565092363011}
   - {fileID: 5491445968002137372}
-  - {fileID: 1465793055464113714}
   - {fileID: 6344274075263407387}
   - {fileID: 9004672535588239626}
 --- !u!4 &6618251200038911327

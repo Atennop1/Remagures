@@ -49,6 +49,10 @@ namespace Remagures.Tools
         public void NewGame()
         {
             _isNewGame.Value = false;
+            
+            foreach (var filePath in Directory.GetFiles(Application.persistentDataPath))
+                File.Delete(filePath);
+
             foreach (var savable in Savables)
                 savable.NewGame();
         
