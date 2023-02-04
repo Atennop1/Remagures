@@ -16,9 +16,7 @@ namespace Remagures.MapSystem
         private QuestGoalsView _goalsView;
 
         public void Init(QuestGoalsView view)
-        {
-            _goalsView = view;
-        }
+            => _goalsView = view;
 
         public void OpenGoals()
         {

@@ -6,7 +6,8 @@ namespace Remagures.Components
     {
         public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out Player.Player _) || collision.isTrigger) return;
+            if (!collision.TryGetComponent(out Player.Player _) || collision.isTrigger) 
+                return;
         
             PowerUpSignal.Invoke();
             Destroy(gameObject);

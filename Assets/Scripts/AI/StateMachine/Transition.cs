@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.AI
+namespace Remagures.AI.StateMachine
 {
     public class Transition
     {

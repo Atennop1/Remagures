@@ -47,8 +47,11 @@ namespace Remagures.Interactable
         protected virtual void TriggerEnter() { }
         protected virtual void TriggerExit() { }
 
-        protected virtual bool CanTriggerEnter(Collider2D collision) { return true; }
-        protected virtual bool CanTriggerExit(Collider2D collision) { return true; }
+        protected virtual bool CanTriggerEnter(Collider2D collision) 
+            => true; 
+        
+        protected virtual bool CanTriggerExit(Collider2D collision)
+            => true; 
 
         public abstract void Interact();
     }

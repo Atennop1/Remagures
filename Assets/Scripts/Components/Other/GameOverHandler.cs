@@ -66,8 +66,6 @@ namespace Remagures.Components
         }
 
         public void SetGameOver()
-        {
-            _isGameOver = _currentHealth.Value <= 0;
-        }
+            => _isGameOver = _currentHealth.Value <= 0;
     }
 }

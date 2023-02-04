@@ -14,12 +14,10 @@ namespace Remagures.Notifications
 
         protected override void Awake()
         {
-            if (Instance == null)
-                Instance = this;
-            else
-                Destroy(gameObject);
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+            
             DontDestroyOnLoad(gameObject);
-
             base.Awake();
         }
     

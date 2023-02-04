@@ -14,9 +14,7 @@ namespace Remagures.Interactable
         private BinaryStorage _storage;
 
         private void Start()
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+            => _spriteRenderer = GetComponent<SpriteRenderer>();
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -32,8 +30,6 @@ namespace Remagures.Interactable
         }
 
         private void OnDisable()
-        {
-            _storage.Save(_isActive, _name);
-        }
+            => _storage.Save(_isActive, _name);
     }
 }

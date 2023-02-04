@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Remagures.AI.StateMachine;
+using UnityEngine;
 
 namespace Remagures.AI.Enemies
 {
@@ -8,9 +9,7 @@ namespace Remagures.AI.Enemies
         private readonly int DEAD_ANIMATOR_NAME = Animator.StringToHash("dead");
 
         public DeadState(IEnemy enemy)
-        {
-            _enemy = enemy;
-        }
+            => _enemy = enemy;
 
         public void OnEnter()
         {

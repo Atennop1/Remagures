@@ -20,7 +20,6 @@ namespace Remagures.Inventory
         }
 
         protected override void SetButton() { }
-
         protected override void SetupPlayer() { }
     }
 }

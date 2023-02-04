@@ -11,7 +11,7 @@ namespace Remagures.Tools
         [SerializeField] private List<MonoBehaviour> savablesObjects;
     
         public IEnumerable<ISaver> Savables => _savables;
-        private List<ISaver> _savables = new();
+        private readonly List<ISaver> _savables = new();
 
         public void Awake()
         {
@@ -68,15 +68,11 @@ namespace Remagures.Tools
         }
 
         public void OnDisable()
-        {
-            SaveGame();
-        }
+            => SaveGame();
 
         public void OnApplicationQuit()
-        {
-            SaveGame();
-        }
-    
+            => SaveGame();
+
         public void OnApplicationPause(bool pause)
         {
             if (Application.platform == RuntimePlatform.Android)

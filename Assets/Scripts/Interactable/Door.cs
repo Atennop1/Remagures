@@ -20,11 +20,10 @@ namespace Remagures.Interactable
                 case DoorType.Key when _numberOfKeys.Value > 0:
                     _numberOfKeys.Value--;
                     break;
+                
                 case DoorType.Key:
                     return;
-            
-                case DoorType.Enemy:
-                case DoorType.Default:
+                
                 default:
                     throw new ArgumentOutOfRangeException();
             }

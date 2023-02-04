@@ -26,7 +26,7 @@ namespace Remagures.Notifications
             AndroidNotificationCenter.RegisterNotificationChannel(channel);
         }
     
-        public void SendNotification(int id)
+        protected void SendNotification(int id)
         {
             if (!_canNotify) return;
         
@@ -40,6 +40,7 @@ namespace Remagures.Notifications
             AndroidNotificationCenter.SendNotificationWithExplicitID(notification, "news", id);
         }
 
-        protected virtual void OnApplicationFocus(bool focusStatus) => AndroidNotificationCenter.CancelAllDisplayedNotifications();
+        protected virtual void OnApplicationFocus(bool focusStatus) 
+            => AndroidNotificationCenter.CancelAllDisplayedNotifications();
     }
 }

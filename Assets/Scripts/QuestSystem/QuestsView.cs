@@ -13,16 +13,14 @@ namespace Remagures.QuestSystem
         [SerializeField] private GameObject _questsPanel;
         [SerializeField] private QuestGoalsView _goalsView;
 
-        public void Start()
+        private void Start()
         {
             Init();
             Close();
         }
 
-        public void OnEnable()
-        {
-            Init();
-        }
+        private void OnEnable()
+            => Init();
 
         private void Init()
         {
@@ -39,7 +37,6 @@ namespace Remagures.QuestSystem
                 var slot = Instantiate(_slotPrefab, _questsPanel.transform.position, Quaternion.identity, _questsPanel.transform);
                 slot.Initialize(quest, _goalsView);
             }
-
         }
 
         private void ClearInventory()

@@ -24,13 +24,12 @@ namespace Remagures.Inventory
         }
 
         protected virtual bool CanAddItem()
-        {
-            return PlayerInventory && ThisItem;
-        }
+            => PlayerInventory && ThisItem;
 
         private void AddItemInInventory()
         {
-            if (!CanAddItem()) return;
+            if (!CanAddItem()) 
+                return;
         
             PlayerInventory.Add(new Cell(ThisItem));
             Destroy(gameObject);

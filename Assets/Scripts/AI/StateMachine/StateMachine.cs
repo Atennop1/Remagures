@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Remagures.AI
+namespace Remagures.AI.StateMachine
 {
     public class StateMachine
     {

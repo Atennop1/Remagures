@@ -124,8 +124,6 @@ namespace Remagures.Inventory
         }
         
         private void OnEnable()
-        {
-            _equipButton.SetActive(false);
-        }
+            => _equipButton.SetActive(false);
     }
 }

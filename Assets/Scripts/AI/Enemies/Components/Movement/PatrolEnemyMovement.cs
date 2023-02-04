@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Remagures.AI.Pathfinding;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,8 +22,11 @@ namespace Remagures.AI.Enemies
                 ChangeGoal();
         }
 
-        public void StopMoving() => _enemyMovement.StopMoving();
-        public bool CanMove => _enemyMovement.CanMove;
+        public void StopMoving()
+            => _enemyMovement.StopMoving();
+        
+        public bool CanMove 
+            => _enemyMovement.CanMove;
 
         private void ChangeGoal()
         {

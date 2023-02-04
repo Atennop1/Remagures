@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI
+namespace Remagures.AI.NPCs
 {
     public class RandomMovableBoundedNPC : MovableNPC
     {
@@ -28,9 +28,7 @@ namespace Remagures.AI
         }
 
         public void OnCollisionEnter2D(Collision2D collision)
-        {
-            ChooseDifferentDirection();
-        }
+            => ChooseDifferentDirection();
 
         protected override void TriggerEnter()
         {
@@ -106,6 +104,7 @@ namespace Remagures.AI
                 3 => Vector3.down,
                 _ => _directionVector
             };
+            
             Animations.UpdateAnim(_directionVector);
         }
     }

@@ -72,6 +72,7 @@ namespace Remagures.Interactable
             _triggerCollider.enabled = false;
         }
 
-        private void OnDisable() => _storage.Save(_isOpened, _name);
+        private void OnDisable() 
+            => _storage.Save(_isOpened, _name);
     }
 }

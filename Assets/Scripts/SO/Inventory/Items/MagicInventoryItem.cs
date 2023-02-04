@@ -9,7 +9,9 @@ namespace Remagures.SO
     [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/MagicItem")]
     public class MagicInventoryItem : BaseInventoryItem, IWeaponItem, IMagicItem, IChoiceableItem
     {
-        [field: SerializeField, Header("Magic Stuff")] public bool IsCurrent { get; private set; }
+        [field: SerializeField, Header("Magic Stuff")]
+        public bool IsCurrent { get; private set; }
+
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public Projectile Projectile { get; private set; }
         [field: SerializeField] public UnityEvent UsingEvent { get; private set; }
@@ -24,8 +26,6 @@ namespace Remagures.SO
         }
 
         public void DisableIsCurrent()
-        {
-            IsCurrent = false;
-        }
+            => IsCurrent = false;
     }
 }

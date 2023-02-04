@@ -19,7 +19,7 @@ namespace Remagures.DialogSystem
         public DialogLine Build()
         {
             var builtChoices = _choiceBuilders.Select(builder => builder.BuiltChoice).ToList();
-            var result = new DialogLine(_lineText, _speakerInfoBuilder.BuiltInfo, builtChoices);
+            var result = new DialogLine(_lineText, _speakerInfoBuilder.BuiltData, builtChoices);
 
             foreach (var callback in _onLineEndedCallbacks)
                 callback.Init(result);

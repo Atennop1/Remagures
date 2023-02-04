@@ -66,6 +66,7 @@ namespace Remagures.Components
                 yield return null;
         }
         
-        private void FixedUpdate() => _systemUpdate?.UpdateAll();
+        private void FixedUpdate() 
+            => _systemUpdate?.UpdateAll();
     }
 }

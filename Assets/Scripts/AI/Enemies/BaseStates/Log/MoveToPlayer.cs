@@ -1,3 +1,4 @@
+using Remagures.AI.StateMachine;
 using UnityEngine;
 
 namespace Remagures.AI.Enemies 
@@ -9,12 +10,9 @@ namespace Remagures.AI.Enemies
         private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
 
         public MoveToPlayer(IEnemyWithTarget enemyWithTarget)
-        {
-            _enemyWithTarget = enemyWithTarget;
-        }
+            => _enemyWithTarget = enemyWithTarget;
 
         public void OnEnter() { }
-
         public void OnExit() { }
 
         public void Tick()

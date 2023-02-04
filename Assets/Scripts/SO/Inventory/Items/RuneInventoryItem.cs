@@ -21,8 +21,6 @@ namespace Remagures.SO
         }
 
         public void DisableIsCurrent()
-        {
-            IsCurrent = false;
-        }
+            => IsCurrent = false;
     }
 }

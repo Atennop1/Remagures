@@ -25,6 +25,7 @@ namespace Remagures.Player
         [Space]
         [SerializeField] private GameObject _canvas;
         [SerializeField] private GameObject _music;
+        
         private int _totalArmor;
         private bool _isStunned;
     
@@ -79,6 +80,7 @@ namespace Remagures.Player
             _isStunned = false;
         }
 
-        private void Awake() => SetStartHealth((int)_currentHealth.Value);
+        private void Awake() 
+            => SetStartHealth((int)_currentHealth.Value);
     }
 }

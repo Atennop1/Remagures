@@ -49,7 +49,7 @@ namespace Remagures.DialogSystem
                 var firstLine = thisDialog.Lines[i];
                 var secondLine = anotherDialog.Lines[i];
                 
-                if (firstLine.Text != secondLine.Text || firstLine.SpeakerInfo.SpeakerName != secondLine.SpeakerInfo.SpeakerName)
+                if (firstLine.Text != secondLine.Text || firstLine.SpeakerData.SpeakerName != secondLine.SpeakerData.SpeakerName)
                     return false;
             }
 

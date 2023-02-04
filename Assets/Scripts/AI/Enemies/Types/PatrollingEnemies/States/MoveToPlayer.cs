@@ -1,6 +1,7 @@
+using Remagures.AI.StateMachine;
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Types.PatrollingEnemies.States
+namespace Remagures.AI.Enemies.PatrollingEnemies
 {
     public sealed class MoveToPlayer : IState
     {
@@ -8,10 +9,8 @@ namespace Remagures.AI.Enemies.Types.PatrollingEnemies.States
         private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
 
         public MoveToPlayer(PatrollingEnemy patrollingEnemy)
-        {
-            _patrollingEnemy = patrollingEnemy;
-        }
-        
+            => _patrollingEnemy = patrollingEnemy;
+
         public void Tick()
         {
             _patrollingEnemy.Movement.Move(_patrollingEnemy.TargetData.Target);

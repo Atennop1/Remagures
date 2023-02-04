@@ -1,4 +1,5 @@
 using Remagures.AI;
+using Remagures.AI.NPCs;
 using Remagures.DialogSystem;
 using Remagures.Interactable;
 using Remagures.SO;
@@ -99,8 +100,6 @@ namespace Remagures.Player
         }
 
         private void Awake()
-        {
-            _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
-        }
+            => _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
     }
 }

@@ -10,12 +10,10 @@ namespace Remagures.MapSystem
         [SerializeField] private Transform _player;
         [SerializeField] private QuestGoalsView _goalsView;
 
-        [Space]
-        [SerializeField] private Transform _mapContainer;
+        [Space] [SerializeField] private Transform _mapContainer;
         [SerializeField] private Button _changeScaleButton;
 
-        [Space]
-        [SerializeField] private Animator _animator;
+        [Space] [SerializeField] private Animator _animator;
 
         private Map _currentMap;
 
@@ -38,7 +36,7 @@ namespace Remagures.MapSystem
 
             _currentMap.Init(this, _goalsView);
             (_currentMap as LocationMap)?.Init(this, _goalsView, _player);
-            
+
             _changeScaleButton.interactable = _currentMap.ParentMap != null;
         }
 
@@ -55,8 +53,6 @@ namespace Remagures.MapSystem
         }
 
         private void Start()
-        {
-            Close();
-        }
+            => Close();
     }
 }

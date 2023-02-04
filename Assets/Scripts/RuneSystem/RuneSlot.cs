@@ -21,10 +21,8 @@ namespace Remagures.RuneSystem
                 GetComponent<Button>().enabled = true;
             }
         }
-    
+
         public void Select()
-        {
-            _runeView.Select(ThisItem as IRuneItem);
-        }
+            => _runeView.Select(ThisItem as IRuneItem);
     }
 }

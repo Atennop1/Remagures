@@ -9,18 +9,12 @@ namespace Remagures.SO
         [SerializeField] private UnityEvent _signalEvent;
     
         public void OnSignalRaised()
-        {
-            _signalEvent.Invoke();
-        }
+            => _signalEvent.Invoke();
 
         private void OnEnable()
-        {
-            _signal.RegisterListener(this);
-        }
+            =>_signal.RegisterListener(this);
 
         private void OnDisable()
-        {
-            _signal.DeRegisterListener(this);
-        }
+            => _signal.DeRegisterListener(this);
     }
 }

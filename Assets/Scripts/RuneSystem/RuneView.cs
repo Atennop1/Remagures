@@ -23,12 +23,10 @@ namespace Remagures.RuneSystem
     
         private IRuneItem _currentRune;
 
-        public void Start()
-        {
-            Close();
-        }
+        private void Start()
+            => Close();
 
-        public void OnEnable()
+            public void OnEnable()
         {
             _currentRuneImage.sprite = _noneRune;
             _descriptionText.text = "";
@@ -59,8 +57,6 @@ namespace Remagures.RuneSystem
         }
     
         public void Close()
-        {
-            gameObject.SetActive(false);
+            => gameObject.SetActive(false);
         }
-    }
 }

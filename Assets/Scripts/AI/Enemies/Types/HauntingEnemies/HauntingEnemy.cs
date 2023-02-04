@@ -1,9 +1,10 @@
-﻿using Remagures.Components;
+﻿using Remagures.AI.StateMachine;
+using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using SM = Remagures.AI.StateMachine;
+using SM = Remagures.AI.StateMachine.StateMachine;
 
-namespace Remagures.AI.Enemies.Types.HauntingEnemies
+namespace Remagures.AI.Enemies.HauntingEnemies
 {
     public class HauntingEnemy : SerializedMonoBehaviour, IEnemyWithTarget
     {
@@ -37,9 +38,16 @@ namespace Remagures.AI.Enemies.Types.HauntingEnemies
             StateMachine.SetState(playerNotInRangeState);
         }
 
-        private void FixedUpdate() => StateMachine.Tick();
-        private bool PlayerTooNear() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
-        private bool SeePlayer() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius;
-        private bool PlayerTooFar() => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius;
+        private void FixedUpdate() 
+            => StateMachine.Tick();
+        
+        private bool PlayerTooNear() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
+        
+        private bool SeePlayer() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius;
+        
+        private bool PlayerTooFar() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius;
     }
 }

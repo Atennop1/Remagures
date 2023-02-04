@@ -15,11 +15,12 @@ namespace Remagures.AI.Enemies
 
         public override void TakeDamage(int damage)
         {
-            if (IsDied) return;
-            if (_isStunned) return;
-        
+            if (IsDied || _isStunned) 
+                return;
+
             base.TakeDamage(damage);
-            if (!IsDied) return;
+            if (!IsDied) 
+                return;
         
             DeathEffect();
             MakeLoot();
@@ -28,9 +29,7 @@ namespace Remagures.AI.Enemies
         }
         
         private void Start()
-        {
-            SetStartHealth(_maxHealth.Value > 0 ? (int)_maxHealth.Value : 0);
-        }
+            => SetStartHealth(_maxHealth.Value > 0 ? (int)_maxHealth.Value : 0);
 
         private void DeathEffect()
         {
@@ -40,7 +39,8 @@ namespace Remagures.AI.Enemies
 
         private void MakeLoot()
         {
-            if (_lootTable == null) return;
+            if (_lootTable == null) 
+                return;
         
             var current = _lootTable.Loot();
             if (current != null)

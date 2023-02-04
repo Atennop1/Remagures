@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI
+namespace Remagures.AI.NPCs
 {
     public abstract class MovableNPC : NPC
     {

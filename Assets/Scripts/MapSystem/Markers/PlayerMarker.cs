@@ -12,14 +12,10 @@ namespace Remagures.MapSystem
         public void Init(MapView view) { }
 
         public void SetupComponents()
-        { 
-            Visitor = new PlayerMarkerVisitor();
-        }
+            => Visitor = new PlayerMarkerVisitor();
 
         public bool ContainsInMap(Map map)
-        {
-            return map.MapScenes.Any(scene => scene.ScenePath == SceneManager.GetActiveScene().path);
-        }
+            => map.MapScenes.Any(scene => scene.ScenePath == SceneManager.GetActiveScene().path);
 
         public bool ContainsInMapTree(Map map)
         {
@@ -31,7 +27,7 @@ namespace Remagures.MapSystem
         {
             _playerMarker.gameObject.SetActive(false);
             if (!ContainsInMapTree(map)) return false;
-        
+
             _playerMarker.localScale = scale;
             _playerMarker.gameObject.SetActive(true);
             _playerMarker.SetParent(parent);
@@ -42,19 +38,18 @@ namespace Remagures.MapSystem
                 marker.SetupComponents();
                 marker.Visitor.Visit(this);
             }
-            
-            return true;
 
+            return true;
         }
 
         public void SetPosition(Vector3 position)
-        {
-            ((RectTransform)_playerMarker).anchoredPosition = position;
-        }
+            => ((RectTransform)_playerMarker).anchoredPosition = position;
 
         private class PlayerMarkerVisitor : IMarkerVisitor
         {
-            public void Visit(IMarker marker) { }
+            public void Visit(IMarker marker)
+            {
+            }
         }
     }
 }

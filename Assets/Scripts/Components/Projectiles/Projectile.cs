@@ -25,13 +25,9 @@ namespace Remagures.Components
         }
 
         public void Launch(Vector2 initialVelocity)
-        {
-            MyRigidbody.velocity = initialVelocity * Speed;
-        }
+            => MyRigidbody.velocity = initialVelocity * Speed;
 
         public virtual void OnCollisionEnter2D(Collision2D collision)
-        {
-            Destroy(gameObject);
-        }
+            => Destroy(gameObject);
     }
 }

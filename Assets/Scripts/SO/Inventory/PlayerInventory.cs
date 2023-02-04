@@ -25,10 +25,19 @@ namespace Remagures.SO
                 _inventory.Remove(GetCellInternal(cell.Item));
         }
 
-        public void Decrease(Cell newCell) => GetCellInternal(newCell.Item)?.DecreaseAmount(newCell.ItemCount);
-        public bool Contains(IReadOnlyCell cell) => GetCell(cell.Item) != null && _inventory.Contains(GetCell(cell.Item));
-        public IReadOnlyCell GetCell(BaseInventoryItem item) => _inventory.FirstOrDefault(x => x.Item == item);
-        public void Clear() => _inventory.Clear();
-        private Cell GetCellInternal(BaseInventoryItem item) => _inventory.FirstOrDefault(x => x.Item == item);
+        public void Decrease(Cell newCell) 
+            => GetCellInternal(newCell.Item)?.DecreaseAmount(newCell.ItemCount);
+        
+        public bool Contains(IReadOnlyCell cell) 
+            => GetCell(cell.Item) != null && _inventory.Contains(GetCell(cell.Item));
+        
+        public IReadOnlyCell GetCell(BaseInventoryItem item) 
+            => _inventory.FirstOrDefault(x => x.Item == item);
+        
+        public void Clear() 
+            => _inventory.Clear();
+        
+        private Cell GetCellInternal(BaseInventoryItem item) 
+            => _inventory.FirstOrDefault(x => x.Item == item);
     }
 }

@@ -49,6 +49,7 @@ namespace Remagures.Root
             _systemUpdate.Add(cutscene);
         }
 
-        private void FixedUpdate() => _systemUpdate.UpdateAll();
+        private void FixedUpdate() 
+            => _systemUpdate.UpdateAll();
     }
 }

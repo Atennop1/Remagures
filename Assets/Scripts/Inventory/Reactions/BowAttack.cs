@@ -90,8 +90,7 @@ namespace Remagures.Inventory
         }
     
         private Vector3 ChooseArrowDirection()
-        {
-            return new Vector3(0, 0, Mathf.Atan2(_playerAnimator.GetFloat(MOVE_Y_ANIMATOR_NAME), _playerAnimator.GetFloat(MOVE_X_ANIMATOR_NAME)) * Mathf.Rad2Deg);
-        }
+            => new(0, 0, Mathf.Atan2(_playerAnimator.GetFloat(MOVE_Y_ANIMATOR_NAME), 
+                _playerAnimator.GetFloat(MOVE_X_ANIMATOR_NAME)) * Mathf.Rad2Deg);
     }
 }

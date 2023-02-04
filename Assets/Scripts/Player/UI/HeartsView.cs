@@ -19,9 +19,7 @@ namespace Remagures.Player
         [SerializeField] private Sprite _emptyHeart;
 
         private void Start()
-        {
-            UpdateHearts();
-        }
+            => UpdateHearts();
 
         private void InitHearts()
         {

@@ -67,14 +67,14 @@ namespace Remagures.DialogSystem
                 Destroy(child.gameObject);
 
             DisplayText(_currentDialog.CurrentLine.Text);
-            SetupWindow(_currentDialog.CurrentLine.SpeakerInfo);
+            SetupWindow(_currentDialog.CurrentLine.SpeakerData);
         }
         
-        private void SetupWindow(DialogSpeakerInfo speakerInfo)
+        private void SetupWindow(DialogSpeakerData speakerData)
         {
-            _nameText.text = speakerInfo.SpeakerName;
-            _speakerImage.sprite = speakerInfo.SpeakerSprite.Get();
-            _layoutAnimator.Play(speakerInfo.LayoutType.ToString());
+            _nameText.text = speakerData.SpeakerName;
+            _speakerImage.sprite = speakerData.SpeakerSprite.Get();
+            _layoutAnimator.Play(speakerData.LayoutType.ToString());
         }
 
         private void NextLine()

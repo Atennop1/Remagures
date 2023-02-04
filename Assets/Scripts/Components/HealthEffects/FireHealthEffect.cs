@@ -24,14 +24,10 @@ namespace Remagures.Components
         }
 
         public async void Activate()
-        {
-            await Fire(_flash, _info.Damage, _cancellationToken);
-        }
+            => await Fire(_flash, _info.Damage, _cancellationToken);
 
         public void Stop()
-        {
-            _cancellationTokenSource.Cancel();
-        }
+            => _cancellationTokenSource.Cancel();
 
         private async UniTask Fire(Flasher flash, float damage, CancellationToken cancellationToken)
         {

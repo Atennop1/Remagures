@@ -19,9 +19,7 @@ namespace Remagures.Time
             return (float)difference.TotalSeconds;
         }
     
-        public void SaveDate(string key)
-        {
-            PlayerPrefs.SetString(key, DateTime.Now.ToBinary().ToString());
-        }
+        public void SaveDate(string key) 
+            => PlayerPrefs.SetString(key, DateTime.Now.ToBinary().ToString());
     }
 }

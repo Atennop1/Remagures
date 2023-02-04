@@ -18,9 +18,7 @@ namespace Remagures.Player
         [SerializeField] private bool _isArrow;
         
         public void Init(UniqueSetup uniqueSetup)
-        {
-            _uniqueSetup = uniqueSetup;
-        }
+            => _uniqueSetup = uniqueSetup;
 
         public override void OnTriggerEnter2D(Collider2D other)
         {

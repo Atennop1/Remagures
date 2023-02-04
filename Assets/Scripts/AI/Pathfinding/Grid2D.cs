@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-namespace Remagures.AI
+namespace Remagures.AI.Pathfinding
 {
     public class Grid2D : MonoBehaviour
     {

@@ -5,9 +5,7 @@ namespace Remagures.Root
 {
     public sealed class SystemUpdate : ISystemUpdate
     {
-        private readonly List<IUpdatable> _updatables;
-
-        public SystemUpdate() => _updatables = new List<IUpdatable>();
+        private readonly List<IUpdatable> _updatables = new();
 
         public void Add(params IUpdatable[] updatables)
         {
@@ -28,6 +26,7 @@ namespace Remagures.Root
             _updatables.Remove(updatable);
         }
 
-        public void UpdateAll() => _updatables.ForEach(updatable => updatable.Update());
+        public void UpdateAll() 
+            => _updatables.ForEach(updatable => updatable.Update());
     }
 }

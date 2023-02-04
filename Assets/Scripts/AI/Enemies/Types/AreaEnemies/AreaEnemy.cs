@@ -1,10 +1,11 @@
+using Remagures.AI.StateMachine;
 using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
-using SM = Remagures.AI.StateMachine;
+using SM = Remagures.AI.StateMachine.StateMachine;
 
-namespace Remagures.AI.Enemies.Types.AreaEnemies
+namespace Remagures.AI.Enemies.AreaEnemies
 {
     public sealed class AreaEnemy : SerializedMonoBehaviour, IEnemyWithTarget
     {
@@ -39,12 +40,16 @@ namespace Remagures.AI.Enemies.Types.AreaEnemies
             StateMachine.SetState(playerNotInRangeState);
         }
 
-        private void Update() => StateMachine.Tick();
+        private void Update() 
+            => StateMachine.Tick();
         
-        private bool PlayerTooNear() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
-        private bool SeePlayer() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius &&
-                                    _boundary.bounds.Contains(TargetData.Target.position);
-        private bool PlayerTooFar() => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius ||
-                                    !_boundary.bounds.Contains(TargetData.Target.position);
+        private bool PlayerTooNear() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
+        
+        private bool SeePlayer() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius && _boundary.bounds.Contains(TargetData.Target.position);
+        
+        private bool PlayerTooFar() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius || !_boundary.bounds.Contains(TargetData.Target.position);
     }
 }

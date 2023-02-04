@@ -7,25 +7,19 @@ namespace Remagures.MapSystem
         [field: SerializeField] public Map MapToOpen { get; private set; }
         [SerializeField] private Map _thisMap;
 
-        [Space]
-        [SerializeField] private Transform _playerMarkerTransform;
+        [Space] [SerializeField] private Transform _playerMarkerTransform;
 
-        [Space]
-        [SerializeField] private Vector3 _playerMarkerScale;
+        [Space] [SerializeField] private Vector3 _playerMarkerScale;
 
         private MapView _view;
 
         public void Init(MapView view)
-        {
-            _view = view;
-        }
+            => _view = view;
 
         public void OpenMap()
-        {   
-            if (MapToOpen.IsVisited())
-                _view.OpenMap(MapToOpen);
-            else
-                _view.CantOpenMap();
+        {
+            if (MapToOpen.IsVisited()) _view.OpenMap(MapToOpen);
+            else _view.CantOpenMap();
         }
 
         public void DisplayMarkers()
@@ -34,9 +28,7 @@ namespace Remagures.MapSystem
                 marker.TryDisplay(_playerMarkerTransform, _playerMarkerScale, MapToOpen);
         }
 
-        public bool ContainsInMapTree<T>() where T: IMarker
-        {
-            return MapToOpen.GetMarker<T>().ContainsInMapTree(MapToOpen);
-        }
+        public bool ContainsInMapTree<T>() where T : IMarker
+            => MapToOpen.GetMarker<T>().ContainsInMapTree(MapToOpen);
     }
 }

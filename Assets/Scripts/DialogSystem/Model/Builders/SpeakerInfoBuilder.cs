@@ -9,12 +9,12 @@ namespace Remagures.DialogSystem
         [SerializeField] private Sprite _speakerSprite;
         [SerializeField] private DialogLayoutType _layoutType;
         
-        public DialogSpeakerInfo BuiltInfo { get; private set; }
+        public DialogSpeakerData BuiltData { get; private set; }
 
-        public DialogSpeakerInfo Build()
+        public DialogSpeakerData Build()
         {
-            BuiltInfo = new DialogSpeakerInfo(_speakerName, _speakerSprite, _layoutType);
-            return BuiltInfo;
+            BuiltData = new DialogSpeakerData(_speakerName, _speakerSprite, _layoutType);
+            return BuiltData;
         }
     }
 }

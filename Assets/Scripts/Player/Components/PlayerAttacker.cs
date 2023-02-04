@@ -45,9 +45,7 @@ namespace Remagures.Player
         }
     
         public void MagicAttackMethod()
-        {
-            (_uniqueSetup.MagicSlot.ThisCell.Item as IMagicItem)?.UsingEvent?.Invoke();
-        }
+            => (_uniqueSetup.MagicSlot.ThisCell.Item as IMagicItem)?.UsingEvent?.Invoke();
 
         public void StartMagicAttackCoroutine(IEnumerator method)
         {
@@ -57,9 +55,7 @@ namespace Remagures.Player
         }
 
         public void SetAttackCoroutineToNull()
-        {
-            _attackCoroutine = null;
-        }
+            => _attackCoroutine = null;
 
         private void Awake()
         {

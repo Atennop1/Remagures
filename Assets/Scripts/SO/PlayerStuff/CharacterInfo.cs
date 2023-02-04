@@ -23,9 +23,7 @@ namespace Remagures.SO
         [field: SerializeField] public bool ShieldRuneActive { get; private set; } 
 
         public void DeleteNotification()
-        {
-            Unity.Notifications.Android.AndroidNotificationCenter.CancelNotification(1);
-        }
+            => Unity.Notifications.Android.AndroidNotificationCenter.CancelNotification(1);
 
         public void WarriorSet()
         {

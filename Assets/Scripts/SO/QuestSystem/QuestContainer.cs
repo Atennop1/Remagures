@@ -28,8 +28,6 @@ namespace Remagures.SO
         }
 
         public void Reset()
-        {
-            _quests.Clear();
-        }
+            => _quests.Clear();
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 namespace Remagures.SO
 {
     [Serializable]
-    public class Quest : ScriptableObject
+    public partial class Quest : ScriptableObject
     {
-        public QuestInfo Information;
+        public QuestData Information;
         public List<QuestGoal> Goals;
 
         [field: SerializeField] public bool Completed { get; private set; }
@@ -34,21 +34,9 @@ namespace Remagures.SO
         }
 
         public void Reset()
-        {
-            Completed = false;
-        }
+            => Completed = false;
 
         private void CheckGoals()
-        {
-            Completed = Goals.All(g => g.Completed);
-        }
-
-        [Serializable]
-        public struct QuestInfo
-        {
-            [field: SerializeField] public string Name { get; private set; }
-            [field: SerializeField] public string Description { get; private set; }
-            [field: SerializeField] public Sprite QuestSprite { get; private set; }
-        }
+            =>Completed = Goals.All(g => g.Completed);
     }
 }

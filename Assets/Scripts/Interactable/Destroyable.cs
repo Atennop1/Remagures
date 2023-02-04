@@ -10,9 +10,7 @@ namespace Remagures.Interactable
         private readonly int SMASH_ANIMATOR_NAME = Animator.StringToHash("smash");
 
         private void Start()
-        {
-            _animator = GetComponent<Animator>();
-        }
+            => _animator = GetComponent<Animator>();
 
         public void Smash()
         {

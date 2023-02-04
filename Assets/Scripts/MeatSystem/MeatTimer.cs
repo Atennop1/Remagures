@@ -39,10 +39,8 @@ namespace Remagures.MeatSystem
                 _view.CookedCount.Value++;
             }
 
-            if (_view.RawCount.Value > 0)
-                Timer -= UnityEngine.Time.deltaTime;
-            else
-                _timeCounter.SaveDate("MeatTime");
+            if (_view.RawCount.Value > 0) Timer -= UnityEngine.Time.deltaTime;
+            else _timeCounter.SaveDate("MeatTime");
 
             _view.UpdateTimer();
             _view.UpdateMeat();

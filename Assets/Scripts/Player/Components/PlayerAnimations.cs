@@ -46,8 +46,6 @@ namespace Remagures.Player
         }
 
         private void Awake()
-        {
-            ChangeAnim("moving", false);
-        }
+            => ChangeAnim("moving", false);
     }
 }

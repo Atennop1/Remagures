@@ -30,14 +30,10 @@ namespace Remagures.Rooms
 
         protected override void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.TryGetComponent(out Player.Player _) || other.isTrigger) return;
-        
-            foreach (var enemy in Enemies)
-                ChangeActivation(enemy, true);
-
-            foreach (var pot in Pots)
-                ChangeActivation(pot, true);
-
+            if (!other.TryGetComponent(out Player.Player _) || other.isTrigger) 
+                return;
+            
+            ChangeActivationOfAll(true);
             CloseDoors();
         }
     }

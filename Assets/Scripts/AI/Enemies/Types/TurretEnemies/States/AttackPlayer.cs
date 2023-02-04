@@ -1,6 +1,7 @@
+using Remagures.AI.StateMachine;
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Types.TurretEnemies.States
+namespace Remagures.AI.Enemies.TurretEnemies
 {
     public sealed class AttackPlayer : IState
     {
@@ -9,9 +10,7 @@ namespace Remagures.AI.Enemies.Types.TurretEnemies.States
         private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
 
         public AttackPlayer(TurretEnemy turretEnemy)
-        {
-            _turretEnemy = turretEnemy;
-        }
+            => _turretEnemy = turretEnemy;
 
         public void Tick()
         {

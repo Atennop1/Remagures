@@ -1,10 +1,11 @@
 using System.Collections;
+using Remagures.AI.StateMachine;
 using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using SM = Remagures.AI.StateMachine;
+using SM = Remagures.AI.StateMachine.StateMachine;
 
-namespace Remagures.AI.Enemies.Types.MeleeEnemies
+namespace Remagures.AI.Enemies.MeleeEnemies
 {
     public sealed class MeleeEnemy : SerializedMonoBehaviour, IEnemyWithTarget
     {
@@ -43,9 +44,9 @@ namespace Remagures.AI.Enemies.Types.MeleeEnemies
 
         private void Start()
         {
-            IState playerNotInRangeState = new States.WhilePlayerNotInRange(this);
-            IState moveToPlayerState = new States.MoveToPlayer(this);
-            States.AttackPlayer attackPlayerState = new(this);
+            IState playerNotInRangeState = new WhilePlayerNotInRange(this);
+            IState moveToPlayerState = new MoveToPlayer(this);
+            AttackPlayer attackPlayerState = new(this);
             IState knockedState = new KnockedState(this);
             
             StateMachine.AddTransition(attackPlayerState, moveToPlayerState, () => SeePlayer() && !PlayerTooNear() && !attackPlayerState.IsAttacking);
@@ -63,9 +64,16 @@ namespace Remagures.AI.Enemies.Types.MeleeEnemies
             StateMachine.SetState(playerNotInRangeState);
         }
 
-        private void Update() => StateMachine.Tick();
-        private bool PlayerTooNear() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
-        private bool SeePlayer() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius;
-        private bool PlayerTooFar() => Vector3.Distance(TargetData.Target.position, transform.position) > TargetData.ChaseRadius;
+        private void Update() 
+            => StateMachine.Tick();
+        
+        private bool PlayerTooNear() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
+        
+        private bool SeePlayer() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius;
+        
+        private bool PlayerTooFar() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) > TargetData.ChaseRadius;
     }
 }

@@ -3,7 +3,7 @@ using Remagures.Interactable;
 using Remagures.Root;
 using UnityEngine;
 
-namespace Remagures.AI
+namespace Remagures.AI.NPCs
 {
     [RequireComponent(typeof(NPCAnimations))]
     [RequireComponent(typeof(Rigidbody2D))]
@@ -61,15 +61,11 @@ namespace Remagures.AI
         }
 
         protected override bool CanTriggerEnter(Collider2D collision)
-        {
-            return collision.TryGetComponent<Player.Player>(out _) && !collision.isTrigger && CurrentState != NPCState.Talk;
-        }
+            => collision.TryGetComponent<Player.Player>(out _) && !collision.isTrigger && CurrentState != NPCState.Talk;
 
         protected override bool CanTriggerExit(Collider2D collision)
-        {
-            return collision.TryGetComponent<Player.Player>(out _) && !collision.isTrigger;
-        }
-    
+            => collision.TryGetComponent<Player.Player>(out _) && !collision.isTrigger;
+
         protected void ChangeState(NPCState newState)
         {
             if (newState != CurrentState)

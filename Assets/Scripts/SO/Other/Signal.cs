@@ -15,13 +15,10 @@ namespace Remagures.SO
         }
 
         public void RegisterListener(SignalListener listener)
-        {
-            _listeners.Add(listener);
-        }
+            => _listeners.Add(listener);
+
 
         public void DeRegisterListener(SignalListener listener)
-        {
-            _listeners.Remove(listener);
-        }
+            => _listeners.Remove(listener);
     }
 }

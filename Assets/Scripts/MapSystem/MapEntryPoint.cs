@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Remagures.MapSystem
@@ -7,8 +6,6 @@ namespace Remagures.MapSystem
     public class MapEntryPoint : MonoBehaviour
     {
         private void Awake()
-        {
-            PlayerPrefs.SetInt("Visited" + SceneManager.GetActiveScene().path, 1);
-        }
+            => PlayerPrefs.SetInt("Visited" + SceneManager.GetActiveScene().path, 1);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.AI
+namespace Remagures.AI.Pathfinding
 {
     public class Node2D : IReadOnlyNode2D
     {
@@ -25,17 +25,6 @@ namespace Remagures.AI
         }
 
         public void SetObstacle(bool isOb)
-        {
-            Obstacle = isOb;
-        }
-    }
-
-    public interface IReadOnlyNode2D
-    {
-        public int GridX { get; }
-        public int GridY { get; }
-
-        public bool Obstacle { get; }
-        public Vector3 WorldPosition { get; }
+            => Obstacle = isOb;
     }
 }

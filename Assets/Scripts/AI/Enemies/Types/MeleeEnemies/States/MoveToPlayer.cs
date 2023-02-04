@@ -1,6 +1,7 @@
+using Remagures.AI.StateMachine;
 using UnityEngine;
 
-namespace Remagures.AI.Enemies.Types.MeleeEnemies.States
+namespace Remagures.AI.Enemies.MeleeEnemies
 {
     public sealed class MoveToPlayer : IState
     {

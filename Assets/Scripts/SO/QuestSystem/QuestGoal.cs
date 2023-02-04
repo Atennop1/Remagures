@@ -31,9 +31,7 @@ namespace Remagures.SO
         }
 
         public void ResetCurrentAmount()
-        {
-            CurrentAmount = 0;
-        }
+            => CurrentAmount = 0;
 
         public void Reset()
         {

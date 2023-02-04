@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
+using Remagures.AI.StateMachine;
 
-namespace Remagures.AI.Enemies.Types.MeleeEnemies.States
+namespace Remagures.AI.Enemies.MeleeEnemies
 {
     public sealed class AttackPlayer : IState
     {

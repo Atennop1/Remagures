@@ -6,16 +6,14 @@ namespace Remagures.Menu
 {
     public class MainMenu : MonoBehaviour
     {
-        [Header("Stats")]
-        [SerializeField] private StringValue _currentScene;
+        [Header("Stats")] [SerializeField] private StringValue _currentScene;
         [SerializeField] private BoolValue _isNewGame;
 
-        [Header("Objects")]
-        [SerializeField] private GameObject _newGameMenu;
+        [Header("Objects")] [SerializeField] private GameObject _newGameMenu;
         [SerializeField] private GameObject _oldGameMenu;
         [SerializeField] private GameObject _confirmNewGame;
         [SerializeField] private GameObject _chooseClassMenu;
-    
+
         public void Start()
         {
             Application.targetFrameRate = 60;
@@ -59,13 +57,9 @@ namespace Remagures.Menu
         }
 
         public void Quit()
-        {
-            Application.Quit();
-        }
+            => Application.Quit();
 
         public void Resume()
-        {
-            SceneManager.LoadScene(_currentScene.Value);
-        }
+            => SceneManager.LoadScene(_currentScene.Value);
     }
 }

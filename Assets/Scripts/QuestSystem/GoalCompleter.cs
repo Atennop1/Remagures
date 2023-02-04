@@ -9,8 +9,6 @@ namespace Remagures.QuestSystem
         [SerializeField] private QuestGoal _goal;
 
         public void Complete()
-        {
-            _database.TryCompleteGoal(_goal);
-        }
+            => _database.TryCompleteGoal(_goal);
     }
 }

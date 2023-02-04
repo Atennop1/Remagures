@@ -1,5 +1,5 @@
 ﻿using Remagures.Components;
-using SM = Remagures.AI.StateMachine;
+using SM = Remagures.AI.StateMachine.StateMachine;
 
 namespace Remagures.AI.Enemies
 {

@@ -20,9 +20,7 @@ namespace Remagures.Menu
         }
 
         public void ShowMeatScreen()
-        {
-            _meatCanvas.SetActive(true);
-        }
+            => _meatCanvas.SetActive(true);
 
         public void ToMenu()
         {

@@ -11,8 +11,7 @@ namespace Remagures.QuestSystem
         [SerializeField] public Text _descriptionText;
         [SerializeField] public Image _questImage;
 
-        [Space]
-        [SerializeField] public TextMeshProUGUI _textPrefab;
+        [Space] [SerializeField] public TextMeshProUGUI _textPrefab;
         [SerializeField] public GameObject _goalsPanel;
 
         public void Initialize(Quest quest)
@@ -24,7 +23,8 @@ namespace Remagures.QuestSystem
             Clear();
             foreach (var goal in quest.Goals)
             {
-                var description = Instantiate(_textPrefab, _goalsPanel.transform.position, Quaternion.identity, _goalsPanel.transform);
+                var description = Instantiate(_textPrefab, _goalsPanel.transform.position, Quaternion.identity,
+                    _goalsPanel.transform);
                 description.text = "* " + goal.Description;
 
                 if (!goal.Completed)
@@ -41,8 +41,6 @@ namespace Remagures.QuestSystem
         }
 
         public void Close()
-        {
-            gameObject.SetActive(false);
-        }
+            => gameObject.SetActive(false);
     }
 }

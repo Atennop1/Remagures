@@ -14,9 +14,7 @@ namespace Remagures.Components
         private bool _isMaxHealthSet;
 
         public virtual void TakeDamage(int damage)
-        {
-            Value -= damage;
-        }
+            => Value -= damage;
 
         protected void SetStartHealth(int value)
         {
@@ -43,11 +41,10 @@ namespace Remagures.Components
             _effects.Remove(castingEffect);
         }
         
-        private bool NeedUnCastHealthEffect(IHealthEffect castingEffect) =>_effects.Where(effect => effect.GetType() == castingEffect.GetType()).ToList().Count > 0;
+        private bool NeedUnCastHealthEffect(IHealthEffect castingEffect) 
+            => _effects.Where(effect => effect.GetType() == castingEffect.GetType()).ToList().Count > 0;
 
         private void Awake()
-        {
-            _effects = new List<IHealthEffect>();
-        }
+            => _effects = new List<IHealthEffect>();
     }
 }

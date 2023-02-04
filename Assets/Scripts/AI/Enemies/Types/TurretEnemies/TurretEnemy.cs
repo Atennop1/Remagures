@@ -1,10 +1,11 @@
+using Remagures.AI.StateMachine;
 using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
-using SM = Remagures.AI.StateMachine;
+using SM = Remagures.AI.StateMachine.StateMachine;
 
-namespace Remagures.AI.Enemies.Types.TurretEnemies
+namespace Remagures.AI.Enemies.TurretEnemies
 {
     public sealed class TurretEnemy : SerializedMonoBehaviour, IEnemyWithTarget
     {
@@ -35,7 +36,8 @@ namespace Remagures.AI.Enemies.Types.TurretEnemies
             StateMachine.Tick();
             
             _fireDelaySeconds -= UnityEngine.Time.deltaTime;
-            if (_fireDelaySeconds > 0) return;
+            if (_fireDelaySeconds > 0) 
+                return;
         
             _canFire = true;
             _fireDelaySeconds = _fireDelay;
@@ -43,8 +45,8 @@ namespace Remagures.AI.Enemies.Types.TurretEnemies
 
         private void Start()
         {
-            IState playerNotInRangeState = new States.WhilePlayerNotInRange(this);
-            IState attackPlayerState = new States.AttackPlayer(this);
+            IState playerNotInRangeState = new WhilePlayerNotInRange(this);
+            IState attackPlayerState = new AttackPlayer(this);
             IState knockedState = new KnockedState(this);
             
             StateMachine.AddTransition(attackPlayerState, playerNotInRangeState, PlayerTooFar);
@@ -59,7 +61,10 @@ namespace Remagures.AI.Enemies.Types.TurretEnemies
             StateMachine.SetState(playerNotInRangeState);
         }
 
-        private bool PlayerTooFar() => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius;
-        private bool SeePlayer() => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius && _canFire; //&& CurrentState != EnemyState.Stagger;
+        private bool PlayerTooFar() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius;
+        
+        private bool SeePlayer() 
+            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius && _canFire; //&& CurrentState != EnemyState.Stagger;
     }
 }

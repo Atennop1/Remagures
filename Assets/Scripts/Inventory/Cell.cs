@@ -27,8 +27,11 @@ namespace Remagures.Inventory
             ItemCount += anotherCell.ItemCount;
         }
         
-        public bool CanMergeWithItem(BaseInventoryItem item) => item == Item;
-        public bool CanAddItemAmount() => Item.Stackable || ItemCount == 0;
+        public bool CanMergeWithItem(BaseInventoryItem item) 
+            => item == Item;
+        
+        public bool CanAddItemAmount() 
+            => Item.Stackable || ItemCount == 0;
  
         public void DecreaseAmount(int amount)
         {
@@ -41,16 +44,7 @@ namespace Remagures.Inventory
             ItemCount -= amount;
         }
 
-        public bool ItemCountGreaterOrEqualValue(int value) => ItemCount >= value;
-    }
-
-    public interface IReadOnlyCell
-    {
-        public int ItemCount { get; }
-        public BaseInventoryItem Item { get; }
-        
-        public bool CanMergeWithItem(BaseInventoryItem item) => item == Item;
-        public bool CanAddItemAmount() => Item.Stackable || ItemCount == 0;
-        public bool ItemCountGreaterOrEqualValue(int value) => ItemCount >= value;
+        public bool ItemCountGreaterOrEqualValue(int value) 
+            => ItemCount >= value;
     }
 }

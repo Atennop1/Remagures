@@ -29,9 +29,7 @@ namespace Remagures.Components
         }
 
         public void ScreenKick()
-        {
-            StartCoroutine(ScreenKickCoroutine());
-        }
+            => StartCoroutine(ScreenKickCoroutine());
 
         private IEnumerator ScreenKickCoroutine()
         {

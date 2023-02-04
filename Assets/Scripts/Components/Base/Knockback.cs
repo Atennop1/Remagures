@@ -14,7 +14,8 @@ namespace Remagures.Components
                 !collision.transform.parent.TryGetComponent(out knockable))) return;
         
             var collisionRigidbody = collision.GetComponentInParent<Rigidbody2D>();
-            if (collisionRigidbody == null || knockable.InteractionMask != (knockable.InteractionMask | (1 << gameObject.layer))) return;
+            if (collisionRigidbody == null || knockable.InteractionMask != (knockable.InteractionMask | (1 << gameObject.layer))) 
+                return;
         
             var difference = collisionRigidbody.transform.position - transform.position;
             difference = difference.normalized * _strength;

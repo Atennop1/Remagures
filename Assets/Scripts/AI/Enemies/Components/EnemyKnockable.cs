@@ -1,4 +1,5 @@
 using System.Collections;
+using Remagures.AI.StateMachine;
 using Remagures.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -31,6 +32,7 @@ namespace Remagures.AI.Enemies
             IsKnocked = false;
         }
 
-        private void Start() => _knockedState = new KnockedState(_enemy);
+        private void Start() 
+            => _knockedState = new KnockedState(_enemy);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Remagures.AI.Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,7 +19,8 @@ namespace Remagures.AI.Enemies
 
         public void Move(Transform targetTransform)
         {
-            if (!CanMove) return;
+            if (!CanMove) 
+                return;
             
             _pathfinding.FindPath(transform.position, targetTransform.position +
                                                      (targetTransform.gameObject.TryGetComponent<Player.Player>(out _)
