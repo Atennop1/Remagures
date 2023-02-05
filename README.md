@@ -10,13 +10,13 @@
 This is my second game called Remagures. Remagures is RPG that I making since December 2021, in she will be lore, story and cool characters (I hope). I already done much mechanics, but code is very shitty and I need to rewrite much things :( 
 But I hope that game will be awesome
 
-# Specifics
+### Specifics
  - Project uses architecture based on **SO and MonoBehaviours**(this is **BAD**)
  - Project is very big for me
  - In new modules I trying to use **MV** architecture and **OOP**
  - First project that I making not alone (I have an artist and scenarist)
  
-# Tools
+### Tools
  - TMP
  - UniTask
  - Odin Inspector
