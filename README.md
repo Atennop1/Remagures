@@ -13,7 +13,7 @@ But I hope that game will be awesome
 # Specifics
  - Project uses architecture based on **SO and MonoBehaviours**(this is **BAD**)
  - Project is very big for me
- - In new modules I trying to use **MV** archiretcure and **OOP**
+ - In new modules I trying to use **MV** architecture and **OOP**
  - First project that I making not alone (I have an artist and scenarist)
  
 # Tools
