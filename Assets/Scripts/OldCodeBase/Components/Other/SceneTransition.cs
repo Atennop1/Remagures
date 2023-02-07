@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Remagures.Interactable;
 using Remagures.Model.Character;
-using Remagures.Model.Cutscenes;
+using Remagures.Model.CutscenesSystem;
 using Remagures.Root;
 using Remagures.SO;
 using UnityEngine;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public class EntryPoint : SerializedMonoBehaviour
+    public sealed class EntryPoint : SerializedMonoBehaviour
     {
         [SerializeField] private List<CompositeRoot> _roots;
         

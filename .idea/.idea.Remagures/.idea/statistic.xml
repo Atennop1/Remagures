@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/Assets/Plugins" />
         <option value="$PROJECT_DIR$/obj" />
         <option value="$PROJECT_DIR$/Assets/SerializableDictionary" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/OldCodeBase" />
       </list>
     </option>
   </component>

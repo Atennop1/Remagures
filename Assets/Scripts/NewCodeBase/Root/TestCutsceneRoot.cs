@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using Remagures.Interactable;
 using Remagures.Model.Character;
-using Remagures.Model.Cutscenes;
+using Remagures.Model.CutscenesSystem;
 using Remagures.Model.DialogSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.Root
 {
-    public class TestCutsceneRoot : CompositeRoot
+    public sealed class TestCutsceneRoot : CompositeRoot
     {
         [Header("Dialogs Stuff")] 
         [SerializeField] private DialogView _dialogView;

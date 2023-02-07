@@ -1,5 +1,5 @@
 using Remagures.Components;
-using Remagures.Model.HealthSystem;
+using Remagures.Model.Health;
 using UnityEngine;
 using SM = Remagures.AI.StateMachine.StateMachine;
 

@@ -61,8 +61,8 @@ namespace Remagures.Components
 
         public void Init()
         {
-            _spriteRenderers = GameObject.FindObjectsOfType<SpriteRenderer>();
-            _tilemaps = GameObject.FindObjectsOfType<Tilemap>();
+            _spriteRenderers = FindObjectsOfType<SpriteRenderer>();
+            _tilemaps = FindObjectsOfType<Tilemap>();
         }
 
         public void SetGameOver()

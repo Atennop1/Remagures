@@ -1,5 +1,5 @@
 ﻿using Remagures.Components;
-using Remagures.Model.HealthSystem;
+using Remagures.Model.Health;
 using SM = Remagures.AI.StateMachine.StateMachine;
 
 namespace Remagures.AI.Enemies

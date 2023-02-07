@@ -1,10 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Remagures.Model.HealthSystem;
+using Remagures.Model.Health;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterHealth : IHealth
+    public sealed class CharacterHealth : IHealth
     {
         public int MaxValue => _health.MaxValue;
         public int CurrentValue => _health.CurrentValue;

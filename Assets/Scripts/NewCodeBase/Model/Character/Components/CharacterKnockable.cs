@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterKnockable : IKnockable
+    public sealed class CharacterKnockable : IKnockable
     {
         public LayerMask InteractionMask => _knockable.InteractionMask;
         public bool IsKnocked => _knockable.IsKnocked;

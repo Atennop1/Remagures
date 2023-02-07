@@ -55,7 +55,7 @@ namespace Remagures.Inventory
             var throwVector = new Vector2(_playerAnimator.GetFloat(MOVE_X_ANIMATOR_NAME), _playerAnimator.GetFloat(MOVE_Y_ANIMATOR_NAME));
             
             var arrow = Instantiate(_projectile, _player.gameObject.transform.position, Quaternion.identity).GetComponent<Arrow>();
-            arrow.GetComponent<PlayerAttack>().Init(_player.PlayerData.UniqueSetup);
+            arrow.GetComponent<CharacterAttack>().Init(_player.PlayerData.UniqueSetup);
 
             var arrowDirection = ChooseArrowDirection();
             arrow.Setup(throwVector, arrowDirection);

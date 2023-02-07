@@ -1,4 +1,3 @@
-using Remagures.Model.Character;
 using Remagures.SO;
 using UnityEngine;
 

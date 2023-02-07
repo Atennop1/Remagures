@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View
 {
-    public class HeartsView : MonoBehaviour
+    public sealed class HeartsView : MonoBehaviour
     {
         [Header("Values")]
         [SerializeField] private FloatValue _heartContainers;

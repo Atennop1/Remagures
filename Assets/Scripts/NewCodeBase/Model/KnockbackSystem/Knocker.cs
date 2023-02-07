@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.KnockbackSystem
 {
-    public class Knocker
+    public sealed class Knocker
     {
         private readonly float _strength;
         private readonly int _knockTimeInMilliseconds;

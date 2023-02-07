@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.View
 {
-    public class CoinsView : MonoBehaviour
+    public sealed class CoinsView : MonoBehaviour
     {
         [SerializeField] private FloatValue _numberOfCoins;
         [SerializeField] private TextMeshProUGUI _coinDisplay;

@@ -1,5 +1,4 @@
-﻿// TODO
-drop this logic in other places using polling:
+﻿// TODO drop this logic from Death() method in other places using polling:
 
 _currentHealth.Value = _heartContainers.Value * 4;
 Instantiate(_deathEffect, transform.position, Quaternion.identity);
@@ -10,3 +9,24 @@ _deathSignal.Invoke();
 _canvas.SetActive(false);
 _music.SetActive(false);
 gameObject.transform.parent.gameObject.SetActive(false);
+
+//TODO throw this logic to new component
+private void SetupDamage()
+{
+    if (_isPlayerAttack)
+    {
+        _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.WeaponSlot.ThisCell.Item).Damage * _characterInfo.SwordDamageCoefficient);
+        return;
+    }
+
+    if (_isPlayerMagic)
+    {
+        _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.MagicSlot.ThisCell.Item).Damage * _characterInfo.MagicDamageCoefficient);
+        return;
+    }
+
+    if (!_isArrow) 
+        return;
+            
+   _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.MagicSlot.ThisCell.Item).Damage * _characterInfo.BowDamageCoefficient);
+}
