@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Remagures.Model.KnockbackSystem
+namespace Remagures.Model.Knockback
 {
     public sealed class Knockable : IKnockable
     {

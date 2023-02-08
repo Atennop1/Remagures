@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Model.KnockbackSystem
+namespace Remagures.Model.Knockback
 {
     public interface IKnockable
     {

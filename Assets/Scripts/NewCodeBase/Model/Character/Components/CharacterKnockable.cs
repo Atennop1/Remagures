@@ -1,6 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Remagures.Model.KnockbackSystem;
+using Remagures.Model.Knockback;
 using UnityEngine;
 
 namespace Remagures.Model.Character

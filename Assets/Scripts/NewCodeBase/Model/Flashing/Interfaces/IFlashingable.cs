@@ -2,6 +2,6 @@
 {
     public interface IFlashingable
     {
-        void Flash(FlashColorType flashColor, FlashColorType afterColorType);
+        void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType);
     }
 }

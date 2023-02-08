@@ -2,7 +2,7 @@ using System.Collections;
 using Remagures.AI.StateMachine;
 using Remagures.Components;
 using Remagures.Model.Health;
-using Remagures.Model.KnockbackSystem;
+using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using SM = Remagures.AI.StateMachine.StateMachine;

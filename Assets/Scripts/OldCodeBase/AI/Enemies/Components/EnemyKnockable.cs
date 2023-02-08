@@ -1,7 +1,7 @@
 using System.Collections;
 using Remagures.AI.StateMachine;
 using Remagures.Components;
-using Remagures.Model.KnockbackSystem;
+using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

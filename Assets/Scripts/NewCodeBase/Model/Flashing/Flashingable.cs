@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Remagures.Model.Flashing
@@ -9,53 +7,38 @@ namespace Remagures.Model.Flashing
     public class Flashingable : IFlashingable
     {
         private readonly Dictionary<FlashColorType, Color> _colors;
-        private readonly FlashingData _flashingData;
-        
         private readonly SpriteRenderer _spriteRenderer;
-        private CancellationTokenSource _cancellationTokenSource = new();
+        private readonly IFlashingsStarter _flashingsStarter;
+        
+        private readonly List<Color> _currentFlashingsBeforeColors = new();
 
-        public Flashingable(SpriteRenderer spriteRenderer, Dictionary<FlashColorType, Color> colors, FlashingData flashingData)
+        public Flashingable(SpriteRenderer spriteRenderer, IFlashingsStarter flashingsStarter, Dictionary<FlashColorType, Color> colors)
         {
             _spriteRenderer = spriteRenderer ?? throw new ArgumentNullException(nameof(spriteRenderer));
             _colors = colors ?? throw new ArgumentNullException(nameof(colors));
-            _flashingData = flashingData;
+            _flashingsStarter = flashingsStarter ?? throw new ArgumentNullException(nameof(flashingsStarter));
         }
 
-        public async void Flash(FlashColorType flashColor, FlashColorType afterColorType)
+        public async void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType)
         {
-            if (!_colors.ContainsKey(flashColor))
-                throw new ArgumentException($"This flashingable haven't color {flashColor}");
+            if (!_colors.ContainsKey(flashColorType))
+                throw new ArgumentException($"This flashingable haven't color {flashColorType}");
             
-            if (afterColorType != FlashColorType.BeforeFlash && !_colors.ContainsKey(afterColorType))
-                throw new ArgumentException($"This flashingable haven't color {afterColorType}");
+            if (afterFlashColorType != FlashColorType.BeforeFlash && !_colors.ContainsKey(afterFlashColorType))
+                throw new ArgumentException($"This flashingable haven't color {afterFlashColorType}");
             
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource = new CancellationTokenSource();
+            if (afterFlashColorType != FlashColorType.BeforeFlash && !_currentFlashingsBeforeColors.Contains(_spriteRenderer.color))
+                _currentFlashingsBeforeColors.Add(_spriteRenderer.color);
 
-            var afterColor = afterColorType == FlashColorType.BeforeFlash ? _spriteRenderer.color : _colors[afterColorType];
-            await FlashCoroutine(_colors[flashColor], afterColor);
-        }
+            var afterFlashColor = _colors[afterFlashColorType];
 
-        private async UniTask FlashCoroutine(Color flash, Color afterColor)
-        {
-            var currentFlashes = 0;
-            var inFlashColor = _spriteRenderer.color;
-            
-            while (currentFlashes < _flashingData.NumberOfFlashes)
+            if (afterFlashColorType == FlashColorType.BeforeFlash)
             {
-                if (_cancellationTokenSource.IsCancellationRequested)
-                    break;
-                
-                _spriteRenderer.color = flash;
-                await UniTask.Delay(_flashingData.FlashDurationInMilliseconds);
-            
-                _spriteRenderer.color = inFlashColor;
-                await UniTask.Delay(_flashingData.FlashDurationInMilliseconds);
-                
-                currentFlashes++;
+                _currentFlashingsBeforeColors.Remove(_currentFlashingsBeforeColors[^1]);
+                afterFlashColor = _currentFlashingsBeforeColors[^1];
             }
-
-            _spriteRenderer.color = afterColor;
+            
+            _flashingsStarter.StartFlashing(_colors[flashColorType], afterFlashColor);
         }
     }
 }
