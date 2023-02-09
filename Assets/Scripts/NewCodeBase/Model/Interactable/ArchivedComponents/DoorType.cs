@@ -1,4 +1,4 @@
-﻿namespace Remagures.Interactable
+﻿namespace Remagures.Model.Interactable
 {
     public enum DoorType
     {

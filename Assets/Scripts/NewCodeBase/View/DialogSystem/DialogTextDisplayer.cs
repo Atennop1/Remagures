@@ -1,29 +1,26 @@
 using Remagures.Model.DialogSystem;
+using Remagures.Model.Interactable;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Remagures.Interactable
+namespace Remagures.View.DialogSystem
 {
-    public abstract class InteractableWithTextDisplay : Interactable
+    public sealed class DialogTextDisplayer //TODO fix this class after fixing dialog system
     {
-        [Header("Text Display Stuff")]
-        [SerializeField] private Text _continueText;
-        [SerializeField] private Text _nameText;
-
-        [Space]
-        [SerializeField] private Image _photoImage;
-        [SerializeField] private Sprite _linkSprite;
-    
-        [Space]
-        [FormerlySerializedAs("writer")][SerializeField] private DialogTypeWriter _writer;
-        [SerializeField] private Animator _layoutAnimator;
-        [SerializeField] private Button _dialogButton;
-        [SerializeField] private UIActivityChanger _uiActivityChanger;
+        private Text _continueText;
+        private Text _nameText;
+        
+        private Image _photoImage;
+        private Sprite _linkSprite;
+        
+        private DialogTypeWriter _writer;
+        private Animator _layoutAnimator;
+        private Button _dialogButton;
+        private UIActivityChanger _uiActivityChanger;
 
         public bool CanContinue { get; private set; } = true;
 
-        protected void TextDisplay(string text)
+        public void TextDisplay(string text)
         {
             _dialogButton.gameObject.SetActive(true);
 
@@ -32,7 +29,7 @@ namespace Remagures.Interactable
             _photoImage.sprite = _linkSprite;
         
             _dialogButton.onClick.AddListener(Tap);
-            DisplayTextCoroutine(text);
+            DisplayTextTask(text);
             _uiActivityChanger.TurnOff();
         }
 
@@ -49,7 +46,7 @@ namespace Remagures.Interactable
             _dialogButton.onClick.RemoveListener(Tap);
         }
 
-        private async void DisplayTextCoroutine(string text)
+        private async void DisplayTextTask(string text)
         {
             CanContinue = false;
             await _writer.Type(text);

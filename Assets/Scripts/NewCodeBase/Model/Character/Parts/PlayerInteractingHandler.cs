@@ -1,7 +1,9 @@
 using Remagures.AI.NPCs;
-using Remagures.Interactable;
 using Remagures.Model.DialogSystem;
+using Remagures.Model.Interactable;
 using Remagures.SO;
+using Remagures.View;
+using Remagures.View.DialogSystem;
 using UnityEngine;
 
 namespace Remagures.Model.Character
@@ -54,7 +56,7 @@ namespace Remagures.Model.Character
 
         public void DialogOnTaped()
         {
-            if ((CurrentInteractable is not InteractableWithTextDisplay { CanContinue: true } && 
+            if ((CurrentInteractable is not DialogTextDisplayer { CanContinue: true } && 
                 CurrentInteractable is not NPC) ||
                 !_dialogView.IsDialogEnded ||
                 !_dialogView.CanContinue) return;

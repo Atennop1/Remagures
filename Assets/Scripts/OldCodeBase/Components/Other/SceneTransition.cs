@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Remagures.Interactable;
 using Remagures.Model.Character;
 using Remagures.Model.CutscenesSystem;
+using Remagures.Model.Interactable;
 using Remagures.Root;
 using Remagures.SO;
+using Remagures.View;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

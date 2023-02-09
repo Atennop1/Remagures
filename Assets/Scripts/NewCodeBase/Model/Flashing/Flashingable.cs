@@ -34,8 +34,12 @@ namespace Remagures.Model.Flashing
 
             if (afterFlashColorType == FlashColorType.BeforeFlash)
             {
-                _currentFlashingsBeforeColors.Remove(_currentFlashingsBeforeColors[^1]);
-                afterFlashColor = _currentFlashingsBeforeColors[^1];
+                if (_currentFlashingsBeforeColors.Count > 0)
+                    _currentFlashingsBeforeColors.Remove(_currentFlashingsBeforeColors[^1]);
+                
+                afterFlashColor = _currentFlashingsBeforeColors.Count != 0 
+                    ? _currentFlashingsBeforeColors[^1] 
+                    : _colors[FlashColorType.Regular];
             }
             
             _flashingsStarter.StartFlashing(_colors[flashColorType], afterFlashColor);

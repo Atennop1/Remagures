@@ -27,7 +27,7 @@ namespace Remagures.Model.Character
         private const string MOVE_ANIMATOR_NAME = "moving";
         private PlayerAnimations _playerAnimations;
         private PlayerInteractingHandler _playerInteractingHandler;
-        private PlayerAttacker _playerAttacker;
+        private CharacterAttacker _characterAttacker;
 
         public async void MoveTo(Vector3 to)
         {
@@ -86,7 +86,7 @@ namespace Remagures.Model.Character
                 _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
 
-            if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _playerAttacker.CanAttack &&
+            if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _characterAttacker.CanAttack &&
                 _player.CurrentState is PlayerState.Walk or PlayerState.Idle &&
                 _playerInteractingHandler.CurrentState != InteractingState.Interact)
             {
@@ -106,7 +106,7 @@ namespace Remagures.Model.Character
         {
             _thisRigidbody = GetComponent<Rigidbody2D>();
             _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
-            _playerAttacker = _player.GetPlayerComponent<PlayerAttacker>();
+            _characterAttacker = _player.GetPlayerComponent<CharacterAttacker>();
             _playerInteractingHandler = _player.GetPlayerComponent<PlayerInteractingHandler>();
 
             PlayerViewDirection = _playerViewDirection.Value;

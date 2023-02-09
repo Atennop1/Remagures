@@ -1,5 +1,6 @@
 ﻿using System;
-using Remagures.Interactable;
+using Remagures.Model.Interactable;
+using Remagures.View;
 
 namespace Remagures.Model.CutscenesSystem
 {

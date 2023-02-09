@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using Remagures.Interactable;
 using Remagures.Model.Character;
 using Remagures.Model.CutscenesSystem;
 using Remagures.Model.DialogSystem;
+using Remagures.Model.Interactable;
+using Remagures.View;
 using UnityEngine;
 using UnityEngine.UI;
 

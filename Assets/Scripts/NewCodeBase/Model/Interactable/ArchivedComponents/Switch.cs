@@ -1,8 +1,7 @@
-using Remagures.Model.Character;
 using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 using UnityEngine;
 
-namespace Remagures.Interactable
+namespace Remagures.Model.Interactable
 {
     public class Switch : MonoBehaviour
     {

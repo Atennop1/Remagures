@@ -2,9 +2,9 @@ using System;
 using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Interactable
+namespace Remagures.Model.Interactable
 {
-    public class Door : Interactable
+    public class Door : IInteractable
     {
         [SerializeField] private DoorType _thisDoorType;
         [SerializeField] private FloatValue _numberOfKeys;
@@ -13,7 +13,7 @@ namespace Remagures.Interactable
         [SerializeField] private SpriteRenderer _doorSprite;
         [SerializeField] private BoxCollider2D _collider;
 
-        public override void Interact()
+        public void Interact()
         {
             switch (_thisDoorType)
             {
@@ -32,7 +32,7 @@ namespace Remagures.Interactable
             _collider.enabled = false;
             _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         
-            PlayerInteract.ResetCurrentInteractable(this);
+            //PlayerInteract.ResetCurrentInteractable(this);
         }
     
         public void CloseDoor()

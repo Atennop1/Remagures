@@ -23,13 +23,16 @@ namespace Remagures.Model.Character
             }
         }
 
+        public void SetBool(string key, bool value)
+        {
+            foreach (var animator in _animators)
+                animator.SetBool(key, value);
+        }
+
         public void SetAnim(string key)
         {
             foreach (var animator in _animators)
-            {
                 animator.Play(key);
-                animator.Play(key);
-            }
         }
     }
 }

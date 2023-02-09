@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Remagures.Interactable
+namespace Remagures.View
 {
     public class UIActivityChanger : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> _canvases;
+        [SerializeField] private List<Canvas> _canvases;
 
         public void TurnOn()
         {
             foreach (var canvas in _canvases)
-                canvas.SetActive(true);
+                canvas.gameObject.SetActive(true);
         }
         
         public void TurnOff()
         {
             foreach (var canvas in _canvases)
-                canvas.SetActive(false);
+                canvas.gameObject.SetActive(false);
         }
     }
 }

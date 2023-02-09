@@ -1,6 +1,6 @@
 using System.Linq;
-using Remagures.Interactable;
 using Remagures.Model.Character;
+using Remagures.Model.Interactable;
 using UnityEngine;
 
 namespace Remagures.Rooms

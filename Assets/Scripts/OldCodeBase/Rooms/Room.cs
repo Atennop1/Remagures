@@ -1,5 +1,4 @@
 using Remagures.AI.Enemies;
-using Remagures.Interactable;
 using Remagures.Model.Character;
 using UnityEngine;
 

@@ -17,19 +17,19 @@ namespace Remagures.Inventory
         private readonly int MOVE_X_ANIMATOR_NAME = Animator.StringToHash("moveX");
         private readonly int MOVE_Y_ANIMATOR_NAME = Animator.StringToHash("moveY");
 
-        private PlayerAttacker _playerAttacker;
+        private CharacterAttacker _characterAttacker;
         private PlayerInteractingHandler _playerInteractingHandler;
         private Animator _playerAnimator;
 
         public void MagicAttack()
         {
             _player = GameObject.Find("Player").GetComponent<Player>();
-            _playerAttacker = _player.GetPlayerComponent<PlayerAttacker>();
+            _characterAttacker = _player.GetPlayerComponent<CharacterAttacker>();
             _playerInteractingHandler = _player.GetPlayerComponent<PlayerInteractingHandler>();
             _playerAnimator = _player.GetPlayerComponent<PlayerAnimations>().PlayerAnimator;
             
-            if (_playerAttacker.CanAttack && _player.CurrentState != PlayerState.Attack && _playerInteractingHandler.CurrentState != InteractingState.Interact)
-                _playerAttacker.StartMagicAttackCoroutine(MagicAttackCoroutine());
+            if (_characterAttacker.CanAttack && _player.CurrentState != PlayerState.Attack && _playerInteractingHandler.CurrentState != InteractingState.Interact)
+                _characterAttacker.StartMagicAttackCoroutine(MagicAttackCoroutine());
         }
 
         private IEnumerator MagicAttackCoroutine()
@@ -44,7 +44,7 @@ namespace Remagures.Inventory
             if (_player.CurrentState != PlayerState.Interact)
                 _player.ChangeState(PlayerState.Idle);
 
-            _playerAttacker.SetAttackCoroutineToNull();
+            _characterAttacker.SetAttackCoroutineToNull();
         }
 
         private void MakeArrow()

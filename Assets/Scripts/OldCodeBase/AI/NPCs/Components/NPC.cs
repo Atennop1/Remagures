@@ -1,7 +1,8 @@
-using Remagures.Interactable;
 using Remagures.Model.Character;
 using Remagures.Model.DialogSystem;
+using Remagures.Model.Interactable;
 using Remagures.Root;
+using Remagures.View;
 using UnityEngine;
 
 namespace Remagures.AI.NPCs
@@ -9,7 +10,7 @@ namespace Remagures.AI.NPCs
     [RequireComponent(typeof(NPCAnimations))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
-    public abstract class NPC : Interactable.Interactable
+    public abstract class NPC : Interactable
     {
         [Header("NPC Stuff")] [SerializeField] private DialogView _dialogView;
         [SerializeField] private DialogsListRoot _dialogsListRoot;
