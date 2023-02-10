@@ -28,6 +28,9 @@ namespace Remagures.Model.Character
             if (CurrentInteractable == null)
                 throw new InvalidOperationException("Interactor can't interacts with null interactable");
 
+            if (CurrentState != InteractingState.Ready)
+                throw new InvalidOperationException("Interaction can be started only from \"Ready\" state");
+
             _player.ChangeState(PlayerState.Interact);
             CurrentState = InteractingState.Interact;
             CurrentInteractable.Interact();
