@@ -1,6 +1,5 @@
 ﻿using System;
 using Remagures.SO;
-using Remagures.View.Chest;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
@@ -9,8 +8,8 @@ namespace Remagures.Model.Interactable
     {
         [SerializeField] private Signal _raiseItemSignal;
         [SerializeField] private Collider2D _triggerCollider;
-        [SerializeField] private IChestView _chestView;
 
+        public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;
         public BaseInventoryItem Item => _chest.Item;
 
@@ -19,13 +18,9 @@ namespace Remagures.Model.Interactable
         public void Construct(IChest chest)
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
-            _chestView.DisplayClosed();
-            
-            if (!_chest.IsOpened)
-                return;
-            
-            _chestView.DisplayOpened();
-            _triggerCollider.enabled = false;
+
+            if (_chest.IsOpened)
+                _triggerCollider.enabled = false;
         }
 
         public void Interact()
@@ -34,11 +29,11 @@ namespace Remagures.Model.Interactable
                 return;
             
             _chest.Interact();
-            _chestView.DisplayItemName(_chest.Item.ItemDescription);
-            
             _triggerCollider.enabled = false;
-            _chestView.DisplayOpened();
             _raiseItemSignal.Invoke();
         }
+
+        public void EndInteracting()
+            => _chest.EndInteracting();
     }
 }

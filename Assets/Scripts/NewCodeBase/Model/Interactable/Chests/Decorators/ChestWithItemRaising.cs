@@ -1,22 +1,22 @@
 ﻿using System;
-using Remagures.QuestSystem;
 using Remagures.SO;
+using Remagures.View.Interactable;
 
 namespace Remagures.Model.Interactable
 {
-    public class ChestWithGoalCompleting : IChest
+    public class ChestWithItemRaising : IChest
     {
         public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;
         public BaseInventoryItem Item => _chest.Item;
 
         private readonly IChest _chest;
-        private readonly GoalCompleter _goalCompleter;
+        private readonly IChestWithItemRaisingView _view;
 
-        public ChestWithGoalCompleting(IChest chest, GoalCompleter goalCompleter)
+        public ChestWithItemRaising(IChest chest, IChestWithItemRaisingView view)
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
-            _goalCompleter = goalCompleter ?? throw new ArgumentNullException(nameof(goalCompleter));
+            _view = view ?? throw new ArgumentNullException(nameof(view));
         }
 
         public void Interact()
@@ -25,10 +25,10 @@ namespace Remagures.Model.Interactable
                 return;
             
             _chest.Interact();
-            _goalCompleter?.Complete();
+            _view.Display(Item);
         }
 
         public void EndInteracting()
-            => _chest.EndInteracting();
+            => _view.EndDisplaying();
     }
 }

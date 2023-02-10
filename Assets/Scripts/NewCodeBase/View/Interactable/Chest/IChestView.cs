@@ -1,4 +1,4 @@
-﻿namespace Remagures.View.Chest
+﻿namespace Remagures.View.Interactable
 {
     public interface IChestView
     {

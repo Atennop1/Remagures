@@ -22,7 +22,7 @@ namespace Remagures.Model.DialogSystem
 
         [Space]
         [SerializeField] private DialogChoicesHandler _choicesHandler;
-        [SerializeField] private PlayerInteractingHandler _playerInteractingHandler;
+        [SerializeField] private CharacterInteractor _characterInteractor;
         [SerializeField] private DialogTypeWriter _writer;
         
         private Button _dialogWindowButton;
@@ -92,7 +92,7 @@ namespace Remagures.Model.DialogSystem
             IsDialogEnded = true;      
             
             _endTalkSignal.Invoke();
-            _playerInteractingHandler.DialogOnTaped();
+            _characterInteractor.DialogOnTaped();
             _dialogWindowButton.onClick.RemoveListener(NextReplica);
         }
 

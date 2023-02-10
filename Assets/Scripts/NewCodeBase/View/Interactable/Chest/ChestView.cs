@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Remagures.View.Chest
+namespace Remagures.View.Interactable
 {
     public class ChestView : MonoBehaviour, IChestView
     {

@@ -8,6 +8,7 @@ namespace Remagures.Model.Interactable
     public class Chest : IChest
     {
         public bool IsOpened { get; private set; }
+        public bool HasInteracted { get; private set; }
         public BaseInventoryItem Item { get; }
         
         private readonly PlayerInventory _inventory;
@@ -37,7 +38,10 @@ namespace Remagures.Model.Interactable
                 _inventory.Add(newCell);
 
             IsOpened = true;
+            HasInteracted = true;
             _storage.Save(IsOpened, _name);
         }
+
+        public void EndInteracting() { }
     }
 }

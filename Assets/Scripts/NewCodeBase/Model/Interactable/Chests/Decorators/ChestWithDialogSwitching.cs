@@ -6,6 +6,7 @@ namespace Remagures.Model.Interactable
 {
     public class ChestWithDialogSwitching : IChest
     {
+        public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;
         public BaseInventoryItem Item => _chest.Item;
         
@@ -26,5 +27,8 @@ namespace Remagures.Model.Interactable
             _chest.Interact();
             _dialogSwitcher.Switch();
         }
+
+        public void EndInteracting()
+            => _chest.EndInteracting();
     }
 }

@@ -18,17 +18,17 @@ namespace Remagures.Inventory
         private readonly int MOVE_Y_ANIMATOR_NAME = Animator.StringToHash("moveY");
 
         private CharacterAttacker _characterAttacker;
-        private PlayerInteractingHandler _playerInteractingHandler;
+        private CharacterInteractor _characterInteractor;
         private Animator _playerAnimator;
 
         public void MagicAttack()
         {
             _player = GameObject.Find("Player").GetComponent<Player>();
             _characterAttacker = _player.GetPlayerComponent<CharacterAttacker>();
-            _playerInteractingHandler = _player.GetPlayerComponent<PlayerInteractingHandler>();
+            _characterInteractor = _player.GetPlayerComponent<CharacterInteractor>();
             _playerAnimator = _player.GetPlayerComponent<PlayerAnimations>().PlayerAnimator;
             
-            if (_characterAttacker.CanAttack && _player.CurrentState != PlayerState.Attack && _playerInteractingHandler.CurrentState != InteractingState.Interact)
+            if (_characterAttacker.CanAttack && _player.CurrentState != PlayerState.Attack && _characterInteractor.CurrentState != InteractingState.Interact)
                 _characterAttacker.StartMagicAttackCoroutine(MagicAttackCoroutine());
         }
 
