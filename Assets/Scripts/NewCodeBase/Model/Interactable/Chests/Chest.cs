@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
@@ -9,14 +10,14 @@ namespace Remagures.Model.Interactable
     {
         public bool IsOpened { get; private set; }
         public bool HasInteracted { get; private set; }
-        public BaseInventoryItem Item { get; }
+        public Item Item { get; }
         
-        private readonly PlayerInventory _inventory;
+        private readonly Inventory _inventory;
         private readonly string _name;
 
         private readonly BinaryStorage _storage = new();
 
-        public Chest(PlayerInventory inventory, BaseInventoryItem item, string name)
+        public Chest(Inventory inventory, Item item, string name)
         {
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             Item = item ?? throw new ArgumentNullException(nameof(item));
@@ -32,9 +33,9 @@ namespace Remagures.Model.Interactable
                 return;
 
             var newCell = new Cell(Item);
-            var inventoryCell = _inventory.GetCell(newCell.Item);
+            var inventoryCell = _inventory.Cells.ToList().Find(cell => cell.Item == newCell.Item);
 
-            if (inventoryCell == null || (inventoryCell.CanAddItemAmount() && inventoryCell.CanMergeWithItem(newCell.Item)))
+            if (inventoryCell == null || inventoryCell.CanAddItem(Item))
                 _inventory.Add(newCell);
 
             IsOpened = true;

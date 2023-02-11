@@ -31,8 +31,8 @@ namespace Remagures.UpgradeSystem
             ThisCell = cell;
             _player = player;
 
-            _itemImage.sprite = cell.Item.ItemSprite;
-            _itemName.text = cell.Item.ItemName;
+            _itemImage.sprite = cell.Item.Sprite;
+            _itemName.text = cell.Item.Name;
 
             if (ThisCell.Item is IUpgradableItem currentItem) _costText.text = currentItem.CostForThisItem.ToString();
         }
@@ -42,7 +42,7 @@ namespace Remagures.UpgradeSystem
             if (ThisCell.Item is IUpgradableItem currentItem)
             {
                 _view.Inventory.Remove(new Cell(currentItem.ItemsForLevels[currentItem.ThisItemLevel - 2]));
-                _view.Inventory.Add(new Cell(currentItem as BaseInventoryItem));
+                _view.Inventory.Add(new Cell(currentItem as Item));
 
                 _uniqueSetup.SetupUnique(_player);
                 _sharps.Value -= currentItem.CostForThisItem;

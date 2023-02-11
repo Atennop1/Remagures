@@ -6,12 +6,12 @@ namespace Remagures.Model.InventorySystem
     {
         protected override bool CanAddItem()
         {
-            foreach (var cell in PlayerInventory.MyInventory)
+            foreach (var cell in Inventory.Cells)
             {
                 var items = (cell.Item as IUpgradableItem)?.ItemsForLevels;
                 if (items == null) continue;
             
-                if (items.Any(item => item == ThisItem || items.IndexOf(item) < items.IndexOf((ThisItem))))
+                if (items.Any(item => item == ThisItem || items.IndexOf(item) < items.IndexOf(ThisItem)))
                     return false;
             }
 

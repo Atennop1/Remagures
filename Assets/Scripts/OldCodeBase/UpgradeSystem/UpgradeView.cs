@@ -13,7 +13,7 @@ namespace Remagures.UpgradeSystem
         
         [Header("Values")]
         [SerializeField] private FloatValue _sharps;
-        [field: SerializeField] public PlayerInventory Inventory { get; private set; }
+        [field: SerializeField] public Inventory Inventory { get; private set; }
         [SerializeField] private Player _player;
 
         [field: SerializeField, Header("Objects")] public Text SharpsCountText { get; private set; }
@@ -30,7 +30,7 @@ namespace Remagures.UpgradeSystem
         private void CreateSlots()
         {
             _noItems.SetActive(true);
-            foreach (var cell in Inventory.MyInventory)
+            foreach (var cell in Inventory.Cells)
             {
                 var currentItem = cell.Item as IUpgradableItem;
 

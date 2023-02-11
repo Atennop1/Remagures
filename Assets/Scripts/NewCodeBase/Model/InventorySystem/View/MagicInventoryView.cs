@@ -13,7 +13,7 @@ namespace Remagures.Model.InventorySystem
             _magicSlot.Setup(CurrentCell, this);
 
             if (CurrentCell.Item is IChoiceableItem choiceableItem)
-                choiceableItem.SelectIn(PlayerInventory.MyInventory);
+                choiceableItem.SelectIn(Inventory.Cells);
 
             _magicCounter.SetupProjectile((CurrentCell.Item as IMagicItem)?.Projectile);
         }

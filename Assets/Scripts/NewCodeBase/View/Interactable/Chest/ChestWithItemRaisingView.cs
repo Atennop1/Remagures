@@ -1,5 +1,6 @@
 ﻿using System;
 using Remagures.Model.Character;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using UnityEngine;
 
@@ -21,10 +22,10 @@ namespace Remagures.View.Interactable
             _raisedItemSpriteRenderer.sprite = null;
         }
 
-        public void Display(BaseInventoryItem item)
+        public void Display(Item item)
         {
             _characterAnimations.SetBool(RECEIVING_ANIMATOR_NAME, true);
-            _raisedItemSpriteRenderer.sprite = item.ItemSprite;
+            _raisedItemSpriteRenderer.sprite = item.Sprite;
         }
     }
 }

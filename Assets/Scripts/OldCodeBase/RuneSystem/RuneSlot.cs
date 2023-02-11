@@ -17,7 +17,7 @@ namespace Remagures.RuneSystem
             }
             else
             {
-                ItemImage.sprite = ThisItem.ItemSprite;
+                ItemImage.sprite = ThisItem.Sprite;
                 GetComponent<Button>().enabled = true;
             }
         }

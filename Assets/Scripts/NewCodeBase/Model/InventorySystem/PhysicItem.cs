@@ -5,8 +5,8 @@ namespace Remagures.Model.InventorySystem
 {
     public class PhysicItem : MonoBehaviour
     {
-        [field: SerializeField] protected PlayerInventory PlayerInventory { get; private set; }
-        [field: SerializeField] protected BaseInventoryItem ThisItem { get; private set; }
+        [field: SerializeField] protected Inventory Inventory { get; private set; }
+        [field: SerializeField] protected Item ThisItem { get; private set; }
         
         [SerializeField] private UniqueSetup _uniqueSetup;
         [SerializeField] private UniqueEntryPoint _uniqueEntryPoint;
@@ -23,14 +23,14 @@ namespace Remagures.Model.InventorySystem
         }
 
         protected virtual bool CanAddItem()
-            => PlayerInventory && ThisItem;
+            => Inventory && ThisItem;
 
         private void AddItemInInventory()
         {
             if (!CanAddItem()) 
                 return;
         
-            PlayerInventory.Add(new Cell(ThisItem));
+            Inventory.Add(new Cell(ThisItem));
             Destroy(gameObject);
         }
     }

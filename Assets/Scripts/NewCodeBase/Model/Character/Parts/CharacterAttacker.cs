@@ -25,7 +25,7 @@ namespace Remagures.Model.Character
             //    return;
             //}
             
-            if (_attackTask.Status == UniTaskStatus.Succeeded && _player.CurrentState != PlayerState.Attack && _uniqueSetup.WeaponSlot.ThisCell.Item.ItemName != "")
+            if (_attackTask.Status == UniTaskStatus.Succeeded && _player.CurrentState != PlayerState.Attack && _uniqueSetup.WeaponSlot.ThisCell.Item.Name != "")
                 _attackTask = Attack();
         }
 

@@ -1,10 +1,11 @@
-﻿using Remagures.SO;
+﻿using Remagures.Model.InventorySystem;
+using Remagures.SO;
 
 namespace Remagures.Model.Interactable
 {
     public interface IChest : IInteractable
     {
         bool IsOpened { get; }
-        BaseInventoryItem Item { get; }
+        Item Item { get; }
     }
 }

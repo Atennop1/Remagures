@@ -1,4 +1,5 @@
 ﻿using System;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using Remagures.View.Interactable;
 
@@ -8,7 +9,7 @@ namespace Remagures.Model.Interactable
     {
         public bool HasInteracted { get; }
         public bool IsOpened => _chest.IsOpened;
-        public BaseInventoryItem Item => _chest.Item;
+        public Item Item => _chest.Item;
 
         private readonly IChest _chest;
         private readonly IChestView _chestView;
@@ -30,7 +31,7 @@ namespace Remagures.Model.Interactable
                 return;
             
             _chest.Interact();
-            _chestView.DisplayItemName(_chest.Item.ItemDescription);
+            _chestView.DisplayItemName(_chest.Item.Description);
             _chestView.DisplayOpened();
         }
 

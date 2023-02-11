@@ -15,7 +15,7 @@ namespace Remagures.Model.InventorySystem
         
         public void UpdateArmor()
         {
-            var rawTotalArmor = _uniqueSetup.UniqueInventory.MyInventory.Select(cell => cell.Item).OfType<IArmorItem>().Sum(armorItem => armorItem.Armor);
+            var rawTotalArmor = _uniqueSetup.UniqueInventory.Cells.Select(cell => cell.Item).OfType<IArmorItem>().Sum(armorItem => armorItem.Armor);
             _characterHealth.SetTotalArmor(Mathf.RoundToInt(rawTotalArmor));
         }
         

@@ -17,9 +17,9 @@ namespace Remagures.MeatSystem
 
         [field: SerializeField, Header("Variables")] public FloatValue RawCount { get; private set; }
         [field: SerializeField] public FloatValue CookedCount { get; private set; }
-        [SerializeField] private PlayerInventory _inventory;
-        [SerializeField] private BaseInventoryItem _cookedMeatItem;
-        [SerializeField] private BaseInventoryItem _rawMeatItem;
+        [SerializeField] private Inventory _inventory;
+        [SerializeField] private Item _cookedMeatItem;
+        [SerializeField] private Item _rawMeatItem;
 
         private void Start() 
         {
@@ -57,7 +57,7 @@ namespace Remagures.MeatSystem
         public void Put()
         {
             if (_inventory.GetCell(_rawMeatItem) != null)
-                RawCount.Value += _inventory.GetCell(_rawMeatItem).ItemCount;
+                RawCount.Value += _inventory.GetCell(_rawMeatItem).ItemsCount;
             _inventory.Remove(new Cell(_rawMeatItem));
 
             UpdateMeat();

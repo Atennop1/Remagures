@@ -18,7 +18,7 @@ namespace Remagures.RuneSystem
         [SerializeField] private GameObject _noneText;
         [SerializeField] private Slot _currentRuneSlot;
         [SerializeField] private MagicCounter _magicCounter;
-        [field: SerializeField] public PlayerInventory Inventory { get; private set; }
+        [field: SerializeField] public Inventory Inventory { get; private set; }
     
         private IRuneItem _currentRune;
 
@@ -30,7 +30,7 @@ namespace Remagures.RuneSystem
             _currentRuneImage.sprite = _noneRune;
             _descriptionText.text = "";
             _nameText.text = "";
-            _noneText.SetActive(Inventory.MyInventory.Count < 1);
+            _noneText.SetActive(Inventory.Cells.Count < 1);
         }
 
         public void Select(IRuneItem item)
@@ -46,8 +46,8 @@ namespace Remagures.RuneSystem
 
         public void Equip()
         {
-            (_currentRune as IChoiceableItem)?.SelectIn(Inventory.MyInventory);
-            _currentRuneSlot.Setup(new Cell((BaseInventoryItem)_currentRune), null);
+            (_currentRune as IChoiceableItem)?.SelectIn(Inventory.Cells);
+            _currentRuneSlot.Setup(new Cell((Item)_currentRune), null);
 
             _currentRune.CharacterInfo.ClearRunes();
             _currentRune.CharacterInfo.SetupRunes(_currentRune, _magicCounter);

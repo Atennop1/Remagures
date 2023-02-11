@@ -9,9 +9,9 @@ namespace Remagures.Model.InventorySystem
     {
         [FormerlySerializedAs("View")] [SerializeField] private InventoryView _view;
 
-        [field: SerializeField, Space] public PlayerInventory UniqueInventory { get; private set; }
-        [FormerlySerializedAs("MagicInventory")] [SerializeField] private PlayerInventory _magicInventory;
-        [FormerlySerializedAs("RuneInventory")] [SerializeField] private PlayerInventory _runeInventory;
+        [field: SerializeField, Space] public Inventory UniqueInventory { get; private set; }
+        [FormerlySerializedAs("MagicInventory")] [SerializeField] private Inventory _magicInventory;
+        [FormerlySerializedAs("RuneInventory")] [SerializeField] private Inventory _runeInventory;
 
         [Space]
         [SerializeField] private Slot _helmetSlot;
@@ -24,7 +24,7 @@ namespace Remagures.Model.InventorySystem
         [field: SerializeField] public Slot MagicSlot { get; private set; }
 
         [Space]
-        [FormerlySerializedAs("NoneItem")] [SerializeField] private BaseInventoryItem _noneItem;
+        [FormerlySerializedAs("NoneItem")] [SerializeField] private Item _noneItem;
         [FormerlySerializedAs("EquipButton")] [SerializeField] private GameObject _equipButton;
 
         private PlayerAnimations _playerAnimations;
@@ -42,7 +42,7 @@ namespace Remagures.Model.InventorySystem
             float currentMaxLegginsArmor = 0;
             float currentMaxWeaponDamage = 0;
 
-            foreach (var cell in UniqueInventory.MyInventory)
+            foreach (var cell in UniqueInventory.Cells)
             {
                 switch ((cell.Item as IUniqueItem)?.UniqueType)
                 {
@@ -72,10 +72,10 @@ namespace Remagures.Model.InventorySystem
                 }
             }
         
-            foreach (var cell in _magicInventory.MyInventory)
+            foreach (var cell in _magicInventory.Cells)
                 SetupChoiceable(MagicSlot, cell);
 
-            foreach (var cell in _runeInventory.MyInventory)
+            foreach (var cell in _runeInventory.Cells)
                 SetupChoiceable(_runeSlot, cell);
             
             _playerAnimations.SetAnimFloat(_playerMovement.PlayerViewDirection);
@@ -103,7 +103,7 @@ namespace Remagures.Model.InventorySystem
         private void SetupChoiceable(Slot slot, IReadOnlyCell cell)
         {
             if (cell.Item is IChoiceableItem { IsCurrent: true } choiceableItem)
-                slot.Setup(new Cell(choiceableItem as BaseInventoryItem), _view);
+                slot.Setup(new Cell(choiceableItem as Item), _view);
         }
 
         private void SetArmorPart(IReadOnlyCell cell, Slot slot, ref float currentMaxValue, Animator animator = null)
@@ -117,7 +117,7 @@ namespace Remagures.Model.InventorySystem
             if (animator != null)
             {
                 animator.gameObject.SetActive(true);
-                animator.runtimeAnimatorController = displayableItem?.OverrideController;
+                animator.runtimeAnimatorController = displayableItem?.AnimatorController;
             }
 
             slot.Setup(cell, _view);

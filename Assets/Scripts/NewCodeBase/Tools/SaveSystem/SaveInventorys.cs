@@ -17,27 +17,27 @@ namespace Remagures.Tools
             {
                 _container.CheckDir(Path + "/Inventory" + (j + 1));
                 var value = ScriptableObject.CreateInstance<FloatValue>();
-                var currentInventory = _inventorys[j] as PlayerInventory;
+                var currentInventory = _inventorys[j] as Inventory;
 
                 if (currentInventory == null) continue;
             
-                value.Value = currentInventory.MyInventory.Count;
+                value.Value = currentInventory.Cells.Count;
                 SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Count.json", value);
 
-                for (var k = 0; k < currentInventory.MyInventory.Count; k++)
+                for (var k = 0; k < currentInventory.Cells.Count; k++)
                 {
                     _container.CheckDir(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1));
 
-                    value.Value = currentInventory.MyInventory[k].ItemCount;
+                    value.Value = currentInventory.Cells[k].ItemsCount;
                     SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Count.json", value);
 
-                    value.Value = _items.IndexOf(currentInventory.MyInventory[k].Item);
+                    value.Value = _items.IndexOf(currentInventory.Cells[k].Item);
                     SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", value);
 
-                    if (currentInventory.MyInventory[k].Item is not IChoiceableItem) continue;
+                    if (currentInventory.Cells[k].Item is not IChoiceableItem) continue;
                 
                     var isCurrent = ScriptableObject.CreateInstance<BoolValue>();
-                    isCurrent.Value = ((IChoiceableItem)currentInventory.MyInventory[k].Item).IsCurrent;
+                    isCurrent.Value = ((IChoiceableItem)currentInventory.Cells[k].Item).IsCurrent;
                 
                     SaveObjectToJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/IsCurrent.json", isCurrent);
                 }
@@ -49,7 +49,7 @@ namespace Remagures.Tools
             for (var j = 0; j < _inventorys.Count; j++)
             {
                 var value = ScriptableObject.CreateInstance<FloatValue>();
-                var currentInventory = _inventorys[j] as PlayerInventory;
+                var currentInventory = _inventorys[j] as Inventory;
 
                 if (currentInventory == null) continue;
                 currentInventory.Clear();
@@ -67,17 +67,17 @@ namespace Remagures.Tools
                     LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/Count.json", count);
                     LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/ID.json", id);
 
-                    currentInventory.Add(new Cell((_items[(int)id.Value] as BaseInventoryItem), (int)count.Value));
+                    currentInventory.Add(new Cell((_items[(int)id.Value] as Item), (int)count.Value));
 
-                    if (currentInventory.MyInventory[k].Item is not IChoiceableItem) continue;
+                    if (currentInventory.Cells[k].Item is not IChoiceableItem) continue;
                 
                     var isCurrent = ScriptableObject.CreateInstance<BoolValue>();
                     LoadObjectFromJson(Path + "/Inventory" + (j + 1) + "/Item" + (k + 1) + "/IsCurrent.json", isCurrent);
                 
                     if (isCurrent.Value)
-                        (currentInventory.MyInventory[k].Item as IChoiceableItem)?.SelectIn(currentInventory.MyInventory);
+                        (currentInventory.Cells[k].Item as IChoiceableItem)?.SelectIn(currentInventory.Cells);
                     else
-                        (currentInventory.MyInventory[k].Item as IChoiceableItem)?.DisableIsCurrent();
+                        (currentInventory.Cells[k].Item as IChoiceableItem)?.DisableIsCurrent();
                 }
             }
         }
@@ -85,9 +85,9 @@ namespace Remagures.Tools
         public void NewGame()
         {
             foreach (var inventory in _inventorys)
-                (inventory as PlayerInventory)?.Clear();
+                (inventory as Inventory)?.Clear();
         
-            (_inventorys[2] as PlayerInventory)?.Add(new Cell(_items[6] as BaseInventoryItem));
+            (_inventorys[2] as Inventory)?.Add(new Cell(_items[6] as Item));
             foreach (var item in _items)
             {
                 if (item is IChoiceableItem choiceableItem)

@@ -22,8 +22,8 @@ namespace Remagures.Model.InventorySystem
         [SerializeField] private Player _player;
         [SerializeField] private UniqueSetup _uniqueSetup;
 
-        [field: SerializeField, Header("Values")] protected PlayerInventory PlayerInventory { get; private set; }
-        [field: SerializeField] protected BaseInventoryItem VoidItem { get; private set; }
+        [field: SerializeField, Header("Values")] protected Inventory Inventory { get; private set; }
+        [field: SerializeField] protected Item VoidItem { get; private set; }
         [SerializeField] private FloatValue _sharps;
 
         protected IReadOnlyCell CurrentCell { get; private set; }
@@ -47,11 +47,11 @@ namespace Remagures.Model.InventorySystem
         private void MakeInventorySlots()
         {
             if (_noItemsText != null)
-                _noItemsText.gameObject.SetActive(PlayerInventory.MyInventory.Count == 0);
+                _noItemsText.gameObject.SetActive(Inventory.Cells.Count == 0);
 
-            foreach (var cell in PlayerInventory.MyInventory)
+            foreach (var cell in Inventory.Cells)
             {
-                if (cell.Item == null || cell.ItemCount <= 0) continue;
+                if (cell.Item == null || cell.ItemsCount <= 0) continue;
             
                 var slotObject = Instantiate(_inventorySlot, _inventoryPanel.transform.position, Quaternion.identity, _inventoryPanel.transform);
                 if (slotObject.TryGetComponent(out Slot newSlot))
@@ -62,8 +62,8 @@ namespace Remagures.Model.InventorySystem
         public void SetText(IReadOnlyCell cell)
         {
             CurrentCell = cell;
-            _nameText.text = CurrentCell.Item.ItemName;
-            DescriptionText.text = CurrentCell.Item.ItemDescription;
+            _nameText.text = CurrentCell.Item.Name;
+            DescriptionText.text = CurrentCell.Item.Description;
             SetButton();
         }
 
@@ -93,12 +93,12 @@ namespace Remagures.Model.InventorySystem
         public void UseItem()
         {
             (CurrentCell.Item as IUsableItem)?.Use();
-            if (PlayerInventory.GetCell(CurrentCell.Item).ItemCountGreaterOrEqualValue(1))
-                PlayerInventory.Decrease(new Cell(CurrentCell.Item));
+            if (Inventory.GetCell(CurrentCell.Item).ItemCountGreaterOrEqualValue(1))
+                Inventory.Decrease(new Cell(CurrentCell.Item));
 
-            if (CurrentCell.ItemCount <= 0)
+            if (CurrentCell.ItemsCount <= 0)
             {
-                PlayerInventory.Remove(new Cell(CurrentCell.Item, CurrentCell.ItemCount));
+                Inventory.Remove(new Cell(CurrentCell.Item, CurrentCell.ItemsCount));
                 SetText(new Cell(VoidItem));
             }
         

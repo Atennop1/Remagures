@@ -1,4 +1,5 @@
 ﻿using System;
+using Remagures.Model.InventorySystem;
 using Remagures.QuestSystem;
 using Remagures.SO;
 
@@ -8,7 +9,7 @@ namespace Remagures.Model.Interactable
     {
         public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;
-        public BaseInventoryItem Item => _chest.Item;
+        public Item Item => _chest.Item;
 
         private readonly IChest _chest;
         private readonly GoalCompleter _goalCompleter;
