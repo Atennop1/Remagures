@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.Model.Interactable
 {
-    public class ChestWithInteractionEndWhenButtonClicked : IChest
+    public sealed class ChestWithInteractionEndWhenButtonClicked : IChest
     {
         public bool HasInteracted { get; private set; }
         public bool IsOpened => _chest.IsOpened;

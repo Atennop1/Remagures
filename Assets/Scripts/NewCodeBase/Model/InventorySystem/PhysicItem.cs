@@ -1,8 +1,7 @@
-using Remagures.Model.Character;
 using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class PhysicItem : MonoBehaviour
     {

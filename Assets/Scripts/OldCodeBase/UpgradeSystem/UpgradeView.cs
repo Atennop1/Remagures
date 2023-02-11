@@ -1,6 +1,6 @@
 using System.Globalization;
-using Remagures.Inventory;
 using Remagures.Model.Character;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;

@@ -5,7 +5,7 @@ using Remagures.Root;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class Cutscene : ICutscene, IUpdatable
+    public sealed class Cutscene : ICutscene, IUpdatable
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished => _actions.All(action => action.IsFinished);

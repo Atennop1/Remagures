@@ -2,7 +2,7 @@
 using Remagures.Model.Character;
 using UnityEngine;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class UniqueEntryPoint : MonoBehaviour
     {

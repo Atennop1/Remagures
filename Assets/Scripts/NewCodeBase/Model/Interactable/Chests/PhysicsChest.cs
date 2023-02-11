@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public class PhysicsChest : MonoBehaviour, IChest
+    public sealed class PhysicsChest : MonoBehaviour, IChest
     {
         [SerializeField] private Signal _raiseItemSignal;
         [SerializeField] private Collider2D _triggerCollider;

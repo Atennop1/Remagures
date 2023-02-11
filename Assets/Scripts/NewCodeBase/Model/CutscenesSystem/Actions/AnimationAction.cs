@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class AnimationAction : ICutsceneAction
+    public sealed class AnimationAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished => !_animator.GetCurrentAnimatorStateInfo(0).IsName(_animationKey);

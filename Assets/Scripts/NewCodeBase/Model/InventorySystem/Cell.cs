@@ -2,7 +2,7 @@ using System;
 using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     [Serializable]
     public class Cell : IReadOnlyCell

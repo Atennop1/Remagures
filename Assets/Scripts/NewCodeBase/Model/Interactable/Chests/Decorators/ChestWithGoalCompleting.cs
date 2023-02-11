@@ -4,7 +4,7 @@ using Remagures.SO;
 
 namespace Remagures.Model.Interactable
 {
-    public class ChestWithGoalCompleting : IChest
+    public sealed class ChestWithGoalCompleting : IChest
     {
         public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;

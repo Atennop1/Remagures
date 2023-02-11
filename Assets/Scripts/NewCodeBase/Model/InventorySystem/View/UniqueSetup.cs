@@ -3,7 +3,7 @@ using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class UniqueSetup : MonoBehaviour
     {

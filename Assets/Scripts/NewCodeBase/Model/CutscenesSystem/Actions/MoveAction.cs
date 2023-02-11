@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class MoveAction : ICutsceneAction
+    public sealed class MoveAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished => !_playerMovement.IsMoving;

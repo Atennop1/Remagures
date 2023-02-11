@@ -4,7 +4,7 @@ using Remagures.View.Character;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterInteractor
+    public sealed class CharacterInteractor
     {
         public InteractingState CurrentState { get; private set; }
         public IInteractable CurrentInteractable { get; private set; }

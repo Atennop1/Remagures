@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class TeleportAction : ICutsceneAction
+    public sealed class TeleportAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }

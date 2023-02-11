@@ -1,11 +1,11 @@
 using System;
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 
 namespace Remagures.Model.Interactable
 {
-    public class Chest : IChest
+    public sealed class Chest : IChest
     {
         public bool IsOpened { get; private set; }
         public bool HasInteracted { get; private set; }

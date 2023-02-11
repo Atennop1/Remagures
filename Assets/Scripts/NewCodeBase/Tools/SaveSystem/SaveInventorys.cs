@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using UnityEngine;
 

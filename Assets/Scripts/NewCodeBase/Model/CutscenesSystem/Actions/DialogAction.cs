@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class DialogAction : ICutsceneAction
+    public sealed class DialogAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set;  }

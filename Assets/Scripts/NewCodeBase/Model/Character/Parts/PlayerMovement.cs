@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Remagures.Model.Character
 {
-    public class PlayerMovement : MonoBehaviour
+    public sealed class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private Player _player;
 

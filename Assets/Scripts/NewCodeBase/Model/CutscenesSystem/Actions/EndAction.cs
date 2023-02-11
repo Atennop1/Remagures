@@ -4,7 +4,7 @@ using Remagures.View;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class EndAction : ICutsceneAction
+    public sealed class EndAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }

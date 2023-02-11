@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public class PhysicsInteractable : MonoBehaviour, IInteractable
+    public sealed class PhysicsInteractable : MonoBehaviour, IInteractable
     {
         public bool HasInteracted => _interactable.HasInteracted;
         

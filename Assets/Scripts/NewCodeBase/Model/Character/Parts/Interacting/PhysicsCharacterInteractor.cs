@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class PhysicsCharacterInteractor : MonoBehaviour
+    public sealed class PhysicsCharacterInteractor : MonoBehaviour
     {
         [SerializeField] private IContextClueView _contextClueView;
         private CharacterInteractor _characterInteractor;

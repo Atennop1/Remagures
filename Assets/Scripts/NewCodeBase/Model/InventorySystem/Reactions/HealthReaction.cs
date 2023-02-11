@@ -1,7 +1,7 @@
 using Remagures.SO;
 using UnityEngine;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class HealthReaction : MonoBehaviour
     {

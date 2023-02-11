@@ -1,6 +1,6 @@
 using UnityEngine.Events;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public interface IUsableItem : IBaseItemComponent
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public interface IChoiceableItem : IBaseItemComponent
     {

@@ -1,4 +1,4 @@
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;

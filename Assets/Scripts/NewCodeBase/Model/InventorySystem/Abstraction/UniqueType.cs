@@ -1,4 +1,4 @@
-﻿namespace Remagures.Inventory
+﻿namespace Remagures.Model.InventorySystem
 {
     public enum UniqueType
     {

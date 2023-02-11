@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using UnityEngine;
 
 namespace Remagures.SO

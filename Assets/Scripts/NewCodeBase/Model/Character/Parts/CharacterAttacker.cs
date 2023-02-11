@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using Remagures.View.Character;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterAttacker
+    public sealed class CharacterAttacker
     {
         public bool CanAttack 
             => _attackTask.Status == UniTaskStatus.Succeeded;

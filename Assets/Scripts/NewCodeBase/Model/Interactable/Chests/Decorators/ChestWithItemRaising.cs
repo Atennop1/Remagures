@@ -4,7 +4,7 @@ using Remagures.View.Interactable;
 
 namespace Remagures.Model.Interactable
 {
-    public class ChestWithItemRaising : IChest
+    public sealed class ChestWithItemRaising : IChest
     {
         public bool HasInteracted => _chest.HasInteracted;
         public bool IsOpened => _chest.IsOpened;

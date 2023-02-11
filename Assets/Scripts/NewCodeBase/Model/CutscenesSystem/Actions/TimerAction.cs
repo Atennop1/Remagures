@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class TimerAction : ICutsceneAction
+    public sealed class TimerAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public interface IBaseItemComponent
     {

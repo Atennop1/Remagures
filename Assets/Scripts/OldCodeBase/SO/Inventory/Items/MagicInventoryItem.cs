@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Remagures.Components;
-using Remagures.Inventory;
+using Remagures.Model.InventorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 

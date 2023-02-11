@@ -2,7 +2,7 @@ using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class Slot : MonoBehaviour
     {

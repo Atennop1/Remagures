@@ -3,7 +3,7 @@ using Remagures.Model.DialogSystem;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public class EndDialogAction : ICutsceneAction
+    public sealed class EndDialogAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }

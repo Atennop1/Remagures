@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Remagures.Inventory
+namespace Remagures.Model.InventorySystem
 {
     public class PhysicUpgradableItem : PhysicItem
     {
