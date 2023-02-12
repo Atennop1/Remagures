@@ -6,7 +6,7 @@ namespace Remagures.Model.InventorySystem
 {
     public class AutoWeaponItemSelector<T> : IInventoryItemSelector<T> where T: IWeaponItem
     {
-        public ICell<T> SelectedCell { get; private set; }
+        public IReadOnlyCell<T> SelectedCell { get; private set; }
 
         private readonly IInventory<T> _inventory;
         private readonly ICellView _selectedCellView;
@@ -26,7 +26,7 @@ namespace Remagures.Model.InventorySystem
             var cellsList = _inventory.Cells.ToList();
             var biggestDamage = cellsList.Max(cell => cell.Item.Damage);
             
-            SelectedCell = (ICell<T>)cellsList.Find(cell => cell.Item.Damage == biggestDamage);
+            SelectedCell = cellsList.Find(cell => cell.Item.Damage == biggestDamage);
             _selectedCellView.Display((ICell<IItem>)SelectedCell);
         }
 

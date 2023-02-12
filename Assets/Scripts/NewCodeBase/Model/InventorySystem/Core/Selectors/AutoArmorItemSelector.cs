@@ -7,7 +7,7 @@ namespace Remagures.Model.InventorySystem
 {
     public class AutoArmorItemSelector<T> : IInventoryItemSelector<T>, IUpdatable where T: IArmorItem
     {
-        public ICell<T> SelectedCell { get; private set; }
+        public IReadOnlyCell<T> SelectedCell { get; private set; }
 
         private readonly IInventory<T> _inventory;
         private readonly ICellView _selectedCellView;
@@ -33,7 +33,7 @@ namespace Remagures.Model.InventorySystem
             var cellsList = _inventory.Cells.ToList();
             var biggestArmor = cellsList.Max(cell => cell.Item.Armor);
             
-            SelectedCell = (ICell<T>)cellsList.Find(cell => cell.Item.Armor == biggestArmor);
+            SelectedCell = cellsList.Find(cell => cell.Item.Armor == biggestArmor);
             _selectedCellView.Display((ICell<IItem>)SelectedCell);
         }
 

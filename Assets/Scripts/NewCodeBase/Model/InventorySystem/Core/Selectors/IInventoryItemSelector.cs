@@ -2,7 +2,7 @@
 {
     public interface IInventoryItemSelector<T> where T: IItem
     {
-        ICell<T> SelectedCell { get; }
+        IReadOnlyCell<T> SelectedCell { get; }
         void Select(T item);
         void UnSelect();
     }
