@@ -11,7 +11,7 @@ namespace Remagures.View.Inventory
 
         public void Equip()
         {
-            magicCellView.Setup(CurrentCell, this);
+            magicCellView.Display(CurrentCell, this);
 
             if (CurrentCell.Item is IChoiceableItem choiceableItem)
                 choiceableItem.SelectIn(Inventory.Cells);

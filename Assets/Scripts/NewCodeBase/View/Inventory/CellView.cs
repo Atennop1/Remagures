@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
-    public sealed class CellView : MonoBehaviour
+    public sealed class CellView : MonoBehaviour, ICellView
     {
         [Header("UI")]
         [SerializeField] private Image _itemImage;
         [SerializeField] private Text _itemCount;
         [SerializeField] private Sprite _noneSprite;
 
-        public void Setup(ICell<IItem> cell)
+        public void Display(ICell<IItem> cell)
         {
             if (cell == null) 
                 return;

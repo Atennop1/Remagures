@@ -48,7 +48,7 @@ namespace Remagures.RuneSystem
         public void Equip()
         {
             (_currentRune as IChoiceableItem)?.SelectIn(Inventory.Cells);
-            currentRuneCellView.Setup(new Cell((Item)_currentRune), null);
+            currentRuneCellView.Display(new Cell((Item)_currentRune), null);
 
             _currentRune.CharacterInfo.ClearRunes();
             _currentRune.CharacterInfo.SetupRunes(_currentRune, _magicCounter);

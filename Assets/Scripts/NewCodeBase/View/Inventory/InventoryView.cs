@@ -56,7 +56,7 @@ namespace Remagures.View.Inventory
             
                 var slotObject = Instantiate(_inventorySlot, _inventoryPanel.transform.position, Quaternion.identity, _inventoryPanel.transform);
                 if (slotObject.TryGetComponent(out CellView newSlot))
-                    newSlot.Setup(cell, this);
+                    newSlot.Display(cell, this);
             }
         }
 
