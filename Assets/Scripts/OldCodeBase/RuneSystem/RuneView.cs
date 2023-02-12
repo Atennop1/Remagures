@@ -1,5 +1,6 @@
 using Remagures.Model.InventorySystem;
 using Remagures.SO;
+using Remagures.View.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ namespace Remagures.RuneSystem
         [Header("Objects")]
         [SerializeField] private GameObject _equipButton;
         [SerializeField] private GameObject _noneText;
-        [SerializeField] private Slot _currentRuneSlot;
+        [SerializeField] private CellView currentRuneCellView;
         [SerializeField] private MagicCounter _magicCounter;
         [field: SerializeField] public Inventory Inventory { get; private set; }
     
@@ -47,7 +48,7 @@ namespace Remagures.RuneSystem
         public void Equip()
         {
             (_currentRune as IChoiceableItem)?.SelectIn(Inventory.Cells);
-            _currentRuneSlot.Setup(new Cell((Item)_currentRune), null);
+            currentRuneCellView.Setup(new Cell((Item)_currentRune), null);
 
             _currentRune.CharacterInfo.ClearRunes();
             _currentRune.CharacterInfo.SetupRunes(_currentRune, _magicCounter);

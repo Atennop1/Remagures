@@ -1,4 +1,4 @@
-﻿namespace Remagures.Model.InventorySystem
+﻿namespace Remagures.RuneSystem
 {
     public enum RuneType
     {

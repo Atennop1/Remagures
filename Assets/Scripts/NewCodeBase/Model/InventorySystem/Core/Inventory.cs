@@ -3,18 +3,19 @@ using System.Collections.Generic;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class Inventory : IInventory
+    public class Inventory<T> : IInventory<T> where T: IItem
     { 
-        public IReadOnlyList<IReadOnlyCell> Cells => _cells;
+        public IReadOnlyList<IReadOnlyCell<T>> Cells => _cells;
         
-        private readonly List<ICell> _cells = new();
+        private readonly List<ICell<T>> _cells = new();
 
-        public void Add(ICell newCell)
+        public void Add(ICell<T> newCell)
         {
             if (newCell == null)
                 throw new ArgumentNullException(nameof(newCell));
             
-            var cellWhichMerging = _cells.Find(cell => cell.Item == newCell.Item);
+            var cellWhichMerging = _cells.Find(cell => cell.Item.GetType() == newCell.Item.GetType() 
+                                                       && (IItem)cell.Item == (IItem)newCell.Item);
             
             if (cellWhichMerging == null)
             {
@@ -26,12 +27,14 @@ namespace Remagures.Model.InventorySystem
                 cellWhichMerging.Merge(newCell);
         }
 
-        public void Decrease(ICell decreasingCell)
+        public void Decrease(ICell<T> decreasingCell)
         {
             if (decreasingCell == null)
                 throw new ArgumentNullException(nameof(decreasingCell));
             
-            var cellWhichDecreasing = _cells.Find(cell => cell.Item == decreasingCell.Item);
+            var cellWhichDecreasing = _cells.Find(cell => cell.Item.GetType() == decreasingCell.Item.GetType() 
+                                                          && (IItem)cell.Item == (IItem)decreasingCell.Item);
+            
             if (cellWhichDecreasing == null)
                 throw new InvalidOperationException("Inventory hasn't item of given cell");
             

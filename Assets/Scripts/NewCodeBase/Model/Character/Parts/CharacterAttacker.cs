@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Remagures.Model.InventorySystem;
 using Remagures.View.Character;
+using Remagures.View.Inventory;
 
 namespace Remagures.Model.Character
 {
@@ -25,7 +26,7 @@ namespace Remagures.Model.Character
             //    return;
             //}
             
-            if (_attackTask.Status == UniTaskStatus.Succeeded && _player.CurrentState != PlayerState.Attack && _uniqueSetup.WeaponSlot.ThisCell.Item.Name != "")
+            if (_attackTask.Status == UniTaskStatus.Succeeded && _player.CurrentState != PlayerState.Attack && _uniqueSetup.WeaponCellView.ThisCell.Item.Name != "")
                 _attackTask = Attack();
         }
 
@@ -42,6 +43,6 @@ namespace Remagures.Model.Character
         }
     
         public void UseMagicAttack()
-            => (_uniqueSetup.MagicSlot.ThisCell.Item as IMagicItem)?.UsingEvent?.Invoke();
+            => (_uniqueSetup.MagicCellView.ThisCell.Item as IMagicItem)?.UsingEvent?.Invoke();
     }
 }

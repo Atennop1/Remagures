@@ -1,8 +1,8 @@
 ﻿namespace Remagures.Model.InventorySystem
 {
-    public interface ICell : IReadOnlyCell
+    public interface ICell<T> : IReadOnlyCell<T> where T: IItem
     {
-        void Merge(ICell anotherCell);
+        void Merge(ICell<T> anotherCell);
         void DecreaseAmount(int amount);
     }
 }

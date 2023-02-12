@@ -1,7 +1,7 @@
 ﻿using System;
 using Remagures.Model.Wallet;
 
-namespace Remagures.Model.PickUp
+namespace Remagures.Model.Pickup
 {
     public class SharpPickupable : IPickupable
     {

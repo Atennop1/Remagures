@@ -1,9 +1,9 @@
 ﻿namespace Remagures.Model.InventorySystem
 {
-    public interface IReadOnlyCell
+    public interface IReadOnlyCell<T> where T: IItem
     {
+        T Item { get; }
         int ItemsCount { get; }
-        IItem Item { get; }
-        bool CanAddItem(IItem item);
+        bool CanAddItem(T item);
     }
 }

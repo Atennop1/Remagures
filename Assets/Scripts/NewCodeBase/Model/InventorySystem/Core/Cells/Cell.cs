@@ -4,21 +4,21 @@ using Remagures.Tools;
 namespace Remagures.Model.InventorySystem
 {
     [Serializable]
-    public class Cell : ICell
+    public class Cell<T> : ICell<T> where T: IItem
     {
+        public T Item { get; private set; }
         public int ItemsCount { get; private set; }
-        public IItem Item { get; private set; }
 
-        public Cell(IItem item, int count = 1)
+        public Cell(T item, int count = 1)
         {
             ItemsCount = count.ThrowExceptionIfLessOrEqualsZero();
             Item = item ?? throw new ArgumentNullException(nameof(item));
         }
         
-        public bool CanAddItem(IItem item)
+        public bool CanAddItem(T item)
             => CanMergeWithItem(item) && Item.IsStackable || ItemsCount == 0;
 
-        public void Merge(ICell anotherCell)
+        public void Merge(ICell<T> anotherCell)
         {
             if (anotherCell == null)
                 throw new ArgumentNullException(nameof(anotherCell));
@@ -35,12 +35,12 @@ namespace Remagures.Model.InventorySystem
         public void DecreaseAmount(int amount)
         {
             if (amount.ThrowExceptionIfLessOrEqualsZero() > ItemsCount)
-                throw new ArgumentException("The number of items is less than the requested value");
+                throw new ArgumentException("The number of items in cell is less than the requested value");
                 
             ItemsCount -= amount;
         }
 
-        private bool CanMergeWithItem(IItem item)
-            => Item == item;
+        private bool CanMergeWithItem(T item)
+            => Item.GetType() == item.GetType() && (IItem)Item == (IItem)item;
     }
 }

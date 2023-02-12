@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Remagures.Model.InventorySystem
+namespace Remagures.View.Inventory
 {
-    public class UniqueSlot : Slot
+    public class UniqueCellView : CellView
     {
         [Space]
         [SerializeField] private GameObject _magicMenu;

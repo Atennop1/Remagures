@@ -2,6 +2,7 @@ using System.Globalization;
 using Remagures.Model.Character;
 using Remagures.Model.InventorySystem;
 using Remagures.SO;
+using Remagures.View.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,4 +1,4 @@
-﻿namespace Remagures.Model.PickUp
+﻿namespace Remagures.Model.Pickup
 {
     public interface IPickupable
     {

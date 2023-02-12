@@ -1,10 +1,11 @@
 using Remagures.Model.InventorySystem;
+using Remagures.View.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.RuneSystem
 {
-    public class RuneSlot : Slot
+    public class RuneCellView : CellView
     {
         [SerializeField] private RuneView _runeView;
 

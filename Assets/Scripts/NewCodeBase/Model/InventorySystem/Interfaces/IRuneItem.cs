@@ -1,4 +1,6 @@
-﻿namespace Remagures.Model.InventorySystem
+﻿using Remagures.RuneSystem;
+
+namespace Remagures.Model.InventorySystem
 {
     public interface IRuneItem : IItem
     {

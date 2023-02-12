@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Remagures.Model.PickUp
+namespace Remagures.Model.Pickup
 {
     public class PhysicsPickupable : MonoBehaviour, IPickupable
     {

@@ -1,16 +1,17 @@
+using Remagures.Model.InventorySystem;
 using UnityEngine;
 
-namespace Remagures.Model.InventorySystem
+namespace Remagures.View.Inventory
 {
     public class MagicInventoryView : InventoryView
     {
         [Header("Magic Stuff")]
         [SerializeField] private MagicCounter _magicCounter;
-        [SerializeField] private Slot _magicSlot;
+        [SerializeField] private CellView magicCellView;
 
         public void Equip()
         {
-            _magicSlot.Setup(CurrentCell, this);
+            magicCellView.Setup(CurrentCell, this);
 
             if (CurrentCell.Item is IChoiceableItem choiceableItem)
                 choiceableItem.SelectIn(Inventory.Cells);

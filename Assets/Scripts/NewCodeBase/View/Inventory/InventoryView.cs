@@ -1,9 +1,10 @@
 using System.Globalization;
+using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model.InventorySystem
+namespace Remagures.View.Inventory
 {
     public class InventoryView : MonoBehaviour
     {
@@ -54,7 +55,7 @@ namespace Remagures.Model.InventorySystem
                 if (cell.Item == null || cell.ItemsCount <= 0) continue;
             
                 var slotObject = Instantiate(_inventorySlot, _inventoryPanel.transform.position, Quaternion.identity, _inventoryPanel.transform);
-                if (slotObject.TryGetComponent(out Slot newSlot))
+                if (slotObject.TryGetComponent(out CellView newSlot))
                     newSlot.Setup(cell, this);
             }
         }

@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using Remagures.Model.Character;
+﻿using Remagures.Model.Character;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class UniqueEntryPoint : MonoBehaviour
+    public class UniqueEntryPoint : MonoBehaviour //TODO delete this class after making root layer
     {
         [SerializeField] private CharacterHealth _characterHealth;
         [SerializeField] private Player _player;
@@ -24,7 +23,7 @@ namespace Remagures.Model.InventorySystem
             UpdateArmor();
             _uniqueSetup.SetupUnique(_player);
             
-            if (_uniqueSetup.MagicSlot != null && _uniqueSetup.MagicSlot.ThisCell.Item is IMagicItem magicItem && magicItem.Projectile != null)
+            if (_uniqueSetup.MagicCellView != null && _uniqueSetup.MagicCellView.ThisCell.Item is IMagicItem magicItem && magicItem.Projectile != null)
                 _magicCounter.SetupProjectile(magicItem.Projectile);
         }
     }

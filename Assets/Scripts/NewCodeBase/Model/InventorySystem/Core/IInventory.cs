@@ -2,11 +2,11 @@
 
 namespace Remagures.Model.InventorySystem
 {
-    public interface IInventory
+    public interface IInventory<T> where T: IItem
     {
-        IReadOnlyList<IReadOnlyCell> Cells { get; }
+        IReadOnlyList<IReadOnlyCell<T>> Cells { get; }
         
-        void Add(ICell newCell);
-        void Decrease(ICell decreasingCell);
+        void Add(ICell<T> newCell);
+        void Decrease(ICell<T> decreasingCell);
     }
 }

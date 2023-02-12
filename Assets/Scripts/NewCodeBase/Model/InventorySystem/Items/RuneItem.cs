@@ -1,3 +1,4 @@
+using Remagures.RuneSystem;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
