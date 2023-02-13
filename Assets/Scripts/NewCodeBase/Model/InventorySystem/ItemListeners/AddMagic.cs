@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class MagicReaction : MonoBehaviour
+    public class AddMagic //TODO redesign this after magic
     {
-        [SerializeField] private Signal _magicSignal;
+        private Signal _magicSignal;
     
         public void Use(int amountToIncrease)
         {
