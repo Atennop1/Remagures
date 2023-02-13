@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class BowAttack : MonoBehaviour //TODO MASSIVE REWORK of this after magic
+    public class BowShoot : MonoBehaviour //TODO MASSIVE REWORK of this after magic
     {
         [SerializeField] private FloatValue _currentMagic;
         [SerializeField] private Signal _decreaseMagicSignal;
