@@ -6,12 +6,14 @@ namespace Remagures.View.Inventory
 {
     public sealed class CellView : MonoBehaviour, ICellView
     {
-        [Header("UI")]
-        [SerializeField] private Image _itemImage;
+        [field: SerializeField] public Button Button { get; private set; }
         [SerializeField] private Text _itemCount;
+        
+        [Space]
+        [SerializeField] private Image _itemImage;
         [SerializeField] private Sprite _noneSprite;
 
-        public void Display(ICell<IItem> cell)
+        public void Display(IReadOnlyCell<IItem> cell)
         {
             if (cell == null) 
                 return;

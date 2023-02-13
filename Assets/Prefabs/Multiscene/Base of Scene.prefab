@@ -3560,7 +3560,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1532126960198162012}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5111,7 +5111,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3407098272694180117}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19761,7 +19761,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1532126960198162012}
         m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

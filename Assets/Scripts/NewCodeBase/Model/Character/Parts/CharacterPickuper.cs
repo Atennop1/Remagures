@@ -1,4 +1,4 @@
-﻿using Remagures.Model.PickUp;
+﻿using Remagures.Model.Pickup;
 using UnityEngine;
 
 namespace Remagures.Model.Character

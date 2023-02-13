@@ -1,9 +1,11 @@
 ﻿using Remagures.Model.InventorySystem;
+using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
     public interface ICellView
     {
-        void Display(ICell<IItem> cell);
+        Button Button { get; }
+        void Display(IReadOnlyCell<IItem> cell);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.View.Inventory
 {
-    public class MagicInventoryView : InventoryView
+    public class MagicInventoryView : MonoBehaviour //TODO rework this after making magic system
     {
         [Header("Magic Stuff")]
         [SerializeField] private MagicCounter _magicCounter;
@@ -18,8 +18,5 @@ namespace Remagures.View.Inventory
 
             _magicCounter.SetupProjectile((CurrentCell.Item as IMagicItem)?.Projectile);
         }
-
-        protected override void SetButton() { }
-        protected override void SetupPlayer() { }
     }
 }
