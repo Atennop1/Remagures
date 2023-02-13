@@ -19,7 +19,7 @@ namespace Remagures.Model.InventorySystem
             if (newCell == null)
                 throw new ArgumentNullException(nameof(newCell));
             
-            var cellWhichMerging = _cells.Find(cell => cell.Item.GetType() == newCell.Item.GetType() && (IItem)cell.Item == (IItem)newCell.Item);
+            var cellWhichMerging = _cells.Find(cell => cell.Item.Equals(newCell.Item));
             
             if (cellWhichMerging == null)
             {
@@ -40,7 +40,7 @@ namespace Remagures.Model.InventorySystem
             if (decreasingCell == null)
                 throw new ArgumentNullException(nameof(decreasingCell));
             
-            var cellWhichDecreasing = _cells.Find(cell => cell.Item.GetType() == decreasingCell.Item.GetType() && (IItem)cell.Item == (IItem)decreasingCell.Item);
+            var cellWhichDecreasing = _cells.Find(cell => cell.Item.Equals(decreasingCell.Item));
             
             if (cellWhichDecreasing == null)
                 throw new InvalidOperationException("Inventory hasn't item of given cell");

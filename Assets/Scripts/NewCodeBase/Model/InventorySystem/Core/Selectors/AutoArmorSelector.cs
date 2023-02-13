@@ -5,19 +5,23 @@ using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class AutoArmorItemSelector<T> : IInventoryItemSelector<T>, IUpdatable where T: IArmorItem
+    public class AutoArmorSelector : IInventoryItemSelector<IArmorItem>, IUpdatable, ILateUpdatable
     {
-        public IReadOnlyCell<T> SelectedCell { get; private set; }
+        public IReadOnlyCell<IArmorItem> SelectedCell { get; private set; }
+        public bool HasSelected { get; private set; }
 
-        private readonly IInventory<T> _inventory;
+        private readonly IInventory<IArmorItem> _inventory;
         private readonly ICellView _selectedCellView;
 
-        public AutoArmorItemSelector(IInventory<T> inventory, ICellView selectedCellView)
+        public AutoArmorSelector(IInventory<IArmorItem> inventory, ICellView selectedCellView)
         {
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             _selectedCellView = selectedCellView ?? throw new ArgumentNullException(nameof(selectedCellView));
             AutoSelect();
         }
+        
+        public void LateUpdate()
+            => HasSelected = false;
         
         public void Update()
         {
@@ -34,10 +38,10 @@ namespace Remagures.Model.InventorySystem
             var biggestArmor = cellsList.Max(cell => cell.Item.Armor);
             
             SelectedCell = cellsList.Find(cell => cell.Item.Armor == biggestArmor);
-            _selectedCellView.Display((ICell<IItem>)SelectedCell);
+            _selectedCellView.Display(SelectedCell as ICell<IItem>);
         }
 
-        public void Select(T item) { }
+        public void Select(IArmorItem item) { }
         public void UnSelect() { }
     }
 }

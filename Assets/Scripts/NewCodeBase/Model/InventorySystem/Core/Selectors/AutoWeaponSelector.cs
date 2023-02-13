@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Linq;
+using Remagures.Root;
 using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class AutoWeaponItemSelector<T> : IInventoryItemSelector<T> where T: IWeaponItem
+    public class AutoWeaponSelector : IInventoryItemSelector<IWeaponItem>, IUpdatable, ILateUpdatable
     {
-        public IReadOnlyCell<T> SelectedCell { get; private set; }
+        public IReadOnlyCell<IWeaponItem> SelectedCell { get; private set; }
+        public bool HasSelected { get; private set; }
 
-        private readonly IInventory<T> _inventory;
+        private readonly IInventory<IWeaponItem> _inventory;
         private readonly ICellView _selectedCellView;
 
-        public AutoWeaponItemSelector(IInventory<T> inventory, ICellView selectedCellView)
+        public AutoWeaponSelector(IInventory<IWeaponItem> inventory, ICellView selectedCellView)
         {
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             _selectedCellView = selectedCellView ?? throw new ArgumentNullException(nameof(selectedCellView));
             AutoSelect();
+        }
+        
+        public void LateUpdate()
+            => HasSelected = false;
+        
+        public void Update()
+        {
+            if (_inventory.HasCellsChanged)
+                AutoSelect();
         }
 
         private void AutoSelect()
@@ -26,11 +37,12 @@ namespace Remagures.Model.InventorySystem
             var cellsList = _inventory.Cells.ToList();
             var biggestDamage = cellsList.Max(cell => cell.Item.Damage);
             
+            HasSelected = true;
             SelectedCell = cellsList.Find(cell => cell.Item.Damage == biggestDamage);
-            _selectedCellView.Display((ICell<IItem>)SelectedCell);
+            _selectedCellView.Display(SelectedCell as ICell<IItem>);
         }
 
-        public void Select(T item) { }
+        public void Select(IWeaponItem item) { }
         public void UnSelect() { }
     }
 }
