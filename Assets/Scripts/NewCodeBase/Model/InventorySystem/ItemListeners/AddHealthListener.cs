@@ -5,13 +5,13 @@ using Remagures.Tools;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class AddHealth : IUpdatable
+    public class AddHealthListener : IUpdatable
     {
         private readonly IUsableItem _usableItem;
         private readonly IHealth _health;
         private readonly int _amountToIncrease;
 
-        public AddHealth(IUsableItem usableItem, IHealth health, int amountToIncrease)
+        public AddHealthListener(IUsableItem usableItem, IHealth health, int amountToIncrease)
         {
             _usableItem = usableItem ?? throw new ArgumentNullException(nameof(usableItem));
             _health = health ?? throw new ArgumentNullException(nameof(health));
