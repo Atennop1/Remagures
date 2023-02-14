@@ -27,8 +27,8 @@ namespace Remagures.Model.Health
         public void TakeDamage(int amount)
         {
             _health.TakeDamage(1);
-            _potAnimator.Play(SMASH_ANIMATION_HASH);
-            Object.Instantiate(_objectInPot, _potAnimator.transform.position, Quaternion.identity);
+            _potAnimator.Play(SMASH_ANIMATION_HASH); //TODO move this to view layer
+            Object.Instantiate(_objectInPot, _potAnimator.transform.position, Quaternion.identity); //TODO move to factory
         }
 
         public void Heal(int amount) { }

@@ -1,10 +1,11 @@
 ﻿using System;
 using Remagures.Tools;
 
-namespace Remagures.Model.Health
+namespace Remagures.Model.Health.HealthUpgrade
 {
-    public class PlayerHealth : IHealth
+    public sealed class HealthUpgrade : IHealth, IHealthUpgrade
     {
+        public int MaxPossibleHealth { get; }
         public int MaxValue { get; private set; }
         public int CurrentValue => _health.CurrentValue;
 
@@ -12,11 +13,11 @@ namespace Remagures.Model.Health
         public bool CanTakeDamage => _health.CanTakeDamage;
 
         private readonly IHealth _health;
-        private const int MAX_POSSIBLE_VALUE = 40;
 
-        public PlayerHealth(IHealth health)
+        public HealthUpgrade(IHealth health, int maxPossibleHealth)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
+            MaxPossibleHealth = maxPossibleHealth.ThrowExceptionIfLessOrEqualsZero();
             MaxValue = _health.MaxValue;
         }
 
@@ -26,12 +27,12 @@ namespace Remagures.Model.Health
         public void Heal(int amount)
             => _health.Heal(amount);
 
-        public void IncreaseMaxValue(int amount)
+        public void IncreaseMaxHealth(int amount)
         {
-            MaxValue += amount.ThrowExceptionIfLessOrEqualsZero();
-
-            if (MaxValue > MAX_POSSIBLE_VALUE)
-                MaxValue = MAX_POSSIBLE_VALUE;
+            if (MaxValue + amount.ThrowExceptionIfLessOrEqualsZero() > MaxPossibleHealth)
+                throw new InvalidOperationException("Increasing amount is too big");
+            
+            MaxValue += amount;
         }
     }
 }
