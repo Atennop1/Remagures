@@ -1,3 +1,4 @@
+using Remagures.Model;
 using Remagures.Model.InventorySystem;
 using Remagures.RuneSystem;
 using UnityEngine;
@@ -70,7 +71,7 @@ namespace Remagures.SO
             ShieldRuneCoefficient = 1;
         }
     
-        public void SetupRunes(IRuneItem item, MagicCounter counter)
+        public void SetupRunes(IRuneItem item, Mana counter)
         {
             FireRunActive = item.RuneType == RuneType.Fire;
             ManaRuneActive = item.RuneType == RuneType.Mana;
@@ -79,7 +80,7 @@ namespace Remagures.SO
             InitRunes(counter);
         }
 
-        private void InitRunes(MagicCounter counter)
+        private void InitRunes(Mana counter)
         {
             ShieldRuneCoefficient = ShieldRuneActive ? 1.3f : 1f;
             counter.SetupManaRune(ManaRuneActive);

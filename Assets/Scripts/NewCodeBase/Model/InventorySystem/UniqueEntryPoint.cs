@@ -10,7 +10,7 @@ namespace Remagures.Model.InventorySystem
         
         [Space]
         [SerializeField] private UniqueSetup _uniqueSetup;
-        [SerializeField] private MagicCounter _magicCounter;
+        [SerializeField] private Mana mana;
         
         public void UpdateArmor()
         {
@@ -24,7 +24,7 @@ namespace Remagures.Model.InventorySystem
             _uniqueSetup.SetupUnique(_player);
             
             if (_uniqueSetup.MagicCellView != null && _uniqueSetup.MagicCellView.ThisCell.Item is IMagicItem magicItem && magicItem.Projectile != null)
-                _magicCounter.SetupProjectile(magicItem.Projectile);
+                mana.SetupProjectile(magicItem.Projectile);
         }
     }
 }

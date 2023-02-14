@@ -1,3 +1,4 @@
+using Remagures.Model;
 using Remagures.Model.InventorySystem;
 using Remagures.SO;
 using Remagures.View.Inventory;
@@ -18,7 +19,7 @@ namespace Remagures.RuneSystem
         [SerializeField] private GameObject _equipButton;
         [SerializeField] private GameObject _noneText;
         [SerializeField] private CellView currentRuneCellView;
-        [SerializeField] private MagicCounter _magicCounter;
+        [SerializeField] private Mana mana;
         [field: SerializeField] public Inventory Inventory { get; private set; }
     
         private IRuneItem _currentRune;
@@ -51,7 +52,7 @@ namespace Remagures.RuneSystem
             currentRuneCellView.Display(new Cell((Item)_currentRune), null);
 
             _currentRune.CharacterInfo.ClearRunes();
-            _currentRune.CharacterInfo.SetupRunes(_currentRune, _magicCounter);
+            _currentRune.CharacterInfo.SetupRunes(_currentRune, mana);
 
             Close();
         }
