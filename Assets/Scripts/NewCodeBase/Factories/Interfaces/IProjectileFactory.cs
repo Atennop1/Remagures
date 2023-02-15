@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public interface IProjectilesFactory
+    public interface IProjectileFactory
     {
         IProjectile Create(Quaternion rotation);
     }

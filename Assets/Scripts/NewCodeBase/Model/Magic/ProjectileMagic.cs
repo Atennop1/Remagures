@@ -9,12 +9,12 @@ namespace Remagures.Model.Magic
     {
         public MagicData Data { get; }
         
-        private readonly IProjectilesFactory _projectilesFactory;
+        private readonly IProjectileFactory _projectileFactory;
         private readonly PlayerMovement _playerMovement;
 
-        public ProjectileMagic(MagicData magicData, IProjectilesFactory projectilesFactory, PlayerMovement playerMovement)
+        public ProjectileMagic(MagicData magicData, IProjectileFactory projectileFactory, PlayerMovement playerMovement)
         {
-            _projectilesFactory = projectilesFactory ?? throw new ArgumentNullException(nameof(projectilesFactory));
+            _projectileFactory = projectileFactory ?? throw new ArgumentNullException(nameof(projectileFactory));
             _playerMovement = playerMovement ?? throw new ArgumentNullException(nameof(playerMovement));
             Data = magicData;
         }
@@ -24,7 +24,7 @@ namespace Remagures.Model.Magic
             var throwDirection = new Vector2(_playerMovement.PlayerViewDirection.x, _playerMovement.PlayerViewDirection.y);
             var arrowDirection = new Vector3(0, 0, Mathf.Atan2(_playerMovement.PlayerViewDirection.y, _playerMovement.PlayerViewDirection.x) * Mathf.Rad2Deg);
             
-            var projectile = _projectilesFactory.Create(Quaternion.Euler(arrowDirection));
+            var projectile = _projectileFactory.Create(Quaternion.Euler(arrowDirection));
             projectile.Launch(throwDirection);
         }
     }

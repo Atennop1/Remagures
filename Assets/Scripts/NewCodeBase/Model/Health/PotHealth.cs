@@ -1,4 +1,6 @@
 ﻿using System;
+using Remagures.Factories;
+using Remagures.View.Pot;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -13,22 +15,22 @@ namespace Remagures.Model.Health
         public bool CanTakeDamage => _health.CanTakeDamage;
         
         private readonly IHealth _health = new Health(1);
-        private readonly int SMASH_ANIMATION_HASH = Animator.StringToHash("Smash");
         
-        private readonly Animator _potAnimator;
-        private readonly GameObject _objectInPot;
+        private readonly IPotView _potView;
+        private readonly IGameObjectFactory _lootFactory;
+        private readonly Vector3 _lootSpawnPosition;
 
-        public PotHealth(Animator potAnimator, GameObject objectInPot)
+        public PotHealth(IPotView potView, IGameObjectFactory lootFactory, Vector3 lootSpawnPosition)
         {
-            _potAnimator = potAnimator ?? throw new ArgumentNullException(nameof(potAnimator));
-            _objectInPot = objectInPot ?? throw new ArgumentNullException(nameof(objectInPot));
+            _potView = potView ?? throw new ArgumentNullException(nameof(potView));
+            _lootFactory = lootFactory ?? throw new ArgumentNullException(nameof(lootFactory));
         }
 
         public void TakeDamage(int amount)
         {
             _health.TakeDamage(1);
-            _potAnimator.Play(SMASH_ANIMATION_HASH); //TODO move this to view layer
-            Object.Instantiate(_objectInPot, _potAnimator.transform.position, Quaternion.identity); //TODO move to factory
+            _potView.PlaySmashAnimation();
+            _lootFactory.Create(_lootSpawnPosition);
         }
 
         public void Heal(int amount) { }
