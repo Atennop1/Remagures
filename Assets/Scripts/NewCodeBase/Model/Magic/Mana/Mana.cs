@@ -2,12 +2,12 @@ using System;
 using Remagures.Tools;
 using Remagures.View.Mana;
 
-namespace Remagures.Model
+namespace Remagures.Model.Magic
 {
     public sealed class Mana : IMana
     {
         public int CurrentValue { get; private set; }
-        public int MaxValue { get; private set;  }
+        public int MaxValue { get; private set; }
         
         private readonly IManaView _view;
 

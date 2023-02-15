@@ -8,7 +8,7 @@ namespace Remagures.View.Inventory
 {
     public class InventoryView<T> : MonoBehaviour where T: IItem
     {
-        [SerializeField] private IFactory<ICellView> _cellViewsFactory;
+        [SerializeField] private ICellViewFactory _cellViewsFactory;
         [SerializeField] private ItemInfoView<T> _itemInfoView;
 
         [Space]

@@ -1,6 +1,6 @@
 ﻿namespace Remagures.Model.InventorySystem
 {
-    public interface IInventoryItemSelector<T> where T: IItem
+    public interface IInventoryCellSelector<T> where T: IItem
     {
         IReadOnlyCell<T> SelectedCell { get; }
         bool HasSelected { get; }

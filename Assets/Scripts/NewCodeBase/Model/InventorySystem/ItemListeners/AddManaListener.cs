@@ -1,4 +1,5 @@
 using System;
+using Remagures.Model.Magic;
 using Remagures.Root;
 using Remagures.Tools;
 

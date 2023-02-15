@@ -5,7 +5,7 @@ using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class AutoWeaponSelector : IInventoryItemSelector<IWeaponItem>, IUpdatable, ILateUpdatable
+    public class AutoWeaponSelector : IInventoryCellSelector<IWeaponItem>, IUpdatable, ILateUpdatable
     {
         public IReadOnlyCell<IWeaponItem> SelectedCell { get; private set; }
         public bool HasSelected { get; private set; }

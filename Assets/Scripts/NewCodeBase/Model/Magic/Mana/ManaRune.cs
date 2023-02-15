@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Remagures.Model
+namespace Remagures.Model.Magic
 {
-    public sealed class ManaRune
+    public sealed class ManaRune 
     {
         private readonly IMana _mana;
         private CancellationTokenSource _cancellationTokenSource = new();

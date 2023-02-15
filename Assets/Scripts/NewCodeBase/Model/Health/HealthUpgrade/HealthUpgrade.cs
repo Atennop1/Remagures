@@ -32,7 +32,7 @@ namespace Remagures.Model.Health.HealthUpgrade
             if (MaxValue + amount.ThrowExceptionIfLessOrEqualsZero() > MaxPossibleHealth)
                 throw new InvalidOperationException("Increasing amount is too big");
             
-            MaxValue += amount;
+            MaxValue = _health.MaxValue + amount;
         }
     }
 }

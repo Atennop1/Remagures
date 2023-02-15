@@ -1,5 +1,6 @@
 using Remagures.AI.StateMachine;
 using Remagures.Components;
+using Remagures.Model;
 using Remagures.Model.Health;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;

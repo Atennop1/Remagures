@@ -1,4 +1,5 @@
 using System;
+using Remagures.Model.Magic;
 using Remagures.Tools;
 
 namespace Remagures.Model.Pickup

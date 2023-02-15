@@ -1,5 +1,6 @@
 using Remagures.Model;
 using Remagures.Model.InventorySystem;
+using Remagures.Model.Magic;
 using Remagures.SO;
 using Remagures.View.Inventory;
 using UnityEngine;

@@ -41,8 +41,5 @@ namespace Remagures.Model.Character
             if (_player.CurrentState != PlayerState.Interact)
                 _player.ChangeState(PlayerState.Idle);
         }
-    
-        public void UseMagicAttack()
-            => (_uniqueSetup.MagicCellView.ThisCell.Item as IMagicItem)?.UsingEvent?.Invoke();
     }
 }

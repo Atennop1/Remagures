@@ -6,10 +6,10 @@ namespace Remagures.Model.InventorySystem
 {
     public class SelectedDisplayableItemApplier<T> : IUpdatable where T: IDisplayableItem
     {
-        private readonly IInventoryItemSelector<T> _selector;
+        private readonly IInventoryCellSelector<T> _selector;
         private readonly IDisplayableItemView _displayableItemView;
 
-        public SelectedDisplayableItemApplier(IInventoryItemSelector<T> selector, IDisplayableItemView displayableItemView)
+        public SelectedDisplayableItemApplier(IInventoryCellSelector<T> selector, IDisplayableItemView displayableItemView)
         {
             _selector = selector ?? throw new ArgumentNullException(nameof(selector));
             _displayableItemView = displayableItemView ?? throw new ArgumentNullException(nameof(displayableItemView));

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public class CellViewFactory : MonoBehaviour, IFactory<ICellView>
+    public class CellViewFactory : MonoBehaviour, ICellViewFactory
     {
         [SerializeField] private GameObject _inventorySlotPrefab;
         [SerializeField] private GameObject _inventoryPanel;

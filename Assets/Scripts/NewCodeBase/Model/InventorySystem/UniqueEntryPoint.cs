@@ -1,4 +1,5 @@
 ﻿using Remagures.Model.Character;
+using Remagures.Model.Magic;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
