@@ -24,6 +24,7 @@ namespace Remagures.Model.Health
         {
             _potView = potView ?? throw new ArgumentNullException(nameof(potView));
             _lootFactory = lootFactory ?? throw new ArgumentNullException(nameof(lootFactory));
+            _lootSpawnPosition = lootSpawnPosition;
         }
 
         public void TakeDamage(int amount)
