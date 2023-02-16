@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Remagures.Components
+namespace Remagures.View
 {
-    public class SmoothColorSwitcher : MonoBehaviour
+    public class SpriteRendererColorSwitcher : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
