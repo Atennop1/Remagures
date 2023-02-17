@@ -14,12 +14,12 @@ namespace Remagures.Model.Character
         public CharacterAnimations(List<Animator> animators)
             => _animators = animators ?? throw new ArgumentNullException(nameof(animators));
         
-        public void SetAnimationsVector(Vector2 vector)
+        public void SetCharacterLookDirection(Vector2 direction)
         {
             foreach (var animator in _animators)
             {
-                animator.SetFloat(DIRECTION_X_ANIMATION_HASH, vector.x);
-                animator.SetFloat(DIRECTION_Y_ANIMATION_HASH, vector.y);
+                animator.SetFloat(DIRECTION_X_ANIMATION_HASH, direction.x);
+                animator.SetFloat(DIRECTION_Y_ANIMATION_HASH, direction.y);
             }
         }
 

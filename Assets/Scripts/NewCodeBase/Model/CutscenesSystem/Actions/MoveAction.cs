@@ -15,7 +15,7 @@ namespace Remagures.Model.CutscenesSystem
         public MoveAction(CharacterMovement characterMovement, Vector2 moveTo)
         {
             _moveTo = moveTo;
-            _characterMovement = characterMovement ? characterMovement : throw new ArgumentNullException(nameof(characterMovement));
+            _characterMovement = characterMovement ?? throw new ArgumentNullException(nameof(characterMovement));
         }
 
         public void Start()
