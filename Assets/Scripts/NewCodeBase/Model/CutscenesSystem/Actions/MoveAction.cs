@@ -7,21 +7,21 @@ namespace Remagures.Model.CutscenesSystem
     public sealed class MoveAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
-        public bool IsFinished => !_playerMovement.IsMoving;
+        public bool IsFinished => !_characterMovement.IsMoving;
         
         private readonly Vector2 _moveTo;
-        private readonly PlayerMovement _playerMovement;
+        private readonly CharacterMovement _characterMovement;
 
-        public MoveAction(PlayerMovement playerMovement, Vector2 moveTo)
+        public MoveAction(CharacterMovement characterMovement, Vector2 moveTo)
         {
             _moveTo = moveTo;
-            _playerMovement = playerMovement ? playerMovement : throw new ArgumentNullException(nameof(playerMovement));
+            _characterMovement = characterMovement ? characterMovement : throw new ArgumentNullException(nameof(characterMovement));
         }
 
         public void Start()
         {
             IsStarted = true;
-            _playerMovement.MoveTo(_moveTo);
+            _characterMovement.MoveTo(_moveTo);
         }
         
         public void Finish() { }

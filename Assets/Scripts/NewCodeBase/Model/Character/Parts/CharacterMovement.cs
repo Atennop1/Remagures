@@ -1,17 +1,17 @@
 using Cysharp.Threading.Tasks;
 using Remagures.MapSystem;
+using Remagures.Model.Input;
 using Remagures.SO;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Remagures.Model.Character
 {
-    public sealed class PlayerMovement : MonoBehaviour
+    public sealed class CharacterMovement : MonoBehaviour
     {
         [SerializeField] private Player _player;
 
         [Space]
-        [SerializeField] private PlayerInput _playerInput;
+        [SerializeField] private IMovementInput _movementInput;
         [SerializeField] private MapExplorer _explorer;
 
         [Space]
@@ -21,7 +21,7 @@ namespace Remagures.Model.Character
         
         private Rigidbody2D _thisRigidbody;
         
-        public Vector2 PlayerViewDirection { get; private set; }
+        public Vector2 CharacterLookDirection { get; private set; }
         public bool IsMoving { get; private set; }
 
         private const string MOVE_ANIMATOR_NAME = "moving";
@@ -48,16 +48,13 @@ namespace Remagures.Model.Character
             IsMoving = false;
         }
         
-        private async void MoveInDirection(Vector2 input)
+        private async void MoveInDirection()
         {
             IsMoving = true;
-            var joyStickCoefficient = input.y / input.x;
-        
-            if (joyStickCoefficient is >= 1 or <= -1) PlayerViewDirection = input.y > 0 ? Vector2.up : Vector2.down;
-            else PlayerViewDirection = input.x > 0 ? Vector2.right : Vector2.left;
-
-            SetupMove(PlayerViewDirection);
-            while (_playerInput?.actions["Move"].ReadValue<Vector2>() != Vector2.zero)
+            CharacterLookDirection = _movementInput.CharacterLookDirection;
+            SetupMove(CharacterLookDirection);
+            
+            while (_movementInput.MoveDirection != Vector2.zero)
                 await UniTask.WaitForFixedUpdate();
 
             IsMoving = false;
@@ -90,7 +87,7 @@ namespace Remagures.Model.Character
                 _player.CurrentState is PlayerState.Walk or PlayerState.Idle &&
                 _characterInteractor.CurrentState != InteractingState.Interact)
             {
-                MoveInDirection(_playerInput.actions["Move"].ReadValue<Vector2>());
+                MoveInDirection();
                 return;
             }
             
@@ -105,12 +102,8 @@ namespace Remagures.Model.Character
         private void Awake()
         {
             _thisRigidbody = GetComponent<Rigidbody2D>();
-            _playerAnimations = _player.GetPlayerComponent<PlayerAnimations>();
-            _characterAttacker = _player.GetPlayerComponent<CharacterAttacker>();
-            _characterInteractor = _player.GetPlayerComponent<CharacterInteractor>();
-
-            PlayerViewDirection = _playerViewDirection.Value;
-            _playerAnimations.SetAnimFloat(PlayerViewDirection);
+            CharacterLookDirection = _playerViewDirection.Value;
+            _playerAnimations.SetAnimFloat(CharacterLookDirection);
             transform.position = _playerPosition.Value - new Vector2(0, 0.6f);
         }
     }

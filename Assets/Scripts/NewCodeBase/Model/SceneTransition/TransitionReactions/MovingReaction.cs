@@ -11,15 +11,15 @@ namespace Remagures.Model.SceneTransition
     public class MovingReaction : IUpdatable
     {
         private readonly ISceneTransition _transition;
-        private readonly PlayerMovement _playerMovement;
+        private readonly CharacterMovement _characterMovement;
         private readonly UIActivityChanger _uiActivityChanger;
         
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
-        public MovingReaction(ISceneTransition transition, PlayerMovement playerMovement, UIActivityChanger uiActivityChanger)
+        public MovingReaction(ISceneTransition transition, CharacterMovement characterMovement, UIActivityChanger uiActivityChanger)
         {
             _transition = transition ?? throw new ArgumentNullException(nameof(transition));
-            _playerMovement = playerMovement ?? throw new ArgumentNullException(nameof(playerMovement));
+            _characterMovement = characterMovement ?? throw new ArgumentNullException(nameof(characterMovement));
             _uiActivityChanger = uiActivityChanger ?? throw new ArgumentNullException(nameof(uiActivityChanger));
         }
 
@@ -33,12 +33,12 @@ namespace Remagures.Model.SceneTransition
         
         private void StartMovingCutscene()
         {
-            var moveTo = (Vector2)_playerMovement.transform.position + _playerMovement.PlayerViewDirection * 2;
+            var moveTo = (Vector2)_characterMovement.transform.position + _characterMovement.CharacterLookDirection * 2;
             
             var transitingCutscene = new Cutscene(new List<ICutsceneAction>
             {
                 new StartAction(_uiActivityChanger),
-                new MoveAction(_playerMovement, moveTo)
+                new MoveAction(_characterMovement, moveTo)
             });
             
             _systemUpdate.Add(transitingCutscene);

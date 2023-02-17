@@ -7,13 +7,13 @@ namespace Remagures.Model.SceneTransition
     public class SavePlayerPositionReaction : IUpdatable
     {
         private readonly ISceneTransition _sceneTransition;
-        private readonly PlayerMovement _playerMovement;
+        private readonly CharacterMovement _characterMovement;
         private readonly CharacterPositionStorage _characterPositionStorage;
 
-        public SavePlayerPositionReaction(ISceneTransition sceneTransition, PlayerMovement playerMovement, CharacterPositionStorage characterPositionStorage)
+        public SavePlayerPositionReaction(ISceneTransition sceneTransition, CharacterMovement characterMovement, CharacterPositionStorage characterPositionStorage)
         {
             _sceneTransition = sceneTransition ?? throw new ArgumentNullException(nameof(sceneTransition));
-            _playerMovement = playerMovement ?? throw new ArgumentNullException(nameof(playerMovement));
+            _characterMovement = characterMovement ?? throw new ArgumentNullException(nameof(characterMovement));
             _characterPositionStorage = characterPositionStorage ?? throw new ArgumentNullException(nameof(characterPositionStorage));
         }
 
@@ -22,7 +22,7 @@ namespace Remagures.Model.SceneTransition
             if (!_sceneTransition.HasActivated) 
                 return;
             
-            var data = new CharacterPositionData(_playerMovement.transform.position, _playerMovement.PlayerViewDirection);
+            var data = new CharacterPositionData(_characterMovement.transform.position, _characterMovement.CharacterLookDirection);
             _characterPositionStorage.Save(data);
         }
     }

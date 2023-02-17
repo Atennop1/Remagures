@@ -18,7 +18,7 @@ namespace Remagures.Root
         [SerializeField] private Text _continueText;
         
         [Space]
-        [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private CharacterMovement characterMovement;
         [SerializeField] private UIActivityChanger _uiActivityChanger;
         private ISystemUpdate _systemUpdate;
 
@@ -28,14 +28,14 @@ namespace Remagures.Root
             var actions = new List<ICutsceneAction>
             {
                 new StartAction(_uiActivityChanger),
-                new TeleportAction(_playerMovement.transform, new Vector2(-6.5f, 5)),
+                new TeleportAction(characterMovement.transform, new Vector2(-6.5f, 5)),
                 
                 new TimerAction(1.5f),
-                new MoveAction(_playerMovement, new Vector2(0, 5)),
-                new MoveAction(_playerMovement, new Vector2(0, 4.99f)),
+                new MoveAction(characterMovement, new Vector2(0, 5)),
+                new MoveAction(characterMovement, new Vector2(0, 4.99f)),
                 
                 new TimerAction(1.5f),
-                new MoveAction(_playerMovement, new Vector2(0, 0)),
+                new MoveAction(characterMovement, new Vector2(0, 0)),
                 
                 new TimerAction(0.5f),
                 new DialogAction(_writer, _dialogWindowButton, _continueText, "Где я?"),

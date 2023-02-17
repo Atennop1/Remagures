@@ -18,7 +18,8 @@ namespace Remagures.MapSystem
 
         public void Explore()
         {
-            if (!_canExplore) return;
+            if (!_canExplore) 
+                return;
             
             var position = _currentMap.CalculatePositionOnTexture();
             _mapTexture.DrawCircle(new Color(0, 0, 0, 0.5f), (int)position.x, (int)position.y, 50);
