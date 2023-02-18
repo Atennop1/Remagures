@@ -11,7 +11,7 @@ namespace Remagures.AI.Enemies
         public AttackPlayer(IEnemyWithTarget enemyWithTarget)
             => _enemyWithTarget = enemyWithTarget;
 
-        public void Tick()
+        public void Update()
         {
             var enemyAnimator = _enemyWithTarget.Animations.Animator;
             var temp = Vector3.MoveTowards(enemyAnimator.transform.position, _enemyWithTarget.TargetData.Target.position, 1);

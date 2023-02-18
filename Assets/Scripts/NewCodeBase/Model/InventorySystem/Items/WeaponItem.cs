@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class WeaponItem : IWeaponItem, IDisplayableItem
+    public class WeaponItem : IWeaponItem
     {
         public AnimatorOverrideController AnimatorController { get; }
+        public int UsingCooldownInMilliseconds { get; }
         public int Damage { get; }
         
         public string Name { get; }
@@ -17,7 +18,7 @@ namespace Remagures.Model.InventorySystem
         
         public bool HasUsed { get; private set; }
         
-        public WeaponItem(IItem item, AnimatorOverrideController animatorController, int damage)
+        public WeaponItem(IItem item, AnimatorOverrideController animatorController, int damage, int usingCooldown)
         {
             Name = item.Name;
             Description = item.Description;
@@ -26,6 +27,7 @@ namespace Remagures.Model.InventorySystem
 
             AnimatorController = animatorController ?? throw new ArgumentNullException(nameof(animatorController));
             Damage = damage.ThrowExceptionIfLessOrEqualsZero();
+            UsingCooldownInMilliseconds = usingCooldown.ThrowExceptionIfLessOrEqualsZero();
         }
         
         public async void Use()

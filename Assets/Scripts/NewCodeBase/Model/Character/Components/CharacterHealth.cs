@@ -29,8 +29,7 @@ namespace Remagures.Model.Character
             //if (!IsDead) 
             //    return;
             
-            //_player.ChangeState(PlayerState.Dead);
-            //_gameOver.SetGameOver();
+            //_gameOver.SetGameOver(); //TODO make this via polling
         }
 
         public void Heal(int amount)

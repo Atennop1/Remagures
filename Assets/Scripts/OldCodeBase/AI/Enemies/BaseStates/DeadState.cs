@@ -20,7 +20,7 @@ namespace Remagures.AI.Enemies
                 _enemy.Animations.Animator.SetBool(DEAD_ANIMATOR_NAME, true);
         }
         
-        public void Tick() { }
+        public void Update() { }
         public void OnExit() { }
     }
 }

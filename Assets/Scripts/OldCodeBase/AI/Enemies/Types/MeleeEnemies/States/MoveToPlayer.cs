@@ -16,7 +16,7 @@ namespace Remagures.AI.Enemies.MeleeEnemies
         public void OnEnter() { }
         public void OnExit() { }
 
-        public void Tick()
+        public void Update()
         {
             _meleeEnemy.Movement.Move(_meleeEnemy.TargetData.Target);
             _meleeEnemy.Animations.Animator.SetBool(IS_STAYING_ANIMATOR_NAME, false);

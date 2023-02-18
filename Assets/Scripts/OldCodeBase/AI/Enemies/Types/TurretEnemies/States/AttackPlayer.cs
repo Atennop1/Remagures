@@ -12,7 +12,7 @@ namespace Remagures.AI.Enemies.TurretEnemies
         public AttackPlayer(TurretEnemy turretEnemy)
             => _turretEnemy = turretEnemy;
 
-        public void Tick()
+        public void Update()
         {
             var distance = _turretEnemy.TargetData.Target.transform.position - _turretEnemy.transform.position;
             _turretEnemy.InstantiateProjectile(distance);

@@ -15,7 +15,7 @@ namespace Remagures.AI.Enemies
         public void OnEnter() { }
         public void OnExit() { }
 
-        public void Tick()
+        public void Update()
         {
             _enemyWithTarget.Movement.Move(_enemyWithTarget.TargetData.Target);
             var enemyAnimator = _enemyWithTarget.Animations.Animator;

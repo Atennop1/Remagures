@@ -1,9 +1,9 @@
 ﻿namespace Remagures.Model.Character
 {
-    public enum InteractingState
+    public enum InteractionState
     {
         None,
         Ready,
-        Interact
+        Active
     }
 }

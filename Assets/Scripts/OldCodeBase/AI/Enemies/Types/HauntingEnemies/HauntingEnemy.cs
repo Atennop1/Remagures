@@ -33,8 +33,8 @@ namespace Remagures.AI.Enemies.HauntingEnemies
 
             if (TryGetComponent(out IKnockable knockable))
             {
-                StateMachine.AddTransition(knockedState, moveToPlayerState, () => !knockable.IsKnocked);
-                StateMachine.AddAnyTransition(knockedState, () => knockable.IsKnocked);
+                StateMachine.AddTransition(knockedState, moveToPlayerState, () => !knockable.IsKnocking);
+                StateMachine.AddAnyTransition(knockedState, () => knockable.IsKnocking);
             }
             
             StateMachine.SetState(playerNotInRangeState);

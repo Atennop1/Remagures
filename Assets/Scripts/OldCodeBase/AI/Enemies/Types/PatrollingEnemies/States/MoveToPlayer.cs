@@ -11,7 +11,7 @@ namespace Remagures.AI.Enemies.PatrollingEnemies
         public MoveToPlayer(PatrollingEnemy patrollingEnemy)
             => _patrollingEnemy = patrollingEnemy;
 
-        public void Tick()
+        public void Update()
         {
             _patrollingEnemy.Movement.Move(_patrollingEnemy.TargetData.Target);
             _patrollingEnemy.Animations.Animator.SetBool(IS_STAYING_ANIMATOR_NAME, false);

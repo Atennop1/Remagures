@@ -21,6 +21,6 @@ namespace Remagures.AI.Enemies.MeleeEnemies
 
         public void OnExit() { }
 
-        public void Tick() { }
+        public void Update() { }
     }
 }

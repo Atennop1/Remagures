@@ -12,7 +12,7 @@ namespace Remagures.AI.Enemies
         [SerializeField] private IEnemy _enemy;
         [field: SerializeField] public LayerMask InteractionMask { get; private set; }
         
-        public bool IsKnocked { get; private set; }
+        public bool IsKnocking { get; private set; }
         private IState _knockedState;
 
         public void Knock(Rigidbody2D myRigidbody, float knockTime)
@@ -27,10 +27,10 @@ namespace Remagures.AI.Enemies
         {
             if (!myRigidbody) yield break;
 
-            IsKnocked = true;
+            IsKnocking = true;
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            IsKnocked = false;
+            IsKnocking = false;
         }
 
         private void Start() 

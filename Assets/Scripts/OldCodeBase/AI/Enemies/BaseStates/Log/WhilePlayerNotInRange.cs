@@ -22,6 +22,6 @@ namespace Remagures.AI.Enemies
         }
 
         public void OnExit() { }
-        public void Tick() { }
+        public void Update() { }
     }
 }

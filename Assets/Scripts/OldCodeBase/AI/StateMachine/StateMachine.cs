@@ -20,7 +20,7 @@ namespace Remagures.AI.StateMachine
             if (transition != null)
                 SetState(transition.To);
       
-            _currentState?.Tick();
+            _currentState?.Update();
         }
 
         public void SetState(IState state)
@@ -68,10 +68,10 @@ namespace Remagures.AI.StateMachine
             transitions.Add(new Transition(null, null, exceptionsTypes));
         }
 
-        public void AddExceptionToAnyTransition(IState from, params IState[] exceptions)
+        public void AddExceptionToAnyTransition(IState to, params IState[] exceptions)
         {
             var exceptionsTypes = exceptions.Select(exception => exception.GetType()).ToList();
-            _anyTransitions.Add(new Transition(from, null, exceptionsTypes));
+            _anyTransitions.Add(new Transition(to, null, exceptionsTypes));
         }
         
         public bool StateBannedInCurrentContext(IState state)
@@ -81,7 +81,8 @@ namespace Remagures.AI.StateMachine
             return _currentTransitions != null && _currentTransitions.Any(transition => transition.Exceptions != null && transition.Exceptions.Contains(state.GetType()));
         }
 
-        public bool StateAlreadySet(IState state) => state == _currentState;
+        public bool StateAlreadySet(IState state) 
+            => state == _currentState;
 
         private Transition GetTransition()
         {

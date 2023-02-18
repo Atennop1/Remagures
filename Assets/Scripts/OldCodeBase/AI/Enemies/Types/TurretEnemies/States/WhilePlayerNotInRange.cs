@@ -20,6 +20,6 @@ namespace Remagures.AI.Enemies.TurretEnemies
         }
 
         public void OnExit() { }
-        public void Tick() { }
+        public void Update() { }
     }
 }

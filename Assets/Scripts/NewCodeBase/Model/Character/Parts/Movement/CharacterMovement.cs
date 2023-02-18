@@ -60,34 +60,5 @@ namespace Remagures.Model.Character
                 await UniTask.WaitForFixedUpdate();
             }
         }
-
-        //private void FixedUpdate() //TODO move all of this to state machine
-        //{
-        //    if (_characterInteractor.CurrentState == InteractingState.Interact)
-        //    {
-        //        _playerInput.enabled = false;
-        //        _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-        //    }
-        //    else
-        //    {
-        //        _playerInput.enabled = true;
-        //        _thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //    }
-        //
-        //    if (_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero && _characterAttacker.CanAttack &&
-        //        _player.CurrentState is PlayerState.Walk or PlayerState.Idle &&
-        //        _characterInteractor.CurrentState != InteractingState.Interact)
-        //    {
-        //        MoveInLookDirection();
-        //        return;
-        //    }
-        //    
-        //    if (IsMoving) 
-        //        return;
-        //
-        //    _player.ChangeState(PlayerState.Idle);
-        //    _rigidbody.velocity = Vector2.zero;
-        //    _view.EndMoveAnimation();
-        //}
     }
 }

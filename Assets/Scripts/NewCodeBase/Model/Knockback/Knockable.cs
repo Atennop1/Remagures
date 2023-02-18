@@ -7,7 +7,7 @@ namespace Remagures.Model.Knockback
     public sealed class Knockable : IKnockable
     {
         public LayerMask InteractionMask { get; }
-        public bool IsKnocked { get; private set; }
+        public bool IsKnocking { get; private set; }
 
         private readonly Rigidbody2D _rigidbody;
         
@@ -19,11 +19,11 @@ namespace Remagures.Model.Knockback
         
         public async void Knock(int knockTimeInMilliseconds)
         {
-            IsKnocked = true;
+            IsKnocking = true;
             await UniTask.Delay(knockTimeInMilliseconds);
             
             _rigidbody.velocity = Vector2.zero;
-            IsKnocked = false;
+            IsKnocking = false;
         }
     }
 }

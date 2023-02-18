@@ -1,45 +1,48 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Remagures.Model.InventorySystem;
 using Remagures.View.Character;
-using Remagures.View.Inventory;
 
 namespace Remagures.Model.Character
 {
     public sealed class CharacterAttacker
     {
-        public bool CanAttack 
-            => _attackTask.Status == UniTaskStatus.Succeeded;
-
-        //private PlayerInteractingHandler _playerInteractingHandler;
-        
         private readonly ICharacterAttackerView _view;
-        private UniTask _attackTask;
-        
-        private Player _player;
-        private UniqueSetup _uniqueSetup;
+        private readonly IInventoryCellSelector<IWeaponItem> _weaponInventorySelector;
 
-        public void UseAttack()
+        public bool IsAttacking { get; private set; }
+        private const int ATTACKING_TIME_IN_MILLISECONDS = 330;
+
+        public CharacterAttacker(ICharacterAttackerView view, IInventoryCellSelector<IWeaponItem> weaponInventorySelector)
+        {
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+            _weaponInventorySelector = weaponInventorySelector ?? throw new ArgumentNullException(nameof(weaponInventorySelector));
+        }
+
+        public async void UseAttack()
         {
             //if (_playerInteractingHandler.CurrentState == InteractingState.Ready) //TODO place this logic in another class
             //{
             //    _playerInteractingHandler.Interact();
             //    return;
             //}
+
+            if (IsAttacking) 
+                return;
             
-            if (_attackTask.Status == UniTaskStatus.Succeeded && _player.CurrentState != PlayerState.Attack && _uniqueSetup.WeaponCellView.ThisCell.Item.Name != "")
-                _attackTask = Attack();
+            _weaponInventorySelector.SelectedCell.Item.Use();
+            await AttackTask();
         }
 
-        private async UniTask Attack()
+        private async UniTask AttackTask()
         {
-            _player.ChangeState(PlayerState.Attack);
+            IsAttacking = true;
             _view.PlayAttackAnimation();
-
-            await UniTask.Delay(330);
+            
+            await UniTask.Delay(ATTACKING_TIME_IN_MILLISECONDS);
+            
             _view.StopAttackAnimation();
-
-            if (_player.CurrentState != PlayerState.Interact)
-                _player.ChangeState(PlayerState.Idle);
+            IsAttacking = false;
         }
     }
 }

@@ -57,8 +57,8 @@ namespace Remagures.AI.Enemies.TurretEnemies
 
             if (TryGetComponent(out IKnockable knockable))
             {
-                StateMachine.AddTransition(knockedState, attackPlayerState, () => !knockable.IsKnocked);
-                StateMachine.AddAnyTransition(knockedState, () => knockable.IsKnocked);
+                StateMachine.AddTransition(knockedState, attackPlayerState, () => !knockable.IsKnocking);
+                StateMachine.AddAnyTransition(knockedState, () => knockable.IsKnocking);
             }
 
             StateMachine.SetState(playerNotInRangeState);

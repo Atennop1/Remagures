@@ -10,10 +10,7 @@ namespace Remagures.Components
         [Header("Colors")]
         [SerializeField] private Color _colorOfPlayer;
         [SerializeField] private Color _colorOfOther;
-
-        [Space]
         [SerializeField] private GameObject _menuOfChoose;
-        [SerializeField] private FloatValue _currentHealth;
 
         private float _currentTime;
         private Coroutine _colorCoroutine;
@@ -30,7 +27,8 @@ namespace Remagures.Components
 
         public void Update()
         {
-            if (!_isGameOver || !(_currentTime < 1)) return;
+            if (!_isGameOver || !(_currentTime < 1)) 
+                return;
         
             _colorCoroutine ??= StartCoroutine(Timer());
 
@@ -59,13 +57,10 @@ namespace Remagures.Components
                 _menuOfChoose.SetActive(true);
         }
 
-        public void Init()
+        private void Awake()
         {
             _spriteRenderers = FindObjectsOfType<SpriteRenderer>();
             _tilemaps = FindObjectsOfType<Tilemap>();
         }
-
-        public void SetGameOver()
-            => _isGameOver = _currentHealth.Value <= 0;
     }
 }
