@@ -1,5 +1,6 @@
-﻿// TODO drop this logic from Death() method in other places using polling:
+﻿//TODO add abstraction to all game after redesign
 
+// TODO drop this logic from Death() method in other places using polling:
 _currentHealth.Value = _heartContainers.Value * 4;
 Instantiate(_deathEffect, transform.position, Quaternion.identity);
         
