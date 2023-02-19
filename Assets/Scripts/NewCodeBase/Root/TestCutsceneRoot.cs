@@ -2,7 +2,6 @@
 using Remagures.Model.Character;
 using Remagures.Model.CutscenesSystem;
 using Remagures.Model.DialogSystem;
-using Remagures.Model.Interactable;
 using Remagures.View;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +27,7 @@ namespace Remagures.Root
             var actions = new List<ICutsceneAction>
             {
                 new StartAction(_uiActivityChanger),
-                new TeleportAction(characterMovement.transform, new Vector2(-6.5f, 5)),
+                new TeleportAction(characterMovement.Transform, new Vector2(-6.5f, 5)),
                 
                 new TimerAction(1.5f),
                 new MoveAction(characterMovement, new Vector2(0, 5)),

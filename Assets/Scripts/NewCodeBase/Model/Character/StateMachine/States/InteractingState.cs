@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.AI.StateMachine;
+using Remagures.Model.AI.StateMachine;
 using UnityEngine;
 
 namespace Remagures.Model.Character

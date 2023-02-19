@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Remagures.Model.InventorySystem;
 using Remagures.SO;
+using Remagures.Tools;
 using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 
 namespace Remagures.Model.Interactable
@@ -12,7 +13,7 @@ namespace Remagures.Model.Interactable
         public bool HasInteracted { get; private set; }
         public Item Item { get; }
         
-        private readonly Inventory _inventory;
+        private readonly IInventory _inventory;
         private readonly string _name;
 
         private readonly BinaryStorage _storage = new();

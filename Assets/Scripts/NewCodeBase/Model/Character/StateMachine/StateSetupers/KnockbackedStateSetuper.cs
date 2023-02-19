@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.AI.StateMachine;
+using Remagures.Model.AI.StateMachine;
 using Remagures.Model.Knockback;
 
 namespace Remagures.Model.Character
@@ -17,8 +17,8 @@ namespace Remagures.Model.Character
 
         public void Setup(StateMachine stateMachine)
         {
-            stateMachine.AddAnyTransition(_states.KnockbackedState, () => _characterKnockable.IsKnocking);
-            stateMachine.AddExceptionToAnyTransition(_states.KnockbackedState, _states.DeathState, _states.InteractingState);
+            stateMachine.AddUniversalTransition(_states.KnockbackedState, () => _characterKnockable.IsKnocking);
+            stateMachine.AddExceptionToUniversalTransition(_states.KnockbackedState, _states.DeathState, _states.InteractingState);
             stateMachine.AddTransition(_states.KnockbackedState, _states.StandingState, () => !_characterKnockable.IsKnocking);
         }
     }

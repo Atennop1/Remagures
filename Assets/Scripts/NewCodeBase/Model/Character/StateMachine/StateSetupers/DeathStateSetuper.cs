@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.AI.StateMachine;
+using Remagures.Model.AI.StateMachine;
 using Remagures.Model.Health;
 
 namespace Remagures.Model.Character
@@ -16,6 +16,6 @@ namespace Remagures.Model.Character
         }
 
         public void Setup(StateMachine stateMachine)
-            => stateMachine.AddAnyTransition(_states.DeathState, () => _playerHealth.IsDead);
+            => stateMachine.AddUniversalTransition(_states.DeathState, () => _playerHealth.IsDead);
     }
 }
