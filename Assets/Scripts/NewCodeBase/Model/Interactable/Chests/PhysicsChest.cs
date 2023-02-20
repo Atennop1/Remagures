@@ -10,7 +10,7 @@ namespace Remagures.Model.Interactable
         [SerializeField] private Signal _raiseItemSignal;
         [SerializeField] private Collider2D _triggerCollider;
 
-        public bool HasInteracted => _chest.HasInteracted;
+        public bool HasInteractionEnded => _chest.HasInteractionEnded;
         public bool IsOpened => _chest.IsOpened;
         public Item Item => _chest.Item;
 

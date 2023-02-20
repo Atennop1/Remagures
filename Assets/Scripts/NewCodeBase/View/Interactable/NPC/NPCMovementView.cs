@@ -9,5 +9,11 @@ namespace Remagures.View.Interactable
         
         public void DisplayMovementDirection(Vector2 direction)
             => _npcAnimations.SetAnimationsVector(direction);
+
+        public void DisplayMovement()
+            => _npcAnimations.DeactivateIsStaying();
+
+        public void DisplayStaying()
+            => _npcAnimations.ActivateIsStaying();
     }
 }

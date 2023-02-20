@@ -10,7 +10,7 @@ namespace Remagures.Model.Interactable
     public sealed class Chest : IChest
     {
         public bool IsOpened { get; private set; }
-        public bool HasInteracted { get; private set; }
+        public bool HasInteractionEnded { get; private set; }
         public Item Item { get; }
         
         private readonly IInventory _inventory;
@@ -40,7 +40,7 @@ namespace Remagures.Model.Interactable
                 _inventory.Add(newCell);
 
             IsOpened = true;
-            HasInteracted = true;
+            HasInteractionEnded = true;
             _storage.Save(IsOpened, _name);
         }
 

@@ -22,7 +22,7 @@ namespace Remagures.Model.SceneTransition
             if (!_sceneTransition.HasActivated) 
                 return;
             
-            var data = new CharacterPositionData(_characterMovement.transform.position, _characterMovement.CharacterLookDirection);
+            var data = new CharacterPositionData(_characterMovement.Transform.position, _characterMovement.CharacterLookDirection);
             _characterPositionStorage.Save(data);
         }
     }

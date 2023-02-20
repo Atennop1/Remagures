@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Remagures.Model.AI.StateMachine;
+using Remagures.Model.Character;
 
-namespace Remagures.Model.Character
+namespace Remagures.Model.AI.StateMachine
 {
-    public class CharacterStateMachineBuilder
+    public class StateMachineBuilder
     {
         private readonly List<IStateSetuper> _stateSetupers;
 
-        public CharacterStateMachineBuilder(List<IStateSetuper> stateSetupers)
+        public StateMachineBuilder(List<IStateSetuper> stateSetupers)
             => _stateSetupers = stateSetupers ?? throw new ArgumentNullException(nameof(stateSetupers));
 
         public StateMachine Build()

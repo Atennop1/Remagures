@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Remagures.Model.AI.NPC
 {
@@ -8,7 +10,13 @@ namespace Remagures.Model.AI.NPC
 
         private readonly INPCMovement _npcMovement;
         private readonly Transform _npcTransform;
-        
+
+        public RandomNPCMover(INPCMovement npcMovement, Transform npcTransform)
+        {
+            _npcMovement = npcMovement ?? throw new ArgumentNullException(nameof(npcMovement));
+            _npcTransform = npcTransform ?? throw new ArgumentNullException(nameof(npcTransform));
+        }
+
         public void Move()
         {
             var targetPosition = (Vector2)_npcTransform.position + MoveDirection * 2;
@@ -24,7 +32,7 @@ namespace Remagures.Model.AI.NPC
             }
         }
 
-        public void StopMove()
+        public void StopMoving()
             => _npcMovement.StopMoving();
 
         public void ChooseDifferentDirection()

@@ -5,7 +5,7 @@ namespace Remagures.Model.Interactable
 {
     public sealed class PhysicsInteractable : MonoBehaviour, IInteractable
     {
-        public bool HasInteracted => _interactable.HasInteracted;
+        public bool HasInteractionEnded => _interactable.HasInteractionEnded;
         
         private IInteractable _interactable;
         

@@ -33,7 +33,7 @@ namespace Remagures.Model.SceneTransition
         
         private void StartMovingCutscene()
         {
-            var moveTo = (Vector2)_characterMovement.transform.position + _characterMovement.CharacterLookDirection * 2;
+            var moveTo = (Vector2)_characterMovement.Transform.position + _characterMovement.CharacterLookDirection * 2;
             
             var transitingCutscene = new Cutscene(new List<ICutsceneAction>
             {

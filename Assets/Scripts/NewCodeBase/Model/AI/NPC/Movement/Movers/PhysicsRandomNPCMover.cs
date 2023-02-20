@@ -5,9 +5,9 @@ namespace Remagures.Model.AI.NPC
 {
     public class PhysicsRandomNPCMover : MonoBehaviour
     {
-        private RandomNPCMover _randomNpcMover;
+        private IRandomNPCMover _randomNpcMover;
 
-        public void Construct(RandomNPCMover randomNpcMover)
+        public void Construct(IRandomNPCMover randomNpcMover)
             => _randomNpcMover = randomNpcMover ?? throw new ArgumentNullException(nameof(randomNpcMover));
         
         private void OnCollisionEnter2D()

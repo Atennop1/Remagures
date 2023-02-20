@@ -7,7 +7,7 @@ namespace Remagures.Model.Interactable
 {
     public sealed class ChestWithInteractionEndWhenButtonClicked : IChest
     {
-        public bool HasInteracted { get; private set; }
+        public bool HasInteractionEnded { get; private set; }
         public bool IsOpened => _chest.IsOpened;
         public Item Item => _chest.Item;
 
@@ -37,6 +37,6 @@ namespace Remagures.Model.Interactable
         }
 
         private void OnClick()
-            => HasInteracted = true;
+            => HasInteractionEnded = true;
     }
 }

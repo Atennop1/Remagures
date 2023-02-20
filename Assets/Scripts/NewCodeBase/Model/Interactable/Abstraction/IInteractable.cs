@@ -2,7 +2,7 @@
 {
     public interface IInteractable
     {
-        bool HasInteracted { get; }
+        bool HasInteractionEnded { get; }
         void Interact();
         void EndInteracting();
     }

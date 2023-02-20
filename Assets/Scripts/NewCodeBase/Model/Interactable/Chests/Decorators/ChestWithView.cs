@@ -7,7 +7,7 @@ namespace Remagures.Model.Interactable
 {
     public sealed class ChestWithView : IChest
     {
-        public bool HasInteracted { get; }
+        public bool HasInteractionEnded { get; }
         public bool IsOpened => _chest.IsOpened;
         public Item Item => _chest.Item;
 

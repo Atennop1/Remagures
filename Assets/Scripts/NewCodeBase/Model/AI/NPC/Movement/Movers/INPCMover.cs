@@ -3,6 +3,6 @@
     public interface INPCMover
     {
         void Move();
-        void StopMove();
+        void StopMoving();
     }
 }

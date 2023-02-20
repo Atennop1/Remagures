@@ -1,10 +1,9 @@
-﻿using Remagures.Model.Input;
-using Remagures.View.Character;
+﻿using Remagures.View.Character;
 using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterStatesBuilder
+    public class CharacterStatesBuilder //TODO split this to few components and add abstraction
     {
         private readonly CharacterAttacker _characterAttacker;
         private readonly ICharacterInteractor _characterInteractor;
