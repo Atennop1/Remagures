@@ -1,24 +1,24 @@
-using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+using System;
+using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies 
 {
     public class WhilePlayerNotInRange : IState
     {
         private readonly IEnemyWithTarget _enemyWithTarget;
-        private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public WhilePlayerNotInRange(IEnemyWithTarget enemyWithTarget)
-            => _enemyWithTarget = enemyWithTarget;
+        public WhilePlayerNotInRange(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        {
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+        }
 
-            public void OnEnter()
+        public void OnEnter()
         {
             _enemyWithTarget.Movement.StopMoving();
-            var enemyAnimator = _enemyWithTarget.Animations.Animator;
-            
-            enemyAnimator.SetBool(WAKE_UP_ANIMATOR_NAME, false);
-            enemyAnimator.SetBool(IS_STAYING_ANIMATOR_NAME, false);
+            _enemyMovementView.SetIsWakeUp(false);
+            _enemyMovementView.SetIsStaying(false);
         }
 
         public void OnExit() { }

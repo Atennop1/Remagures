@@ -1,78 +1,64 @@
-﻿using System.Collections;
-using Remagures.Model.AI.Pathfinding;
+﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using Remagures.Tools;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Remagures.Model.AI.Enemies
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class DefaultEnemyMovement : MonoBehaviour, IEnemyMovement
+    public class DefaultEnemyMovement : IEnemyMovement
     {
-        [FormerlySerializedAs("Speed")] [field: SerializeField] private float _speed;
-        private Rigidbody2D _rigidbody;
-        private EnemyAnimations _enemyAnimations;
-
-        private Pathfinder _pathfinding;
-        private Coroutine _movingCoroutine;
-        
         public bool CanMove { get; private set; }
+        public Transform Transform => _rigidbody.transform;
+        
+        private readonly Rigidbody2D _rigidbody;
+        private readonly EnemyAnimations _enemyAnimations;
+        private readonly float _speed;
 
-        public void Move(Transform targetTransform)
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public DefaultEnemyMovement(Rigidbody2D rigidbody, EnemyAnimations enemyAnimations, float speed)
+        {
+            _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
+            _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));
+            _speed = speed.ThrowExceptionIfLessOrEqualsZero();
+        }
+
+        public async void Move(Vector3 targetPosition)
         {
             if (!CanMove) 
                 return;
             
-            _pathfinding.FindPath(transform.position, targetTransform.position +
-                                                     (targetTransform.gameObject.TryGetComponent<Player>(out _)
-                                                         ? new Vector3(0, 0.6f, 0)
-                                                         : Vector3.zero));
-
-            if (_pathfinding.Path is not { Count: > 0 }) return;
-
-            var firstMovePoint = _pathfinding.Path[0].WorldPosition + new Vector3(0, 0.5f, 0);
-
             StopMoving();
-            _movingCoroutine = StartCoroutine(MoveCoroutine(firstMovePoint, _speed));
-            _enemyAnimations?.SetAnimFloat(firstMovePoint - transform.position, _enemyAnimations.Animator);
+            _cancellationTokenSource = new CancellationTokenSource();
+            
+            await MoveTask(targetPosition);
+            _enemyAnimations.SetAnimationsVector((Vector2)targetPosition - _rigidbody.position);
         }
 
         public void StopMoving()
         {
-            if (_movingCoroutine != null)
-                StopCoroutine(_movingCoroutine);
+            _cancellationTokenSource.Cancel();
             CanMove = true;
         }
         
-        private IEnumerator MoveCoroutine(Vector3 targetPosition, float speed)
+        private async UniTask MoveTask(Vector3 targetPosition)
         {
             CanMove = false;
-            while (Vector3.Distance(transform.position, targetPosition) > 0.05f)
-            {
-                var temp = transform.position + speed * UnityEngine.Time.deltaTime * (targetPosition - transform.position).normalized;
-                _rigidbody.MovePosition(temp);
-                yield return new WaitForFixedUpdate();
-            }
             
-            transform.position = targetPosition;
-            CanMove = true;
-        }
+            while (Vector3.Distance(_rigidbody.transform.position, targetPosition) > 0.05f)
+            {
+                if (_cancellationTokenSource.IsCancellationRequested)
+                    return;
 
-        private IEnumerator CanFindPathCoroutine()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(1);
-                CanMove = true;
+                var direction = (targetPosition - _rigidbody.transform.position).normalized;
+                var totalPosition = _rigidbody.transform.position + _speed * UnityEngine.Time.deltaTime * direction;
+                
+                _rigidbody.MovePosition(totalPosition);
+                await UniTask.WaitForFixedUpdate();
             }
-        }
-        
-        private void Start()
-        {
-            _pathfinding = GetComponent<Pathfinder>();
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _enemyAnimations = GetComponent<EnemyAnimations>();
             
-            StartCoroutine(CanFindPathCoroutine());
+            _rigidbody.transform.position = targetPosition;
             CanMove = true;
         }
     }

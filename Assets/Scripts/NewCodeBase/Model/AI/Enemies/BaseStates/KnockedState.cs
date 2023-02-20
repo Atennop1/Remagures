@@ -1,5 +1,4 @@
-﻿using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {

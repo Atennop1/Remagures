@@ -14,7 +14,7 @@ namespace Remagures.Model.AI.NPC.StateSetupers
             _movementStatesChanger = movementStatesChanger ?? throw new ArgumentNullException(nameof(movementStatesChanger));
         }
 
-        public void Setup(StateMachine.StateMachine stateMachine)
+        public void Setup(StateMachine stateMachine)
         {
             stateMachine.AddTransition(_dudeStates.WalkingState, _dudeStates.StayingState, () => _movementStatesChanger.HasEndedMoving);
             stateMachine.AddTransition(_dudeStates.StayingState, _dudeStates.WalkingState, () => _movementStatesChanger.HasStartedMoving);

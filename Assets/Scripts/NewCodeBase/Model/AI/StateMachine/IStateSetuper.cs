@@ -1,6 +1,4 @@
-﻿using Remagures.Model.AI.StateMachine;
-
-namespace Remagures.Model.Character
+﻿namespace Remagures.Model.AI
 {
     public interface IStateSetuper
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Remagures.Model.AI.StateMachine;
 using Random = UnityEngine.Random;
 
 namespace Remagures.Model.AI.NPC

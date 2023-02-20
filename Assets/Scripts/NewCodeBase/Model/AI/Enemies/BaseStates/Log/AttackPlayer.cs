@@ -1,4 +1,5 @@
-using Remagures.Model.AI.StateMachine;
+using System;
+using Remagures.View.Enemies;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies 
@@ -6,22 +7,25 @@ namespace Remagures.Model.AI.Enemies
     public sealed class AttackPlayer : IState
     {
         private readonly IEnemyWithTarget _enemyWithTarget;
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public AttackPlayer(IEnemyWithTarget enemyWithTarget)
-            => _enemyWithTarget = enemyWithTarget;
+        public AttackPlayer(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        {
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+        }
 
         public void Update()
         {
             var enemyAnimator = _enemyWithTarget.Animations.Animator;
-            var temp = Vector3.MoveTowards(enemyAnimator.transform.position, _enemyWithTarget.TargetData.Target.position, 1);
-            _enemyWithTarget.Animations.ChangeAnim(temp - enemyAnimator.transform.position, enemyAnimator);
+            var totalMovingPoint = Vector3.MoveTowards(enemyAnimator.transform.position, _enemyWithTarget.TargetData.Transform.position, 1);
+            _enemyWithTarget.Animations.SetAnimationsVector(totalMovingPoint - enemyAnimator.transform.position);
         }
 
         public void OnEnter()
         {
             _enemyWithTarget.Movement.StopMoving();
-            _enemyWithTarget.Animations.Animator.SetBool(IS_STAYING_ANIMATOR_NAME, true);
+            _enemyMovementView.SetIsStaying(true);
         }
 
         public void OnExit() { }

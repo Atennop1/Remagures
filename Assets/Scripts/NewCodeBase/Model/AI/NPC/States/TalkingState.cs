@@ -1,6 +1,4 @@
-﻿using Remagures.Model.AI.StateMachine;
-
-namespace Remagures.Model.AI.NPC
+﻿namespace Remagures.Model.AI.NPC
 {
     public class TalkingState : IState
     {

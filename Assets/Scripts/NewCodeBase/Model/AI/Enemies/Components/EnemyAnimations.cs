@@ -1,36 +1,43 @@
+using System;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    [RequireComponent(typeof(Animator))]
-    public class EnemyAnimations : MonoBehaviour
+    public class EnemyAnimations
     {
-        public Animator Animator { get; private set; }
+        public Animator Animator { get; }
 
-        private readonly int MOVE_X_ANIMATOR_NAME = Animator.StringToHash("moveX");
-        private readonly int MOVE_Y_ANIMATOR_NAME = Animator.StringToHash("moveY");
+        private readonly int MOVE_X_ANIMATION_HASH = Animator.StringToHash("moveX");
+        private readonly int MOVE_Y_ANIMATION_HASH = Animator.StringToHash("moveY");
+        
+        private readonly int WAKE_UP_ANIMATION_HASH = Animator.StringToHash("wakeUp");
+        private readonly int IS_STAYING_ANIMATION_HASH = Animator.StringToHash("isStaying");
+        
+        public EnemyAnimations(Animator animator)
+            => Animator = animator ?? throw new ArgumentNullException(nameof(animator));
 
-        public void Awake()
+        public void SetAnimationsVector(Vector2 vector)
         {
-            Animator = GetComponent<Animator>();
+            Animator.SetFloat(MOVE_X_ANIMATION_HASH, vector.x);
+            Animator.SetFloat(MOVE_Y_ANIMATION_HASH, vector.y);
         }
-    
-        public void SetAnimFloat(Vector2 setVector, Animator anim)
-        {
-            anim.SetFloat(MOVE_X_ANIMATOR_NAME, setVector.x);
-            anim.SetFloat(MOVE_Y_ANIMATOR_NAME, setVector.y);
-        }
+        
+        public void SetIsWakeUp(bool isActive)
+            => Animator.SetBool(WAKE_UP_ANIMATION_HASH, isActive);
 
-        public void ChangeAnim(Vector2 direction, Animator anim)
-        {
-            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                SetAnimFloat(direction.x > 0 ? Vector2.right : Vector2.left, anim);
-            }
-            else
-            {
-                SetAnimFloat(direction.y > 0 ? Vector2.up : Vector2.down, anim);
-            }
-        }
+        public void SetIsStaying(bool isActive)
+            => Animator.SetBool(IS_STAYING_ANIMATION_HASH, isActive);
+
+            //public void ChangeAnim(Vector2 direction) //TODO decide what to do with it
+        //{
+        //    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        //    {
+        //        SetAnimationsVector(direction.x > 0 ? Vector2.right : Vector2.left);
+        //    }
+        //    else
+        //    {
+        //        SetAnimationsVector(direction.y > 0 ? Vector2.up : Vector2.down);
+        //    }
+        //}
     }
 }

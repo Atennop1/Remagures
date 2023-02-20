@@ -1,11 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using Remagures.Tools;
+using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public sealed class EnemyTargetData : MonoBehaviour
+    public struct EnemyTargetData
     {
-        [field: SerializeField] public float AttackRadius { get; private set; }
-        [field: SerializeField] public float ChaseRadius { get; private set; }
-        [field: SerializeField] public Transform Target { get; private set; }
+        public readonly Transform Transform;
+        public readonly float AttackRadius;
+        public readonly float ChaseRadius;
+
+        public EnemyTargetData(Transform target, float attackRadius, float chaseRadius)
+        {
+            Transform = target ?? throw new ArgumentNullException(nameof(target));
+            AttackRadius = attackRadius.ThrowExceptionIfLessOrEqualsZero();
+            ChaseRadius = chaseRadius.ThrowExceptionIfLessOrEqualsZero();
+        }
     }
 }

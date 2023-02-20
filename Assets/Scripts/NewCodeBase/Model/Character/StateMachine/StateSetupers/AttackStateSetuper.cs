@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.Model.AI.StateMachine;
+using Remagures.Model.AI;
 using Remagures.Model.Input;
 
 namespace Remagures.Model.Character

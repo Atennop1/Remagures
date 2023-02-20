@@ -1,5 +1,4 @@
 ﻿using System;
-using Remagures.Model.AI.StateMachine;
 using Remagures.View.Interactable;
 using UnityEngine;
 

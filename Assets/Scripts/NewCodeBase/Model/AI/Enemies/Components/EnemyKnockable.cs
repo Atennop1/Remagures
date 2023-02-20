@@ -1,5 +1,4 @@
 using System.Collections;
-using Remagures.Model.AI.StateMachine;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;

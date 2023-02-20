@@ -1,22 +1,19 @@
-using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+using System;
+using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies.TurretEnemies
 {
     public sealed class WhilePlayerNotInRange : IState
     {
-        private readonly TurretEnemy _turretEnemy;
-        private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public WhilePlayerNotInRange(TurretEnemy turretEnemy)
-            => _turretEnemy = turretEnemy;
+        public WhilePlayerNotInRange(IEnemyMovementView enemyMovementView)
+            => _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
 
         public void OnEnter()
         {
-            var enemyAnimator = _turretEnemy.Animations.Animator;
-            enemyAnimator.SetBool(WAKE_UP_ANIMATOR_NAME, false);
-            enemyAnimator.SetBool(IS_STAYING_ANIMATOR_NAME, true);
+            _enemyMovementView.SetIsWakeUp(false);
+            _enemyMovementView.SetIsStaying(true);
         }
 
         public void OnExit() { }

@@ -1,23 +1,23 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using System;
+using Remagures.Model.Health;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyWithTarget : SerializedMonoBehaviour, IEnemyWithTarget
+    public class EnemyWithTarget : IEnemyWithTarget
     {
-        [SerializeField] private IEnemy _enemy;
-        [field: SerializeField] public EnemyTargetData TargetData { get; private set; }
+        public IEnemyMovement Movement => _enemy.Movement;
+        public IHealth Health => _enemy.Health;
         
-        public IEnemyMovement Movement 
-            => _enemy.Movement;
+        public EnemyAnimations Animations  => _enemy.Animations;
+        public StateMachine StateMachine => _enemy.StateMachine;
         
-        public Health.Health Health 
-            => _enemy.Health;
-        
-        public EnemyAnimations Animations 
-            => _enemy.Animations;
-        
-        public StateMachine.StateMachine StateMachine 
-            => _enemy.StateMachine;
+        public EnemyTargetData TargetData { get; }
+        private readonly IEnemy _enemy;
+
+        public EnemyWithTarget(IEnemy enemy, EnemyTargetData targetData)
+        {
+            _enemy = enemy ?? throw new ArgumentNullException(nameof(enemy));
+            TargetData = targetData;
+        }
     }
 }

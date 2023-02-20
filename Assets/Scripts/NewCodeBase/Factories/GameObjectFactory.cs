@@ -2,7 +2,7 @@
 
 namespace Remagures.Factories
 {
-    public class GameObjectFactory : MonoBehaviour, IGameObjectFactory
+    public class GameObjectFactory : MonoBehaviour, IGameObjectFactory //TODO make for this loot factory
     {
         [SerializeField] private GameObject _prefab;
         

@@ -14,7 +14,7 @@ namespace Remagures.Model.AI.NPC.StateSetupers
             _playerDetector = playerDetector ?? throw new ArgumentNullException(nameof(playerDetector));
         }
 
-        public void Setup(StateMachine.StateMachine stateMachine)
+        public void Setup(StateMachine stateMachine)
         {
             stateMachine.AddTransition(_states.StayingState, _states.WaitingState, () => _playerDetector.HasPlayerDetected);
             stateMachine.AddTransition(_states.WalkingState, _states.WaitingState, () => _playerDetector.HasPlayerDetected);

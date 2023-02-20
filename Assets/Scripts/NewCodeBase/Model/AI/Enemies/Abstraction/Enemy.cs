@@ -1,27 +1,23 @@
-using UnityEngine;
-using SM = Remagures.Model.AI.StateMachine.StateMachine;
+using System;
+using Remagures.Model.Health;
 
 namespace Remagures.Model.AI.Enemies
 {
-    [RequireComponent(typeof(EnemyAnimations))]
-    [RequireComponent(typeof(IEnemyMovement))]
-    public sealed class Enemy : MonoBehaviour, IEnemy
+    public sealed class Enemy : IEnemy
     {
-        public IEnemyMovement Movement { get; private set;  }
-        public Health.Health Health { get; private set;  }
+        public IEnemyMovement Movement { get; }
+        public IHealth Health { get; }
         
-        public EnemyAnimations Animations { get; private set; }
-        public SM StateMachine { get; private set; }
+        public EnemyAnimations Animations { get; }
+        public StateMachine StateMachine { get; } = new();
 
-        private void Awake()
+        private Enemy(IEnemyMovement movement, IHealth health, EnemyAnimations animations)
         {
-            Animations = GetComponent<EnemyAnimations>();
-            Health = GetComponent<Health.Health>();
-            
-            Movement = GetComponent<IEnemyMovement>();
-            StateMachine = new SM();
-            
-            StateMachine.AddUniversalTransition(new DeadState(this), () => Health.Value < 0);
+            Animations = animations ?? throw new ArgumentNullException(nameof(animations));
+            Health = health ?? throw new ArgumentNullException(nameof(health));
+
+            Movement = movement ?? throw new ArgumentNullException(nameof(movement));
+            StateMachine.AddUniversalTransition(new DeadState(this), () => Health.CurrentValue < 0);
         }
     }
 }

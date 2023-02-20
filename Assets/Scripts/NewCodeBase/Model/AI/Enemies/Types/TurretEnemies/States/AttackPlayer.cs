@@ -1,31 +1,30 @@
-using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+using System;
+using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies.TurretEnemies
 {
     public sealed class AttackPlayer : IState
     {
         private readonly TurretEnemy _turretEnemy;
-        private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public AttackPlayer(TurretEnemy turretEnemy)
-            => _turretEnemy = turretEnemy;
+        public AttackPlayer(TurretEnemy turretEnemy, IEnemyMovementView enemyMovementView)
+        {
+            _turretEnemy = turretEnemy ?? throw new ArgumentNullException(nameof(turretEnemy));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+        }
 
         public void Update()
         {
-            var distance = _turretEnemy.TargetData.Target.transform.position - _turretEnemy.transform.position;
-            _turretEnemy.InstantiateProjectile(distance);
-
-            var enemyAnimator = _turretEnemy.Animations.Animator;
-            _turretEnemy.Animations.ChangeAnim(distance, enemyAnimator);
+            var direction = _turretEnemy.TargetData.Transform.transform.position - _turretEnemy.transform.position;
+            _turretEnemy.InstantiateProjectile(direction);
+            _enemyMovementView.SetAnimationsVector(direction);
         }
 
         public void OnEnter()
         {
-            var enemyAnimator = _turretEnemy.Animations.Animator;
-            enemyAnimator.SetBool(WAKE_UP_ANIMATOR_NAME, true);
-            enemyAnimator.SetBool(IS_STAYING_ANIMATOR_NAME, true);
+            _enemyMovementView.SetIsWakeUp(true);
+            _enemyMovementView.SetIsStaying(true);
         }
         
         public void OnExit() { }

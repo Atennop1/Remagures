@@ -1,13 +1,13 @@
-﻿using SM = Remagures.Model.AI.StateMachine.StateMachine;
+﻿using Remagures.Model.Health;
 
 namespace Remagures.Model.AI.Enemies
 {
     public interface IEnemy
     {
         IEnemyMovement Movement { get; }
-        Health.Health Health { get; }
+        IHealth Health { get; }
         
         EnemyAnimations Animations { get; }
-        SM StateMachine { get; }
+        StateMachine StateMachine { get; }
     }
 }

@@ -1,8 +1,7 @@
-using Remagures.Model.AI.StateMachine;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using SM = Remagures.Model.AI.StateMachine.StateMachine;
+using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.PatrollingEnemies
 {
@@ -48,12 +47,12 @@ namespace Remagures.Model.AI.Enemies.PatrollingEnemies
             => StateMachine.Tick();
         
         private bool PlayerTooNear() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
+            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.AttackRadius;
         
         private bool SeePlayer() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.ChaseRadius;
         
         private bool PlayerTooFar() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) > TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, transform.position) > TargetData.ChaseRadius;
     }
 }

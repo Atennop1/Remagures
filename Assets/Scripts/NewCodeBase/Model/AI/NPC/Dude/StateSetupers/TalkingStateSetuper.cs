@@ -14,7 +14,7 @@ namespace Remagures.Model.AI.NPC.StateSetupers
             _npcInteractable = npcInteractable ?? throw new ArgumentNullException(nameof(npcInteractable));
         }
 
-        public void Setup(StateMachine.StateMachine stateMachine)
+        public void Setup(StateMachine stateMachine)
         {
             stateMachine.AddTransition(_states.WaitingState, _states.TalkingState, () => _npcInteractable.HasInteractionStarted);
             stateMachine.AddTransition(_states.TalkingState, _states.WaitingState, () => _npcInteractable.HasInteractionEnded);

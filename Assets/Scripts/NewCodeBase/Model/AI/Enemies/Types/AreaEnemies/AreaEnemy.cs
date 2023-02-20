@@ -1,19 +1,19 @@
-using Remagures.Model.AI.StateMachine;
+using Remagures.Model.Health;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
-using SM = Remagures.Model.AI.StateMachine.StateMachine;
+using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.AreaEnemies
 {
-    public sealed class AreaEnemy : SerializedMonoBehaviour, IEnemyWithTarget
+    public sealed class AreaEnemy : IEnemyWithTarget
     {
         [SerializeField] private IEnemyWithTarget _enemyWithTarget;
-        [FormerlySerializedAs("Boundary")] [SerializeField] private Collider2D _boundary;
+        [SerializeField] private Collider2D _boundary;
 
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
-        public Health.Health Health => _enemyWithTarget.Health;
+        public IHealth Health => _enemyWithTarget.Health;
         public EnemyAnimations Animations => _enemyWithTarget.Animations;
         
         public SM StateMachine => _enemyWithTarget.StateMachine;
@@ -45,12 +45,12 @@ namespace Remagures.Model.AI.Enemies.AreaEnemies
             => StateMachine.Tick();
         
         private bool PlayerTooNear() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.AttackRadius;
+            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.AttackRadius;
         
         private bool SeePlayer() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) <= TargetData.ChaseRadius && _boundary.bounds.Contains(TargetData.Target.position);
+            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.ChaseRadius && _boundary.bounds.Contains(TargetData.Transform.position);
         
         private bool PlayerTooFar() 
-            => Vector3.Distance(TargetData.Target.position, transform.position) >= TargetData.ChaseRadius || !_boundary.bounds.Contains(TargetData.Target.position);
+            => Vector3.Distance(TargetData.Transform.position, transform.position) >= TargetData.ChaseRadius || !_boundary.bounds.Contains(TargetData.Transform.position);
     }
 }

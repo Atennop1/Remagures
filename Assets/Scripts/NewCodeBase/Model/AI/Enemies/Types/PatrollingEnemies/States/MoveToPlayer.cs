@@ -1,20 +1,23 @@
-using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+using System;
+using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies.PatrollingEnemies
 {
     public sealed class MoveToPlayer : IState
     {
         private readonly PatrollingEnemy _patrollingEnemy;
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public MoveToPlayer(PatrollingEnemy patrollingEnemy)
-            => _patrollingEnemy = patrollingEnemy;
+        public MoveToPlayer(PatrollingEnemy patrollingEnemy, IEnemyMovementView enemyMovementView)
+        {
+            _patrollingEnemy = patrollingEnemy ?? throw new ArgumentNullException(nameof(patrollingEnemy));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+        }
 
         public void Update()
         {
-            _patrollingEnemy.Movement.Move(_patrollingEnemy.TargetData.Target);
-            _patrollingEnemy.Animations.Animator.SetBool(IS_STAYING_ANIMATOR_NAME, false);
+            _patrollingEnemy.Movement.Move(_patrollingEnemy.TargetData.Transform.position);
+            _enemyMovementView.SetIsStaying(false);
         }
 
         public void OnEnter() { }

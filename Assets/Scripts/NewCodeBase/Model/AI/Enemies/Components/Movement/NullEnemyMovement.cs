@@ -2,10 +2,12 @@
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class NullEnemyMovement : MonoBehaviour, IEnemyMovement
+    public class NullEnemyMovement : IEnemyMovement
     {
-        public void Move(Transform targetTransform) { }
-        public void StopMoving() { }
         public bool CanMove => true;
+        public Transform Transform => null;
+        
+        public void Move(Vector3 targetPosition) { }
+        public void StopMoving() { }
     }
 }

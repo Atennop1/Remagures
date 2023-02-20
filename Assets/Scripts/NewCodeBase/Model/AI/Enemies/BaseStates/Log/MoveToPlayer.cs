@@ -1,27 +1,27 @@
-using Remagures.Model.AI.StateMachine;
-using UnityEngine;
+using System;
+using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies 
 {
     public class MoveToPlayer : IState
     {
         private readonly IEnemyWithTarget _enemyWithTarget;
-        private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");
-        private readonly int IS_STAYING_ANIMATOR_NAME = Animator.StringToHash("isStaying");
+        private readonly IEnemyMovementView _enemyMovementView;
 
-        public MoveToPlayer(IEnemyWithTarget enemyWithTarget)
-            => _enemyWithTarget = enemyWithTarget;
-
-        public void OnEnter() { }
-        public void OnExit() { }
+        public MoveToPlayer(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        {
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+        }
 
         public void Update()
         {
-            _enemyWithTarget.Movement.Move(_enemyWithTarget.TargetData.Target);
-            var enemyAnimator = _enemyWithTarget.Animations.Animator;
-            
-            enemyAnimator.SetBool(WAKE_UP_ANIMATOR_NAME, true);
-            enemyAnimator.SetBool(IS_STAYING_ANIMATOR_NAME, false);
+            _enemyWithTarget.Movement.Move(_enemyWithTarget.TargetData.Transform.position);
+            _enemyMovementView.SetIsWakeUp(true);
+            _enemyMovementView.SetIsStaying(false);
         }
+        
+        public void OnEnter() { }
+        public void OnExit() { }
     }
 }

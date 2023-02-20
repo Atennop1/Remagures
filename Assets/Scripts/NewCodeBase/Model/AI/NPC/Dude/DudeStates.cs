@@ -1,5 +1,4 @@
 ﻿using System;
-using Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.NPC
 {

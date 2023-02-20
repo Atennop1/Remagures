@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Remagures.Model.Character;
 
-namespace Remagures.Model.AI.StateMachine
+namespace Remagures.Model.AI
 {
     public class StateMachineBuilder
     {

@@ -1,4 +1,4 @@
-﻿using Remagures.Model.AI.StateMachine;
+﻿using Remagures.Model.AI;
 
 namespace Remagures.Model.Character
 {
