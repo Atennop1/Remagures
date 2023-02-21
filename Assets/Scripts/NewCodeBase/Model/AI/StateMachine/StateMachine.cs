@@ -25,10 +25,10 @@ namespace Remagures.Model.AI
 
         public void SetState(IState state)
         {
-            if (IsStateBannedInCurrentContext(state))
+            if (IsStateBannedInCurrentContext(state.GetType()))
                 throw new ArgumentException( $"Can't set {state} because it's banned in the given context");
             
-            if (IsStateAlreadySet(state))
+            if (IsStateAlreadySet(state.GetType()))
                 throw new ArgumentException( $"Can't set {state} because it's already set");
 
             _currentState?.OnExit();
@@ -54,33 +54,26 @@ namespace Remagures.Model.AI
         public void AddUniversalTransition(IState to, Func<bool> predicate)
             => _universalTransitions.Add(new Transition(to, predicate, null));
 
-        public void AddExceptionsToTransition(IState from, params IState[] exceptions)
-        {
-            if (_transitions.TryGetValue(from.GetType(), out var transitions) == false)
-            {
-                transitions = new List<Transition>();
-                _transitions[from.GetType()] = transitions;
-            }
-
-            var exceptionsTypes = exceptions.Select(exception => exception.GetType()).ToList();
-            transitions.Add(new Transition(null, null, exceptionsTypes));
-        }
-
         public void AddExceptionToUniversalTransition(IState to, params IState[] exceptions)
         {
             var exceptionsTypes = exceptions.Select(exception => exception.GetType()).ToList();
             _universalTransitions.Add(new Transition(to, null, exceptionsTypes));
         }
+
+        public bool CanSetState(Type stateType)
+            => !IsStateBannedInCurrentContext(stateType) && !IsStateAlreadySet(stateType); 
         
-        public bool IsStateBannedInCurrentContext(IState state)
+        private bool IsStateBannedInCurrentContext(Type stateType)
         {
-            if (_currentState == null) return false;
+            if (_currentState == null) 
+                return false;
+            
             _transitions.TryGetValue(_currentState.GetType(), out _currentTransitions);
-            return _currentTransitions != null && _currentTransitions.Any(transition => transition.Exceptions != null && transition.Exceptions.Contains(state.GetType()));
+            return _currentTransitions != null && _currentTransitions.Any(transition => transition.Exceptions != null && transition.Exceptions.Contains(stateType));
         }
 
-        public bool IsStateAlreadySet(IState state) 
-            => state == _currentState;
+        private bool IsStateAlreadySet(Type stateType) 
+            => stateType == _currentState.GetType();
 
         private Transition GetTransition()
         {

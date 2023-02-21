@@ -22,6 +22,14 @@ namespace Remagures.Model.Knockback
             IsKnocking = true;
             await UniTask.Delay(knockTimeInMilliseconds);
             
+            if (!IsKnocking)
+                return;
+
+            StopKnocking();
+        }
+
+        public void StopKnocking()
+        {
             _rigidbody.velocity = Vector2.zero;
             IsKnocking = false;
         }

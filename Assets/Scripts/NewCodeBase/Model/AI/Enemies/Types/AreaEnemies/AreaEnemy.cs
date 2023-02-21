@@ -1,6 +1,5 @@
 using System;
 using Remagures.Model.Health;
-using Remagures.Model.Knockback;
 using Remagures.Root;
 using Remagures.View.Enemies;
 using UnityEngine;
@@ -8,7 +7,7 @@ using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.AreaEnemies
 {
-    public sealed class AreaEnemyStatesMachineBuilder : IEnemyWithTarget, IUpdatable
+    public sealed class AreaEnemy : IEnemyWithTarget, IUpdatable
     {
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public IHealth Health => _enemyWithTarget.Health;
@@ -24,7 +23,7 @@ namespace Remagures.Model.AI.Enemies.AreaEnemies
         public void Update() 
             => StateMachine.Tick();
 
-        public AreaEnemyStatesMachineBuilder(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView, Collider2D boundary)
+        public AreaEnemy(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView, Collider2D boundary)
         {
             _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
             _boundary = boundary ?? throw new ArgumentNullException(nameof(boundary));

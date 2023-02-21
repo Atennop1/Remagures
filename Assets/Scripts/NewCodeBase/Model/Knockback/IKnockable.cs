@@ -4,9 +4,10 @@ namespace Remagures.Model.Knockback
 {
     public interface IKnockable
     {
-        public LayerMask InteractionMask { get; }
-        public bool IsKnocking { get; }
+        LayerMask InteractionMask { get; }
+        bool IsKnocking { get; }
         
-        public void Knock(int knockTimeInMilliseconds);
+        void Knock(int knockTimeInMilliseconds);
+        void StopKnocking();
     }
 }
