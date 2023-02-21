@@ -3,7 +3,7 @@ using Remagures.Model.Health;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyWithTarget : IEnemyWithTarget
+    public sealed class EnemyWithTarget : IEnemyWithTarget
     {
         public IEnemyMovement Movement => _enemy.Movement;
         public IHealth Health => _enemy.Health;

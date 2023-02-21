@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.NPC
 {
-    public class NPCMovementStatesChanger : ILateUpdatable
+    public sealed class NPCMovementStatesChanger : ILateUpdatable
     {
         public bool HasStartedMoving { get; private set; }
         public bool HasEndedMoving { get; private set; }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class NPCMovement : INPCMovement
+    public sealed class NPCMovement : INPCMovement
     {
         private readonly INPCMovementView _npcMovementView;
         private readonly Rigidbody2D _rigidbody;

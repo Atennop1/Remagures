@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class PathfindingEnemyMovement : IEnemyMovement
+    public sealed class PathfindingEnemyMovement : IEnemyMovement
     {
         public bool CanMove { get; private set; }
         public Transform Transform => _enemyMovement.Transform;

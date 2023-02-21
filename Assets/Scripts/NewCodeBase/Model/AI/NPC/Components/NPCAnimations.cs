@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class NPCAnimations : MonoBehaviour
+    public sealed class NPCAnimations : MonoBehaviour
     {
         private readonly int MOVE_X_ANIMATION_HASH = Animator.StringToHash("moveX");
         private readonly int MOVE_Y_ANIMATION_HASH = Animator.StringToHash("moveY");

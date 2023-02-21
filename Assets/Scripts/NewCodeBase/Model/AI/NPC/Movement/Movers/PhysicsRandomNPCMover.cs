@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class PhysicsRandomNPCMover : MonoBehaviour
+    public sealed class PhysicsRandomNPCMover : MonoBehaviour
     {
         private IRandomNPCMover _randomNpcMover;
 

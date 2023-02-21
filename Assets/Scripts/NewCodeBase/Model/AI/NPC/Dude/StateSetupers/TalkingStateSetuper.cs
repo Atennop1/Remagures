@@ -3,7 +3,7 @@ using Remagures.Model.Character;
 
 namespace Remagures.Model.AI.NPC.StateSetupers
 {
-    public class TalkingStateSetuper : IStateSetuper
+    public sealed class TalkingStateSetuper : IStateSetuper
     {
         private readonly DudeStates _states;
         private readonly INPCInteractable _npcInteractable;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class RandomBoundedNPCMover : IRandomNPCMover
+    public sealed class RandomBoundedNPCMover : IRandomNPCMover
     {
         public Vector2 MoveDirection => _randomNpcMover.MoveDirection;
         

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class PatrolEnemyMovement : IEnemyMovement
+    public sealed class PatrolEnemyMovement : IEnemyMovement
     {
         public bool CanMove => _enemyMovement.CanMove;
         public Transform Transform => _enemyMovement.Transform;

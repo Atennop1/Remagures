@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public class PathfindingObstacleSetter
+    public sealed class PathfindingObstacleSetter
     {
         private readonly Transform _transform;
         private readonly PathfindingObstacleSetterData _data;

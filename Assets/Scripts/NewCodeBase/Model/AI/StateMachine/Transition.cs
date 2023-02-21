@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Remagures.Model.AI
 {
-    public class Transition
+    public sealed class Transition
     {
         public Func<bool> Condition {get; }
         public IState To { get; }

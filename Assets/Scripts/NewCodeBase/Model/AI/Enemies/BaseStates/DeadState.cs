@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class DeadState : IState
+    public sealed class DeadState : IState
     {
         private readonly IEnemyMovement _enemyMovement;
         private readonly IEnemyAnimations _enemyAnimations;

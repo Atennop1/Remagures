@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public struct PathfindingObstacleSetterData
+    public readonly struct PathfindingObstacleSetterData
     {
         public readonly bool IsSettingToRight;
         public readonly bool IsSettingToDown;

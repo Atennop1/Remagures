@@ -3,7 +3,7 @@ using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies 
 {
-    public class WhilePlayerNotInRange : IState
+    public sealed class WhilePlayerNotInRange : IState
     {
         private readonly IEnemyMovement _enemyMovement;
         private readonly IEnemyMovementView _enemyMovementView;

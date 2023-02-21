@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class WaitingState : IState
+    public sealed class WaitingState : IState
     {
         private readonly INPCMovementView _npcMovementView;
         private readonly Transform _npcTransform;

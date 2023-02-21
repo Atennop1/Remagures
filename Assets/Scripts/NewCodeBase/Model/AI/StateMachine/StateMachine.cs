@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Remagures.Model.AI
 {
-    public class StateMachine
+    public sealed class StateMachine
     {
         private IState _currentState;
    

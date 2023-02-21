@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyAnimations : IEnemyAnimations
+    public sealed class EnemyAnimations : IEnemyAnimations
     {
         private readonly int MOVE_X_ANIMATION_HASH = Animator.StringToHash("moveX");
         private readonly int MOVE_Y_ANIMATION_HASH = Animator.StringToHash("moveY");

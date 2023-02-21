@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public class Grid : IGrid
+    public sealed class Grid : IGrid
     {
         public GridNode[,] Nodes { get; }
         

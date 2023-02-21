@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class WalkingState : IState
+    public sealed class WalkingState : IState
     {
         private readonly NPCMovementStatesChanger _movementStatesChanger;
         private readonly IRandomNPCMover _randomNpcMover;

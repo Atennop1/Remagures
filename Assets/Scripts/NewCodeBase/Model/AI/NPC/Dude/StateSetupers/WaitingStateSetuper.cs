@@ -3,7 +3,7 @@ using Remagures.Model.Character;
 
 namespace Remagures.Model.AI.NPC.StateSetupers
 {
-    public class WaitingStateSetuper : IStateSetuper
+    public sealed class WaitingStateSetuper : IStateSetuper
     {
         private readonly DudeStates _states;
         private readonly NPCPlayerDetector _playerDetector;

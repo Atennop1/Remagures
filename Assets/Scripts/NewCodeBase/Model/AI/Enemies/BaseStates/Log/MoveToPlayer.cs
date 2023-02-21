@@ -3,7 +3,7 @@ using Remagures.View.Enemies;
 
 namespace Remagures.Model.AI.Enemies 
 {
-    public class MoveToPlayer : IState
+    public sealed class MoveToPlayer : IState
     {
         private readonly IEnemyMovement _enemyMovement;
         private readonly EnemyTargetData _enemyTargetData;

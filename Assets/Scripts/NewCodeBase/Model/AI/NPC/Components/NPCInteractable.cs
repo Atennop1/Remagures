@@ -5,7 +5,7 @@ using Remagures.View.Interactable;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class NPCInteractable : INPCInteractable, ILateUpdatable
+    public sealed class NPCInteractable : INPCInteractable, ILateUpdatable
     {
         public bool HasInteractionStarted { get; private set; }
         public bool HasInteractionEnded { get; private set; }

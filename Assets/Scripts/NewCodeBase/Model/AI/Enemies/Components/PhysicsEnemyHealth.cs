@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class PhysicsEnemyHealth : MonoBehaviour, IHealth
+    public sealed class PhysicsEnemyHealth : MonoBehaviour, IHealth
     {
         [SerializeField] private IGameObjectFactory _deathEffectFactory;
         [SerializeField] private IGameObjectFactory _lootFactory;

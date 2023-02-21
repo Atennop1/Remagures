@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public class PhysicsPathfindingObstacleSetter : MonoBehaviour
+    public sealed class PhysicsPathfindingObstacleSetter : MonoBehaviour
     {
         [SerializeField] private bool _isSettingToRight;
         [SerializeField] private bool _isSettingToDown;

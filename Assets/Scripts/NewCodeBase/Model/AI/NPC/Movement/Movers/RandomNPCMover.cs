@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class RandomNPCMover : IRandomNPCMover
+    public sealed class RandomNPCMover : IRandomNPCMover
     {
         public Vector2 MoveDirection { get; private set; }
 

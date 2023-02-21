@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyAttacker
+    public sealed class EnemyAttacker
     {
         public bool IsAttacking { get; private set; }
 

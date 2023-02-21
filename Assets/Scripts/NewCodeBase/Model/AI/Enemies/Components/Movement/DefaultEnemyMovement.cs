@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class DefaultEnemyMovement : IEnemyMovement
+    public sealed class DefaultEnemyMovement : IEnemyMovement
     {
         public bool CanMove { get; private set; }
         public Transform Transform => _rigidbody.transform;

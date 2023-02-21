@@ -3,7 +3,7 @@ using Remagures.Model.Character;
 
 namespace Remagures.Model.AI.NPC.StateSetupers
 {
-    public class WalkingStateSetuper : IStateSetuper
+    public sealed class WalkingStateSetuper : IStateSetuper
     {
         private readonly DudeStates _dudeStates;
         private readonly NPCMovementStatesChanger _movementStatesChanger;

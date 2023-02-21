@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class AttackingEnemyAnimations : IAttackingEnemyAnimations
+    public sealed class AttackingEnemyAnimations : IAttackingEnemyAnimations
     {
         private readonly IEnemyAnimations _enemyAnimations;
         private readonly Animator _animator;

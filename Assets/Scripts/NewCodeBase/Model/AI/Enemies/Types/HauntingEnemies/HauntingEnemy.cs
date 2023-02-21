@@ -8,7 +8,7 @@ using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.HauntingEnemies
 {
-    public class HauntingEnemy : IEnemyWithTarget, IUpdatable
+    public sealed class HauntingEnemy : IEnemyWithTarget, IUpdatable
     {
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public IHealth Health => _enemyWithTarget.Health;

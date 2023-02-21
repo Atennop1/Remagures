@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class NullEnemyMovement : IEnemyMovement
+    public sealed class NullEnemyMovement : IEnemyMovement
     {
         public bool CanMove => true;
         public Transform Transform => null;

@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class KnockedState : IState
+    public sealed class KnockedState : IState
     {
         private readonly IEnemyMovement _enemyMovement;
         private readonly IEnemyAnimations _enemyAnimations;

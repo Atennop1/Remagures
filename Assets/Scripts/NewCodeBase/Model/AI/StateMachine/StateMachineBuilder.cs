@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Remagures.Model.AI
 {
-    public class StateMachineBuilder
+    public sealed class StateMachineBuilder
     {
         private readonly List<IStateSetuper> _stateSetupers;
 

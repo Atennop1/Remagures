@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.NPC
 {
-    public class NPCPlayerDetector : ILateUpdatable
+    public sealed class NPCPlayerDetector : ILateUpdatable
     {
         public bool HasPlayerDetected { get; private set; }
         public bool HasPlayerUndetected { get; private set; }

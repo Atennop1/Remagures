@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public class GridNode : IReadOnlyGridNode
+    public sealed class GridNode : IReadOnlyGridNode
     {
         public int PositionX { get; }
         public int PositionY { get; }

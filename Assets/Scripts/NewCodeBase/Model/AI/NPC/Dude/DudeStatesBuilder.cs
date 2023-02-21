@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public class DudeStatesBuilder
+    public sealed class DudeStatesBuilder
     {
         private readonly NPCMovementStatesChanger _movementStatesChanger;
         private readonly IRandomNPCMover _randomNpcMover;

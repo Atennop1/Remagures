@@ -1,27 +1,33 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using Remagures.Factories;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyDirectionAttacker
+    sealed class EnemyDirectionAttacker
     {
         private readonly int _fireDelayInMilliseconds;
         private bool _canFire = true;
 
         private readonly ProjectileFactory _projectileFactory;
+
+        public EnemyDirectionAttacker(ProjectileFactory projectileFactory)
+            => _projectileFactory = projectileFactory ?? throw new ArgumentNullException(nameof(projectileFactory));
         
-        public void Attack(Vector2 direction)
+
+        public async void Attack(Vector2 direction)
         {
             if (!_canFire) 
                 return;
 
             var projectile = _projectileFactory.Create(Quaternion.identity);
             projectile.Launch(direction);
-            _canFire = false;
+
+            await ReloadingTask();
         }
 
-        private async void ReloadingTask()
+        private async UniTask ReloadingTask()
         {
             _canFire = false;
             await UniTask.Delay(_fireDelayInMilliseconds);
