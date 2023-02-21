@@ -2,6 +2,6 @@
 {
     public interface IDialogActionCallback
     {
-        void Init(IUsableComponent usableComponent);
+        void Init(IUsableComponent usableComponent); //TODO make it non-MonoBehaviour
     }
 }

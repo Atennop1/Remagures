@@ -12,12 +12,12 @@ namespace Remagures.Model.AI.Enemies
         public Transform Transform => _rigidbody.transform;
         
         private readonly Rigidbody2D _rigidbody;
-        private readonly EnemyAnimations _enemyAnimations;
+        private readonly IEnemyAnimations _enemyAnimations;
         private readonly float _speed;
 
         private CancellationTokenSource _cancellationTokenSource;
 
-        public DefaultEnemyMovement(Rigidbody2D rigidbody, EnemyAnimations enemyAnimations, float speed)
+        public DefaultEnemyMovement(Rigidbody2D rigidbody, IEnemyAnimations enemyAnimations, float speed)
         {
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
             _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));

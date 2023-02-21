@@ -3,6 +3,7 @@ using Remagures.Model.Character;
 using Remagures.Model.CutscenesSystem;
 using Remagures.Model.DialogSystem;
 using Remagures.View;
+using Remagures.View.DialogSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace Remagures.Root
     {
         [Header("Dialogs Stuff")] 
         [SerializeField] private DialogView _dialogView;
-        [SerializeField] private DialogTypeWriter _writer;
+        [SerializeField] private TextWriter _writer;
         [SerializeField] private Button _dialogWindowButton;
         [SerializeField] private Text _continueText;
         

@@ -9,13 +9,13 @@ namespace Remagures.Model.CutscenesSystem
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set;  }
 
-        private readonly DialogTypeWriter _writer;
+        private readonly TextWriter _writer;
         private readonly Button _dialogWindowButton;
 
         private readonly Text _continueText;
         private readonly string _text;
 
-        public DialogAction(DialogTypeWriter writer, Button dialogWindowButton, Text continueText, string text)
+        public DialogAction(TextWriter writer, Button dialogWindowButton, Text continueText, string text)
         {
             _dialogWindowButton = dialogWindowButton ? dialogWindowButton : throw new ArgumentNullException(nameof(dialogWindowButton));
             _writer = writer ? writer : throw new ArgumentNullException(nameof(writer));
@@ -30,7 +30,7 @@ namespace Remagures.Model.CutscenesSystem
             _dialogWindowButton.gameObject.SetActive(true);
             _dialogWindowButton.onClick.AddListener(Tap);
 
-            await _writer.Type(_text);
+            await _writer.StartTyping(_text);
             _continueText.text = "Нажмите, чтобы продолжить";
         }
         
@@ -41,7 +41,7 @@ namespace Remagures.Model.CutscenesSystem
         {
             if (_writer.IsTyping)
             {
-                _writer.Tap();
+                _writer.EndTyping();
                 return;
             }
 

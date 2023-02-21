@@ -1,3 +1,4 @@
+using Remagures.Model.Health;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -16,8 +17,8 @@ namespace Remagures.Model.AI.Enemies.TurretEnemies
         private float _fireDelaySeconds;
 
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
-        public Health.Health Health => _enemyWithTarget.Health;
-        public EnemyAnimations Animations => _enemyWithTarget.Animations;
+        public IHealth Health => _enemyWithTarget.Health;
+        public IEnemyAnimations Animations => _enemyWithTarget.Animations;
         public SM StateMachine => _enemyWithTarget.StateMachine;
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
 

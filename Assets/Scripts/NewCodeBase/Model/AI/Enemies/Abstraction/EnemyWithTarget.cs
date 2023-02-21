@@ -8,7 +8,7 @@ namespace Remagures.Model.AI.Enemies
         public IEnemyMovement Movement => _enemy.Movement;
         public IHealth Health => _enemy.Health;
         
-        public EnemyAnimations Animations  => _enemy.Animations;
+        public IEnemyAnimations Animations  => _enemy.Animations;
         public StateMachine StateMachine => _enemy.StateMachine;
         
         public EnemyTargetData TargetData { get; }

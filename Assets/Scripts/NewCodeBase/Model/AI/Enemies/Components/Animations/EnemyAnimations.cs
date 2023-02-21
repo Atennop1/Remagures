@@ -3,30 +3,39 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public class EnemyAnimations
+    public class EnemyAnimations : IEnemyAnimations
     {
-        public Animator Animator { get; }
-
         private readonly int MOVE_X_ANIMATION_HASH = Animator.StringToHash("moveX");
         private readonly int MOVE_Y_ANIMATION_HASH = Animator.StringToHash("moveY");
         
-        private readonly int WAKE_UP_ANIMATION_HASH = Animator.StringToHash("wakeUp");
+        private readonly int IS_WAKED_UP_ANIMATION_HASH = Animator.StringToHash("wakeUp");
         private readonly int IS_STAYING_ANIMATION_HASH = Animator.StringToHash("isStaying");
         
+        private readonly int IS_DEAD_ANIMATION_HASH = Animator.StringToHash("dead");
+        private readonly int IS_KNOCKED_ANIMATION_HASH = Animator.StringToHash("knocked");
+        
+        private readonly Animator _animator;
+
         public EnemyAnimations(Animator animator)
-            => Animator = animator ?? throw new ArgumentNullException(nameof(animator));
+            => _animator = animator ?? throw new ArgumentNullException(nameof(animator));
 
         public void SetAnimationsVector(Vector2 vector)
         {
-            Animator.SetFloat(MOVE_X_ANIMATION_HASH, vector.x);
-            Animator.SetFloat(MOVE_Y_ANIMATION_HASH, vector.y);
+            _animator.SetFloat(MOVE_X_ANIMATION_HASH, vector.x);
+            _animator.SetFloat(MOVE_Y_ANIMATION_HASH, vector.y);
         }
         
+        public void SetIsDead(bool isActive)
+            => _animator.SetBool(IS_DEAD_ANIMATION_HASH, isActive);
+
+        public void SetIsKnocked(bool isActive)
+            => _animator.SetBool(IS_KNOCKED_ANIMATION_HASH, isActive);
+        
         public void SetIsWakeUp(bool isActive)
-            => Animator.SetBool(WAKE_UP_ANIMATION_HASH, isActive);
+            => _animator.SetBool(IS_WAKED_UP_ANIMATION_HASH, isActive);
 
         public void SetIsStaying(bool isActive)
-            => Animator.SetBool(IS_STAYING_ANIMATION_HASH, isActive);
+            => _animator.SetBool(IS_STAYING_ANIMATION_HASH, isActive);
 
             //public void ChangeAnim(Vector2 direction) //TODO decide what to do with it
         //{

@@ -5,18 +5,18 @@ namespace Remagures.Model.AI.Enemies
 {
     public class WhilePlayerNotInRange : IState
     {
-        private readonly IEnemyWithTarget _enemyWithTarget;
+        private readonly IEnemyMovement _enemyMovement;
         private readonly IEnemyMovementView _enemyMovementView;
 
-        public WhilePlayerNotInRange(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        public WhilePlayerNotInRange(IEnemyMovement enemyMovement, IEnemyMovementView enemyMovementView)
         {
-            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
             _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
         }
 
         public void OnEnter()
         {
-            _enemyWithTarget.Movement.StopMoving();
+            _enemyMovement.StopMoving();
             _enemyMovementView.SetIsWakeUp(false);
             _enemyMovementView.SetIsStaying(false);
         }

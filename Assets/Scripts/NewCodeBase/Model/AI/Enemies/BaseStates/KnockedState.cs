@@ -1,22 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace Remagures.Model.AI.Enemies
 {
     public class KnockedState : IState
     {
-        private readonly IEnemy _enemy;
-        private readonly int KNOCKED_ANIMATOR_NAME = Animator.StringToHash("knocked");
+        private readonly IEnemyMovement _enemyMovement;
+        private readonly IEnemyAnimations _enemyAnimations;
 
-        public KnockedState(IEnemy enemy)
-            => _enemy = enemy;
+        public KnockedState(IEnemyMovement enemyMovement, IEnemyAnimations enemyAnimations)
+        {
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
+            _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));
+        }
 
         public void OnEnter()
         {
-            _enemy.Movement.StopMoving();
-            _enemy.Animations.Animator.logWarnings = false;
-            
-            if (_enemy.Animations.Animator.GetBool(KNOCKED_ANIMATOR_NAME))
-                _enemy.Animations.Animator.SetBool(KNOCKED_ANIMATOR_NAME, true);
+            _enemyMovement.StopMoving();
+            _enemyAnimations.SetIsKnocked(true);
         }
 
         public void Update() { }

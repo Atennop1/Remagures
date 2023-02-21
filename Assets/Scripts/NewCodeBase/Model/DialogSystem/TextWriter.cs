@@ -1,25 +1,28 @@
+using System;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Remagures.View.DialogSystem;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class DialogTypeWriter : MonoBehaviour
+    public class TextWriter : MonoBehaviour
     {
-        [SerializeField] private Text _continueText;
-        [SerializeField] private Text _dialogText;
-
         public bool IsTyping { get; private set; }
 
+        private readonly TextWriterView _textWriterView;
+        
         private string _currentText;
         private UniTask _typingTask;
 
         private CancellationToken _cancellationToken;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public async UniTask Type(string text)
+        public TextWriter(TextWriterView textWriterView)
+            => _textWriterView = textWriterView ?? throw new ArgumentNullException(nameof(textWriterView));
+
+        public async UniTask StartTyping(string text)
         {
             _currentText = text;
             _cancellationTokenSource = new CancellationTokenSource();
@@ -28,32 +31,31 @@ namespace Remagures.Model.DialogSystem
             _typingTask = DisplayTextCoroutine(text);
             await _typingTask;
         }
-
-        private async UniTask DisplayTextCoroutine(string text)
-        {
-            IsTyping = true;
-            _dialogText.text = "";
-            _continueText.text = "Нажмите, чтобы пролистать";
-
-            foreach (var letter in text.TakeWhile(_ => !_cancellationToken.IsCancellationRequested))
-            {
-                _dialogText.text += letter;
-                await UniTask.Delay(40);
-            }
-
-            IsTyping = false;
-        }
-
-        public void Tap()
+        
+        public void EndTyping()
         {
             if (_typingTask.Status == UniTaskStatus.Pending)
                 _cancellationTokenSource.Cancel();
 
-            _dialogText.text = _currentText;
+            _textWriterView.DisplayText(_currentText);
             IsTyping = false;
         }
 
-        private void Awake() 
-            => _cancellationTokenSource = new CancellationTokenSource();
+        private async UniTask DisplayTextCoroutine(string text)
+        {
+            IsTyping = true;
+            var writingText = string.Empty;
+            _textWriterView.DisplayStartOfTyping();
+
+            foreach (var letter in text.TakeWhile(_ => !_cancellationToken.IsCancellationRequested))
+            {
+                writingText += letter;
+                _textWriterView.DisplayText(writingText);
+                await UniTask.Delay(40);
+            }
+            
+            _textWriterView.DisplayEndOfTyping();
+            IsTyping = false;
+        }
     }
 }

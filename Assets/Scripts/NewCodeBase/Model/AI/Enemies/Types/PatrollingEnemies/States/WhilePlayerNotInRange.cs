@@ -5,22 +5,24 @@ namespace Remagures.Model.AI.Enemies.PatrollingEnemies
 {
     public sealed class WhilePlayerNotInRange : IState
     {
-        private readonly PatrollingEnemy _patrollingEnemy;
+        private readonly PatrolEnemyMovement _patrolEnemyMovement;
         private readonly IEnemyMovementView _enemyMovementView;
         
-        public WhilePlayerNotInRange(PatrollingEnemy patrollingEnemy, IEnemyMovementView enemyMovementView)
+        public WhilePlayerNotInRange(PatrolEnemyMovement patrolEnemyMovement, IEnemyMovementView enemyMovementView)
         {
-            _patrollingEnemy = patrollingEnemy ?? throw new ArgumentNullException(nameof(patrollingEnemy));
+            _patrolEnemyMovement = patrolEnemyMovement ?? throw new ArgumentNullException(nameof(patrolEnemyMovement));
             _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
         }
 
         public void Update()
         {
-            _patrollingEnemy.Movement.Move(_patrollingEnemy.CurrentPointTransform.position);
+            _patrolEnemyMovement.Move(_patrolEnemyMovement.CurrentPointTransform.position);
             _enemyMovementView.SetIsStaying(false);
         }
 
-        public void OnEnter() { }
+        public void OnEnter()
+            => _enemyMovementView.SetIsWakeUp(true);
+        
         public void OnExit() { }
     }
 }

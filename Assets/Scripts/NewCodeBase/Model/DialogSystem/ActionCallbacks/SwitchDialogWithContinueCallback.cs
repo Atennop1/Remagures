@@ -8,8 +8,8 @@ namespace Remagures.Model.DialogSystem
     {
         [SerializeField] private string _newDialogName;
         [SerializeField] private DialogsListRoot _dialogsListRoot;
-        [SerializeField] private DialogView _dialogView;
-
+        
+        private DialogPlayer _dialogPlayer;
         private IUsableComponent _usableComponent;
         private bool _isWorked;
 
@@ -19,11 +19,14 @@ namespace Remagures.Model.DialogSystem
                 return;
 
             _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
-            _dialogView.Activate(_dialogsListRoot.BuiltDialogList.CurrentDialog);
+            _dialogPlayer.Play(_dialogsListRoot.BuiltDialogList.CurrentDialog);
             _isWorked = true;
         }
 
-        public void Init(IUsableComponent usableComponent)
-            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+        public void Init(DialogPlayer dialogPlayer, IUsableComponent usableComponent)
+        {
+            _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
+            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+        }
     }
 }

@@ -6,25 +6,27 @@ namespace Remagures.Model.AI.Enemies
 {
     public sealed class AttackPlayer : IState
     {
-        private readonly IEnemyWithTarget _enemyWithTarget;
+        private readonly IEnemyMovement _enemyMovement;
+        private readonly EnemyTargetData _enemyTargetData;
         private readonly IEnemyMovementView _enemyMovementView;
 
-        public AttackPlayer(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        public AttackPlayer(IEnemyMovement enemyMovement, EnemyTargetData enemyTargetData, IEnemyMovementView enemyMovementView)
         {
-            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
+            _enemyTargetData = enemyTargetData;
             _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
         }
 
         public void Update()
         {
-            var enemyAnimator = _enemyWithTarget.Animations.Animator;
-            var totalMovingPoint = Vector3.MoveTowards(enemyAnimator.transform.position, _enemyWithTarget.TargetData.Transform.position, 1);
-            _enemyWithTarget.Animations.SetAnimationsVector(totalMovingPoint - enemyAnimator.transform.position);
+            var enemyPosition = _enemyMovement.Transform;
+            var totalMovingPoint = Vector3.MoveTowards(enemyPosition.position, _enemyTargetData.Transform.position, 1);
+            _enemyMovementView.SetAnimationsVector(totalMovingPoint - enemyPosition.position);
         }
 
         public void OnEnter()
         {
-            _enemyWithTarget.Movement.StopMoving();
+            _enemyMovement.StopMoving();
             _enemyMovementView.SetIsStaying(true);
         }
 

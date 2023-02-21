@@ -1,5 +1,6 @@
 ﻿using Remagures.Model.DialogSystem;
 using Remagures.Root;
+using Remagures.View.DialogSystem;
 using Remagures.View.Interactable;
 
 namespace Remagures.Model.AI.NPC
@@ -22,7 +23,7 @@ namespace Remagures.Model.AI.NPC
         public void Interact()
         {
             HasInteractionStarted = true;
-            _dialogView.Activate(_dialogsListRoot.BuiltDialogList.CurrentDialog);
+            _dialogView.DisplayStartOfDialog(_dialogsListRoot.BuiltDialogList.CurrentDialog);
             _npcInteractableView.DisplayInteraction();
         }
 

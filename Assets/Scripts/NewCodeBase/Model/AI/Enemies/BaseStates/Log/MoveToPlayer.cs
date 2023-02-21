@@ -5,18 +5,20 @@ namespace Remagures.Model.AI.Enemies
 {
     public class MoveToPlayer : IState
     {
-        private readonly IEnemyWithTarget _enemyWithTarget;
+        private readonly IEnemyMovement _enemyMovement;
+        private readonly EnemyTargetData _enemyTargetData;
         private readonly IEnemyMovementView _enemyMovementView;
 
-        public MoveToPlayer(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
+        public MoveToPlayer(IEnemyMovement enemyMovement, EnemyTargetData enemyTargetData, IEnemyMovementView enemyMovementView)
         {
-            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            _enemyTargetData = enemyTargetData;
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
             _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
         }
 
         public void Update()
         {
-            _enemyWithTarget.Movement.Move(_enemyWithTarget.TargetData.Transform.position);
+            _enemyMovement.Move(_enemyTargetData.Transform.position);
             _enemyMovementView.SetIsWakeUp(true);
             _enemyMovementView.SetIsStaying(false);
         }

@@ -1,4 +1,5 @@
-﻿using Remagures.Model.Knockback;
+﻿using Remagures.Model.Health;
+using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using SM = Remagures.Model.AI.StateMachine;
@@ -10,8 +11,8 @@ namespace Remagures.Model.AI.Enemies.HauntingEnemies
         [SerializeField] private IEnemyWithTarget _enemyWithTarget;
 
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
-        public Health.Health Health => _enemyWithTarget.Health;
-        public EnemyAnimations Animations => _enemyWithTarget.Animations;
+        public IHealth Health => _enemyWithTarget.Health;
+        public IEnemyAnimations Animations => _enemyWithTarget.Animations;
         public SM StateMachine => _enemyWithTarget.StateMachine;
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
         

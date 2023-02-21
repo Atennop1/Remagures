@@ -7,7 +7,7 @@ namespace Remagures.Model.AI.Enemies
         IEnemyMovement Movement { get; }
         IHealth Health { get; }
         
-        EnemyAnimations Animations { get; }
+        IEnemyAnimations Animations { get; }
         StateMachine StateMachine { get; }
     }
 }

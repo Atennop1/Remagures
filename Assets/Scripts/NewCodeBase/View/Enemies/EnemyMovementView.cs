@@ -5,7 +5,7 @@ namespace Remagures.View.Enemies
 {
     public class EnemyMovementView : MonoBehaviour, IEnemyMovementView
     {
-        private EnemyAnimations _enemyAnimations;
+        private IEnemyAnimations _enemyAnimations;
 
         public void SetIsWakeUp(bool isActive)
             => _enemyAnimations.SetIsWakeUp(isActive);

@@ -1,3 +1,4 @@
+using Remagures.Model.Health;
 using Remagures.Model.Knockback;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,21 +9,16 @@ namespace Remagures.Model.AI.Enemies.PatrollingEnemies
     public sealed class PatrollingEnemy : SerializedMonoBehaviour, IEnemyWithTarget
     {
         [SerializeField] private IEnemyWithTarget _enemyWithTarget;
-        [SerializeField] private PatrolEnemyMovement _patrolEnemyMovement;
-        
-        private readonly int WAKE_UP_ANIMATOR_NAME = Animator.StringToHash("wakeUp");
-        public Transform CurrentPointTransform => _patrolEnemyMovement.CurrentPointTransform;
-        public IEnemyMovement Movement => _patrolEnemyMovement;
+
+        public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public SM StateMachine => _enemyWithTarget.StateMachine;
 
-        public Health.Health Health => _enemyWithTarget.Health;
-        public EnemyAnimations Animations => _enemyWithTarget.Animations;
+        public IHealth Health => _enemyWithTarget.Health;
+        public IEnemyAnimations Animations => _enemyWithTarget.Animations;
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
 
         private void Start()
         {
-            Animations.Animator.SetBool(WAKE_UP_ANIMATOR_NAME, true);
-
             IState playerNotInRangeState = new WhilePlayerNotInRange(this);
             IState moveToPlayerState = new MoveToPlayer(this);
             IState attackPlayerState = new AttackPlayer(this);

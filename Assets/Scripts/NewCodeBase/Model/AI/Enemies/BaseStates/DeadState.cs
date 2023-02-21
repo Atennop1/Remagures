@@ -1,22 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace Remagures.Model.AI.Enemies
 {
     public class DeadState : IState
     {
-        private readonly IEnemy _enemy;
-        private readonly int DEAD_ANIMATOR_NAME = Animator.StringToHash("dead");
+        private readonly IEnemyMovement _enemyMovement;
+        private readonly IEnemyAnimations _enemyAnimations;
 
-        public DeadState(IEnemy enemy)
-            => _enemy = enemy;
+        public DeadState(IEnemyMovement enemyMovement, IEnemyAnimations enemyAnimations)
+        {
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
+            _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));
+        }
 
         public void OnEnter()
         {
-            _enemy.Animations.Animator.logWarnings = false;
-            _enemy.Movement.StopMoving();
-            
-            if (_enemy.Animations.Animator.GetBool(DEAD_ANIMATOR_NAME))
-                _enemy.Animations.Animator.SetBool(DEAD_ANIMATOR_NAME, true);
+            _enemyMovement.StopMoving();
+            _enemyAnimations.SetIsDead(true);
         }
         
         public void Update() { }

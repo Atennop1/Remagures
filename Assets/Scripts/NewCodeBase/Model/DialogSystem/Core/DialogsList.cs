@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
+using Remagures.Tools;
 
 namespace Remagures.Model.DialogSystem
 {
