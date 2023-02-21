@@ -1,53 +1,40 @@
+using System;
 using Remagures.Model.Health;
 using Remagures.Model.Knockback;
-using Sirenix.OdinInspector;
+using Remagures.Root;
+using Remagures.View.Enemies;
 using UnityEngine;
-using UnityEngine.Serialization;
 using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.TurretEnemies
 {
-    public sealed class TurretEnemy : SerializedMonoBehaviour, IEnemyWithTarget
+    public sealed class TurretEnemy : IEnemyWithTarget, IUpdatable
     {
-        [SerializeField] private IEnemyWithTarget _enemyWithTarget;
-        [FormerlySerializedAs("Projectile")] [SerializeField] private Projectile _projectile;
-        [SerializeField] private float _fireDelay;
-        
-        private bool _canFire = true;
-        private float _fireDelaySeconds;
-
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public IHealth Health => _enemyWithTarget.Health;
+        
         public IEnemyAnimations Animations => _enemyWithTarget.Animations;
         public SM StateMachine => _enemyWithTarget.StateMachine;
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
-
-        public void InstantiateProjectile(Vector3 spawnPoint)
-        {
-            if (!_canFire) return;
-            
-            var projectile = Instantiate(_projectile, transform.position, Quaternion.identity);
-            projectile.Launch(spawnPoint);
-            _canFire = false;
-        }
-
-        private void Update()
-        {
-            StateMachine.Tick();
-            
-            _fireDelaySeconds -= UnityEngine.Time.deltaTime;
-            if (_fireDelaySeconds > 0) 
-                return;
         
-            _canFire = true;
-            _fireDelaySeconds = _fireDelay;
-        }
+        private readonly IEnemyWithTarget _enemyWithTarget;
 
-        private void Start()
+        public void Update()
+            => StateMachine.Tick();
+
+        private TurretEnemy(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView, EnemyDirectionAttacker enemyAttacker)
         {
-            IState playerNotInRangeState = new WhilePlayerNotInRange(this);
-            IState attackPlayerState = new AttackPlayer(this);
-            IState knockedState = new KnockedState(this);
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+
+            if (enemyMovementView == null)
+                throw new ArgumentNullException(nameof(enemyMovementView));
+
+            if (enemyAttacker == null)
+                throw new ArgumentNullException(nameof(enemyAttacker));
+            
+            IState playerNotInRangeState = new WhilePlayerNotInRange(enemyMovementView);
+            IState attackPlayerState = new AttackPlayer(Movement, TargetData, enemyAttacker, enemyMovementView);
+            IState knockedState = new KnockedState(Movement, Animations);
             
             StateMachine.AddTransition(attackPlayerState, playerNotInRangeState, PlayerTooFar);
             StateMachine.AddTransition(playerNotInRangeState, attackPlayerState, SeePlayer);
@@ -62,9 +49,9 @@ namespace Remagures.Model.AI.Enemies.TurretEnemies
         }
 
         private bool PlayerTooFar() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) >= TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) > TargetData.ChaseRadius;
         
         private bool SeePlayer() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.ChaseRadius && _canFire;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) <= TargetData.ChaseRadius;
     }
 }

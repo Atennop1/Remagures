@@ -1,6 +1,8 @@
+using System;
 using Remagures.Model.Health;
 using Remagures.Model.Knockback;
 using Remagures.Root;
+using Remagures.View.Enemies;
 using UnityEngine;
 using SM = Remagures.Model.AI.StateMachine;
 
@@ -8,8 +10,6 @@ namespace Remagures.Model.AI.Enemies.MeleeEnemies
 {
     public sealed class MeleeEnemy : IEnemyWithTarget, IUpdatable
     {
-        [SerializeField] private IEnemyWithTarget _enemyWithTarget;
-
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public IHealth Health => _enemyWithTarget.Health;
 
@@ -17,15 +17,25 @@ namespace Remagures.Model.AI.Enemies.MeleeEnemies
         public SM StateMachine => _enemyWithTarget.StateMachine;
 
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
+        
+        private readonly IEnemyWithTarget _enemyWithTarget;
 
-        private void Start()
+        public void Update() 
+            => StateMachine.Tick();
+        
+        public MeleeEnemy(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView, EnemyAttacker enemyAttacker)
         {
-            IState playerNotInRangeState = new WhilePlayerNotInRange(this);
-            IState moveToPlayerState = new MoveToPlayer(this);
-            AttackPlayer attackPlayerState = new(this);
-            IState knockedState = new KnockedState(this);
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
             
-            StateMachine.AddTransition(attackPlayerState, moveToPlayerState, () => SeePlayer() && !PlayerTooNear() && !attackPlayerState.IsAttacking);
+            if (enemyMovementView == null)
+                throw new ArgumentNullException(nameof(enemyMovementView));
+            
+            IState playerNotInRangeState = new WhilePlayerNotInRange(Movement, enemyMovementView);
+            IState moveToPlayerState = new MoveToPlayer(Movement, TargetData, enemyMovementView);
+            IState attackPlayerState = new AttackPlayer(Movement, enemyAttacker);
+            IState knockedState = new KnockedState(Movement, Animations);
+            
+            StateMachine.AddTransition(attackPlayerState, moveToPlayerState, () => SeePlayer() && !PlayerTooNear() && !enemyAttacker.IsAttacking);
             StateMachine.AddTransition(playerNotInRangeState, moveToPlayerState, SeePlayer);
             
             StateMachine.AddTransition(moveToPlayerState, attackPlayerState, PlayerTooNear);
@@ -40,16 +50,13 @@ namespace Remagures.Model.AI.Enemies.MeleeEnemies
             StateMachine.SetState(playerNotInRangeState);
         }
 
-        public void Update() 
-            => StateMachine.Tick();
-        
         private bool PlayerTooNear() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.AttackRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) <= TargetData.AttackRadius;
         
         private bool SeePlayer() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) <= TargetData.ChaseRadius;
         
         private bool PlayerTooFar() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) > TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) > TargetData.ChaseRadius;
     }
 }

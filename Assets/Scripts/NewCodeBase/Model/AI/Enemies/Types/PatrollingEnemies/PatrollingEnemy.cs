@@ -1,28 +1,34 @@
+using System;
 using Remagures.Model.Health;
 using Remagures.Model.Knockback;
-using Sirenix.OdinInspector;
+using Remagures.View.Enemies;
 using UnityEngine;
 using SM = Remagures.Model.AI.StateMachine;
 
 namespace Remagures.Model.AI.Enemies.PatrollingEnemies
 {
-    public sealed class PatrollingEnemy : SerializedMonoBehaviour, IEnemyWithTarget
+    public sealed class PatrollingEnemy : IEnemyWithTarget
     {
-        [SerializeField] private IEnemyWithTarget _enemyWithTarget;
-
         public IEnemyMovement Movement => _enemyWithTarget.Movement;
         public SM StateMachine => _enemyWithTarget.StateMachine;
 
         public IHealth Health => _enemyWithTarget.Health;
         public IEnemyAnimations Animations => _enemyWithTarget.Animations;
         public EnemyTargetData TargetData => _enemyWithTarget.TargetData;
+        
+        private readonly IEnemyWithTarget _enemyWithTarget;
 
-        private void Start()
+        public PatrollingEnemy(IEnemyWithTarget enemyWithTarget, IEnemyMovementView enemyMovementView)
         {
-            IState playerNotInRangeState = new WhilePlayerNotInRange(this);
-            IState moveToPlayerState = new MoveToPlayer(this);
-            IState attackPlayerState = new AttackPlayer(this);
-            IState knockedState = new KnockedState(this);
+            _enemyWithTarget = enemyWithTarget ?? throw new ArgumentNullException(nameof(enemyWithTarget));
+            
+            if (enemyMovementView == null)
+                throw new ArgumentNullException(nameof(enemyMovementView));
+            
+            IState playerNotInRangeState = new WhilePlayerNotInRange(Movement as PatrolEnemyMovement, enemyMovementView);
+            IState moveToPlayerState = new MoveToPlayer(Movement, TargetData, enemyMovementView);
+            IState attackPlayerState = new AttackPlayer(Movement, TargetData, enemyMovementView);
+            IState knockedState = new KnockedState(Movement, Animations);
             
             StateMachine.AddTransition(attackPlayerState, moveToPlayerState, () => SeePlayer() && !PlayerTooNear());
             StateMachine.AddTransition(playerNotInRangeState, moveToPlayerState, SeePlayer);
@@ -43,12 +49,12 @@ namespace Remagures.Model.AI.Enemies.PatrollingEnemies
             => StateMachine.Tick();
         
         private bool PlayerTooNear() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.AttackRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) <= TargetData.AttackRadius;
         
         private bool SeePlayer() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) <= TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) <= TargetData.ChaseRadius;
         
         private bool PlayerTooFar() 
-            => Vector3.Distance(TargetData.Transform.position, transform.position) > TargetData.ChaseRadius;
+            => Vector3.Distance(TargetData.Transform.position, Movement.Transform.position) > TargetData.ChaseRadius;
     }
 }

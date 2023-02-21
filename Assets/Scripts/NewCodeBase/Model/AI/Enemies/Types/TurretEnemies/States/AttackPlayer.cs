@@ -5,19 +5,23 @@ namespace Remagures.Model.AI.Enemies.TurretEnemies
 {
     public sealed class AttackPlayer : IState
     {
-        private readonly TurretEnemy _turretEnemy;
+        private readonly IEnemyMovement _enemyMovement;
+        private readonly EnemyTargetData _enemyTargetData;
+        private readonly EnemyDirectionAttacker _enemyAttacker;
         private readonly IEnemyMovementView _enemyMovementView;
 
-        public AttackPlayer(TurretEnemy turretEnemy, IEnemyMovementView enemyMovementView)
+        public AttackPlayer(IEnemyMovement enemyMovement, EnemyTargetData enemyTargetData, EnemyDirectionAttacker enemyAttacker, IEnemyMovementView enemyMovementView)
         {
-            _turretEnemy = turretEnemy ?? throw new ArgumentNullException(nameof(turretEnemy));
+            _enemyMovement = enemyMovement ?? throw new ArgumentNullException(nameof(enemyMovement));
+            _enemyTargetData = enemyTargetData;
+            _enemyAttacker = enemyAttacker ?? throw new ArgumentNullException(nameof(enemyAttacker));
             _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
         }
 
         public void Update()
         {
-            var direction = _turretEnemy.TargetData.Transform.transform.position - _turretEnemy.transform.position;
-            _turretEnemy.InstantiateProjectile(direction);
+            var direction = _enemyTargetData.Transform.transform.position - _enemyMovement.Transform.position;
+            _enemyAttacker.Attack(direction);
             _enemyMovementView.SetAnimationsVector(direction);
         }
 
