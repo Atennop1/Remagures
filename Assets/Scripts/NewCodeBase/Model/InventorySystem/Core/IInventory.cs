@@ -8,6 +8,6 @@ namespace Remagures.Model.InventorySystem
         bool HasCellsChanged { get; }
         
         void Add(ICell<T> newCell);
-        void Decrease(ICell<T> decreasingCell);
+        void Remove(ICell<T> decreasingCell);
     }
 }

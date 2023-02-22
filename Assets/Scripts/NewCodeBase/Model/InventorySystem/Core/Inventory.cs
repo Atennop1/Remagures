@@ -35,7 +35,7 @@ namespace Remagures.Model.InventorySystem
             }
         }
 
-        public void Decrease(ICell<T> decreasingCell)
+        public void Remove(ICell<T> decreasingCell)
         {
             if (decreasingCell == null)
                 throw new ArgumentNullException(nameof(decreasingCell));

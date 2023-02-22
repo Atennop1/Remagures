@@ -1,5 +1,6 @@
 using Remagures.Root;
 using Remagures.Tools;
+using Remagures.View.MeatSystem;
 using UnityEngine;
 
 namespace Remagures.Model.MeatSystem
@@ -37,7 +38,7 @@ namespace Remagures.Model.MeatSystem
                 if (_remainingCookingTime is <= 0 and > -300) 
                     _timeCounter.SaveCurrentTime("MeatTime");
 
-                _meatCooker.CookOneMeat();
+                _meatCooker.CookMeat(1);
             }
 
             if (_meatCooker.RawMeatCount > 0)

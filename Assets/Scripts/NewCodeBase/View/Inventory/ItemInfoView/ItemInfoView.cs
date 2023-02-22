@@ -53,7 +53,7 @@ namespace Remagures.View.Inventory
         private void UseItem(T item)
         {
             (item as IUsableItem)?.Use();
-            _inventory.Decrease(new Cell<T>(item));
+            _inventory.Remove(new Cell<T>(item));
 
             if (_inventory.Cells.ToList().Find(cell => cell.Item.Equals(item)) != null)
                 Display((T)_nullItem);

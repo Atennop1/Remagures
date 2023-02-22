@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model.MeatSystem
+namespace Remagures.View.MeatSystem
 {
     public sealed class MeatCookingTimerView : MonoBehaviour
     {
