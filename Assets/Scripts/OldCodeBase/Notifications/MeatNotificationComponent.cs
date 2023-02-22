@@ -1,5 +1,5 @@
 using Remagures.SO;
-using Remagures.Time;
+using Remagures.Tools;
 using UnityEngine;
 
 namespace Remagures.Notifications
@@ -21,10 +21,10 @@ namespace Remagures.Notifications
             base.Awake();
         }
     
-        public void Init()
+        public void Send()
         {
             _canNotify = true;
-            _delay = 300 - _timeCounter.CheckDate("MeatTime") + ((int)_rawCount.Value - 1) * 300;
+            _delay = 300 - _timeCounter.GetTimeDifference("MeatTime") + ((int)_rawCount.Value - 1) * 300;
         
             if (_rawCount.Value <= 0 || _delay <= 0)
                 _canNotify = false;
