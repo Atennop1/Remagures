@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Remagures.MapSystem
+namespace Remagures.Model.MapSystem
 {
-    public class GoalMarker : MonoBehaviour
+    public class GoalMarker : MonoBehaviour, IMarker //TODO remake this after quest system
     {
         [SerializeField] private QuestContainer _questContainer;
         [FormerlySerializedAs("Goal")] [SerializeField] private QuestGoal _goal;
@@ -24,7 +24,7 @@ namespace Remagures.MapSystem
             _goalsView.Initialize(_goal.Quest);
         }
 
-        public bool IsGoalActive()
+        public bool IsActive()
         {
             var quest = _goal.Quest;
             return _questContainer.Quests.Contains(quest) && _goal == quest.GetActiveGoal();
@@ -35,7 +35,7 @@ namespace Remagures.MapSystem
             _marker.gameObject.SetActive(false);
             if (_goal.Completed) return;
         
-            if (IsGoalActive())
+            if (IsActive())
                 _marker.gameObject.SetActive(true);
         }
     }

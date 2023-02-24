@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.MapSystem
+namespace Remagures.Model.MapSystem
 {
     public class MapEntryPoint : MonoBehaviour
     {

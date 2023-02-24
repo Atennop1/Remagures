@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
-using UnityEngine.UI;
 
-namespace Remagures.Assets.VirtualButtonsForUnity.Scripts
+namespace Remagures.Plugins.VirtualButtonsForUnity.Scripts
 {
     public enum VirtualJoystickType { Fixed, Floating }
 

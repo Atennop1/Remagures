@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.MapSystem;
+using Remagures.Model.MapSystem;
 using Remagures.Root;
 
 namespace Remagures.Model.Character

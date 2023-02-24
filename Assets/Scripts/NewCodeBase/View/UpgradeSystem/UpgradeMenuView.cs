@@ -42,7 +42,7 @@ namespace Remagures.View.UpgradeSystem
         {
             _absenceItemsGameObject.SetActive(true);
 
-            foreach (var inventory in _inventories) //TODO throw this to another component
+            foreach (var inventory in _inventories) 
             {
                 foreach (var cell in inventory.Cells)
                 {

@@ -3,7 +3,7 @@ using Remagures.QuestSystem;
 using Remagures.Tools;
 using UnityEngine;
 
-namespace Remagures.MapSystem
+namespace Remagures.Model.MapSystem
 {
     public class MapExplorer : MonoBehaviour
     {

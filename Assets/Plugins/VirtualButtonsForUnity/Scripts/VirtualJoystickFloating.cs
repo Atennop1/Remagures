@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Remagures.Assets.VirtualButtonsForUnity.Scripts
+namespace Remagures.Plugins.VirtualButtonsForUnity.Scripts
 {
     public class VirtualJoystickFloating : VirtualJoystick
     {

@@ -1,9 +1,8 @@
-using Cysharp.Threading.Tasks.Triggers;
 using Remagures.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.MapSystem
+namespace Remagures.Model.MapSystem
 {
     public class MapView : MonoBehaviour
     {
@@ -29,7 +28,7 @@ namespace Remagures.MapSystem
             UnityEngine.Time.timeScale = 1;
         }
 
-        public void OpenMap(Map map)
+        public void OpenMap(IMap map)
         {
             ClearMap();
             _currentMap = Instantiate(map, transform.position, Quaternion.identity, _mapContainer);

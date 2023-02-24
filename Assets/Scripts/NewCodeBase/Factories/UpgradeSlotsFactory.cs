@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Remagures.View.UpgradeSystem;
+using UnityEngine;
 
 namespace Remagures.Factories
 {
@@ -6,9 +7,9 @@ namespace Remagures.Factories
     {
         [SerializeField] private GameObject _slotPrefab;
 
-        public IUpgradeSlotsView Create()
-        {
-            
+        public IUpgradeSlotView Create(Transform content)
+        {   
+            return Instantiate(_slotPrefab, content).GetComponent<IUpgradeSlotView>();
         }
     }
 }

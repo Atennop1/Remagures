@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Remagures.MapSystem
+namespace Remagures.Model.MapSystem
 {
     public class MapSetup : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace Remagures.MapSystem
 
         private void Awake()
         {
-            foreach (var map in _maps.Where(map => map.GetMarker<PlayerMarker>().ContainsInMap(map)))
+            foreach (var map in _maps.Where(map => map.GetMarker<CharacterMarker>().ContainsInMap(map)))
             {
                 _view.OpenMap(map);
                 CurrentLocationMap = map;

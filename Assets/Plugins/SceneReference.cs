@@ -6,7 +6,7 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Remagures.Assets
+namespace Remagures.Plugins
 {
 
 // Author: JohannesMP (2018-08-12)

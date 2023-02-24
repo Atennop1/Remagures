@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace Remagures.SerializableDictionary
+namespace Remagures.Plugins.SerializableDictionary
 {
 	public abstract class SerializableHashSetBase
 	{
