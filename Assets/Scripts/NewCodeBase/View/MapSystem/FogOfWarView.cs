@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model.MapSystem
+namespace Remagures.View.MapSystem
 {
     [RequireComponent(typeof(Image))]
-    public class FogOfWar : MonoBehaviour
+    public sealed class FogOfWarView : MonoBehaviour
     {
         private Image _image;
 

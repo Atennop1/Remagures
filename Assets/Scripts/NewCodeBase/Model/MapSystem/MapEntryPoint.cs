@@ -4,14 +4,15 @@ using UnityEngine.SceneManagement;
 
 namespace Remagures.Model.MapSystem
 {
-    public class MapEntryPoint : MonoBehaviour
+    public class MapEntryPoint : MonoBehaviour //TODO remove this when adding root layer
     {
         [SerializeField] private StringValue _currentScene;
         
         private void Awake()
         {
-            _currentScene.Value = SceneManager.GetActiveScene().name;
-            PlayerPrefs.SetInt("Visited" + SceneManager.GetActiveScene().path, 1);
+            var currentScene = SceneManager.GetActiveScene();
+            _currentScene.Value = currentScene.name;
+            PlayerPrefs.SetInt("Visited" + currentScene.path, 1);
         }
     }
 }

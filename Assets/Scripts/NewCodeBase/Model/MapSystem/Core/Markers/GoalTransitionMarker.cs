@@ -28,7 +28,7 @@ namespace Remagures.Model.MapSystem
         }
 
         private bool ContainsInMapTree(IMap map)
-            => ContainsInMap(map) || map.Transitions.Any(transition => ContainsInMapTree(transition.MapToOpen));
+            => ContainsInMap(map) || map.Transitions.Any(transition => ContainsInMapTree(transition.MapToTransit));
         
         private bool ContainsInMap(IMap map)
             => map.Markers.Select(marker => marker is GoalMarker).Any();

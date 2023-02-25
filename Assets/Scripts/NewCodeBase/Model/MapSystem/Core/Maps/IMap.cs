@@ -4,7 +4,10 @@ namespace Remagures.Model.MapSystem
 {
     public interface IMap
     {
-        bool IsVisited { get; }
+        void Open();
+        bool CanOpen();
+        bool HasOpened { get; }
+        
         IReadOnlyList<IMarker> Markers { get; }
         IReadOnlyList<MapTransition> Transitions { get; }
     }
