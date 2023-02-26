@@ -1,10 +1,10 @@
-using Remagures.SO;
+using Remagures.Model.QuestSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.QuestSystem
+namespace Remagures.View.QuestSystem
 {
-    public class QuestSlot : MonoBehaviour
+    public class QuestSlotView : MonoBehaviour
     {
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;
@@ -15,9 +15,9 @@ namespace Remagures.QuestSystem
 
         public void Initialize(Quest quest, QuestGoalsView goalsPanel)
         {
-            _nameText.text = quest.Information.Name;
-            _descriptionText.text = quest.Information.Description;
-            _questImage.sprite = quest.Information.QuestSprite;
+            _nameText.text = quest.Data.Name;
+            _descriptionText.text = quest.Data.Description;
+            _questImage.sprite = quest.Data.QuestSprite;
 
             _thisQuest = quest;
             _goalsPanel = goalsPanel;

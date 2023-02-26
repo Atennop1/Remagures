@@ -1,12 +1,12 @@
-using Remagures.SO;
+using Remagures.Model.QuestSystem;
 using UnityEngine;
 
-namespace Remagures.QuestSystem
+namespace Remagures.View.QuestSystem
 {
     public class QuestsView : MonoBehaviour
     {
-        [SerializeField] private QuestContainer _playerQuests;
-        [SerializeField] private QuestSlot _slotPrefab;
+        [SerializeField] private QuestsList _playerQuests;
+        [SerializeField] private QuestSlotView slotViewPrefab;
         [SerializeField] private GameObject _noQuestsText;
 
         [Space]
@@ -34,7 +34,7 @@ namespace Remagures.QuestSystem
 
             foreach (var quest in _playerQuests.Quests)
             {
-                var slot = Instantiate(_slotPrefab, _questsPanel.transform.position, Quaternion.identity, _questsPanel.transform);
+                var slot = Instantiate(slotViewPrefab, _questsPanel.transform.position, Quaternion.identity, _questsPanel.transform);
                 slot.Initialize(quest, _goalsView);
             }
         }

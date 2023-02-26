@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Remagures.Model.QuestSystem;
 using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,7 +12,7 @@ namespace Remagures.Tools
         [Space]
         [FormerlySerializedAs("_saveContainer")]
         [SerializeField] private GameSaver _gameSaver;
-        [SerializeField] private QuestContainer _questsContainer;
+        [SerializeField] private QuestsList _questsContainer;
 
         [Space]
         [SerializeField] private List<Quest> _quests;
@@ -35,7 +36,7 @@ namespace Remagures.Tools
 
                 for (var j = 0; j < currentQuest.Goals.Count; j++)
                 {
-                    value.Value = currentQuest.Goals[j].CurrentAmount;
+                    value.Value = currentQuest.Goals[j].CurrentProgress;
                     SaveObjectToJson($"{Path}/Quest{i + 1}/Goal{j + 1}Amount.json", value);
                 }
             }
@@ -50,7 +51,7 @@ namespace Remagures.Tools
 
                 _gameSaver.CheckDir($"{Path}/Quest{i + 1}");
                 LoadObjectFromJson($"{Path}/Quest{i + 1}/ID.json", value);
-                _questsContainer.TryAddQuest(_quests[(int)value.Value]);
+                _questsContainer.AddQuest(_quests[(int)value.Value]);
 
                 for (var j = 0; j < currentQuest.Goals.Count; j++)
                 {
@@ -58,7 +59,7 @@ namespace Remagures.Tools
                     currentQuest.Goals[j].ResetCurrentAmount();
 
                     for (var _ = 0; _ < value.Value; _++)
-                        currentQuest.Goals[j].AddAmount();
+                        currentQuest.Goals[j].AddProgress();
                 }
             }
         }

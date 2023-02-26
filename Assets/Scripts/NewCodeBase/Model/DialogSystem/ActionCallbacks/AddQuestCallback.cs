@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.QuestSystem;
+using Remagures.Model.QuestSystem;
 using Remagures.SO;
 using UnityEngine;
 

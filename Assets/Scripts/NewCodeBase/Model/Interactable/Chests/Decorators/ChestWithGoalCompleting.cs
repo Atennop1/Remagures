@@ -1,6 +1,6 @@
 ﻿using System;
 using Remagures.Model.InventorySystem;
-using Remagures.QuestSystem;
+using Remagures.Model.QuestSystem;
 using Remagures.SO;
 
 namespace Remagures.Model.Interactable

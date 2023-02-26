@@ -1,9 +1,9 @@
-using Remagures.SO;
+using Remagures.Model.QuestSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.QuestSystem
+namespace Remagures.View.QuestSystem
 {
     public class QuestGoalsView : MonoBehaviour
     {
@@ -16,9 +16,9 @@ namespace Remagures.QuestSystem
 
         public void Initialize(Quest quest)
         {
-            _nameText.text = quest.Information.Name;
-            _descriptionText.text = quest.Information.Description;
-            _questImage.sprite = quest.Information.QuestSprite;
+            _nameText.text = quest.Data.Name;
+            _descriptionText.text = quest.Data.Description;
+            _questImage.sprite = quest.Data.QuestSprite;
 
             Clear();
             foreach (var goal in quest.Goals)
@@ -27,7 +27,7 @@ namespace Remagures.QuestSystem
                     _goalsPanel.transform);
                 description.text = "* " + goal.Description;
 
-                if (!goal.Completed)
+                if (!goal.IsCompleted)
                     return;
 
                 description.fontStyle = FontStyles.Strikethrough;
