@@ -8,7 +8,7 @@ namespace Remagures.Model.MapSystem
         bool CanOpen();
         bool HasOpened { get; }
         
-        IReadOnlyList<IMarker> Markers { get; }
+        IMarkers Markers { get; }
         IReadOnlyList<MapTransition> Transitions { get; }
     }
 }

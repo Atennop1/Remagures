@@ -6,26 +6,26 @@ namespace Remagures.Model.MapSystem
 {
     public sealed class MapExplorer
     {
-        private readonly CharacterPositionOnMapCalculator _characterPositionOnMapCalculator;
+        private readonly CharacterPositionOnMap _characterPositionOnMap;
         private readonly Texture2D _currentMapFogTexture;
 
-        public MapExplorer(MapSelector mapSelector, CharacterPositionOnMapCalculator characterPositionOnMapCalculator, FogsOfWarContainer fogsOfWarContainer)
+        public MapExplorer(MapSelector mapSelector, CharacterPositionOnMap characterPositionOnMap, FogsOfWar fogsOfWar)
         {
             if (mapSelector == null) 
                 throw new ArgumentNullException(nameof(mapSelector));
             
-            if (fogsOfWarContainer == null)
-                throw new ArgumentNullException(nameof(fogsOfWarContainer));
+            if (fogsOfWar == null)
+                throw new ArgumentNullException(nameof(fogsOfWar));
             
-            _characterPositionOnMapCalculator = characterPositionOnMapCalculator ?? throw new ArgumentNullException(nameof(characterPositionOnMapCalculator));
-            _currentMapFogTexture = fogsOfWarContainer.Get(mapSelector.CurrentLocationMap);
+            _characterPositionOnMap = characterPositionOnMap ?? throw new ArgumentNullException(nameof(characterPositionOnMap));
+            _currentMapFogTexture = fogsOfWar.GetFor(mapSelector.CurrentLocationMap);
         }
 
         public void Explore()
         {
-            var position = _characterPositionOnMapCalculator.Calculate();
-            _currentMapFogTexture.DrawCircle(new Color(0, 0, 0, 0.5f), (int)position.x, (int)position.y, 50);
-            _currentMapFogTexture.DrawCircle(new Color(0, 0, 0, 0), (int)position.x, (int)position.y, 47);
+            var position = _characterPositionOnMap.Get();
+            _currentMapFogTexture.DrawCircle(Color.black * 0.5f, position.x, position.y, 50);
+            _currentMapFogTexture.DrawCircle(Color.clear, position.x, position.y, 47);
             _currentMapFogTexture.Apply();
         }
     }

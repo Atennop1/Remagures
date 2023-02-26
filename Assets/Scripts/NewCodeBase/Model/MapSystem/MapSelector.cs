@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Remagures.Root;
 
 namespace Remagures.Model.MapSystem
@@ -15,7 +14,7 @@ namespace Remagures.Model.MapSystem
         public MapSelector(List<IMap> maps)
         {
             _maps = maps ?? throw new ArgumentNullException(nameof(maps));
-            CurrentLocationMap = _maps.Find(map => map.Markers.Any(marker => marker is CharacterMarker && marker.IsActive()));
+            CurrentLocationMap = _maps.Find(map => map.Markers.CharacterMarker.IsActive());
         }
 
         public void Update()

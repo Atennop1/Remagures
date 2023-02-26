@@ -20,17 +20,26 @@ namespace Remagures.Model.MapSystem
         {
             _markerView.UnDisplay();
             
-            if (!ContainsInMapTree(_map)) 
+            if (!ContainsInMapHierarchy(_map)) 
                 return false;
 
             _markerView.Display(Vector2.zero);
             return true;
         }
 
-        private bool ContainsInMapTree(IMap map)
-            => ContainsInMap(map) || map.Transitions.Any(transition => ContainsInMapTree(transition.MapToTransit));
-        
-        private bool ContainsInMap(IMap map)
-            => map.Markers.Select(marker => marker is GoalMarker).Any();
+        private bool ContainsInMapHierarchy(IMap map)
+        {
+            if (ContainsOnMap(map))
+                return true;
+            
+            return map.Transitions.Any(transition =>
+            {
+                var childMap = transition.MapToTransit;
+                return ContainsInMapHierarchy(childMap);
+            });
+        }
+
+        private bool ContainsOnMap(IMap map)
+            => map.Markers.GoalMarkers.Any(marker => marker.IsActive());
     }
 }

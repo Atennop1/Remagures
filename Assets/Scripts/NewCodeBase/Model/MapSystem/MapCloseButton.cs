@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapCloser : MonoBehaviour
+    public sealed class MapCloseButton : MonoBehaviour
     {
         [SerializeField] private GameObject _mapMenuGameObject;
         [SerializeField] private Button _closeButton;
@@ -16,5 +16,8 @@ namespace Remagures.Model.MapSystem
 
         private void Awake()
             => _closeButton.onClick.AddListener(Close);
+
+        private void OnDestroy()
+            => _closeButton.onClick.RemoveListener(Close);
     }
 }
