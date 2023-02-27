@@ -7,7 +7,6 @@ namespace Remagures.Model.Interactable
 {
     public sealed class PhysicsChest : MonoBehaviour, IChest
     {
-        [SerializeField] private Signal _raiseItemSignal;
         [SerializeField] private Collider2D _triggerCollider;
 
         public bool HasInteractionEnded => _chest.HasInteractionEnded;
@@ -31,7 +30,6 @@ namespace Remagures.Model.Interactable
             
             _chest.Interact();
             _triggerCollider.enabled = false;
-            _raiseItemSignal.Invoke();
         }
 
         public void EndInteracting()

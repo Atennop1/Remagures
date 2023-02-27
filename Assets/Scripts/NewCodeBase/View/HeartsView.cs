@@ -1,4 +1,5 @@
-using Remagures.SO;
+using System;
+using Remagures.Model.Health;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,61 +7,68 @@ namespace Remagures.View
 {
     public sealed class HeartsView : MonoBehaviour
     {
-        [Header("Values")]
-        [SerializeField] private FloatValue _heartContainers;
-        [SerializeField] private FloatValue _currentHealth;
         [SerializeField] private Image[] _hearts;
+        
+        [Space]
+        [SerializeField] private Sprite _fullHeartSprite;
+        [SerializeField] private Sprite _threeQuartersHeartSprite;
+        [SerializeField] private Sprite _halfHeartSprite;
+        [SerializeField] private Sprite _oneQuarterHeartSprite;
+        [SerializeField] private Sprite _emptyHeartSprite;
 
-        [Header("Hearts")]
-        [SerializeField] private Sprite _fullHeart;
-        [SerializeField] private Sprite _threeQuarterHeart;
-        [SerializeField] private Sprite _halfHeart;
-        [SerializeField] private Sprite _oneQuarterHeart;
-        [SerializeField] private Sprite _emptyHeart;
+        private IHealth _characterHealth;      
+        private int _heartContainersCount;
+
+        public void Construct(IHealth health)
+            => _characterHealth = health ?? throw new ArgumentNullException(nameof(health));
 
         private void Start()
-            => UpdateHearts();
-
-        private void InitHearts()
         {
-            for (var i = 0; i < _heartContainers.Value; i++)
+            _heartContainersCount = _characterHealth.CurrentValue / 4;
+            FillHearts();
+        }
+
+        private void DisplayHearts()
+        {
+            for (var i = 0; i < _heartContainersCount; i++)
             {
-                if (i >= _hearts.Length) continue;
+                if (i >= _hearts.Length) 
+                    continue;
             
                 _hearts[i].gameObject.SetActive(true);
-                _hearts[i].sprite = _fullHeart;
+                _hearts[i].sprite = _fullHeartSprite;
             }
         }
 
-        public void UpdateHearts()
+        private void FillHearts()
         {
-            InitHearts();
-            var currentHearts = _currentHealth.Value;
+            DisplayHearts();
+            var currentHealth = _characterHealth.CurrentValue;
         
-            for (var i = 0; i < _heartContainers.Value; i++)
+            for (var i = 0; i < _heartContainersCount; i++)
             {
                 if (i >= _hearts.Length) continue;
 
-                switch (currentHearts)
+                switch (currentHealth)
                 {
                     case >= 4:
-                        _hearts[i].sprite = _fullHeart;
-                        currentHearts -= 4;
+                        _hearts[i].sprite = _fullHeartSprite;
+                        currentHealth -= 4;
                         break;
                     case 3:
-                        _hearts[i].sprite = _threeQuarterHeart;
-                        currentHearts -= 3;
+                        _hearts[i].sprite = _threeQuartersHeartSprite;
+                        currentHealth -= 3;
                         break;
                     case 2:
-                        _hearts[i].sprite = _halfHeart;
-                        currentHearts -= 2;
+                        _hearts[i].sprite = _halfHeartSprite;
+                        currentHealth -= 2;
                         break;
                     case 1:
-                        _hearts[i].sprite = _oneQuarterHeart;
-                        currentHearts -= 1;
+                        _hearts[i].sprite = _oneQuarterHeartSprite;
+                        currentHealth -= 1;
                         break;
                     default:
-                        _hearts[i].sprite = _emptyHeart;
+                        _hearts[i].sprite = _emptyHeartSprite;
                         break;
                 }
             }

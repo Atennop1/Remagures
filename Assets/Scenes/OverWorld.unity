@@ -71841,7 +71841,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 268459812772499756}
         m_TargetAssemblyTypeName: HeartManager, Assembly-CSharp
-        m_MethodName: UpdateHearts
+        m_MethodName: FillHearts
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

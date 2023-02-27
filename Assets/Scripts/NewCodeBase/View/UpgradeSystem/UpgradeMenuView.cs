@@ -35,7 +35,7 @@ namespace Remagures.View.UpgradeSystem
         private void OnEnable()
         {
             UpdateContent();
-            _sharpsCountText.text = _sharpsWallet.Money.ToString();
+            _sharpsCountText.text = _sharpsWallet.MoneyCount.ToString();
         }
 
         private void CreateSlots() 
@@ -58,7 +58,7 @@ namespace Remagures.View.UpgradeSystem
                         {
                             upgrader.Upgrade(cell.Item);
                             UpdateContent();
-                            _sharpsCountText.text = _sharpsWallet.Money.ToString();
+                            _sharpsCountText.text = _sharpsWallet.MoneyCount.ToString();
                         });
                         
                         upgradeSlot.Display(upgradeData);

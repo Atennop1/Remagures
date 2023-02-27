@@ -19,11 +19,8 @@ namespace Remagures.Model.Flashing
             _flashingsStarter = flashingsStarter ?? throw new ArgumentNullException(nameof(flashingsStarter));
         }
 
-        public async void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType)
+        public void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType)
         {
-            if (!_colors.ContainsKey(flashColorType))
-                throw new ArgumentException($"This flashingable haven't color {flashColorType}");
-            
             if (afterFlashColorType != FlashColorType.BeforeFlash && !_colors.ContainsKey(afterFlashColorType))
                 throw new ArgumentException($"This flashingable haven't color {afterFlashColorType}");
             

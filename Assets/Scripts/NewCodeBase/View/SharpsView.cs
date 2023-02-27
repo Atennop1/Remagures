@@ -10,6 +10,6 @@ namespace Remagures.View
         private IWallet _sharpsWallet;
 
         private void OnEnable()
-            => _sharpsCountText.text = _sharpsWallet.Money.ToString();
+            => _sharpsCountText.text = _sharpsWallet.MoneyCount.ToString();
     }
 }
