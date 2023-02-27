@@ -7,13 +7,13 @@ namespace Remagures.Model.QuestSystem
     {
         public readonly string Name;
         public readonly string Description;
-        public readonly SerializableSprite QuestSprite;
+        public readonly SerializableSprite Sprite;
 
         public QuestData(string name, string description, SerializableSprite questSprite)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Description = description ?? throw new ArgumentNullException(nameof(description));
-            QuestSprite = questSprite ?? throw new ArgumentNullException(nameof(questSprite));
+            Sprite = questSprite ?? throw new ArgumentNullException(nameof(questSprite));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Remagures.Model.MapSystem
         public void OpenGoals()
         {
             _goalsView.gameObject.SetActive(true);
-            _goalsView.Initialize(_goal.Quest);
+            _goalsView.Display(_goal.Quest);
         }
 
         public bool IsActive()

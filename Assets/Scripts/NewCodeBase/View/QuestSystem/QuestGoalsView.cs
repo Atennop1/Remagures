@@ -1,3 +1,4 @@
+using Remagures.Factories;
 using Remagures.Model.QuestSystem;
 using TMPro;
 using UnityEngine;
@@ -7,40 +8,40 @@ namespace Remagures.View.QuestSystem
 {
     public class QuestGoalsView : MonoBehaviour
     {
-        [SerializeField] public Text _nameText;
-        [SerializeField] public Text _descriptionText;
-        [SerializeField] public Image _questImage;
+        [SerializeField] private Text _nameText;
+        [SerializeField] private Text _descriptionText;
+        [SerializeField] private Image _questImage;
 
-        [Space] [SerializeField] public TextMeshProUGUI _textPrefab;
-        [SerializeField] public GameObject _goalsPanel;
+        [SerializeField] private IGoalTextFactory _goalTextFactory;
+        [SerializeField] private Transform _goalsContent;
 
-        public void Initialize(Quest quest)
+        public void Display(IQuest quest)
         {
+            gameObject.SetActive(true);
             _nameText.text = quest.Data.Name;
             _descriptionText.text = quest.Data.Description;
-            _questImage.sprite = quest.Data.QuestSprite;
+            _questImage.sprite = quest.Data.Sprite.Get();
 
-            Clear();
+            ClearContent();
             foreach (var goal in quest.Goals)
             {
-                var description = Instantiate(_textPrefab, _goalsPanel.transform.position, Quaternion.identity,
-                    _goalsPanel.transform);
-                description.text = "* " + goal.Description;
+                var goalText = _goalTextFactory.Create(_goalsContent);
+                goalText.text = "* " + goal.Description;
 
                 if (!goal.IsCompleted)
                     return;
 
-                description.fontStyle = FontStyles.Strikethrough;
+                goalText.fontStyle = FontStyles.Strikethrough;
             }
         }
 
-        private void Clear()
+        private void ClearContent()
         {
-            for (var i = 0; i < _goalsPanel.transform.childCount; i++)
-                Destroy(_goalsPanel.transform.GetChild(i).gameObject);
+            for (var i = 0; i < _goalsContent.childCount; i++)
+                Destroy(_goalsContent.GetChild(i).gameObject);
         }
 
-        public void Close()
+        private void Close()
             => gameObject.SetActive(false);
     }
 }

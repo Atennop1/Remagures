@@ -1,7 +1,10 @@
-﻿namespace Remagures.Model.QuestSystem
+﻿using System.Collections.Generic;
+
+namespace Remagures.Model.QuestSystem
 {
     public interface IQuestsList
     {
+        IReadOnlyList<IQuest> Quests { get; }
         void AddQuest(IQuest quest);
         bool CanAddQuest(IQuest quest);
 

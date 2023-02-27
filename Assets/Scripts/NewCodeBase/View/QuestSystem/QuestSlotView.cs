@@ -4,29 +4,19 @@ using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public class QuestSlotView : MonoBehaviour
+    public sealed class QuestSlotView : MonoBehaviour
     {
+        [field: SerializeField] public Button Button { get; private set; }
+        
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;
-        [SerializeField] private Image _questImage;
+        [SerializeField] private Image _image;
 
-        private Quest _thisQuest;
-        private QuestGoalsView _goalsPanel;
-
-        public void Initialize(Quest quest, QuestGoalsView goalsPanel)
+        public void Display(IQuest quest)
         {
             _nameText.text = quest.Data.Name;
             _descriptionText.text = quest.Data.Description;
-            _questImage.sprite = quest.Data.QuestSprite;
-
-            _thisQuest = quest;
-            _goalsPanel = goalsPanel;
-        }
-
-        public void ShowGoals()
-        {
-            _goalsPanel.gameObject.SetActive(true);
-            _goalsPanel.Initialize(_thisQuest);
+            _image.sprite = quest.Data.Sprite.Get();
         }
     }
 }
