@@ -6,11 +6,8 @@ namespace Remagures.View.MapSystem
     {
         [SerializeField] private GameObject _markerGameObject;
         
-        public void Display(Vector2 position)
-        {
-            _markerGameObject.SetActive(true);
-            _markerGameObject.transform.position = position;
-        }
+        public void Display()
+            => _markerGameObject.SetActive(true);
 
         public void UnDisplay()
             => _markerGameObject.SetActive(false);

@@ -1,43 +1,36 @@
+using System;
 using System.Linq;
+using JetBrains.Annotations;
 using Remagures.Model.QuestSystem;
-using Remagures.SO;
-using Remagures.View.QuestSystem;
-using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
+using Remagures.Tools;
+using Remagures.View.MapSystem;
 
 namespace Remagures.Model.MapSystem
 {
-    public class GoalMarker : MonoBehaviour, IMarker //TODO remake this after quest system
+    public sealed class GoalMarker : IMarker
     {
-        [SerializeField] private QuestsList _questsList;
-        [SerializeField] private QuestGoal _goal;
-        [SerializeField] private Image _marker;
+        private readonly IMarkerView _markerView;
+        private readonly IQuestsList _questsList;
+        private readonly IQuest _quest;
+        private readonly IQuestGoal _goal;
 
-        private QuestGoalsView _goalsView;
-
-        public void Init(QuestGoalsView view)
-            => _goalsView = view;
-
-        public void OpenGoals()
+        public GoalMarker(IMarkerView markerView, IQuestsList questsList, IQuest quest, IQuestGoal goal)
         {
-            _goalsView.gameObject.SetActive(true);
-            _goalsView.Display(_goal.Quest);
+            _markerView = markerView ?? throw new ArgumentNullException(nameof(markerView));
+            _questsList = questsList ?? throw new ArgumentNullException(nameof(questsList));
+            _quest = quest ?? throw new ArgumentNullException(nameof(quest));
+            _goal = goal ?? throw new ArgumentNullException(nameof(goal));
         }
 
-        public bool IsActive()
-        {
-            var quest = _goal.Quest;
-            return _questsList.Quests.Contains(quest) && _goal == quest.GetActiveGoal();
-        }
+        public bool IsActive() 
+            => _questsList.Quests.Contains(_quest) && _goal == _quest.GetActiveGoal();
 
-        private void OnEnable()
+        public void OnEnable()
         {
-            _marker.gameObject.SetActive(false);
-            if (_goal.IsCompleted) return;
-        
+            _markerView.UnDisplay();
+            
             if (IsActive())
-                _marker.gameObject.SetActive(true);
+                _markerView.Display();
         }
     }
 }

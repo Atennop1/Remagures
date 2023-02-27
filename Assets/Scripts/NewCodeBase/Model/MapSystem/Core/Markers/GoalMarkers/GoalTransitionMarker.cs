@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
 using Remagures.View.MapSystem;
-using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
-    public class GoalTransitionMarker : IMarker
+    public sealed class GoalTransitionMarker
     {
         private readonly IMarkerView _markerView;
         private readonly IMap _map;
@@ -23,7 +22,7 @@ namespace Remagures.Model.MapSystem
             if (!ContainsInMapHierarchy(_map)) 
                 return false;
 
-            _markerView.Display(Vector2.zero);
+            _markerView.Display();
             return true;
         }
 

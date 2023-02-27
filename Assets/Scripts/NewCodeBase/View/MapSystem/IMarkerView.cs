@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace Remagures.View.MapSystem
+﻿namespace Remagures.View.MapSystem
 {
     public interface IMarkerView
     {
-        void Display(Vector2 position);
+        void Display();
         void UnDisplay();
     }
 }
