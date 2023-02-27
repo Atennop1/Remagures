@@ -1,29 +1,26 @@
-using Remagures.Model.InventorySystem;
-using Remagures.View.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.RuneSystem
 {
-    public class RuneCellView : CellView
+    public sealed class RuneCellView : MonoBehaviour
     {
-        [SerializeField] private RuneView _runeView;
+        [SerializeField] private Button _button;
+        [SerializeField] private Image _image;
+        
+        [SerializeField] private Sprite _absenceRuneSprite;
+        [SerializeField] private Sprite _runeSprite;
 
-        public void OnEnable()
+        public void Display()
         {
-            if (!_runeView.Inventory.Contains(new Cell(ThisItem)))
-            {
-                ItemImage.sprite = NoneSprite;
-                GetComponent<Button>().enabled = false;
-            }
-            else
-            {
-                ItemImage.sprite = ThisItem.Sprite;
-                GetComponent<Button>().enabled = true;
-            }
+            _image.sprite = _runeSprite;
+            _button.enabled = true;
         }
 
-        public void Select()
-            => _runeView.Select(ThisItem as IRuneItem);
+        public void UnDisplay()
+        {
+            _image.sprite = _absenceRuneSprite;
+            _button.enabled = false;
+        }
     }
 }
