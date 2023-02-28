@@ -1,4 +1,4 @@
-﻿using Remagures.RuneSystem;
+﻿using Remagures.Model.RuneSystem;
 
 namespace Remagures.Model.InventorySystem
 {

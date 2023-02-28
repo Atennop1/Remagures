@@ -1,7 +1,6 @@
 using Remagures.Model;
 using Remagures.Model.InventorySystem;
 using Remagures.Model.Magic;
-using Remagures.RuneSystem;
 using UnityEngine;
 
 namespace Remagures.SO

@@ -1,4 +1,4 @@
-﻿namespace Remagures.RuneSystem
+﻿namespace Remagures.Model.RuneSystem
 {
     public sealed class ShieldRune : IRune //TODO make after root layer
     {

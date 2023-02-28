@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Remagures.Model.Magic;
 
-namespace Remagures.RuneSystem
+namespace Remagures.Model.RuneSystem
 {
     public sealed class ManaRune : IRune
     {

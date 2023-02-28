@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.RuneSystem
+namespace Remagures.Model.RuneSystem
 {
     public sealed class RuneCellView : MonoBehaviour
     {
