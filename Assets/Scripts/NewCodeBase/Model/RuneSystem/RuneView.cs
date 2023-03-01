@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Remagures.Model.InventorySystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,38 +8,39 @@ namespace Remagures.Model.RuneSystem
 {
     public sealed class RuneView : MonoBehaviour
     {
-        [Header("UI")]
-        [SerializeField] private Text _nameText;
-        [SerializeField] private Text _descriptionText;
-        [SerializeField] private Image _currentRuneImage;
+        [SerializeField] private Button _button;
+        [SerializeField] private Image _image;
+        
         [SerializeField] private Sprite _absenceRuneSprite;
+        [SerializeField] private Sprite _runeSprite;
 
-        [Header("Objects")]
-        [SerializeField] private GameObject _equipButton;
-        [SerializeField] private GameObject _noneText;
+        private IInventory<IRuneItem> _runesInventory;
+        private IRuneItem _runeItem;
 
-        private IInventory<IRuneItem> _inventory;
-
-        public void Construct(IInventory<IRuneItem> inventory)
-            => _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
-        
-        public void DisplayInformation(IRuneItem item)
+        public void Construct(IInventory<IRuneItem> runesInventory, IRuneItem runeItem)
         {
-            _nameText.text = item.Name;
-            _descriptionText.text = item.Description;
-            _currentRuneImage.sprite = item.Sprite;
-            _equipButton.SetActive(true);
+            _runesInventory = runesInventory ?? throw new ArgumentNullException(nameof(runesInventory));
+            _runeItem = runeItem ?? throw new ArgumentNullException(nameof(runeItem));
         }
-        
+
         private void OnEnable()
         {
-            _currentRuneImage.sprite = _absenceRuneSprite;
-            _descriptionText.text = "";
-            _nameText.text = "";
-            _noneText.SetActive(_inventory.Cells.Count < 1);
+            UnDisplay();
+            
+            if (_runesInventory.Cells.Any(cell => cell.Item.Equals(_runeItem)))
+                Display();
         }
 
-        private void Close()
-            => gameObject.SetActive(false);
+        private void Display()
+        {
+            _image.sprite = _runeSprite;
+            _button.enabled = true;
+        }
+
+        private void UnDisplay()
+        {
+            _image.sprite = _absenceRuneSprite;
+            _button.enabled = false;
+        }
     }
 }

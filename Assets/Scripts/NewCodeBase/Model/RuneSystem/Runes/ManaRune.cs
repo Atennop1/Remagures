@@ -8,36 +8,37 @@ namespace Remagures.Model.RuneSystem
 {
     public sealed class ManaRune : IRune
     {
-        public bool IsActive { get; private set; }
-
-        private CancellationTokenSource _cancellationTokenSource;
         private readonly IMana _mana;
+        private CancellationTokenSource _cancellationTokenSource = new();
+
+        private const int RUNE_COOLDOWN_IN_MILLISECONDS = 60000;
 
         public ManaRune(IMana mana)
             => _mana = mana ?? throw new ArgumentNullException(nameof(mana));
-        
+
+        public bool IsActive { get; private set; }
         
         public async void Activate()
         {
             IsActive = true;
             _cancellationTokenSource = new CancellationTokenSource();
-            await StartAddingMana(_cancellationTokenSource.Token);
+            await ManaAddingCycle();
         }
 
         public void Deactivate()
         {
-            IsActive = true;
+            IsActive = false;
             _cancellationTokenSource.Cancel();
         }
 
-        private async UniTask StartAddingMana(CancellationToken cancellationToken)
+        private async UniTask ManaAddingCycle()
         {
             while (true)
             {
-                await Task.Delay(60000, cancellationToken);
+                await Task.Delay(RUNE_COOLDOWN_IN_MILLISECONDS, _cancellationTokenSource.Token);
                 
-                if (cancellationToken.IsCancellationRequested)
-                    return;
+                if (_cancellationTokenSource.IsCancellationRequested)
+                    break;
                 
                 _mana.Increase(_mana.MaxValue / 10);
             }

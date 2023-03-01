@@ -1,3 +1,4 @@
+using Remagures.Model.RuneSystem;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
@@ -9,16 +10,16 @@ namespace Remagures.Model.InventorySystem
         public Sprite Sprite { get; }
         public bool IsStackable { get; }
         
-        public RuneType Type { get; }
+        public IRune Rune { get; }
 
-        public RuneItem(IItem item, RuneType type)
+        public RuneItem(IItem item, IRune rune)
         {
             Name = item.Name;
             Description = item.Description;
             Sprite = item.Sprite;
             IsStackable = item.IsStackable;
             
-            Type = type;
+            Rune = rune;
         }
     }
 }
