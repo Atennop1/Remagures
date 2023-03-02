@@ -8,9 +8,9 @@ namespace Remagures.Model.DialogSystem
     public class DialogSwitcher : SerializedMonoBehaviour
     {
         [SerializeField] private string _newDialogName;
-        [OdinSerialize] private DialogsListRoot _dialogsListRoot;
+        [OdinSerialize] private DialogsListFactory _dialogsListFactory;
 
         public void Switch() 
-            => _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
+            => _dialogsListFactory.BuiltDialogList.SwitchToDialog(_newDialogName);
     }
 }

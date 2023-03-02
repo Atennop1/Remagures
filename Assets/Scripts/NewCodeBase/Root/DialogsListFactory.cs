@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Remagures.Model.DialogSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class DialogsListRoot : CompositeRoot
+    public sealed class DialogsListFactory : SerializedMonoBehaviour
     {
         [SerializeField] private int _idOfStartDialog;
         [SerializeField] private string _characterName;
@@ -18,8 +19,11 @@ namespace Remagures.Root
 
         public DialogsList BuiltDialogList { get; private set; }
 
-        public override void Compose()
+        public IDialogsList Create()
         {
+            if (BuiltDialogList != null)
+                return BuiltDialogList;
+            
             _speakerInfoBuilders.ForEach(builder => builder.Build());
             _choiceBuilders.ForEach(builder => builder.Build());
             _dialogLineBuilders.ForEach(builder => builder.Build());
@@ -29,6 +33,8 @@ namespace Remagures.Root
             
             if (BuiltDialogList.CurrentDialog == null)
                 BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].Build());
+
+            return BuiltDialogList;
         }
 
         private void OnDisable()

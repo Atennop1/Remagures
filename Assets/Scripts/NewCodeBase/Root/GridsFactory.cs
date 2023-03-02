@@ -1,4 +1,5 @@
 ﻿using Remagures.Model.AI.Pathfinding;
+using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,7 +7,7 @@ using Grid = Remagures.Model.AI.Pathfinding.Grid;
 
 namespace Remagures.Root
 {
-    public class GridRoot : CompositeRoot
+    public sealed class GridsFactory : SerializedMonoBehaviour
     {
         [SerializeField] private bool _isDebugActive;
         
@@ -21,7 +22,7 @@ namespace Remagures.Root
 
         private GridNode[,] _nodes;
         
-        public override void Compose()
+        public IGrid Create()
         {
             var nodeDiameter = _nodeRadius * 2;
             _gridSizeX = Mathf.RoundToInt(_gridWorldSize.x / nodeDiameter);
@@ -38,7 +39,9 @@ namespace Remagures.Root
 
             var grid = new Grid(_nodes, gridData, _gridOffset);
             var obstacleSetters = FindObjectsOfType<PhysicsPathfindingObstacleSetter>();
+            
             obstacleSetters.ForEach(setter => setter.Activate(grid));
+            return grid;
         }
         
         private void OnDrawGizmos()

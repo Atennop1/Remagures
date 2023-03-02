@@ -7,7 +7,7 @@ namespace Remagures.Model.DialogSystem
     public class SwitchDialogWithoutContinueCallback : MonoBehaviour, IDialogActionCallback
     {
         [SerializeField] private string _newDialogName;
-        [SerializeField] private DialogsListRoot _dialogsListRoot;
+        [SerializeField] private DialogsListFactory dialogsListFactory;
 
         private IUsableComponent _usableComponent;
         private bool _isWorked;
@@ -17,7 +17,7 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _isWorked)
                 return;
 
-            _dialogsListRoot.BuiltDialogList.SwitchToDialog(_newDialogName);
+            dialogsListFactory.BuiltDialogList.SwitchToDialog(_newDialogName);
             _isWorked = true;
         }
 

@@ -6,10 +6,11 @@ using Remagures.View;
 using Remagures.View.DialogSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 namespace Remagures.Root
 {
-    public sealed class TestCutsceneRoot : CompositeRoot
+    public sealed class TestCutsceneFactory : SerializedMonoBehaviour
     {
         [Header("Dialogs Stuff")] 
         [SerializeField] private DialogView _dialogView;
@@ -22,7 +23,7 @@ namespace Remagures.Root
         [SerializeField] private UIActivityChanger _uiActivityChanger;
         private ISystemUpdate _systemUpdate;
 
-        public override void Compose()
+        public ICutscene Create()
         {
             _systemUpdate = new SystemUpdate();
             var actions = new List<ICutsceneAction>
@@ -48,6 +49,7 @@ namespace Remagures.Root
             
             var cutscene = new Cutscene(actions);
             _systemUpdate.Add(cutscene);
+            return cutscene;
         }
 
         private void FixedUpdate() 

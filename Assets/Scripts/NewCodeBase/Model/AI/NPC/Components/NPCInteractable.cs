@@ -12,7 +12,7 @@ namespace Remagures.Model.AI.NPC
         
         private readonly INPCInteractableView _npcInteractableView;
         private readonly DialogView _dialogView; //TODO maybe i need to use polling instead pushing
-        private readonly DialogsListRoot _dialogsListRoot;
+        private readonly DialogsListFactory _dialogsListFactory;
         
         public void LateUpdate()
         {
@@ -23,7 +23,7 @@ namespace Remagures.Model.AI.NPC
         public void Interact()
         {
             HasInteractionStarted = true;
-            _dialogView.DisplayStartOfDialog(_dialogsListRoot.BuiltDialogList.CurrentDialog);
+            _dialogView.DisplayStartOfDialog(_dialogsListFactory.BuiltDialogList.CurrentDialog);
             _npcInteractableView.DisplayInteraction();
         }
 

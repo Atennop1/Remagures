@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Remagures.Model.RuneSystem;
 using Remagures.Root;
 
 namespace Remagures.Model.InventorySystem
@@ -10,6 +11,7 @@ namespace Remagures.Model.InventorySystem
         public IReadOnlyCell<IRuneItem> SelectedCell { get; private set;}
 
         private readonly IInventory<IRuneItem> _runesInventory;
+        private readonly SelectedRuneView _selectedRuneView;
 
         public RunesSelector(IInventory<IRuneItem> runesInventory)
             => _runesInventory = runesInventory ?? throw new ArgumentNullException(nameof(runesInventory));
@@ -25,8 +27,10 @@ namespace Remagures.Model.InventorySystem
             foreach (var runeCell in _runesInventory.Cells)
                 runeCell.Item.Rune.Deactivate();
             
-            item.Rune.Activate();
             HasSelected = true;
+            item.Rune.Activate();
+            
+            _selectedRuneView.Display(item);
             SelectedCell = _runesInventory.Cells.ToList().Find(cell => cell.Item.Rune == item.Rune);
         }
 
