@@ -10,7 +10,7 @@ namespace Remagures.Model.Attacks
         public Attack(int damage)
             => Damage = damage.ThrowExceptionIfLessOrEqualsZero();
 
-        public void ApplyTo(Target target)
+        public void ApplyTo(ITarget target)
         {
             target.Health.TakeDamage(Damage);
             target.Flashingable.Flash(FlashColorType.Damage, FlashColorType.BeforeFlash);

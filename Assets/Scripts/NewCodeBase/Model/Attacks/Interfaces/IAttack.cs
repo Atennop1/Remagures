@@ -3,6 +3,6 @@
     public interface IAttack
     {
         int Damage { get; }
-        void ApplyTo(Target target);
+        void ApplyTo(ITarget target);
     }
 }
