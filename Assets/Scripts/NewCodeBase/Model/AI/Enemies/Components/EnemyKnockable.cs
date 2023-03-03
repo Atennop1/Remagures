@@ -7,7 +7,7 @@ namespace Remagures.Model.AI.Enemies
     public sealed class EnemyKnockable : IKnockable
     {
         public bool IsKnocking => _knockable.IsKnocking;
-        public LayerMask InteractionMask => _knockable.InteractionMask;
+        public LayerMask KnockingMask => _knockable.KnockingMask;
         
         private readonly IKnockable _knockable;
         private readonly StateMachine _enemyStateMachine;

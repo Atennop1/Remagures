@@ -9,7 +9,7 @@ namespace Remagures.Model.Character
 {
     public sealed class CharacterKnockable : IKnockable
     {
-        public LayerMask InteractionMask => _knockable.InteractionMask;
+        public LayerMask KnockingMask => _knockable.KnockingMask;
         public bool IsKnocking => _knockable.IsKnocking;
 
         private readonly IKnockable _knockable;
