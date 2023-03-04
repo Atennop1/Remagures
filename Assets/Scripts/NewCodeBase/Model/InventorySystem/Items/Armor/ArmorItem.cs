@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using Remagures.Tools;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public readonly struct ArmorItem : IArmorItem, IDisplayableItem
+    public readonly struct ArmorItem : IArmorItem
     {
         public string Name { get; }
         public string Description { get; }
@@ -14,11 +14,8 @@ namespace Remagures.Model.InventorySystem
         public AnimatorOverrideController AnimatorController { get; }
         public int Armor { get; }
 
-        public ArmorItem(IItem item, AnimatorOverrideController animatorController, int armor)
+        public ArmorItem(IItem item, AnimatorOverrideController animatorController, int armor) : this()
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-            
             Name = item.Name;
             Description = item.Description;
             Sprite = item.Sprite;

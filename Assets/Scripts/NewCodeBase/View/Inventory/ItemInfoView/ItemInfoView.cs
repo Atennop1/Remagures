@@ -15,7 +15,7 @@ namespace Remagures.View.Inventory
         private RectTransform _descriptionTextRect;
         private IInventory<T> _inventory;
         
-        private readonly IItem _nullItem = new NullItem();
+        private readonly IItem _nullItem = new Item();
         private Action _useButtonListener;
 
         public void Construct(IInventory<T> inventory)

@@ -1,16 +1,14 @@
-using System;
+﻿using System;
 using Cysharp.Threading.Tasks;
 using Remagures.Tools;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public sealed class WeaponItem : IWeaponItem
+    public sealed class MagicItem : IMagicItem
     {
-        public AnimatorOverrideController AnimatorController { get; }
         public int UsingCooldownInMilliseconds { get; }
-        public int Damage { get; }
-        
+
         public string Name { get; }
         public string Description { get; }
         public Sprite Sprite { get; }
@@ -18,15 +16,13 @@ namespace Remagures.Model.InventorySystem
         
         public bool HasUsed { get; private set; }
         
-        public WeaponItem(IItem item, AnimatorOverrideController animatorController, int damage, int usingCooldown)
+        public MagicItem(IItem item, int usingCooldown)
         {
             Name = item.Name;
             Description = item.Description;
             Sprite = item.Sprite;
             IsStackable = item.IsStackable;
-
-            AnimatorController = animatorController ?? throw new ArgumentNullException(nameof(animatorController));
-            Damage = damage.ThrowExceptionIfLessOrEqualsZero();
+            
             UsingCooldownInMilliseconds = usingCooldown.ThrowExceptionIfLessOrEqualsZero();
         }
         

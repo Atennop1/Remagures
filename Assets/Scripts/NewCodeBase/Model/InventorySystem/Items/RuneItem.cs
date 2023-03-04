@@ -1,3 +1,4 @@
+using System;
 using Remagures.Model.RuneSystem;
 using UnityEngine;
 
@@ -18,8 +19,8 @@ namespace Remagures.Model.InventorySystem
             Description = item.Description;
             Sprite = item.Sprite;
             IsStackable = item.IsStackable;
-            
-            Rune = rune;
+
+            Rune = rune ?? throw new ArgumentNullException(nameof(rune));
         }
     }
 }

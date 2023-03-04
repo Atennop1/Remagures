@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public struct UsableItem : IUsableItem
+    public sealed class UsableItem : IUsableItem
     {
         public string Name { get; }
         public string Description { get; }
@@ -12,7 +12,7 @@ namespace Remagures.Model.InventorySystem
         
         public bool HasUsed { get; private set; }
         
-        public UsableItem(IItem item) : this()
+        public UsableItem(IItem item)
         {
             Name = item.Name;
             Description = item.Description;
