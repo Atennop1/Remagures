@@ -37,6 +37,7 @@ namespace Remagures.Model.InventorySystem
             var cellsList = _inventory.Cells.ToList();
             var biggestArmor = cellsList.Max(cell => cell.Item.Armor);
             
+            HasSelected = true;
             SelectedCell = cellsList.Find(cell => cell.Item.Armor == biggestArmor);
             _selectedCellView.Display(SelectedCell as ICell<IItem>);
         }

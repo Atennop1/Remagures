@@ -1,4 +1,4 @@
-﻿//TODO add abstraction to all game after redesign
+﻿//TODO add abstraction to all game after redesign and make sure that all updated objects are in the loop
 
 // TODO drop this logic from Death() method in other places using polling:
 _currentHealth.Value = _heartContainers.Value * 4;

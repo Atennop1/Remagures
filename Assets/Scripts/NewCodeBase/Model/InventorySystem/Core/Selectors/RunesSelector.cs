@@ -13,8 +13,11 @@ namespace Remagures.Model.InventorySystem
         private readonly IInventory<IRuneItem> _runesInventory;
         private readonly SelectedRuneView _selectedRuneView;
 
-        public RunesSelector(IInventory<IRuneItem> runesInventory)
-            => _runesInventory = runesInventory ?? throw new ArgumentNullException(nameof(runesInventory));
+        public RunesSelector(IInventory<IRuneItem> runesInventory, SelectedRuneView selectedRuneView)
+        {
+            _runesInventory = runesInventory ?? throw new ArgumentNullException(nameof(runesInventory));
+            _selectedRuneView = selectedRuneView ?? throw new ArgumentNullException(nameof(selectedRuneView));
+        }
 
         public void LateUpdate()
             => HasSelected = false;
