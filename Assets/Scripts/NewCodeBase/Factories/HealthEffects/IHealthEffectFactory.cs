@@ -5,6 +5,6 @@ namespace Remagures.Factories
 {
     public interface IHealthEffectFactory
     {
-        IHealthEffect Create(Target target, int damage);
+        IHealthEffect Create(ITarget target, int damage);
     }
 }

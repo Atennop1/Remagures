@@ -20,13 +20,13 @@ namespace Remagures.Model.Character
             _knockable = knockable ?? throw new ArgumentNullException(nameof(knockable));
             _characterStateMachine = characterStateMachine ?? throw new ArgumentNullException(nameof(characterStateMachine));
         }
-
-        public void Knock(int knockTimeInMilliseconds)
+        
+        public void Knock(Vector2 forceVector, int timeInMilliseconds)
         {
             if (!_characterStateMachine.CanSetState(typeof(KnockbackedState)))
                 _knockable.StopKnocking();
 
-            _knockable.Knock(knockTimeInMilliseconds);
+            _knockable.Knock(forceVector, timeInMilliseconds);
         }
 
         public void StopKnocking()

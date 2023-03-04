@@ -17,7 +17,7 @@ namespace Remagures.Model.Character
             _attack = attack ?? throw new ArgumentNullException(nameof(attack));
         }
 
-        public void ApplyTo(Target target)
+        public void ApplyTo(ITarget target)
         {
             target.Health.TakeDamage(Damage);
             _healthEffectFactory.Create(target, Damage).Activate();

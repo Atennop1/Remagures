@@ -23,7 +23,7 @@ namespace Remagures.Factories
                 throw new ArgumentException("MaxFireTime can't be less than MinFireTime");
         }
 
-        public IHealthEffect Create(Target target, int damage)
+        public IHealthEffect Create(ITarget target, int damage)
         {
             if (!_characterInfo.FireRunActive)
                 return new NullHealthEffect();

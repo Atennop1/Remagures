@@ -5,7 +5,7 @@ namespace Remagures.Factories
 {
     public sealed class NullHealthEffectFactory : IHealthEffectFactory
     {
-        public IHealthEffect Create(Target target, int damage)
+        public IHealthEffect Create(ITarget target, int damage)
             => new NullHealthEffect();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Remagures.Model.Character;
 using Remagures.Root;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Remagures.Model.SceneTransition
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.TryGetComponent(out Player _) || collision.isTrigger) 
+            if (!collision.TryGetComponent(out PhysicsCharacter _) || collision.isTrigger) 
                 return;
 
             _sceneTransition.Activate();
