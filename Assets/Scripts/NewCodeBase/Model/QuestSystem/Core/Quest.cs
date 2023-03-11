@@ -13,9 +13,9 @@ namespace Remagures.Model.QuestSystem
         public QuestData Data { get; }
         public IReadOnlyList<IQuestGoal> Goals => _goals;
 
-        private readonly List<QuestGoal> _goals;
+        private readonly List<IQuestGoal> _goals;
 
-        public Quest(List<QuestGoal> goals, QuestData questData)
+        public Quest(List<IQuestGoal> goals, QuestData questData)
         {
             Data = questData;
             _goals = goals ?? throw new ArgumentNullException(nameof(goals));

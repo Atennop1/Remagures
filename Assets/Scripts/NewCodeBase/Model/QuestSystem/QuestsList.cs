@@ -9,7 +9,10 @@ namespace Remagures.Model.QuestSystem
         public IReadOnlyList<IQuest> Quests => _quests;
         
         private readonly List<IQuest> _quests = new();
-        private QuestPopupTexts _questPopupTexts;
+        private QuestPopups _questPopups;
+        
+        public QuestsList(QuestPopups questPopups)
+            => _questPopups = questPopups ?? throw new ArgumentNullException(nameof(questPopups));
 
         public void AddQuest(IQuest quest)
         {
@@ -17,7 +20,7 @@ namespace Remagures.Model.QuestSystem
                 throw new InvalidOperationException("Can't add this quest to list");
         
             _quests.Add(quest);
-            _questPopupTexts.AddTextToPopupQueue("Новый квест: " + quest.Data.Name);
+            _questPopups.AddTextToQueue("Новый квест: " + quest.Data.Name);
         }
 
         public bool CanAddQuest(IQuest quest)

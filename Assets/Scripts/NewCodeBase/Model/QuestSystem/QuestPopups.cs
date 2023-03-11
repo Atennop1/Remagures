@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Remagures.View.QuestSystem;
 
 namespace Remagures.Model.QuestSystem
 {
-    public sealed class QuestPopupTexts
+    public sealed class QuestPopups
     {
         private readonly Queue<string> _popupsQueue = new();
-        private readonly QuestPopupTextView _view;
+        private readonly QuestPopupView _view;
         private UniTask _playingTask;
-        
-        public async void AddTextToPopupQueue(string text)
+
+        public QuestPopups(QuestPopupView view)
+            => _view = view ?? throw new ArgumentNullException(nameof(view));
+
+        public async void AddTextToQueue(string text)
         {
             if (_popupsQueue.Contains(text))
                 return;
@@ -28,7 +32,7 @@ namespace Remagures.Model.QuestSystem
         {
             while (_popupsQueue.Count > 0)
             {
-                _view.DisplayText(_popupsQueue.Dequeue());
+                _view.Display(_popupsQueue.Dequeue());
                 await UniTask.Delay(3000);
             }
         }

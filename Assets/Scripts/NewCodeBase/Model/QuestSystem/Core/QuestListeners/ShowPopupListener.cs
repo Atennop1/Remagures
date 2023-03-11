@@ -1,23 +1,23 @@
 ﻿using System;
 using Remagures.Root;
 
-namespace Remagures.Model.QuestSystem
+namespace Remagures.Model.QuestSystem.QuestListeners
 {
     public sealed class ShowPopupListener : IUpdatable
     {
         private readonly IQuest _quest;
-        private readonly QuestPopupTexts _questPopupTexts;
+        private readonly QuestPopups _questPopups;
 
-        public ShowPopupListener(IQuest quest, QuestPopupTexts questPopupTexts)
+        public ShowPopupListener(IQuest quest, QuestPopups questPopups)
         {
             _quest = quest ?? throw new ArgumentNullException(nameof(quest));
-            _questPopupTexts = questPopupTexts ?? throw new ArgumentNullException(nameof(questPopupTexts));
+            _questPopups = questPopups ?? throw new ArgumentNullException(nameof(questPopups));
         }
 
         public void Update()
         {
             if (_quest.HasCompleted)
-                _questPopupTexts.AddTextToPopupQueue("Квест выполнен: " + _quest.Data.Name);
+                _questPopups.AddTextToQueue("Квест выполнен: " + _quest.Data.Name);
         }
     }
 }

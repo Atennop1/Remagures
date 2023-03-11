@@ -1,4 +1,5 @@
-﻿using Remagures.Model.Magic;
+﻿using System;
+using Remagures.Model.Magic;
 using Remagures.Root;
 
 namespace Remagures.Model.InventorySystem
@@ -8,6 +9,13 @@ namespace Remagures.Model.InventorySystem
         private readonly IUsableItem _usableItem;
         private readonly IMagicApplier _magicApplier;
         private readonly IMagic _magic;
+
+        public MagicListener(IUsableItem usableItem, IMagicApplier magicApplier, IMagic magic)
+        {
+            _usableItem = usableItem ?? throw new ArgumentNullException(nameof(usableItem));
+            _magicApplier = magicApplier ?? throw new ArgumentNullException(nameof(magicApplier));
+            _magic = magic ?? throw new ArgumentNullException(nameof(magic));
+        }
 
         public void Update()
         {
