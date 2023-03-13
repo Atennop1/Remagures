@@ -1,5 +1,7 @@
 ﻿using System;
+using Remagures.Model.Health;
 using Remagures.Model.InventorySystem;
+using Remagures.Root;
 using Remagures.View.Inventory;
 
 namespace Remagures.Model.Pickup
@@ -7,18 +9,18 @@ namespace Remagures.Model.Pickup
     public class UniqueItemPickupable : IPickupable
     {
         private readonly IPickupable _pickupable;
-        private readonly UniqueEntryPoint _uniqueEntryPoint;
+        private readonly ArmorFactory _armorFactory;
 
-        public UniqueItemPickupable(IPickupable pickupable, UniqueEntryPoint uniqueEntryPoint)
+        public UniqueItemPickupable(IPickupable pickupable, ArmorFactory armorFactory)
         {
             _pickupable = pickupable ?? throw new ArgumentNullException(nameof(pickupable));
-            _uniqueEntryPoint = uniqueEntryPoint ?? throw new ArgumentNullException(nameof(uniqueEntryPoint));
+            _armorFactory = armorFactory ?? throw new ArgumentNullException(nameof(armorFactory));
         }
 
         public void Pickup()
         {
             _pickupable.Pickup();
-            _uniqueEntryPoint.UpdateArmor();
+            _armorFactory.Create();
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
-using Remagures.Tools;
 
 namespace Remagures.Model.Health
 {
-    public sealed class Shield : IHealth
+    public sealed class HealthWithArmor : IHealth
     {
         public int MaxValue => _health.MaxValue;
         public int CurrentValue => _health.CurrentValue;
@@ -12,23 +11,16 @@ namespace Remagures.Model.Health
         public bool CanTakeDamage => _health.CanTakeDamage;
 
         private readonly IHealth _health;
-        private readonly float _armorCoefficient;
+        private readonly IArmor _armor;
 
-        public Shield(IHealth health, float armorCoefficient)
+        public HealthWithArmor(IHealth health, IArmor armor)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
-            _armorCoefficient = armorCoefficient.ThrowExceptionIfLessOrEqualsZero();
+            _armor = armor ?? throw new ArgumentNullException(nameof(armor));
         }
 
         public void TakeDamage(int amount)
-        {
-            var totalDamage = (int)(amount * _armorCoefficient + 0.5f);
-
-            if (totalDamage == 0)
-                totalDamage = 1;
-            
-            _health.TakeDamage(totalDamage);
-        }
+            => _health.TakeDamage(_armor.AbsorbDamage(amount));
 
         public void Heal(int amount)
             => _health.Heal(amount);
