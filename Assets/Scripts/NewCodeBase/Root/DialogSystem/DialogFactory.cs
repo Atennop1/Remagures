@@ -13,15 +13,13 @@ namespace Remagures.Root.DialogSystem
 
         private Dialog _builtDialog;
 
-        public Dialog Build()
+        public Dialog Create()
         {
             if (_builtDialog != null)
                 return _builtDialog;
 
-            var builtLines = _lineBuilders.Select(builder => builder.BuiltLine).ToList();
-            var result = new Dialog(_name, builtLines.ToArray());
-
-            _builtDialog = result;
+            var builtLines = _lineBuilders.Select(builder => builder.Create()).ToList();
+            _builtDialog = new Dialog(_name, builtLines.ToArray());
             return _builtDialog;
         }
     }

@@ -1,28 +1,29 @@
 ﻿using System;
 using Remagures.Model.QuestSystem;
-using Remagures.SO;
-using UnityEngine;
+using Remagures.Root;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class CompleteGoalCallback : MonoBehaviour, IDialogActionCallback
+    public sealed class CompleteGoalCallback : IUpdatable
     {
-        [SerializeField] private QuestGoal _goal;
-        [SerializeField] private QuestContainerOperations questContainerOperations;
+        private readonly IUsableComponent _usableComponent;
+        private readonly IProgress _goalProgress;
+        
+        private bool _hasWorked;
 
-        private IUsableComponent _usableComponent;
-        private bool _isWorked;
-
-        private void Update()
+        public CompleteGoalCallback(IUsableComponent usableComponent, IProgress goalProgress)
         {
-            if (!_usableComponent.IsUsed || _isWorked) 
-                return;
-            
-            questContainerOperations.TryCompleteGoal(_goal);
-            _isWorked = true;
+            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+            _goalProgress = goalProgress ?? throw new ArgumentNullException(nameof(goalProgress));
         }
 
-        public void Init(IUsableComponent usableComponent)
-            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+        public void Update()
+        {
+            if (!_usableComponent.IsUsed || _hasWorked) 
+                return;
+            
+            _goalProgress.AddPoints(_goalProgress.RequiredPoints - _goalProgress.CurrentPoints);
+            _hasWorked = true;
+        }
     }
 }

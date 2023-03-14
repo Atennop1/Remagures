@@ -1,28 +1,30 @@
 ﻿using System;
 using Remagures.Root;
-using Remagures.Root.DialogSystem;
-using UnityEngine;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class SwitchDialogWithoutContinueCallback : MonoBehaviour, IDialogActionCallback
+    public sealed class SwitchDialogWithoutContinueCallback : IUpdatable
     {
-        [SerializeField] private string _newDialogName;
-        [SerializeField] private DialogsListFactory dialogsListFactory;
+        private readonly IUsableComponent _usableComponent;
+        private readonly IDialogsList _dialogsList;
+        private readonly string _newDialogName;
 
-        private IUsableComponent _usableComponent;
-        private bool _isWorked;
+        private bool _hasWorked;
 
-        private void Update()
+        public SwitchDialogWithoutContinueCallback(IUsableComponent usableComponent, IDialogsList dialogsList, string newDialogName)
         {
-            if (!_usableComponent.IsUsed || _isWorked)
-                return;
-
-            dialogsListFactory.BuiltDialogList.SwitchToDialog(_newDialogName);
-            _isWorked = true;
+            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+            _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
         }
 
-        public void Init(IUsableComponent usableComponent)
-            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+        public void Update()
+        {
+            if (!_usableComponent.IsUsed || _hasWorked)
+                return;
+
+            _dialogsList.SwitchToDialog(_newDialogName);
+            _hasWorked = true;
+        }
     }
 }

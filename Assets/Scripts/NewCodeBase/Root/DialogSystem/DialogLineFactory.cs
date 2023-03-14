@@ -13,20 +13,19 @@ namespace Remagures.Root.DialogSystem
         
         [Space]
         [SerializeField] private List<ChoiceFactory> _choiceBuilders;
-        [SerializeField] private List<IDialogActionCallback> _onLineEndedCallbacks;
-        
-        public DialogLine BuiltLine { get; private set; }
+        [SerializeField] private List<IUsableComponentCallbackFactory> _callbacksFactories;
 
-        public DialogLine Build()
+        private DialogLine _builtLine;
+
+        public DialogLine Create()
         {
-            var builtChoices = _choiceBuilders.Select(builder => builder.Build()).ToList();
-            var result = new DialogLine(_lineText, speakerInfoFactory._builtData, builtChoices);
+            var builtChoices = _choiceBuilders.Select(builder => builder.Create()).ToList();
+            _builtLine = new DialogLine(_lineText, speakerInfoFactory._builtData, builtChoices);
 
-            foreach (var callback in _onLineEndedCallbacks)
-                callback.Init(result);
-
-            BuiltLine = result;
-            return result;
+            foreach (var factory in _callbacksFactories)
+                factory.Create(_builtLine);
+            
+            return _builtLine;
         }
     }
 }

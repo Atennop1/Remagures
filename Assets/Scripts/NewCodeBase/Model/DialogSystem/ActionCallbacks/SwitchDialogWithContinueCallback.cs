@@ -1,33 +1,34 @@
 ﻿using System;
 using Remagures.Root;
-using Remagures.Root.DialogSystem;
-using UnityEngine;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class SwitchDialogWithContinueCallback : MonoBehaviour, IDialogActionCallback
+    public sealed class SwitchDialogWithContinueCallback : IUpdatable
     {
-        [SerializeField] private string _newDialogName;
-        [SerializeField] private DialogsListFactory dialogsListFactory;
+        private readonly IUsableComponent _usableComponent;
+        private readonly DialogPlayer _dialogPlayer;
         
-        private DialogPlayer _dialogPlayer;
-        private IUsableComponent _usableComponent;
-        private bool _isWorked;
+        private readonly IDialogsList _dialogsList;
+        private readonly string _newDialogName;
 
-        private void Update()
+        private bool _hasWorked;
+
+        public SwitchDialogWithContinueCallback(IUsableComponent usableComponent, DialogPlayer dialogPlayer, IDialogsList dialogsList, string newDialogName)
         {
-            if (!_usableComponent.IsUsed || _isWorked)
-                return;
-
-            dialogsListFactory.BuiltDialogList.SwitchToDialog(_newDialogName);
-            _dialogPlayer.Play(dialogsListFactory.BuiltDialogList.CurrentDialog);
-            _isWorked = true;
+            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+            _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
+            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+            _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
         }
 
-        public void Init(DialogPlayer dialogPlayer, IUsableComponent usableComponent)
+        public void Update()
         {
-            _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
-            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+            if (!_usableComponent.IsUsed || _hasWorked)
+                return;
+
+            _dialogsList.SwitchToDialog(_newDialogName);
+            _dialogPlayer.Play(_dialogsList.CurrentDialog);
+            _hasWorked = true;
         }
     }
 }

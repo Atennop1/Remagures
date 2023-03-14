@@ -12,6 +12,6 @@ namespace Remagures.Model.DialogSystem
         [OdinSerialize] private DialogsListFactory _dialogsListFactory;
 
         public void Switch() 
-            => _dialogsListFactory.BuiltDialogList.SwitchToDialog(_newDialogName);
+            => _dialogsListFactory.Create().SwitchToDialog(_newDialogName);
     }
 }

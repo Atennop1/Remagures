@@ -17,27 +17,27 @@ namespace Remagures.Root.DialogSystem
         [Space] [SerializeField] private List<DialogLineFactory> _dialogLineBuilders;
         [SerializeField] private List<DialogFactory> _dialogBuilders;
 
-        public DialogsList BuiltDialogList { get; private set; }
+        private DialogsList _builtDialogList;
 
         public IDialogsList Create()
         {
-            if (BuiltDialogList != null)
-                return BuiltDialogList;
+            if (_builtDialogList != null)
+                return _builtDialogList;
             
             _speakerInfoBuilders.ForEach(builder => builder.Build());
-            _choiceBuilders.ForEach(builder => builder.Build());
-            _dialogLineBuilders.ForEach(builder => builder.Build());
-            _dialogBuilders.ForEach(builder => builder.Build());
+            _choiceBuilders.ForEach(builder => builder.Create());
+            _dialogLineBuilders.ForEach(builder => builder.Create());
+            _dialogBuilders.ForEach(builder => builder.Create());
 
-            BuiltDialogList = new DialogsList(_dialogBuilders.Select(builder => builder.Build()).ToArray(), _characterName);
+            _builtDialogList = new DialogsList(_dialogBuilders.Select(builder => builder.Create()).ToArray(), _characterName);
             
-            if (BuiltDialogList.CurrentDialog == null)
-                BuiltDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].Build());
+            if (_builtDialogList.CurrentDialog == null)
+                _builtDialogList.SwitchToDialog(_dialogBuilders[_idOfStartDialog].Create());
 
-            return BuiltDialogList;
+            return _builtDialogList;
         }
 
         private void OnDisable()
-            => BuiltDialogList.SaveCurrentDialog();
+            => _builtDialogList.SaveCurrentDialog();
     }
 }

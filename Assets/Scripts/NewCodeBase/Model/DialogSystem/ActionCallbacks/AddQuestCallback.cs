@@ -1,28 +1,31 @@
 ﻿using System;
 using Remagures.Model.QuestSystem;
-using Remagures.SO;
-using UnityEngine;
+using Remagures.Root;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class AddQuestCallback : MonoBehaviour, IDialogActionCallback
+    public sealed class AddQuestCallback : IUpdatable
     {
-        [SerializeField] private Quest _quest;
-        [SerializeField] private QuestContainerOperations questContainerOperations;
+        private readonly IUsableComponent _usableComponent;
+        private readonly IQuestsList _questsList;
+        private readonly Quest _quest;
+        
+        private bool _hasWorked;
 
-        private IUsableComponent _usableComponent;
-        private bool _isWorked;
-
-        private void Update()
+        public AddQuestCallback(IUsableComponent usableComponent, IQuestsList questsList, Quest quest)
         {
-            if (!_usableComponent.IsUsed || _isWorked)
-                return;
-            
-            questContainerOperations.TryAddQuest(_quest);
-            _isWorked = true;
+            _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+            _questsList = questsList ?? throw new ArgumentNullException(nameof(questsList));
+            _quest = quest ?? throw new ArgumentNullException(nameof(quest));
         }
 
-        public void Init(IUsableComponent usableComponent)
-            => _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
+        public void Update()
+        {
+            if (!_usableComponent.IsUsed || _hasWorked || !_questsList.CanAddQuest(_quest))
+                return;
+            
+            _questsList.AddQuest(_quest);
+            _hasWorked = true;
+        }
     }
 }

@@ -8,21 +8,20 @@ namespace Remagures.Root.DialogSystem
     public sealed class ChoiceFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _choiceText;
-        [SerializeField] private List<IDialogActionCallback> _callbacks;
+        [SerializeField] private List<IUsableComponentCallbackFactory> _callbackFactories;
 
         private DialogChoice _builtChoice;
         
-        public DialogChoice Build()
+        public DialogChoice Create()
         {
             if (_builtChoice != null)
                 return _builtChoice;
             
-            var result = new DialogChoice(_choiceText);
+            _builtChoice = new DialogChoice(_choiceText);
 
-            foreach (var callback in _callbacks)
-                callback.Init(result);
-
-            _builtChoice = result;
+            foreach (var factory in _callbackFactories)
+                factory.Create(_builtChoice);
+            
             return _builtChoice;
         }
     }
