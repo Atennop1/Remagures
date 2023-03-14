@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Model.DialogSystem
+namespace Remagures.Root.DialogSystem
 {
-    public class DialogBuilder : SerializedMonoBehaviour
+    public sealed class DialogFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _name;
-        [SerializeField] private List<DialogLineBuilder> _lineBuilders;
+        [SerializeField] private List<DialogLineFactory> _lineBuilders;
 
         private Dialog _builtDialog;
 

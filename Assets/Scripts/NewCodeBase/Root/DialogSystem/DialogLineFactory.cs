@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Model.DialogSystem
+namespace Remagures.Root.DialogSystem
 {
-    public class DialogLineBuilder : SerializedMonoBehaviour
+    public sealed class DialogLineFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _lineText;
-        [SerializeField] private SpeakerInfoBuilder _speakerInfoBuilder;
+        [SerializeField] private SpeakerInfoFactory speakerInfoFactory;
         
         [Space]
-        [SerializeField] private List<ChoiceBuilder> _choiceBuilders;
+        [SerializeField] private List<ChoiceFactory> _choiceBuilders;
         [SerializeField] private List<IDialogActionCallback> _onLineEndedCallbacks;
         
         public DialogLine BuiltLine { get; private set; }
@@ -19,7 +20,7 @@ namespace Remagures.Model.DialogSystem
         public DialogLine Build()
         {
             var builtChoices = _choiceBuilders.Select(builder => builder.Build()).ToList();
-            var result = new DialogLine(_lineText, _speakerInfoBuilder._builtData, builtChoices);
+            var result = new DialogLine(_lineText, speakerInfoFactory._builtData, builtChoices);
 
             foreach (var callback in _onLineEndedCallbacks)
                 callback.Init(result);

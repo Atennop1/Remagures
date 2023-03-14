@@ -1,9 +1,10 @@
-﻿using Sirenix.OdinInspector;
+﻿using Remagures.Model.DialogSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Model.DialogSystem
+namespace Remagures.Root.DialogSystem
 {
-    public class SpeakerInfoBuilder : SerializedMonoBehaviour
+    public sealed class SpeakerInfoFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _speakerName;
         [SerializeField] private Sprite _speakerSprite;

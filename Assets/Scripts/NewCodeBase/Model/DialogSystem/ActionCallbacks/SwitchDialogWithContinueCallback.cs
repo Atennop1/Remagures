@@ -1,5 +1,6 @@
 ﻿using System;
 using Remagures.Root;
+using Remagures.Root.DialogSystem;
 using UnityEngine;
 
 namespace Remagures.Model.DialogSystem

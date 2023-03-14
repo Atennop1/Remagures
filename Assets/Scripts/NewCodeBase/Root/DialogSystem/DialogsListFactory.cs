@@ -4,18 +4,18 @@ using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root
+namespace Remagures.Root.DialogSystem
 {
     public sealed class DialogsListFactory : SerializedMonoBehaviour
     {
         [SerializeField] private int _idOfStartDialog;
         [SerializeField] private string _characterName;
 
-        [Space] [SerializeField] private List<SpeakerInfoBuilder> _speakerInfoBuilders;
-        [SerializeField] private List<ChoiceBuilder> _choiceBuilders;
+        [Space] [SerializeField] private List<SpeakerInfoFactory> _speakerInfoBuilders;
+        [SerializeField] private List<ChoiceFactory> _choiceBuilders;
 
-        [Space] [SerializeField] private List<DialogLineBuilder> _dialogLineBuilders;
-        [SerializeField] private List<DialogBuilder> _dialogBuilders;
+        [Space] [SerializeField] private List<DialogLineFactory> _dialogLineBuilders;
+        [SerializeField] private List<DialogFactory> _dialogBuilders;
 
         public DialogsList BuiltDialogList { get; private set; }
 

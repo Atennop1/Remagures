@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Remagures.Root.DialogSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root

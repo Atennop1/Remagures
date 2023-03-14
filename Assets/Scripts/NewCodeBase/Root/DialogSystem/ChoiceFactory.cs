@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Model.DialogSystem
+namespace Remagures.Root.DialogSystem
 {
-    public class ChoiceBuilder : SerializedMonoBehaviour
+    public sealed class ChoiceFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _choiceText;
         [SerializeField] private List<IDialogActionCallback> _callbacks;
