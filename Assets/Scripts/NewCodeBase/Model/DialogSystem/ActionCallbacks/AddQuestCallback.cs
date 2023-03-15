@@ -8,11 +8,11 @@ namespace Remagures.Model.DialogSystem
     {
         private readonly IUsableComponent _usableComponent;
         private readonly IQuestsList _questsList;
-        private readonly Quest _quest;
+        private readonly IQuest _quest;
         
         private bool _hasWorked;
 
-        public AddQuestCallback(IUsableComponent usableComponent, IQuestsList questsList, Quest quest)
+        public AddQuestCallback(IUsableComponent usableComponent, IQuestsList questsList, IQuest quest)
         {
             _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
             _questsList = questsList ?? throw new ArgumentNullException(nameof(questsList));
