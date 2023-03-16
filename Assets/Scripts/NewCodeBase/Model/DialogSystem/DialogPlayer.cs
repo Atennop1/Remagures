@@ -4,7 +4,7 @@ using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class DialogPlayer
+    public sealed class DialogPlayer
     {
         private readonly TextWriter _textWriter;
         private readonly DialogView _dialogView;
