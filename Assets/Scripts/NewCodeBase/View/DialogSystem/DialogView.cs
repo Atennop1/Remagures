@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public class DialogView : MonoBehaviour
+    public sealed class DialogView : MonoBehaviour
     {
         [SerializeField] private GameObject _dialogBubble;
         [SerializeField] private GameObject _dialogWindow;

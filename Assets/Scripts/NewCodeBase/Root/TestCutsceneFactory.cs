@@ -14,7 +14,7 @@ namespace Remagures.Root
     {
         [Header("Dialogs Stuff")] 
         [SerializeField] private DialogView _dialogView;
-        [SerializeField] private TextWriter _writer;
+        [SerializeField] private DialogTextWriter _writer;
         [SerializeField] private Button _dialogWindowButton;
         [SerializeField] private Text _continueText;
         

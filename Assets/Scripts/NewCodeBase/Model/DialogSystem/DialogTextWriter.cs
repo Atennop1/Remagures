@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class TextWriter : MonoBehaviour
+    public sealed class DialogTextWriter
     {
         public bool IsTyping { get; private set; }
 
-        private readonly TextWriterView _textWriterView;
+        private readonly DialogTextWriterView _dialogTextWriterView;
         
         private string _currentText;
         private UniTask _typingTask;
@@ -19,8 +19,8 @@ namespace Remagures.Model.DialogSystem
         private CancellationToken _cancellationToken;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public TextWriter(TextWriterView textWriterView)
-            => _textWriterView = textWriterView ?? throw new ArgumentNullException(nameof(textWriterView));
+        public DialogTextWriter(DialogTextWriterView dialogTextWriterView)
+            => _dialogTextWriterView = dialogTextWriterView ?? throw new ArgumentNullException(nameof(dialogTextWriterView));
 
         public async UniTask StartTyping(string text)
         {
@@ -37,7 +37,7 @@ namespace Remagures.Model.DialogSystem
             if (_typingTask.Status == UniTaskStatus.Pending)
                 _cancellationTokenSource.Cancel();
 
-            _textWriterView.DisplayText(_currentText);
+            _dialogTextWriterView.DisplayText(_currentText);
             IsTyping = false;
         }
 
@@ -45,16 +45,16 @@ namespace Remagures.Model.DialogSystem
         {
             IsTyping = true;
             var writingText = string.Empty;
-            _textWriterView.DisplayStartOfTyping();
+            _dialogTextWriterView.DisplayStartOfTyping();
 
             foreach (var letter in text.TakeWhile(_ => !_cancellationToken.IsCancellationRequested))
             {
                 writingText += letter;
-                _textWriterView.DisplayText(writingText);
+                _dialogTextWriterView.DisplayText(writingText);
                 await UniTask.Delay(40);
             }
             
-            _textWriterView.DisplayEndOfTyping();
+            _dialogTextWriterView.DisplayEndOfTyping();
             IsTyping = false;
         }
     }

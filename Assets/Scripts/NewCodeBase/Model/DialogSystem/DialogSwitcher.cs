@@ -1,17 +1,19 @@
-﻿using Remagures.Root;
-using Remagures.Root.DialogSystem;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using UnityEngine;
+﻿using System;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class DialogSwitcher : SerializedMonoBehaviour
+    public sealed class DialogSwitcher
     {
-        [SerializeField] private string _newDialogName;
-        [OdinSerialize] private DialogsListFactory _dialogsListFactory;
+        private readonly string _newDialogName;
+        private readonly IDialogsList _dialogsList;
+
+        public DialogSwitcher(IDialogsList dialogsList, string newDialogName)
+        {
+            _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
+            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+        }
 
         public void Switch() 
-            => _dialogsListFactory.Create().SwitchToDialog(_newDialogName);
+            => _dialogsList.SwitchToDialog(_newDialogName);
     }
 }

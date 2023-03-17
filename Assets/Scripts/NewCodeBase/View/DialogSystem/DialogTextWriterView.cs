@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public class TextWriterView : MonoBehaviour
+    public sealed class DialogTextWriterView : MonoBehaviour
     {
         [SerializeField] private Text _continueText;
         [SerializeField] private Text _dialogText;

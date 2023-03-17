@@ -9,13 +9,13 @@ namespace Remagures.Model.CutscenesSystem
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set;  }
 
-        private readonly TextWriter _writer;
+        private readonly DialogTextWriter _writer;
         private readonly Button _dialogWindowButton;
 
         private readonly Text _continueText;
         private readonly string _text;
 
-        public DialogAction(TextWriter writer, Button dialogWindowButton, Text continueText, string text)
+        public DialogAction(DialogTextWriter writer, Button dialogWindowButton, Text continueText, string text)
         {
             _dialogWindowButton = dialogWindowButton ? dialogWindowButton : throw new ArgumentNullException(nameof(dialogWindowButton));
             _writer = writer ? writer : throw new ArgumentNullException(nameof(writer));

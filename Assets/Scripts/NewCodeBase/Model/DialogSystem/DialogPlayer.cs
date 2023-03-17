@@ -6,15 +6,15 @@ namespace Remagures.Model.DialogSystem
 {
     public sealed class DialogPlayer
     {
-        private readonly TextWriter _textWriter;
+        private readonly DialogTextWriter _dialogTextWriter;
         private readonly DialogView _dialogView;
         
         private Dialog _currentDialog;
         private bool _canContinue;
 
-        public DialogPlayer(TextWriter textWriter, DialogView dialogView)
+        public DialogPlayer(DialogTextWriter dialogTextWriter, DialogView dialogView)
         {
-            _textWriter = textWriter ?? throw new ArgumentNullException(nameof(textWriter));
+            _dialogTextWriter = dialogTextWriter ?? throw new ArgumentNullException(nameof(dialogTextWriter));
             _dialogView = dialogView ?? throw new ArgumentNullException(nameof(dialogView));
         }
 
@@ -58,14 +58,14 @@ namespace Remagures.Model.DialogSystem
 
         private void SkipTyping()
         {
-            _textWriter.EndTyping();
+            _dialogTextWriter.EndTyping();
             _dialogView.DisplayLineChoices(_currentDialog.CurrentLine);
             _canContinue = true;
         }
 
         private async UniTask TypeText(string text)
         {
-            await _textWriter.StartTyping(text);
+            await _dialogTextWriter.StartTyping(text);
             
             if (_canContinue)
                 return;
