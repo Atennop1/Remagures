@@ -23,7 +23,7 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _hasWorked)
                 return;
 
-            _dialogs.SwitchToDialog(_newDialogName);
+            _dialogs.SwitchCurrent(_newDialogName);
             _hasWorked = true;
         }
     }

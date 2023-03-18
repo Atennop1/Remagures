@@ -14,6 +14,6 @@ namespace Remagures.Model.DialogSystem
         }
 
         public void Switch() 
-            => _dialogs.SwitchToDialog(_newDialogName);
+            => _dialogs.SwitchCurrent(_newDialogName);
     }
 }

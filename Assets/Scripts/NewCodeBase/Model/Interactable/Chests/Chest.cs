@@ -16,7 +16,7 @@ namespace Remagures.Model.Interactable
 
         private readonly BinaryStorage _storage = new();
 
-        public Chest(Inventory<IItem> inventory, IItem item, string name)
+        public Chest(IInventory<IItem> inventory, IItem item, string name)
         {
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             Item = item ?? throw new ArgumentNullException(nameof(item));

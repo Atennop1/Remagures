@@ -25,7 +25,7 @@ namespace Remagures.Model.DialogSystem
             CurrentDialog = dialogs.ToList().Find(dialog => dialog == loadedDialog);
         }
 
-        public void SwitchToDialog(string dialogName)
+        public void SwitchCurrent(string dialogName)
         {
             var dialogToSwitch = _dialogs.ToList().Find(dialog => dialog.Name == dialogName);
             

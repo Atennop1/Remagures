@@ -26,7 +26,7 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _hasWorked)
                 return;
 
-            _dialogs.SwitchToDialog(_newDialogName);
+            _dialogs.SwitchCurrent(_newDialogName);
             _dialogPlayer.Play(_dialogs.CurrentDialog);
             _hasWorked = true;
         }

@@ -3,6 +3,6 @@
     public interface IDialogs
     {
         Dialog CurrentDialog { get; }
-        void SwitchToDialog(string dialogName);
+        void SwitchCurrent(string dialogName);
     }
 }

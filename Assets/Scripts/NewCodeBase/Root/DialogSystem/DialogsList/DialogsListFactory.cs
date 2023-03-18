@@ -32,7 +32,7 @@ namespace Remagures.Root.DialogSystem
             _builtDialog = new Dialogs(_dialogBuilders.Select(builder => builder.Create()).ToArray(), _characterName);
             
             if (_builtDialog.CurrentDialog == null)
-                _builtDialog.SwitchToDialog(_dialogBuilders[_idOfStartDialog].Create().Name);
+                _builtDialog.SwitchCurrent(_dialogBuilders[_idOfStartDialog].Create().Name);
 
             return _builtDialog;
         }
