@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Remagures.Root;
+using Remagures.Tools;
 using Sirenix.Utilities;
 
 namespace Remagures.Model.QuestSystem.GoalListeners
@@ -20,7 +21,7 @@ namespace Remagures.Model.QuestSystem.GoalListeners
         public void Update()
         {
             if (_goal.HasCompleted)
-                _goalsToComplete.Select(goal => goal.Progress).ForEach(progress => progress.AddPoints(progress.RequiredPoints - progress.CurrentPoints));
+                _goalsToComplete.ForEach(goal => goal.Complete());
         }
     }
 }

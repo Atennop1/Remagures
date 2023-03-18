@@ -1,7 +1,7 @@
 ﻿using System;
 using Remagures.Model.InventorySystem;
 using Remagures.Model.QuestSystem;
-using Remagures.SO;
+using Remagures.Tools;
 
 namespace Remagures.Model.Interactable
 {
@@ -9,15 +9,15 @@ namespace Remagures.Model.Interactable
     {
         public bool HasInteractionEnded => _chest.HasInteractionEnded;
         public bool IsOpened => _chest.IsOpened;
-        public Item Item => _chest.Item;
+        public IItem Item => _chest.Item;
 
         private readonly IChest _chest;
-        private readonly GoalCompleter _goalCompleter;
+        private readonly IQuestGoal _goal;
 
-        public ChestWithGoalCompleting(IChest chest, GoalCompleter goalCompleter)
+        public ChestWithGoalCompleting(IChest chest, IQuestGoal goal)
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
-            _goalCompleter = goalCompleter ?? throw new ArgumentNullException(nameof(goalCompleter));
+            _goal = goal ?? throw new ArgumentNullException(nameof(goal));
         }
 
         public void Interact()
@@ -26,7 +26,7 @@ namespace Remagures.Model.Interactable
                 return;
             
             _chest.Interact();
-            _goalCompleter?.Complete();
+            _goal.Complete();
         }
 
         public void EndInteracting()

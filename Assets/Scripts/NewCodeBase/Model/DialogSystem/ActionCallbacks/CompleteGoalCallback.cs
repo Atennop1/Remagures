@@ -1,20 +1,21 @@
 ﻿using System;
 using Remagures.Model.QuestSystem;
 using Remagures.Root;
+using Remagures.Tools;
 
 namespace Remagures.Model.DialogSystem
 {
     public sealed class CompleteGoalCallback : IUpdatable
     {
         private readonly IUsableComponent _usableComponent;
-        private readonly IProgress _goalProgress;
+        private readonly IQuestGoal _questGoal;
         
         private bool _hasWorked;
 
-        public CompleteGoalCallback(IUsableComponent usableComponent, IProgress goalProgress)
+        public CompleteGoalCallback(IUsableComponent usableComponent, IQuestGoal questGoal)
         {
             _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
-            _goalProgress = goalProgress ?? throw new ArgumentNullException(nameof(goalProgress));
+            _questGoal = questGoal ?? throw new ArgumentNullException(nameof(questGoal));
         }
 
         public void Update()
@@ -22,7 +23,7 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _hasWorked) 
                 return;
             
-            _goalProgress.AddPoints(_goalProgress.RequiredPoints - _goalProgress.CurrentPoints);
+            _questGoal.Complete();
             _hasWorked = true;
         }
     }

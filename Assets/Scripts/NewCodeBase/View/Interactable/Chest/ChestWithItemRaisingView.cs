@@ -22,7 +22,7 @@ namespace Remagures.View.Interactable
             _raisedItemSpriteRenderer.sprite = null;
         }
 
-        public void Display(Item item)
+        public void Display(IItem item)
         {
             _characterAnimations.SetBool(RECEIVING_ANIMATOR_NAME, true);
             _raisedItemSpriteRenderer.sprite = item.Sprite;

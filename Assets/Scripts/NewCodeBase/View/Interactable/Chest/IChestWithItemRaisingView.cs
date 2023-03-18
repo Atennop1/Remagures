@@ -6,6 +6,6 @@ namespace Remagures.View.Interactable
     public interface IChestWithItemRaisingView
     {
         void EndDisplaying();
-        void Display(Item item);
+        void Display(IItem item);
     }
 }

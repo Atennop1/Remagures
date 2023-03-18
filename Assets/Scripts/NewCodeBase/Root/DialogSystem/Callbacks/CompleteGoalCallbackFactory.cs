@@ -13,7 +13,7 @@ namespace Remagures.Root.DialogSystem
             if (_builtCallback != null) 
                 return;
             
-            _builtCallback = new CompleteGoalCallback(component, _goalFactory.Create().Progress);
+            _builtCallback = new CompleteGoalCallback(component, _goalFactory.Create());
         }
     }
 }

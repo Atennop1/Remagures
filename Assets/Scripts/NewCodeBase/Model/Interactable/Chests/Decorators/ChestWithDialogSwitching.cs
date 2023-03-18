@@ -9,7 +9,7 @@ namespace Remagures.Model.Interactable
     {
         public bool HasInteractionEnded => _chest.HasInteractionEnded;
         public bool IsOpened => _chest.IsOpened;
-        public Item Item => _chest.Item;
+        public IItem Item => _chest.Item;
         
         private readonly IChest _chest;
         private readonly DialogSwitcher _dialogSwitcher;
