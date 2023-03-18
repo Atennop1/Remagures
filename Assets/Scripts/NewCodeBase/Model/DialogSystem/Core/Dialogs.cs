@@ -4,7 +4,7 @@ using Remagures.Tools;
 
 namespace Remagures.Model.DialogSystem
 {
-    public class DialogsList : IDialogsList
+    public sealed class Dialogs : IDialogs
     {
         public Dialog CurrentDialog { get; private set; }
         private readonly Dialog[] _dialogs;
@@ -12,7 +12,7 @@ namespace Remagures.Model.DialogSystem
         private readonly BinaryStorage _storage;
         private readonly string _characterName;
 
-        public DialogsList(Dialog[] dialogs, string characterName)
+        public Dialogs(Dialog[] dialogs, string characterName)
         {
             _storage = new BinaryStorage();
             _characterName = characterName ?? throw new ArgumentException("CharacterName can't be null");
@@ -33,12 +33,7 @@ namespace Remagures.Model.DialogSystem
                 throw new ArgumentException($"DialogsList doesn't contains dialog with name {dialogName}");
 
             CurrentDialog = dialogToSwitch;
+            _storage.Save(CurrentDialog, $"Dialog-{_characterName}");
         }
-
-        public void SwitchToDialog(Dialog dialog)
-            => CurrentDialog = dialog ?? throw new ArgumentException("Dialog can't be null");
-
-        public void SaveCurrentDialog()
-            => _storage.Save(CurrentDialog, $"Dialog-{_characterName}");
     }
 }

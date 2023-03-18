@@ -11,6 +11,7 @@ namespace Remagures.Model.DialogSystem
     {
         public string Name { get; }
         public DialogLine CurrentLine => _lines[_currentLineIndex];
+        
         public bool CanSwitchToNextLine => _currentLineIndex < _lines.Count - 1;
         public bool IsCurrentLineLast => _currentLineIndex == _lines.Count - 1;
         public IReadOnlyList<DialogLine> Lines => _lines.ToList();
@@ -30,7 +31,6 @@ namespace Remagures.Model.DialogSystem
                 throw new InvalidOperationException("You already at last dialog line");
 
             _currentLineIndex++;
-            
         }
         
         public static bool operator ==(Dialog thisDialog, Dialog anotherDialog)

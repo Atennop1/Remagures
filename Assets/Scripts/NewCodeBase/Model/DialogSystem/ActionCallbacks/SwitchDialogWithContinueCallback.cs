@@ -8,16 +8,16 @@ namespace Remagures.Model.DialogSystem
         private readonly IUsableComponent _usableComponent;
         private readonly DialogPlayer _dialogPlayer;
         
-        private readonly IDialogsList _dialogsList;
+        private readonly IDialogs _dialogs;
         private readonly string _newDialogName;
 
         private bool _hasWorked;
 
-        public SwitchDialogWithContinueCallback(IUsableComponent usableComponent, DialogPlayer dialogPlayer, IDialogsList dialogsList, string newDialogName)
+        public SwitchDialogWithContinueCallback(IUsableComponent usableComponent, DialogPlayer dialogPlayer, IDialogs dialogs, string newDialogName)
         {
             _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
             _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
-            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+            _dialogs = dialogs ?? throw new ArgumentNullException(nameof(dialogs));
             _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
         }
 
@@ -26,8 +26,8 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _hasWorked)
                 return;
 
-            _dialogsList.SwitchToDialog(_newDialogName);
-            _dialogPlayer.Play(_dialogsList.CurrentDialog);
+            _dialogs.SwitchToDialog(_newDialogName);
+            _dialogPlayer.Play(_dialogs.CurrentDialog);
             _hasWorked = true;
         }
     }

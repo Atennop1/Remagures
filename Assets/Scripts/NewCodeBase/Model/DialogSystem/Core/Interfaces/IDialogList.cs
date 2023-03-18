@@ -1,9 +1,8 @@
 ﻿namespace Remagures.Model.DialogSystem
 {
-    public interface IDialogsList
+    public interface IDialogs
     {
-        public Dialog CurrentDialog { get; }
-        public void SwitchToDialog(string dialogName);
-        public void SwitchToDialog(Dialog dialog);
+        Dialog CurrentDialog { get; }
+        void SwitchToDialog(string dialogName);
     }
 }

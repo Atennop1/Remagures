@@ -6,15 +6,15 @@ namespace Remagures.Model.DialogSystem
     public sealed class SwitchDialogWithoutContinueCallback : IUpdatable
     {
         private readonly IUsableComponent _usableComponent;
-        private readonly IDialogsList _dialogsList;
+        private readonly IDialogs _dialogs;
         private readonly string _newDialogName;
 
         private bool _hasWorked;
 
-        public SwitchDialogWithoutContinueCallback(IUsableComponent usableComponent, IDialogsList dialogsList, string newDialogName)
+        public SwitchDialogWithoutContinueCallback(IUsableComponent usableComponent, IDialogs dialogs, string newDialogName)
         {
             _usableComponent = usableComponent ?? throw new ArgumentNullException(nameof(usableComponent));
-            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+            _dialogs = dialogs ?? throw new ArgumentNullException(nameof(dialogs));
             _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
         }
 
@@ -23,7 +23,7 @@ namespace Remagures.Model.DialogSystem
             if (!_usableComponent.IsUsed || _hasWorked)
                 return;
 
-            _dialogsList.SwitchToDialog(_newDialogName);
+            _dialogs.SwitchToDialog(_newDialogName);
             _hasWorked = true;
         }
     }

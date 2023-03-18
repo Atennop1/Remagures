@@ -5,15 +5,15 @@ namespace Remagures.Model.DialogSystem
     public sealed class DialogSwitcher
     {
         private readonly string _newDialogName;
-        private readonly IDialogsList _dialogsList;
+        private readonly IDialogs _dialogs;
 
-        public DialogSwitcher(IDialogsList dialogsList, string newDialogName)
+        public DialogSwitcher(IDialogs dialogs, string newDialogName)
         {
             _newDialogName = newDialogName ?? throw new ArgumentNullException(nameof(newDialogName));
-            _dialogsList = dialogsList ?? throw new ArgumentNullException(nameof(dialogsList));
+            _dialogs = dialogs ?? throw new ArgumentNullException(nameof(dialogs));
         }
 
         public void Switch() 
-            => _dialogsList.SwitchToDialog(_newDialogName);
+            => _dialogs.SwitchToDialog(_newDialogName);
     }
 }
