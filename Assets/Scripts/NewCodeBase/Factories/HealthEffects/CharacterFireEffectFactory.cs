@@ -2,6 +2,7 @@
 using Remagures.Model.Attacks;
 using Remagures.Model.Flashing;
 using Remagures.Model.Health;
+using Remagures.Model.RuneSystem;
 using Remagures.Tools;
 using UnityEngine;
 using CharacterInfo = Remagures.SO.CharacterInfo;
@@ -12,7 +13,7 @@ namespace Remagures.Factories
     {
         private readonly int _minFireTime;
         private readonly int _maxFireTime;
-        private readonly CharacterInfo _characterInfo;
+        private readonly IRune _fireRune;
 
         public CharacterFireEffectFactory(int minFireTime, int maxFireTime)
         {
@@ -25,7 +26,7 @@ namespace Remagures.Factories
 
         public IHealthEffect Create(ITarget target, int damage)
         {
-            if (!_characterInfo.FireRunActive)
+            if (!_fireRune.IsActive)
                 return new NullHealthEffect();
 
             var fireEffect = new FireHealthEffect(target.Health, target.Flashingable, new FireInfo(_minFireTime, _maxFireTime, damage));
