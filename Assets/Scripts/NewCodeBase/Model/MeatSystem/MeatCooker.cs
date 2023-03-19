@@ -7,27 +7,23 @@ using Remagures.View.MeatSystem;
 
 namespace Remagures.Model.MeatSystem
 {
-    public sealed class MeatCooker : ILateUpdatable
+    public sealed class MeatCooker : IMeatCooker
     {
         public int RawMeatCount { get; private set; }
-        public bool HasRawMeatAdded { get; private set; }
         private int _cookedMeatCount;
 
         private readonly MeatCountView _meatCountView;
-        private readonly Inventory<Item> _inventory;
-        private readonly Item _cookedMeatItem;
-        private readonly Item _rawMeatItem;
+        private readonly IInventory<IItem> _inventory;
+        private readonly IItem _cookedMeatItem;
+        private readonly IItem _rawMeatItem;
 
-        public MeatCooker(MeatCountView meatCountView, Inventory<Item> inventory, Item cookedMeatItem, Item rawMeatItem)
+        public MeatCooker(MeatCountView meatCountView, IInventory<IItem> inventory, IItem cookedMeatItem, IItem rawMeatItem)
         {
             _meatCountView = meatCountView ?? throw new ArgumentNullException(nameof(meatCountView));
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
-            _cookedMeatItem = cookedMeatItem;
-            _rawMeatItem = rawMeatItem;
+            _cookedMeatItem = cookedMeatItem ?? throw new ArgumentNullException(nameof(cookedMeatItem));
+            _rawMeatItem = rawMeatItem ?? throw new ArgumentNullException(nameof(rawMeatItem));
         }
-
-        public void LateUpdate()
-            => HasRawMeatAdded = false;
 
         public void CookMeat(int count)
         {
@@ -41,9 +37,9 @@ namespace Remagures.Model.MeatSystem
             _meatCountView.DisplayRawMeatCount(RawMeatCount);
         }
 
-        public void LootCookedMeat()
+        public void RemoveCookedMeat()
         {
-            _inventory.Add(new Cell<Item>(_cookedMeatItem, _cookedMeatCount));
+            _inventory.Add(new Cell<IItem>(_cookedMeatItem, _cookedMeatCount));
             
             _cookedMeatCount = 0;
             _meatCountView.DisplayCookedMeatCount(_cookedMeatCount);
@@ -53,12 +49,11 @@ namespace Remagures.Model.MeatSystem
         {
             if (!_inventory.Cells.Any(cell => cell.Item.Equals(_rawMeatItem)))
                 return;
-
-            HasRawMeatAdded = true;
+            
             var rawMeatCell = _inventory.Cells.ToList().Find(cell => cell.Item.Equals(_rawMeatItem));
             RawMeatCount += rawMeatCell.ItemsCount;
 
-            _inventory.Remove(new Cell<Item>(_rawMeatItem, rawMeatCell.ItemsCount));
+            _inventory.Remove(new Cell<IItem>(_rawMeatItem, rawMeatCell.ItemsCount));
             _meatCountView.DisplayRawMeatCount(RawMeatCount);
         }
     }

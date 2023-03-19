@@ -1,3 +1,4 @@
+using System;
 using Remagures.Root;
 using Remagures.Tools;
 using Remagures.View.MeatSystem;
@@ -9,12 +10,18 @@ namespace Remagures.Model.MeatSystem
     {
         private readonly TimeCounter _timeCounter = new(new BinaryStorage());
         private readonly MeatCookingTimerView _meatCookingTimerView;
-        private readonly MeatCooker _meatCooker;
+        private readonly IMeatCooker _meatCooker;
 
         private float _remainingCookingTime;
         private bool _isLoopActive;
 
-        public void ActivateLoop()
+        public MeatCookingLoop(MeatCookingTimerView meatCookingTimerView, IMeatCooker meatCooker)
+        {
+            _meatCookingTimerView = meatCookingTimerView ?? throw new ArgumentNullException(nameof(meatCookingTimerView));
+            _meatCooker = meatCooker ?? throw new ArgumentNullException(nameof(meatCooker));
+        }
+
+        public void Activate()
         {
             _isLoopActive = true;
             _remainingCookingTime = 300;
@@ -27,6 +34,7 @@ namespace Remagures.Model.MeatSystem
         {
             if (_meatCooker.RawMeatCount <= 0 || _isLoopActive == false)
             {
+                _remainingCookingTime = 300;
                 _isLoopActive = false;
                 return;
             }

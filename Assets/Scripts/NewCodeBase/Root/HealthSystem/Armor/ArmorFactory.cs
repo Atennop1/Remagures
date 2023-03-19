@@ -14,7 +14,7 @@ namespace Remagures.Root
         IArmor IArmorFactory.Create()
             => Create();
         
-        public Armor Create()
+        private Armor Create()
         {
             var armor = _armorSelectorsFactories.Select(factory => factory.Create()).Sum(selector => selector.SelectedCell.Item.Armor);
 
@@ -27,6 +27,5 @@ namespace Remagures.Root
             _builtArmor = new Armor(armor);
             return _builtArmor;
         }
-        
     }
 }

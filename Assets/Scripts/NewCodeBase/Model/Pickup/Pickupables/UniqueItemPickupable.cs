@@ -9,7 +9,7 @@ namespace Remagures.Model.Pickup
     public class UniqueItemPickupable : IPickupable
     {
         private readonly IPickupable _pickupable;
-        private readonly ArmorFactory _armorFactory;
+        private readonly IArmorFactory _armorFactory;
 
         public UniqueItemPickupable(IPickupable pickupable, ArmorFactory armorFactory)
         {

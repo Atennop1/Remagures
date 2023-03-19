@@ -17,7 +17,7 @@ namespace Remagures.Model.Wallet
         public void Put(int count)
         {
             MoneyCount += count.ThrowExceptionIfLessOrEqualsZero();
-            VisualizeAndSave();
+            _storage.Save(MoneyCount);
         }
 
         public void Take(int count)
@@ -26,15 +26,10 @@ namespace Remagures.Model.Wallet
                 throw new ArgumentException($"Can't take {count} money from wallet where only {MoneyCount} money");
 
             MoneyCount -= count;
-            VisualizeAndSave();
+            _storage.Save(MoneyCount);
         }
 
         public bool CanTake(int count) 
             => count.ThrowExceptionIfLessOrEqualsZero() < MoneyCount;
-
-        private void VisualizeAndSave()
-        {
-            _storage.Save(MoneyCount);
-        }
     }
 }

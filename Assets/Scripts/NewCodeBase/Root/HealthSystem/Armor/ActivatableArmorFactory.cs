@@ -1,12 +1,13 @@
 ﻿using Remagures.Model.Health;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ActivatableArmorFactory : MonoBehaviour, IArmorFactory
+    public sealed class ActivatableArmorFactory : SerializedMonoBehaviour, IArmorFactory
     {
         [SerializeField] private float _armorCoefficient;
-        [SerializeField] private ArmorFactory _armorFactory;
+        [SerializeField] private IArmorFactory _armorFactory;
         private ActivatableArmor _builtArmor;
 
         IArmor IArmorFactory.Create()
