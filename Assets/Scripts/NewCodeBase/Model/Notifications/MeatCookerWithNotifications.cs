@@ -9,15 +9,14 @@ namespace Remagures.Model.Notifications
         public int RawMeatCount => _meatCooker.RawMeatCount;
         
         private readonly IMeatCooker _meatCooker;
-        private readonly TimeCounter _timeCounter;
         private readonly NotificationData _notificationData;
         
+        private readonly TimeCounter _timeCounter = new(new BinaryStorage());
         private readonly NotificationSender _notificationSender = new();
 
-        public MeatCookerWithNotifications(IMeatCooker meatCooker, TimeCounter timeCounter, NotificationData notificationData)
+        public MeatCookerWithNotifications(IMeatCooker meatCooker, NotificationData notificationData)
         {
             _meatCooker = meatCooker ?? throw new ArgumentNullException(nameof(meatCooker));
-            _timeCounter = timeCounter ?? throw new ArgumentNullException(nameof(timeCounter));
             _notificationData = notificationData;
         }
 

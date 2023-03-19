@@ -1,6 +1,6 @@
 ﻿using Remagures.Model.MeatSystem;
 
-namespace Remagures.Root.MeatSystem
+namespace Remagures.Root
 {
     public interface IMeatCookerFactory
     {

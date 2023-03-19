@@ -4,7 +4,7 @@ using Remagures.View.MeatSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.MeatSystem
+namespace Remagures.Root
 {
     public sealed class MeatCookerFactory : SerializedMonoBehaviour, IMeatCookerFactory
     {
