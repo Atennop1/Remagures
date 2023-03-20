@@ -11,7 +11,7 @@ namespace Remagures.Model.Notifications
         private readonly IMeatCooker _meatCooker;
         private readonly NotificationData _notificationData;
         
-        private readonly TimeCounter _timeCounter = new(new BinaryStorage());
+        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage(), "RemainingMeatCookingTime");
         private readonly NotificationSender _notificationSender = new();
 
         public MeatCookerWithNotifications(IMeatCooker meatCooker, NotificationData notificationData)
@@ -26,7 +26,7 @@ namespace Remagures.Model.Notifications
         private void Send()
         {
             Unity.Notifications.Android.AndroidNotificationCenter.CancelNotification(_notificationData.ID);
-            var delay = 300 - _timeCounter.GetTimeDifference("MeatTime") + (_meatCooker.RawMeatCount - 1) * 300;
+            var delay = 300 - _timeDifferenceCounter.GetTimeDifference() + (_meatCooker.RawMeatCount - 1) * 300;
 
             if (delay > 0)
                 _notificationSender.Send(_notificationData, delay);

@@ -10,19 +10,11 @@ namespace Remagures.View.MeatSystem
         
         private void Awake()
             => _timeText.text = "0:00";
-        
-        public void DisplayTimer(int rawMeatCount, float remainingTime)
+
+        public void DisplayTimer(float remainingTime)
         {
-            if (rawMeatCount > 0)
-            {
-                _timeText.text = $"{remainingTime / 60}:{(remainingTime % 60).ToString().PadLeft(2, '0')}";
-                _readySlider.value = (300 - remainingTime) / 300;
-            }
-            else
-            {
-                _timeText.text = "0:00";
-                _readySlider.value = 0;
-            }
+            _timeText.text = $"{remainingTime / 60}:{(remainingTime % 60).ToString().PadLeft(2, '0')}";
+            _readySlider.value = (300 - remainingTime) / 300;
         }
     }
 }

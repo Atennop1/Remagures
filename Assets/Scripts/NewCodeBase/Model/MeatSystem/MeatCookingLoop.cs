@@ -8,12 +8,12 @@ namespace Remagures.Model.MeatSystem
 {
     public class MeatCookingLoop : IUpdatable
     {
-        private readonly TimeCounter _timeCounter = new(new BinaryStorage());
+        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage(), "RemainingMeatCookingTime");
         private readonly MeatCookingTimerView _meatCookingTimerView;
         private readonly IMeatCooker _meatCooker;
 
+        private bool _hasRawMeat => _meatCooker.RawMeatCount > 0;
         private float _remainingCookingTime;
-        private bool _isLoopActive;
 
         public MeatCookingLoop(MeatCookingTimerView meatCookingTimerView, IMeatCooker meatCooker)
         {
@@ -23,42 +23,39 @@ namespace Remagures.Model.MeatSystem
 
         public void Activate()
         {
-            _isLoopActive = true;
             _remainingCookingTime = 300;
 
-            if (_meatCooker.RawMeatCount > 0)
-                _remainingCookingTime -= _timeCounter.GetTimeDifference("MeatTime");
+            if (_hasRawMeat)
+                _remainingCookingTime -= _timeDifferenceCounter.GetTimeDifference();
         }
 
         public void Update()
         {
-            if (_meatCooker.RawMeatCount <= 0 || _isLoopActive == false)
+            if (!_hasRawMeat)
             {
                 _remainingCookingTime = 300;
-                _isLoopActive = false;
                 return;
             }
             
-            while (_remainingCookingTime < 0 && _meatCooker.RawMeatCount > 0)
+            while (_remainingCookingTime < 0 && _hasRawMeat)
             {
                 _remainingCookingTime += 300;
 
                 if (_remainingCookingTime is <= 0 and > -300) 
-                    _timeCounter.SaveCurrentTime("MeatTime");
-
+                    _timeDifferenceCounter.SaveCurrentTime();
+                
                 _meatCooker.CookMeat(1);
             }
+            
+            _meatCookingTimerView.DisplayTimer(_remainingCookingTime);
 
-            if (_meatCooker.RawMeatCount > 0)
+            if (_hasRawMeat)
             {
                 _remainingCookingTime -= Time.deltaTime;
+                return;
             }
-            else
-            {
-                _timeCounter.SaveCurrentTime("MeatTime");
-            }
-
-            _meatCookingTimerView.DisplayTimer(_meatCooker.RawMeatCount, _remainingCookingTime);
+            
+            _timeDifferenceCounter.SaveCurrentTime();
         }
     }
 }
