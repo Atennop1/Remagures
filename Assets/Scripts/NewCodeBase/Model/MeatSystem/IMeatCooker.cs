@@ -3,9 +3,8 @@
     public interface IMeatCooker
     {
         int RawMeatCount { get; }
-        void CookMeat(int count);
-
-        void RemoveCookedMeat();
+        
         void AddRawMeat();
+        void CookMeat(int count);
     }
 }
