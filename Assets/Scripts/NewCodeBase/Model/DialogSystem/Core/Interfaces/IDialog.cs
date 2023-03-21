@@ -7,7 +7,7 @@ namespace Remagures.Model.DialogSystem
         string Name { get; }
         bool CanSwitchToNextLine { get; }
         
-        DialogLine CurrentLine { get; }
-        IReadOnlyList<DialogLine> Lines { get; }
+        IDialogLine CurrentLine { get; }
+        IReadOnlyList<IDialogLine> Lines { get; }
     }
 }

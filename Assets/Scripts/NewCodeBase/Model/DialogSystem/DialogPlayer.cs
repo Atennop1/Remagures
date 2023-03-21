@@ -1,6 +1,5 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Remagures.Tools;
 using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.DialogSystem
@@ -60,7 +59,7 @@ namespace Remagures.Model.DialogSystem
         private void SkipTyping()
         {
             _dialogTextWriter.EndTyping();
-            _dialogView.DisplayLineChoices(_currentDialog.CurrentLine);
+            _dialogView.DisplayChoices(_currentDialog.CurrentLine);
             _canContinue = true;
         }
 
@@ -71,7 +70,7 @@ namespace Remagures.Model.DialogSystem
             if (_canContinue)
                 return;
             
-            _dialogView.DisplayLineChoices(_currentDialog.CurrentLine);
+            _dialogView.DisplayChoices(_currentDialog.CurrentLine);
             _canContinue = true;
         }
     }

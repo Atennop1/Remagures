@@ -25,14 +25,14 @@ namespace Remagures.View.DialogSystem
         public void DisplayEndOfDialog()
             => _dialogWindow.SetActive(false);
 
-        public void DisplayLineInfo(DialogLine line)
+        public void DisplayLineInfo(IDialogLine line)
         {
             _nameText.text = line.SpeakerData.SpeakerName;
             _speakerImage.sprite = line.SpeakerData.SpeakerSprite.Get();
             _layoutAnimator.Play(line.SpeakerData.LayoutType.ToString());
         }
 
-        public void DisplayLineChoices(DialogLine line)
+        public void DisplayChoices(IDialogLine line)
         {
             foreach (Transform child in _dialogBubble.transform)
                 Destroy(child.gameObject);

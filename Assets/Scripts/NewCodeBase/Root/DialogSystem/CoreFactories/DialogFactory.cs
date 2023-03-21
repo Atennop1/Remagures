@@ -9,7 +9,7 @@ namespace Remagures.Root.DialogSystem
     public sealed class DialogFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _name;
-        [SerializeField] private List<DialogLineFactory> _lineBuilders;
+        [SerializeField] private List<IDialogLineFactory> _lineFactories;
 
         private Dialog _builtDialog;
 
@@ -18,7 +18,7 @@ namespace Remagures.Root.DialogSystem
             if (_builtDialog != null)
                 return _builtDialog;
 
-            var builtLines = _lineBuilders.Select(builder => builder.Create()).ToList();
+            var builtLines = _lineFactories.Select(builder => builder.Create()).ToList();
             _builtDialog = new Dialog(_name, builtLines.ToArray());
             return _builtDialog;
         }

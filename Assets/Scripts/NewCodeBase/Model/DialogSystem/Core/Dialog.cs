@@ -10,16 +10,16 @@ namespace Remagures.Model.DialogSystem
     public class Dialog : IDialog
     {
         public string Name { get; }
-        public DialogLine CurrentLine => _lines[_currentLineIndex];
+        public IDialogLine CurrentLine => _lines[_currentLineIndex];
         
         public bool CanSwitchToNextLine => _currentLineIndex < _lines.Count - 1;
         public bool IsCurrentLineLast => _currentLineIndex == _lines.Count - 1;
-        public IReadOnlyList<DialogLine> Lines => _lines.ToList();
+        public IReadOnlyList<IDialogLine> Lines => _lines.ToList();
 
-        private List<DialogLine> _lines;
+        private List<IDialogLine> _lines;
         private int _currentLineIndex;
 
-        public Dialog(string name, IEnumerable<DialogLine> lines)
+        public Dialog(string name, IEnumerable<IDialogLine> lines)
         {
             Name = name ?? throw new ArgumentException("Name can't be null");
             _lines = lines.ToList();

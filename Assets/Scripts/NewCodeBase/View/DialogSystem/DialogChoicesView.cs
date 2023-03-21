@@ -13,7 +13,7 @@ namespace Remagures.View.DialogSystem
         [SerializeField] private DialogBubbleBackground _dialogBubbleBackground;
         [SerializeField] private GameObject _dialogBubble;
 
-        public void Display(DialogLine dialogLine)
+        public void Display(IDialogLine dialogLine)
         {
             if (dialogLine.Choices.Count <= 0)
             {
@@ -26,7 +26,7 @@ namespace Remagures.View.DialogSystem
             CreateChoices(dialogLine);
         }
 
-        private void CreateChoices(DialogLine dialogLine)
+        private void CreateChoices(IDialogLine dialogLine)
         {
             foreach (var dialogChoice in dialogLine.Choices)
             {

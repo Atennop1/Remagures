@@ -1,4 +1,6 @@
-﻿namespace Remagures.Model.DialogSystem
+﻿using System;
+
+namespace Remagures.Model.DialogSystem
 {
     public sealed class DialogChoiceWithAdditionalBehaviour : IDialogChoice
     {
@@ -7,7 +9,13 @@
 
         private readonly IDialogChoice _dialogChoice;
         private readonly IAdditionalBehaviour _additionalBehaviour;
-        
+
+        public DialogChoiceWithAdditionalBehaviour(IDialogChoice dialogChoice, IAdditionalBehaviour additionalBehaviour)
+        {
+            _dialogChoice = dialogChoice ?? throw new ArgumentNullException(nameof(dialogChoice));
+            _additionalBehaviour = additionalBehaviour ?? throw new ArgumentNullException(nameof(additionalBehaviour));
+        }
+
         public void Use()
         {
             _additionalBehaviour.Use();

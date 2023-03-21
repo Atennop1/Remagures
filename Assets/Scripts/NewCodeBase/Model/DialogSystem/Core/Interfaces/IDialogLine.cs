@@ -6,7 +6,7 @@ namespace Remagures.Model.DialogSystem
     {
         string Text { get; }
         DialogSpeakerData SpeakerData { get; }
-        IReadOnlyList<DialogChoice> Choices { get; }
+        IReadOnlyList<IDialogChoice> Choices { get; }
         
         bool IsEnded { get; }
         void End();

@@ -11,11 +11,11 @@ namespace Remagures.Root.DialogSystem
         [SerializeField] private int _idOfStartDialog;
         [SerializeField] private string _characterName;
 
-        [Space] [SerializeField] private List<SpeakerInfoFactory> _speakerInfoBuilders;
-        [SerializeField] private List<ChoiceFactory> _choiceBuilders;
+        [Space] [SerializeField] private List<SpeakerInfoFactory> _speakerInfoFactories;
+        [SerializeField] private List<DialogChoiceFactory> _choiceFactories;
 
-        [Space] [SerializeField] private List<DialogLineFactory> _dialogLineBuilders;
-        [SerializeField] private List<DialogFactory> _dialogBuilders;
+        [Space] [SerializeField] private List<DialogLineFactory> _dialogLineFactories;
+        [SerializeField] private List<DialogFactory> _dialogFactories;
 
         private Dialogs _builtDialog;
 
@@ -24,15 +24,15 @@ namespace Remagures.Root.DialogSystem
             if (_builtDialog != null)
                 return _builtDialog;
             
-            _speakerInfoBuilders.ForEach(factory => factory.Build());
-            _choiceBuilders.ForEach(factory => factory.Create());
-            _dialogLineBuilders.ForEach(factory => factory.Create());
-            _dialogBuilders.ForEach(factory => factory.Create());
+            _speakerInfoFactories.ForEach(factory => factory.Build()); //TODO check can i delete it and just create list
+            _choiceFactories.ForEach(factory => factory.Create());
+            _dialogLineFactories.ForEach(factory => factory.Create());
+            _dialogFactories.ForEach(factory => factory.Create());
 
-            _builtDialog = new Dialogs(_dialogBuilders.Select(builder => builder.Create()).ToArray(), _characterName);
+            _builtDialog = new Dialogs(_dialogFactories.Select(builder => builder.Create()).ToArray(), _characterName);
             
             if (_builtDialog.CurrentDialog == null)
-                _builtDialog.SwitchCurrent(_dialogBuilders[_idOfStartDialog].Create().Name);
+                _builtDialog.SwitchCurrent(_dialogFactories[_idOfStartDialog].Create().Name);
 
             return _builtDialog;
         }
