@@ -8,14 +8,14 @@ namespace Remagures.Root.DialogSystem
     {
         [SerializeField] private QuestsListFactory _questsListFactory;
         [SerializeField] private QuestFactory _questFactory;
-        private AddQuestCallback _builtCallback;
+        private QuestAdding _builtAdding;
         
         public void Create(IUsableComponent component)
         {
-            if (_builtCallback != null)
+            if (_builtAdding != null)
                 return;
             
-            _builtCallback = new AddQuestCallback(component, _questsListFactory.Create(), _questFactory.Create());
+            _builtAdding = new QuestAdding(component, _questsListFactory.Create(), _questFactory.Create());
         }
     }
 }

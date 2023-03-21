@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Remagures.Tools;
 using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.DialogSystem
