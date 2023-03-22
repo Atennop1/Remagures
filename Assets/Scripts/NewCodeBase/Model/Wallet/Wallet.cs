@@ -1,24 +1,15 @@
 ﻿using System;
 using Remagures.Tools;
+using SaveSystem.Paths;
 
 namespace Remagures.Model.Wallet
 {
-    public class Wallet<TCurrency> : IWallet
+    public sealed class Wallet : IWallet
     {
         public int MoneyCount { get; private set; }
-        private readonly StorageWithNames<IWallet, TCurrency> _storage;
 
-        public Wallet()
-        {
-            _storage = new StorageWithNames<IWallet, TCurrency>();
-            MoneyCount = _storage.Exist() ? _storage.Load<int>() : 0;
-        }
-        
-        public void Put(int count)
-        {
-            MoneyCount += count.ThrowExceptionIfLessOrEqualsZero();
-            _storage.Save(MoneyCount);
-        }
+        public void Put(int count) 
+            => MoneyCount += count.ThrowExceptionIfLessOrEqualsZero();
 
         public void Take(int count)
         {
@@ -26,7 +17,6 @@ namespace Remagures.Model.Wallet
                 throw new ArgumentException($"Can't take {count} money from wallet where only {MoneyCount} money");
 
             MoneyCount -= count;
-            _storage.Save(MoneyCount);
         }
 
         public bool CanTake(int count) 
