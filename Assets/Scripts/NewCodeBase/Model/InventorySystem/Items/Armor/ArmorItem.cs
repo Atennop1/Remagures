@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public readonly struct ArmorItem : IArmorItem
+    public sealed class ArmorItem : IArmorItem
     {
         public string Name { get; }
         public string Description { get; }
@@ -14,7 +14,7 @@ namespace Remagures.Model.InventorySystem
         public AnimatorOverrideController AnimatorController { get; }
         public int Armor { get; }
 
-        public ArmorItem(IItem item, AnimatorOverrideController animatorController, int armor) : this()
+        public ArmorItem(IItem item, AnimatorOverrideController animatorController, int armor)
         {
             Name = item.Name;
             Description = item.Description;

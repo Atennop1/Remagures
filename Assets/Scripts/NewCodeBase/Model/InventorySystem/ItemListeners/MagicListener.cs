@@ -1,26 +1,36 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Remagures.Model.Magic;
 using Remagures.Root;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class MagicListener : IUpdatable
+    public class MagicListener : IUpdatable //TODO make this and other listeners as decorators
     {
-        private readonly IUsableItem _usableItem;
+        private readonly IMagicItem _magicItem;
         private readonly IMagicApplier _magicApplier;
-        private readonly IMagic _magic;
+        private bool _canUse;
 
-        public MagicListener(IUsableItem usableItem, IMagicApplier magicApplier, IMagic magic)
+        public MagicListener(IMagicItem magicItem, IMagicApplier magicApplier)
         {
-            _usableItem = usableItem ?? throw new ArgumentNullException(nameof(usableItem));
+            _magicItem = magicItem ?? throw new ArgumentNullException(nameof(magicItem));
             _magicApplier = magicApplier ?? throw new ArgumentNullException(nameof(magicApplier));
-            _magic = magic ?? throw new ArgumentNullException(nameof(magic));
         }
 
-        public void Update()
+        public async void Update()
         {
-            if (_usableItem.HasUsed)
-                _magicApplier.Use(_magic);
+            if (!_magicItem.HasUsed || !_canUse) 
+                return;
+            
+            _magicApplier.Use(_magicItem.Magic);
+            await StartCooldown();
+        }
+
+        private async UniTask StartCooldown()
+        {
+            _canUse = false;
+            await UniTask.Delay(_magicItem.UsingCooldownInMilliseconds);
+            _canUse = true;
         }
     }
 }

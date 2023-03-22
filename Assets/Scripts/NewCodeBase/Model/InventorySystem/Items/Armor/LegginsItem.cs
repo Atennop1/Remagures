@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public readonly struct LegginsItem : ILegginsItem
+    public sealed class LegginsItem : ILegginsItem
     {
         public string Name => _armorItem.Name;
         public string Description => _armorItem.Description;

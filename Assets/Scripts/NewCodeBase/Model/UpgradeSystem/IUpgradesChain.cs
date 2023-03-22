@@ -2,9 +2,9 @@
 
 namespace Remagures.Model.UpgradeSystem
 {
-    public interface IUpgradesChain
+    public interface IUpgradesChain<TItem> where TItem: IItem
     {
-        bool CanUpgradeItem(IItem item);
-        UpgradeItemData GetUpgradedItemData(IItem item);
+        bool CanUpgradeItem(TItem item);
+        ItemUpgradeData<TItem> GetUpgradeForItem(TItem item);
     }
 }

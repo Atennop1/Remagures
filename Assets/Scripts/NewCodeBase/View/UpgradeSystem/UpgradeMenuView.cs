@@ -11,33 +11,25 @@ namespace Remagures.View.UpgradeSystem
 {
     public class UpgradeMenuView : MonoBehaviour
     {
-        [SerializeField] private Text _sharpsCountText;
         [SerializeField] private GameObject _absenceItemsGameObject;
-
-        [Space] 
         [SerializeField] private Transform _content;
         [SerializeField] private GameObject _windowGameObject;
 
         [Space]
         [SerializeField] private IUpgradeSlotsViewFactory _upgradeSlotsViewFactory;
         
-        private List<IInventory<IItem>> _inventories;
-        private List<IUpgrader> _upgraders;
-        private IWallet _sharpsWallet;
+        private List<IInventory<IUpgradableItem<IItem>>> _inventories;
+        private List<IUpgradesChain<IUpgradableItem<IItem>>> _chains;
 
-        public void Construct(List<IInventory<IItem>> inventories, List<IUpgrader> upgraders, IWallet sharpsWallet)
+        public void Construct(List<IInventory<IUpgradableItem<IItem>>> inventories, List<IUpgradesChain<IUpgradableItem<IItem>>> chains)
         {
             _inventories = inventories ?? throw new ArgumentNullException(nameof(inventories));
-            _upgraders = upgraders ?? throw new ArgumentNullException(nameof(upgraders));
-            _sharpsWallet = sharpsWallet ?? throw new ArgumentNullException(nameof(sharpsWallet));
+            _chains = chains ?? throw new ArgumentNullException(nameof(chains));
         }
 
         private void OnEnable()
-        {
-            UpdateContent();
-            _sharpsCountText.text = _sharpsWallet.MoneyCount.ToString();
-        }
-
+            => UpdateContent();
+        
         private void CreateSlots() 
         {
             _absenceItemsGameObject.SetActive(true);
@@ -46,22 +38,21 @@ namespace Remagures.View.UpgradeSystem
             {
                 foreach (var cell in inventory.Cells)
                 {
-                    foreach (var upgrader in _upgraders)
+                    foreach (var chain in _chains)
                     {
-                        if (!upgrader.CanUpgradeItem(cell.Item)) 
+                        if (!chain.CanUpgradeItem(cell.Item)) 
                             continue;
 
-                        var upgradeData = upgrader.GetUpgradedItemData(cell.Item);
-                        var upgradeSlot = _upgradeSlotsViewFactory.Create(_content);
+                        var upgradeData = chain.GetUpgradeForItem(cell.Item);
+                        var upgradeSlotView = _upgradeSlotsViewFactory.Create(_content);
                         
-                        upgradeSlot.UpgradeButton.onClick.AddListener(() =>
+                        upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
                         {
-                            upgrader.Upgrade(cell.Item);
+                            cell.Item.Upgrade(upgradeData);
                             UpdateContent();
-                            _sharpsCountText.text = _sharpsWallet.MoneyCount.ToString();
                         });
                         
-                        upgradeSlot.Display(upgradeData);
+                        upgradeSlotView.Display(upgradeData);
                         _absenceItemsGameObject.SetActive(false);
                     }
                 }

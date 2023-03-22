@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public readonly struct RuneItem : IRuneItem
+    public sealed class RuneItem : IRuneItem
     {
         public string Name { get; }
         public string Description { get; }
