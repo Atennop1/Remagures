@@ -1,4 +1,5 @@
 ﻿using Remagures.Model.DialogSystem;
+using Remagures.Model.DialogSystem.Decorators;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

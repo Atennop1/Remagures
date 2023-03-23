@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.Model.DialogSystem
+namespace Remagures.Model.DialogSystem.Decorators
 {
     public sealed class DialogLineWithAdditionalBehaviour : IDialogLine
     {
