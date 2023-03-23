@@ -1,40 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Remagures.Model.InventorySystem;
 
 namespace Remagures.Model.UpgradeSystem
 {
-    public sealed class UpgradesChain<TItem> : IUpgradesChain where TItem: IItem
+    public sealed class UpgradesChain<TItem> : IUpgradesChain<TItem> where TItem: IItem
     {
         private readonly List<IUpgradeLevel<TItem>> _levels;
         private readonly IInventory<TItem> _inventory;
         private readonly IUpgradesClient _client;
-        
-        private IUpgradeLevel<TItem> _currentLevel;
 
         public UpgradesChain(List<IUpgradeLevel<TItem>> levels, IInventory<TItem> inventory, IUpgradesClient client)
         {
             _levels = levels ?? throw new ArgumentNullException(nameof(levels));
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             _client = client ?? throw new ArgumentNullException(nameof(client));
-
-            _currentLevel = _levels[0];
         }
 
-        public void Advance()
+        public void Advance(TItem item)
         {
-            if (!CanAdvance)
-                throw new InvalidOperationException("Can't advance now");
-
-            _inventory.Remove(new Cell<TItem>(_currentLevel.CurrentItem));
-            _inventory.Add(new Cell<TItem>(_currentLevel.NextItem));
+            var currentLevel = GetCurrentLevel(item);
+            _client.Buy(currentLevel.BuyingData);
             
-            _client.Buy(_currentLevel.BuyingData);
-            _currentLevel = _levels.Find(level => level.CurrentItem.Equals(_currentLevel.NextItem));
+            _inventory.Remove(new Cell<TItem>(currentLevel.CurrentItem));
+            _inventory.Add(new Cell<TItem>(currentLevel.NextItem));
         }
 
-        public bool CanAdvance 
-            => _levels.Any(level => level.CurrentItem.Equals(_currentLevel.NextItem));
+        public IUpgradeLevel<TItem> GetCurrentLevel(TItem item)
+        {
+            if (!CanAdvance(item))
+                throw new InvalidOperationException("Can't advance this item");
+            
+            return _levels.Find(level => level.CurrentItem.Equals(item));
+        }
+
+        public bool CanAdvance(TItem item)
+        {
+            var currentLevel = _levels.Find(level => level.CurrentItem.Equals(item));
+            return currentLevel != null && _client.CanBuy(currentLevel.BuyingData);
+        }
     }
 }

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.InventorySystem;
 using Remagures.Model.UpgradeSystem;
-using Remagures.Model.Wallet;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Remagures.View.UpgradeSystem
 {
-    public class UpgradeMenuView : MonoBehaviour
+    public sealed class UpgradeMenuView<TItem> : MonoBehaviour where TItem: IItem
     {
         [SerializeField] private GameObject _absenceItemsGameObject;
         [SerializeField] private Transform _content;
@@ -18,43 +16,40 @@ namespace Remagures.View.UpgradeSystem
         [Space]
         [SerializeField] private IUpgradeSlotsViewFactory _upgradeSlotsViewFactory;
         
-        private List<IInventory<IUpgradableItem<IItem>>> _inventories;
-        private List<IUpgradesChain<IUpgradableItem<IItem>>> _chains;
+        private List<IUpgradesChain<TItem>> _chains;
+        private IInventory<TItem> _inventory;
 
-        public void Construct(List<IInventory<IUpgradableItem<IItem>>> inventories, List<IUpgradesChain<IUpgradableItem<IItem>>> chains)
+        public void Construct(List<IUpgradesChain<TItem>> chains, IInventory<TItem> inventory)
         {
-            _inventories = inventories ?? throw new ArgumentNullException(nameof(inventories));
             _chains = chains ?? throw new ArgumentNullException(nameof(chains));
+            _inventory = inventory ?? throw new ArgumentNullException(name);
         }
 
         private void OnEnable()
             => UpdateContent();
-        
-        private void CreateSlots() 
+
+        private void CreateSlots()
         {
             _absenceItemsGameObject.SetActive(true);
 
-            foreach (var inventory in _inventories) 
+            foreach (var chain in _chains)
             {
-                foreach (var cell in inventory.Cells)
+                foreach (var cell in _inventory.Cells)
                 {
-                    foreach (var chain in _chains)
-                    {
-                        if (!chain.CanUpgradeItem(cell.Item)) 
-                            continue;
+                    if (!chain.CanAdvance(cell.Item))
+                        continue;
 
-                        var upgradeData = chain.GetUpgradeForItem(cell.Item);
-                        var upgradeSlotView = _upgradeSlotsViewFactory.Create(_content);
-                        
-                        upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
-                        {
-                            cell.Item.Upgrade(upgradeData);
-                            UpdateContent();
-                        });
-                        
-                        upgradeSlotView.Display(upgradeData);
-                        _absenceItemsGameObject.SetActive(false);
-                    }
+                    var currentLevel = chain.GetCurrentLevel(cell.Item);
+                    var upgradeSlotView = _upgradeSlotsViewFactory.Create(_content);
+
+                    upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
+                    {
+                        chain.Advance(cell.Item);
+                        UpdateContent();
+                    });
+
+                    upgradeSlotView.Display(currentLevel as IUpgradeLevel<IItem>);
+                    _absenceItemsGameObject.SetActive(false);
                 }
             }
         }
