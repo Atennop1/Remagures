@@ -1,30 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Remagures.Model.InventorySystem;
-using Remagures.Model.Wallet;
 
 namespace Remagures.Model.UpgradeSystem
 {
-    public sealed class UpgradesChain<TItem> : IUpgradesChain<TItem> where TItem: IItem
+    public sealed class UpgradesChain<TItem> : IUpgradesChain where TItem: IItem
     {
-        private readonly List<ItemUpgradeData<TItem>> _items;
-        private readonly IWallet _wallet;
-
-        public UpgradesChain(List<ItemUpgradeData<TItem>> items)
-            => _items = items ?? throw new ArgumentNullException(nameof(items));
+        private readonly List<IUpgradeLevel<TItem>> _levels;
+        private readonly IInventory<TItem> _inventory;
+        private readonly IUpgradesClient _client;
         
-        public bool CanUpgradeItem(TItem item)
+        private IUpgradeLevel<TItem> _currentLevel;
+
+        public UpgradesChain(List<IUpgradeLevel<TItem>> levels, IInventory<TItem> inventory, IUpgradesClient client)
         {
-            var upgradeData = _items.Find(upgradeData => upgradeData.ItemWhichUpgrading.Equals(item));
-            return upgradeData.ItemWhichUpgrading != null && _items.IndexOf(upgradeData) != _items.Count - 1 && _wallet.CanTake(upgradeData.Cost);
+            _levels = levels ?? throw new ArgumentNullException(nameof(levels));
+            _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+
+            _currentLevel = _levels[0];
         }
 
-        public ItemUpgradeData<TItem> GetUpgradeForItem(TItem item)
+        public void Advance()
         {
-            if (CanUpgradeItem(item))
-                throw new ArgumentException("Item can't be upgraded");
+            if (!CanAdvance)
+                throw new InvalidOperationException("Can't advance now");
 
-            return _items[_items.IndexOf(_items.Find(upgradeData => upgradeData.ItemWhichUpgrading.Equals(item))) + 1];
+            _inventory.Remove(new Cell<TItem>(_currentLevel.CurrentItem));
+            _inventory.Add(new Cell<TItem>(_currentLevel.NextItem));
+            
+            _client.Buy(_currentLevel.BuyingData);
+            _currentLevel = _levels.Find(level => level.CurrentItem.Equals(_currentLevel.NextItem));
         }
+
+        public bool CanAdvance 
+            => _levels.Any(level => level.CurrentItem.Equals(_currentLevel.NextItem));
     }
 }
