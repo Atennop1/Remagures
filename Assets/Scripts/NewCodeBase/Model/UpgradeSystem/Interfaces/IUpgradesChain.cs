@@ -7,6 +7,6 @@ namespace Remagures.Model.UpgradeSystem
         bool CanUpgrade(TItem item);
         
         void Upgrade(TItem item);
-        IUpgrade<TItem> GetNextLevel(TItem item);
+        IUpgrade<TItem> GetNextUpgrade(TItem item);
     }
 }

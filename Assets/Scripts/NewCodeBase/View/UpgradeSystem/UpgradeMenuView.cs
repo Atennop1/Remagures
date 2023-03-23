@@ -39,7 +39,7 @@ namespace Remagures.View.UpgradeSystem
                     if (!chain.CanUpgrade(cell.Item))
                         continue;
 
-                    var currentLevel = chain.GetNextLevel(cell.Item);
+                    var upgrade = chain.GetNextUpgrade(cell.Item);
                     var upgradeSlotView = _upgradeSlotsViewFactory.Create(_content);
 
                     upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
@@ -48,7 +48,7 @@ namespace Remagures.View.UpgradeSystem
                         UpdateContent();
                     });
 
-                    upgradeSlotView.Display(currentLevel as IUpgrade<IItem>);
+                    upgradeSlotView.Display(upgrade as IUpgrade<IItem>);
                     _absenceItemsGameObject.SetActive(false);
                 }
             }

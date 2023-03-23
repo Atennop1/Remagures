@@ -1,0 +1,28 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Remagures.Model.InventorySystem;
+using Remagures.Model.UpgradeSystem;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace Remagures.Root
+{
+    public sealed class UpgradesChainFactory<TItem> : SerializedMonoBehaviour where TItem: IItem
+    {
+        [SerializeField] private Dictionary<IItemFactory<TItem>, UpgradeFactory<TItem>> _upgradeFactories;
+        [SerializeField] private IInventoryFactory<TItem> _inventoryFactory;
+        [SerializeField] private UpgradesClientFactory _upgradesClientFactory;
+
+        private IUpgradesChain<TItem> _builtChain;
+
+        public IUpgradesChain<TItem> Create()
+        {
+            if (_builtChain != null)
+                return _builtChain;
+
+            var upgradesDictionary = _upgradeFactories.ToDictionary(pair => pair.Key.Create(), pair => pair.Value.Create());
+            _builtChain = new UpgradesChain<TItem>(upgradesDictionary, _inventoryFactory.Create(), _upgradesClientFactory.Create());
+            return _builtChain;
+        }
+    }
+}

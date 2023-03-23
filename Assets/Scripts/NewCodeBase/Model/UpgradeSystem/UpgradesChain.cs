@@ -31,7 +31,7 @@ namespace Remagures.Model.UpgradeSystem
             _inventory.Add(new Cell<TItem>(upgrade.Item));
         }
 
-        public IUpgrade<TItem> GetNextLevel(TItem item)
+        public IUpgrade<TItem> GetNextUpgrade(TItem item)
         {
             if (!CanUpgrade(item))
                 throw new InvalidOperationException("Can't advance this item");
