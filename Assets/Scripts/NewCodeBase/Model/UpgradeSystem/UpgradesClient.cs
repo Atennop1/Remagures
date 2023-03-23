@@ -11,10 +11,10 @@ namespace Remagures.Model.UpgradeSystem
         public UpgradesClient(Dictionary<Currency, IWallet> wallets) 
             => _wallets = wallets ?? throw new ArgumentNullException(nameof(wallets));
 
-        public bool CanBuy(UpgradeLevelBuyingData buyingData) 
+        public bool CanBuy(IUpgradeBuyingData buyingData) 
             => _wallets.ContainsKey(buyingData.Currency) || _wallets[buyingData.Currency].CanTake(buyingData.Cost);
 
-        public void Buy(UpgradeLevelBuyingData buyingData)
+        public void Buy(IUpgradeBuyingData buyingData)
         {
             if (!CanBuy(buyingData))
                 throw new InvalidOperationException("Can't buy this upgrade");

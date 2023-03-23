@@ -6,13 +6,13 @@ namespace Remagures.Model.UpgradeSystem
 {
     public sealed class UpgradesChain<TItem> : IUpgradesChain<TItem> where TItem: IItem
     {
-        private readonly Dictionary<TItem, IUpgradeLevel<TItem>> _itemsAndUpgrades;
+        private readonly Dictionary<TItem, IUpgrade<TItem>> _itemsAndUpgrades;
         private readonly IInventory<TItem> _inventory;
         private readonly IUpgradesClient _client;
 
         private readonly List<TItem> _keys;
 
-        public UpgradesChain(Dictionary<TItem, IUpgradeLevel<TItem>> itemsAndUpgrades, IInventory<TItem> inventory, IUpgradesClient client)
+        public UpgradesChain(Dictionary<TItem, IUpgrade<TItem>> itemsAndUpgrades, IInventory<TItem> inventory, IUpgradesClient client)
         {
             _itemsAndUpgrades = itemsAndUpgrades ?? throw new ArgumentNullException(nameof(itemsAndUpgrades));
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
@@ -24,14 +24,14 @@ namespace Remagures.Model.UpgradeSystem
         public void Upgrade(TItem item)
         {
             var currentItem = _keys.Find(keyItem => keyItem.Equals(item));
-            var nextLevel = _itemsAndUpgrades[_keys.Find(keyItem => keyItem.Equals(item))];
-            _client.Buy(nextLevel.BuyingData);
+            var upgrade = _itemsAndUpgrades[_keys.Find(keyItem => keyItem.Equals(item))];
+            _client.Buy(upgrade.BuyingData);
             
             _inventory.Remove(new Cell<TItem>(currentItem));
-            _inventory.Add(new Cell<TItem>(nextLevel.UpgradedItem));
+            _inventory.Add(new Cell<TItem>(upgrade.Item));
         }
 
-        public IUpgradeLevel<TItem> GetNextLevel(TItem item)
+        public IUpgrade<TItem> GetNextLevel(TItem item)
         {
             if (!CanUpgrade(item))
                 throw new InvalidOperationException("Can't advance this item");

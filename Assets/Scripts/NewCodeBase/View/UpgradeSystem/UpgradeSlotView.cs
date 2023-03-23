@@ -14,11 +14,11 @@ namespace Remagures.View.UpgradeSystem
         [SerializeField] private Text _itemName;
         [SerializeField] private Text _costText;
 
-        public void Display(IUpgradeLevel<IItem> upgradeLevel)
+        public void Display(IUpgrade<IItem> upgrade)
         {
-            _itemImage.sprite = upgradeLevel.UpgradedItem.Sprite;
-            _itemName.text = upgradeLevel.UpgradedItem.Name; 
-            _costText.text = upgradeLevel.BuyingData.Cost.ToString();
+            _itemImage.sprite = upgrade.Item.Sprite;
+            _itemName.text = upgrade.Item.Name; 
+            _costText.text = upgrade.BuyingData.Cost.ToString();
         }
     }
 }

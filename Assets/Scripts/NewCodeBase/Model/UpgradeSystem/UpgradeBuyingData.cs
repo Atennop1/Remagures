@@ -3,12 +3,12 @@ using Remagures.Tools;
 
 namespace Remagures.Model.UpgradeSystem
 {
-    public readonly struct UpgradeLevelBuyingData
+    public readonly struct UpgradeBuyingData : IUpgradeBuyingData
     {
-        public readonly Currency Currency;
-        public readonly int Cost;
+        public Currency Currency { get; }
+        public int Cost { get; }
 
-        public UpgradeLevelBuyingData(Currency currency, int cost)
+        public UpgradeBuyingData(Currency currency, int cost)
         {
             Currency = currency;
             Cost = cost.ThrowExceptionIfLessOrEqualsZero();

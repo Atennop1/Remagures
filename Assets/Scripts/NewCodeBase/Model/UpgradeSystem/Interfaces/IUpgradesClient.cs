@@ -2,7 +2,7 @@
 {
     public interface IUpgradesClient
     {
-        bool CanBuy(UpgradeLevelBuyingData buyingData);
-        void Buy(UpgradeLevelBuyingData buyingData);
+        bool CanBuy(IUpgradeBuyingData buyingData);
+        void Buy(IUpgradeBuyingData buyingData);
     }
 }

@@ -48,7 +48,7 @@ namespace Remagures.View.UpgradeSystem
                         UpdateContent();
                     });
 
-                    upgradeSlotView.Display(currentLevel as IUpgradeLevel<IItem>);
+                    upgradeSlotView.Display(currentLevel as IUpgrade<IItem>);
                     _absenceItemsGameObject.SetActive(false);
                 }
             }

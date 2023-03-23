@@ -7,6 +7,6 @@ namespace Remagures.View.UpgradeSystem
     public interface IUpgradeSlotView
     {
         Button UpgradeButton { get; }
-        void Display(IUpgradeLevel<IItem> upgradeLevel);
+        void Display(IUpgrade<IItem> upgrade);
     }
 }
