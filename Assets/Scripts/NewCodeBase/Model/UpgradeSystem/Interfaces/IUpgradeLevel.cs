@@ -4,8 +4,7 @@ namespace Remagures.Model.UpgradeSystem
 {
     public interface IUpgradeLevel<TItem> where TItem: IItem
     {
-        TItem CurrentItem { get; }
-        TItem NextItem { get; }
+        TItem UpgradedItem { get; }
         UpgradeLevelBuyingData BuyingData { get; }
     }
 }

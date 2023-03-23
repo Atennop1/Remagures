@@ -4,9 +4,9 @@ namespace Remagures.Model.UpgradeSystem
 {
     public interface IUpgradesChain<TItem> where TItem: IItem
     {
-        bool CanAdvance(TItem item);
+        bool CanUpgrade(TItem item);
         
-        void Advance(TItem item);
-        IUpgradeLevel<TItem> GetCurrentLevel(TItem item);
+        void Upgrade(TItem item);
+        IUpgradeLevel<TItem> GetNextLevel(TItem item);
     }
 }

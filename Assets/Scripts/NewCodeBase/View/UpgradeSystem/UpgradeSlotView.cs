@@ -16,8 +16,8 @@ namespace Remagures.View.UpgradeSystem
 
         public void Display(IUpgradeLevel<IItem> upgradeLevel)
         {
-            _itemImage.sprite = upgradeLevel.NextItem.Sprite;
-            _itemName.text = upgradeLevel.NextItem.Name; 
+            _itemImage.sprite = upgradeLevel.UpgradedItem.Sprite;
+            _itemName.text = upgradeLevel.UpgradedItem.Name; 
             _costText.text = upgradeLevel.BuyingData.Cost.ToString();
         }
     }

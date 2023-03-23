@@ -36,15 +36,15 @@ namespace Remagures.View.UpgradeSystem
             {
                 foreach (var cell in _inventory.Cells)
                 {
-                    if (!chain.CanAdvance(cell.Item))
+                    if (!chain.CanUpgrade(cell.Item))
                         continue;
 
-                    var currentLevel = chain.GetCurrentLevel(cell.Item);
+                    var currentLevel = chain.GetNextLevel(cell.Item);
                     var upgradeSlotView = _upgradeSlotsViewFactory.Create(_content);
 
                     upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
                     {
-                        chain.Advance(cell.Item);
+                        chain.Upgrade(cell.Item);
                         UpdateContent();
                     });
 
