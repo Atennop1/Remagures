@@ -4,12 +4,12 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Pickup
 {
-    public class AddManaPickable : IPickupable
+    public class AddManaPickupable : IPickupable
     {
         private readonly IMana _mana;
         private int _amount;
 
-        public AddManaPickable(IMana mana, int amount)
+        public AddManaPickupable(IMana mana, int amount)
         {
             _mana = mana ?? throw new ArgumentNullException(nameof(mana));
             _amount = amount.ThrowExceptionIfLessOrEqualsZero();
