@@ -1,27 +1,32 @@
 using System;
 using Remagures.Model.Health;
-using Remagures.Root;
 using Remagures.Tools;
+using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class AddHealthListener : IUpdatable
+    public sealed class ItemWithHealthAdding : IUsableItem
     {
+        public string Name => _usableItem.Name;
+        public string Description => _usableItem.Description;
+        public Sprite Sprite => _usableItem.Sprite;
+        public bool IsStackable => _usableItem.IsStackable;
+        
         private readonly IUsableItem _usableItem;
         private readonly IHealth _health;
         private readonly int _amountToIncrease;
 
-        public AddHealthListener(IUsableItem usableItem, IHealth health, int amountToIncrease)
+        public ItemWithHealthAdding(IUsableItem usableItem, IHealth health, int amountToIncrease)
         {
             _usableItem = usableItem ?? throw new ArgumentNullException(nameof(usableItem));
             _health = health ?? throw new ArgumentNullException(nameof(health));
             _amountToIncrease = amountToIncrease.ThrowExceptionIfLessOrEqualsZero();
         }
 
-        public void Update()
+        public void Use()
         {
-            if (_usableItem.HasUsed)
-                _health.Heal(_amountToIncrease);
+            _usableItem.Use();
+            _health.Heal(_amountToIncrease);
         }
     }
 }

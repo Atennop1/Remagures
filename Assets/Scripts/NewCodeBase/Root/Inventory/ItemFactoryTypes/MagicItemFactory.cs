@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MagicItemFactory : MonoBehaviour, IItemFactory<IMagicItem>
+    public sealed class MagicItemFactory : MonoBehaviour, IItemFactory<IMagicItem> //TODO make composite for magic and fix this
     {
         [SerializeField] private MagicItemData _data;
         private IMagicItem _builtItem;

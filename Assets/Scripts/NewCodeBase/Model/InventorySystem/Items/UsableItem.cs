@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Remagures.Model.InventorySystem
@@ -9,9 +8,7 @@ namespace Remagures.Model.InventorySystem
         public string Description { get; }
         public Sprite Sprite { get; }
         public bool IsStackable { get; }
-        
-        public bool HasUsed { get; private set; }
-        
+
         public UsableItem(IItem item)
         {
             Name = item.Name;
@@ -20,11 +17,6 @@ namespace Remagures.Model.InventorySystem
             IsStackable = item.IsStackable;
         }
         
-        public async void Use()
-        {
-            HasUsed = true;
-            await UniTask.Yield();
-            HasUsed = false;
-        }
+        public void Use() { }
     }
 }

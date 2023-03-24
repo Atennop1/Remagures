@@ -1,5 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
 using Remagures.Tools;
 using UnityEngine;
 
@@ -16,8 +15,6 @@ namespace Remagures.Model.InventorySystem
         public Sprite Sprite { get; }
         public bool IsStackable { get; }
         
-        public bool HasUsed { get; private set; }
-        
         public WeaponItem(IItem item, AnimatorOverrideController animatorController, int damage, int usingCooldown)
         {
             Name = item.Name;
@@ -30,11 +27,6 @@ namespace Remagures.Model.InventorySystem
             UsingCooldownInMilliseconds = usingCooldown.ThrowExceptionIfLessOrEqualsZero();
         }
         
-        public async void Use()
-        {
-            HasUsed = true;
-            await UniTask.Yield();
-            HasUsed = false;
-        }
+        public void Use() { }
     }
 }

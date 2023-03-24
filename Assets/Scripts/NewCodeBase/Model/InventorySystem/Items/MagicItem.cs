@@ -1,5 +1,4 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
 using Remagures.Model.Magic;
 using Remagures.Tools;
 using UnityEngine;
@@ -15,9 +14,7 @@ namespace Remagures.Model.InventorySystem
         public string Description { get; }
         public Sprite Sprite { get; }
         public bool IsStackable { get; }
-        
-        public bool HasUsed { get; private set; }
-        
+
         public MagicItem(IItem item, IMagic magic, int usingCooldown)
         {
             Name = item.Name;
@@ -29,11 +26,6 @@ namespace Remagures.Model.InventorySystem
             UsingCooldownInMilliseconds = usingCooldown.ThrowExceptionIfLessOrEqualsZero();
         }
         
-        public async void Use()
-        {
-            HasUsed = true;
-            await UniTask.Yield();
-            HasUsed = false;
-        }
+        public void Use() { }
     }
 }
