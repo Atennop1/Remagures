@@ -1,19 +1,18 @@
-﻿using Remagures.Tools;
+﻿using SaveSystem;
 
 namespace Remagures.Model.Character
 {
     public class CharacterPositionStorage
     {
-        private const string SAVE_FILE_NAME = "PlayerPositionData";
-        private readonly IStorage _characterPositionDataStorage;
+        private readonly ISaveStorage<CharacterPositionData> _characterPositionDataStorage;
 
-        public CharacterPositionStorage(IStorage characterPositionDataStorage)
+        public CharacterPositionStorage(ISaveStorage<CharacterPositionData> characterPositionDataStorage)
             => _characterPositionDataStorage = characterPositionDataStorage;
 
         public void Save(CharacterPositionData data)
-            => _characterPositionDataStorage.Save(data, SAVE_FILE_NAME);
+            => _characterPositionDataStorage.Save(data);
 
         public CharacterPositionData Load()
-            => _characterPositionDataStorage.Load<CharacterPositionData>(SAVE_FILE_NAME);
+            => _characterPositionDataStorage.Load();
     }
 }

@@ -2,6 +2,8 @@ using System;
 using Cysharp.Threading.Tasks;
 using Remagures.Tools;
 using Remagures.View.Character;
+using SaveSystem;
+using SaveSystem.Paths;
 using UnityEngine;
 
 namespace Remagures.Model.Character
@@ -23,7 +25,7 @@ namespace Remagures.Model.Character
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
             _speed = speed.ThrowExceptionIfLessOrEqualsZero();
 
-            var characterPositionStorage = new CharacterPositionStorage(new BinaryStorage());
+            var characterPositionStorage = new CharacterPositionStorage(new BinaryStorage<CharacterPositionData>(new Path("PlayerPositionData")));
             var characterPositionData = characterPositionStorage.Load();
             
             CharacterLookDirection = characterPositionData.CharacterLookDirection;
@@ -38,7 +40,7 @@ namespace Remagures.Model.Character
             var direction = (endPosition - Transform.position).normalized;
             
             CharacterLookDirection = direction;
-            _rigidbody.velocity = direction * (_speed * UnityEngine.Time.deltaTime);
+            _rigidbody.velocity = direction * (_speed * Time.deltaTime);
             
             _view.StartMoveAnimation();
             _view.DisplayCharacterLookDirection(direction);

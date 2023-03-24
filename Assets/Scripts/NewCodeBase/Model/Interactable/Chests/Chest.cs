@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Remagures.Model.InventorySystem;
 using Remagures.Tools;
+using SaveSystem;
 
 namespace Remagures.Model.Interactable
 {
@@ -10,20 +11,13 @@ namespace Remagures.Model.Interactable
         public bool IsOpened { get; private set; }
         public bool HasInteractionEnded { get; private set; }
         public IItem Item { get; }
-        
+
         private readonly IInventory<IItem> _inventory;
-        private readonly string _name;
 
-        private readonly BinaryStorage _storage = new();
-
-        public Chest(IInventory<IItem> inventory, IItem item, string name)
+        public Chest(IInventory<IItem> inventory, IItem item)
         {
             _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             Item = item ?? throw new ArgumentNullException(nameof(item));
-            _name = name ?? throw new ArgumentNullException(nameof(name));
-            
-            if (_storage.Exist(_name))
-                IsOpened = _storage.Load<bool>(_name);
         }
 
         public void Interact()
@@ -39,7 +33,6 @@ namespace Remagures.Model.Interactable
 
             IsOpened = true;
             HasInteractionEnded = true;
-            _storage.Save(IsOpened, _name);
         }
 
         public void EndInteracting() { }

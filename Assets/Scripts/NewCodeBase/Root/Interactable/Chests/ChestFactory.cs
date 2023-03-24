@@ -7,7 +7,6 @@ namespace Remagures.Root
 {
     public sealed class ChestFactory : SerializedMonoBehaviour, IChestFactory
     {
-        [SerializeField] private string _name;
         [SerializeField] private IInventoryFactory<IItem> _inventoryFactory;
         [SerializeField] private IItemFactory<IItem> _itemFactory;
         
@@ -18,7 +17,7 @@ namespace Remagures.Root
             if (_builtChest != null)
                 return _builtChest;
 
-            _builtChest = new Chest(_inventoryFactory.Create(), _itemFactory.Create(), _name);
+            _builtChest = new Chest(_inventoryFactory.Create(), _itemFactory.Create());
             return _builtChest;
         }
     }

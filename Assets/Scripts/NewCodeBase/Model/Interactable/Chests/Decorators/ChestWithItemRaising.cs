@@ -30,6 +30,9 @@ namespace Remagures.Model.Interactable
         }
 
         public void EndInteracting()
-            => _view.EndDisplaying();
+        {
+            _chest.EndInteracting();
+            _view.EndDisplaying();
+        }
     }
 }
