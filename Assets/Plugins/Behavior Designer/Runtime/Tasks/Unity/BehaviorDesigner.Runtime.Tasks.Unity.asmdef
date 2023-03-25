@@ -1,0 +1,8 @@
+{
+    "name": "BehaviorDesigner.Runtime.Tasks.Unity",
+    "references": [
+        "BehaviorDesigner.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
