@@ -1,4 +1,4 @@
-﻿using Remagures.Model.Attacks;
+﻿using Remagures.Model.Damage;
 using Remagures.Model.Health;
 
 namespace Remagures.Factories

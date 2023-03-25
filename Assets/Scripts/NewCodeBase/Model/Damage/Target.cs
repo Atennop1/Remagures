@@ -2,7 +2,7 @@
 using Remagures.Model.Flashing;
 using Remagures.Model.Health;
 
-namespace Remagures.Model.Attacks
+namespace Remagures.Model.Damage
 {
     public readonly struct Target
     {

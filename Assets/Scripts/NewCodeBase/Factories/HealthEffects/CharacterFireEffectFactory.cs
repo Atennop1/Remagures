@@ -1,5 +1,5 @@
 ﻿using System;
-using Remagures.Model.Attacks;
+using Remagures.Model.Damage;
 using Remagures.Model.Flashing;
 using Remagures.Model.Health;
 using Remagures.Model.RuneSystem;

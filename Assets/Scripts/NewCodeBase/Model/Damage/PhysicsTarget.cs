@@ -3,7 +3,7 @@ using Remagures.Model.Flashing;
 using Remagures.Model.Health;
 using UnityEngine;
 
-namespace Remagures.Model.Attacks
+namespace Remagures.Model.Damage
 {
     public sealed class PhysicsTarget : MonoBehaviour, ITarget
     {

@@ -1,19 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Remagures.Model.Attacks
+namespace Remagures.Model.Damage
 {
     public sealed class PhysicsAttack : MonoBehaviour
     {
-        private IAttack _attack;
+        private IDamage _damage;
 
-        public void Construct(IAttack attack)
-            => _attack = attack ?? throw new ArgumentNullException(nameof(attack));
+        public void Construct(IDamage damage)
+            => _damage = damage ?? throw new ArgumentNullException(nameof(damage));
 
         private void OnCollisionEnter2D(Collision2D col)
         {
             if (col.gameObject.TryGetComponent(out ITarget target))
-                _attack.ApplyTo(target);
+                _damage.ApplyTo(target);
         }
     }
 }
