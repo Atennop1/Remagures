@@ -8,7 +8,8 @@
 ## About project
 
 This is my second game called Remagures. Remagures is RPG that I making since December 2021, in she will be lore, story and cool characters (I hope). I already done much mechanics, but code is very shitty and I need to rewrite much things :( 
-But I hope that game will be awesome
+
+Now the rewriting stage is almost completed (during it I increased the amount of code by almost 2 times💀), after this it will be necessary to test and build a huge composite root in the engine, and at the end write Unit-tests. Final step will be optimization, which I fear bigger than other, because of OOP. I hope that game will be awesome
 
 ### Specifics
  - Project uses architecture based on **SO and MonoBehaviours**(this is **BAD**)
