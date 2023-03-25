@@ -5,6 +5,7 @@ namespace Remagures.Root
 {
     public sealed class UsableItemFactory : MonoBehaviour, IItemFactory<IUsableItem>
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ItemData _data;
         private IUsableItem _builtItem;
         

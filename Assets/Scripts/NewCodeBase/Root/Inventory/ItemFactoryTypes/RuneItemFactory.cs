@@ -6,6 +6,7 @@ namespace Remagures.Root
 {
     public sealed class RuneItemFactory : SerializedMonoBehaviour, IItemFactory<IRuneItem>
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ItemData _data;
         [SerializeField] private IRuneFactory _runeFactory;
         

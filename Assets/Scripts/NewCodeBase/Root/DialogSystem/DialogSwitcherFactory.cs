@@ -1,9 +1,8 @@
 ﻿using Remagures.Model.DialogSystem;
-using Remagures.Root.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root
+namespace Remagures.Root.DialogSystem
 {
     public sealed class DialogSwitcherFactory : SerializedMonoBehaviour
     {

@@ -5,6 +5,7 @@ namespace Remagures.Root
 {
     public sealed class MagicItemFactory : MonoBehaviour, IItemFactory<IMagicItem> //TODO make composite for magic and fix this
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private MagicItemData _data;
         private IMagicItem _builtItem;
         

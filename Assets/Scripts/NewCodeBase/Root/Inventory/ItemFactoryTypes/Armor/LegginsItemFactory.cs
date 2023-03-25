@@ -5,6 +5,7 @@ namespace Remagures.Root
 {
     public sealed class LegginsItemFactory : MonoBehaviour, IItemFactory<ILegginsItem>
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ArmorItemData _data;
         private ILegginsItem _builtItem;
 

@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace Remagures.Root.Decorators
 {
-    public sealed class ItemWIthHealthAddingFactory : SerializedMonoBehaviour, IItemFactory<IUsableItem>
+    public sealed class ItemWithHealthAddingFactory : SerializedMonoBehaviour, IItemFactory<IUsableItem>
     {
         [SerializeField] private IItemFactory<IUsableItem> _itemFactory;
         [SerializeField] private HealthFactory _healthFactory;
         [SerializeField] private int _amountToAdd;
+        
         private IUsableItem _builtItem;
+        public int ItemID => _itemFactory.ItemID;
 
         public IUsableItem Create()
         {

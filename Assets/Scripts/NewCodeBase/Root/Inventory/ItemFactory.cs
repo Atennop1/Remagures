@@ -5,9 +5,10 @@ namespace Remagures.Root
 {
     public sealed class ItemFactory : MonoBehaviour, IItemFactory<IItem>
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ItemData _data;
         private IItem _builtItem;
-        
+
         public IItem Create()
         {
             if (_builtItem != null)

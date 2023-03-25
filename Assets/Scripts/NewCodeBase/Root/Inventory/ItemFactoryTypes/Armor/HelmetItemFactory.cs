@@ -5,6 +5,7 @@ namespace Remagures.Root
 {
     public sealed class HelmetItemFactory : MonoBehaviour, IItemFactory<IHelmetItem>
     {
+        [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ArmorItemData _data;
         private IHelmetItem _builtItem;
 
