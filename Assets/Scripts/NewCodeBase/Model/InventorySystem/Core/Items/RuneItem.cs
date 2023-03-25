@@ -6,20 +6,18 @@ namespace Remagures.Model.InventorySystem
 {
     public sealed class RuneItem : IRuneItem
     {
-        public string Name { get; }
-        public string Description { get; }
-        public Sprite Sprite { get; }
-        public bool IsStackable { get; }
-        
         public IRune Rune { get; }
+        
+        public string Name => _item.Name;
+        public string Description => _item.Description;
+        public Sprite Sprite => _item.Sprite;
+        public bool IsStackable => _item.IsStackable;
+
+        private readonly IItem _item;
 
         public RuneItem(IItem item, IRune rune)
         {
-            Name = item.Name;
-            Description = item.Description;
-            Sprite = item.Sprite;
-            IsStackable = item.IsStackable;
-
+            _item = item ?? throw new ArgumentNullException(nameof(item));
             Rune = rune ?? throw new ArgumentNullException(nameof(rune));
         }
     }

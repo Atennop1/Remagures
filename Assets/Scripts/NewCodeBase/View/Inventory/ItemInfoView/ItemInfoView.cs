@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Remagures.Model.InventorySystem;
+using Remagures.Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +56,7 @@ namespace Remagures.View.Inventory
             (item as IUsableItem)?.Use();
             _inventory.Remove(new Cell<T>(item));
 
-            if (_inventory.Cells.ToList().Find(cell => cell.Item.Equals(item)) != null)
+            if (_inventory.Cells.ToList().Find(cell => cell.Item.AreEquals(item)) != null)
                 Display((T)_nullItem);
         }
     }
