@@ -17,8 +17,8 @@ namespace Remagures.Model.AI.Enemies
             _knockable = knockable ?? throw new ArgumentNullException(nameof(knockable));
             _enemyStateMachine = enemyStateMachine ?? throw new ArgumentNullException(nameof(enemyStateMachine));
         }
-
-        public void Knock(int knockTimeInMilliseconds)
+        
+        public void Knock(Vector2 forceVector, int timeInMilliseconds)
         {
             if (!_enemyStateMachine.CanSetState(typeof(KnockedState)))
             {
@@ -26,7 +26,7 @@ namespace Remagures.Model.AI.Enemies
                 return;
             }
 
-            _knockable.Knock(knockTimeInMilliseconds);
+            _knockable.Knock(forceVector, timeInMilliseconds);
         }
 
         public void StopKnocking()
