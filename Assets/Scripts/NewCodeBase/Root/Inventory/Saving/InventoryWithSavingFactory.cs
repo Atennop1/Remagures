@@ -9,8 +9,10 @@ namespace Remagures.Root
 {
     public sealed class InventoryWithSavingFactory<TItem> : SerializedMonoBehaviour, IInventoryFactory<TItem> where TItem: IItem
     {
+        [SerializeField] private string _savePath;
+        
         [SerializeField] private IInventoryFactory<TItem> _inventoryFactory;
-        [SerializeField] private ItemsFactory<TItem> _itemsFactory;
+        [SerializeField] private ItemsListFactory<TItem> _itemsListFactory;
         private IInventory<TItem> _builtInventory;
 
         public IInventory<TItem> Create()
@@ -18,8 +20,8 @@ namespace Remagures.Root
             if (_builtInventory != null)
                 return _builtInventory;
 
-            var storage = new BinaryStorage<List<CellSavingData>>(new Path($"{nameof(TItem)}-Inventory"));
-            _builtInventory = new InventoryWithSaving<TItem>(_inventoryFactory.Create(), _itemsFactory.Create(), storage);
+            var storage = new BinaryStorage<List<CellSavingData>>(new Path(_savePath));
+            _builtInventory = new InventoryWithSaving<TItem>(_inventoryFactory.Create(), _itemsListFactory.Create(), storage);
             return _builtInventory;
         }
     }

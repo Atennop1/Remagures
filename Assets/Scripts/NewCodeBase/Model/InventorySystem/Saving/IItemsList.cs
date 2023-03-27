@@ -1,6 +1,6 @@
 ﻿namespace Remagures.Model.InventorySystem
 {
-    public interface IItems<TItem>
+    public interface IItemsList<TItem>
     {
         int GetItemID(TItem item);
         TItem GetByID(int id);
