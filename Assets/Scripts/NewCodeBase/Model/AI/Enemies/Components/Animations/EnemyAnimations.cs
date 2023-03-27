@@ -36,17 +36,5 @@ namespace Remagures.Model.AI.Enemies
 
         public void SetIsStaying(bool isActive)
             => _animator.SetBool(IS_STAYING_ANIMATION_HASH, isActive);
-
-            //public void ChangeAnim(Vector2 direction) //TODO decide what to do with it
-        //{
-        //    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        //    {
-        //        SetAnimationsVector(direction.x > 0 ? Vector2.right : Vector2.left);
-        //    }
-        //    else
-        //    {
-        //        SetAnimationsVector(direction.y > 0 ? Vector2.up : Vector2.down);
-        //    }
-        //}
     }
 }

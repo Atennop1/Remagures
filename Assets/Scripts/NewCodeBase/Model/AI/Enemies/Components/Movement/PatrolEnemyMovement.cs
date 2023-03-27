@@ -37,16 +37,7 @@ namespace Remagures.Model.AI.Enemies
         public void StopMoving()
             => _enemyMovement.StopMoving();
 
-        private void ChangeGoal()
-        {
-            if (_currentPointIndex == _patrolPoints.Length - 1)
-            {
-                _currentPointIndex = 0;
-            }
-            else
-            {
-                _currentPointIndex++;
-            }
-        }
+        private void ChangeGoal() 
+            => _currentPointIndex = _currentPointIndex == _patrolPoints.Length - 1 ? 0 : _currentPointIndex + 1;
     }
 }

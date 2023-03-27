@@ -2,6 +2,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Remagures.Tools;
+using Remagures.View.Enemies;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
@@ -12,15 +13,15 @@ namespace Remagures.Model.AI.Enemies
         public Transform Transform => _rigidbody.transform;
         
         private readonly Rigidbody2D _rigidbody;
-        private readonly IEnemyAnimations _enemyAnimations;
+        private readonly IEnemyMovementView _enemyMovementView;
         private readonly float _speed;
 
         private CancellationTokenSource _cancellationTokenSource;
 
-        public DefaultEnemyMovement(Rigidbody2D rigidbody, IEnemyAnimations enemyAnimations, float speed)
+        public DefaultEnemyMovement(Rigidbody2D rigidbody, IEnemyMovementView enemyMovementView, float speed)
         {
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
-            _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));
+            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
             _speed = speed.ThrowExceptionIfLessOrEqualsZero();
         }
 
@@ -33,12 +34,14 @@ namespace Remagures.Model.AI.Enemies
             _cancellationTokenSource = new CancellationTokenSource();
             
             await MoveTask(targetPosition);
-            _enemyAnimations.SetAnimationsVector((Vector2)targetPosition - _rigidbody.position);
+            _enemyMovementView.SetIsStaying(false);
+            _enemyMovementView.SetAnimationsVector((Vector2)targetPosition - _rigidbody.position);
         }
 
         public void StopMoving()
         {
             _cancellationTokenSource.Cancel();
+            _enemyMovementView.SetIsStaying(true);
             CanMove = true;
         }
         
@@ -52,7 +55,7 @@ namespace Remagures.Model.AI.Enemies
                     return;
 
                 var direction = (targetPosition - _rigidbody.transform.position).normalized;
-                var totalPosition = _rigidbody.transform.position + _speed * UnityEngine.Time.deltaTime * direction;
+                var totalPosition = _rigidbody.transform.position + _speed * Time.deltaTime * direction;
                 
                 _rigidbody.MovePosition(totalPosition);
                 await UniTask.WaitForFixedUpdate();

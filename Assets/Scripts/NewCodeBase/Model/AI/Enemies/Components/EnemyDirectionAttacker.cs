@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    sealed class EnemyDirectionAttacker
+    public sealed class EnemyDirectionAttacker
     {
         private readonly int _fireDelayInMilliseconds;
         private bool _canFire = true;

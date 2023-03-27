@@ -22,7 +22,7 @@ namespace Remagures.Model.AI.Enemies
         private async UniTask AttackTask(CancellationToken cancellationToken)
         {
             IsAttacking = true;
-            _enemyAnimations.SetIsAttacking(false);
+            _enemyAnimations.SetIsStaying(false);
             _enemyAnimations.SetIsAttacking(true);
 
             await UniTask.Delay(350);
