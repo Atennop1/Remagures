@@ -12,7 +12,7 @@ namespace Remagures.Model.AI.NPC
         public bool HasInteractionEnded { get; private set; }
         
         private readonly INPCInteractableView _npcInteractableView;
-        private readonly DialogView _dialogView; //TODO maybe i need to use polling instead pushing
+        private readonly DialogPlayer _dialogPlayer; //TODO maybe i need to use polling instead pushing
         private readonly DialogsListFactory _dialogsListFactory;
         
         public void LateUpdate()
@@ -24,7 +24,7 @@ namespace Remagures.Model.AI.NPC
         public void Interact()
         {
             HasInteractionStarted = true;
-            _dialogView.DisplayStartOfDialog(_dialogsListFactory.BuiltDialogList.CurrentDialog);
+            _dialogPlayer.Play(_dialogsListFactory.Create().CurrentDialog);
             _npcInteractableView.DisplayInteraction();
         }
 
