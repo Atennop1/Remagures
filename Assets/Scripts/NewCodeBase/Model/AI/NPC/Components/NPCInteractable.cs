@@ -1,20 +1,19 @@
-﻿using Remagures.Model.DialogSystem;
+﻿using System;
 using Remagures.Root;
-using Remagures.Root.DialogSystem;
-using Remagures.View.DialogSystem;
 using Remagures.View.Interactable;
 
 namespace Remagures.Model.AI.NPC
 {
     public sealed class NPCInteractable : INPCInteractable, ILateUpdatable
     {
-        public bool HasInteractionStarted { get; private set; }
+        public bool HasInteractionStarted { get; private set; } //TODO try ti remove this
         public bool HasInteractionEnded { get; private set; }
         
         private readonly INPCInteractableView _npcInteractableView;
-        private readonly DialogPlayer _dialogPlayer; //TODO maybe i need to use polling instead pushing
-        private readonly DialogsListFactory _dialogsListFactory;
-        
+
+        public NPCInteractable(INPCInteractableView npcInteractableView) 
+            => _npcInteractableView = npcInteractableView ?? throw new ArgumentNullException(nameof(npcInteractableView));
+
         public void LateUpdate()
         {
             HasInteractionStarted = false;
@@ -24,7 +23,6 @@ namespace Remagures.Model.AI.NPC
         public void Interact()
         {
             HasInteractionStarted = true;
-            _dialogPlayer.Play(_dialogsListFactory.Create().CurrentDialog);
             _npcInteractableView.DisplayInteraction();
         }
 

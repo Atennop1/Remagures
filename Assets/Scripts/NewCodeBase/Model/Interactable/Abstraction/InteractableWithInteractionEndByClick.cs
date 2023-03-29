@@ -16,7 +16,6 @@ namespace Remagures.Model.Interactable
 
         public void EndInteracting()
             => _endButton.onClick.RemoveListener(OnClick);
-        
 
         private void OnClick()
             => HasInteractionEnded = true;
