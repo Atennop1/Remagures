@@ -76,7 +76,9 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpcs_005Ccomponents/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Cabstraction/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Ccomponents/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Ccomponents_005Cinteractions/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Ccomponents_005Cinterfaces/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Ccomponents_005Cmovement/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Cconditions/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Cdude/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cscripts_005Cnewcodebase_005Cmodel_005Cai_005Cnpc_005Cmovement/@EntryIndexedValue">True</s:Boolean>
