@@ -9,5 +9,6 @@ namespace Remagures.Model.Character
         
         bool IsMoving { get; }
         void MoveTo(Vector3 endPosition);
+        void StopMoving();
     }
 }

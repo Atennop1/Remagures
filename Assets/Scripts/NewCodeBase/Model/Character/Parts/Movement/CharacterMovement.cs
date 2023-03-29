@@ -49,6 +49,12 @@ namespace Remagures.Model.Character
             IsMoving = false;
         }
 
+        public void StopMoving()
+        {
+            _rigidbody.velocity = Vector2.zero;
+            _view.EndMoveAnimation();
+        }
+
         private async void MovingTask(Vector3 endPosition)
         {
             while (Transform.position != endPosition)
@@ -56,6 +62,7 @@ namespace Remagures.Model.Character
                 if (Vector3.Distance(Transform.position, endPosition) < 0.1f)
                 {
                     Transform.position = endPosition;
+                    StopMoving();
                     break;
                 }
                 
