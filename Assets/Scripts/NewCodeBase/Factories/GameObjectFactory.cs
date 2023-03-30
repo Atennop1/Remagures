@@ -6,7 +6,7 @@ namespace Remagures.Factories
     {
         [SerializeField] private GameObject _prefab;
         
-        public GameObject Create(Vector3 position)
-            => Instantiate(_prefab, position, Quaternion.identity);
+        public GameObject Create()
+            => Instantiate(_prefab, transform.position, Quaternion.identity);
     }
 }

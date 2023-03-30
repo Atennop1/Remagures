@@ -1,8 +1,6 @@
 ﻿using System;
 using Remagures.Factories;
 using Remagures.View.Pot;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Remagures.Model.Health
 {
@@ -13,25 +11,23 @@ namespace Remagures.Model.Health
 
         public bool IsDead => _health.IsDead;
         public bool CanTakeDamage => _health.CanTakeDamage;
-        
-        private readonly IHealth _health = new Health(new MaxHealth(1, 1));
-        
+
+        private readonly IHealth _health;
         private readonly IPotView _potView;
         private readonly IGameObjectFactory _lootFactory;
-        private readonly Vector3 _lootSpawnPosition;
 
-        public PotHealth(IPotView potView, IGameObjectFactory lootFactory, Vector3 lootSpawnPosition)
+        public PotHealth(IHealth health, IPotView potView, IGameObjectFactory lootFactory)
         {
             _potView = potView ?? throw new ArgumentNullException(nameof(potView));
             _lootFactory = lootFactory ?? throw new ArgumentNullException(nameof(lootFactory));
-            _lootSpawnPosition = lootSpawnPosition;
+            _health = health ?? throw new ArgumentNullException(nameof(health));
         }
 
         public void TakeDamage(int amount)
         {
             _health.TakeDamage(1);
             _potView.PlaySmashAnimation();
-            _lootFactory.Create(_lootSpawnPosition);
+            _lootFactory.Create();
         }
 
         public void Heal(int amount) { }

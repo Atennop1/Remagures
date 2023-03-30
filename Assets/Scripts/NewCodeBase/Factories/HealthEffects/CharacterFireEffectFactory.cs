@@ -1,11 +1,8 @@
 ﻿using System;
 using Remagures.Model.Damage;
-using Remagures.Model.Flashing;
 using Remagures.Model.Health;
 using Remagures.Model.RuneSystem;
 using Remagures.Tools;
-using UnityEngine;
-using CharacterInfo = Remagures.SO.CharacterInfo;
 
 namespace Remagures.Factories
 {
