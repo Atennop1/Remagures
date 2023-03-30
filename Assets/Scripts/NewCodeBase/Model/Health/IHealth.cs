@@ -2,7 +2,7 @@
 {
     public interface IHealth
     {
-        int MaxValue { get; }
+        IReadOnlyMaxHealth Max { get; }
         int CurrentValue { get; }
         
         bool IsDead { get; }

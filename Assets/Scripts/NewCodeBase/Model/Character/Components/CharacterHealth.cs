@@ -6,7 +6,7 @@ namespace Remagures.Model.Character
 {
     public sealed class CharacterHealth : IHealth
     {
-        public int MaxValue => _health.MaxValue;
+        public int MaxValue => _health.Max;
         public int CurrentValue => _health.CurrentValue;
 
         public bool IsDead => _health.IsDead;

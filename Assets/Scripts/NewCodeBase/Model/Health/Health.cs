@@ -6,13 +6,16 @@ namespace Remagures.Model.Health
     public sealed class Health : IHealth
     {
         public int CurrentValue { get; private set; }
-        public int MaxValue { get; }
+        public IReadOnlyMaxHealth Max { get; }
         
         public bool IsDead => CurrentValue <= 0;
         public bool CanTakeDamage => !IsDead;
 
-        public Health(int value)
-            => MaxValue = CurrentValue = value.ThrowExceptionIfLessThanZero();
+        public Health(IReadOnlyMaxHealth maxHealth)
+        {
+            Max = maxHealth ?? throw new ArgumentNullException(nameof(maxHealth));
+            CurrentValue = maxHealth.Value.ThrowExceptionIfLessOrEqualsZero();
+        }
 
         public void TakeDamage(int count)
         {
@@ -27,8 +30,8 @@ namespace Remagures.Model.Health
             if (IsDead)
                 throw new ArgumentException("Can't heal a dead health!");
             
-            if (CurrentValue + count > MaxValue)
-                count = MaxValue - CurrentValue;
+            if (CurrentValue + count > Max.Value)
+                count = Max.Value - CurrentValue;
 
             CurrentValue += count.ThrowExceptionIfLessOrEqualsZero();
         }

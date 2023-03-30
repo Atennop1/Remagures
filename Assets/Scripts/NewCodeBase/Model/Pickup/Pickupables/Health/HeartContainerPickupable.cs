@@ -7,22 +7,22 @@ namespace Remagures.Model.Pickup
     {
         private const int HEALTH_POINTS_IN_HEART = 4;
         
-        private readonly IUpgradableHealth _upgradableHealth;
+        private readonly IMaxHealth _maxHealth;
         private readonly IHealth _health;
 
-        public HeartContainerPickupable(IHealth health, IUpgradableHealth upgradableHealth)
+        public HeartContainerPickupable(IHealth health, IMaxHealth maxHealth)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
-            _upgradableHealth = upgradableHealth ?? throw new ArgumentNullException(nameof(upgradableHealth));
+            _maxHealth = maxHealth ?? throw new ArgumentNullException(nameof(maxHealth));
         }
 
         public void Pickup()
         {
-            if (!_upgradableHealth.CanUpgrade(HEALTH_POINTS_IN_HEART))
+            if (!_maxHealth.CanIncrease(HEALTH_POINTS_IN_HEART))
                 return;
             
-            _upgradableHealth.UpgradeMaxHealth(HEALTH_POINTS_IN_HEART);
-            _health.Heal(_health.MaxValue - _health.CurrentValue);
+            _maxHealth.Increase(HEALTH_POINTS_IN_HEART);
+            _health.Heal(_health.Max.Value - _health.CurrentValue);
         }
     }
 }

@@ -8,13 +8,13 @@ namespace Remagures.Model.Health
 {
     public sealed class PotHealth : IHealth
     {
-        public int MaxValue => _health.MaxValue;
+        public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;
 
         public bool IsDead => _health.IsDead;
         public bool CanTakeDamage => _health.CanTakeDamage;
         
-        private readonly IHealth _health = new Health(1);
+        private readonly IHealth _health = new Health(new MaxHealth(1, 1));
         
         private readonly IPotView _potView;
         private readonly IGameObjectFactory _lootFactory;

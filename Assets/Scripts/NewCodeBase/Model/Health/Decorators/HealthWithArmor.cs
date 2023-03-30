@@ -4,7 +4,7 @@ namespace Remagures.Model.Health
 {
     public sealed class HealthWithArmor : IHealth
     {
-        public int MaxValue => _health.MaxValue;
+        public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;
 
         public bool IsDead => _health.IsDead;

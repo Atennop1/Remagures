@@ -5,7 +5,7 @@ namespace Remagures.Root
 {
     public sealed class HealthFactory : MonoBehaviour, IHealthFactory
     {
-        [SerializeField] private int _value;
+        [SerializeField] private IMaxHealthFactory _maxHealthFactory;
         private IHealth _builtHealth;
 
         public IHealth Create()
@@ -13,7 +13,7 @@ namespace Remagures.Root
             if (_builtHealth != null)
                 return _builtHealth;
             
-            _builtHealth = new Health(_value);
+            _builtHealth = new Health(_maxHealthFactory.Create());
             return _builtHealth;
         }
     }
