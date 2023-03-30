@@ -1,5 +1,6 @@
 using System;
 using Remagures.Tools;
+using Remagures.View.Health;
 
 namespace Remagures.Model.Health
 {
@@ -11,8 +12,11 @@ namespace Remagures.Model.Health
         public bool IsDead => CurrentValue <= 0;
         public bool CanTakeDamage => !IsDead;
 
-        public Health(IReadOnlyMaxHealth maxHealth)
+        private readonly IHealthView _healthView;
+
+        public Health(IHealthView healthView, IReadOnlyMaxHealth maxHealth)
         {
+            _healthView = healthView ?? throw new ArgumentNullException(nameof(healthView));
             Max = maxHealth ?? throw new ArgumentNullException(nameof(maxHealth));
             CurrentValue = maxHealth.Value.ThrowExceptionIfLessOrEqualsZero();
         }
@@ -23,6 +27,7 @@ namespace Remagures.Model.Health
                 throw new Exception("Can't take damage to dead health");
             
             CurrentValue -= count.ThrowExceptionIfLessOrEqualsZero();
+            _healthView.Display(CurrentValue, Max.Value);
         }
 
         public void Heal(int count)
@@ -34,6 +39,7 @@ namespace Remagures.Model.Health
                 count = Max.Value - CurrentValue;
 
             CurrentValue += count.ThrowExceptionIfLessOrEqualsZero();
+            _healthView.Display(CurrentValue, Max.Value);
         }
     }
 }

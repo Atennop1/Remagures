@@ -1,11 +1,9 @@
-using System;
-using Remagures.Model.Health;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.View
+namespace Remagures.View.Health
 {
-    public sealed class HeartsView : MonoBehaviour
+    public sealed class HealthView : MonoBehaviour, IHealthView
     {
         [SerializeField] private Image[] _hearts;
         
@@ -16,56 +14,30 @@ namespace Remagures.View
         [SerializeField] private Sprite _oneQuarterHeartSprite;
         [SerializeField] private Sprite _emptyHeartSprite;
 
-        private IHealth _characterHealth;      
-        private int _heartContainersCount;
-
-        public void Construct(IHealth health)
-            => _characterHealth = health ?? throw new ArgumentNullException(nameof(health));
-
-        private void Start()
+        public void Display(int value, int maxValue)
         {
-            _heartContainersCount = _characterHealth.CurrentValue / 4;
-            FillHearts();
-        }
-
-        private void DisplayHearts()
-        {
-            for (var i = 0; i < _heartContainersCount; i++)
+            for (var i = 0; i < maxValue / 4; i++)
             {
-                if (i >= _hearts.Length) 
-                    continue;
-            
                 _hearts[i].gameObject.SetActive(true);
                 _hearts[i].sprite = _fullHeartSprite;
-            }
-        }
-
-        private void FillHearts()
-        {
-            DisplayHearts();
-            var currentHealth = _characterHealth.CurrentValue;
-        
-            for (var i = 0; i < _heartContainersCount; i++)
-            {
-                if (i >= _hearts.Length) continue;
-
-                switch (currentHealth)
+                
+                switch (value)
                 {
                     case >= 4:
                         _hearts[i].sprite = _fullHeartSprite;
-                        currentHealth -= 4;
+                        value -= 4;
                         break;
                     case 3:
                         _hearts[i].sprite = _threeQuartersHeartSprite;
-                        currentHealth -= 3;
+                        value -= 3;
                         break;
                     case 2:
                         _hearts[i].sprite = _halfHeartSprite;
-                        currentHealth -= 2;
+                        value -= 2;
                         break;
                     case 1:
                         _hearts[i].sprite = _oneQuarterHeartSprite;
-                        currentHealth -= 1;
+                        value -= 1;
                         break;
                     default:
                         _hearts[i].sprite = _emptyHeartSprite;
