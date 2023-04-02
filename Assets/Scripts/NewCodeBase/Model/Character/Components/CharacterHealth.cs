@@ -6,7 +6,7 @@ namespace Remagures.Model.Character
 {
     public sealed class CharacterHealth : IHealth
     {
-        public int MaxValue => _health.Max;
+        public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;
 
         public bool IsDead => _health.IsDead;
@@ -25,11 +25,6 @@ namespace Remagures.Model.Character
 
             _health.TakeDamage(amount);
             await StunCharacter();
-
-            //if (!IsDead) 
-            //    return;
-            
-            //_gameOver.SetGameOver(); //TODO make this via polling
         }
 
         public void Heal(int amount)
