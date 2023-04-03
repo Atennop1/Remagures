@@ -25,7 +25,7 @@ namespace Remagures.Model.Character
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
             _speed = speed.ThrowExceptionIfLessOrEqualsZero();
 
-            var characterPositionStorage = new CharacterPositionStorage(new BinaryStorage<CharacterPositionData>(new Path("PlayerPositionData")));
+            var characterPositionStorage = new BinaryStorage<CharacterPositionData>(new Path("PlayerPositionData"));
             var characterPositionData = characterPositionStorage.Load();
             
             CharacterLookDirection = characterPositionData.CharacterLookDirection;

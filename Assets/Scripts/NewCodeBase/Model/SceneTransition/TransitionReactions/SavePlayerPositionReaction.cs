@@ -1,6 +1,7 @@
 ﻿using System;
 using Remagures.Model.Character;
 using Remagures.Root;
+using SaveSystem;
 
 namespace Remagures.Model.SceneTransition
 {
@@ -8,9 +9,9 @@ namespace Remagures.Model.SceneTransition
     {
         private readonly ISceneTransition _sceneTransition;
         private readonly CharacterMovement _characterMovement;
-        private readonly CharacterPositionStorage _characterPositionStorage;
+        private readonly ISaveStorage<CharacterPositionData> _characterPositionStorage;
 
-        public SavePlayerPositionReaction(ISceneTransition sceneTransition, CharacterMovement characterMovement, CharacterPositionStorage characterPositionStorage)
+        public SavePlayerPositionReaction(ISceneTransition sceneTransition, CharacterMovement characterMovement, ISaveStorage<CharacterPositionData> characterPositionStorage)
         {
             _sceneTransition = sceneTransition ?? throw new ArgumentNullException(nameof(sceneTransition));
             _characterMovement = characterMovement ?? throw new ArgumentNullException(nameof(characterMovement));

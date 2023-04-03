@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Remagures.Model.Magic
 {
-    public class MagicApplier
+    public class MagicApplier //TODO give this responsibility to CharacterMagicApplier and delete argument from Apply method 
     {
         private readonly IMana _mana;
         private bool _canApply;
