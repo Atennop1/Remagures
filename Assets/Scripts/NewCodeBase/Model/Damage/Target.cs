@@ -4,10 +4,10 @@ using Remagures.Model.Health;
 
 namespace Remagures.Model.Damage
 {
-    public readonly struct Target
+    public readonly struct Target : ITarget
     {
-        public readonly IHealth Health;
-        public readonly IFlashingable Flashingable;
+        public IHealth Health { get; }
+        public IFlashingable Flashingable { get; }
 
         public Target(IHealth health, IFlashingable flashingable)
         {
