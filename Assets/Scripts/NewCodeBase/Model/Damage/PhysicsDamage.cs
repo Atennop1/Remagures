@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Remagures.Model.Damage
 {
-    public sealed class PhysicsAttack : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public sealed class PhysicsDamage : MonoBehaviour
     {
         private IDamage _damage;
 

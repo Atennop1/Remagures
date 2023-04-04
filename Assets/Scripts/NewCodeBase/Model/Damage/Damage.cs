@@ -3,7 +3,7 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Damage
 {
-    public sealed class Damage : IDamage
+    public sealed class Damage : IDamage //TODO make possibility to decorators
     {
         public int Value { get; }
 
