@@ -8,15 +8,15 @@ namespace Remagures.Model.Flashing
     {
         private readonly Dictionary<FlashColorType, Color> _colors;
         private readonly SpriteRenderer _spriteRenderer;
-        private readonly IFlashingsStarter _flashingsStarter;
+        private readonly IFlashings _flashings;
         
         private readonly List<Color> _currentFlashingsBeforeColors = new();
 
-        public Flashingable(SpriteRenderer spriteRenderer, IFlashingsStarter flashingsStarter, Dictionary<FlashColorType, Color> colors)
+        public Flashingable(SpriteRenderer spriteRenderer, IFlashings flashings, Dictionary<FlashColorType, Color> colors)
         {
             _spriteRenderer = spriteRenderer ?? throw new ArgumentNullException(nameof(spriteRenderer));
             _colors = colors ?? throw new ArgumentNullException(nameof(colors));
-            _flashingsStarter = flashingsStarter ?? throw new ArgumentNullException(nameof(flashingsStarter));
+            _flashings = flashings ?? throw new ArgumentNullException(nameof(flashings));
         }
 
         public void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType)
@@ -39,7 +39,7 @@ namespace Remagures.Model.Flashing
                     : _colors[FlashColorType.Regular];
             }
             
-            _flashingsStarter.StartFlashing(_colors[flashColorType], afterFlashColor);
+            _flashings.Start(_colors[flashColorType], afterFlashColor);
         }
     }
 }

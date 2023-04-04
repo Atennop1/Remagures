@@ -2,10 +2,10 @@
 
 namespace Remagures.Model.Flashing
 {
-    public readonly struct FlashingData
+    public readonly struct FlashingData : IFlashingData
     {
-        public readonly int FlashDurationInMilliseconds;
-        public readonly int NumberOfFlashes;
+        public int FlashDurationInMilliseconds { get; }
+        public int NumberOfFlashes { get; }
 
         public FlashingData(int flashDurationInMilliseconds, int numberOfFlashes)
         {

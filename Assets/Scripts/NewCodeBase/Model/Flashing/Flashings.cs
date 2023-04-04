@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace Remagures.Model.Flashing
 {
-    public class FlashingsStarter : IFlashingsStarter
+    public class Flashings : IFlashings
     {
-        private readonly FlashingData _flashingData;
+        private readonly IFlashingData _flashingData;
         private readonly SpriteRenderer _spriteRenderer;
         
         private CancellationTokenSource _cancellationTokenSource = new();
 
-        public FlashingsStarter(SpriteRenderer spriteRenderer, FlashingData flashingData)
+        public Flashings(SpriteRenderer spriteRenderer, IFlashingData flashingData)
         {
             _flashingData = flashingData;
             _spriteRenderer = spriteRenderer ?? throw new ArgumentNullException(nameof(spriteRenderer));
         }
 
-        public async void StartFlashing(Color flashColor, Color afterFlashColor)
+        public async void Start(Color flashColor, Color afterFlashColor)
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource = new CancellationTokenSource();
