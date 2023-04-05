@@ -9,7 +9,7 @@ namespace Remagures.Model.Health
         public Armor(float armor)
             => _armorAmount = armor.ThrowExceptionIfLessOrEqualsZero();
 
-        public void SetArmor(float armor)
+        public void SetValue(float armor)
             => _armorAmount = armor.ThrowExceptionIfLessOrEqualsZero();
 
         public int AbsorbDamage(int damage)

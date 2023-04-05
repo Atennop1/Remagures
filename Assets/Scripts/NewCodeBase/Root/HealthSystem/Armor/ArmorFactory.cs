@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ArmorFactory : MonoBehaviour, IArmorFactory
+    public sealed class ArmorFactory : MonoBehaviour, IArmorFactory //TODO separate this to factory and setuper
     {
         [SerializeField] private List<IInventorySelectorFactory<IArmorItem>> _armorSelectorsFactories;
         private Armor _builtArmor;
@@ -20,7 +20,7 @@ namespace Remagures.Root
 
             if (_builtArmor != null)
             {
-                _builtArmor.SetArmor(armor);
+                _builtArmor.SetValue(armor);
                 return _builtArmor;
             }
             
