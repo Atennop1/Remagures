@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Knockback
 {
-    public sealed class Knocker
+    public sealed class Knocker : IKnocker
     {
         private readonly float _strength;
         private readonly int _knockTimeInMilliseconds;
@@ -15,7 +15,7 @@ namespace Remagures.Model.Knockback
             _knockTimeInMilliseconds = knockTimeInMilliseconds.ThrowExceptionIfLessOrEqualsZero();
         }
 
-        public void Knock(IKnockable knockable, Vector2 direction)
+        public void Knock(IKnockable knockable, Vector3 direction)
         {
             if (knockable == null)
                 throw new ArgumentNullException(nameof(knockable));

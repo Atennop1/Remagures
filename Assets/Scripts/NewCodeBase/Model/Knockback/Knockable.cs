@@ -11,10 +11,10 @@ namespace Remagures.Model.Knockback
 
         private readonly Rigidbody2D _rigidbody;
         
-        public Knockable(Rigidbody2D rigidbody, LayerMask interactionMask)
+        public Knockable(Rigidbody2D rigidbody, LayerMask knockingMask)
         {
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
-            KnockingMask = interactionMask;
+            KnockingMask = knockingMask;
         }
         
         public async void Knock(Vector2 forceVector, int timeInMilliseconds)
