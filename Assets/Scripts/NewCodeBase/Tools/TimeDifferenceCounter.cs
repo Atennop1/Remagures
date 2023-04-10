@@ -1,27 +1,24 @@
 using System;
+using SaveSystem;
 using UnityEngine;
 
 namespace Remagures.Tools
 {
     public sealed class TimeDifferenceCounter
     {
-        private readonly IStorage _storage;
-        private readonly string _key;
+        private readonly ISaveStorage<DateTime> _storage;
 
-        public TimeDifferenceCounter(IStorage storage, string key)
-        {
-            _storage = storage ?? throw new ArgumentNullException(nameof(storage));
-            _key = key ?? throw new ArgumentNullException(nameof(key));
-        }
+        public TimeDifferenceCounter(ISaveStorage<DateTime> storage) 
+            => _storage = storage ?? throw new ArgumentNullException(nameof(storage));
 
         public int GetTimeDifference()
         {
-            var oldDate = _storage.Load<DateTime>(_key);
+            var oldDate = _storage.Load();
             var difference = DateTime.Now.Subtract(oldDate);
             return (int)difference.TotalSeconds;
         }
     
         public void SaveCurrentTime()
-            => _storage.Save(DateTime.Now, _key);
+            => _storage.Save(DateTime.Now);
     }
 }

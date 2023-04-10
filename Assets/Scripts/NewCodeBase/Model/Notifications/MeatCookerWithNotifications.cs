@@ -1,6 +1,8 @@
 using System;
 using Remagures.Model.MeatSystem;
 using Remagures.Tools;
+using SaveSystem;
+using SaveSystem.Paths;
 
 namespace Remagures.Model.Notifications
 {
@@ -11,7 +13,7 @@ namespace Remagures.Model.Notifications
         private readonly IMeatCooker _meatCooker;
         private readonly NotificationData _notificationData;
         
-        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage(), "RemainingMeatCookingTime");
+        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage<DateTime>(new Path("RemainingMeatCookingTime")));
         private readonly NotificationSender _notificationSender = new();
 
         public MeatCookerWithNotifications(IMeatCooker meatCooker, NotificationData notificationData)

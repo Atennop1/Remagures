@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Remagures.Tools;
+using SaveSystem;
+using SaveSystem.Paths;
 
 namespace Remagures.Model.DialogSystem
 {
@@ -9,19 +11,20 @@ namespace Remagures.Model.DialogSystem
         public Dialog CurrentDialog { get; private set; }
         private readonly Dialog[] _dialogs;
 
-        private readonly BinaryStorage _storage;
-        private readonly string _characterName;
+        private readonly BinaryStorage<Dialog> _storage;
 
         public Dialogs(Dialog[] dialogs, string characterName)
         {
-            _storage = new BinaryStorage();
-            _characterName = characterName ?? throw new ArgumentException("CharacterName can't be null");
+            if (characterName == null)
+                throw new ArgumentNullException(nameof(characterName));
+            
             _dialogs = dialogs ?? throw new ArgumentException("DialogList can't be null");
+            _storage = new BinaryStorage<Dialog>(new Path($"Dialog-{characterName}"));
 
-            if (!_storage.Exist($"Dialog-{_characterName}")) 
+            if (!_storage.HasSave()) 
                 return;
             
-            var loadedDialog = _storage.Load<Dialog>($"Dialog-{_characterName}");
+            var loadedDialog = _storage.Load();
             CurrentDialog = dialogs.ToList().Find(dialog => dialog == loadedDialog);
         }
 
@@ -33,7 +36,7 @@ namespace Remagures.Model.DialogSystem
                 throw new ArgumentException($"DialogsList doesn't contains dialog with name {dialogName}");
 
             CurrentDialog = dialogToSwitch;
-            _storage.Save(CurrentDialog, $"Dialog-{_characterName}");
+            _storage.Save(CurrentDialog);
         }
     }
 }

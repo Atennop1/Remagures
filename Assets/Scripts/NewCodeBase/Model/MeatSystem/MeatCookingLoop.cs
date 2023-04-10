@@ -2,13 +2,15 @@ using System;
 using Remagures.Root;
 using Remagures.Tools;
 using Remagures.View.MeatSystem;
+using SaveSystem;
+using SaveSystem.Paths;
 using UnityEngine;
 
 namespace Remagures.Model.MeatSystem
 {
     public class MeatCookingLoop : IUpdatable
     {
-        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage(), "RemainingMeatCookingTime");
+        private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage<DateTime>(new Path("RemainingMeatCookingTime")));
         private readonly MeatCookingTimerView _meatCookingTimerView;
         private readonly IMeatCooker _meatCooker;
 
