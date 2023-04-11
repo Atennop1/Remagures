@@ -31,19 +31,19 @@ namespace Remagures.Root
                 new StartAction(_uiActivityChanger),
                 new TeleportAction(characterMovement.Transform, new Vector2(-6.5f, 5)),
                 
-                new TimerAction(1.5f),
+                new WaitAction(1.5f),
                 new MoveAction(characterMovement, new Vector2(0, 5)),
                 new MoveAction(characterMovement, new Vector2(0, 4.99f)),
                 
-                new TimerAction(1.5f),
+                new WaitAction(1.5f),
                 new MoveAction(characterMovement, new Vector2(0, 0)),
                 
-                new TimerAction(0.5f),
+                new WaitAction(0.5f),
                 new DialogAction(_writer, _dialogWindowButton, _continueText, "Где я?"),
                 new DialogAction(_writer, _dialogWindowButton, _continueText, "Что это за место?"),
                 new DialogAction(_writer, _dialogWindowButton, _continueText, "Что происходит вообще?"),
                 
-                new EndDialogAction(_dialogView),
+                new CloseDialogWindowActionDialogAction(_dialogView),
                 new EndAction(_uiActivityChanger)
             };
             

@@ -1,11 +1,14 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Remagures.Root;
 using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.DialogSystem
 {
-    public sealed class DialogPlayer
+    public sealed class DialogPlayer : ILateUpdatable
     {
+        public bool HasPlayed { get; private set; }
+        
         private readonly DialogTextWriter _dialogTextWriter;
         private readonly DialogView _dialogView;
         
@@ -17,6 +20,9 @@ namespace Remagures.Model.DialogSystem
             _dialogTextWriter = dialogTextWriter ?? throw new ArgumentNullException(nameof(dialogTextWriter));
             _dialogView = dialogView ?? throw new ArgumentNullException(nameof(dialogView));
         }
+        
+        public void LateUpdate()
+            => HasPlayed = false;
 
         public async void Play(Dialog dialog)
         {
@@ -52,6 +58,7 @@ namespace Remagures.Model.DialogSystem
 
         private void EndDialog()
         {
+            HasPlayed = true;
             _currentDialog.CurrentLine.End();
             _dialogView.DisplayEndOfDialog();
         }

@@ -19,18 +19,18 @@ namespace Remagures.Model.CutscenesSystem
         
         public Cutscene(List<ICutsceneAction> actions) => 
             _actions = actions ?? throw new ArgumentException("Actions can't be null");
-
+        
         public void Update()
         {
             if (!_currentAction.IsStarted)
                  _currentAction.Start();
 
-            if (_currentAction.IsFinished)
-            {
-                _currentAction.Finish();
-                if (_currentActionIndex != _actions.Count - 1)
-                    _currentActionIndex++;
-            }
+            if (!_currentAction.IsFinished) 
+                return;
+            
+            _currentAction.Finish();
+            if (_currentActionIndex != _actions.Count - 1)
+                _currentActionIndex++;
 
             if (IsFinished)
                 IsStarted = false;

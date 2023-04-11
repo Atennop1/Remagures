@@ -3,14 +3,14 @@ using Cysharp.Threading.Tasks;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public sealed class TimerAction : ICutsceneAction
+    public sealed class WaitAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }
 
         private readonly float _delay;
         
-        public TimerAction(float delay)
+        public WaitAction(float delay)
         {
             if (delay <= 0)
                 throw new ArgumentException("Delay can't be less or equals zero");
