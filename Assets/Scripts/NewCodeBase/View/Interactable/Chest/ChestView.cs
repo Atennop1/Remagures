@@ -13,10 +13,5 @@ namespace Remagures.View.Interactable
 
         public void DisplayOpened()
             => _animator.SetBool(OPENED_ANIMATION_HASH, true);
-
-        public void DisplayItemName(string itemName)
-        {
-            //TODO place logic of displaying item here after fixing dialog system
-        }
     }
 }

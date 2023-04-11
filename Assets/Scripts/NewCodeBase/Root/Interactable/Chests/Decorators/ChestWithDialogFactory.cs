@@ -1,21 +1,23 @@
 ﻿using Remagures.Model.Interactable;
+using Remagures.Root.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ChestWithInteractionEndByClickFactory : SerializedMonoBehaviour, IChestFactory
+    public sealed class ChestWithDialogFactory : SerializedMonoBehaviour, IChestFactory
     {
         [SerializeField] private IChestFactory _chestFactory;
-        [SerializeField] private InteractableWithInteractionEndByClickFactory _interactableWithInteractionEndByClickFactory;
+        [SerializeField] private DialogPlayerFactory _dialogPlayerFactory;
+        [SerializeField] private DialogFactory _dialogFactory;
         private IChest _builtChest;
         
         public IChest Create()
         {
             if (_builtChest != null)
                 return _builtChest;
-            
-            _builtChest = new ChestWithInteractionEndByClick(_chestFactory.Create(), _interactableWithInteractionEndByClickFactory.Create());
+
+            _builtChest = new ChestWithDialog(_chestFactory.Create(), _dialogPlayerFactory.Create(), _dialogFactory.Create());
             return _builtChest;
         }
     }

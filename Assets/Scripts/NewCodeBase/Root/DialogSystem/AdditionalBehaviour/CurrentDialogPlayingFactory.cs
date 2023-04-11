@@ -15,7 +15,7 @@ namespace Remagures.Root.DialogSystem
             if (_builtBehaviour != null)
                     return _builtBehaviour;
             
-            _builtBehaviour = new CurrentDialogPlaying(_dialogPlayerFactory.Create(), _dialogsListFactory.Create());
+            _builtBehaviour = new NextDialogPlaying(_dialogPlayerFactory.Create(), _dialogsListFactory.Create());
             return _builtBehaviour;
         }
     }

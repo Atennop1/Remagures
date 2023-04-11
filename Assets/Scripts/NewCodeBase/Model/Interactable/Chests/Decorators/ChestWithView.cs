@@ -31,7 +31,6 @@ namespace Remagures.Model.Interactable
                 return;
             
             _chest.Interact();
-            _chestView.DisplayItemName(_chest.Item.Description);
             _chestView.DisplayOpened();
         }
 

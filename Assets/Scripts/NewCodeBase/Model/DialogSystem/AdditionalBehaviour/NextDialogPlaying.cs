@@ -2,12 +2,12 @@
 
 namespace Remagures.Model.DialogSystem
 {
-    public sealed class CurrentDialogPlaying : IAdditionalBehaviour
+    public sealed class NextDialogPlaying : IAdditionalBehaviour
     {
         private readonly IDialogs _dialogs;
         private readonly DialogPlayer _dialogPlayer;
 
-        public CurrentDialogPlaying(DialogPlayer dialogPlayer, IDialogs dialogs)
+        public NextDialogPlaying(DialogPlayer dialogPlayer, IDialogs dialogs)
         {
             _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
             _dialogs = dialogs ?? throw new ArgumentNullException(nameof(dialogs));

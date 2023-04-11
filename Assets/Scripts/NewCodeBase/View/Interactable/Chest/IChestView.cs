@@ -4,6 +4,5 @@
     {
         void DisplayClosed();
         void DisplayOpened();
-        void DisplayItemName(string name);
     }
 }
