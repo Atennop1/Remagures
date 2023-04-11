@@ -8,13 +8,13 @@ namespace Remagures.Root
     {
         [SerializeField] private DialogsListFactory _dialogsListFactory;
         [SerializeField] private GridsFactory _gridsFactory;
-        [SerializeField] private TestCutsceneFactory _testCutsceneFactory;
+        [SerializeField] private CutsceneFactory cutsceneFactory;
         
         private void Awake()
         {
             _dialogsListFactory.Create();
             _gridsFactory.Create();
-            _testCutsceneFactory.Create();
+            cutsceneFactory.Create();
         }
     }
 }

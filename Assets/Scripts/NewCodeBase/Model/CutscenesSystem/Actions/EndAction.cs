@@ -11,12 +11,9 @@ namespace Remagures.Model.CutscenesSystem
         
         private readonly UIActivityChanger _uiActivityChanger;
 
-        public EndAction(UIActivityChanger uiActivityChanger)
-        {
-            _uiActivityChanger = uiActivityChanger ? uiActivityChanger 
-                : throw new ArgumentException("UIActivityChanger can't be null");
-        }
-        
+        public EndAction(UIActivityChanger uiActivityChanger) 
+            => _uiActivityChanger = uiActivityChanger ?? throw new ArgumentException("UIActivityChanger can't be null");
+
         public void Start()
         {
             IsStarted = true;

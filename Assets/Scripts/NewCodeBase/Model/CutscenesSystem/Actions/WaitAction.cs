@@ -1,5 +1,5 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using Remagures.Tools;
 
 namespace Remagures.Model.CutscenesSystem
 {
@@ -11,13 +11,8 @@ namespace Remagures.Model.CutscenesSystem
         private readonly float _delay;
         
         public WaitAction(float delay)
-        {
-            if (delay <= 0)
-                throw new ArgumentException("Delay can't be less or equals zero");
-            
-            _delay = delay;
-        }
-        
+            => _delay = delay.ThrowExceptionIfLessOrEqualsZero();
+
         public async void Start()
         {
             IsStarted = true;

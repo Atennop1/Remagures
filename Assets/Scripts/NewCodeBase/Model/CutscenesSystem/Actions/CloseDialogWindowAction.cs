@@ -1,17 +1,16 @@
 ﻿using System;
-using Remagures.Model.DialogSystem;
 using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.CutscenesSystem
 {
-    public sealed class CloseDialogWindowActionDialogAction : ICutsceneAction
+    public sealed class CloseDialogWindowAction : ICutsceneAction
     {
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }
         
         private readonly DialogView _dialogView;
 
-        public CloseDialogWindowActionDialogAction(DialogView dialogView) 
+        public CloseDialogWindowAction(DialogView dialogView) 
             => _dialogView = dialogView ? dialogView : throw new ArgumentNullException(nameof(dialogView));
 
         public void Start()
@@ -21,6 +20,6 @@ namespace Remagures.Model.CutscenesSystem
         }
 
         public void Finish()
-            => _dialogView.gameObject.SetActive(false);
+            => _dialogView.DisplayEndOfDialog();
     }
 }

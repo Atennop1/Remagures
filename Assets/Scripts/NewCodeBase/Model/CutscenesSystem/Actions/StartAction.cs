@@ -1,5 +1,4 @@
 ﻿using System;
-using Remagures.Model.Interactable;
 using Remagures.View;
 
 namespace Remagures.Model.CutscenesSystem
@@ -11,12 +10,9 @@ namespace Remagures.Model.CutscenesSystem
         
         private readonly UIActivityChanger _uiActivityChanger;
 
-        public StartAction(UIActivityChanger uiActivityChanger)
-        {
-            _uiActivityChanger = uiActivityChanger ? uiActivityChanger 
-                : throw new ArgumentException("UIActivityChanger can't be null");
-        }
-        
+        public StartAction(UIActivityChanger uiActivityChanger) 
+            => _uiActivityChanger = uiActivityChanger ?? throw new ArgumentException("UIActivityChanger can't be null");
+
         public void Start()
         {
             IsStarted = true;
