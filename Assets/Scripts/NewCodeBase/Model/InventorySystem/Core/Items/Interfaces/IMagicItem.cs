@@ -2,9 +2,8 @@
 
 namespace Remagures.Model.InventorySystem
 {
-    public interface IMagicItem : IUsableItem
+    public interface IMagicItem : IItem
     {
-        int UsingCooldownInMilliseconds { get; }
         IMagic Magic { get; }
     }
 }

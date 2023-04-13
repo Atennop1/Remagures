@@ -17,8 +17,8 @@ namespace Remagures.Model.Pickup
 
         public void Pickup()
         {
-            if (_amount + _mana.CurrentValue > _mana.MaxValue)
-                _amount = _mana.MaxValue - _mana.CurrentValue;
+            if (_amount + _mana.CurrentValue > _mana.Max.Value)
+                _amount = _mana.Max.Value - _mana.CurrentValue;
             
             _mana.Increase(_amount);
         }

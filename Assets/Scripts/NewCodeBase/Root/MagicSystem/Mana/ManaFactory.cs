@@ -7,7 +7,7 @@ namespace Remagures.Root
 {
     public sealed class ManaFactory : SerializedMonoBehaviour, IManaFactory
     {
-        [SerializeField] private int _maxValue;
+        [SerializeField] private IMaxManaFactory _maxManaFactory;
         [SerializeField] private IManaView _manaView;
         private IMana _builtMana;
         
@@ -16,7 +16,7 @@ namespace Remagures.Root
             if (_builtMana != null)
                 return _builtMana;
             
-            _builtMana = new Mana(_manaView, _maxValue);
+            _builtMana = new Mana(_manaView, _maxManaFactory.Create());
             return _builtMana;
         }
     }

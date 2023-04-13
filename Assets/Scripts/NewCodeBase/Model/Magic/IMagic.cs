@@ -2,7 +2,9 @@
 {
     public interface IMagic
     {
-        MagicData Data { get; }
+        IMagicData Data { get; }
+
+        bool CanActivate();
         void Activate();
     }
 }

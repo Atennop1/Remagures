@@ -15,7 +15,7 @@ namespace Remagures.Root
                 return _builtItem;
 
             var item = new Item(_data.Name, _data.Description, _data.Sprite, _data.IsStackable);
-            _builtItem = new WeaponItem(item, _data.AnimatorController, _data.Damage, _data.UsingCooldownInMilliseconds);
+            _builtItem = new WeaponItem(item, _data.AnimatorController, _data.Damage, _data.UsingCooldownInMilliseconds, _data.AttackingTimeInMilliseconds);
             return _builtItem;
         }
     }

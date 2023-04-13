@@ -15,7 +15,7 @@ namespace Remagures.Root
             if (_builtHealth != null)
                 return _builtHealth;
             
-            _builtHealth = new Health(_healthView, _maxHealthFactory.Create());
+            _builtHealth = new Model.Health.Health(_healthView, _maxHealthFactory.Create());
             return _builtHealth;
         }
     }

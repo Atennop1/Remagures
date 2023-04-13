@@ -1,8 +1,9 @@
 namespace Remagures.Model.InventorySystem
 {
-    public interface IWeaponItem : IUsableItem, IDisplayableItem
+    public interface IWeaponItem : IDisplayableItem
     {
-        int UsingCooldownInMilliseconds { get; }
         int Damage { get; }
+        int UsingCooldownInMilliseconds { get; }
+        int AttackingTimeInMilliseconds { get; }
     }
 }

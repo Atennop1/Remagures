@@ -7,17 +7,21 @@ namespace Remagures.Model.Magic
 {
     public class ProjectileMagic : IMagic
     {
-        public MagicData Data { get; }
+        public IMagicData Data => _magic.Data;
+        private readonly IMagic _magic;
         
         private readonly IProjectileFactory _projectileFactory;
         private readonly CharacterMovement _characterMovement;
 
-        public ProjectileMagic(MagicData magicData, IProjectileFactory projectileFactory, CharacterMovement characterMovement)
+        public ProjectileMagic(IMagic magic, IProjectileFactory projectileFactory, CharacterMovement characterMovement)
         {
             _projectileFactory = projectileFactory ?? throw new ArgumentNullException(nameof(projectileFactory));
             _characterMovement = characterMovement ?? throw new ArgumentNullException(nameof(characterMovement));
-            Data = magicData;
+            _magic = magic ?? throw new ArgumentNullException(nameof(magic));
         }
+
+        public bool CanActivate() 
+            => _magic.CanActivate();
 
         public void Activate()
         {

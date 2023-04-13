@@ -7,24 +7,25 @@ namespace Remagures.Model.Magic
     public sealed class Mana : IMana
     {
         public int CurrentValue { get; private set; }
-        public int MaxValue { get; }
+        public IReadOnlyMaxMana Max { get; }
         
         private readonly IManaView _view;
 
-        public Mana(IManaView view, int maxValue)
+        public Mana(IManaView view, IReadOnlyMaxMana max)
         {
             _view = view ?? throw new ArgumentNullException(nameof(view));
-            MaxValue = CurrentValue = maxValue.ThrowExceptionIfLessOrEqualsZero();
-            _view.Display(CurrentValue, MaxValue);
+            Max = max ?? throw new ArgumentNullException(nameof(max));
+            CurrentValue = max.Value;
+            _view.Display(CurrentValue, Max.Value);
         }
 
         public void Increase(int value)
         {
-            if (CurrentValue + value.ThrowExceptionIfLessOrEqualsZero() > MaxValue)
+            if (CurrentValue + value.ThrowExceptionIfLessOrEqualsZero() > Max.Value)
                 throw new InvalidOperationException("Increasing value is too big");
             
             CurrentValue += value;
-            _view.Display(CurrentValue, MaxValue);
+            _view.Display(CurrentValue, Max.Value);
         }
 
         public void Decrease(int value)
@@ -33,7 +34,7 @@ namespace Remagures.Model.Magic
                 throw new InvalidOperationException("Decreasing value is very big");
             
             CurrentValue -= value;
-            _view.Display(CurrentValue, MaxValue);
+            _view.Display(CurrentValue, Max.Value);
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using Remagures.Model.Magic;
-using Remagures.Root;
 using Remagures.Tools;
 using UnityEngine;
 
@@ -28,8 +27,8 @@ namespace Remagures.Model.InventorySystem
         {
             _usableItem.Use();
             
-            if (_amount + _mana.CurrentValue > _mana.MaxValue)
-                _amount = _mana.MaxValue - _mana.CurrentValue;
+            if (_amount + _mana.CurrentValue > _mana.Max.Value)
+                _amount = _mana.Max.Value - _mana.CurrentValue;
             
             _mana.Increase(_amount);
         }

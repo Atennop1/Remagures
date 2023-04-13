@@ -3,7 +3,7 @@
     public interface IMana
     {
         int CurrentValue { get; }
-        int MaxValue { get; }
+        IReadOnlyMaxMana Max { get; }
 
         void Increase(int value);
         void Decrease(int value);

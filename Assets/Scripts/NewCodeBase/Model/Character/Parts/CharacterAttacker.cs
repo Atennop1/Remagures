@@ -1,23 +1,18 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Remagures.Model.InventorySystem;
-using Remagures.View.Character;
 
 namespace Remagures.Model.Character
 {
     public sealed class CharacterAttacker
     {
-        private readonly ICharacterAttackerView _view;
-        private readonly IInventoryCellSelector<IWeaponItem> _weaponInventorySelector;
-
         public bool IsAttacking { get; private set; }
-        private const int ATTACKING_TIME_IN_MILLISECONDS = 330;
+        
+        private readonly IInventoryCellSelector<IWeaponItem> _weaponInventorySelector;
+        private bool _canAttack;
 
-        public CharacterAttacker(ICharacterAttackerView view, IInventoryCellSelector<IWeaponItem> weaponInventorySelector)
-        {
-            _view = view ?? throw new ArgumentNullException(nameof(view));
-            _weaponInventorySelector = weaponInventorySelector ?? throw new ArgumentNullException(nameof(weaponInventorySelector));
-        }
+        public CharacterAttacker(IInventoryCellSelector<IWeaponItem> weaponInventorySelector) 
+            => _weaponInventorySelector = weaponInventorySelector ?? throw new ArgumentNullException(nameof(weaponInventorySelector));
 
         public async void UseAttack()
         {
@@ -27,22 +22,27 @@ namespace Remagures.Model.Character
             //    return;
             //}
 
-            if (IsAttacking) 
+            if (!_canAttack || IsAttacking) 
                 return;
             
             _weaponInventorySelector.SelectedCell.Item.Use();
-            await AttackTask();
+            
+            await CanAttackChanging();
+            await IsAttackingChanging();
         }
 
-        private async UniTask AttackTask()
+        private async UniTask IsAttackingChanging()
         {
-            IsAttacking = true;
-            _view.PlayAttackAnimation();
-            
-            await UniTask.Delay(ATTACKING_TIME_IN_MILLISECONDS);
-            
-            _view.StopAttackAnimation();
             IsAttacking = false;
+            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.AttackingTimeInMilliseconds);
+            IsAttacking = true;
+        }
+
+        private async UniTask CanAttackChanging()
+        {
+            _canAttack = false;
+            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.UsingCooldownInMilliseconds);
+            _canAttack = true;
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Remagures.Root
     public sealed class MagicItemData : ItemData
     {
         [field: SerializeField] public int UsingCooldownInMilliseconds { get; private set; }
+        [field: SerializeField] public int AttackingTimeInMilliseconds { get; private set; }
     }
 }

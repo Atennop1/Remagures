@@ -40,7 +40,7 @@ namespace Remagures.Model.RuneSystem
                 if (_cancellationTokenSource.IsCancellationRequested)
                     break;
                 
-                _mana.Increase(_mana.MaxValue / 10);
+                _mana.Increase(_mana.Max.Value / 10);
             }
         }
     }
