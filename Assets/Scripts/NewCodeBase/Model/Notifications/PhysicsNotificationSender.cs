@@ -15,11 +15,10 @@ namespace Remagures.Model.Notifications
             if (hasFocus)
             {
                 _notificationSender.OnContinueGame();
+                return;
             }
-            else
-            {
-                _notificationSender.OnPauseGame();
-            }
+            
+            _notificationSender.OnPauseGame();
         }
     }
 }

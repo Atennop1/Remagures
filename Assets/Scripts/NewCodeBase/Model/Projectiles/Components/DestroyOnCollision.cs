@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Remagures.Model.CollisionCallbacks
+namespace Remagures.Model.Projectiles
 {
-    public class DefaultCollisionCallback : MonoBehaviour
+    public sealed class DestroyOnCollision : MonoBehaviour
     {
         private void OnCollisionEnter2D()
             => Destroy(gameObject);

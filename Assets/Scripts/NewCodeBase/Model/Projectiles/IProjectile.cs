@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Remagures.Model
+namespace Remagures.Model.Projectiles
 {
     public interface IProjectile
     {

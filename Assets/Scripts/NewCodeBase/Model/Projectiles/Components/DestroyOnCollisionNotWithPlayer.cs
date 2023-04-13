@@ -1,9 +1,9 @@
 ﻿using Remagures.Model.Character;
 using UnityEngine;
 
-namespace Remagures.Model.CollisionCallbacks
+namespace Remagures.Model.Projectiles
 {
-    public class PlayerProjectileCollisionCallback : MonoBehaviour
+    public sealed class DestroyOnCollisionNotWithPlayer : MonoBehaviour
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -13,7 +13,7 @@ namespace Remagures.Model.CollisionCallbacks
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out PhysicsCharacter _))
+            if (!other.TryGetComponent(out PhysicsCharacter _))
                 Destroy(gameObject);
         }
     }

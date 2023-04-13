@@ -1,21 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
-namespace Remagures.Model
+namespace Remagures.Model.Projectiles
 {
-    public class PhysicsProjectile : MonoBehaviour
+    public sealed class PhysicsProjectile : SerializedMonoBehaviour, IProjectile
     {
-        [SerializeField] private float _lifeTime;
-        private float _lifeTimer;
+        private IProjectile _projectile;
 
-        private void Awake()
-            => _lifeTimer = _lifeTime;
-
-        private void Update()
-        {
-            _lifeTimer -= UnityEngine.Time.deltaTime;
-            
-            if (_lifeTimer <= 0)
-                Destroy(gameObject);
-        }
+        public void Construct(IProjectile projectile)
+            => _projectile = projectile ?? throw new ArgumentNullException(nameof(projectile));
+        
+        public void Launch(Vector2 direction) 
+            => _projectile.Launch(direction);
     }
 }

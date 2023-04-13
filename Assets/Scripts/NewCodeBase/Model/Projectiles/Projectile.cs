@@ -2,7 +2,7 @@ using System;
 using Remagures.Tools;
 using UnityEngine;
 
-namespace Remagures.Model
+namespace Remagures.Model.Projectiles
 {
     public sealed class Projectile : IProjectile
     {

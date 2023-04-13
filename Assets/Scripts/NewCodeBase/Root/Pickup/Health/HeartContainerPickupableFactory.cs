@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root
+namespace Remagures.Root.Health
 {
     public sealed class HeartContainerPickupableFactory : SerializedMonoBehaviour, IPickupableFactory
     {
