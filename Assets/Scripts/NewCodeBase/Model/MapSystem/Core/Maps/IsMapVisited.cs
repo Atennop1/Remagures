@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapVisitings : IMapVisitings //TODO bad name...
+    public sealed class IsMapVisited : IIsMapVisited
     {
         private readonly IReadOnlyList<SceneData> _scenes;
 
-        public MapVisitings(IReadOnlyList<SceneData> scenes)
+        public IsMapVisited(IReadOnlyList<SceneData> scenes)
             => _scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
 
-        public bool IsVisited()
+        public bool Get()
             => _scenes.Count == 0 || _scenes.Any(scene => PlayerPrefs.HasKey("Visited" + scene.Path));
     }
 }

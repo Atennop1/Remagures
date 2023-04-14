@@ -15,13 +15,13 @@ namespace Remagures.Model.MapSystem
         public IReadOnlyList<MapTransition> Transitions { get; }
         
         private readonly IMapView _mapView;
-        private readonly IMapVisitings _mapVisitings;
+        private readonly IIsMapVisited _isMapVisited;
             
-        public Map(IMarkers markers, List<MapTransition> transitions, IMapVisitings mapVisitings)
+        public Map(IMarkers markers, List<MapTransition> transitions, IIsMapVisited isMapVisited)
         {
             Markers = markers ?? throw new ArgumentNullException(nameof(markers));
             Transitions = transitions ?? throw new ArgumentNullException(nameof(transitions));
-            _mapVisitings = mapVisitings ?? throw new ArgumentNullException(nameof(mapVisitings));
+            _isMapVisited = isMapVisited ?? throw new ArgumentNullException(nameof(isMapVisited));
         }
         
         public void LateUpdate()
@@ -43,6 +43,6 @@ namespace Remagures.Model.MapSystem
             => IsVisited();
 
         private bool IsVisited()
-            => _mapVisitings.IsVisited();
+            => _isMapVisited.Get();
     }
 }

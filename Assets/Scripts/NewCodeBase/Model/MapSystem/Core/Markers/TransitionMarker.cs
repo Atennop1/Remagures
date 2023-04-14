@@ -4,12 +4,13 @@ using Remagures.View.MapSystem;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class GoalTransitionMarker
+    public sealed class TransitionMarker
     {
-        private readonly IMarkerView _markerView;
         private readonly IMap _map;
+        private readonly IMarkerView _markerView;
+        private readonly IIsMarkerContainsInMap _isMarkerContainsInMap;
 
-        public GoalTransitionMarker(IMarkerView markerView, IMap map)
+        public TransitionMarker(IMarkerView markerView, IMap map)
         {
             _markerView = markerView ?? throw new ArgumentNullException(nameof(markerView));
             _map = map ?? throw new ArgumentNullException(nameof(map));
@@ -28,17 +29,14 @@ namespace Remagures.Model.MapSystem
 
         private bool ContainsInMapHierarchy(IMap map)
         {
-            if (ContainsOnMap(map))
+            if (_isMarkerContainsInMap.Get(map))
                 return true;
             
             return map.Transitions.Any(transition =>
             {
                 var childMap = transition.MapToTransit;
-                return ContainsInMapHierarchy(childMap);
+                return _isMarkerContainsInMap.Get(childMap);
             });
         }
-
-        private bool ContainsOnMap(IMap map)
-            => map.Markers.GoalMarkers.Any(marker => marker.IsActive());
     }
 }

@@ -17,7 +17,7 @@ namespace Remagures.Model.MapSystem
 
         public void Open()
         {
-            var selectedMap = _mapSelector.CurrentlySelectedMap;
+            var selectedMap = _mapSelector.CurrentMap;
             _maps.Find(map => map.Transitions.Any(transition => transition.MapToTransit == selectedMap)).Open();
         }
     }

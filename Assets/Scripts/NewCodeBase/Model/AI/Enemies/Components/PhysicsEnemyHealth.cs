@@ -10,7 +10,7 @@ namespace Remagures.Model.AI.Enemies
         [SerializeField] private IGameObjectFactory _deathEffectFactory;
         [SerializeField] private IGameObjectFactory _lootFactory;
         
-        public int MaxValue => _health.Max;
+        public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;
 
         public bool IsDead => _health.IsDead;
