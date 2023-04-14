@@ -25,7 +25,7 @@ namespace Remagures.Model.MapSystem
         public bool IsActive() 
             => _questsList.Quests.Contains(_quest) && _goal == _quest.GetActiveGoal();
 
-        public void OnEnable()
+        public void Enable()
         {
             _markerView.UnDisplay();
             

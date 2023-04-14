@@ -5,10 +5,10 @@ namespace Remagures.Model.MapSystem
 {
     public sealed class Markers : IMarkers
     {
-        public CharacterMarker CharacterMarker { get; }
-        public IReadOnlyList<GoalMarker> GoalMarkers { get; }
+        public IMarker CharacterMarker { get; }
+        public IReadOnlyList<IMarker> GoalMarkers { get; }
 
-        public Markers(CharacterMarker characterMarker, IReadOnlyList<GoalMarker> goalMarkers)
+        public Markers(IMarker characterMarker, IReadOnlyList<IMarker> goalMarkers)
         {
             CharacterMarker = characterMarker ?? throw new ArgumentNullException(nameof(characterMarker));
             GoalMarkers = goalMarkers ?? throw new ArgumentNullException(nameof(goalMarkers));

@@ -19,7 +19,7 @@ namespace Remagures.Model.MapSystem
             _characterPositionOnMap = characterPositionOnMap ?? throw new ArgumentNullException(nameof(characterPositionOnMap));
         }
 
-        public void OnEnable()
+        public void Enable()
         {
             _markerView.UnDisplay();
             

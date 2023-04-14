@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Remagures.Plugins;
 using Remagures.Root;
 using Remagures.View.MapSystem;
-using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
@@ -17,8 +14,9 @@ namespace Remagures.Model.MapSystem
         private readonly IMapView _mapView;
         private readonly IIsMapVisited _isMapVisited;
             
-        public Map(IMarkers markers, List<MapTransition> transitions, IIsMapVisited isMapVisited)
+        public Map(IMapView mapView, IMarkers markers, List<MapTransition> transitions, IIsMapVisited isMapVisited)
         {
+            _mapView = mapView ?? throw new ArgumentNullException(nameof(mapView));
             Markers = markers ?? throw new ArgumentNullException(nameof(markers));
             Transitions = transitions ?? throw new ArgumentNullException(nameof(transitions));
             _isMapVisited = isMapVisited ?? throw new ArgumentNullException(nameof(isMapVisited));

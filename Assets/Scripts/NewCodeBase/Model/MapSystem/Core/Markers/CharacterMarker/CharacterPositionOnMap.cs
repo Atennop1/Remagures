@@ -5,12 +5,12 @@ namespace Remagures.Model.MapSystem
 {
     public sealed class CharacterPositionOnMap
     {
-        private readonly MapData _mapData;
+        private readonly IMapData _mapData;
         private readonly Transform _characterTransform;
 
-        public CharacterPositionOnMap(MapData mapData, Transform characterTransform)
+        public CharacterPositionOnMap(IMapData mapData, Transform characterTransform)
         {
-            _mapData = mapData;
+            _mapData = mapData ?? throw new ArgumentNullException(nameof(mapData));
             _characterTransform = characterTransform ?? throw new ArgumentNullException(nameof(characterTransform));
         }
 

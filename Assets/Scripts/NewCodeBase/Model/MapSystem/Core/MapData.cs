@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
-    public readonly struct MapData
+    public readonly struct MapData : IMapData
     {
-        public readonly Texture2D MapTexture;
-        public readonly Vector2Int WorldSize;
-        public readonly Vector2Int WorldOffset;
+        public Texture2D MapTexture { get; }
+        public Vector2Int WorldSize { get; }
+        public Vector2Int WorldOffset { get; }
 
         public MapData(Texture2D mapTexture, Vector2Int worldSize, Vector2Int worldOffset)
         {

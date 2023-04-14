@@ -4,16 +4,17 @@ using Remagures.View.MapSystem;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class TransitionMarker
+    public sealed class MarkerOnTransition
     {
         private readonly IMap _map;
         private readonly IMarkerView _markerView;
         private readonly IIsMarkerContainsInMap _isMarkerContainsInMap;
 
-        public TransitionMarker(IMarkerView markerView, IMap map)
+        public MarkerOnTransition(IMarkerView markerView, IMap map, IIsMarkerContainsInMap isMarkerContainsInMap)
         {
             _markerView = markerView ?? throw new ArgumentNullException(nameof(markerView));
             _map = map ?? throw new ArgumentNullException(nameof(map));
+            _isMarkerContainsInMap = isMarkerContainsInMap ?? throw new ArgumentNullException(nameof(isMarkerContainsInMap));
         }
 
         public bool IsActive()

@@ -4,7 +4,7 @@ namespace Remagures.Model.MapSystem
 {
     public interface IMarkers
     {
-        CharacterMarker CharacterMarker { get; }
-        IReadOnlyList<GoalMarker> GoalMarkers { get; }
+        IMarker CharacterMarker { get; }
+        IReadOnlyList<IMarker> GoalMarkers { get; }
     }
 }
