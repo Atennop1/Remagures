@@ -1,10 +1,7 @@
-﻿using Remagures.Root;
-
-namespace Remagures.Model.SceneTransition
+﻿namespace Remagures.Model.SceneTransition
 {
-    public interface ISceneTransition : ILateUpdatable
+    public interface ISceneTransition
     {
-        bool HasActivated { get; }
         void Activate();
     }
 }

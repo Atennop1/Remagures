@@ -8,5 +8,8 @@ namespace Remagures.Factories
         
         public GameObject Create()
             => Instantiate(_prefab, transform.position, Quaternion.identity);
+
+        public GameObject Create(Vector3 position)
+            => Instantiate(_prefab, position, Quaternion.identity);
     }
 }

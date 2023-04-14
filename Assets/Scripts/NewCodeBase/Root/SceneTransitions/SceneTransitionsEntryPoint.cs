@@ -1,9 +1,10 @@
 ﻿using Remagures.Factories;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Model.SceneTransition
+namespace Remagures.Root
 {
-    public class SceneTransitionsEntryPoint : MonoBehaviour
+    public sealed class SceneTransitionsEntryPoint : SerializedMonoBehaviour
     {
         [SerializeField] private IGameObjectFactory _fadingFactory;
 

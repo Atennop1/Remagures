@@ -5,16 +5,13 @@ using UnityEngine;
 
 namespace Remagures.Model.SceneTransition
 {
-    public class PhysicsSceneTransition : MonoBehaviour
+    public sealed class PhysicsSceneTransition : MonoBehaviour
     {
         private ISceneTransition _sceneTransition;
-        private ISystemUpdate _systemUpdate;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
-        public void Construct(ISceneTransition sceneTransition)
-        {
-            _systemUpdate = new SystemUpdate();
-            _sceneTransition = sceneTransition ?? throw new ArgumentNullException(nameof(sceneTransition));
-        }
+        public void Construct(ISceneTransition sceneTransition) 
+            => _sceneTransition = sceneTransition ?? throw new ArgumentNullException(nameof(sceneTransition));
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
