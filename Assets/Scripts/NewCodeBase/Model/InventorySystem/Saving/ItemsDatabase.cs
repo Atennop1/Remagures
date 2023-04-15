@@ -6,11 +6,11 @@ using Remagures.Tools;
 
 namespace Remagures.Model.InventorySystem
 {
-    public sealed class ItemsList<TItem> : IItemsList<TItem> where TItem: IItem
+    public sealed class ItemsDatabase<TItem> : IItemsDatabase<TItem> where TItem: IItem
     {
         private readonly List<IItemFactory<TItem>> _factories;
 
-        public ItemsList(List<IItemFactory<TItem>> factories) 
+        public ItemsDatabase(List<IItemFactory<TItem>> factories) 
             => _factories = factories ?? throw new ArgumentNullException(nameof(factories));
 
         public int GetItemID(TItem item)

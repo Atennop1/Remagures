@@ -15,6 +15,7 @@ namespace Remagures.Model.QuestSystem
         {
             Description = description ?? throw new ArgumentNullException(nameof(description));
             Progress = progress ?? throw new ArgumentNullException(nameof(progress));
+            IsCompleted = Progress.CurrentPoints >= Progress.RequiredPoints;
         }
 
         public void LateUpdate()

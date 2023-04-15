@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -5,16 +6,23 @@ using UnityEngine.SceneManagement;
 
 namespace Remagures.Tools
 {
-    public class SaveMaps : Saver, ISaver
+    public sealed class MapsSaver
     {
-        [SerializeField] private List<Texture2D> _maps;
+        private readonly List<Texture2D> _maps;
+        private readonly string _path;
+
+        public MapsSaver(List<Texture2D> maps, string path)
+        {
+            _maps = maps ?? throw new ArgumentNullException(nameof(maps));
+            _path = path ?? throw new ArgumentNullException(nameof(path));
+        }
 
         public void Save()
         {
             for (var i = 0; i < _maps.Count; i++)
             {
                 var bytes = _maps[i].EncodeToPNG();
-                File.WriteAllBytes(Application.persistentDataPath + Path + "/Map" + i + ".json", bytes);
+                File.WriteAllBytes(Application.persistentDataPath + _path + "/Map" + i + ".json", bytes);
             }
         }
     
@@ -22,9 +30,9 @@ namespace Remagures.Tools
         {
             for (var i = 0; i < _maps.Count; i++)
             {
-                if (!File.Exists(Application.persistentDataPath + Path + "/Map" + i + ".json")) continue;
+                if (!File.Exists(Application.persistentDataPath + _path + "/Map" + i + ".json")) continue;
             
-                var bytes = File.ReadAllBytes(Application.persistentDataPath + Path + "/Map" + i + ".json");
+                var bytes = File.ReadAllBytes(Application.persistentDataPath + _path + "/Map" + i + ".json");
                 _maps[i].LoadImage(bytes);
             }
         }

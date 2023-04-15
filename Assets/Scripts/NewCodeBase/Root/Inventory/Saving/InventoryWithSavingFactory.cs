@@ -12,7 +12,7 @@ namespace Remagures.Root
         [SerializeField] private string _savePath;
         
         [SerializeField] private IInventoryFactory<TItem> _inventoryFactory;
-        [SerializeField] private ItemsListFactory<TItem> _itemsListFactory;
+        [SerializeField] private ItemsDatabaseFactory<TItem> itemsDatabaseFactory;
         private IInventory<TItem> _builtInventory;
 
         public IInventory<TItem> Create()
@@ -21,7 +21,7 @@ namespace Remagures.Root
                 return _builtInventory;
 
             var storage = new BinaryStorage<List<CellSavingData>>(new Path(_savePath));
-            _builtInventory = new InventoryWithSaving<TItem>(_inventoryFactory.Create(), _itemsListFactory.Create(), storage);
+            _builtInventory = new InventoryWithSaving<TItem>(_inventoryFactory.Create(), itemsDatabaseFactory.Create(), storage);
             return _builtInventory;
         }
     }

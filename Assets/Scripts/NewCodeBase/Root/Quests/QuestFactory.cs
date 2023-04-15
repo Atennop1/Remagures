@@ -7,6 +7,7 @@ namespace Remagures.Root
 {
     public sealed class QuestFactory : MonoBehaviour
     {
+        [field: SerializeField] public int QuestID { get; private set; }
         [SerializeField] private QuestData _questData;
         [SerializeField] private GoalFactory[] _goalFactories;
 

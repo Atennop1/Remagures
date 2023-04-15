@@ -6,6 +6,7 @@ namespace Remagures.Root
     public sealed class GoalFactory : MonoBehaviour
     {
         [SerializeField] private GoalData _goalData;
+        [SerializeField] private IProgressFactory _progressFactory;
         private IQuestGoal _builtQuestGoal;
         
         public IQuestGoal Create()
@@ -13,8 +14,7 @@ namespace Remagures.Root
             if (_builtQuestGoal != null)
                 return _builtQuestGoal;
             
-            var progress = new Progress(_goalData.RequiredPointsCount);
-            _builtQuestGoal = new QuestGoal(_goalData.Description, progress);
+            _builtQuestGoal = new QuestGoal(_goalData.Description, _progressFactory.Create());
             return _builtQuestGoal;
         }
     }
