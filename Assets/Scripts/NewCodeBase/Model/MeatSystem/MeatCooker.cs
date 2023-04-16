@@ -30,6 +30,7 @@ namespace Remagures.Model.MeatSystem
             
             RawMeatCount -= count;
             _meatCountView.DisplayRawMeatCount(RawMeatCount);
+            _cookedMeatHeap.Add(count);
         }
         
         public void AddRawMeat()

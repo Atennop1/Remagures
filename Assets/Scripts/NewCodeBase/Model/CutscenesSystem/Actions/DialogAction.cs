@@ -8,10 +8,10 @@ namespace Remagures.Model.CutscenesSystem
         public bool IsStarted { get; private set; }
         public bool IsFinished => _dialogPlayer.HasPlayed;
 
-        private readonly DialogPlayer _dialogPlayer;
-        private readonly Dialog _dialog;
+        private readonly IDialogPlayer _dialogPlayer;
+        private readonly IDialog _dialog;
 
-        public DialogAction(DialogPlayer dialogPlayer, Dialog dialog)
+        public DialogAction(IDialogPlayer dialogPlayer, IDialog dialog)
         {
             _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
             _dialog = dialog ?? throw new ArgumentNullException(nameof(dialog));

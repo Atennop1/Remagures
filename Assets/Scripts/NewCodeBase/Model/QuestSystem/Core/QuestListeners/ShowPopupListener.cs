@@ -6,9 +6,9 @@ namespace Remagures.Model.QuestSystem.QuestListeners
     public sealed class ShowPopupListener : IUpdatable
     {
         private readonly IQuest _quest;
-        private readonly QuestPopups _questPopups;
+        private readonly IQuestPopups _questPopups;
 
-        public ShowPopupListener(IQuest quest, QuestPopups questPopups)
+        public ShowPopupListener(IQuest quest, IQuestPopups questPopups)
         {
             _quest = quest ?? throw new ArgumentNullException(nameof(quest));
             _questPopups = questPopups ?? throw new ArgumentNullException(nameof(questPopups));

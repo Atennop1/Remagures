@@ -1,6 +1,6 @@
 ﻿using Remagures.Model.DialogSystem;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public interface IDialogLineFactory
     {

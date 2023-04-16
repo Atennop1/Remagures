@@ -9,9 +9,9 @@ namespace Remagures.Root
         [SerializeField] private MapSelectorFactory _mapSelectorFactory;
         [SerializeField] private CharacterPositionOnMapFactory _characterPositionOnMapFactory;
         [SerializeField] private FogsOfWarFactory _fogsOfWarFactory;
-        private MapExplorer _builtMapExplorer;
+        private IMapExplorer _builtMapExplorer;
 
-        public MapExplorer Create()
+        public IMapExplorer Create()
         {
             if (_builtMapExplorer != null)
                 return _builtMapExplorer;

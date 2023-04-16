@@ -1,6 +1,6 @@
 ﻿using System;
 using Remagures.Model.DialogSystem;
-using Remagures.Root.DialogSystem;
+using Remagures.Root.Dialogs;
 
 namespace Remagures.Model.AI.NPC
 {
@@ -10,19 +10,19 @@ namespace Remagures.Model.AI.NPC
         public bool HasInteractionStarted => _npcInteractable.HasInteractionStarted;
         
         private readonly INPCInteractable _npcInteractable;
-        private readonly DialogPlayer _dialogPlayer;
-        private readonly DialogsListFactory _dialogsListFactory;
+        private readonly IDialogPlayer _dialogPlayer;
+        private readonly IDialogs _dialogs;
 
-        public NPCInteractableWithDialogPlaying(INPCInteractable npcInteractable, DialogPlayer dialogPlayer, DialogsListFactory dialogsListFactory)
+        public NPCInteractableWithDialogPlaying(INPCInteractable npcInteractable, IDialogPlayer dialogPlayer, IDialogs dialogs)
         {
             _npcInteractable = npcInteractable ?? throw new ArgumentNullException(nameof(npcInteractable));
             _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
-            _dialogsListFactory = dialogsListFactory ?? throw new ArgumentNullException(nameof(dialogsListFactory));
+            _dialogs = dialogs ?? throw new ArgumentNullException(nameof(dialogs));
         }
 
         public void Interact()
         {
-            _dialogPlayer.Play(_dialogsListFactory.Create().CurrentDialog);
+            _dialogPlayer.Play(_dialogs.CurrentDialog);
             _npcInteractable.Interact();
         }
 

@@ -1,12 +1,12 @@
 ﻿using Remagures.Model.DialogSystem;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class GoalCompletingFactory : MonoBehaviour, IAdditionalBehaviourFactory
     {
         [SerializeField] private GoalFactory _goalFactory;
-        private GoalCompleting _builtBehaviour;
+        private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()
         {

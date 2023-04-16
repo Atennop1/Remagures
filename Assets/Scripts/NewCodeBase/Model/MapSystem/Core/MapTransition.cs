@@ -2,9 +2,9 @@ using System;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapTransition
+    public sealed class MapTransition : IMapTransition
     {
-        public readonly IMap MapToTransit;
+        public IMap MapToTransit { get; }
 
         public MapTransition(IMap mapToOpen)
             => MapToTransit = mapToOpen ?? throw new ArgumentNullException(nameof(mapToOpen));

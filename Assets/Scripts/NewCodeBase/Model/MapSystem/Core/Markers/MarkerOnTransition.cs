@@ -4,7 +4,7 @@ using Remagures.View.MapSystem;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MarkerOnTransition
+    public sealed class MarkerOnTransition : IMarkerOnTransition
     {
         private readonly IMap _map;
         private readonly IMarkerView _markerView;

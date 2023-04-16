@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapExplorer
+    public sealed class MapExplorer : IMapExplorer
     {
         private readonly CharacterPositionOnMap _characterPositionOnMap;
         private readonly Texture2D _currentMapFogTexture;
 
-        public MapExplorer(MapSelector mapSelector, CharacterPositionOnMap characterPositionOnMap, FogsOfWar fogsOfWar)
+        public MapExplorer(IMapSelector mapSelector, CharacterPositionOnMap characterPositionOnMap, FogsOfWar fogsOfWar)
         {
             if (mapSelector == null) 
                 throw new ArgumentNullException(nameof(mapSelector));

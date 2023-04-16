@@ -2,15 +2,15 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class DialogSwitcherFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _newDialogName;
         [SerializeField] private DialogsListFactory _dialogsListFactory;
-        private DialogSwitcher _builtSwitcher;
+        private IDialogSwitcher _builtSwitcher;
         
-        public DialogSwitcher Create()
+        public IDialogSwitcher Create()
         {
             if (_builtSwitcher != null)
                 return _builtSwitcher;

@@ -9,9 +9,9 @@ namespace Remagures.Root
     public sealed class MapSelectorFactory : SerializedMonoBehaviour
     {
         [SerializeField] private List<IMapFactory> _mapFactories;
-        private MapSelector _builtSelector;
+        private IMapSelector _builtSelector;
 
-        public MapSelector Create()
+        public IMapSelector Create()
         {
             if (_builtSelector != null)
                 return _builtSelector;

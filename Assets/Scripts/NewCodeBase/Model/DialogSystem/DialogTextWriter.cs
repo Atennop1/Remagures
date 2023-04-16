@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Remagures.Model.DialogSystem
 {
-    public sealed class DialogTextWriter
+    public sealed class DialogTextWriter : IDialogTextWriter
     {
         public bool IsTyping { get; private set; }
 

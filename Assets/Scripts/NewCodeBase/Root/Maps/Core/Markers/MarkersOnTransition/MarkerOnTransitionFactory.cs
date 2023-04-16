@@ -10,9 +10,9 @@ namespace Remagures.Root
         [SerializeField] private IMapFactory _mapFactory;
         [SerializeField] private IMarkerView _markerView;
         [SerializeField] private IIsMarkerContainsInMapFactory _isMarkerContainsInMapFactory;
-        private MarkerOnTransition _builtMarker;
+        private IMarkerOnTransition _builtMarker;
 
-        public MarkerOnTransition Create()
+        public IMarkerOnTransition Create()
         {
             if (_builtMarker != null)
                 return _builtMarker;

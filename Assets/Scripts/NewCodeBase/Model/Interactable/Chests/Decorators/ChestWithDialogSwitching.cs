@@ -12,9 +12,9 @@ namespace Remagures.Model.Interactable
         public IItem Item => _chest.Item;
         
         private readonly IChest _chest;
-        private readonly DialogSwitcher _dialogSwitcher;
+        private readonly IDialogSwitcher _dialogSwitcher;
 
-        public ChestWithDialogSwitching(IChest chest, DialogSwitcher dialogSwitcher)
+        public ChestWithDialogSwitching(IChest chest, IDialogSwitcher dialogSwitcher)
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
             _dialogSwitcher = dialogSwitcher ?? throw new ArgumentNullException(nameof(dialogSwitcher));

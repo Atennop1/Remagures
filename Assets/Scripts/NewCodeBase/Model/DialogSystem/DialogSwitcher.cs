@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.DialogSystem
 {
-    public sealed class DialogSwitcher
+    public sealed class DialogSwitcher : IDialogSwitcher
     {
         private readonly string _newDialogName;
         private readonly IDialogs _dialogs;

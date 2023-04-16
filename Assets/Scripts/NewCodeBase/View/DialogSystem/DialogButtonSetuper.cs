@@ -8,7 +8,7 @@ namespace Remagures.View.DialogSystem
     {
         [SerializeField] private Button _dialogButton;
 
-        public void Setup(DialogPlayer dialogPlayer)
+        public void Setup(IDialogPlayer dialogPlayer)
             => _dialogButton.onClick.AddListener(dialogPlayer.ContinueDialog);
     }
 }

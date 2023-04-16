@@ -7,9 +7,9 @@ namespace Remagures.Model.MapSystem
     public sealed class ParentMapOpener
     {
         private readonly List<IMap> _maps;
-        private readonly MapSelector _mapSelector;
+        private readonly IMapSelector _mapSelector;
 
-        public ParentMapOpener(List<IMap> maps, MapSelector mapSelector)
+        public ParentMapOpener(List<IMap> maps, IMapSelector mapSelector)
         {
             _maps = maps ?? throw new ArgumentNullException(nameof(maps));
             _mapSelector = mapSelector ?? throw new ArgumentException(nameof(mapSelector));

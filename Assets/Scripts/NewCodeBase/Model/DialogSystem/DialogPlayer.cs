@@ -5,17 +5,17 @@ using Remagures.View.DialogSystem;
 
 namespace Remagures.Model.DialogSystem
 {
-    public sealed class DialogPlayer : ILateUpdatable
+    public sealed class DialogPlayer : ILateUpdatable, IDialogPlayer
     {
         public bool HasPlayed { get; private set; }
         
-        private readonly DialogTextWriter _dialogTextWriter;
+        private readonly IDialogTextWriter _dialogTextWriter;
         private readonly DialogView _dialogView;
         
-        private Dialog _currentDialog;
+        private IDialog _currentDialog;
         private bool _canContinue;
 
-        public DialogPlayer(DialogTextWriter dialogTextWriter, DialogView dialogView)
+        public DialogPlayer(IDialogTextWriter dialogTextWriter, DialogView dialogView)
         {
             _dialogTextWriter = dialogTextWriter ?? throw new ArgumentNullException(nameof(dialogTextWriter));
             _dialogView = dialogView ?? throw new ArgumentNullException(nameof(dialogView));
@@ -24,7 +24,7 @@ namespace Remagures.Model.DialogSystem
         public void LateUpdate()
             => HasPlayed = false;
 
-        public async void Play(Dialog dialog)
+        public async void Play(IDialog dialog)
         {
             _canContinue = false;
             _currentDialog = dialog ?? throw new ArgumentNullException(nameof(dialog));

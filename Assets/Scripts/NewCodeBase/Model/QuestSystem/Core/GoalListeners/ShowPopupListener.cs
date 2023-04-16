@@ -7,9 +7,9 @@ namespace Remagures.Model.QuestSystem.GoalListeners
     {
         private readonly IQuestGoal _goal;
         private readonly IQuest _quest;
-        private readonly QuestPopups _questPopups;
+        private readonly IQuestPopups _questPopups;
 
-        public ShowPopupListener(IQuestGoal goal, IQuest quest, QuestPopups questPopups)
+        public ShowPopupListener(IQuestGoal goal, IQuest quest, IQuestPopups questPopups)
         {
             _goal = goal ?? throw new ArgumentNullException(nameof(goal));
             _quest = quest ?? throw new ArgumentNullException(nameof(quest));

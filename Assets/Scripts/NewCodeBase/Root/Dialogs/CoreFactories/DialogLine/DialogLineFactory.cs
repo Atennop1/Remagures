@@ -4,7 +4,7 @@ using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class DialogLineFactory : SerializedMonoBehaviour, IDialogLineFactory
     {
@@ -20,7 +20,7 @@ namespace Remagures.Root.DialogSystem
                 return _builtLine;
             
             var builtChoices = _choiceFactories.Select(builder => builder.Create()).ToList();
-            _builtLine = new DialogLine(_lineText, speakerInfoFactory._builtData, builtChoices);
+            _builtLine = new DialogLine(_lineText, speakerInfoFactory.Create(), builtChoices);
             return _builtLine;
         }
     }

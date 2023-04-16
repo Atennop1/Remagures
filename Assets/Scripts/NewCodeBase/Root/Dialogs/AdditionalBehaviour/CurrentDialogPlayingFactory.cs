@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class CurrentDialogPlayingFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {

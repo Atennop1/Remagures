@@ -2,7 +2,7 @@
 {
     public interface IDialogs
     {
-        Dialog CurrentDialog { get; }
+        IDialog CurrentDialog { get; }
         void SwitchCurrent(string dialogName);
     }
 }

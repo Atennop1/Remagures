@@ -4,7 +4,7 @@ using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class AdditionalBehavioursFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {

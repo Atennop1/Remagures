@@ -2,13 +2,13 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class QuestAddingFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {
         [SerializeField] private QuestsListFactory _questsListFactory;
         [SerializeField] private QuestFactory _questFactory;
-        private QuestAdding _builtBehaviour;
+        private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()
         {

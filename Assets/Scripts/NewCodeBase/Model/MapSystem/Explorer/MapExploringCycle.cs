@@ -5,9 +5,9 @@ namespace Remagures.Model.MapSystem
 {
     public sealed class MapExploringCycle
     {
-        private readonly MapExplorer _mapExplorer;
+        private readonly IMapExplorer _mapExplorer;
 
-        public MapExploringCycle(MapExplorer mapExplorer)
+        public MapExploringCycle(IMapExplorer mapExplorer)
             => _mapExplorer = mapExplorer ?? throw new ArgumentNullException(nameof(mapExplorer));
 
         public async void Activate()

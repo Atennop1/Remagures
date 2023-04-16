@@ -5,7 +5,7 @@ using Remagures.View.QuestSystem;
 
 namespace Remagures.Model.QuestSystem
 {
-    public sealed class QuestPopups
+    public sealed class QuestPopups : IQuestPopups
     {
         private readonly Queue<string> _popupsQueue = new();
         private readonly QuestPopupView _view;

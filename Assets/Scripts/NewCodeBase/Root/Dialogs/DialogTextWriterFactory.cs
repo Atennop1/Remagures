@@ -3,14 +3,14 @@ using Remagures.View.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class DialogTextWriterFactory : SerializedMonoBehaviour
     {
         [SerializeField] private DialogTextWriterView _dialogTextWriterView;
-        private DialogTextWriter _builtWriter;
+        private IDialogTextWriter _builtWriter;
         
-        public DialogTextWriter Create()
+        public IDialogTextWriter Create()
         {
             if (_builtWriter != null)
                 return _builtWriter;

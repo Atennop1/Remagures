@@ -29,10 +29,10 @@ namespace Remagures.Model.Health
             return totalDamage;
         }
 
-        public bool Activate()
+        public void Activate()
             => _isActivated = true;
 
-        public bool Deactivate()
+        public void Deactivate()
             => _isActivated = false;
     }
 }

@@ -4,9 +4,9 @@ using Remagures.Root;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapSelector : IUpdatable
+    public sealed class MapSelector : IUpdatable, IMapSelector
     {
-        public IMap CurrentLocationMap { get; } //TODO make this map open on the first click on the open map button
+        public IMap CurrentLocationMap { get; }
         public IMap SelectedMap { get; private set; }
         
         private readonly List<IMap> _maps;

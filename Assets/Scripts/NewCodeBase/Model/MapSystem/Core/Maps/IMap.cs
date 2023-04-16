@@ -9,6 +9,6 @@ namespace Remagures.Model.MapSystem
         void Open();
 
         IMarkers Markers { get; }
-        IReadOnlyList<MapTransition> Transitions { get; }
+        IReadOnlyList<IMapTransition> Transitions { get; }
     }
 }

@@ -7,9 +7,9 @@ namespace Remagures.Root
     public sealed class QuestPopupsFactory : MonoBehaviour
     {
         [SerializeField] private QuestPopupView popupView;
-        private QuestPopups _builtPopups;
+        private IQuestPopups _builtPopups;
         
-        public QuestPopups Create()
+        public IQuestPopups Create()
         {
             if (_builtPopups != null)
                 return _builtPopups;

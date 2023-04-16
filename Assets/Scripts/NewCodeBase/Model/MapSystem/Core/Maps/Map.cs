@@ -9,12 +9,12 @@ namespace Remagures.Model.MapSystem
     {
         public bool HasOpened { get; private set; }
         public IMarkers Markers { get; }
-        public IReadOnlyList<MapTransition> Transitions { get; }
+        public IReadOnlyList<IMapTransition> Transitions { get; }
         
         private readonly IMapView _mapView;
         private readonly IIsMapVisited _isMapVisited;
             
-        public Map(IMapView mapView, IMarkers markers, List<MapTransition> transitions, IIsMapVisited isMapVisited)
+        public Map(IMapView mapView, IMarkers markers, List<IMapTransition> transitions, IIsMapVisited isMapVisited)
         {
             _mapView = mapView ?? throw new ArgumentNullException(nameof(mapView));
             Markers = markers ?? throw new ArgumentNullException(nameof(markers));

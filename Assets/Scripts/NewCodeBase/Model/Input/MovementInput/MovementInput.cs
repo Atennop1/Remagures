@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Remagures.Model.Input
 {
-    public class MovementInput : IMovementInput
+    public class MovementInput : SerializedMonoBehaviour, IMovementInput
     {
-        private readonly PlayerInput _unityInput;
-
-        public MovementInput(PlayerInput unityInput)
-            => _unityInput = unityInput ?? throw new ArgumentNullException(nameof(unityInput));
+        [SerializeField] private PlayerInput _unityInput;
 
         public Vector2 MoveDirection 
             => _unityInput.actions["Move"].ReadValue<Vector2>();

@@ -4,16 +4,16 @@ using Remagures.Model.DialogSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Remagures.Root.DialogSystem
+namespace Remagures.Root.Dialogs
 {
     public sealed class DialogFactory : SerializedMonoBehaviour
     {
         [SerializeField] private string _name;
         [SerializeField] private List<IDialogLineFactory> _lineFactories;
 
-        private Dialog _builtDialog;
+        private IDialog _builtDialog;
 
-        public Dialog Create()
+        public IDialog Create()
         {
             if (_builtDialog != null)
                 return _builtDialog;

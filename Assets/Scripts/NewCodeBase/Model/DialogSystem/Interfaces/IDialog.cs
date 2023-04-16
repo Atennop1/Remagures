@@ -6,8 +6,11 @@ namespace Remagures.Model.DialogSystem
     {
         string Name { get; }
         bool CanSwitchToNextLine { get; }
+        bool IsCurrentLineLast { get; }
         
         IDialogLine CurrentLine { get; }
         IReadOnlyList<IDialogLine> Lines { get; }
+        
+        void SwitchToNextLine();
     }
 }

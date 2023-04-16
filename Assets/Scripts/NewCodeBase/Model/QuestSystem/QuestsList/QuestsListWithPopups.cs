@@ -8,9 +8,9 @@ namespace Remagures.Model.QuestSystem
         public IReadOnlyList<IQuest> Quests => _questsList.Quests;
         
         private readonly IQuestsList _questsList;
-        private readonly QuestPopups _questPopups;
+        private readonly IQuestPopups _questPopups;
 
-        public QuestsListWithPopups(IQuestsList questsList, QuestPopups questPopups)
+        public QuestsListWithPopups(IQuestsList questsList, IQuestPopups questPopups)
         {
             _questsList = questsList ?? throw new ArgumentNullException(nameof(questsList));
             _questPopups = questPopups ?? throw new ArgumentNullException(nameof(questPopups));

@@ -11,10 +11,10 @@ namespace Remagures.Model.Interactable
         public IItem Item => _chest.Item;
         
         private readonly IChest _chest;
-        private readonly DialogPlayer _dialogPlayer;
-        private readonly Dialog _dialog;
+        private readonly IDialogPlayer _dialogPlayer;
+        private readonly IDialog _dialog;
 
-        public ChestWithDialog(IChest chest, DialogPlayer dialogPlayer, Dialog dialog)
+        public ChestWithDialog(IChest chest, IDialogPlayer dialogPlayer, IDialog dialog)
         {
             _chest = chest ?? throw new ArgumentNullException(nameof(chest));
             _dialogPlayer = dialogPlayer ?? throw new ArgumentNullException(nameof(dialogPlayer));
