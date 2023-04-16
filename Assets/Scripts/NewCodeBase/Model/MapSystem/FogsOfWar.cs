@@ -8,7 +8,7 @@ namespace Remagures.Model.MapSystem
     {
         private readonly IReadOnlyDictionary<IMap, Texture2D> _fogs;
 
-        public FogsOfWar(IReadOnlyDictionary<IMap, Texture2D> fogs)
+        public FogsOfWar(Dictionary<IMap, Texture2D> fogs)
             => _fogs = fogs ?? throw new ArgumentNullException(nameof(fogs));
 
         public Texture2D GetFor(IMap map)

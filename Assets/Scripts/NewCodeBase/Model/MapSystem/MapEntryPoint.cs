@@ -1,17 +1,18 @@
 ﻿using Remagures.SO;
+using SaveSystem;
+using SaveSystem.Paths;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Remagures.Model.MapSystem
 {
-    public class MapEntryPoint : MonoBehaviour //TODO remove this when adding root layer
+    public class MapEntryPoint : MonoBehaviour
     {
-        [SerializeField] private StringValue _currentScene;
-        
         private void Awake()
         {
             var currentScene = SceneManager.GetActiveScene();
-            _currentScene.Value = currentScene.name;
+            var saveStorage = new BinaryStorage<string>(new Path("CurrentScene"));
+            saveStorage.Save(currentScene.name);
             PlayerPrefs.SetInt("Visited" + currentScene.path, 1);
         }
     }

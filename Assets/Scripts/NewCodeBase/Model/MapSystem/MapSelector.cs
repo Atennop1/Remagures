@@ -7,7 +7,7 @@ namespace Remagures.Model.MapSystem
     public sealed class MapSelector : IUpdatable
     {
         public IMap CurrentLocationMap { get; } //TODO make this map open on the first click on the open map button
-        public IMap CurrentMap { get; private set; }
+        public IMap SelectedMap { get; private set; }
         
         private readonly List<IMap> _maps;
 
@@ -15,7 +15,7 @@ namespace Remagures.Model.MapSystem
         {
             _maps = maps ?? throw new ArgumentNullException(nameof(maps));
             CurrentLocationMap = _maps.Find(map => map.Markers.CharacterMarker.IsActive());
-            CurrentMap = CurrentLocationMap;
+            SelectedMap = CurrentLocationMap;
         }
 
         public void Update()
@@ -23,7 +23,7 @@ namespace Remagures.Model.MapSystem
             var openedMap = _maps.Find(map => map.HasOpened);
 
             if (openedMap != null)
-                CurrentMap = openedMap;
+                SelectedMap = openedMap;
         }
     }
 }
