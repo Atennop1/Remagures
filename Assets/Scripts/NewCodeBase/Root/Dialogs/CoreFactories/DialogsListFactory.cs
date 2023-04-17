@@ -24,7 +24,7 @@ namespace Remagures.Root.Dialogs
             if (_builtDialog != null)
                 return _builtDialog;
             
-            _speakerInfoFactories.ForEach(factory => factory.Create()); //TODO check can i delete it and just create list
+            _speakerInfoFactories.ForEach(factory => factory.Create()); 
             _choiceFactories.ForEach(factory => factory.Create());
             _dialogLineFactories.ForEach(factory => factory.Create());
             _dialogFactories.ForEach(factory => factory.Create());

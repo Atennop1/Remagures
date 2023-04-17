@@ -16,8 +16,6 @@ namespace Remagures.Factories
             
             projectileGameObject.transform.rotation = rotation;
             return projectile;
-            
-            //projectile.GetComponent<CharacterAttack>().Init(_player.PlayerData.UniqueSetup); //TODO remove this after making composite layer
         }
     }
 }

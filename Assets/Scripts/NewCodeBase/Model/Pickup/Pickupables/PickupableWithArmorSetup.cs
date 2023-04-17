@@ -6,18 +6,18 @@ namespace Remagures.Model.Pickup
     public class PickupableWithArmorSetup : IPickupable
     {
         private readonly IPickupable _pickupable;
-        private readonly IArmorFactory _armorFactory;
+        private readonly IArmorSetuper _armorSetuper;
 
-        public PickupableWithArmorSetup(IPickupable pickupable, IArmorFactory armorFactory)
+        public PickupableWithArmorSetup(IPickupable pickupable, IArmorSetuper armorSetuper)
         {
             _pickupable = pickupable ?? throw new ArgumentNullException(nameof(pickupable));
-            _armorFactory = armorFactory ?? throw new ArgumentNullException(nameof(armorFactory));
+            _armorSetuper = armorSetuper ?? throw new ArgumentNullException(nameof(armorSetuper));
         }
 
         public void Pickup()
         {
             _pickupable.Pickup();
-            _armorFactory.Create();
+            _armorSetuper.Setup();
         }
     }
 }

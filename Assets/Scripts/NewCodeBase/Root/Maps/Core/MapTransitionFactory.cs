@@ -7,9 +7,9 @@ namespace Remagures.Root
     public sealed class MapTransitionFactory : SerializedMonoBehaviour
     {
         [SerializeField] private IMapFactory _mapFactory;
-        private MapTransition _builtTransition;
+        private IMapTransition _builtTransition;
         
-        public MapTransition Create()
+        public IMapTransition Create()
         {
             if (_builtTransition != null)
                 return _builtTransition;

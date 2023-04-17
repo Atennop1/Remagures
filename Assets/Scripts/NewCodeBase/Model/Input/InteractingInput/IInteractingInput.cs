@@ -1,6 +1,6 @@
 ﻿namespace Remagures.Model.Input
 {
-    public interface IInteractingInput //TODO make realization
+    public interface IInteractingInput
     {
         bool HasInteracted { get; }
     }
