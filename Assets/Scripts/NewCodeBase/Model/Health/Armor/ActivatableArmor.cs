@@ -3,7 +3,7 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Health
 {
-    public sealed class ActivatableArmor : IArmor
+    public sealed class ActivatableArmor : IArmor //TODO make this like and damage
     {
         private readonly IArmor _armor;
         private readonly float _armorCoefficient;

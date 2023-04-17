@@ -6,9 +6,9 @@ namespace Remagures.Root
 {
     public sealed class DamageFactory : SerializedMonoBehaviour, IDamageFactory
     {
-        [SerializeField] private int _value;
+        [SerializeField] private IDamageValueFactory _damageValueFactory;
         
         public IDamage Create() 
-            => new Damage(_value);
+            => new Damage(_damageValueFactory.Create());
     }
 }

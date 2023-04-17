@@ -2,7 +2,7 @@
 {
     public interface IDamage
     {
-        int Value { get; }
+        IDamageValue Value { get; }
         void ApplyTo(ITarget target);
     }
 }

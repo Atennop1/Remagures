@@ -6,7 +6,7 @@ namespace Remagures.Model.Character
 {
     public sealed class CharacterDamage : IDamage
     {
-        public int Value => _damage.Value;
+        public IDamageValue Value => _damage.Value;
         
         private readonly IHealthEffectFactory _healthEffectFactory;
         private readonly IDamage _damage;
@@ -19,8 +19,8 @@ namespace Remagures.Model.Character
 
         public void ApplyTo(ITarget target)
         {
-            target.Health.TakeDamage(Value);
-            _healthEffectFactory.Create(target, Value).Activate();
+            target.Health.TakeDamage(Value.Get());
+            _healthEffectFactory.Create(target, Value.Get()).Activate();
         }
     }
 }

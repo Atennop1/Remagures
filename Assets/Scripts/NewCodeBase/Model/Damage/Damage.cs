@@ -1,18 +1,18 @@
+using System;
 using Remagures.Model.Flashing;
-using Remagures.Tools;
 
 namespace Remagures.Model.Damage
 {
-    public sealed class Damage : IDamage //TODO make possibility to decorators
+    public sealed class Damage : IDamage 
     {
-        public int Value { get; }
+        public IDamageValue Value { get; }
 
-        public Damage(int damage)
-            => Value = damage.ThrowExceptionIfLessOrEqualsZero();
+        public Damage(IDamageValue damageValue)
+            => Value = damageValue ?? throw new ArgumentNullException(nameof(damageValue));
 
         public void ApplyTo(ITarget target)
         {
-            target.Health.TakeDamage(Value);
+            target.Health.TakeDamage(Value.Get());
             target.Flashingable.Flash(FlashColorType.Damage, FlashColorType.BeforeFlash);
         }
     }
