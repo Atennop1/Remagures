@@ -1,6 +1,6 @@
-﻿namespace Remagures.View.Character
+﻿namespace Remagures.View
 {
-    public interface ICharacterAttackerView
+    public interface IAttackView
     {
         void PlayAttackAnimation();
         void StopAttackAnimation();

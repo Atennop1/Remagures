@@ -25,7 +25,7 @@ namespace Remagures.Model.Character
             if (!_canAttack || IsAttacking) 
                 return;
             
-            _weaponInventorySelector.SelectedCell.Item.Use();
+            _weaponInventorySelector.SelectedCell.Item.Attack.Use();
             
             await CanAttackChanging();
             await IsAttackingChanging();
@@ -34,14 +34,14 @@ namespace Remagures.Model.Character
         private async UniTask IsAttackingChanging()
         {
             IsAttacking = false;
-            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.AttackingTimeInMilliseconds);
+            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.Attack.Data.AttackingTimeInMilliseconds);
             IsAttacking = true;
         }
 
         private async UniTask CanAttackChanging()
         {
             _canAttack = false;
-            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.UsingCooldownInMilliseconds);
+            await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.Attack.Data.UsingCooldownInMilliseconds);
             _canAttack = true;
         }
     }

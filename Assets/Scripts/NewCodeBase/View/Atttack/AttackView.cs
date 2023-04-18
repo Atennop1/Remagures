@@ -1,14 +1,14 @@
 ﻿using System;
 using Remagures.Model.Character;
 
-namespace Remagures.View.Character
+namespace Remagures.View
 {
-    public class CharacterAttackerView : ICharacterAttackerView
+    public class AttackView : IAttackView
     {
         private readonly ICharacterAnimations _characterAnimations;
         private const string ATTACK_ANIMATOR_NAME = "attacking";
 
-        public CharacterAttackerView(ICharacterAnimations characterAnimations)
+        public AttackView(ICharacterAnimations characterAnimations)
             => _characterAnimations = characterAnimations ?? throw new ArgumentNullException(nameof(characterAnimations));
 
         public void PlayAttackAnimation()

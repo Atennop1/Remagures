@@ -6,7 +6,10 @@ namespace Remagures.Root
     public sealed class WeaponItemFactory : MonoBehaviour, IItemFactory<IWeaponItem>
     {
         [field: SerializeField] public int ItemID { get; private set; }
-        [SerializeField] private WeaponItemData _data;
+        
+        [Space]
+        [SerializeField] private WeaponItemData _itemData;
+        [SerializeField] private IAttackFactory _attackFactory;
         private IWeaponItem _builtItem;
         
         public IWeaponItem Create()
@@ -14,8 +17,8 @@ namespace Remagures.Root
             if (_builtItem != null)
                 return _builtItem;
 
-            var item = new Item(_data.Name, _data.Description, _data.Sprite, _data.IsStackable);
-            _builtItem = new WeaponItem(item, _data.AnimatorController, _data.Damage, _data.UsingCooldownInMilliseconds, _data.AttackingTimeInMilliseconds);
+            var item = new Item(_itemData.Name, _itemData.Description, _itemData.Sprite, _itemData.IsStackable);
+            _builtItem = new WeaponItem(item, _itemData.AnimatorController, _attackFactory.Create(), _itemData.Damage);
             return _builtItem;
         }
     }

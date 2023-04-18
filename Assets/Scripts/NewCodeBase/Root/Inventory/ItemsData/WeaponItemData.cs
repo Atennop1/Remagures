@@ -7,7 +7,5 @@ namespace Remagures.Root
     {
         [field: SerializeField] public AnimatorOverrideController AnimatorController { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
-        [field: SerializeField] public int UsingCooldownInMilliseconds { get; private set; }
-        [field: SerializeField] public int AttackingTimeInMilliseconds { get; private set; }
     }
 }
