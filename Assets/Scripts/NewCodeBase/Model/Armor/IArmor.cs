@@ -1,4 +1,4 @@
-﻿namespace Remagures.Model.Health
+﻿namespace Remagures.Model
 {
     public interface IArmor
     {

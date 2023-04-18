@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Remagures.Model.Health;
-using Remagures.Model.InventorySystem;
+﻿using Remagures.Model;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ArmorFactory : MonoBehaviour, IArmorFactory 
+    public sealed class ArmorFactory : MonoBehaviour, IArmorFactory
     {
+        [SerializeField] private IArmorValueFactory _armorValueFactory;
         private Armor _builtArmor;
 
         IArmor IArmorFactory.Create()
@@ -18,7 +16,7 @@ namespace Remagures.Root
             if (_builtArmor != null)
                 return _builtArmor;
 
-            _builtArmor = new Armor(0);
+            _builtArmor = new Armor(_armorValueFactory.Create());
             return _builtArmor;
         }
     }

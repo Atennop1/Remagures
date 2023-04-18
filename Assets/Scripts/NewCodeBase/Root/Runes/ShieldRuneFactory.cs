@@ -6,7 +6,7 @@ namespace Remagures.Root
 {
     public sealed class ShieldRuneFactory : SerializedMonoBehaviour, IRuneFactory
     {
-        [SerializeField] private ActivatableArmorFactory _armorFactory;
+        [SerializeField] private ActivatableArmorValueFactory _armorValueFactory;
         private IRune _builtRune;
         
         public IRune Create()
@@ -14,7 +14,7 @@ namespace Remagures.Root
             if (_builtRune != null)
                 return _builtRune;
 
-            _builtRune = new ShieldRune(_armorFactory.Create());
+            _builtRune = new ShieldRune(_armorValueFactory.Create());
             return _builtRune;
         }
     }

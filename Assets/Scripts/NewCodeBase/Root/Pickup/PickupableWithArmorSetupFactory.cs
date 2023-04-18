@@ -7,9 +7,9 @@ namespace Remagures.Root
     public sealed class PickupableWithArmorSetupFactory : SerializedMonoBehaviour, IPickupableFactory
     {
         [SerializeField] private IPickupableFactory _pickupableFactory;
-        [SerializeField] private IArmorFactory _armorFactory;
+        [SerializeField] private IArmorSetuper _armorSetuper;
 
         public IPickupable Create()
-            => new PickupableWithArmorSetup(_pickupableFactory.Create(), _armorFactory);
+            => new PickupableWithArmorSetup(_pickupableFactory.Create(), _armorSetuper);
     }
 }

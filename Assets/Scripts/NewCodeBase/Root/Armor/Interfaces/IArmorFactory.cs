@@ -1,4 +1,5 @@
-﻿using Remagures.Model.Health;
+﻿using Remagures.Model;
+using Remagures.Model.Health;
 
 namespace Remagures.Root
 {

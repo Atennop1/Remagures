@@ -6,21 +6,21 @@ namespace Remagures.Model.RuneSystem
     public sealed class ShieldRune : IRune
     {
         public bool IsActive { get; private set; }
-        private readonly ActivatableArmor _activatableArmor;
+        private readonly ActivatableArmorValue _activatableArmorValue;
 
-        public ShieldRune(ActivatableArmor activatableArmor)
-            => _activatableArmor = activatableArmor ?? throw new ArgumentNullException(nameof(activatableArmor));
+        public ShieldRune(ActivatableArmorValue activatableArmorValue)
+            => _activatableArmorValue = activatableArmorValue ?? throw new ArgumentNullException(nameof(activatableArmorValue));
         
         public void Activate()
         {
             IsActive = true;
-            _activatableArmor.Activate();
+            _activatableArmorValue.Activate();
         }
 
         public void Deactivate()
         {
             IsActive = false;
-            _activatableArmor.Deactivate();
+            _activatableArmorValue.Deactivate();
         }
     }
 }
