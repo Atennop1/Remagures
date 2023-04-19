@@ -8,7 +8,7 @@ namespace Remagures.Model.AI.Enemies
     public sealed class PhysicsEnemyHealth : MonoBehaviour, IHealth
     {
         [SerializeField] private IGameObjectFactory _deathEffectFactory;
-        [SerializeField] private IGameObjectFactory _lootFactory;
+        [SerializeField] private ILootFactory _lootFactory;
         
         public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;
@@ -29,7 +29,7 @@ namespace Remagures.Model.AI.Enemies
                 return;
         
             CreateDeathEffect();
-            _lootFactory.Create(transform.position + new Vector3(0, 0.0000001f));
+            _lootFactory.CreateRandom(transform.position + new Vector3(0, 0.0000001f));
         }
 
         public void Heal(int amount)
