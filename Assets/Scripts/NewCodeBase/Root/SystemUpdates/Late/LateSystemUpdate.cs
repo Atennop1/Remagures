@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Remagures.Root
 {
-    public sealed class SystemUpdate : ISystemUpdate
+    public sealed class LateSystemUpdate : ILateSystemUpdate
     {
-        private readonly List<IUpdatable> _updatables = new();
+        private readonly List<ILateUpdatable> _updatables = new();
 
         public void UpdateAll() 
-            => _updatables.ForEach(updatable => updatable.Update());
+            => _updatables.ForEach(updatable => updatable.LateUpdate());
         
-        public void Add(params IUpdatable[] updatables)
+        public void Add(params ILateUpdatable[] updatables)
         {
             if (updatables == null)
                 throw new ArgumentException("Can't add null updatable");
@@ -18,7 +18,7 @@ namespace Remagures.Root
             _updatables.AddRange(updatables);
         }
 
-        public void Remove(IUpdatable updatable)
+        public void Remove(ILateUpdatable updatable)
         {
             if (updatable == null)
                 throw new ArgumentException("Can't remove null updatable");

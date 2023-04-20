@@ -2,8 +2,8 @@
 {
     public interface ISystemUpdate
     {
+        void UpdateAll();
         void Add(params IUpdatable[] update);
         void Remove(IUpdatable update);
-        void UpdateAll();
     }
 }

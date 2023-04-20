@@ -1,6 +1,6 @@
 ﻿namespace Remagures.Root
 {
-    public interface ILateUpdatable //TODO add this to system update
+    public interface ILateUpdatable
     {
         void LateUpdate();
     }
