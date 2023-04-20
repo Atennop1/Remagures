@@ -16,7 +16,7 @@ namespace Remagures.Root
             if (_builtSelector != null)
                 return _builtSelector;
 
-            _builtSelector = new MapSelector(_mapFactories.Select(factory => factory.Create()).ToList());
+            _builtSelector = new AutoMapSelector(_mapFactories.Select(factory => factory.Create()).ToList());
             return _builtSelector;
         }
     }

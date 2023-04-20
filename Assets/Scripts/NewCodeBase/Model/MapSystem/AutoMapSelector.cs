@@ -4,14 +4,14 @@ using Remagures.Root;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapSelector : IUpdatable, IMapSelector
+    public sealed class AutoMapSelector : IUpdatable, IMapSelector
     {
         public IMap CurrentLocationMap { get; }
         public IMap SelectedMap { get; private set; }
         
         private readonly List<IMap> _maps;
 
-        public MapSelector(List<IMap> maps)
+        public AutoMapSelector(List<IMap> maps)
         {
             _maps = maps ?? throw new ArgumentNullException(nameof(maps));
             CurrentLocationMap = _maps.Find(map => map.Markers.CharacterMarker.IsActive());

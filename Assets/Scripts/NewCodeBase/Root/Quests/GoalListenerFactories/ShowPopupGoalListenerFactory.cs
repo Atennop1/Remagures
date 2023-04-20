@@ -12,7 +12,6 @@ namespace Remagures.Root
         private void Awake()
         {
             var listener = new ShowPopupListener(_goalFactory.Create(), _questFactory.Create(), questPopupsFactory.Create());
-            //TODO add this and other listeners to loop
         }
     }
 }
