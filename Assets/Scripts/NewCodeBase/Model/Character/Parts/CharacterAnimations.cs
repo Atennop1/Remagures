@@ -28,11 +28,5 @@ namespace Remagures.Model.Character
             foreach (var animator in _animators)
                 animator.SetBool(key, value);
         }
-
-        public void SetAnim(string key)
-        {
-            foreach (var animator in _animators)
-                animator.Play(key);
-        }
     }
 }
