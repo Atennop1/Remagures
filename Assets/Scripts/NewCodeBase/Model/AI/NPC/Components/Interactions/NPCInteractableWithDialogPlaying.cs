@@ -26,7 +26,7 @@ namespace Remagures.Model.AI.NPC
             _npcInteractable.Interact();
         }
 
-        public void EndInteracting() 
-            => _npcInteractable.EndInteracting();
+        public void OnInteractionEnd() 
+            => _npcInteractable.OnInteractionEnd();
     }
 }

@@ -35,6 +35,6 @@ namespace Remagures.Model.Interactable
             HasInteractionEnded = true;
         }
 
-        public void EndInteracting() { }
+        public void OnInteractionEnd() { }
     }
 }

@@ -15,7 +15,7 @@ namespace Remagures.Model.Interactable
         public void Interact()
             => _interactable.Interact();
 
-        public void EndInteracting()
-            => _interactable.EndInteracting();
+        public void OnInteractionEnd()
+            => _interactable.OnInteractionEnd();
     }
 }

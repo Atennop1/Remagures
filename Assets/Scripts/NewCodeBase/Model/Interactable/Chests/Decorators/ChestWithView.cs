@@ -34,7 +34,7 @@ namespace Remagures.Model.Interactable
             _chestView.DisplayOpened();
         }
 
-        public void EndInteracting() 
-            => _chest.EndInteracting();
+        public void OnInteractionEnd() 
+            => _chest.OnInteractionEnd();
     }
 }

@@ -38,7 +38,7 @@ namespace Remagures.Model.Character
 
         private void Update()
         {
-            if (_characterInteractor.CurrentInteractable is { HasInteractionEnded: false })
+            if (!_characterInteractor.CurrentInteractable.HasInteractionEnded)
                 return;
             
             _characterInteractor.EndInteraction();

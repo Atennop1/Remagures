@@ -38,7 +38,7 @@ namespace Remagures.Model.Character
         public void EndInteraction()
         {
             CurrentState = InteractionState.None;
-            CurrentInteractable.EndInteracting();
+            CurrentInteractable.OnInteractionEnd();
             
             _view.DisplayEndOfInteraction();
             CurrentInteractable = null;

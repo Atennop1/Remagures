@@ -32,7 +32,7 @@ namespace Remagures.Model.Interactable
             _triggerCollider.enabled = false;
         }
 
-        public void EndInteracting()
-            => _chest.EndInteracting();
+        public void OnInteractionEnd()
+            => _chest.OnInteractionEnd();
     }
 }

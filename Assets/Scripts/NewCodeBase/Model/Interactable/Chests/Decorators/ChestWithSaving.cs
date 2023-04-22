@@ -30,7 +30,7 @@ namespace Remagures.Model.Interactable
             IsOpened = true;
         }
 
-        public void EndInteracting() 
-            => _chest.EndInteracting();
+        public void OnInteractionEnd() 
+            => _chest.OnInteractionEnd();
     }
 }

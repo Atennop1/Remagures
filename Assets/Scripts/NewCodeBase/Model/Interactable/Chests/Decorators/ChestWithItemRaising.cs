@@ -29,9 +29,9 @@ namespace Remagures.Model.Interactable
             _view.Display(Item);
         }
 
-        public void EndInteracting()
+        public void OnInteractionEnd()
         {
-            _chest.EndInteracting();
+            _chest.OnInteractionEnd();
             _view.EndDisplaying();
         }
     }

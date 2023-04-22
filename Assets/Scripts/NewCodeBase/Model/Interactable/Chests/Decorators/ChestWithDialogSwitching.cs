@@ -29,7 +29,7 @@ namespace Remagures.Model.Interactable
             _dialogSwitcher.Switch();
         }
 
-        public void EndInteracting()
-            => _chest.EndInteracting();
+        public void OnInteractionEnd()
+            => _chest.OnInteractionEnd();
     }
 }

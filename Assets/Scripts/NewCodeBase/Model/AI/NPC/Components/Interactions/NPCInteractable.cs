@@ -6,7 +6,7 @@ namespace Remagures.Model.AI.NPC
 {
     public sealed class NPCInteractable : INPCInteractable, ILateUpdatable
     {
-        public bool HasInteractionStarted { get; private set; } //TODO try to remove this
+        public bool HasInteractionStarted { get; private set; }
         public bool HasInteractionEnded { get; private set; }
         
         private readonly INPCInteractableView _npcInteractableView;
@@ -26,7 +26,7 @@ namespace Remagures.Model.AI.NPC
             _npcInteractableView.DisplayInteraction();
         }
 
-        public void EndInteracting()
+        public void OnInteractionEnd()
         {
             HasInteractionEnded = true;
             _npcInteractableView.DisplayEndOfInteraction();

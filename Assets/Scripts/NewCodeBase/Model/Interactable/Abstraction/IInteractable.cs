@@ -4,6 +4,6 @@
     {
         bool HasInteractionEnded { get; }
         void Interact();
-        void EndInteracting();
+        void OnInteractionEnd();
     }
 }
