@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.AI.Enemies
 {
-    public interface IEnemyAnimations //TODO i think it can be renamed to IEnemyView with some refactoring
+    public interface IEnemyAnimations
     {
         void SetIsWakeUp(bool isActive);
         void SetIsStaying(bool isActive);

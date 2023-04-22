@@ -2,7 +2,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Remagures.Tools;
-using Remagures.View.Enemies;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
@@ -13,15 +12,15 @@ namespace Remagures.Model.AI.Enemies
         public Transform Transform => _rigidbody.transform;
         
         private readonly Rigidbody2D _rigidbody;
-        private readonly IEnemyMovementView _enemyMovementView;
+        private readonly IEnemyAnimations _enemyAnimations;
         private readonly float _speed;
 
         private CancellationTokenSource _cancellationTokenSource;
 
-        public DefaultEnemyMovement(Rigidbody2D rigidbody, IEnemyMovementView enemyMovementView, float speed)
+        public DefaultEnemyMovement(Rigidbody2D rigidbody, IEnemyAnimations enemyAnimations, float speed)
         {
             _rigidbody = rigidbody ?? throw new ArgumentNullException(nameof(rigidbody));
-            _enemyMovementView = enemyMovementView ?? throw new ArgumentNullException(nameof(enemyMovementView));
+            _enemyAnimations = enemyAnimations ?? throw new ArgumentNullException(nameof(enemyAnimations));
             _speed = speed.ThrowExceptionIfLessOrEqualsZero();
         }
 
@@ -34,14 +33,14 @@ namespace Remagures.Model.AI.Enemies
             _cancellationTokenSource = new CancellationTokenSource();
             
             await MoveTask(targetPosition);
-            _enemyMovementView.SetIsStaying(false);
-            _enemyMovementView.SetAnimationsVector((Vector2)targetPosition - _rigidbody.position);
+            _enemyAnimations.SetIsStaying(false);
+            _enemyAnimations.SetAnimationsVector((Vector2)targetPosition - _rigidbody.position);
         }
 
         public void StopMoving()
         {
             _cancellationTokenSource.Cancel();
-            _enemyMovementView.SetIsStaying(true);
+            _enemyAnimations.SetIsStaying(true);
             CanMove = true;
         }
         
