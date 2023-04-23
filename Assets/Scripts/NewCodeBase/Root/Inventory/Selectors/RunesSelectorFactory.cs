@@ -9,7 +9,12 @@ namespace Remagures.Root
     {
         [SerializeField] private IInventoryFactory<IRuneItem> _runesInventoryFactory;
         [SerializeField] private SelectedRuneView _selectedRuneView;
-        private IInventoryCellSelector<IRuneItem> _builtSelector;
+        
+        private RunesSelector _builtSelector;
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
         
         public IInventoryCellSelector<IRuneItem> Create()
         {
@@ -17,6 +22,7 @@ namespace Remagures.Root
                 return _builtSelector;
             
             _builtSelector = new RunesSelector(_runesInventoryFactory.Create(), _selectedRuneView);
+            _lateSystemUpdate.Add(_builtSelector);
             return _builtSelector;
         }
     }

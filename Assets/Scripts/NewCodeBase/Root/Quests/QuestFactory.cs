@@ -13,6 +13,10 @@ namespace Remagures.Root
 
         private Quest _builtQuest;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
 
         private void Update()
             => _systemUpdate.UpdateAll();
@@ -25,6 +29,7 @@ namespace Remagures.Root
             var questData = new Remagures.Model.QuestSystem.QuestData(_questData.Name, _questData.Description, new SerializableSprite(_questData.Sprite.texture));
             _builtQuest = new Quest(_goalFactories.Select(factory => factory.Create()).ToList(), questData);
             _systemUpdate.Add(_builtQuest);
+            _lateSystemUpdate.Add(_builtQuest);
             return _builtQuest;
         }
     }

@@ -12,6 +12,10 @@ namespace Remagures.Root
         
         private AutoArmorSelector _builtSelector;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
 
         private void Update()
             => _systemUpdate.UpdateAll();
@@ -26,6 +30,8 @@ namespace Remagures.Root
             
             _systemUpdate.Add(_builtSelector);
             _systemUpdate.Add(displayableItemApplier);
+            _lateSystemUpdate.Add(_builtSelector);
+            
             return _builtSelector;
         }
     }

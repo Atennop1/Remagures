@@ -9,7 +9,12 @@ namespace Remagures.Root.Dialogs
     {
         [SerializeField] private DialogTextWriterFactory _dialogTextWriterFactory;
         [SerializeField] private DialogView _dialogView;
-        private IDialogPlayer _builtPlayer;
+        
+        private DialogPlayer _builtPlayer;
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
 
         public IDialogPlayer Create()
         {
@@ -17,6 +22,7 @@ namespace Remagures.Root.Dialogs
                 return _builtPlayer;
 
             _builtPlayer = new DialogPlayer(_dialogTextWriterFactory.Create(), _dialogView);
+            _lateSystemUpdate.Add(_builtPlayer);
             return _builtPlayer;
         }
     }

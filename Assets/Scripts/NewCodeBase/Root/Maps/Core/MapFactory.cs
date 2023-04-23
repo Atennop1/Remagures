@@ -13,7 +13,12 @@ namespace Remagures.Root
         [SerializeField] private IMarkersFactory _markersFactory;
         [SerializeField] private List<MapTransitionFactory> _transitionsFactories;
         [SerializeField] private IIsMapVisitedFactory _isMapVisitedFactory;
-        private IMap _builtMap;
+        
+        private Map _builtMap;
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
         
         public IMap Create()
         {
@@ -21,6 +26,7 @@ namespace Remagures.Root
                 return _builtMap;
 
             _builtMap = new Map(_mapView, _markersFactory.Create(), _transitionsFactories.Select(factory => factory.Create()).ToList(), _isMapVisitedFactory.Create());
+            _lateSystemUpdate.Add(_builtMap);
             return _builtMap;
         }
     }

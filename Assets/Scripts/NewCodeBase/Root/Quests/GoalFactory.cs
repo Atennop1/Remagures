@@ -10,6 +10,10 @@ namespace Remagures.Root
         
         private QuestGoal _builtQuestGoal;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+        private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();
+
+        private void LateUpdate()
+            => _lateSystemUpdate.UpdateAll();
 
         private void Update()
             => _systemUpdate.UpdateAll();
@@ -21,6 +25,7 @@ namespace Remagures.Root
             
             _builtQuestGoal = new QuestGoal(_goalData.Description, _progressFactory.Create());
             _systemUpdate.Add(_builtQuestGoal);
+            _lateSystemUpdate.Add(_builtQuestGoal);
             return _builtQuestGoal;
         }
     }
