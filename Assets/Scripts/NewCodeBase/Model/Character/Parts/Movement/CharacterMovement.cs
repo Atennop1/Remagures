@@ -34,7 +34,7 @@ namespace Remagures.Model.Character
             _view.DisplayCharacterLookDirection(CharacterLookDirection);
         }
 
-        public void MoveTo(Vector3 endPosition)
+        public async void MoveTo(Vector3 endPosition)
         {
             IsMoving = true;
             var direction = (endPosition - Transform.position).normalized;
@@ -45,7 +45,7 @@ namespace Remagures.Model.Character
             _view.StartMoveAnimation();
             _view.DisplayCharacterLookDirection(direction);
 
-            MovingTask(direction);
+            await MovingTask(direction);
             IsMoving = false;
         }
 
@@ -55,7 +55,7 @@ namespace Remagures.Model.Character
             _view.EndMoveAnimation();
         }
 
-        private async void MovingTask(Vector3 endPosition)
+        private async UniTask MovingTask(Vector3 endPosition)
         {
             while (Transform.position != endPosition)
             {

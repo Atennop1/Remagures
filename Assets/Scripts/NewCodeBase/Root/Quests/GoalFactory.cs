@@ -7,7 +7,12 @@ namespace Remagures.Root
     {
         [SerializeField] private GoalData _goalData;
         [SerializeField] private IProgressFactory _progressFactory;
-        private IQuestGoal _builtQuestGoal;
+        
+        private QuestGoal _builtQuestGoal;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+
+        private void Update()
+            => _systemUpdate.UpdateAll();
         
         public IQuestGoal Create()
         {
@@ -15,6 +20,7 @@ namespace Remagures.Root
                 return _builtQuestGoal;
             
             _builtQuestGoal = new QuestGoal(_goalData.Description, _progressFactory.Create());
+            _systemUpdate.Add(_builtQuestGoal);
             return _builtQuestGoal;
         }
     }

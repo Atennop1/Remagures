@@ -1,11 +1,15 @@
 ﻿using System;
 using Remagures.Model.MapSystem;
-using Remagures.Root;
+using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class MapExploringMovementListener : IUpdatable
+    public class MapExploringMovementListener : ICharacterMovement
     {
+        public Transform Transform => _characterMovement.Transform;
+        public Vector2 CharacterLookDirection => _characterMovement.CharacterLookDirection;
+        public bool IsMoving => _characterMovement.IsMoving;
+        
         private readonly ICharacterMovement _characterMovement;
         private readonly IMapExplorer _mapExplorer;
 
@@ -15,10 +19,13 @@ namespace Remagures.Model.Character
             _mapExplorer = mapExplorer ?? throw new ArgumentNullException(nameof(mapExplorer));
         }
 
-        public void Update()
+        public void MoveTo(Vector3 endPosition)
         {
-            if (_characterMovement.IsMoving)
-                _mapExplorer.Explore();
+            _mapExplorer.Explore();
+            _characterMovement.MoveTo(endPosition);
         }
+
+        public void StopMoving() 
+            => _characterMovement.StopMoving();
     }
 }

@@ -9,7 +9,12 @@ namespace Remagures.Root
     public sealed class MapSelectorFactory : SerializedMonoBehaviour
     {
         [SerializeField] private List<IMapFactory> _mapFactories;
-        private IMapSelector _builtSelector;
+        
+        private AutoMapSelector _builtSelector;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+
+        private void Update()
+            => _systemUpdate.UpdateAll();
 
         public IMapSelector Create()
         {
@@ -17,6 +22,7 @@ namespace Remagures.Root
                 return _builtSelector;
 
             _builtSelector = new AutoMapSelector(_mapFactories.Select(factory => factory.Create()).ToList());
+            _systemUpdate.Add(_builtSelector);
             return _builtSelector;
         }
     }

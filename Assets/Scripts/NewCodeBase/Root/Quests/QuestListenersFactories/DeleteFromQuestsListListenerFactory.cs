@@ -7,10 +7,15 @@ namespace Remagures.Root.QuestListenersFactories
     {
         [SerializeField] private QuestFactory _questFactory;
         [SerializeField] private QuestsListFactory _questsListFactory;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+
+        private void Update()
+            => _systemUpdate.UpdateAll();
 
         private void Awake()
         {
             var listener = new DeleteFromQuestsListListener(_questFactory.Create(), _questsListFactory.Create());
+            _systemUpdate.Add(listener);
         }
     }
 }

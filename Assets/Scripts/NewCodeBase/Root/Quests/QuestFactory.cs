@@ -11,7 +11,11 @@ namespace Remagures.Root
         [SerializeField] private QuestData _questData;
         [SerializeField] private GoalFactory[] _goalFactories;
 
-        private IQuest _builtQuest;
+        private Quest _builtQuest;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+
+        private void Update()
+            => _systemUpdate.UpdateAll();
         
         public IQuest Create()
         {
@@ -20,6 +24,7 @@ namespace Remagures.Root
             
             var questData = new Remagures.Model.QuestSystem.QuestData(_questData.Name, _questData.Description, new SerializableSprite(_questData.Sprite.texture));
             _builtQuest = new Quest(_goalFactories.Select(factory => factory.Create()).ToList(), questData);
+            _systemUpdate.Add(_builtQuest);
             return _builtQuest;
         }
     }

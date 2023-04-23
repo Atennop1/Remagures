@@ -8,9 +8,13 @@ namespace Remagures.Root
     {
         [SerializeField] private ICellView _selectedCellView;
         [SerializeField] private IDisplayableItemView _displayableItemView;
-        
         [SerializeField] private IInventoryFactory<IArmorItem> _armorInventoryFactory;
-        private IInventoryCellSelector<IArmorItem> _builtSelector;
+        
+        private AutoArmorSelector _builtSelector;
+        private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
+
+        private void Update()
+            => _systemUpdate.UpdateAll();
 
         public IInventoryCellSelector<IArmorItem> Create()
         {
@@ -19,6 +23,9 @@ namespace Remagures.Root
             
             _builtSelector = new AutoArmorSelector(_armorInventoryFactory.Create(), _selectedCellView);
             var displayableItemApplier = new DisplayableItemApplier<IArmorItem>(_builtSelector, _displayableItemView);
+            
+            _systemUpdate.Add(_builtSelector);
+            _systemUpdate.Add(displayableItemApplier);
             return _builtSelector;
         }
     }
