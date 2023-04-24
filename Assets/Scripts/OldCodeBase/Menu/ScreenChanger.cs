@@ -10,13 +10,12 @@ namespace Remagures.Menu
     {
         [SerializeField] private GameObject _meatCanvas;
         [SerializeField] private GameOverHandler _gameOver;
-        [FormerlySerializedAs("_saveContainer")] [SerializeField] private GameSaver _gameSaver;
 
         public void ChangeScreen(GameObject screen)
         {
             var active = !screen.activeInHierarchy;
             screen.SetActive(active);
-            UnityEngine.Time.timeScale = !active ? 1 : 0;
+            Time.timeScale = !active ? 1 : 0;
         }
 
         public void ShowMeatScreen()
@@ -24,17 +23,11 @@ namespace Remagures.Menu
 
         public void ToMenu()
         {
-            _gameOver.SetGameOver();
             SceneManager.LoadScene("Menu");
-            UnityEngine.Time.timeScale = 1;
-            _gameSaver.SaveGame();
+            Time.timeScale = 1;
         }
 
-        public void Restart()
-        {
-            _gameOver.SetGameOver();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            _gameSaver.SaveGame();
-        }
+        public void Restart() 
+            => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -609,7 +609,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132295241}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: CloseNewGame
+        m_MethodName: CloseNewGamePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -983,7 +983,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132295241}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: NewGame
+        m_MethodName: RequestNewGameStarting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1277,7 +1277,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132295241}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Sure
+        m_MethodName: ConfirmNewGameStarting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2017,7 +2017,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132295241}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeMind
+        m_MethodName: CancelNewGameStarting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2151,7 +2151,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132295241}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Sure
+        m_MethodName: ConfirmNewGameStarting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
