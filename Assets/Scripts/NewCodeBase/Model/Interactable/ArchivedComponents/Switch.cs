@@ -1,6 +1,4 @@
 using Remagures.Model.Character;
-using Remagures.Tools;
-using Remagures.Tools.SwampAttack.Runtime.Tools.SaveSystem;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable

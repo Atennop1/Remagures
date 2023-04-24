@@ -1,9 +1,8 @@
 using System.Collections;
-using Remagures.SO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Remagures.Components
+namespace Remagures.Uncategorized
 {
     public class GameOverHandler : MonoBehaviour //TODO make this via polling
     {

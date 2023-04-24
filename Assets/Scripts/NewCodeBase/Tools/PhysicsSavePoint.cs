@@ -3,9 +3,9 @@ using SaveSystem;
 using SaveSystem.Paths;
 using UnityEngine;
 
-namespace Remagures.Components
+namespace Remagures.Tools
 {
-    public sealed class SavePoint : MonoBehaviour
+    public sealed class PhysicsSavePoint : MonoBehaviour
     {
         private readonly ISaveStorage<CharacterPositionData> _storage = new BinaryStorage<CharacterPositionData>(new Path("CharacterPositionData"));
 

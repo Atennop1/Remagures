@@ -1,6 +1,5 @@
 ﻿using System;
 using Remagures.Model.InventorySystem;
-using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable

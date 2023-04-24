@@ -3,9 +3,9 @@ using SaveSystem.Paths;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.Menu
+namespace Remagures.View
 {
-    public sealed class MainMenuButtons : MonoBehaviour 
+    public sealed class MainMenuButtons : MonoBehaviour //TODO split this to buttons classes
     {
         [SerializeField] private GameObject _newGameMenu;
         [SerializeField] private GameObject _oldGameMenu;

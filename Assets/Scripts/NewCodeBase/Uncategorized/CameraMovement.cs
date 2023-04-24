@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Remagures.Components
+namespace Remagures.Uncategorized
 {
     public class CameraMovement : MonoBehaviour
     {

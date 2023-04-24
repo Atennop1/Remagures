@@ -1,15 +1,11 @@
-using Remagures.Components;
-using Remagures.Tools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-namespace Remagures.Menu
+namespace Remagures.View
 {
-    public class ScreenChanger : MonoBehaviour
+    public sealed class ScreenChanger : MonoBehaviour //TODO transform this to buttons classes
     {
         [SerializeField] private GameObject _meatCanvas;
-        [SerializeField] private GameOverHandler _gameOver;
 
         public void ChangeScreen(GameObject screen)
         {

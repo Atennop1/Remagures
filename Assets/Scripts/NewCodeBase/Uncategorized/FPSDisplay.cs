@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Components
+namespace Remagures.Uncategorized
 {
     public class FPSDisplay : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace Remagures.Components
 
         private void Update()
         {
-            _time += UnityEngine.Time.deltaTime;
+            _time += Time.deltaTime;
             _framesCount++;
 
             if (!(_time >= _pollingTime)) return;

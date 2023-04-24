@@ -1,5 +1,4 @@
 ﻿using Remagures.Model.InventorySystem;
-using Remagures.SO;
 
 namespace Remagures.View.Interactable
 {

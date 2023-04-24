@@ -1,5 +1,4 @@
 using System;
-using Remagures.SO;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
