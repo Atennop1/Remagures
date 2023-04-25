@@ -1,5 +1,4 @@
-﻿using Remagures.SO;
-using SaveSystem;
+﻿using SaveSystem;
 using SaveSystem.Paths;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -1,12 +1,15 @@
 using System;
+using SaveSystem;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public class Door : IInteractable
+    public sealed class Door : IInteractable
     {
+        public bool HasInteractionEnded { get; private set; }
+        
         [SerializeField] private DoorType _thisDoorType;
-        [SerializeField] private FloatValue _numberOfKeys;
+        [SerializeField] private BinaryStorage<int> _numberOfKeysStorage;
 
         [Space]
         [SerializeField] private SpriteRenderer _doorSprite;
@@ -16,8 +19,8 @@ namespace Remagures.Model.Interactable
         {
             switch (_thisDoorType)
             {
-                case DoorType.Key when _numberOfKeys.Value > 0:
-                    _numberOfKeys.Value--;
+                case DoorType.Key when _numberOfKeysStorage.Load() > 0:
+                    _numberOfKeysStorage.Save(_numberOfKeysStorage.Load() - 1);
                     break;
                 
                 case DoorType.Key:
@@ -29,16 +32,17 @@ namespace Remagures.Model.Interactable
 
             _doorSprite.enabled = false;
             _collider.enabled = false;
+            HasInteractionEnded = true;
             _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        
-            //PlayerInteract.ResetCurrentInteractable(this);
         }
-    
+        
         public void CloseDoor()
         {
             _doorSprite.enabled = true;
             _collider.enabled = true;
             _collider.transform.parent.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
+
+        public void OnInteractionEnd() { }
     }
 }

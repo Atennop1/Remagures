@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Remagures.Model.InventorySystem;
+using Remagures.Root;
 using Remagures.Tools;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,14 +10,15 @@ namespace Remagures.View.Inventory
 {
     public class ItemInfoView<T> : MonoBehaviour, IItemInfoView<T> where T: IItem
     {
+        [SerializeField] private IItemFactory<IItem> _nullItemFactory;
         [SerializeField] private Button _useButton;
+        
+        [Space]
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;
 
         private RectTransform _descriptionTextRect;
         private IInventory<T> _inventory;
-        
-        private readonly IItem _nullItem = new Item();
         private Action _useButtonListener;
 
         public void Construct(IInventory<T> inventory)
@@ -29,7 +31,7 @@ namespace Remagures.View.Inventory
         }
 
         private void OnEnable()
-            => Display((T)_nullItem);
+            => Display((T)_nullItemFactory.Create());
 
         public void Display(T item)
         {
@@ -57,7 +59,7 @@ namespace Remagures.View.Inventory
             _inventory.Remove(new Cell<T>(item));
 
             if (_inventory.Cells.ToList().Find(cell => cell.Item.AreEquals(item)) != null)
-                Display((T)_nullItem);
+                Display((T)_nullItemFactory);
         }
     }
 }
