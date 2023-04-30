@@ -7,42 +7,37 @@ namespace Remagures.Model.Character
     public sealed class CharacterAttacker
     {
         public bool IsAttacking { get; private set; }
+        public bool CanAttack => _hasCooldownActive && !IsAttacking;
         
         private readonly IInventoryCellSelector<IWeaponItem> _weaponInventorySelector;
-        private bool _canAttack;
+        private bool _hasCooldownActive;
 
         public CharacterAttacker(IInventoryCellSelector<IWeaponItem> weaponInventorySelector) 
             => _weaponInventorySelector = weaponInventorySelector ?? throw new ArgumentNullException(nameof(weaponInventorySelector));
 
-        public async void UseAttack()
+        public async void Attack()
         {
-            //if (_playerInteractingHandler.CurrentState == InteractingState.Ready) //TODO place this logic in another class
-            //{
-            //    _playerInteractingHandler.Interact();
-            //    return;
-            //}
-
-            if (!_canAttack || IsAttacking) 
+            if (!CanAttack) 
                 return;
             
             _weaponInventorySelector.SelectedCell.Item.Attack.Use();
             
-            await CanAttackChanging();
-            await IsAttackingChanging();
+            await ActivateUsingCooldown();
+            await ActivateAttackingCooldown();
         }
 
-        private async UniTask IsAttackingChanging()
+        private async UniTask ActivateAttackingCooldown()
         {
             IsAttacking = false;
             await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.Attack.Data.AttackingTimeInMilliseconds);
             IsAttacking = true;
         }
 
-        private async UniTask CanAttackChanging()
+        private async UniTask ActivateUsingCooldown()
         {
-            _canAttack = false;
+            _hasCooldownActive = false;
             await UniTask.Delay(_weaponInventorySelector.SelectedCell.Item.Attack.Data.UsingCooldownInMilliseconds);
-            _canAttack = true;
+            _hasCooldownActive = true;
         }
     }
 }

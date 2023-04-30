@@ -7,6 +7,6 @@ namespace Remagures.Model.Character.BehaviourTree
         public SharedCharacterAttacker SharedCharacterAttacker;
 
         public override void OnAwake()
-            => SharedCharacterAttacker.Value.UseAttack();
+            => SharedCharacterAttacker.Value.Attack();
     }
 }
