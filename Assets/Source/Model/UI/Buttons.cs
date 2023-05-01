@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Remagures.Model
+namespace Remagures.Model.UI
 {
     public sealed class Buttons : IButton
     {

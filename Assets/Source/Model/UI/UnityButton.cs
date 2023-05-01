@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model
+namespace Remagures.Model.UI
 {
     [RequireComponent(typeof(Button))]
     public sealed class UnityButton : MonoBehaviour

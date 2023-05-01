@@ -1,4 +1,4 @@
-﻿namespace Remagures.Model
+﻿namespace Remagures.Model.UI
 {
     public interface IButton
     {

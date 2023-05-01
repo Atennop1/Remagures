@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Remagures.Model
+namespace Remagures.Model.UI
 {
     public sealed class DisableObjectButton : IButton
     {

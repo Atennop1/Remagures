@@ -2,7 +2,7 @@
 using SaveSystem.Paths;
 using UnityEngine.SceneManagement;
 
-namespace Remagures.Model
+namespace Remagures.Model.UI
 {
     public sealed class RestartButton : IButton
     {

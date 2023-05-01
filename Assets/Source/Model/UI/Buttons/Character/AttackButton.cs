@@ -1,6 +1,6 @@
 ﻿using Remagures.Model.Character;
 
-namespace Remagures.Model
+namespace Remagures.Model.UI
 {
     public sealed class AttackButton : IButton
     {
