@@ -12,6 +12,7 @@ namespace Remagures.Root
         
         private void Awake()
         {
+            Application.targetFrameRate = 60;
             _dialogsListFactory.Create();
             _gridsFactory.Create();
             cutsceneFactory.Create();
