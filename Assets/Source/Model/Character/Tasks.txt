@@ -10,24 +10,3 @@ _deathSignal.Invoke();
 _canvas.SetActive(false);
 _music.SetActive(false);
 gameObject.transform.parent.gameObject.SetActive(false);
-
-//TODO throw this logic to new component
-private void SetupDamage()
-{
-    if (_isPlayerAttack)
-    {
-        _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.WeaponSlot.ThisCell.Item).Damage * _characterInfo.SwordDamageCoefficient);
-        return;
-    }
-
-    if (_isPlayerMagic)
-    {
-        _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.MagicSlot.ThisCell.Item).Damage * _characterInfo.MagicDamageCoefficient);
-        return;
-    }
-
-    if (!_isArrow) 
-        return;
-            
-   _damage = Mathf.RoundToInt(((IWeaponItem)_uniqueSetup.MagicSlot.ThisCell.Item).Damage * _characterInfo.BowDamageCoefficient);
-}
