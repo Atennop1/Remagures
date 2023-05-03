@@ -22,10 +22,10 @@ namespace Remagures.View.Inventory
             => _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
         
         private void OnEnable()
-            => SetupCells();
+            => DisplayCells();
 
         private void Awake()
-            => _useButton.onClick.AddListener(SetupCells);
+            => _useButton.onClick.AddListener(DisplayCells);
 
         private void CreateSlots()
         {
@@ -40,7 +40,7 @@ namespace Remagures.View.Inventory
             }
         }
 
-        private void SetupCells()
+        private void DisplayCells()
         {
             DeleteAllCells();
             CreateSlots();
