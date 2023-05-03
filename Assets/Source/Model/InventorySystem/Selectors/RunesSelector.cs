@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Remagures.Model.RuneSystem;
 using Remagures.Root;
+using Remagures.View.RuneSystem;
 
 namespace Remagures.Model.InventorySystem
 {

@@ -4,9 +4,9 @@ using Remagures.Model.InventorySystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model.RuneSystem
+namespace Remagures.View.RuneSystem
 {
-    public sealed class RuneView : MonoBehaviour
+    public sealed class RuneCellView : MonoBehaviour
     {
         [SerializeField] private Button _button;
         [SerializeField] private Image _image;
@@ -25,10 +25,13 @@ namespace Remagures.Model.RuneSystem
 
         private void OnEnable()
         {
-            UnDisplay();
-            
             if (_runesInventory.Cells.Any(cell => cell.Item.Equals(_runeItem)))
+            {
                 Display();
+                return;
+            }
+            
+            UnDisplay();
         }
 
         private void Display()

@@ -1,27 +1,17 @@
-using System;
 using Remagures.Model.InventorySystem;
+using Remagures.View.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Remagures.Model.RuneSystem
+namespace Remagures.View.RuneSystem
 {
-    public sealed class SelectedRuneView : MonoBehaviour
+    public sealed class SelectedRuneView : MonoBehaviour, IItemInfoView<IRuneItem>
     {
-        [Header("UI")]
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;
         [SerializeField] private Image _currentRuneImage;
-        [SerializeField] private Sprite _absenceRuneSprite;
-
-        [Header("Objects")]
         [SerializeField] private GameObject _equipButton;
-        [SerializeField] private GameObject _noneText;
 
-        private IInventory<IRuneItem> _inventory;
-
-        public void Construct(IInventory<IRuneItem> inventory)
-            => _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
-        
         public void Display(IRuneItem item)
         {
             _nameText.text = item.Name;
@@ -32,10 +22,8 @@ namespace Remagures.Model.RuneSystem
         
         private void OnEnable()
         {
-            _currentRuneImage.sprite = _absenceRuneSprite;
             _descriptionText.text = "";
             _nameText.text = "";
-            _noneText.SetActive(_inventory.Cells.Count < 1);
         }
 
         private void Close()

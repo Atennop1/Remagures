@@ -1,5 +1,6 @@
 ﻿using Remagures.Model.InventorySystem;
 using Remagures.Model.RuneSystem;
+using Remagures.View.RuneSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
