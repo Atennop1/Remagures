@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.QuestSystem;
@@ -15,15 +16,24 @@ namespace Remagures.View.QuestSystem
         [SerializeField] private QuestGoalsView _goalsView;
 
         private readonly List<QuestSlotView> _spawnedQuestSlots = new();
+        private IQuestsList _questsList;
 
-        private void Display(IQuestsList questsList)
+        public void Construct(IQuestsList questsList)
+            => _questsList = questsList ?? throw new ArgumentNullException(nameof(questsList));
+
+        private void OnDestroy()
+            => ClearContent();
+
+        private void OnEnable() 
+            => Display();
+
+        private void Display()
         {            
             ClearContent();
             _absenceQuestsText.SetActive(true);
 
-            foreach (var quest in questsList.Quests)
+            foreach (var quest in _questsList.Quests)
             {
-                _spawnedQuestSlots.Clear();
                 var questSlot = _questSlotViewFactory.Create(_questsContent);
                 questSlot.Display(quest);
                 
@@ -33,19 +43,13 @@ namespace Remagures.View.QuestSystem
             }
         }
 
-        private void OnDestroy()
-            => _spawnedQuestSlots.ForEach(questSlot => questSlot.Button.onClick.RemoveAllListeners());
-
         private void ClearContent()
         {
+            _spawnedQuestSlots.ForEach(questSlot => questSlot.Button.onClick.RemoveAllListeners());
+            _spawnedQuestSlots.Clear();
+            
             for (var i = 0; i < _questsContent.childCount; i++)
                 Destroy(_questsContent.GetChild(i).gameObject);
-        }
-
-        private void Close()
-        {
-            gameObject.SetActive(false);
-            Time.timeScale = 1;
         }
     }
 }

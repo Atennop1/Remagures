@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Remagures.Model.DialogSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ namespace Remagures.View.DialogSystem
         [SerializeField] private DialogBubbleBackground _dialogBubbleBackground;
         [SerializeField] private GameObject _dialogBubble;
 
+        private readonly List<Button> _createdChoiceViewButtons;
+
         public void Display(IDialogLine dialogLine)
         {
             if (dialogLine.Choices.Count <= 0)
@@ -26,21 +29,38 @@ namespace Remagures.View.DialogSystem
             CreateChoices(dialogLine);
         }
 
+        private void OnDestroy() 
+            => ClearContent();
+
         private void CreateChoices(IDialogLine dialogLine)
         {
+            ClearContent();
+            
             foreach (var dialogChoice in dialogLine.Choices)
             {
                 var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _dialogBubble.transform);
                 var choiceView = choiceObject.GetComponent<DialogChoiceView>();
 
                 choiceView.Display(dialogChoice.Text);
+                var choiceViewButton = choiceView.GetComponent<Button>();
                 
-                choiceView.GetComponent<Button>().onClick.AddListener(() =>
+                choiceViewButton.onClick.AddListener(() =>
                 {
                     dialogChoice.Use();
                     _dialogBubbleBackground.gameObject.SetActive(false);
                 });
+                
+                _createdChoiceViewButtons.Add(choiceViewButton);
             }
+        }
+
+        private void ClearContent()
+        {
+            _createdChoiceViewButtons.ForEach(button => button.onClick.RemoveAllListeners());
+            _createdChoiceViewButtons.Clear();
+            
+            for (var i = 0; i < _dialogBubble.transform.childCount; i++)
+                Destroy(transform.GetChild(i).gameObject);
         }
     }
 }

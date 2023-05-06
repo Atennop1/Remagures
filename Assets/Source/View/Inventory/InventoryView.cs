@@ -24,32 +24,31 @@ namespace Remagures.View.Inventory
             => _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
         
         private void OnEnable()
-            => DisplayCells();
+            => CreateSlots();
+        
+        private void OnDestroy()
+            => ClearContent();
 
         private void Awake()
-            => _useButton.onClick.AddListener(DisplayCells);
+            => _useButton.onClick.AddListener(CreateSlots);
 
         private void CreateSlots()
         {
             if (_noItemsText != null)
                 _noItemsText.gameObject.SetActive(_inventory.Cells.Count == 0);
 
+            ClearContent();
             foreach (var cell in _inventory.Cells)
             {
                 var cellView = _cellViewsFactory.Create();
                 cellView.Display(cell as IReadOnlyCell<IItem>);
+                
                 cellView.Button.onClick.AddListener(() => _itemInfoView.Display(cell.Item));
                 _createdCellViews.Add(cellView);
             }
         }
 
-        private void DisplayCells()
-        {
-            DeleteAllCells();
-            CreateSlots();
-        }
-
-        private void DeleteAllCells()
+        private void ClearContent()
         {
             _createdCellViews.ForEach(cellView => cellView.Button.onClick.RemoveAllListeners());
             _createdCellViews.Clear();

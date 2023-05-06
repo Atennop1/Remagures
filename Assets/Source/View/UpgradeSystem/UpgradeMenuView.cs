@@ -18,7 +18,7 @@ namespace Remagures.View.UpgradeSystem
         
         private List<IUpgradesChain<TItem>> _chains;
         private IInventory<TItem> _inventory;
-        private List<IUpgradeSlotView> _slots;
+        private List<IUpgradeSlotView> _upgradeSlotsView;
 
         public void Construct(List<IUpgradesChain<TItem>> chains, IInventory<TItem> inventory)
         {
@@ -26,11 +26,15 @@ namespace Remagures.View.UpgradeSystem
             _inventory = inventory ?? throw new ArgumentNullException(name);
         }
 
+        private void OnDestroy()
+            => ClearSlots();
+
         private void OnEnable()
-            => UpdateContent();
+            => CreateSlots();
 
         private void CreateSlots()
         {
+            ClearSlots();
             _absenceItemsGameObject.SetActive(true);
 
             foreach (var chain in _chains)
@@ -46,28 +50,22 @@ namespace Remagures.View.UpgradeSystem
                     upgradeSlotView.UpgradeButton.onClick.AddListener(() =>
                     {
                         chain.Upgrade(cell.Item);
-                        UpdateContent();
+                        CreateSlots();
                     });
 
-                    _slots.Add(upgradeSlotView);
+                    _upgradeSlotsView.Add(upgradeSlotView);
                     upgradeSlotView.Display(upgrade as IUpgrade<IItem>);
                     _absenceItemsGameObject.SetActive(false);
                 }
             }
         }
 
-        private void UpdateContent()
-        {
-            ClearSlots();
-            CreateSlots();
-        }
-
         private void ClearSlots()
         {
-            _slots.ForEach(slot => slot.UpgradeButton.onClick.RemoveAllListeners());
-            _slots.Clear();
+            _upgradeSlotsView.ForEach(slotView => slotView.UpgradeButton.onClick.RemoveAllListeners());
+            _upgradeSlotsView.Clear();
             
-            for (var i = 0; i < transform.childCount; i++)
+            for (var i = 0; i < _content.childCount; i++)
                 Destroy(transform.GetChild(i).gameObject);
         }
 
