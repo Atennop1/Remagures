@@ -1,4 +1,5 @@
-﻿using Remagures.Model.Character;
+﻿using System;
+using Remagures.Model.Character;
 
 namespace Remagures.Model.UI
 {
@@ -6,7 +7,13 @@ namespace Remagures.Model.UI
     {
         private readonly CharacterAttacker _characterAttacker;
         private readonly ICharacterInteractor _characterInteractor;
-        
+
+        public AttackButton(CharacterAttacker characterAttacker, ICharacterInteractor characterInteractor)
+        {
+            _characterAttacker = characterAttacker ?? throw new ArgumentNullException(nameof(characterAttacker));
+            _characterInteractor = characterInteractor ?? throw new ArgumentNullException(nameof(characterInteractor));
+        }
+
         public void Press()
         {
             if (_characterInteractor.CurrentState == InteractionState.Ready)

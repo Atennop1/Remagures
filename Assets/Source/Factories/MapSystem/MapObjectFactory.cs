@@ -9,7 +9,7 @@ namespace Remagures.Factories
     {
         [SerializeField] private MapPrefabsFactory _mapPrefabsFactory;
         
-        public void Create(IMap map, Transform parent) 
+        public GameObject Create(IMap map, Transform parent) 
             => Instantiate(_mapPrefabsFactory.Create().GetFor(map), parent);
     }
 }

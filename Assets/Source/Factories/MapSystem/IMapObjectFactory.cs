@@ -5,6 +5,6 @@ namespace Remagures.Factories
 {
     public interface IMapObjectFactory
     {
-        void Create(IMap map, Transform parent);
+        GameObject Create(IMap map, Transform parent);
     }
 }
