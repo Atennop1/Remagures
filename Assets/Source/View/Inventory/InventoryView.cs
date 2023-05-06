@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.InventorySystem;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Remagures.View.Inventory
         [SerializeField] private Button _useButton;
         
         private IInventory<T> _inventory;
+        private List<ICellView> _createdCellViews;
 
         public void Construct(IInventory<T> inventory)
             => _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
@@ -37,6 +39,7 @@ namespace Remagures.View.Inventory
                 var cellView = _cellViewsFactory.Create();
                 cellView.Display(cell as IReadOnlyCell<IItem>);
                 cellView.Button.onClick.AddListener(() => _itemInfoView.Display(cell.Item));
+                _createdCellViews.Add(cellView);
             }
         }
 
@@ -48,6 +51,9 @@ namespace Remagures.View.Inventory
 
         private void DeleteAllCells()
         {
+            _createdCellViews.ForEach(cellView => cellView.Button.onClick.RemoveAllListeners());
+            _createdCellViews.Clear();
+            
             for (var i = 0; i < _cellsContent.transform.childCount; i++)
                 Destroy(_cellsContent.transform.GetChild(i).gameObject);
         }

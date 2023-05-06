@@ -18,6 +18,7 @@ namespace Remagures.View.UpgradeSystem
         
         private List<IUpgradesChain<TItem>> _chains;
         private IInventory<TItem> _inventory;
+        private List<IUpgradeSlotView> _slots;
 
         public void Construct(List<IUpgradesChain<TItem>> chains, IInventory<TItem> inventory)
         {
@@ -48,6 +49,7 @@ namespace Remagures.View.UpgradeSystem
                         UpdateContent();
                     });
 
+                    _slots.Add(upgradeSlotView);
                     upgradeSlotView.Display(upgrade as IUpgrade<IItem>);
                     _absenceItemsGameObject.SetActive(false);
                 }
@@ -62,6 +64,9 @@ namespace Remagures.View.UpgradeSystem
 
         private void ClearSlots()
         {
+            _slots.ForEach(slot => slot.UpgradeButton.onClick.RemoveAllListeners());
+            _slots.Clear();
+            
             for (var i = 0; i < transform.childCount; i++)
                 Destroy(transform.GetChild(i).gameObject);
         }
