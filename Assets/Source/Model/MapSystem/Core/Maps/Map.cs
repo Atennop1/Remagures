@@ -30,7 +30,7 @@ namespace Remagures.Model.MapSystem
             if (IsVisited())
             {
                 HasOpened = true;
-                _mapView.Display();
+                _mapView.Display(this);
                 return;
             }
             

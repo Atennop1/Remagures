@@ -8,7 +8,7 @@ namespace Remagures.Root
     {
         [SerializeField] private MapSelectorFactory _mapSelectorFactory;
         [SerializeField] private CharacterPositionOnMapFactory _characterPositionOnMapFactory;
-        [SerializeField] private FogsOfWarFactory _fogsOfWarFactory;
+        [SerializeField] private FogsOfWarFactory fogsOfWarFactory;
         private IMapExplorer _builtMapExplorer;
 
         public IMapExplorer Create()
@@ -16,7 +16,7 @@ namespace Remagures.Root
             if (_builtMapExplorer != null)
                 return _builtMapExplorer;
 
-            _builtMapExplorer = new MapExplorer(_mapSelectorFactory.Create(), _characterPositionOnMapFactory.Create(), _fogsOfWarFactory.Create());
+            _builtMapExplorer = new MapExplorer(_mapSelectorFactory.Create(), _characterPositionOnMapFactory.Create(), fogsOfWarFactory.Create());
             return _builtMapExplorer;
         }
     }

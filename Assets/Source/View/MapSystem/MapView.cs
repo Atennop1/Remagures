@@ -1,18 +1,20 @@
 using Remagures.Factories;
+using Remagures.Model.MapSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.MapSystem
 {
-    public sealed class MapView : MonoBehaviour, IMapView
+    public sealed class MapView : SerializedMonoBehaviour, IMapView
     {
         [SerializeField] private Transform _content;
-        [SerializeField] private IMapsFactory _mapsFactory;
+        [SerializeField] private IMapObjectFactory _mapObjectFactory;
         [SerializeField] private Animator _animator;
         
-        public void Display()
+        public void Display(IMap map)
         {
             ClearMap();
-            _mapsFactory.Create(_content);
+            _mapObjectFactory.Create(map, _content);
         }
 
         public void DisplayFailure()
