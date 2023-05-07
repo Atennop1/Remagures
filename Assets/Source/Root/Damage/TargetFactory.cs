@@ -8,8 +8,15 @@ namespace Remagures.Root
     {
         [SerializeField] private IHealthFactory _healthFactory;
         [SerializeField] private FlashingableFactory _flashingableFactory;
+        private ITarget _builtTarget;
         
         public ITarget Create()
-            => new Target(_healthFactory.Create(), _flashingableFactory.Create());
+        {
+            if (_builtTarget != null)
+                return _builtTarget;
+            
+            _builtTarget = new Target(_healthFactory.Create(), _flashingableFactory.Create());
+            return _builtTarget;
+        }
     }
 }

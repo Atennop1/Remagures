@@ -9,8 +9,15 @@ namespace Remagures.Root
     {
         [SerializeField] private IWalletFactory _walletFactory;
         [SerializeField] private int _amount;
+        private IPickupable _builtPickupable;
 
         public IPickupable Create()
-            => new AddMoneyPickupable(_walletFactory.Create(), _amount);
+        {
+            if (_builtPickupable != null)
+                return _builtPickupable;
+
+            _builtPickupable = new AddMoneyPickupable(_walletFactory.Create(), _amount);
+            return _builtPickupable;
+        }
     }
 }

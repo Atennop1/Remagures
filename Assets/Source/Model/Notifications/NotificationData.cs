@@ -3,12 +3,12 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Notifications
 {
-    public readonly struct NotificationData
+    public struct NotificationData : INotificationData
     {
-        public readonly string Title;
-        public readonly string Description;
-        public readonly string SmallIconName;
-        public readonly int ID;
+        public string Title { get; }
+        public string Description { get; }
+        public string SmallIconName { get; }
+        public int ID { get; }
 
         public NotificationData(string title, string description, string smallIconName, int id)
         {

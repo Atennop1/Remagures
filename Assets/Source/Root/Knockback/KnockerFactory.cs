@@ -8,8 +8,15 @@ namespace Remagures.Root
     {
         [SerializeField] private float _strength;
         [SerializeField] private int _knockTimeInMilliseconds;
+        private IKnocker _builtKnocker;
 
         public IKnocker Create()
-            => new Knocker(_strength, _knockTimeInMilliseconds);
+        {
+            if (_builtKnocker != null)
+                return _builtKnocker;
+            
+            _builtKnocker = new Knocker(_strength, _knockTimeInMilliseconds);
+            return _builtKnocker;
+        }
     }
 }

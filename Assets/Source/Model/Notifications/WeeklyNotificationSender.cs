@@ -5,11 +5,11 @@ namespace Remagures.Model.Notifications
     public sealed class WeeklyNotificationSender : INotificationSender
     {
         private readonly NotificationSender _notificationSender = new();
-        private readonly NotificationData _notificationData;
+        private readonly INotificationData _notificationData;
         
         private const int SECONDS_IN_WEEK = 3600 * 24 * 7;
 
-        public WeeklyNotificationSender(NotificationData notificationData)
+        public WeeklyNotificationSender(INotificationData notificationData)
             => _notificationData = notificationData;
 
         public void OnPauseGame()

@@ -6,9 +6,16 @@ namespace Remagures.Root
 {
     public sealed class WeeklyNotificationSenderFactory : SerializedMonoBehaviour, INotificationSenderFactory
     {
-        [SerializeField] private NotificationDataFactory _notificationDataFactory;
+        [SerializeField] private INotificationData _notificationData;
+        private INotificationSender _builtSender;
         
         public INotificationSender Create()
-            => new WeeklyNotificationSender(_notificationDataFactory.Create());
+        {
+            if (_builtSender != null)
+                return _builtSender;
+            
+            _builtSender = new WeeklyNotificationSender(_notificationData);
+            return _builtSender;
+        }
     }
 }

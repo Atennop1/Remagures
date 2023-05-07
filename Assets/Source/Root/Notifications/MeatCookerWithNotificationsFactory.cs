@@ -8,12 +8,22 @@ namespace Remagures.Root
     public sealed class MeatCookerWithNotificationsFactory : SerializedMonoBehaviour, IMeatCookerFactory, INotificationSenderFactory
     {
         [SerializeField] private IMeatCookerFactory _meatCookerFactory;
-        [SerializeField] private NotificationDataFactory _notificationDataFactory;
+        [SerializeField] private INotificationData _notificationData;
+        private MeatCookerWithNotifications _builtMeatCooker;
 
         IMeatCooker IMeatCookerFactory.Create()
-            => new MeatCookerWithNotifications(_meatCookerFactory.Create(), _notificationDataFactory.Create());
-        
-        public INotificationSender Create()
-            => new MeatCookerWithNotifications(_meatCookerFactory.Create(), _notificationDataFactory.Create());
+            => Create();
+
+        INotificationSender INotificationSenderFactory.Create()
+            => Create();
+
+        private MeatCookerWithNotifications Create()
+        {
+            if (_builtMeatCooker != null)
+                return _builtMeatCooker;
+            
+            _builtMeatCooker = new MeatCookerWithNotifications(_meatCookerFactory.Create(), _notificationData);
+            return _builtMeatCooker;
+        }
     }
 }

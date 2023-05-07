@@ -10,6 +10,6 @@ namespace Remagures.Root
         [SerializeField] private PhysicsProjectile _physicsProjectile;
 
         private void Awake() 
-        => _physicsProjectile.Construct(_projectileFactory.Create());
+            => _physicsProjectile.Construct(_projectileFactory.Create());
     }
 }

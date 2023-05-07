@@ -9,16 +9,21 @@ namespace Remagures.Root
 {
     public sealed class CutsceneFactory : SerializedMonoBehaviour, ICutsceneFactory
     {
-        [SerializeField] private List<ICutsceneActionFactory> _cutsceneActionFactories; 
+        [SerializeField] private List<ICutsceneActionFactory> _cutsceneActionFactories;
+
+        private Cutscene _builtCutscene;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
         public ICutscene Create()
         {
-            var actions = _cutsceneActionFactories.Select(factory => factory.Create()).ToList();
-            var cutscene = new Cutscene(actions);
+            if (_builtCutscene != null)
+                return _builtCutscene;
             
-            _systemUpdate.Add(cutscene);
-            return cutscene;
+            var actions = _cutsceneActionFactories.Select(factory => factory.Create()).ToList();
+            _builtCutscene = new Cutscene(actions);
+            
+            _systemUpdate.Add(_builtCutscene);
+            return _builtCutscene;
         }
 
         private void FixedUpdate() 

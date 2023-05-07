@@ -11,7 +11,15 @@ namespace Remagures.Root
         [SerializeField] private FlashingsFactory _flashingsFactory;
         [SerializeField] private Dictionary<FlashColorType, Color> _colors;
 
+        private IFlashingable _builtFlashingable;
+
         public IFlashingable Create()
-            => new Flashingable(_spriteRenderer, _flashingsFactory.Create(), _colors);
+        {
+            if (_builtFlashingable != null)
+                return _builtFlashingable;
+
+            _builtFlashingable = new Flashingable(_spriteRenderer, _flashingsFactory.Create(), _colors);
+            return _builtFlashingable;
+        }
     }
 }

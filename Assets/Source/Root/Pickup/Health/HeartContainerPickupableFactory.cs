@@ -8,8 +8,15 @@ namespace Remagures.Root.Health
     {
         [SerializeField] private IHealthFactory _healthFactory;
         [SerializeField] private IMaxHealthFactory _maxHealthFactory;
-
+        private IPickupable _builtPickupable;
+        
         public IPickupable Create()
-            => new HeartContainerPickupable(_healthFactory.Create(), _maxHealthFactory.Create());
+        {
+            if (_builtPickupable != null)
+                return _builtPickupable;
+
+            _builtPickupable = new HeartContainerPickupable(_healthFactory.Create(), _maxHealthFactory.Create());
+            return _builtPickupable;
+        }
     }
 }

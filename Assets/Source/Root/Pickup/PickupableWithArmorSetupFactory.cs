@@ -8,8 +8,15 @@ namespace Remagures.Root
     {
         [SerializeField] private IPickupableFactory _pickupableFactory;
         [SerializeField] private IArmorSetuper _armorSetuper;
+        private IPickupable _builtPickupable;
 
         public IPickupable Create()
-            => new PickupableWithArmorSetup(_pickupableFactory.Create(), _armorSetuper);
+        {
+            if (_builtPickupable != null)
+                return _builtPickupable;
+
+            _builtPickupable = new PickupableWithArmorSetup(_pickupableFactory.Create(), _armorSetuper);
+            return _builtPickupable;
+        }
     }
 }

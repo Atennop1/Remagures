@@ -17,7 +17,7 @@ namespace Remagures.Model.Notifications
             AndroidNotificationCenter.RegisterNotificationChannel(channel);
         }
     
-        public void Send(NotificationData notificationData, float delay)
+        public void Send(INotificationData notificationData, float delay)
         {
             var notification = new AndroidNotification
             {

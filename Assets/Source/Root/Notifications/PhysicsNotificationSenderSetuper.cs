@@ -1,5 +1,4 @@
-﻿using System;
-using Remagures.Model.Notifications;
+﻿using Remagures.Model.Notifications;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
