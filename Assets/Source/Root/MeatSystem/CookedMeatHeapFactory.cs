@@ -1,5 +1,4 @@
-﻿using Remagures.Model.InventorySystem;
-using Remagures.Model.MeatSystem;
+﻿using Remagures.Model.MeatSystem;
 using Remagures.View.MeatSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,9 +8,6 @@ namespace Remagures.Root
     public sealed class CookedMeatHeapFactory : SerializedMonoBehaviour
     {
         [SerializeField] private MeatCountView _meatCountView;
-        [SerializeField] private IInventoryFactory<IItem> _meatInventoryFactory;
-        [SerializeField] private IItemFactory<IItem> _cookedMeatItemFactory;
-
         private ICookedMeatHeap _builtHeap;
 
         public ICookedMeatHeap Create()
@@ -19,7 +15,7 @@ namespace Remagures.Root
             if (_builtHeap != null)
                 return _builtHeap;
             
-            _builtHeap = new CookedMeatHeap(_meatCountView, _meatInventoryFactory.Create(), _cookedMeatItemFactory.Create());
+            _builtHeap = new CookedMeatHeap(_meatCountView);
             return _builtHeap;
         }
     }

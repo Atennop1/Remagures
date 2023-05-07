@@ -37,9 +37,9 @@ namespace Remagures.Model.Notifications
         public void CookMeat(int count)
             => _meatCooker.CookMeat(count);
 
-        public void AddRawMeat()
+        public void AddRawMeat(int count)
         {
-            _meatCooker.AddRawMeat();
+            _meatCooker.AddRawMeat(count);
             Send();
         }
         

@@ -10,7 +10,7 @@ namespace Remagures.Model.UI
         private IButton _button;
         private Button _unityButton;
         
-        public void Init(IButton button)
+        public void Construct(IButton button)
         {
             _button = button ?? throw new ArgumentNullException(nameof(button));
             _unityButton = GetComponent<Button>();

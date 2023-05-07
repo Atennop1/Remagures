@@ -4,7 +4,7 @@
     {
         int RawMeatCount { get; }
         
-        void AddRawMeat();
+        void AddRawMeat(int count);
         void CookMeat(int count);
     }
 }

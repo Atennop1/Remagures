@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using Remagures.Model.InventorySystem;
 using Remagures.Tools;
 using Remagures.View.MeatSystem;
 
@@ -11,16 +9,12 @@ namespace Remagures.Model.MeatSystem
         public int RawMeatCount { get; private set; }
 
         private readonly MeatCountView _meatCountView;
-        private readonly IInventory<IItem> _inventory;
         private readonly ICookedMeatHeap _cookedMeatHeap;
-        private readonly IItem _rawMeatItem;
 
-        public MeatCooker(MeatCountView meatCountView, IInventory<IItem> inventory, ICookedMeatHeap cookedMeatHeap, IItem rawMeatItem)
+        public MeatCooker(MeatCountView meatCountView, ICookedMeatHeap cookedMeatHeap)
         {
             _meatCountView = meatCountView ?? throw new ArgumentNullException(nameof(meatCountView));
-            _inventory = inventory ?? throw new ArgumentNullException(nameof(inventory));
             _cookedMeatHeap = cookedMeatHeap ?? throw new ArgumentNullException(nameof(cookedMeatHeap));
-            _rawMeatItem = rawMeatItem ?? throw new ArgumentNullException(nameof(rawMeatItem));
         }
 
         public void CookMeat(int count)
@@ -33,15 +27,9 @@ namespace Remagures.Model.MeatSystem
             _cookedMeatHeap.Add(count);
         }
         
-        public void AddRawMeat()
+        public void AddRawMeat(int count)
         {
-            if (!_inventory.Cells.Any(cell => cell.Item.Equals(_rawMeatItem)))
-                return;
-            
-            var rawMeatCell = _inventory.Cells.ToList().Find(cell => cell.Item.Equals(_rawMeatItem));
-            RawMeatCount += rawMeatCell.ItemsCount;
-
-            _inventory.Remove(new Cell<IItem>(_rawMeatItem, rawMeatCell.ItemsCount));
+            RawMeatCount += count.ThrowExceptionIfLessOrEqualsZero();
             _meatCountView.DisplayRawMeatCount(RawMeatCount);
         }
     }
