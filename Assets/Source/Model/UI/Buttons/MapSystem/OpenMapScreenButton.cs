@@ -8,7 +8,7 @@ namespace Remagures.Model.UI
     {
         private readonly IMapSelector _mapSelector;
         private readonly IMapView _mapView;
-        private bool _pressed;
+        private bool _isPressed;
 
         public OpenMapScreenButton(IMapSelector mapSelector, IMapView mapView)
         {
@@ -18,11 +18,11 @@ namespace Remagures.Model.UI
 
         public void Press()
         {
-            if (_pressed)
+            if (_isPressed)
                 return;
             
             _mapView.Display(_mapSelector.CurrentLocationMap);
-            _pressed = true;
+            _isPressed = true;
         }
     }
 }

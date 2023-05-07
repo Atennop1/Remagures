@@ -3,7 +3,7 @@ using Remagures.Model.Character;
 
 namespace Remagures.Model.UI
 {
-    public sealed class AttackButton : IButton
+    public sealed class AttackButton : IButton //TODO make composite for it and magic button
     {
         private readonly CharacterAttacker _characterAttacker;
         private readonly ICharacterInteractor _characterInteractor;

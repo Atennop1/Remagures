@@ -1,21 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using Remagures.Model.MapSystem;
+using Remagures.Root;
 using UnityEngine.UI;
 
 namespace Remagures.Model.UI
 {
-    public sealed class OpenParentMapButtonActivityChanger
+    public sealed class OpenParentMapButtonActivityChanger : IUpdatable
     {
-        private readonly Button _button;
+        private readonly List<IMap> _maps;
         private readonly ParentMapOpener _parentMapOpener;
+        private readonly Button _button;
 
-        public OpenParentMapButtonActivityChanger(Button button, ParentMapOpener parentMapOpener)
+        public OpenParentMapButtonActivityChanger(List<IMap> maps, ParentMapOpener parentMapOpener, Button button)
         {
-            _button = button ?? throw new ArgumentNullException(nameof(button));
+            _maps = maps ?? throw new ArgumentNullException(nameof(maps));
             _parentMapOpener = parentMapOpener ?? throw new ArgumentNullException(nameof(parentMapOpener));
+            _button = button ?? throw new ArgumentNullException(nameof(button));
         }
 
-        public void Change() 
-            => _button.enabled = _parentMapOpener.CanOpen();
+        public void Update()
+        {
+            if (_maps.Find(map => map.HasOpened) != null) 
+                _button.enabled = _parentMapOpener.CanOpen();
+        }
     }
 }

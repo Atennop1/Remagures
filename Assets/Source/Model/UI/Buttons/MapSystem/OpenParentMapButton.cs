@@ -12,10 +12,8 @@ namespace Remagures.Model.UI
 
         public void Press()
         {
-            if (!_parentMapOpener.CanOpen())
-                return;
-            
-            _parentMapOpener.Open();
+            if (_parentMapOpener.CanOpen())
+                _parentMapOpener.Open();
         }
     }
 }
