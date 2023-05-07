@@ -1,4 +1,4 @@
-﻿using Remagures.Model.UI;
+﻿using Remagures.Model.Buttons;
 using Sirenix.OdinInspector;
 
 namespace Remagures.Root

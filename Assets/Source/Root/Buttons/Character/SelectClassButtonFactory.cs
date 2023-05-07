@@ -1,5 +1,5 @@
-﻿using Remagures.Model.Character;
-using Remagures.Model.UI;
+﻿using Remagures.Model.Buttons;
+using Remagures.Model.Character;
 using SaveSystem;
 using SaveSystem.Paths;
 using Sirenix.OdinInspector;

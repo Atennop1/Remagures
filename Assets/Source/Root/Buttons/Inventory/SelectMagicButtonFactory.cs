@@ -1,5 +1,5 @@
-﻿using Remagures.Model.InventorySystem;
-using Remagures.Model.UI;
+﻿using Remagures.Model.Buttons;
+using Remagures.Model.InventorySystem;
 using Remagures.View.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;

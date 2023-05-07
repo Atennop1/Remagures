@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Remagures.Model.UI;
 using Remagures.Root;
 
 namespace Remagures.Model.MapSystem

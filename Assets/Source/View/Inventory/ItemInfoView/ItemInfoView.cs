@@ -1,5 +1,5 @@
-﻿using Remagures.Model.InventorySystem;
-using Remagures.Model.UI;
+﻿using Remagures.Model.Buttons;
+using Remagures.Model.InventorySystem;
 using Remagures.Root;
 using UnityEngine;
 using UnityEngine.UI;

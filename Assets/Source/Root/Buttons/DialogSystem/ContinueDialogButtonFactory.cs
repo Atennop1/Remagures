@@ -1,4 +1,4 @@
-﻿using Remagures.Model.UI;
+﻿using Remagures.Model.Buttons;
 using Remagures.Root.Dialogs;
 using Sirenix.OdinInspector;
 using UnityEngine;
