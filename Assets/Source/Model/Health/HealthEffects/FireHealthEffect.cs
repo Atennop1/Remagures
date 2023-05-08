@@ -10,30 +10,28 @@ namespace Remagures.Model.Health
     public sealed class FireHealthEffect : IHealthEffect
     {
         private readonly IHealth _health;
-        private readonly IFlashingable _flash;
-        private readonly FireInfo _info;
+        private readonly IFlashingable _flashingable;
+        private readonly FireInfo _fireInfo;
         
         private readonly CancellationTokenSource _cancellationTokenSource = new();
+        private readonly FlashingData _flashingData = new(250, 2);
 
-        public FireHealthEffect(IHealth health, IFlashingable flash, FireInfo info)
+        public FireHealthEffect(IHealth health, IFlashingable flashingable, FireInfo fireInfo)
         {
             _health = health ?? throw new ArgumentNullException(nameof(health));
-            _flash = flash ?? throw new ArgumentNullException(nameof(flash));
-            _info = info;
+            _flashingable = flashingable ?? throw new ArgumentNullException(nameof(flashingable));
+            _fireInfo = fireInfo;
         }
 
         public async void Activate()
-            => await Fire(_flash, _info.Damage);
+            => await Fire(_fireInfo.Damage);
 
         public void Stop()
             => _cancellationTokenSource.Cancel();
 
-        private async UniTask Fire(IFlashingable flash, float damage)
+        private async UniTask Fire(float damage)
         {
-            if (flash == null)
-                throw new ArgumentNullException(nameof(flash));
-            
-            var randomTime = Random.Range(Mathf.RoundToInt(_info.MinTime), Mathf.RoundToInt(_info.MaxTime) + 1);
+            var randomTime = Random.Range(Mathf.RoundToInt(_fireInfo.MinTime), Mathf.RoundToInt(_fireInfo.MaxTime) + 1);
 
             for (var i = 0; i < randomTime; i++)
             {
@@ -45,7 +43,7 @@ namespace Remagures.Model.Health
                 _health.TakeDamage(Mathf.RoundToInt(damage / 2));
                 var isLastFlash = i == randomTime - 1;
                 
-                flash.Flash(FlashColorType.Damage, isLastFlash ? FlashColorType.BeforeFlash : FlashColorType.Fire);
+                _flashingable.Flash(FlashColorType.Damage, isLastFlash ? FlashColorType.BeforeFlash : FlashColorType.Fire, _flashingData);
             }
         }
     }

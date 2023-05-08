@@ -7,7 +7,6 @@ namespace Remagures.Root
     public sealed class FlashingsFactory : SerializedMonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] private IFlashingData _flashingData;
         private IFlashings _builtFlashings;
         
         public IFlashings Create()
@@ -15,7 +14,7 @@ namespace Remagures.Root
             if (_builtFlashings != null)
                 return _builtFlashings;
             
-            _builtFlashings = new Flashings(_spriteRenderer, _flashingData);
+            _builtFlashings = new Flashings(_spriteRenderer);
             return _builtFlashings;
         }
     }

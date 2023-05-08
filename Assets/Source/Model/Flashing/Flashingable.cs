@@ -10,7 +10,7 @@ namespace Remagures.Model.Flashing
         private readonly SpriteRenderer _spriteRenderer;
         private readonly IFlashings _flashings;
         
-        private readonly List<Color> _currentFlashingsBeforeColors = new();
+        private readonly List<Color> _currentFlashingsColors = new();
 
         public Flashingable(SpriteRenderer spriteRenderer, IFlashings flashings, Dictionary<FlashColorType, Color> colors)
         {
@@ -19,27 +19,27 @@ namespace Remagures.Model.Flashing
             _flashings = flashings ?? throw new ArgumentNullException(nameof(flashings));
         }
 
-        public void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType)
+        public void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType, FlashingData data)
         {
             if (afterFlashColorType != FlashColorType.BeforeFlash && !_colors.ContainsKey(afterFlashColorType))
                 throw new ArgumentException($"This flashingable haven't color {afterFlashColorType}");
             
-            if (afterFlashColorType != FlashColorType.BeforeFlash && !_currentFlashingsBeforeColors.Contains(_spriteRenderer.color))
-                _currentFlashingsBeforeColors.Add(_spriteRenderer.color);
+            if (afterFlashColorType != FlashColorType.BeforeFlash && !_currentFlashingsColors.Contains(_spriteRenderer.color))
+                _currentFlashingsColors.Add(_spriteRenderer.color);
 
             var afterFlashColor = _colors[afterFlashColorType];
 
             if (afterFlashColorType == FlashColorType.BeforeFlash)
             {
-                if (_currentFlashingsBeforeColors.Count > 0)
-                    _currentFlashingsBeforeColors.Remove(_currentFlashingsBeforeColors[^1]);
+                if (_currentFlashingsColors.Count > 0 && _currentFlashingsColors.Contains(_spriteRenderer.color)) //TODO check if this work in multiple simulations
+                    _currentFlashingsColors.Remove(_currentFlashingsColors[^1]);
                 
-                afterFlashColor = _currentFlashingsBeforeColors.Count != 0 
-                    ? _currentFlashingsBeforeColors[^1] 
+                afterFlashColor = _currentFlashingsColors.Count != 0 
+                    ? _currentFlashingsColors[^1] 
                     : _colors[FlashColorType.Regular];
             }
             
-            _flashings.Start(_colors[flashColorType], afterFlashColor);
+            _flashings.Start(_colors[flashColorType], afterFlashColor, data);
         }
     }
 }

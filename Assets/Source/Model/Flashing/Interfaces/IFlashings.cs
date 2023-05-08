@@ -4,6 +4,6 @@ namespace Remagures.Model.Flashing
 {
     public interface IFlashings
     {
-        void Start(Color flashColor, Color afterFlashColor);
+        void Start(Color flashColor, Color afterFlashColor, FlashingData data);
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IFlashingable
     {
-        void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType); //TODO add flashing data to argument
+        void Flash(FlashColorType flashColorType, FlashColorType afterFlashColorType, FlashingData data);
     }
 }
