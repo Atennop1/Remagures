@@ -6,7 +6,7 @@ namespace Remagures.Model.DialogSystem.Decorators
     public sealed class DialogLineWithAdditionalBehaviour : IDialogLine
     {
         public string Text => _dialogLine.Text;
-        public DialogSpeakerData SpeakerData => _dialogLine.SpeakerData;
+        public IDialogSpeakerData SpeakerData => _dialogLine.SpeakerData;
         public IReadOnlyList<IDialogChoice> Choices => _dialogLine.Choices;
 
         public bool IsEnded => _dialogLine.IsEnded;

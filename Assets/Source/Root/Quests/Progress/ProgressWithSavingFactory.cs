@@ -1,11 +1,12 @@
 ﻿using Remagures.Model.QuestSystem;
 using SaveSystem;
 using SaveSystem.Paths;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ProgressWithSavingFactory : IProgressFactory
+    public sealed class ProgressWithSavingFactory : SerializedMonoBehaviour, IProgressFactory
     {
         [SerializeField] private IProgressFactory _progressFactory;
         [SerializeField] private string _savePath;

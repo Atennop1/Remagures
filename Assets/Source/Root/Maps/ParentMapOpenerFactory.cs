@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ParentMapOpenerFactory : SerializedMonoBehaviour
+    public sealed class ParentMapOpenerFactory : SerializedMonoBehaviour, IParentMapOpenerFactory
     {
         [SerializeField] private List<IMapFactory> _mapFactories;
-        [SerializeField] private MapSelectorFactory _mapSelectorFactory;
+        [SerializeField] private IMapSelectorFactory _mapSelectorFactory;
         private ParentMapOpener _builtOpener;
 
         public ParentMapOpener Create()

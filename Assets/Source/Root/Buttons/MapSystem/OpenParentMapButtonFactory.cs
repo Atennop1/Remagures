@@ -6,7 +6,7 @@ namespace Remagures.Root
 {
     public sealed class OpenParentMapButtonFactory : SerializedMonoBehaviour, IButtonFactory
     {
-        [SerializeField] private ParentMapOpenerFactory _parentMapOpenerFactory;
+        [SerializeField] private IParentMapOpenerFactory _parentMapOpenerFactory;
         private IButton _builtButton;
         
         public IButton Create()

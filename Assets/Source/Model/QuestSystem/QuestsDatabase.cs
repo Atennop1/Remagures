@@ -7,9 +7,9 @@ namespace Remagures.Model.QuestSystem
 {
     public sealed class QuestsDatabase
     {
-        private readonly List<QuestFactory> _factories;
+        private readonly List<IQuestFactory> _factories;
 
-        public QuestsDatabase(List<QuestFactory> factories) 
+        public QuestsDatabase(List<IQuestFactory> factories) 
             => _factories = factories ?? throw new ArgumentNullException(nameof(factories));
 
         public int GetQuestID(IQuest quest)

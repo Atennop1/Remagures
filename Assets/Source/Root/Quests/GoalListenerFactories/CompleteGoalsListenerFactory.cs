@@ -6,8 +6,8 @@ namespace Remagures.Root
 {
     public sealed class CompleteGoalsListenerFactory : MonoBehaviour
     {
-        [SerializeField] private GoalFactory _goalFactory;
-        [SerializeField] private GoalFactory[] _goalsToCompleteFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
+        [SerializeField] private IGoalFactory[] _goalsToCompleteFactory;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
         private void Update()

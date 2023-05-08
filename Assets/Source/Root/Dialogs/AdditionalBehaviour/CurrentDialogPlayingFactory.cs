@@ -6,8 +6,8 @@ namespace Remagures.Root.Dialogs
 {
     public sealed class CurrentDialogPlayingFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {
-        [SerializeField] private DialogsListFactory _dialogsListFactory;
-        [SerializeField] private DialogPlayerFactory _dialogPlayerFactory;
+        [SerializeField] private IDialogsListFactory _dialogsListFactory;
+        [SerializeField] private IDialogPlayerFactory _dialogPlayerFactory;
         private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()

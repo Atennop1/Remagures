@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class GoalFactory : MonoBehaviour
+    public sealed class GoalFactory : SerializedMonoBehaviour, IGoalFactory
     {
         [SerializeField] private GoalData _goalData;
         [SerializeField] private IProgressFactory _progressFactory;

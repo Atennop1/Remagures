@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MapExplorerFactory : SerializedMonoBehaviour
+    public sealed class MapExplorerFactory : SerializedMonoBehaviour, IMapExplorerFactory
     {
-        [SerializeField] private MapSelectorFactory _mapSelectorFactory;
-        [SerializeField] private CharacterPositionOnMapFactory _characterPositionOnMapFactory;
-        [SerializeField] private FogsOfWarFactory fogsOfWarFactory;
+        [SerializeField] private IMapSelectorFactory _mapSelectorFactory;
+        [SerializeField] private ICharacterPositionOnMapFactory _characterPositionOnMapFactory;
+        [SerializeField] private IFogsOfWarFactory fogsOfWarFactory;
         private IMapExplorer _builtMapExplorer;
 
         public IMapExplorer Create()

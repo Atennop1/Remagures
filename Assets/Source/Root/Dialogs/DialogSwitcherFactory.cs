@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Remagures.Root.Dialogs
 {
-    public sealed class DialogSwitcherFactory : SerializedMonoBehaviour
+    public sealed class DialogSwitcherFactory : SerializedMonoBehaviour, IDialogSwitcherFactory
     {
         [SerializeField] private string _newDialogName;
-        [SerializeField] private DialogsListFactory _dialogsListFactory;
+        [SerializeField] private IDialogsListFactory _dialogsListFactory;
         private IDialogSwitcher _builtSwitcher;
         
         public IDialogSwitcher Create()

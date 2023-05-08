@@ -7,7 +7,7 @@ namespace Remagures.Root
     public sealed class QuestWithPopupsFactory : SerializedMonoBehaviour, IQuestsListFactory
     {
         [SerializeField] private IQuestsListFactory _questsListFactory;
-        [SerializeField] private QuestPopupsFactory questPopupsFactory;
+        [SerializeField] private IQuestPopupsFactory questPopupsFactory;
         private IQuestsList _builtQuestsList;
         
         public IQuestsList Create()

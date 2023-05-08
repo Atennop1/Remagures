@@ -7,7 +7,7 @@ namespace Remagures.Model.DialogSystem
     public class DialogLine : IDialogLine
     {
         public string Text { get; }
-        public DialogSpeakerData SpeakerData { get; }
+        public IDialogSpeakerData SpeakerData { get; }
         
         public IReadOnlyList<IDialogChoice> Choices { get; }
         public bool IsEnded { get; private set; }
@@ -15,7 +15,7 @@ namespace Remagures.Model.DialogSystem
         public void End()
             => IsEnded = true;
         
-        public DialogLine(string line, DialogSpeakerData speakerData, IReadOnlyList<IDialogChoice> choices)
+        public DialogLine(string line, IDialogSpeakerData speakerData, IReadOnlyList<IDialogChoice> choices)
         {
             Text = line ?? throw new ArgumentException("TextLine can't be null");
             Choices = choices ?? throw new ArgumentException("ChoicesList can't be null");

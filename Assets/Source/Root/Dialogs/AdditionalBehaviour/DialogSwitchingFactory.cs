@@ -7,7 +7,7 @@ namespace Remagures.Root.Dialogs
     public sealed class DialogSwitchingFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {
         [SerializeField] private string _newDialogName;
-        [SerializeField] private DialogsListFactory _dialogsListFactory;
+        [SerializeField] private IDialogsListFactory _dialogsListFactory;
         private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()

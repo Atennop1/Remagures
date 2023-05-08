@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public class ItemsDatabaseFactory<TItem> : SerializedMonoBehaviour where TItem: IItem
+    public sealed class ItemsDatabaseFactory<TItem> : SerializedMonoBehaviour, IItemsDatabaseFactory<TItem> where TItem: IItem
     {
         [SerializeField] private List<IItemFactory<TItem>> _factories;
         private IItemsDatabase<TItem> _builtItemsDatabase;

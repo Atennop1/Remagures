@@ -5,9 +5,9 @@ namespace Remagures.Root
 {
     public sealed class ActivateQuestGoalListenerFactory : MonoBehaviour
     {
-        [SerializeField] private GoalFactory _goalFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
         [SerializeField] private QuestsListFactory _questsListFactory;
-        [SerializeField] private QuestFactory _questToActivateFactory;
+        [SerializeField] private IQuestFactory _questToActivateFactory;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
         private void Update()

@@ -5,8 +5,8 @@ namespace Remagures.Root.QuestListenersFactories
 {
     public sealed class ShowPopupQuestListenerFactory : MonoBehaviour
     {
-        [SerializeField] private QuestFactory _questFactory;
-        [SerializeField] private QuestPopupsFactory questPopupsFactory;
+        [SerializeField] private IQuestFactory _questFactory;
+        [SerializeField] private IQuestPopupsFactory questPopupsFactory;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
         private void Update()

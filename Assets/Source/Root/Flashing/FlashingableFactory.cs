@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class FlashingableFactory : SerializedMonoBehaviour
+    public sealed class FlashingableFactory : SerializedMonoBehaviour, IFlashingableFactory
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private FlashingsFactory _flashingsFactory;

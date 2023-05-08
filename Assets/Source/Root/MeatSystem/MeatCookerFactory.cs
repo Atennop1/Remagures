@@ -8,7 +8,7 @@ namespace Remagures.Root
     public sealed class MeatCookerFactory : SerializedMonoBehaviour, IMeatCookerFactory
     {
         [SerializeField] private MeatCountView _meatCountView;
-        [SerializeField] private CookedMeatHeapFactory _cookedMeatHeapFactory;
+        [SerializeField] private ICookedMeatHeapFactory _cookedMeatHeapFactory;
         private IMeatCooker _builtMeatCooker;
 
         public IMeatCooker Create()

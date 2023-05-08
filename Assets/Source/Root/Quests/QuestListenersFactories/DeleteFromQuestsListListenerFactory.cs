@@ -5,7 +5,7 @@ namespace Remagures.Root.QuestListenersFactories
 {
     public sealed class DeleteFromQuestsListListenerFactory : MonoBehaviour
     {
-        [SerializeField] private QuestFactory _questFactory;
+        [SerializeField] private IQuestFactory _questFactory;
         [SerializeField] private QuestsListFactory _questsListFactory;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 

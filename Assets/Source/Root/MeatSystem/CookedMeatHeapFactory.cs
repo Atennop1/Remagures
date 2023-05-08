@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class CookedMeatHeapFactory : SerializedMonoBehaviour
+    public sealed class CookedMeatHeapFactory : SerializedMonoBehaviour, ICookedMeatHeapFactory
     {
         [SerializeField] private MeatCountView _meatCountView;
         private ICookedMeatHeap _builtHeap;

@@ -9,8 +9,8 @@ namespace Remagures.Root
     {
         [SerializeField] private IMarkerView _markerView;
         [SerializeField] private QuestsListFactory _questsListFactory;
-        [SerializeField] private QuestFactory _questFactory;
-        [SerializeField] private GoalFactory _goalFactory;
+        [SerializeField] private IQuestFactory _questFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
         private IMarker _builtMarker;
         
         public IMarker Create()

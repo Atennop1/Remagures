@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class FogsOfWarFactory : SerializedMonoBehaviour
+    public sealed class FogsOfWarFactory : SerializedMonoBehaviour, IFogsOfWarFactory
     {
         [SerializeField] private Dictionary<IMapFactory, Texture2D> _fogs;
         private FogsOfWar _builtFogs;

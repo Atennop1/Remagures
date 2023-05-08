@@ -5,9 +5,9 @@ namespace Remagures.Root
 {
     public sealed class ShowPopupGoalListenerFactory : MonoBehaviour
     {
-        [SerializeField] private GoalFactory _goalFactory;
-        [SerializeField] private QuestFactory _questFactory;
-        [SerializeField] private QuestPopupsFactory questPopupsFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
+        [SerializeField] private IQuestFactory _questFactory;
+        [SerializeField] private IQuestPopupsFactory questPopupsFactory;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();
 
         private void Update()

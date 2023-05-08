@@ -10,7 +10,7 @@ namespace Remagures.Root
     {
         [SerializeField] private SceneData[] _mapScenes;
         [SerializeField] private ICharacterMarkerView _markerView;
-        [SerializeField] private CharacterPositionOnMapFactory _characterPositionOnMapFactory;
+        [SerializeField] private ICharacterPositionOnMapFactory _characterPositionOnMapFactory;
         private IMarker _builtMarker;
         
         public IMarker Create()

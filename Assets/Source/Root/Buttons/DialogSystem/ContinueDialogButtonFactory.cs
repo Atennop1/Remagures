@@ -7,7 +7,7 @@ namespace Remagures.Root
 {
     public sealed class ContinueDialogButtonFactory : SerializedMonoBehaviour, IButtonFactory
     {
-        [SerializeField] private DialogPlayerFactory _dialogPlayerFactory;
+        [SerializeField] private IDialogPlayerFactory _dialogPlayerFactory;
         private IButton _builtButton;
         
         public IButton Create()

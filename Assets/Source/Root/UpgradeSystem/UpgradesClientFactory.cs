@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class UpgradesClientFactory : SerializedMonoBehaviour
+    public sealed class UpgradesClientFactory : SerializedMonoBehaviour, IUpgradesClientFactory
     {
         [SerializeField] private Dictionary<Currency, IWalletFactory> _walletsFactories;
         private IUpgradesClient _builtClient;

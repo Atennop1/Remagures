@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root.Dialogs
 {
-    public sealed class DialogTextWriterFactory : SerializedMonoBehaviour
+    public sealed class DialogTextWriterFactory : SerializedMonoBehaviour, IDialogTextWriterFactory
     {
         [SerializeField] private DialogTextWriterView _dialogTextWriterView;
         private IDialogTextWriter _builtWriter;

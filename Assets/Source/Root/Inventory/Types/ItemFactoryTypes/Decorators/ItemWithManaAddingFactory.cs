@@ -7,7 +7,7 @@ namespace Remagures.Root.Decorators
     public sealed class ItemWithManaAddingFactory : SerializedMonoBehaviour, IItemFactory<IUsableItem>
     {
         [SerializeField] private IItemFactory<IUsableItem> _itemFactory;
-        [SerializeField] private ManaFactory _manaFactory;
+        [SerializeField] private IManaFactory _manaFactory;
         [SerializeField] private int _amountToAdd;
         
         private IUsableItem _builtItem;

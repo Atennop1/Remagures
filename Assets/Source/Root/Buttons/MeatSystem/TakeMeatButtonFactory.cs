@@ -7,7 +7,7 @@ namespace Remagures.Root
 {
     public sealed class TakeMeatButtonFactory : SerializedMonoBehaviour, IButtonFactory
     {
-        [SerializeField] private CookedMeatHeapFactory _cookedMeatHeapFactory;
+        [SerializeField] private ICookedMeatHeapFactory _cookedMeatHeapFactory;
         [SerializeField] private IInventoryFactory<IUsableItem> _inventoryFactory;
         [SerializeField] private IItemFactory<IUsableItem> _cookedMeatItemFactory;
         

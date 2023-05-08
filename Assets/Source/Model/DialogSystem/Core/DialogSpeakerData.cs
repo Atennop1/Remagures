@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Remagures.Model.DialogSystem
 {
     [Serializable]
-    public struct DialogSpeakerData
+    public struct DialogSpeakerData : IDialogSpeakerData
     {
         public string SpeakerName { get; }
         public SerializableSprite SpeakerSprite { get; }

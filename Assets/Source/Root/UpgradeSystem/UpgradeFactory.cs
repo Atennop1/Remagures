@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class UpgradeFactory<TItem> : SerializedMonoBehaviour where TItem: IItem
+    public sealed class UpgradeFactory<TItem> : SerializedMonoBehaviour, IUpgradeFactory<TItem> where TItem: IItem
     {
         [SerializeField] private IItemFactory<TItem> _itemFactory;
         [SerializeField] private IUpgradeBuyingData _upgradeBuyingData;

@@ -1,15 +1,16 @@
 ﻿using System.Linq;
 using Remagures.Model.QuestSystem;
 using Remagures.Tools;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class QuestFactory : MonoBehaviour
+    public sealed class QuestFactory : SerializedMonoBehaviour, IQuestFactory
     {
         [field: SerializeField] public int QuestID { get; private set; }
         [SerializeField] private QuestData _questData;
-        [SerializeField] private GoalFactory[] _goalFactories;
+        [SerializeField] private IGoalFactory[] _goalFactories;
 
         private Quest _builtQuest;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();

@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class QuestsDatabaseFactory : SerializedMonoBehaviour
+    public sealed class QuestsDatabaseFactory : SerializedMonoBehaviour, IQuestsDatabaseFactory
     {
-        [SerializeField] private List<QuestFactory> _questFactories;
+        [SerializeField] private List<IQuestFactory> _questFactories;
         private QuestsDatabase _builtDatabase;
         
         public QuestsDatabase Create()

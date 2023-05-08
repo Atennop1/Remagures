@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MapTransitionFactory : SerializedMonoBehaviour
+    public sealed class MapTransitionFactory : SerializedMonoBehaviour, IMapTransitionFactory
     {
         [SerializeField] private IMapFactory _mapFactory;
         private IMapTransition _builtTransition;

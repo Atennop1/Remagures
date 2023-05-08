@@ -1,10 +1,11 @@
 ﻿using Remagures.Model.Health;
 using Remagures.View.Health;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class HealthFactory : MonoBehaviour, IHealthFactory
+    public sealed class HealthFactory : SerializedMonoBehaviour, IHealthFactory
     {
         [SerializeField] private IHealthView _healthView;
         [SerializeField] private IMaxHealthFactory _maxHealthFactory;

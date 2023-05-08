@@ -7,7 +7,7 @@ namespace Remagures.Factories
 {
     public sealed class MapObjectFactory : SerializedMonoBehaviour, IMapObjectFactory
     {
-        [SerializeField] private MapPrefabsFactory _mapPrefabsFactory;
+        [SerializeField] private IMapPrefabsFactory _mapPrefabsFactory;
         
         public GameObject Create(IMap map, Transform parent) 
             => Instantiate(_mapPrefabsFactory.Create().GetFor(map), parent);

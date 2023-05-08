@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class CharacterPositionOnMapFactory : SerializedMonoBehaviour
+    public sealed class CharacterPositionOnMapFactory : SerializedMonoBehaviour, ICharacterPositionOnMapFactory
     {
         [SerializeField] private IMapData _mapData;
         [SerializeField] private Transform _characterTransform;

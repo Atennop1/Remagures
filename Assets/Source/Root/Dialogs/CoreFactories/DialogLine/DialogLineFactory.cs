@@ -9,7 +9,7 @@ namespace Remagures.Root.Dialogs
     public sealed class DialogLineFactory : SerializedMonoBehaviour, IDialogLineFactory
     {
         [SerializeField] private string _lineText;
-        [SerializeField] private SpeakerInfoFactory speakerInfoFactory;
+        [SerializeField] private IDialogSpeakerData _speakerInfo;
         [SerializeField] private List<IDialogChoiceFactory> _choiceFactories;
 
         private IDialogLine _builtLine;
@@ -20,7 +20,7 @@ namespace Remagures.Root.Dialogs
                 return _builtLine;
             
             var builtChoices = _choiceFactories.Select(builder => builder.Create()).ToList();
-            _builtLine = new DialogLine(_lineText, speakerInfoFactory.Create(), builtChoices);
+            _builtLine = new DialogLine(_lineText, _speakerInfo, builtChoices);
             return _builtLine;
         }
     }

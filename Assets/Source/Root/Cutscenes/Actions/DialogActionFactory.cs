@@ -7,8 +7,8 @@ namespace Remagures.Root.Actions
 {
     public sealed class DialogActionFactory : SerializedMonoBehaviour, ICutsceneActionFactory
     {
-        [SerializeField] private DialogPlayerFactory _dialogPlayerFactory;
-        [SerializeField] private DialogFactory _dialogFactory;
+        [SerializeField] private IDialogPlayerFactory _dialogPlayerFactory;
+        [SerializeField] private IDialogFactory _dialogFactory;
         private ICutsceneAction _builtCutsceneAction;
         
         public ICutsceneAction Create()

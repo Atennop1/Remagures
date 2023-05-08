@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MarkerOnTransitionFactory : SerializedMonoBehaviour
+    public sealed class MarkerOnTransitionFactory : SerializedMonoBehaviour, IMarkerOnTransitionFactory
     {
         [SerializeField] private IMapFactory _mapFactory;
         [SerializeField] private IMarkerView _markerView;

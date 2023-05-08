@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MapSelectorFactory : SerializedMonoBehaviour
+    public sealed class MapSelectorFactory : SerializedMonoBehaviour, IMapSelectorFactory
     {
         [SerializeField] private List<IMapFactory> _mapFactories;
         

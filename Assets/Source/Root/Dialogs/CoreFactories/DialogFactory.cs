@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Root.Dialogs
 {
-    public sealed class DialogFactory : SerializedMonoBehaviour
+    public sealed class DialogFactory : SerializedMonoBehaviour, IDialogFactory
     {
         [SerializeField] private string _name;
         [SerializeField] private List<IDialogLineFactory> _lineFactories;

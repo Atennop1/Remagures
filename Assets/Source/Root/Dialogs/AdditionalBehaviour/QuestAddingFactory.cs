@@ -7,7 +7,7 @@ namespace Remagures.Root.Dialogs
     public sealed class QuestAddingFactory : SerializedMonoBehaviour, IAdditionalBehaviourFactory
     {
         [SerializeField] private QuestsListFactory _questsListFactory;
-        [SerializeField] private QuestFactory _questFactory;
+        [SerializeField] private IQuestFactory _questFactory;
         private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()

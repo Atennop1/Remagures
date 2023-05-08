@@ -7,7 +7,7 @@ namespace Remagures.Root
     public sealed class ChestWithGoalCompletingFactory : SerializedMonoBehaviour, IChestFactory
     {
         [SerializeField] private IChestFactory _chestFactory;
-        [SerializeField] private GoalFactory _goalFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
         private IChest _builtChest;
         
         public IChest Create()

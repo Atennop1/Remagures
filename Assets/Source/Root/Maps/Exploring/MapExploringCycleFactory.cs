@@ -6,16 +6,12 @@ namespace Remagures.Root
 {
     public sealed class MapExploringCycleFactory : SerializedMonoBehaviour
     {
-        [SerializeField] private MapExplorerFactory _mapExplorerFactory;
-        private MapExploringCycle _builtCycle;
-        
-        public MapExploringCycle Create()
-        {
-            if (_builtCycle != null)
-                return _builtCycle;
+        [SerializeField] private IMapExplorerFactory _mapExplorerFactory;
 
-            _builtCycle = new MapExploringCycle(_mapExplorerFactory.Create());
-            return _builtCycle;
+        public void Awake()
+        {
+            var cycle = new MapExploringCycle(_mapExplorerFactory.Create());
+            cycle.Activate();
         }
     }
 }

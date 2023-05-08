@@ -10,7 +10,7 @@ namespace Remagures.Root
     public sealed class OpenParentMapButtonActivityChangerFactory : SerializedMonoBehaviour
     {
         [SerializeField] private List<IMapFactory> _mapFactories;
-        [SerializeField] private ParentMapOpenerFactory _parentMapOpenerFactory;
+        [SerializeField] private IParentMapOpenerFactory _parentMapOpenerFactory;
         [SerializeField] private Button _button;
         
         private readonly SystemUpdate _systemUpdate = new();

@@ -1,10 +1,11 @@
 ﻿using Remagures.Model.QuestSystem;
 using Remagures.View.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class QuestPopupsFactory : MonoBehaviour
+    public sealed class QuestPopupsFactory : SerializedMonoBehaviour, IQuestPopupsFactory
     {
         [SerializeField] private QuestPopupView popupView;
         private IQuestPopups _builtPopups;

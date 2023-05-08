@@ -8,7 +8,7 @@ namespace Remagures.Root
     public sealed class ChestWithDialogSwitchingFactory : SerializedMonoBehaviour, IChestFactory
     {
         [SerializeField] private IChestFactory _chestFactory;
-        [SerializeField] private DialogSwitcherFactory _dialogSwitcherFactory;
+        [SerializeField] private IDialogSwitcherFactory _dialogSwitcherFactory;
         private IChest _builtChest;
         
         public IChest Create()

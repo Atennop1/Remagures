@@ -1,11 +1,12 @@
 ﻿using Remagures.Model.Interactable;
 using SaveSystem;
 using SaveSystem.Paths;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ChestWithSavingFactory : IChestFactory
+    public sealed class ChestWithSavingFactory : SerializedMonoBehaviour, IChestFactory
     {
         [SerializeField] private string _name;
         [SerializeField] private IChestFactory _chestFactory;

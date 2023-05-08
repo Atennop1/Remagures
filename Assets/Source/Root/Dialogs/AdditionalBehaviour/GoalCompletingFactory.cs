@@ -5,7 +5,7 @@ namespace Remagures.Root.Dialogs
 {
     public sealed class GoalCompletingFactory : MonoBehaviour, IAdditionalBehaviourFactory
     {
-        [SerializeField] private GoalFactory _goalFactory;
+        [SerializeField] private IGoalFactory _goalFactory;
         private IAdditionalBehaviour _builtBehaviour;
         
         public IAdditionalBehaviour Create()

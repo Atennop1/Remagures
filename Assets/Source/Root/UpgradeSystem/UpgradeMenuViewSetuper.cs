@@ -12,7 +12,7 @@ namespace Remagures.Root
         [SerializeField] private UpgradeMenuView<TItem> _upgradeMenuView;
 
         [Space]
-        [SerializeField] private List<UpgradesChainFactory<TItem>> _upgradeChainFactories;
+        [SerializeField] private List<IUpgradesChainFactory<TItem>> _upgradeChainFactories;
         [SerializeField] private IInventoryFactory<TItem> _inventoryFactory;
 
         private void Awake() 

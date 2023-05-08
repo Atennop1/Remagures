@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Remagures.Root.Dialogs
 {
-    public sealed class DialogPlayerFactory : SerializedMonoBehaviour
+    public sealed class DialogPlayerFactory : SerializedMonoBehaviour, IDialogPlayerFactory
     {
-        [SerializeField] private DialogTextWriterFactory _dialogTextWriterFactory;
+        [SerializeField] private IDialogTextWriterFactory _dialogTextWriterFactory;
         [SerializeField] private DialogView _dialogView;
         
         private DialogPlayer _builtPlayer;

@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace Remagures.Root.Dialogs
 {
-    public sealed class DialogsListFactory : SerializedMonoBehaviour
+    public sealed class DialogsListFactory : SerializedMonoBehaviour, IDialogsListFactory
     {
         [SerializeField] private int _idOfStartDialog;
         [SerializeField] private string _characterName;
 
-        [Space] [SerializeField] private List<SpeakerInfoFactory> _speakerInfoFactories;
+        [Space] [SerializeField] private List<IDialogSpeakerData> _speakerInfos;
         [SerializeField] private List<DialogChoiceFactory> _choiceFactories;
 
         [Space] [SerializeField] private List<DialogLineFactory> _dialogLineFactories;
-        [SerializeField] private List<DialogFactory> _dialogFactories;
+        [SerializeField] private List<IDialogFactory> _dialogFactories;
 
         private IDialogs _builtDialog;
 
@@ -24,7 +24,6 @@ namespace Remagures.Root.Dialogs
             if (_builtDialog != null)
                 return _builtDialog;
             
-            _speakerInfoFactories.ForEach(factory => factory.Create()); 
             _choiceFactories.ForEach(factory => factory.Create());
             _dialogLineFactories.ForEach(factory => factory.Create());
             _dialogFactories.ForEach(factory => factory.Create());

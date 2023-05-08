@@ -7,7 +7,7 @@ namespace Remagures.Root
     public sealed class TargetFactory : SerializedMonoBehaviour, ITargetFactory
     {
         [SerializeField] private IHealthFactory _healthFactory;
-        [SerializeField] private FlashingableFactory _flashingableFactory;
+        [SerializeField] private IFlashingableFactory _flashingableFactory;
         private ITarget _builtTarget;
         
         public ITarget Create()

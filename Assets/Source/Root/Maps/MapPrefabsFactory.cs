@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MapPrefabsFactory : SerializedMonoBehaviour
+    public sealed class MapPrefabsFactory : SerializedMonoBehaviour, IMapPrefabsFactory
     {
         [SerializeField] private Dictionary<IMapFactory, GameObject> _prefabs;
         private MapPrefabs _builtPrefabs;

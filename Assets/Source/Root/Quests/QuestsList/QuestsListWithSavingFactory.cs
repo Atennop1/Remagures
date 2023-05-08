@@ -10,7 +10,7 @@ namespace Remagures.Root
     public sealed class QuestsListWithSavingFactory : SerializedMonoBehaviour, IQuestsListFactory
     {
         [SerializeField] private IQuestsListFactory _questsListFactory;
-        [SerializeField] private QuestsDatabaseFactory _questsDatabaseFactory;
+        [SerializeField] private IQuestsDatabaseFactory _questsDatabaseFactory;
         [SerializeField] private string _savePath;
         private IQuestsList _builtQuestsList;
         

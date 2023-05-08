@@ -6,7 +6,7 @@ namespace Remagures.Root
 {
     public sealed class EntryPoint : SerializedMonoBehaviour
     {
-        [SerializeField] private DialogsListFactory _dialogsListFactory;
+        [SerializeField] private IDialogsListFactory _dialogsListFactory;
         [SerializeField] private GridsFactory _gridsFactory;
         [SerializeField] private CutsceneFactory cutsceneFactory;
         

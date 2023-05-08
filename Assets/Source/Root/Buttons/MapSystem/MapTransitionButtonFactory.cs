@@ -6,7 +6,7 @@ namespace Remagures.Root
 {
     public sealed class MapTransitionButtonFactory : SerializedMonoBehaviour, IButtonFactory
     {
-        [SerializeField] private MapTransitionFactory _mapTransitionFactory;
+        [SerializeField] private IMapTransitionFactory _mapTransitionFactory;
         private IButton _builtButton;
         
         public IButton Create()

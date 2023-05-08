@@ -11,7 +11,7 @@ namespace Remagures.Root
     {
         [SerializeField] private IMapView _mapView;
         [SerializeField] private IMarkersFactory _markersFactory;
-        [SerializeField] private List<MapTransitionFactory> _transitionsFactories;
+        [SerializeField] private List<IMapTransitionFactory> _transitionsFactories;
         [SerializeField] private IIsMapVisitedFactory _isMapVisitedFactory;
         
         private Map _builtMap;

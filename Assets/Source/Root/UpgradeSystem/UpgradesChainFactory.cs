@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class UpgradesChainFactory<TItem> : SerializedMonoBehaviour where TItem: IItem
+    public sealed class UpgradesChainFactory<TItem> : SerializedMonoBehaviour, IUpgradesChainFactory<TItem> where TItem: IItem
     {
-        [SerializeField] private Dictionary<IItemFactory<TItem>, UpgradeFactory<TItem>> _upgradeFactories;
+        [SerializeField] private Dictionary<IItemFactory<TItem>, IUpgradeFactory<TItem>> _upgradeFactories;
         [SerializeField] private IInventoryFactory<TItem> _inventoryFactory;
-        [SerializeField] private UpgradesClientFactory _upgradesClientFactory;
+        [SerializeField] private IUpgradesClientFactory _upgradesClientFactory;
 
         private IUpgradesChain<TItem> _builtChain;
 

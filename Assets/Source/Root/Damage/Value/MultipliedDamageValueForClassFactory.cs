@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MultipliedDamageValuerForClassFactory : SerializedMonoBehaviour, IDamageValueFactory
+    public sealed class MultipliedDamageValueForClassFactory : SerializedMonoBehaviour, IDamageValueFactory
     {
         [SerializeField] private int _multiplier;
         [SerializeField] private CharacterClass _characterClass;
