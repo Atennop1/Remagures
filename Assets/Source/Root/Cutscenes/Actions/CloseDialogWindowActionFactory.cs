@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root.Actions
 {
-    public class CloseDialogWindowActionFactory : SerializedMonoBehaviour, ICutsceneActionFactory
+    public sealed class CloseDialogWindowActionFactory : SerializedMonoBehaviour, ICutsceneActionFactory
     {
         [SerializeField] private IDialogView _dialogView;
         private ICutsceneAction _builtCutsceneAction;

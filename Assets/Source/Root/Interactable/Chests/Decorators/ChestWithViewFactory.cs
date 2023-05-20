@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public class ChestWithViewFactory : SerializedMonoBehaviour, IChestFactory
+    public sealed class ChestWithViewFactory : SerializedMonoBehaviour, IChestFactory
     {
         [SerializeField] private IChestFactory _chestFactory;
         [SerializeField] private IChestView _chestView;

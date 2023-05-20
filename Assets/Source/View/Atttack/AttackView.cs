@@ -3,7 +3,7 @@ using Remagures.Model.Character;
 
 namespace Remagures.View
 {
-    public class AttackView : IAttackView
+    public sealed class AttackView : IAttackView
     {
         private readonly ICharacterAnimations _characterAnimations;
         private const string ATTACK_ANIMATOR_NAME = "attacking";

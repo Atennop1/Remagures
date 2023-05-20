@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public class ArmorInventorySelectorFactory : MonoBehaviour, IInventorySelectorFactory<IArmorItem>
+    public sealed class ArmorInventorySelectorFactory : MonoBehaviour, IInventorySelectorFactory<IArmorItem>
     {
         [SerializeField] private ICellView _selectedCellView;
         [SerializeField] private IDisplayableItemView _displayableItemView;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View
 {
-    public class SharpsView : MonoBehaviour
+    public sealed class SharpsView : MonoBehaviour
     {
         [SerializeField] private Text _sharpsCountText;
         private IWallet _sharpsWallet;

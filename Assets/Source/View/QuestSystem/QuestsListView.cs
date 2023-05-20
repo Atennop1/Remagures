@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Remagures.View.QuestSystem
 {
-    public class QuestsListView : MonoBehaviour
+    public sealed class QuestsListView : MonoBehaviour
     {
         [SerializeField] private IQuestSlotViewFactory _questSlotViewFactory;
         [SerializeField] private GameObject _absenceQuestsText;

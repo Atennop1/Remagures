@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public class ContextClueView : MonoBehaviour, IContextClueView
+    public sealed class ContextClueView : MonoBehaviour, IContextClueView
     {
         [SerializeField] private GameObject _contextClueGameObject;
 

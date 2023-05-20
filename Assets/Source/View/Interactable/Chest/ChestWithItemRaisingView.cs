@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public class ChestWithItemRaisingView : MonoBehaviour, IChestWithItemRaisingView
+    public sealed class ChestWithItemRaisingView : MonoBehaviour, IChestWithItemRaisingView
     {
         [SerializeField] private SpriteRenderer _raisedItemSpriteRenderer;
         

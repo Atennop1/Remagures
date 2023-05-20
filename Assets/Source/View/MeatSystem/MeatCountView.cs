@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.View.MeatSystem
 {
-    public class MeatCountView : SerializedMonoBehaviour, IMeatCountView
+    public sealed class MeatCountView : SerializedMonoBehaviour, IMeatCountView
     {
         [SerializeField] private IMeatSlotView _rawMeatSlotView;
         [SerializeField] private IMeatSlotView _cookedMeatSlotView;

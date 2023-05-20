@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Root
 {
-    public class WeaponInventorySelectorFactory : SerializedMonoBehaviour, IInventorySelectorFactory<IWeaponItem>
+    public sealed class WeaponInventorySelectorFactory : SerializedMonoBehaviour, IInventorySelectorFactory<IWeaponItem>
     {
         [SerializeField] private ICellView _selectedCellView;
         [SerializeField] private IDisplayableItemView _displayableItemView;

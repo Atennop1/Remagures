@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Remagures.View.DialogSystem
 {
-    public class DialogBubbleBackground : MonoBehaviour
+    public sealed class DialogBubbleBackground : MonoBehaviour
     {
         [Header("Objects")]
         [SerializeField] private Camera _camera;

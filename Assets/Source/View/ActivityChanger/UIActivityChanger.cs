@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.View
 {
-    public class UIActivityChanger : MonoBehaviour, IUIActivityChanger
+    public sealed class UIActivityChanger : MonoBehaviour, IUIActivityChanger
     {
         [SerializeField] private List<Canvas> _canvases;
 

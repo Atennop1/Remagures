@@ -2,7 +2,7 @@
 
 namespace Remagures.Factories
 {
-    public class GameObjectFactory : MonoBehaviour, IGameObjectFactory 
+    public sealed class GameObjectFactory : MonoBehaviour, IGameObjectFactory 
     {
         [SerializeField] private GameObject _prefab;
         

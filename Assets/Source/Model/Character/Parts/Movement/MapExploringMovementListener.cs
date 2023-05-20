@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class MapExploringMovementListener : ICharacterMovement
+    public sealed class MapExploringMovementListener : ICharacterMovement
     {
         public Transform Transform => _characterMovement.Transform;
         public Vector2 CharacterLookDirection => _characterMovement.CharacterLookDirection;

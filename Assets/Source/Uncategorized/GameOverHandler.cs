@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace Remagures.Uncategorized
 {
-    public class GameOverHandler : MonoBehaviour //TODO make this via polling
+    public sealed class GameOverHandler : MonoBehaviour //TODO make this via polling
     {
         [Header("Colors")]
         [SerializeField] private Color _colorOfPlayer;

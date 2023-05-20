@@ -4,7 +4,7 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Pickup
 {
-    public class AddManaPickupable : IPickupable
+    public sealed class AddManaPickupable : IPickupable
     {
         private readonly IMana _mana;
         private int _amount;

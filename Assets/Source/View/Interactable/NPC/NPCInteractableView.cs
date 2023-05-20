@@ -2,7 +2,7 @@
 
 namespace Remagures.View.Interactable
 {
-    public class NPCInteractableView : MonoBehaviour, INPCInteractableView
+    public sealed class NPCInteractableView : MonoBehaviour, INPCInteractableView
     {
         [SerializeField] private IUIActivityChanger _uiActivityChanger;
 

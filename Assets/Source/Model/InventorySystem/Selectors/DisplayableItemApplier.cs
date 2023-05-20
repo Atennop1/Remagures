@@ -4,7 +4,7 @@ using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class DisplayableItemApplier<T> : IUpdatable where T: IDisplayableItem
+    public sealed class DisplayableItemApplier<T> : IUpdatable where T: IDisplayableItem
     {
         private readonly IInventoryCellSelector<T> _selector;
         private readonly IDisplayableItemView _displayableItemView;

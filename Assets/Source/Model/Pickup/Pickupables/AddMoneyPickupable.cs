@@ -4,7 +4,7 @@ using Remagures.Tools;
 
 namespace Remagures.Model.Pickup
 {
-    public class AddMoneyPickupable : IPickupable
+    public sealed class AddMoneyPickupable : IPickupable
     {
         private readonly IWallet _wallet;
         private readonly int _amount;

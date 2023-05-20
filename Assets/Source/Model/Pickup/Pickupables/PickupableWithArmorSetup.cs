@@ -3,7 +3,7 @@ using Remagures.Root;
 
 namespace Remagures.Model.Pickup
 {
-    public class PickupableWithArmorSetup : IPickupable
+    public sealed class PickupableWithArmorSetup : IPickupable
     {
         private readonly IPickupable _pickupable;
         private readonly IArmorSetuper _armorSetuper;

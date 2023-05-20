@@ -7,7 +7,7 @@ using System.Linq;
 namespace Remagures.Model.DialogSystem
 {
     [Serializable]
-    public class Dialog : IDialog
+    public sealed class Dialog : IDialog
     {
         public string Name { get; }
         public IDialogLine CurrentLine => _lines[_currentLineIndex];

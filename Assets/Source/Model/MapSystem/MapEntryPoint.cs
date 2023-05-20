@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Remagures.Model.MapSystem
 {
-    public class MapEntryPoint : MonoBehaviour
+    public sealed class MapEntryPoint : MonoBehaviour
     {
         private void Awake()
         {

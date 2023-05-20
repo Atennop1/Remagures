@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
-    public class InventoryView<T> : MonoBehaviour where T: IItem
+    public sealed class InventoryView<T> : MonoBehaviour where T: IItem
     {
         [SerializeField] private ICellViewFactory _cellViewsFactory;
         [SerializeField] private ItemInfoView<T> _itemInfoView;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public class Switch : MonoBehaviour
+    public sealed class Switch : MonoBehaviour
     {
         [SerializeField] private Sprite _activeSprite;
         [SerializeField] private Door _door;

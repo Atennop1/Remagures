@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Remagures.Model.MeatSystem
 {
-    public class MeatCookingLoop : IUpdatable
+    public sealed class MeatCookingLoop : IUpdatable
     {
         private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage<DateTime>(new Path("RemainingMeatCookingTime")));
         private readonly IMeatCookingTimerView _meatCookingTimerView;

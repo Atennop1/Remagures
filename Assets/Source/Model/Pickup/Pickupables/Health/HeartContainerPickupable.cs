@@ -3,7 +3,7 @@ using Remagures.Model.Health;
 
 namespace Remagures.Model.Pickup
 {
-    public class HeartContainerPickupable : IPickupable
+    public sealed class HeartContainerPickupable : IPickupable
     {
         private const int HEALTH_POINTS_IN_HEART = 4;
         

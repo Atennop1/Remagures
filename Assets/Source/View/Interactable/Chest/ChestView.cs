@@ -2,7 +2,7 @@
 
 namespace Remagures.View.Interactable
 {
-    public class ChestView : MonoBehaviour, IChestView
+    public sealed class ChestView : MonoBehaviour, IChestView
     {
         [SerializeField] private Animator _animator;
 

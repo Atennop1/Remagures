@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.MapSystem
 {
-    public class MapPrefabs
+    public sealed class MapPrefabs
     {
         private readonly IReadOnlyDictionary<IMap, GameObject> _prefabs;
 

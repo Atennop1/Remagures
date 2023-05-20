@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Flashing
 {
-    public class Flashingable : IFlashingable
+    public sealed class Flashingable : IFlashingable
     {
         private readonly Dictionary<FlashColorType, Color> _colors;
         private readonly SpriteRenderer _spriteRenderer;

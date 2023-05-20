@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Remagures.Model.Input
 {
-    public class MovementInput : SerializedMonoBehaviour, IMovementInput
+    public sealed class MovementInput : SerializedMonoBehaviour, IMovementInput
     {
         [SerializeField] private PlayerInput _unityInput;
 

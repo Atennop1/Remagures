@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.View.Inventory
 {
-    public class DisplayableItemView : MonoBehaviour, IDisplayableItemView
+    public sealed class DisplayableItemView : MonoBehaviour, IDisplayableItemView
     {
         [SerializeField] private Animator _itemAnimator;
 

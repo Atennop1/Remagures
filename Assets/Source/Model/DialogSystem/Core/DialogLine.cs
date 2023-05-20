@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Remagures.Model.DialogSystem
 {
     [Serializable]
-    public class DialogLine : IDialogLine
+    public sealed class DialogLine : IDialogLine
     {
         public string Text { get; }
         public IDialogSpeakerData SpeakerData { get; }

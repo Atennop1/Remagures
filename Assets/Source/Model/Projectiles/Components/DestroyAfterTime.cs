@@ -2,7 +2,7 @@
 
 namespace Remagures.Model.Projectiles
 {
-    public class DestroyAfterTime : MonoBehaviour
+    public sealed class DestroyAfterTime : MonoBehaviour
     {
         [SerializeField] private float _lifeTime;
         private float _lifeTimer;

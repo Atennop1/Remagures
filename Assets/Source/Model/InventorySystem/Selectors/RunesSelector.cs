@@ -5,7 +5,7 @@ using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class RunesSelector : IInventoryCellSelector<IRuneItem>, ILateUpdatable
+    public sealed class RunesSelector : IInventoryCellSelector<IRuneItem>, ILateUpdatable
     {
         public bool HasSelected { get; private set; }
         public IReadOnlyCell<IRuneItem> SelectedCell { get; private set;}

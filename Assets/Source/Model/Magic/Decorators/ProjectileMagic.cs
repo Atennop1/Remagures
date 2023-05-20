@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Magic
 {
-    public class ProjectileMagic : IMagic
+    public sealed class ProjectileMagic : IMagic
     {
         public IMagicData Data => _magic.Data;
         private readonly IMagic _magic;

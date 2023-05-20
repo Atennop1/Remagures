@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public class ProjectileFactory : MonoBehaviour, IProjectileFactory
+    public sealed class ProjectileFactory : MonoBehaviour, IProjectileFactory
     {
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private Transform _spawnPoint;

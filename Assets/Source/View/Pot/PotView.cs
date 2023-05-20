@@ -2,7 +2,7 @@
 
 namespace Remagures.View.Pot
 {
-    public class PotView : MonoBehaviour, IPotView
+    public sealed class PotView : MonoBehaviour, IPotView
     {
         [SerializeField] private Animator _potAnimator;
         

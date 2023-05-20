@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public class CharacterPickuper : MonoBehaviour
+    public sealed class CharacterPickuper : MonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D collider2d)
         {

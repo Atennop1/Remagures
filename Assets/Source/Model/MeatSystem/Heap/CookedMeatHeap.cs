@@ -5,7 +5,7 @@ using Remagures.View.MeatSystem;
 
 namespace Remagures.Model.MeatSystem
 {
-    public class CookedMeatHeap : ICookedMeatHeap
+    public sealed class CookedMeatHeap : ICookedMeatHeap
     {
         public int Count { get; private set; }
         

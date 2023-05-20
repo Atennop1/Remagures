@@ -4,7 +4,7 @@ using Remagures.Root;
 
 namespace Remagures.Model.InventorySystem
 {
-    public class Inventory<T> : IInventory<T>, ILateUpdatable where T: IItem
+    public sealed class Inventory<T> : IInventory<T>, ILateUpdatable where T: IItem
     { 
         public IReadOnlyList<IReadOnlyCell<T>> Cells => _cells;
         public bool HasCellsChanged { get; private set; }

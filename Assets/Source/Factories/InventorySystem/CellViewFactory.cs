@@ -1,10 +1,11 @@
 ﻿using System;
 using Remagures.View.Inventory;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public class CellViewFactory : MonoBehaviour, ICellViewFactory
+    public sealed class CellViewFactory : SerializedMonoBehaviour, ICellViewFactory
     {
         [SerializeField] private GameObject _inventorySlotPrefab;
         [SerializeField] private GameObject _inventoryPanel;

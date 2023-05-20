@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Remagures.Model.Flashing
 {
-    public class Flashings : IFlashings
+    public sealed class Flashings : IFlashings
     {
         private readonly SpriteRenderer _spriteRenderer;
         private CancellationTokenSource _cancellationTokenSource = new();

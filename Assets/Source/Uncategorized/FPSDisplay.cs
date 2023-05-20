@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Remagures.Uncategorized
 {
-    public class FPSDisplay : MonoBehaviour
+    public sealed class FPSDisplay : MonoBehaviour
     {
         [SerializeField] private Text _fpsText;
 

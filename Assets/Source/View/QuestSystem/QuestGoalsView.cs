@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public class QuestGoalsView : MonoBehaviour, IQuestGoalsView
+    public sealed class QuestGoalsView : MonoBehaviour, IQuestGoalsView
     {
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;

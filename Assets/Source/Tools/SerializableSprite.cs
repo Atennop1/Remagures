@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Remagures.Tools
 {
     [Serializable]
-    public class SerializableSprite
+    public sealed class SerializableSprite
     {
         private int _textureWidth;
         private int _textureHeight;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.Uncategorized
 {
-    public class CameraMovement : MonoBehaviour
+    public sealed class CameraMovement : MonoBehaviour
     {
         [SerializeField] private Transform _target;
         [SerializeField] private Vector2 _maxPos;

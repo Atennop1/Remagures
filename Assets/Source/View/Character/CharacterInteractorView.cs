@@ -2,7 +2,7 @@
 
 namespace Remagures.View.Character
 {
-    public class CharacterInteractorView : MonoBehaviour, ICharacterInteractorView
+    public sealed class CharacterInteractorView : MonoBehaviour, ICharacterInteractorView
     {
         [SerializeField] private GameObject _dialogWindow;
         [SerializeField] private IUIActivityChanger _uiActivityChanger;

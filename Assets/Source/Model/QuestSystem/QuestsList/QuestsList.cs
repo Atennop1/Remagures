@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Remagures.Model.QuestSystem
 {
-    public class QuestsList : IQuestsList
+    public sealed class QuestsList : IQuestsList
     {
         public IReadOnlyList<IQuest> Quests => _quests;
         private readonly List<IQuest> _quests = new();

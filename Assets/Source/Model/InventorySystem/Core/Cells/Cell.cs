@@ -4,7 +4,7 @@ using Remagures.Tools;
 namespace Remagures.Model.InventorySystem
 {
     [Serializable]
-    public class Cell<T> : ICell<T> where T: IItem
+    public sealed class Cell<T> : ICell<T> where T: IItem
     {
         public T Item { get; private set; }
         public int ItemsCount { get; private set; }
