@@ -8,7 +8,7 @@ namespace Remagures.View.MapSystem
     {
         private Image _image;
 
-        private void Start()
+        private void Awake()
         {
             _image = GetComponent<Image>();
             _image.alphaHitTestMinimumThreshold = 0.6f;

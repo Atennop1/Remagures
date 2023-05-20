@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public sealed class QuestSlotView : MonoBehaviour
+    public sealed class QuestSlotView : MonoBehaviour, IQuestSlotView
     {
         [field: SerializeField] public Button Button { get; private set; }
         

@@ -8,10 +8,10 @@ namespace Remagures.Model.QuestSystem
     public sealed class QuestPopups : IQuestPopups
     {
         private readonly Queue<string> _popupsQueue = new();
-        private readonly QuestPopupView _view;
+        private readonly IQuestPopupView _view;
         private UniTask _playingTask;
 
-        public QuestPopups(QuestPopupView view)
+        public QuestPopups(IQuestPopupView view)
             => _view = view ?? throw new ArgumentNullException(nameof(view));
 
         public async void AddTextToQueue(string text)

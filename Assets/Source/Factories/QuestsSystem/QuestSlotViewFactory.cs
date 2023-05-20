@@ -5,9 +5,9 @@ namespace Remagures.Factories
 {
     public sealed class QuestSlotViewFactory : MonoBehaviour, IQuestSlotViewFactory
     {
-        [SerializeField] private QuestSlotView _questSlotViewPrefab;
+        [SerializeField] private GameObject _questSlotViewPrefab;
         
-        public QuestSlotView Create(Transform parent)
-            => Instantiate(_questSlotViewPrefab, parent.transform);
+        public IQuestSlotView Create(Transform parent)
+            => Instantiate(_questSlotViewPrefab, parent.transform).GetComponent<IQuestSlotView>();
     }
 }

@@ -7,7 +7,7 @@ namespace Remagures.Root.Dialogs
 {
     public sealed class DialogTextWriterFactory : SerializedMonoBehaviour, IDialogTextWriterFactory
     {
-        [SerializeField] private DialogTextWriterView _dialogTextWriterView;
+        [SerializeField] private IDialogTextWriterView _dialogTextWriterView;
         private IDialogTextWriter _builtWriter;
         
         public IDialogTextWriter Create()

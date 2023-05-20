@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Remagures.View.Character
 {
-    public class CharacterMovementView : MonoBehaviour
+    public class CharacterMovementView : MonoBehaviour, ICharacterMovementView
     {
         private const string MOVE_ANIMATOR_NAME = "moving";
         private ICharacterAnimations _characterAnimations;

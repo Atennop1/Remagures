@@ -5,6 +5,6 @@ namespace Remagures.Factories
 {
     public interface IQuestSlotViewFactory
     {
-        QuestSlotView Create(Transform parent);
+        IQuestSlotView Create(Transform parent);
     }
 }

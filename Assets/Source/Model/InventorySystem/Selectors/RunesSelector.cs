@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Remagures.Root;
-using Remagures.View.RuneSystem;
+using Remagures.View.Inventory;
 
 namespace Remagures.Model.InventorySystem
 {
@@ -11,9 +11,9 @@ namespace Remagures.Model.InventorySystem
         public IReadOnlyCell<IRuneItem> SelectedCell { get; private set;}
 
         private readonly IInventory<IRuneItem> _runesInventory;
-        private readonly SelectedRuneView _selectedRuneView;
+        private readonly IItemInfoView<IRuneItem> _selectedRuneView;
 
-        public RunesSelector(IInventory<IRuneItem> runesInventory, SelectedRuneView selectedRuneView)
+        public RunesSelector(IInventory<IRuneItem> runesInventory, IItemInfoView<IRuneItem> selectedRuneView)
         {
             _runesInventory = runesInventory ?? throw new ArgumentNullException(nameof(runesInventory));
             _selectedRuneView = selectedRuneView ?? throw new ArgumentNullException(nameof(selectedRuneView));

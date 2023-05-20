@@ -8,10 +8,10 @@ namespace Remagures.Model.MeatSystem
     {
         public int RawMeatCount { get; private set; }
 
-        private readonly MeatCountView _meatCountView;
+        private readonly IMeatCountView _meatCountView;
         private readonly ICookedMeatHeap _cookedMeatHeap;
 
-        public MeatCooker(MeatCountView meatCountView, ICookedMeatHeap cookedMeatHeap)
+        public MeatCooker(IMeatCountView meatCountView, ICookedMeatHeap cookedMeatHeap)
         {
             _meatCountView = meatCountView ?? throw new ArgumentNullException(nameof(meatCountView));
             _cookedMeatHeap = cookedMeatHeap ?? throw new ArgumentNullException(nameof(cookedMeatHeap));

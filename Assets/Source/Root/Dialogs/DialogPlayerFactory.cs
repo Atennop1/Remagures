@@ -8,7 +8,7 @@ namespace Remagures.Root.Dialogs
     public sealed class DialogPlayerFactory : SerializedMonoBehaviour, IDialogPlayerFactory
     {
         [SerializeField] private IDialogTextWriterFactory _dialogTextWriterFactory;
-        [SerializeField] private DialogView _dialogView;
+        [SerializeField] private IDialogView _dialogView;
         
         private DialogPlayer _builtPlayer;
         private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();

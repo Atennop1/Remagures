@@ -11,13 +11,13 @@ namespace Remagures.Model.MeatSystem
     public class MeatCookingLoop : IUpdatable
     {
         private readonly TimeDifferenceCounter _timeDifferenceCounter = new(new BinaryStorage<DateTime>(new Path("RemainingMeatCookingTime")));
-        private readonly MeatCookingTimerView _meatCookingTimerView;
+        private readonly IMeatCookingTimerView _meatCookingTimerView;
         private readonly IMeatCooker _meatCooker;
 
         private bool _hasRawMeat => _meatCooker.RawMeatCount > 0;
         private float _remainingCookingTime;
 
-        public MeatCookingLoop(MeatCookingTimerView meatCookingTimerView, IMeatCooker meatCooker)
+        public MeatCookingLoop(IMeatCookingTimerView meatCookingTimerView, IMeatCooker meatCooker)
         {
             _meatCookingTimerView = meatCookingTimerView ?? throw new ArgumentNullException(nameof(meatCookingTimerView));
             _meatCooker = meatCooker ?? throw new ArgumentNullException(nameof(meatCooker));

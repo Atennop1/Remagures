@@ -4,7 +4,7 @@ namespace Remagures.View.Interactable
 {
     public class NPCInteractableView : MonoBehaviour, INPCInteractableView
     {
-        [SerializeField] private UIActivityChanger _uiActivityChanger;
+        [SerializeField] private IUIActivityChanger _uiActivityChanger;
 
         public void DisplayInteraction()
             => _uiActivityChanger.TurnOff();

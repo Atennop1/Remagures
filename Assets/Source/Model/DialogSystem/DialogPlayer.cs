@@ -10,12 +10,12 @@ namespace Remagures.Model.DialogSystem
         public bool HasPlayed { get; private set; }
         
         private readonly IDialogTextWriter _dialogTextWriter;
-        private readonly DialogView _dialogView;
+        private readonly IDialogView _dialogView;
         
         private IDialog _currentDialog;
         private bool _canContinue;
 
-        public DialogPlayer(IDialogTextWriter dialogTextWriter, DialogView dialogView)
+        public DialogPlayer(IDialogTextWriter dialogTextWriter, IDialogView dialogView)
         {
             _dialogTextWriter = dialogTextWriter ?? throw new ArgumentNullException(nameof(dialogTextWriter));
             _dialogView = dialogView ?? throw new ArgumentNullException(nameof(dialogView));

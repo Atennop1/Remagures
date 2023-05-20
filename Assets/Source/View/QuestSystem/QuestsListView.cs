@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace Remagures.View.QuestSystem
 {
-    public class QuestsView : MonoBehaviour
+    public class QuestsListView : MonoBehaviour
     {
         [SerializeField] private IQuestSlotViewFactory _questSlotViewFactory;
         [SerializeField] private GameObject _absenceQuestsText;
 
         [Space]
         [SerializeField] private Transform _questsContent;
-        [SerializeField] private QuestGoalsView _goalsView;
+        [SerializeField] private IQuestGoalsView _goalsView;
 
-        private readonly List<QuestSlotView> _spawnedQuestSlots = new();
+        private readonly List<IQuestSlotView> _spawnedQuestSlots = new();
         private IQuestsList _questsList;
 
         public void Construct(IQuestsList questsList)

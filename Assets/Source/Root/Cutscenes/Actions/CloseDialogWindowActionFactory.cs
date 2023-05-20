@@ -7,7 +7,7 @@ namespace Remagures.Root.Actions
 {
     public class CloseDialogWindowActionFactory : SerializedMonoBehaviour, ICutsceneActionFactory
     {
-        [SerializeField] private DialogView _dialogView;
+        [SerializeField] private IDialogView _dialogView;
         private ICutsceneAction _builtCutsceneAction;
         
         public ICutsceneAction Create()

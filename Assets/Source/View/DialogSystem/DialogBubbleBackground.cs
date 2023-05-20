@@ -24,7 +24,7 @@ namespace Remagures.View.DialogSystem
             _rect.position = _camera.WorldToScreenPoint(_playerTransform.position + new Vector3(0, 0.5f)) 
                                  + new Vector3(0, 75 + _rect.sizeDelta.y / 2 * 1.55f);
 
-            //idk what is going on here... this is very old code...
+            //idk what is going on here... this is very very old code...
         }
     }
 }

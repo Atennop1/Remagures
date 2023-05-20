@@ -1,5 +1,6 @@
 ﻿using Remagures.Model.InventorySystem;
 using Remagures.Model.RuneSystem;
+using Remagures.View.Inventory;
 using Remagures.View.RuneSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Remagures.Root
     public sealed class RunesSelectorFactory : SerializedMonoBehaviour, IInventorySelectorFactory<IRuneItem>
     {
         [SerializeField] private IInventoryFactory<IRuneItem> _runesInventoryFactory;
-        [SerializeField] private SelectedRuneView _selectedRuneView;
+        [SerializeField] private IItemInfoView<IRuneItem> _selectedRuneView;
         
         private RunesSelector _builtSelector;
         private readonly ILateSystemUpdate _lateSystemUpdate = new LateSystemUpdate();

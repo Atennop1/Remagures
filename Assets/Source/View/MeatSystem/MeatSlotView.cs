@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.MeatSystem
 {
-    public sealed class MeatSlotView : MonoBehaviour
+    public sealed class MeatSlotView : MonoBehaviour, IMeatSlotView
     {
         [SerializeField] private Image _image;
         [SerializeField] private Text _countText;

@@ -7,7 +7,7 @@ namespace Remagures.Root.Actions
 {
     public sealed class EndActionFactory : SerializedMonoBehaviour, ICutsceneActionFactory
     {
-        [SerializeField] private UIActivityChanger _uiActivityChanger;
+        [SerializeField] private IUIActivityChanger _uiActivityChanger;
         private ICutsceneAction _builtCutsceneAction;
         
         public ICutsceneAction Create()

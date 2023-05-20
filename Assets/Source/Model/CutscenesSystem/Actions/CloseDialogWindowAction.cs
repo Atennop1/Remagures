@@ -8,10 +8,10 @@ namespace Remagures.Model.CutscenesSystem
         public bool IsStarted { get; private set; }
         public bool IsFinished { get; private set; }
         
-        private readonly DialogView _dialogView;
+        private readonly IDialogView _dialogView;
 
-        public CloseDialogWindowAction(DialogView dialogView) 
-            => _dialogView = dialogView ? dialogView : throw new ArgumentNullException(nameof(dialogView));
+        public CloseDialogWindowAction(IDialogView dialogView) 
+            => _dialogView = dialogView ?? throw new ArgumentNullException(nameof(dialogView));
 
         public void Start()
         {

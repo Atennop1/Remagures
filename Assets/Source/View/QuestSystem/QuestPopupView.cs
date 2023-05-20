@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public class QuestPopupView : MonoBehaviour
+    public class QuestPopupView : MonoBehaviour, IQuestPopupView
     {
         [SerializeField] private Text _popupText;
         [SerializeField] private Animator _textAnimator;

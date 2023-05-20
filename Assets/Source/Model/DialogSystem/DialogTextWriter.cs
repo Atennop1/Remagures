@@ -11,7 +11,7 @@ namespace Remagures.Model.DialogSystem
     {
         public bool IsTyping { get; private set; }
 
-        private readonly DialogTextWriterView _dialogTextWriterView;
+        private readonly IDialogTextWriterView _dialogTextWriterView;
         
         private string _currentText;
         private UniTask _typingTask;
@@ -19,7 +19,7 @@ namespace Remagures.Model.DialogSystem
         private CancellationToken _cancellationToken;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public DialogTextWriter(DialogTextWriterView dialogTextWriterView)
+        public DialogTextWriter(IDialogTextWriterView dialogTextWriterView)
             => _dialogTextWriterView = dialogTextWriterView ?? throw new ArgumentNullException(nameof(dialogTextWriterView));
 
         public async UniTask StartTyping(string text)

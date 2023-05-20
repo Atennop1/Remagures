@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public class DialogChoiceView : MonoBehaviour
+    public class DialogChoiceView : MonoBehaviour, IDialogChoiceView
     {
+        [field: SerializeField] public Button Button { get; private set; }
         [SerializeField] private Text _choiceText;
 
         public void Display(string choiceText)

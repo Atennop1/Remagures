@@ -9,9 +9,9 @@ namespace Remagures.Model.MeatSystem
     {
         public int Count { get; private set; }
         
-        private readonly MeatCountView _meatCountView;
+        private readonly IMeatCountView _meatCountView;
 
-        public CookedMeatHeap(MeatCountView meatCountView) 
+        public CookedMeatHeap(IMeatCountView meatCountView) 
             => _meatCountView = meatCountView ?? throw new ArgumentNullException(nameof(meatCountView));
 
         public void Add(int count)

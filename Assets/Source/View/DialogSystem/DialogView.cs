@@ -1,14 +1,15 @@
 using Remagures.Model.DialogSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public sealed class DialogView : MonoBehaviour
+    public sealed class DialogView : SerializedMonoBehaviour, IDialogView
     {
         [SerializeField] private GameObject _dialogBubble;
         [SerializeField] private GameObject _dialogWindow;
-        [SerializeField] private DialogChoicesView _choicesView;
+        [SerializeField] private IDialogChoicesView _choicesView;
 
         [Header("NPC Info Stuff")]
         [SerializeField] private Text _nameText;

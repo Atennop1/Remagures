@@ -5,27 +5,27 @@ using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public class DialogChoicesView : MonoBehaviour
+    public sealed class DialogChoicesView : MonoBehaviour, IDialogChoicesView
     {
         [SerializeField] private GameObject _choicePrefab;
         [SerializeField] private Text _continueText;
         
         [Space]
-        [SerializeField] private DialogBubbleBackground _dialogBubbleBackground;
+        [SerializeField] private GameObject _dialogBubbleBackgroundGameObject;
         [SerializeField] private GameObject _dialogBubble;
 
-        private readonly List<Button> _createdChoiceViewButtons;
+        private readonly List<IDialogChoiceView> _createdChoiceViews;
 
         public void Display(IDialogLine dialogLine)
         {
             if (dialogLine.Choices.Count <= 0)
             {
-                _dialogBubbleBackground.gameObject.SetActive(false);
+                _dialogBubbleBackgroundGameObject.SetActive(false);
                 return;
             }
 
             _continueText.text = "";
-            _dialogBubbleBackground.gameObject.SetActive(true);
+            _dialogBubbleBackgroundGameObject.SetActive(true);
             CreateChoices(dialogLine);
         }
 
@@ -39,25 +39,23 @@ namespace Remagures.View.DialogSystem
             foreach (var dialogChoice in dialogLine.Choices)
             {
                 var choiceObject = Instantiate(_choicePrefab, transform.position, Quaternion.identity, _dialogBubble.transform);
-                var choiceView = choiceObject.GetComponent<DialogChoiceView>();
+                var choiceView = choiceObject.GetComponent<IDialogChoiceView>();
 
                 choiceView.Display(dialogChoice.Text);
-                var choiceViewButton = choiceView.GetComponent<Button>();
-                
-                choiceViewButton.onClick.AddListener(() =>
+                choiceView.Button.onClick.AddListener(() =>
                 {
                     dialogChoice.Use();
-                    _dialogBubbleBackground.gameObject.SetActive(false);
+                    _dialogBubbleBackgroundGameObject.SetActive(false);
                 });
                 
-                _createdChoiceViewButtons.Add(choiceViewButton);
+                _createdChoiceViews.Add(choiceView);
             }
         }
 
         private void ClearContent()
         {
-            _createdChoiceViewButtons.ForEach(button => button.onClick.RemoveAllListeners());
-            _createdChoiceViewButtons.Clear();
+            _createdChoiceViews.ForEach(view => view.Button.onClick.RemoveAllListeners());
+            _createdChoiceViews.Clear();
             
             for (var i = 0; i < _dialogBubble.transform.childCount; i++)
                 Destroy(transform.GetChild(i).gameObject);
