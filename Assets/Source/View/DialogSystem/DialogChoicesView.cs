@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Remagures.Model.DialogSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public sealed class DialogChoicesView : MonoBehaviour, IDialogChoicesView
+    public sealed class DialogChoicesView : SerializedMonoBehaviour, IDialogChoicesView
     {
         [SerializeField] private GameObject _choicePrefab;
         [SerializeField] private Text _continueText;

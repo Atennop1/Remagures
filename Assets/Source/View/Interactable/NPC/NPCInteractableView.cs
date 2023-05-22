@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public sealed class NPCInteractableView : MonoBehaviour, INPCInteractableView
+    public sealed class NPCInteractableView : SerializedMonoBehaviour, INPCInteractableView
     {
         [SerializeField] private IUIActivityChanger _uiActivityChanger;
 

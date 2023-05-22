@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.InventorySystem;
 using Remagures.Model.UpgradeSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.UpgradeSystem
 {
-    public sealed class UpgradeMenuView<TItem> : MonoBehaviour where TItem: IItem
+    public sealed class UpgradeMenuView<TItem> : SerializedMonoBehaviour where TItem: IItem
     {
         [SerializeField] private GameObject _absenceItemsGameObject;
         [SerializeField] private Transform _content;

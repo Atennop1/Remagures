@@ -1,9 +1,10 @@
 ﻿using Remagures.View.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public sealed class QuestSlotViewFactory : MonoBehaviour, IQuestSlotViewFactory
+    public sealed class QuestSlotViewFactory : SerializedMonoBehaviour, IQuestSlotViewFactory
     {
         [SerializeField] private GameObject _questSlotViewPrefab;
         

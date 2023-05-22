@@ -1,9 +1,10 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.AI.NPC
 {
-    public sealed class NPCAnimations : MonoBehaviour
+    public sealed class NPCAnimations : SerializedMonoBehaviour
     {
         private readonly int MOVE_X_ANIMATION_HASH = Animator.StringToHash("moveX");
         private readonly int MOVE_Y_ANIMATION_HASH = Animator.StringToHash("moveY");

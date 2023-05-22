@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.Pickup;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public sealed class CharacterPickuper : MonoBehaviour
+    public sealed class CharacterPickuper : SerializedMonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D collider2d)
         {

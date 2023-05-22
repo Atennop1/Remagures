@@ -1,10 +1,11 @@
 using Remagures.Model.Character;
 using SaveSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public sealed class Switch : MonoBehaviour
+    public sealed class Switch : SerializedMonoBehaviour
     {
         [SerializeField] private Sprite _activeSprite;
         [SerializeField] private Door _door;

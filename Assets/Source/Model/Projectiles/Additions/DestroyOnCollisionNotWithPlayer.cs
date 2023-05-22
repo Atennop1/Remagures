@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.Character;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Projectiles
 {
-    public sealed class DestroyOnCollisionNotWithPlayer : MonoBehaviour
+    public sealed class DestroyOnCollisionNotWithPlayer : SerializedMonoBehaviour
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {

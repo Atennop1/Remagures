@@ -1,11 +1,12 @@
 ﻿using SaveSystem;
 using SaveSystem.Paths;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Remagures.Model.MapSystem
 {
-    public sealed class MapEntryPoint : MonoBehaviour
+    public sealed class MapEntryPoint : SerializedMonoBehaviour
     {
         private void Awake()
         {

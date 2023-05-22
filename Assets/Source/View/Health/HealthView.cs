@@ -1,9 +1,10 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.Health
 {
-    public sealed class HealthView : MonoBehaviour, IHealthView
+    public sealed class HealthView : SerializedMonoBehaviour, IHealthView
     {
         [SerializeField] private Image[] _hearts;
         

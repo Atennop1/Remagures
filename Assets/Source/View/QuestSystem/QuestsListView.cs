@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.QuestSystem
 {
-    public sealed class QuestsListView : MonoBehaviour
+    public sealed class QuestsListView : SerializedMonoBehaviour
     {
         [SerializeField] private IQuestSlotViewFactory _questSlotViewFactory;
         [SerializeField] private GameObject _absenceQuestsText;

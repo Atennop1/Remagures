@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.QuestSystem.GoalListeners;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ShowPopupGoalListenerFactory : MonoBehaviour
+    public sealed class ShowPopupGoalListenerFactory : SerializedMonoBehaviour
     {
         [SerializeField] private IGoalFactory _goalFactory;
         [SerializeField] private IQuestFactory _questFactory;

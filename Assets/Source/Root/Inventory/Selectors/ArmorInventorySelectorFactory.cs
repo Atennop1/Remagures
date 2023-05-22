@@ -1,10 +1,11 @@
 ﻿using Remagures.Model.InventorySystem;
 using Remagures.View.Inventory;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ArmorInventorySelectorFactory : MonoBehaviour, IInventorySelectorFactory<IArmorItem>
+    public sealed class ArmorInventorySelectorFactory : SerializedMonoBehaviour, IInventorySelectorFactory<IArmorItem>
     {
         [SerializeField] private ICellView _selectedCellView;
         [SerializeField] private IDisplayableItemView _displayableItemView;

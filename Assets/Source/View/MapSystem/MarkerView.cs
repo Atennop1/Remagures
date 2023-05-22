@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.View.MapSystem
 {
-    public sealed class MarkerView : MonoBehaviour, IMarkerView
+    public sealed class MarkerView : SerializedMonoBehaviour, IMarkerView
     {
         [SerializeField] private GameObject _markerGameObject;
         

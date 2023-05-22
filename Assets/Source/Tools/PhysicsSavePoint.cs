@@ -1,11 +1,12 @@
 using Remagures.Model.Character;
 using SaveSystem;
 using SaveSystem.Paths;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Tools
 {
-    public sealed class PhysicsSavePoint : MonoBehaviour
+    public sealed class PhysicsSavePoint : SerializedMonoBehaviour
     {
         private readonly ISaveStorage<CharacterPositionData> _storage = new BinaryStorage<CharacterPositionData>(new Path("CharacterPositionData"));
 

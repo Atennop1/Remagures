@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
 using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.RuneSystem
 {
-    public sealed class RuneCellView : MonoBehaviour
+    public sealed class RuneCellView : SerializedMonoBehaviour
     {
         [SerializeField] private Button _button;
         [SerializeField] private Image _image;

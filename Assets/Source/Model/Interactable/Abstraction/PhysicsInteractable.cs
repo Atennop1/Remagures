@@ -1,9 +1,10 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public sealed class PhysicsInteractable : MonoBehaviour, IInteractable
+    public sealed class PhysicsInteractable : SerializedMonoBehaviour, IInteractable
     {
         public bool HasInteractionEnded => _interactable.HasInteractionEnded;
         

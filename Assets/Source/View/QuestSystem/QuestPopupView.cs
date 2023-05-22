@@ -1,9 +1,10 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public sealed class QuestPopupView : MonoBehaviour, IQuestPopupView
+    public sealed class QuestPopupView : SerializedMonoBehaviour, IQuestPopupView
     {
         [SerializeField] private Text _popupText;
         [SerializeField] private Animator _textAnimator;

@@ -1,9 +1,10 @@
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Uncategorized
 {
-    public sealed class CameraMovement : MonoBehaviour
+    public sealed class CameraMovement : SerializedMonoBehaviour
     {
         [SerializeField] private Transform _target;
         [SerializeField] private Vector2 _maxPos;

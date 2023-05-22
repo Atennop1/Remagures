@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class MagicItemFactory : MonoBehaviour, IItemFactory<IMagicItem> 
+    public sealed class MagicItemFactory : SerializedMonoBehaviour, IItemFactory<IMagicItem> 
     {
         [field: SerializeField] public int ItemID { get; private set; }
         [SerializeField] private ItemData _data;

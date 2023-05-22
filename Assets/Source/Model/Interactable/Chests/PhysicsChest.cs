@@ -1,10 +1,11 @@
 ﻿using System;
 using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Interactable
 {
-    public sealed class PhysicsChest : MonoBehaviour, IChest
+    public sealed class PhysicsChest : SerializedMonoBehaviour, IChest
     {
         [SerializeField] private Collider2D _triggerCollider;
 

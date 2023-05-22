@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.View.Character
 {
-    public sealed class CharacterInteractorView : MonoBehaviour, ICharacterInteractorView
+    public sealed class CharacterInteractorView : SerializedMonoBehaviour, ICharacterInteractorView
     {
         [SerializeField] private GameObject _dialogWindow;
         [SerializeField] private IUIActivityChanger _uiActivityChanger;

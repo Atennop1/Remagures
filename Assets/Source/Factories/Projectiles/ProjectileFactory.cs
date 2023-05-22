@@ -1,10 +1,10 @@
-﻿using Remagures.Model;
-using Remagures.Model.Projectiles;
+﻿using Remagures.Model.Projectiles;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public sealed class ProjectileFactory : MonoBehaviour, IProjectileFactory
+    public sealed class ProjectileFactory : SerializedMonoBehaviour, IProjectileFactory
     {
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private Transform _spawnPoint;

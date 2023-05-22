@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using Remagures.Factories;
 using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
-    public sealed class InventoryView<T> : MonoBehaviour where T: IItem
+    public sealed class InventoryView<T> : SerializedMonoBehaviour where T: IItem
     {
         [SerializeField] private ICellViewFactory _cellViewsFactory;
         [SerializeField] private ItemInfoView<T> _itemInfoView;

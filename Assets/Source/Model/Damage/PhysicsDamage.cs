@@ -1,10 +1,11 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Damage
 {
     [RequireComponent(typeof(Collider2D))]
-    public sealed class PhysicsDamage : MonoBehaviour
+    public sealed class PhysicsDamage : SerializedMonoBehaviour
     {
         private IDamage _damage;
 

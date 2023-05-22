@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.Model.Projectiles
 {
-    public sealed class DestroyAfterTime : MonoBehaviour
+    public sealed class DestroyAfterTime : SerializedMonoBehaviour
     {
         [SerializeField] private float _lifeTime;
         private float _lifeTimer;

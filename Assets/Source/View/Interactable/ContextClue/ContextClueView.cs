@@ -1,8 +1,9 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public sealed class ContextClueView : MonoBehaviour, IContextClueView
+    public sealed class ContextClueView : SerializedMonoBehaviour, IContextClueView
     {
         [SerializeField] private GameObject _contextClueGameObject;
 

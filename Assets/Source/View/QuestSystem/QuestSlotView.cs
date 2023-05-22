@@ -1,10 +1,11 @@
 using Remagures.Model.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public sealed class QuestSlotView : MonoBehaviour, IQuestSlotView
+    public sealed class QuestSlotView : SerializedMonoBehaviour, IQuestSlotView
     {
         [field: SerializeField] public Button Button { get; private set; }
         

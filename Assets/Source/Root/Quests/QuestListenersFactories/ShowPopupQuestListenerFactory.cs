@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.QuestSystem.QuestListeners;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root.QuestListenersFactories
 {
-    public sealed class ShowPopupQuestListenerFactory : MonoBehaviour
+    public sealed class ShowPopupQuestListenerFactory : SerializedMonoBehaviour
     {
         [SerializeField] private IQuestFactory _questFactory;
         [SerializeField] private IQuestPopupsFactory questPopupsFactory;

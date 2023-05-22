@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public sealed class ChestView : MonoBehaviour, IChestView
+    public sealed class ChestView : SerializedMonoBehaviour, IChestView
     {
         [SerializeField] private Animator _animator;
 

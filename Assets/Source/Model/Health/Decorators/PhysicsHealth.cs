@@ -1,9 +1,10 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Health
 {
-    public sealed class PhysicsHealth : MonoBehaviour, IHealth
+    public sealed class PhysicsHealth : SerializedMonoBehaviour, IHealth
     {
         public IReadOnlyMaxHealth Max => _health.Max;
         public int CurrentValue => _health.CurrentValue;

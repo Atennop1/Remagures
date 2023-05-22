@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.MeatSystem
 {
-    public sealed class MeatCookingTimerView : MonoBehaviour, IMeatCookingTimerView
+    public sealed class MeatCookingTimerView : SerializedMonoBehaviour, IMeatCookingTimerView
     {
         [SerializeField] private Slider _readySlider;
         [SerializeField] private Text _timeText;

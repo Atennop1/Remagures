@@ -1,12 +1,13 @@
 ﻿using Remagures.Model.Buttons;
 using Remagures.Model.InventorySystem;
 using Remagures.Root;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
-    public sealed class ItemInfoView<T> : MonoBehaviour, IItemInfoView<T> where T: IItem
+    public sealed class ItemInfoView<T> : SerializedMonoBehaviour, IItemInfoView<T> where T: IItem
     {
         [SerializeField] private IItemFactory<IItem> _nullItemFactory;
         [SerializeField] private IItemButton<T> _itemButton;

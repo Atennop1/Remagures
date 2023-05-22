@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class WeaponItemFactory : MonoBehaviour, IItemFactory<IWeaponItem>
+    public sealed class WeaponItemFactory : SerializedMonoBehaviour, IItemFactory<IWeaponItem>
     {
         [field: SerializeField] public int ItemID { get; private set; }
         

@@ -1,9 +1,10 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Pickup
 {
-    public sealed class PhysicsPickupable : MonoBehaviour, IPickupable
+    public sealed class PhysicsPickupable : SerializedMonoBehaviour, IPickupable
     {
         private IPickupable _pickupable;
 

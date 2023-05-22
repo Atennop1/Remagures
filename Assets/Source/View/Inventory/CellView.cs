@@ -1,10 +1,11 @@
 using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.Inventory
 {
-    public sealed class CellView : MonoBehaviour, ICellView
+    public sealed class CellView : SerializedMonoBehaviour, ICellView
     {
         [field: SerializeField] public Button Button { get; private set; }
         [SerializeField] private Text _itemCount;

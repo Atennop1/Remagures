@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.Factories
 {
-    public sealed class GameObjectFactory : MonoBehaviour, IGameObjectFactory 
+    public sealed class GameObjectFactory : SerializedMonoBehaviour, IGameObjectFactory 
     {
         [SerializeField] private GameObject _prefab;
         

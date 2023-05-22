@@ -1,11 +1,12 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.Model.Buttons
 {
     [RequireComponent(typeof(Button))]
-    public sealed class UnityButton : MonoBehaviour
+    public sealed class UnityButton : SerializedMonoBehaviour
     {
         private IButton _button;
         private Button _unityButton;

@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using Remagures.Model.QuestSystem.GoalListeners;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class CompleteGoalsListenerFactory : MonoBehaviour
+    public sealed class CompleteGoalsListenerFactory : SerializedMonoBehaviour
     {
         [SerializeField] private IGoalFactory _goalFactory;
         [SerializeField] private IGoalFactory[] _goalsToCompleteFactory;

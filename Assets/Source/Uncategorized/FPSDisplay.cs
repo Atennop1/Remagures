@@ -1,9 +1,10 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.Uncategorized
 {
-    public sealed class FPSDisplay : MonoBehaviour
+    public sealed class FPSDisplay : SerializedMonoBehaviour
     {
         [SerializeField] private Text _fpsText;
 

@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.Character;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.Character
 {
-    public sealed class CharacterMovementView : MonoBehaviour, ICharacterMovementView
+    public sealed class CharacterMovementView : SerializedMonoBehaviour, ICharacterMovementView
     {
         private const string MOVE_ANIMATOR_NAME = "moving";
         private ICharacterAnimations _characterAnimations;

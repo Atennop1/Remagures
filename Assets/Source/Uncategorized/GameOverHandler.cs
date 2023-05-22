@@ -1,10 +1,11 @@
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Remagures.Uncategorized
 {
-    public sealed class GameOverHandler : MonoBehaviour //TODO make this via polling
+    public sealed class GameOverHandler : SerializedMonoBehaviour //TODO make this via polling
     {
         [Header("Colors")]
         [SerializeField] private Color _colorOfPlayer;

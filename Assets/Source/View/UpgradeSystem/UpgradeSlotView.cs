@@ -1,11 +1,12 @@
 using Remagures.Model.InventorySystem;
 using Remagures.Model.UpgradeSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.UpgradeSystem
 {
-    public sealed class UpgradeSlotView : MonoBehaviour, IUpgradeSlotView
+    public sealed class UpgradeSlotView : SerializedMonoBehaviour, IUpgradeSlotView
     {
         [field: SerializeField] public Button UpgradeButton { get; private set; }
         

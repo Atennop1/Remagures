@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.DialogSystem
 {
-    public sealed class DialogTextWriterView : MonoBehaviour, IDialogTextWriterView
+    public sealed class DialogTextWriterView : SerializedMonoBehaviour, IDialogTextWriterView
     {
         [SerializeField] private Text _continueText;
         [SerializeField] private Text _dialogText;

@@ -1,11 +1,12 @@
 ﻿using System;
 using Remagures.Model.Character;
 using Remagures.Model.InventorySystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View.Interactable
 {
-    public sealed class ChestWithItemRaisingView : MonoBehaviour, IChestWithItemRaisingView
+    public sealed class ChestWithItemRaisingView : SerializedMonoBehaviour, IChestWithItemRaisingView
     {
         [SerializeField] private SpriteRenderer _raisedItemSpriteRenderer;
         

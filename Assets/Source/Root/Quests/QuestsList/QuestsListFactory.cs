@@ -1,9 +1,10 @@
 ﻿using Remagures.Model.QuestSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class QuestsListFactory : MonoBehaviour, IQuestsListFactory
+    public sealed class QuestsListFactory : SerializedMonoBehaviour, IQuestsListFactory
     {
         private IQuestsList _builtQuestsList;
         

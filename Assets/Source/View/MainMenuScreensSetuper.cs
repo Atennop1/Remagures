@@ -1,10 +1,11 @@
 using SaveSystem;
 using SaveSystem.Paths;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.View
 {
-    public sealed class MainMenuScreensSetuper : MonoBehaviour
+    public sealed class MainMenuScreensSetuper : SerializedMonoBehaviour
     {
         [SerializeField] private GameObject _newGameMenu;
         [SerializeField] private GameObject _oldGameMenu;

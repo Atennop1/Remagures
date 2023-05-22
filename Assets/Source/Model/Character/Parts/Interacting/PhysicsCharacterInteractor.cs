@@ -1,11 +1,12 @@
 ﻿using System;
 using Remagures.Model.Interactable;
 using Remagures.View.Interactable;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Character
 {
-    public sealed class PhysicsCharacterInteractor : MonoBehaviour
+    public sealed class PhysicsCharacterInteractor : SerializedMonoBehaviour
     {
         [SerializeField] private IContextClueView _contextClueView;
         private CharacterInteractor _characterInteractor;

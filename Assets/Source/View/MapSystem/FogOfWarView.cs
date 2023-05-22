@@ -1,10 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.MapSystem
 {
     [RequireComponent(typeof(Image))]
-    public sealed class FogOfWarView : MonoBehaviour
+    public sealed class FogOfWarView : SerializedMonoBehaviour
     {
         private Image _image;
 

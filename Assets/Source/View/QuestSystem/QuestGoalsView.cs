@@ -1,12 +1,13 @@
 using Remagures.Factories;
 using Remagures.Model.QuestSystem;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.QuestSystem
 {
-    public sealed class QuestGoalsView : MonoBehaviour, IQuestGoalsView
+    public sealed class QuestGoalsView : SerializedMonoBehaviour, IQuestGoalsView
     {
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;

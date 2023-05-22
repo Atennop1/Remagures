@@ -1,9 +1,10 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.MeatSystem
 {
-    public sealed class MeatSlotView : MonoBehaviour, IMeatSlotView
+    public sealed class MeatSlotView : SerializedMonoBehaviour, IMeatSlotView
     {
         [SerializeField] private Image _image;
         [SerializeField] private Text _countText;

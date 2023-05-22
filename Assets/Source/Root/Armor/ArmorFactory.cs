@@ -1,9 +1,10 @@
 ﻿using Remagures.Model;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Root
 {
-    public sealed class ArmorFactory : MonoBehaviour, IArmorFactory
+    public sealed class ArmorFactory : SerializedMonoBehaviour, IArmorFactory
     {
         [SerializeField] private IArmorValueFactory _armorValueFactory;
         private Armor _builtArmor;

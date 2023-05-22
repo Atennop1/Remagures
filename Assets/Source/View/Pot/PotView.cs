@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.View.Pot
 {
-    public sealed class PotView : MonoBehaviour, IPotView
+    public sealed class PotView : SerializedMonoBehaviour, IPotView
     {
         [SerializeField] private Animator _potAnimator;
         

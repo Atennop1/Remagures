@@ -1,11 +1,12 @@
 using Remagures.Model.InventorySystem;
 using Remagures.View.Inventory;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Remagures.View.RuneSystem
 {
-    public sealed class SelectedRuneView : MonoBehaviour, IItemInfoView<IRuneItem>
+    public sealed class SelectedRuneView : SerializedMonoBehaviour, IItemInfoView<IRuneItem>
     {
         [SerializeField] private Text _nameText;
         [SerializeField] private Text _descriptionText;

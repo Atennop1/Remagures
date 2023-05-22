@@ -1,11 +1,12 @@
 ﻿using System;
 using Remagures.Model.Character;
 using Remagures.Root;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.SceneTransition
 {
-    public sealed class PhysicsSceneTransition : MonoBehaviour
+    public sealed class PhysicsSceneTransition : SerializedMonoBehaviour
     {
         private ISceneTransition _sceneTransition;
         private readonly ISystemUpdate _systemUpdate = new SystemUpdate();

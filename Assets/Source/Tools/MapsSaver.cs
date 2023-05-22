@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Remagures.Tools
 {
-    public sealed class MapsSaver
+    public sealed class MapsSaver //TODO use it
     {
         private readonly List<Texture2D> _maps;
         private readonly string _path;

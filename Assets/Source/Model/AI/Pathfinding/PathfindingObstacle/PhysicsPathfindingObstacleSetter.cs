@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Remagures.Model.AI.Pathfinding
 {
-    public sealed class PhysicsPathfindingObstacleSetter : MonoBehaviour
+    public sealed class PhysicsPathfindingObstacleSetter : SerializedMonoBehaviour
     {
         [SerializeField] private bool _isSettingToRight;
         [SerializeField] private bool _isSettingToDown;

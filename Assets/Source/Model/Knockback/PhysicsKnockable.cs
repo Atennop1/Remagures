@@ -1,9 +1,10 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.Knockback
 {
-    public sealed class PhysicsKnockable : MonoBehaviour, IKnockable
+    public sealed class PhysicsKnockable : SerializedMonoBehaviour, IKnockable
     {
         private IKnockable _knockable;
 

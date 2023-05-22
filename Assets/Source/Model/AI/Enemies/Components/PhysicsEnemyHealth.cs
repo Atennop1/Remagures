@@ -1,11 +1,12 @@
 ﻿using System;
 using Remagures.Factories;
 using Remagures.Model.Health;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Remagures.Model.AI.Enemies
 {
-    public sealed class PhysicsEnemyHealth : MonoBehaviour, IHealth
+    public sealed class PhysicsEnemyHealth : SerializedMonoBehaviour, IHealth
     {
         [SerializeField] private IGameObjectFactory _deathEffectFactory;
         [SerializeField] private ILootFactory _lootFactory;
