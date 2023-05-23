@@ -1,5 +1,4 @@
-﻿using Remagures.Model;
-using Remagures.Model.Projectiles;
+﻿using Remagures.Model.Projectiles;
 using UnityEngine;
 
 namespace Remagures.Factories
